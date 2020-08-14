@@ -1,0 +1,518 @@
+1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39
+0,,,,,,,,,,,ref cell column =>,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,AA,AB,AC,AD,AE
+1,tonnage,Ref .No.,Refiney Name,Province,Province category,Technology,Ownership,Owner,Bauxite,ref cell,ref cell row,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031
+2,tonnage,1.1,Bosai Xianfeng domestic,Guangxi,Chongqing,H-B,Bosai,Other,Domestic,3,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+3,tonnage,1.1,Bosai Xianfeng domestic,Guizhou,Chongqing,H-B,Bosai,Other,Domestic,3,169,1180.513393,1066.253081,932.0125604,816.3532996,661.4090893,572.7443881,494.7659964,295.0525597,295.0525597,295.0525597,295.0525597,295.0525597,295.0525597,295.0525597,295.0525597,295.0525597,295.0525597,295.0525597,295.0525597,295.0525597,295.0525597,295.0525597,295.0525597,295.0525597,295.0525597,295.0525597,295.0525597
+4,tonnage,1.1,Bosai Xianfeng domestic,Henan,Chongqing,H-B,Bosai,Other,Domestic,3,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+5,tonnage,1.1,Bosai Xianfeng domestic,Shanxi,Chongqing,H-B,Bosai,Other,Domestic,3,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+6,tonnage,1.1,Bosai Xianfeng domestic,Other,Chongqing,H-B,Bosai,Other,Domestic,3,334,41220.25055,41034.20051,40814.89555,40625.43111,40370.92554,40224.94137,40096.34058,39766.03259,39268.35844,38758.83262,38228.02416,37695.65673,36706.04518,35512.71832,34313.6452,33198.83534,31905.61449,30640.68264,29679.33855,28750.51298,26858.44716,25646.14018,24625.76663,24005.90905,23592.06262,23592.06262,23592.06262
+7,tonnage,1.2,Bosai Xianfeng import,Guangxi,Chongqing,L-B,Bosai,Other,Imported,4,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+8,tonnage,1.2,Bosai Xianfeng import,Guizhou,Chongqing,L-B,Bosai,Other,Imported,4,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+9,tonnage,1.2,Bosai Xianfeng import,Henan,Chongqing,L-B,Bosai,Other,Imported,4,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+10,tonnage,1.2,Bosai Xianfeng import,Shanxi,Chongqing,L-B,Bosai,Other,Imported,4,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+11,tonnage,1.2,Bosai Xianfeng import,Other,Chongqing,L-B,Bosai,Other,Imported,4,334,4949999.851,4949999.851,4949999.851,4949999.851,4949999.851,4949966.503,4949741.338,4949289.688,4948837.255,4948384.332,4947534.17,4946683.134,4946160.828,4945683.747,4945001.919,4944092.358,4943409.888,4942727.185,4942044.271,4941361.16,4940677.866,4940677.866,4940677.866,4940677.866,4940677.866,4940677.866,4940677.866
+12,tonnage,2,Bosai Wanzhou,Guangxi,Chongqing,L-B,Bosai,Other,Imported,5,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+13,tonnage,2,Bosai Wanzhou,Guizhou,Chongqing,L-B,Bosai,Other,Imported,5,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+14,tonnage,2,Bosai Wanzhou,Henan,Chongqing,L-B,Bosai,Other,Imported,5,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+15,tonnage,2,Bosai Wanzhou,Shanxi,Chongqing,L-B,Bosai,Other,Imported,5,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+16,tonnage,2,Bosai Wanzhou,Other,Chongqing,L-B,Bosai,Other,Imported,5,334,4949999.751,4949999.751,4949999.751,4949999.751,4949999.751,4949999.751,4949999.751,4949999.751,4949999.751,4949999.751,4949999.751,4949999.751,4949999.751,4949999.751,4949999.751,4949999.751,4949999.751,4949999.751,4948928.658,4946334.482,4943734.214,4938522.007,4933298.787,4926976.113,4919113.377,4911237.79,4903351.101
+17,tonnage,3,Shuijiang,Guangxi,Chongqing,H-B,Bosai,Other,Domestic,6,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+18,tonnage,3,Shuijiang,Guizhou,Chongqing,H-B,Bosai,Other,Domestic,6,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+19,tonnage,3,Shuijiang,Henan,Chongqing,H-B,Bosai,Other,Domestic,6,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+20,tonnage,3,Shuijiang,Shanxi,Chongqing,H-B,Bosai,Other,Domestic,6,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+21,tonnage,3,Shuijiang,Other,Chongqing,H-B,Bosai,Other,Domestic,6,334,6141.194839,6141.194839,6141.194839,6141.194839,6141.194839,6061.175119,5734.683294,4913.597412,3675.160065,2180.828896,2180.828896,2180.828896,2180.828896,2180.828896,2180.828896,2180.828896,2180.828896,2180.828896,2180.828896,2180.828896,2180.828896,2180.828896,2180.828896,2180.828896,2180.828896,2180.828896,2180.828896
+22,tonnage,4,Tuoyuan,Guangxi,Chongqing,H-B,SPIC,SPIC,Domestic,7,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+23,tonnage,4,Tuoyuan,Guizhou,Chongqing,H-B,SPIC,SPIC,Domestic,7,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+24,tonnage,4,Tuoyuan,Henan,Chongqing,H-B,SPIC,SPIC,Domestic,7,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+25,tonnage,4,Tuoyuan,Shanxi,Chongqing,H-B,SPIC,SPIC,Domestic,7,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+26,tonnage,4,Tuoyuan,Other,Chongqing,H-B,SPIC,SPIC,Domestic,7,334,2638.156096,2442.212766,2132.013818,1727.279123,1727.279123,1727.279123,1727.279123,1727.279123,1727.279123,1727.279123,1727.279123,1727.279123,1727.279123,1727.279123,1727.279123,1727.279123,1727.279123,1727.279123,1727.279123,1727.279123,1727.279123,1727.279123,1727.279123,1727.279123,1727.279123,1727.279123,1727.279123
+27,tonnage,5,Chalco Pingguo ,Guangxi,Guangxi,H-B,Chalco,Chalco,Domestic,8,114,262311.4493,260240.5241,258243.8884,255455.2157,250965.0521,247127.0116,242590.7806,236893.2431,231169.2461,225421.5623,219652.1963,213862.6553,208054.106,202460.874,196617.5692,190757.4878,184881.1133,178988.8346,173080.9611,167157.7335,161219.3316,155265.8806,149297.4552,143314.0821,137505.3918,131611.2047,125702.472
+28,tonnage,5,Chalco Pingguo ,Guizhou,Guangxi,H-B,Chalco,Chalco,Domestic,8,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+29,tonnage,5,Chalco Pingguo ,Henan,Guangxi,H-B,Chalco,Chalco,Domestic,8,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+30,tonnage,5,Chalco Pingguo ,Shanxi,Guangxi,H-B,Chalco,Chalco,Domestic,8,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+31,tonnage,5,Chalco Pingguo ,Other,Guangxi,H-B,Chalco,Chalco,Domestic,8,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+32,tonnage,6.1,Jinjiang Chongzuo domestic,Guangxi,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,9,114,40147.86018,40147.86018,40147.86018,40147.86018,40147.86018,40147.86018,40147.86018,40147.86018,40147.86018,40147.86018,40147.86018,40147.86018,40147.86018,40147.86018,40147.86018,40147.86018,40147.86018,39323.4765,37808.55286,36268.46381,35023.94631,33770.22464,32824.54536,31874.59229,30719.26768,29544.10089,28363.45503
+33,tonnage,6.1,Jinjiang Chongzuo domestic,Guizhou,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,9,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+34,tonnage,6.1,Jinjiang Chongzuo domestic,Henan,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,9,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+35,tonnage,6.1,Jinjiang Chongzuo domestic,Shanxi,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,9,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+36,tonnage,6.1,Jinjiang Chongzuo domestic,Other,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,9,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+37,tonnage,6.2,Jinjiang Chongzuo import,Guangxi,Guangxi,L-B,Jinjiang,Jinjiang,Imported,10,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+38,tonnage,6.2,Jinjiang Chongzuo import,Guizhou,Guangxi,L-B,Jinjiang,Jinjiang,Imported,10,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+39,tonnage,6.2,Jinjiang Chongzuo import,Henan,Guangxi,L-B,Jinjiang,Jinjiang,Imported,10,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+40,tonnage,6.2,Jinjiang Chongzuo import,Shanxi,Guangxi,L-B,Jinjiang,Jinjiang,Imported,10,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+41,tonnage,6.2,Jinjiang Chongzuo import,Other,Guangxi,L-B,Jinjiang,Jinjiang,Imported,10,334,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989127.5694,988016.981,986901.6033,985782.6328,984660.6825,983536.1421,982409.2858,981280.3191,980149.4029
+42,tonnage,7,Huayin,Guangxi,Guangxi,H-B,"Chalco, Guangxi Investment Group, Minmetal",Chalco,Domestic,11,114,280373.8072,280373.8072,280221.1094,278961.2745,274935.3312,270621.413,266778.475,262908.0353,257971.7881,253002.5386,247739.7741,241916.128,236058.8949,230277.4769,224089.6196,218141.4858,212165.6909,206163.025,200134.1155,194630.9308,189106.7528,183561.8045,177996.2452,172410.1783,165620.7385,158717.6145,151783.6525
+43,tonnage,7,Huayin,Guizhou,Guangxi,H-B,"Chalco, Guangxi Investment Group, Minmetal",Chalco,Domestic,11,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+44,tonnage,7,Huayin,Henan,Guangxi,H-B,"Chalco, Guangxi Investment Group, Minmetal",Chalco,Domestic,11,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+45,tonnage,7,Huayin,Shanxi,Guangxi,H-B,"Chalco, Guangxi Investment Group, Minmetal",Chalco,Domestic,11,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+46,tonnage,7,Huayin,Other,Guangxi,H-B,"Chalco, Guangxi Investment Group, Minmetal",Chalco,Domestic,11,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+47,tonnage,8,Jinjiang Tiandong,Guangxi,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,12,114,95011.10387,95011.10387,95011.10387,95011.10387,95011.10387,95011.10387,95011.10387,95011.10387,93962.47318,92751.47228,90788.37284,89050.88459,86541.74644,84132.00984,81879.05511,79296.08135,76689.95415,74061.46087,71411.1483,68739.37863,66046.36823,63332.2124,61145.64594,58945.48602,56263.84127,53528.72051,50772.51849
+48,tonnage,8,Jinjiang Tiandong,Guizhou,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,12,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+49,tonnage,8,Jinjiang Tiandong,Henan,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,12,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+50,tonnage,8,Jinjiang Tiandong,Shanxi,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,12,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+51,tonnage,8,Jinjiang Tiandong,Other,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,12,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+52,tonnage,9,Xinfa Jingxi,Guangxi,Guangxi,H-B,Xinfa,Xinfa,Domestic,13,114,135115.7589,135115.7589,135115.7589,133683.7428,131521.6402,127282.7855,122973.6165,118017.2076,112990.542,107596.0484,102079.0341,97469.69385,91248.56623,85469.87162,79210.38998,73005.8984,66165.24359,59219.32843,53582.48779,47870.24453,42077.60706,36198.14445,30223.44849,24142.08807,16614.43365,8759.570734,8759.570734
+53,tonnage,9,Xinfa Jingxi,Guizhou,Guangxi,H-B,Xinfa,Xinfa,Domestic,13,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+54,tonnage,9,Xinfa Jingxi,Henan,Guangxi,H-B,Xinfa,Xinfa,Domestic,13,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+55,tonnage,9,Xinfa Jingxi,Shanxi,Guangxi,H-B,Xinfa,Xinfa,Domestic,13,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+56,tonnage,9,Xinfa Jingxi,Other,Guangxi,H-B,Xinfa,Xinfa,Domestic,13,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+57,tonnage,10,Fangcheng,Guangxi,Guangxi,L-B,Chalco,Chalco,Imported,14,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+58,tonnage,10,Fangcheng,Guizhou,Guangxi,L-B,Chalco,Chalco,Imported,14,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+59,tonnage,10,Fangcheng,Henan,Guangxi,L-B,Chalco,Chalco,Imported,14,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+60,tonnage,10,Fangcheng,Shanxi,Guangxi,L-B,Chalco,Chalco,Imported,14,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+61,tonnage,10,Fangcheng,Other,Guangxi,L-B,Chalco,Chalco,Imported,14,334,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,988043.2664,983216.9108,978361.7344,973489.0522,966156.1615,958801.3181,951428.7262,944041.0728,934170.5545,924279.7337,914370.8804,904445.7109
+62,tonnage,11,Tiangui,Guangxi,Guangxi,H-B,Zengshi,Other,Domestic,15,114,28419.89972,28419.89972,28419.89972,28419.89972,28419.89972,28419.89972,28419.89972,28419.89972,28419.89972,28419.89972,28419.89972,28419.89972,28419.89972,28419.89972,28419.89972,27296.67964,26089.64943,24360.88785,22340.21925,20276.30729,16160.94686,11747.08026,7139.613862,7139.613862,7139.613862,7139.613862,7139.613862
+63,tonnage,11,Tiangui,Guizhou,Guangxi,H-B,Zengshi,Other,Domestic,15,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+64,tonnage,11,Tiangui,Henan,Guangxi,H-B,Zengshi,Other,Domestic,15,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+65,tonnage,11,Tiangui,Shanxi,Guangxi,H-B,Zengshi,Other,Domestic,15,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+66,tonnage,11,Tiangui,Other,Guangxi,H-B,Zengshi,Other,Domestic,15,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+67,tonnage,12,Beihai_GIG,Guangxi,Guangxi,L-B,GIG,Other,Imported,16,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+68,tonnage,12,Beihai_GIG,Guizhou,Guangxi,L-B,GIG,Other,Imported,16,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+69,tonnage,12,Beihai_GIG,Henan,Guangxi,L-B,GIG,Other,Imported,16,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+70,tonnage,12,Beihai_GIG,Shanxi,Guangxi,L-B,GIG,Other,Imported,16,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+71,tonnage,12,Beihai_GIG,Other,Guangxi,L-B,GIG,Other,Imported,16,334,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989063.6716,987391.3736
+72,tonnage,13,Baise Mining,Guangxi,Guangxi,H-B,Baise Mining,Other,Imported,17,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+73,tonnage,13,Baise Mining,Guizhou,Guangxi,H-B,Baise Mining,Other,Imported,17,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+74,tonnage,13,Baise Mining,Henan,Guangxi,H-B,Baise Mining,Other,Imported,17,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+75,tonnage,13,Baise Mining,Shanxi,Guangxi,H-B,Baise Mining,Other,Imported,17,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+76,tonnage,13,Baise Mining,Other,Guangxi,H-B,Baise Mining,Other,Imported,17,334,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,988127.4531,986213.2956,984295.6221,982375.5314,980453.5588,978530.0318,976364.4787,973956.6025,971547.1507
+77,tonnage,14,Chalco Guizhou,Guangxi,Guizhou,Series & Sinter (95:25),Chalco,Chalco,Domestic,18,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+78,tonnage,14,Chalco Guizhou,Guizhou,Guizhou,Series & Sinter (95:25),Chalco,Chalco,Domestic,18,169,18748.43334,16658.52342,14424.78799,12083.91468,9666.322477,7616.123556,5491.782647,3219.786807,3219.786807,3219.786807,3219.786807,3219.786807,3219.786807,3219.786807,3219.786807,3219.786807,3219.786807,3219.786807,3219.786807,3219.786807,3219.786807,3219.786807,3219.786807,3219.786807,3219.786807,3219.786807,3219.786807
+79,tonnage,14,Chalco Guizhou,Henan,Guizhou,Series & Sinter (95:25),Chalco,Chalco,Domestic,18,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+80,tonnage,14,Chalco Guizhou,Shanxi,Guizhou,Series & Sinter (95:25),Chalco,Chalco,Domestic,18,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+81,tonnage,14,Chalco Guizhou,Other,Guizhou,Series & Sinter (95:25),Chalco,Chalco,Domestic,18,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+82,tonnage,15,Chalco Zunyi,Guangxi,Guizhou,H-B,Chalco,Chalco,Domestic,19,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+83,tonnage,15,Chalco Zunyi,Guizhou,Guizhou,H-B,Chalco,Chalco,Domestic,19,169,26832.0212,26832.0212,26832.0212,26832.0212,26832.0212,26289.15811,24787.09294,22929.64394,21030.2228,19095.07942,16629.97964,13832.50439,10971.54817,8040.751224,5026.356819,5026.356819,5026.356819,5026.356819,5026.356819,5026.356819,5026.356819,5026.356819,5026.356819,5026.356819,5026.356819,5026.356819,5026.356819
+84,tonnage,15,Chalco Zunyi,Henan,Guizhou,H-B,Chalco,Chalco,Domestic,19,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+85,tonnage,15,Chalco Zunyi,Shanxi,Guizhou,H-B,Chalco,Chalco,Domestic,19,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+86,tonnage,15,Chalco Zunyi,Other,Guizhou,H-B,Chalco,Chalco,Domestic,19,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+87,tonnage,16,Xian,Guangxi,Guizhou,H-B,Zengshi Group,Other,Domestic,20,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+88,tonnage,16,Xian,Guizhou,Guizhou,H-B,Zengshi Group,Other,Domestic,20,169,2082.737761,2082.737761,2082.737761,2082.737761,1887.630943,1670.144765,1447.191746,1265.519209,1081.016527,893.6370691,703.1913934,509.2947351,311.1912661,311.1912661,311.1912661,311.1912661,311.1912661,311.1912661,311.1912661,311.1912661,311.1912661,311.1912661,311.1912661,311.1912661,311.1912661,311.1912661,311.1912661
+89,tonnage,16,Xian,Henan,Guizhou,H-B,Zengshi Group,Other,Domestic,20,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+90,tonnage,16,Xian,Shanxi,Guizhou,H-B,Zengshi Group,Other,Domestic,20,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+91,tonnage,16,Xian,Other,Guizhou,H-B,Zengshi Group,Other,Domestic,20,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+92,tonnage,17,Huafei,Guangxi,Guizhou,H-B,Shanghai Huafei Investment Co.Ltd,Other,Domestic,21,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+93,tonnage,17,Huafei,Guizhou,Guizhou,H-B,Shanghai Huafei Investment Co.Ltd,Other,Domestic,21,169,7525.047385,7525.047385,7525.047385,7309.519446,7309.519446,7215.029172,7149.480608,7053.267187,6980.706903,6687.52441,6290.62825,5888.002443,5480.289716,5093.76298,4990.008829,4729.396007,4399.49903,4068.568053,3721.496512,3358.187226,2991.498264,2640.626336,2235.77898,1780.793538,1241.332334,820.5251477,820.5251477
+94,tonnage,17,Huafei,Henan,Guizhou,H-B,Shanghai Huafei Investment Co.Ltd,Other,Domestic,21,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+95,tonnage,17,Huafei,Shanxi,Guizhou,H-B,Shanghai Huafei Investment Co.Ltd,Other,Domestic,21,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+96,tonnage,17,Huafei,Other,Guizhou,H-B,Shanghai Huafei Investment Co.Ltd,Other,Domestic,21,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+97,tonnage,18,Qingzhen Guanglv,Guangxi,Guizhou,H-B,Guangdong Guang Al Group Co.Ltd,Other,Domestic,22,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+98,tonnage,18,Qingzhen Guanglv,Guizhou,Guizhou,H-B,Guangdong Guang Al Group Co.Ltd,Other,Domestic,22,169,28255.33451,28255.33451,28255.33451,28255.33451,28255.33451,28255.33451,28255.33451,27830.40141,26785.56919,25720.57739,24642.02851,23552.44157,22330.5129,20974.00791,19730.34838,18477.17714,16889.60432,15295.87126,12612.17934,9783.595955,6904.497083,3411.074045,3411.074045,3411.074045,3411.074045,3411.074045,3411.074045
+99,tonnage,18,Qingzhen Guanglv,Henan,Guizhou,H-B,Guangdong Guang Al Group Co.Ltd,Other,Domestic,22,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+100,tonnage,18,Qingzhen Guanglv,Shanxi,Guizhou,H-B,Guangdong Guang Al Group Co.Ltd,Other,Domestic,22,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+101,tonnage,18,Qingzhen Guanglv,Other,Guizhou,H-B,Guangdong Guang Al Group Co.Ltd,Other,Domestic,22,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+102,tonnage,19.1,Qizheng Chemical,Guangxi,Guizhou,H-B,Qiya,Qiya,Domestic,23,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+103,tonnage,19.1,Qizheng Chemical,Guizhou,Guizhou,H-B,Qiya,Qiya,Domestic,23,169,36101.06957,36101.06957,36101.06957,36101.06957,36101.06957,36101.06957,35998.08896,35558.07443,34546.00213,32825.42462,31662.50158,30253.47789,27877.05839,25469.76202,23278.84822,20818.561,17689.17351,14532.30142,11199.63529,7680.52784,4445.722478,4445.722478,4445.722478,4445.722478,4445.722478,4445.722478,4445.722478
+104,tonnage,19.1,Qizheng Chemical,Henan,Guizhou,H-B,Qiya,Qiya,Domestic,23,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+105,tonnage,19.1,Qizheng Chemical,Shanxi,Guizhou,H-B,Qiya,Qiya,Domestic,23,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+106,tonnage,19.1,Qizheng Chemical,Other,Guizhou,H-B,Qiya,Qiya,Domestic,23,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+107,tonnage,19.2,Qizheng Chemical Added LT,Guangxi,Guizhou,L-B,Qiya,Qiya,Imported,24,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+108,tonnage,19.2,Qizheng Chemical Added LT,Guizhou,Guizhou,L-B,Qiya,Qiya,Imported,24,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+109,tonnage,19.2,Qizheng Chemical Added LT,Henan,Guizhou,L-B,Qiya,Qiya,Imported,24,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+110,tonnage,19.2,Qizheng Chemical Added LT,Shanxi,Guizhou,L-B,Qiya,Qiya,Imported,24,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+111,tonnage,19.2,Qizheng Chemical Added LT,Other,Guizhou,L-B,Qiya,Qiya,Imported,24,334,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989774.5211,989433.9237,988978.8872,988523.1493,988066.8694,987610.139,987153.0186,986695.5514,986237.7704,985779.7015,985321.3659,984862.7811,984403.9619
+112,tonnage,20,SPIC - Wuchuan,Guangxi,Guizhou,H-B,SPIC,SPIC,Domestic,25,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+113,tonnage,20,SPIC - Wuchuan,Guizhou,Guizhou,H-B,SPIC,SPIC,Domestic,25,169,125360.6695,125360.6695,125360.6695,125360.6695,125360.6695,125360.6695,125360.6695,125360.6695,125360.6695,125360.6695,125360.6695,125360.6695,125360.6695,125360.6695,125360.6695,123951.6209,121764.3264,119561.0876,117250.127,114835.4494,112406.1315,110091.404,107435.3064,104473.329,101001.5243,98334.21424,96481.59412
+114,tonnage,20,SPIC - Wuchuan,Henan,Guizhou,H-B,SPIC,SPIC,Domestic,25,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+115,tonnage,20,SPIC - Wuchuan,Shanxi,Guizhou,H-B,SPIC,SPIC,Domestic,25,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+116,tonnage,20,SPIC - Wuchuan,Other,Guizhou,H-B,SPIC,SPIC,Domestic,25,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+117,tonnage,21,Kaisheng,Guangxi,Guizhou,H-B,Private,Other,Domestic,26,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+118,tonnage,21,Kaisheng,Guizhou,Guizhou,H-B,Private,Other,Domestic,26,169,2375.017704,2271.549969,1894.733596,1453.100775,982.8656205,794.4863326,643.4077382,643.4077382,643.4077382,643.4077382,643.4077382,643.4077382,643.4077382,643.4077382,643.4077382,643.4077382,643.4077382,643.4077382,643.4077382,643.4077382,643.4077382,643.4077382,643.4077382,643.4077382,643.4077382,643.4077382,643.4077382
+119,tonnage,21,Kaisheng,Henan,Guizhou,H-B,Private,Other,Domestic,26,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+120,tonnage,21,Kaisheng,Shanxi,Guizhou,H-B,Private,Other,Domestic,26,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+121,tonnage,21,Kaisheng,Other,Guizhou,H-B,Private,Other,Domestic,26,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+122,tonnage,22,Huajin,Guangxi,Guizhou,H-B,"Chalco, Jinjiang",Chalco,Domestic,27,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+123,tonnage,22,Huajin,Guizhou,Guizhou,H-B,"Chalco, Jinjiang",Chalco,Domestic,27,169,70574.20633,70574.20633,70574.20633,70574.20633,70574.20633,70574.20633,70574.20633,70574.20633,70574.20633,70574.20633,67169.7307,63724.09749,59825.34543,55871.11636,51868.8447,47822.548,42679.61306,37499.04129,32043.00954,26305.12675,20481.83321,14871.16872,8329.017263,8329.017263,8329.017263,8329.017263,8329.017263
+124,tonnage,22,Huajin,Henan,Guizhou,H-B,"Chalco, Jinjiang",Chalco,Domestic,27,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+125,tonnage,22,Huajin,Shanxi,Guizhou,H-B,"Chalco, Jinjiang",Chalco,Domestic,27,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+126,tonnage,22,Huajin,Other,Guizhou,H-B,"Chalco, Jinjiang",Chalco,Domestic,27,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+127,tonnage,23.1,Chalco Zhengzhou domestic,Guangxi,Henan,H-B,Chalco,Chalco,Domestic,28,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+128,tonnage,23.1,Chalco Zhengzhou domestic,Guizhou,Henan,H-B,Chalco,Chalco,Domestic,28,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+129,tonnage,23.1,Chalco Zhengzhou domestic,Henan,Henan,H-B,Chalco,Chalco,Domestic,28,224,94873.52327,90432.05703,86508.92202,82759.18664,80212.47885,76887.73329,73496.38494,69606.73781,65684.46784,61729.83009,57742.76332,55736.93143,52339.98191,48919.14633,46337.44775,43272.72514,40113.56304,37042.38584,34254.85393,30751.14004,25388.27159,21957.5633,19078.30463,17227.65378,15365.57397,13491.13412,11603.15661
+130,tonnage,23.1,Chalco Zhengzhou domestic,Shanxi,Henan,H-B,Chalco,Chalco,Domestic,28,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+131,tonnage,23.1,Chalco Zhengzhou domestic,Other,Henan,H-B,Chalco,Chalco,Domestic,28,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+132,tonnage,23.2,Chalco Zhengzhou import,Guangxi,Henan,L-B,Chalco,Chalco,Imported,29,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+133,tonnage,23.2,Chalco Zhengzhou import,Guizhou,Henan,L-B,Chalco,Chalco,Imported,29,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+134,tonnage,23.2,Chalco Zhengzhou import,Henan,Henan,L-B,Chalco,Chalco,Imported,29,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+135,tonnage,23.2,Chalco Zhengzhou import,Shanxi,Henan,L-B,Chalco,Chalco,Imported,29,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+136,tonnage,23.2,Chalco Zhengzhou import,Other,Henan,L-B,Chalco,Chalco,Imported,29,334,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989765.4504,989525.7073,989285.4642,989044.8816,989044.8816,989044.8816,989044.8816,988563.4399,987839.2444,987113.8937,986387.648,985660.6659,984933.0552,984204.8942,983476.2423,982747.1466,982017.6451,981287.7693,980557.5457,979826.9969,979096.1425
+137,tonnage,24.1,Chalco Zhongzhou Dom. Sinter,Guangxi,Henan,Sinter,Chalco,Chalco,Domestic,30,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+138,tonnage,24.1,Chalco Zhongzhou Dom. Sinter,Guizhou,Henan,Sinter,Chalco,Chalco,Domestic,30,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+139,tonnage,24.1,Chalco Zhongzhou Dom. Sinter,Henan,Henan,Sinter,Chalco,Chalco,Domestic,30,224,33157.60113,31083.81831,28966.93697,26811.99825,25391.60958,24066.89022,22729.12207,21491.25714,20242.14126,19096.60642,18057.29605,17009.87817,16071.82348,15008.35518,14532.82976,14012.78533,13516.28138,12793.60061,12028.63576,10873.74723,9101.830264,7965.375618,7009.691521,6239.955732,5462.913551,4677.817677,3883.686361
+140,tonnage,24.1,Chalco Zhongzhou Dom. Sinter,Shanxi,Henan,Sinter,Chalco,Chalco,Domestic,30,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+141,tonnage,24.1,Chalco Zhongzhou Dom. Sinter,Other,Henan,Sinter,Chalco,Chalco,Domestic,30,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+142,tonnage,24.2,Chalco Zhongzhou Dom. Bayer,Guangxi,Henan,H-B-ODT-Sweet,Chalco,Chalco,Domestic,31,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+143,tonnage,24.2,Chalco Zhongzhou Dom. Bayer,Guizhou,Henan,H-B-ODT-Sweet,Chalco,Chalco,Domestic,31,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+144,tonnage,24.2,Chalco Zhongzhou Dom. Bayer,Henan,Henan,H-B-ODT-Sweet,Chalco,Chalco,Domestic,31,224,43320.52193,41886.26946,39802.46658,37422.68754,34992.49994,32518.49916,28220.97536,23812.46249,19290.63904,14507.3683,8707.765845,8707.765845,8707.765845,8707.765845,8707.765845,8707.765845,8707.765845,8707.765845,8707.765845,8707.765845,8707.765845,8707.765845,8707.765845,8707.765845,8707.765845,8707.765845,8707.765845
+145,tonnage,24.2,Chalco Zhongzhou Dom. Bayer,Shanxi,Henan,H-B-ODT-Sweet,Chalco,Chalco,Domestic,31,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+146,tonnage,24.2,Chalco Zhongzhou Dom. Bayer,Other,Henan,H-B-ODT-Sweet,Chalco,Chalco,Domestic,31,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+147,tonnage,24.3,Chalco Zhongzhou LT Amt,Guangxi,Henan,L-B,Chalco,Chalco,Imported,32,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+148,tonnage,24.3,Chalco Zhongzhou LT Amt,Guizhou,Henan,L-B,Chalco,Chalco,Imported,32,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+149,tonnage,24.3,Chalco Zhongzhou LT Amt,Henan,Henan,L-B,Chalco,Chalco,Imported,32,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+150,tonnage,24.3,Chalco Zhongzhou LT Amt,Shanxi,Henan,L-B,Chalco,Chalco,Imported,32,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+151,tonnage,24.3,Chalco Zhongzhou LT Amt,Other,Henan,L-B,Chalco,Chalco,Imported,32,334,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989531.0107,989170.5251,988809.3574,988327.0603,987844.1231,987844.1231,987844.1231,987360.9173,983723.901,978613.167,973732.8966,969332.6733,965661.0731,962230.8523,958797.6875,955361.8371,951923.5117,948728.7189,945532.0622,942333.6447,939133.5567
+152,tonnage,25.1,Kaiman,Guangxi,Henan,"H-B, ODT, Sweetening",Jinjiang,Jinjiang,Domestic,33,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+153,tonnage,25.1,Kaiman,Guizhou,Henan,"H-B, ODT, Sweetening",Jinjiang,Jinjiang,Domestic,33,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+154,tonnage,25.1,Kaiman,Henan,Henan,"H-B, ODT, Sweetening",Jinjiang,Jinjiang,Domestic,33,224,70069.65763,69120.15451,66501.7505,63800.77095,60649.61819,57242.47534,53912.71264,49605.44066,45220.42222,40872.98249,36919.20066,32426.15864,27850.3093,23184.6879,18444.41068,14536.66787,11014.13253,7534.847532,3765.466714,3765.466714,3765.466714,3765.466714,3765.466714,3765.466714,3765.466714,3765.466714,3765.466714
+155,tonnage,25.1,Kaiman,Shanxi,Henan,"H-B, ODT, Sweetening",Jinjiang,Jinjiang,Domestic,33,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+156,tonnage,25.1,Kaiman,Other,Henan,"H-B, ODT, Sweetening",Jinjiang,Jinjiang,Domestic,33,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+157,tonnage,25.2,Kaiman Import,Guangxi,Henan,L-B,Jinjiang,Jinjiang,Imported,34,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+158,tonnage,25.2,Kaiman Import,Guizhou,Henan,L-B,Jinjiang,Jinjiang,Imported,34,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+159,tonnage,25.2,Kaiman Import,Henan,Henan,L-B,Jinjiang,Jinjiang,Imported,34,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+160,tonnage,25.2,Kaiman Import,Shanxi,Henan,L-B,Jinjiang,Jinjiang,Imported,34,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+161,tonnage,25.2,Kaiman Import,Other,Henan,L-B,Jinjiang,Jinjiang,Imported,34,334,494999.7951,494999.7951,494999.7951,494999.7951,494999.7951,494999.7951,494999.7951,494999.7951,494999.7951,494999.7951,494999.7951,494999.7951,494999.7951,494999.7951,494999.7951,493971.6135,492924.4726,491873.5556,490819.755,489763.5461,488705.2367,487645.0458,486583.1384,485519.6442,484454.6686,483388.2988,482320.6087
+162,tonnage,26.1,East Hope Mianchi,Guangxi,Henan,"H-B, ODT",East Hope,East Hope,Domestic,35,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+163,tonnage,26.1,East Hope Mianchi,Guizhou,Henan,"H-B, ODT",East Hope,East Hope,Domestic,35,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+164,tonnage,26.1,East Hope Mianchi,Henan,Henan,"H-B, ODT",East Hope,East Hope,Domestic,35,224,83866.28418,83412.44101,81631.10386,79198.04234,75324.63166,71122.38604,67006.46876,62637.71402,57638.03712,52549.71605,46907.41471,41155.70854,34392.20363,27933.36826,23342.44789,17759.4461,12309.81918,6878.961613,6878.961613,6878.961613,6878.961613,6878.961613,6878.961613,6878.961613,6878.961613,6878.961613,6878.961613
+165,tonnage,26.1,East Hope Mianchi,Shanxi,Henan,"H-B, ODT",East Hope,East Hope,Domestic,35,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+166,tonnage,26.1,East Hope Mianchi,Other,Henan,"H-B, ODT",East Hope,East Hope,Domestic,35,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+167,tonnage,26.2,East Hope Mianchi Added LT,Guangxi,Henan,L-B,East Hope,East Hope,Imported,36,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+168,tonnage,26.2,East Hope Mianchi Added LT,Guizhou,Henan,L-B,East Hope,East Hope,Imported,36,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+169,tonnage,26.2,East Hope Mianchi Added LT,Henan,Henan,L-B,East Hope,East Hope,Imported,36,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+170,tonnage,26.2,East Hope Mianchi Added LT,Shanxi,Henan,L-B,East Hope,East Hope,Imported,36,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+171,tonnage,26.2,East Hope Mianchi Added LT,Other,Henan,L-B,East Hope,East Hope,Imported,36,334,494999.7951,494999.7951,494999.7951,494999.7951,494999.7951,494999.7951,494999.7951,494999.7951,494999.7951,494999.7951,494999.7951,494999.7951,494999.7951,494999.7951,494887.1294,494659.9846,494659.9846,494659.9846,494659.9846,494659.9846,494659.9846,494659.9846,494659.9846,494659.9846,494659.9846,494659.9846,494659.9846
+172,tonnage,27,Huiyuan Lushan,Guangxi,Henan,"H-B, ODT","Shenhuo, Huiyuan",Shenhuo,Domestic,37,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+173,tonnage,27,Huiyuan Lushan,Guizhou,Henan,"H-B, ODT","Shenhuo, Huiyuan",Shenhuo,Domestic,37,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+174,tonnage,27,Huiyuan Lushan,Henan,Henan,"H-B, ODT","Shenhuo, Huiyuan",Shenhuo,Domestic,37,224,12214.27001,11522.53746,10721.79053,9896.984152,9153.482771,7559.89885,5956.806429,4199.941869,2094.732023,2094.732023,2094.732023,2094.732023,2094.732023,2094.732023,2094.732023,2094.732023,2094.732023,2094.732023,2094.732023,2094.732023,2094.732023,2094.732023,2094.732023,2094.732023,2094.732023,2094.732023,2094.732023
+175,tonnage,27,Huiyuan Lushan,Shanxi,Henan,"H-B, ODT","Shenhuo, Huiyuan",Shenhuo,Domestic,37,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+176,tonnage,27,Huiyuan Lushan,Other,Henan,"H-B, ODT","Shenhuo, Huiyuan",Shenhuo,Domestic,37,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+177,tonnage,28,Jingxin,Guangxi,Henan,H-B,Private,Other,Domestic,38,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+178,tonnage,28,Jingxin,Guizhou,Henan,H-B,Private,Other,Domestic,38,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+179,tonnage,28,Jingxin,Henan,Henan,H-B,Private,Other,Domestic,38,224,6153.270965,6082.022528,5864.334497,5662.66292,5491.337924,5282.267989,5069.670707,4853.709635,4634.479504,4412.026507,4186.360221,3957.459948,3725.277795,3489.739567,3223.974663,3223.974663,3223.974663,3223.974663,3223.974663,3223.974663,3223.974663,3223.974663,3223.974663,3223.974663,3223.974663,3223.974663,3223.974663
+180,tonnage,28,Jingxin,Shanxi,Henan,H-B,Private,Other,Domestic,38,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+181,tonnage,28,Jingxin,Other,Henan,H-B,Private,Other,Domestic,38,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+182,tonnage,29,Shenhuo,Guangxi,Henan,Sintering,Shenhuo,Shenhuo,Domestic,39,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+183,tonnage,29,Shenhuo,Guizhou,Henan,Sintering,Shenhuo,Shenhuo,Domestic,39,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+184,tonnage,29,Shenhuo,Henan,Henan,Sintering,Shenhuo,Shenhuo,Domestic,39,224,1584.176807,1584.176807,1584.176807,1494.970646,1352.850246,1204.045763,1059.709011,964.9456486,812.3719522,658.6083075,503.5741437,503.5741437,503.5741437,503.5741437,503.5741437,503.5741437,503.5741437,503.5741437,503.5741437,503.5741437,503.5741437,503.5741437,503.5741437,503.5741437,503.5741437,503.5741437,503.5741437
+185,tonnage,29,Shenhuo,Shanxi,Henan,Sintering,Shenhuo,Shenhuo,Domestic,39,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+186,tonnage,29,Shenhuo,Other,Henan,Sintering,Shenhuo,Shenhuo,Domestic,39,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+187,tonnage,30.1,Wanji,Guangxi,Henan,H-B,Wanji Holdings,Other,Domestic,40,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+188,tonnage,30.1,Wanji,Guizhou,Henan,H-B,Wanji Holdings,Other,Domestic,40,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+189,tonnage,30.1,Wanji,Henan,Henan,H-B,Wanji Holdings,Other,Domestic,40,224,55970.01406,55970.01406,55441.96452,54280.10194,52820.5901,51286.40443,49794.16518,48024.04227,46237.02969,43729.80032,40685.627,37992.18789,34620.49954,31999.52617,30150.66631,29572.85233,29022.39361,28489.93072,28489.93072,28489.93072,28489.93072,28489.93072,28489.93072,28489.93072,28489.93072,28489.93072,28489.93072
+190,tonnage,30.1,Wanji,Shanxi,Henan,H-B,Wanji Holdings,Other,Domestic,40,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+191,tonnage,30.1,Wanji,Other,Henan,H-B,Wanji Holdings,Other,Domestic,40,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+192,tonnage,30.2,Wanji import,Guangxi,Henan,L-B,Wanji Holdings,Other,Imported,41,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+193,tonnage,30.2,Wanji import,Guizhou,Henan,L-B,Wanji Holdings,Other,Imported,41,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+194,tonnage,30.2,Wanji import,Henan,Henan,L-B,Wanji Holdings,Other,Imported,41,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+195,tonnage,30.2,Wanji import,Shanxi,Henan,L-B,Wanji Holdings,Other,Imported,41,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+196,tonnage,30.2,Wanji import,Other,Henan,L-B,Wanji Holdings,Other,Imported,41,334,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989214.7915,986989.275,984748.7307,982497.6527,980238.0487,977971.1162,975697.6674,973418.2967,971133.4617,968843.528,966548.7954,964249.5153,961945.902
+197,tonnage,31,Weilai,Guangxi,Henan,H-B,Private,Other,Domestic,42,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+198,tonnage,31,Weilai,Guizhou,Henan,H-B,Private,Other,Domestic,42,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+199,tonnage,31,Weilai,Henan,Henan,H-B,Private,Other,Domestic,42,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+200,tonnage,31,Weilai,Shanxi,Henan,H-B,Private,Other,Domestic,42,279,3730.755378,3607.787054,3419.471,3191.315278,3011.817023,2765.038106,2472.231006,2171.996519,1941.784435,1627.785394,1304.998989,972.1527279,627.0623849,627.0623849,627.0623849,627.0623849,627.0623849,627.0623849,627.0623849,627.0623849,627.0623849,627.0623849,627.0623849,627.0623849,627.0623849,627.0623849,627.0623849
+201,tonnage,31,Weilai,Other,Henan,H-B,Private,Other,Domestic,42,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+202,tonnage,32,Yifeng Gongyi (Yulian Xinya),Guangxi,Henan,H-B,Private,Other,Domestic,43,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+203,tonnage,32,Yifeng Gongyi (Yulian Xinya),Guizhou,Henan,H-B,Private,Other,Domestic,43,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+204,tonnage,32,Yifeng Gongyi (Yulian Xinya),Henan,Henan,H-B,Private,Other,Domestic,43,224,7894.434157,7894.434157,7791.802471,7638.964803,7380.595799,7106.520769,6837.632071,6837.632071,6837.632071,6837.632071,6837.632071,6672.409567,6672.409567,6672.409567,6672.409567,6672.409567,6672.409567,6672.409567,6672.409567,6672.409567,6672.409567,6672.409567,6672.409567,6672.409567,6672.409567,6672.409567,6672.409567
+205,tonnage,32,Yifeng Gongyi (Yulian Xinya),Shanxi,Henan,H-B,Private,Other,Domestic,43,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+206,tonnage,32,Yifeng Gongyi (Yulian Xinya),Other,Henan,H-B,Private,Other,Domestic,43,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+207,tonnage,33,Yima Yixiang,Guangxi,Henan,"H-B, CGA","Jinjiang, Yima Coal Group",Jinjiang,Domestic,44,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+208,tonnage,33,Yima Yixiang,Guizhou,Henan,"H-B, CGA","Jinjiang, Yima Coal Group",Jinjiang,Domestic,44,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+209,tonnage,33,Yima Yixiang,Henan,Henan,"H-B, CGA","Jinjiang, Yima Coal Group",Jinjiang,Domestic,44,224,15090.31256,14934.1025,14540.73421,13937.53342,13011.29589,12003.94883,11014.67644,9961.595479,9292.891114,8160.267023,7004.167829,5822.945953,4736.205991,3997.724139,2738.49799,1891.761948,1063.551941,1063.551941,1063.551941,1063.551941,1063.551941,1063.551941,1063.551941,1063.551941,1063.551941,1063.551941,1063.551941
+210,tonnage,33,Yima Yixiang,Shanxi,Henan,"H-B, CGA","Jinjiang, Yima Coal Group",Jinjiang,Domestic,44,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+211,tonnage,33,Yima Yixiang,Other,Henan,"H-B, CGA","Jinjiang, Yima Coal Group",Jinjiang,Domestic,44,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+212,tonnage,34,Zhongmei,Guangxi,Henan,"H-B, Sweetening","Yongmei Group, Wuzhou Aluminium, Dengfeng Electric Power Corporation",Other,Domestic,45,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+213,tonnage,34,Zhongmei,Guizhou,Henan,"H-B, Sweetening","Yongmei Group, Wuzhou Aluminium, Dengfeng Electric Power Corporation",Other,Domestic,45,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+214,tonnage,34,Zhongmei,Henan,Henan,"H-B, Sweetening","Yongmei Group, Wuzhou Aluminium, Dengfeng Electric Power Corporation",Other,Domestic,45,224,32620.59022,32620.59022,32222.42572,31590.33232,30930.19585,30236.46654,29391.03175,28496.56591,27590.81331,26674.37772,25747.66211,24810.93272,23745.35302,23148.0144,22426.18648,21898.56513,21394.20356,21394.20356,21394.20356,21394.20356,21394.20356,21394.20356,21394.20356,21394.20356,21394.20356,21394.20356,21394.20356
+215,tonnage,34,Zhongmei,Shanxi,Henan,"H-B, Sweetening","Yongmei Group, Wuzhou Aluminium, Dengfeng Electric Power Corporation",Other,Domestic,45,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+216,tonnage,34,Zhongmei,Other,Henan,"H-B, Sweetening","Yongmei Group, Wuzhou Aluminium, Dengfeng Electric Power Corporation",Other,Domestic,45,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+217,tonnage,35,Shaoxing,Guangxi,Henan,H-B,Private,Other,Domestic,46,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+218,tonnage,35,Shaoxing,Guizhou,Henan,H-B,Private,Other,Domestic,46,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+219,tonnage,35,Shaoxing,Henan,Henan,H-B,Private,Other,Domestic,46,224,1050.143589,994.0061539,700.204058,237.1582192,237.1582192,237.1582192,237.1582192,237.1582192,237.1582192,237.1582192,237.1582192,237.1582192,237.1582192,237.1582192,237.1582192,237.1582192,237.1582192,237.1582192,237.1582192,237.1582192,237.1582192,237.1582192,237.1582192,237.1582192,237.1582192,237.1582192,237.1582192
+220,tonnage,35,Shaoxing,Shanxi,Henan,H-B,Private,Other,Domestic,46,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+221,tonnage,35,Shaoxing,Other,Henan,H-B,Private,Other,Domestic,46,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+222,tonnage,36,Zhongchao,Guangxi,Henan,H-B,Private,Other,Domestic,47,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+223,tonnage,36,Zhongchao,Guizhou,Henan,H-B,Private,Other,Domestic,47,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+224,tonnage,36,Zhongchao,Henan,Henan,H-B,Private,Other,Domestic,47,224,883.2000331,797.2321028,692.1189285,568.8675158,509.7608624,446.9909618,446.9909618,446.9909618,446.9909618,446.9909618,446.9909618,446.9909618,446.9909618,446.9909618,446.9909618,446.9909618,446.9909618,446.9909618,446.9909618,446.9909618,446.9909618,446.9909618,446.9909618,446.9909618,446.9909618,446.9909618,446.9909618
+225,tonnage,36,Zhongchao,Shanxi,Henan,H-B,Private,Other,Domestic,47,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+226,tonnage,36,Zhongchao,Other,Henan,H-B,Private,Other,Domestic,47,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+227,tonnage,37,Jialu Xianfeng,Guangxi,Hubei,H-B,Private,Other,Domestic,48,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+228,tonnage,37,Jialu Xianfeng,Guizhou,Hubei,H-B,Private,Other,Domestic,48,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+229,tonnage,37,Jialu Xianfeng,Henan,Hubei,H-B,Private,Other,Domestic,48,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+230,tonnage,37,Jialu Xianfeng,Shanxi,Hubei,H-B,Private,Other,Domestic,48,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+231,tonnage,37,Jialu Xianfeng,Other,Hubei,H-B,Private,Other,Domestic,48,334,5182.184826,5182.184826,5182.184826,5080.863121,5016.24224,4937.646019,4723.664505,4587.191992,4587.191992,4339.781047,4083.933909,3822.705281,3822.705281,3822.705281,3822.705281,3822.705281,3822.705281,3822.705281,3822.705281,3822.705281,3822.705281,3822.705281,3822.705281,3822.705281,3822.705281,3822.705281,3822.705281
+232,tonnage,38,Jinshi,Guangxi,Hubei,H-B,Private,Other,Domestic,49,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+233,tonnage,38,Jinshi,Guizhou,Hubei,H-B,Private,Other,Domestic,49,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+234,tonnage,38,Jinshi,Henan,Hubei,H-B,Private,Other,Domestic,49,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+235,tonnage,38,Jinshi,Shanxi,Hubei,H-B,Private,Other,Domestic,49,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+236,tonnage,38,Jinshi,Other,Hubei,H-B,Private,Other,Domestic,49,334,5182.184826,5182.184826,5182.184826,5182.184826,5182.184826,5182.184826,5020.070098,4910.764464,4777.236961,4572.969412,4364.470349,4152.052134,4152.052134,4152.052134,4152.052134,4152.052134,4152.052134,4152.052134,4152.052134,4152.052134,4152.052134,4152.052134,4152.052134,4152.052134,4152.052134,4152.052134,4152.052134
+237,tonnage,39,Huixiang,Guangxi,Hunan,H-B,Private,Other,Domestic,50,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+238,tonnage,39,Huixiang,Guizhou,Hunan,H-B,Private,Other,Domestic,50,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+239,tonnage,39,Huixiang,Henan,Hunan,H-B,Private,Other,Domestic,50,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+240,tonnage,39,Huixiang,Shanxi,Hunan,H-B,Private,Other,Domestic,50,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+241,tonnage,39,Huixiang,Other,Hunan,H-B,Private,Other,Domestic,50,334,1320.414049,1320.414049,1320.414049,1236.295526,1118.801857,970.9834407,763.5231258,763.5231258,523.0076966,255.6044286,255.6044286,255.6044286,255.6044286,255.6044286,255.6044286,255.6044286,255.6044286,255.6044286,255.6044286,255.6044286,255.6044286,255.6044286,255.6044286,255.6044286,255.6044286,255.6044286,255.6044286
+242,tonnage,40.1,Xinwang L-B,Guangxi,Inner Mongolia,L-B,BXG,Other,Imported,51,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+243,tonnage,40.1,Xinwang L-B,Guizhou,Inner Mongolia,L-B,BXG,Other,Imported,51,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+244,tonnage,40.1,Xinwang L-B,Henan,Inner Mongolia,L-B,BXG,Other,Imported,51,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+245,tonnage,40.1,Xinwang L-B,Shanxi,Inner Mongolia,L-B,BXG,Other,Imported,51,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+246,tonnage,40.1,Xinwang L-B,Other,Inner Mongolia,L-B,BXG,Other,Imported,51,334,2969999.87,2969999.87,2969999.87,2969999.87,2969999.87,2969999.87,2969999.87,2969999.87,2969999.87,2968685.219,2968143.453,2968143.453,2968143.453,2966788.019,2965482.172,2964119.84,2962755.826,2961390.411,2960023.791,2958656.108,2957561.274,2956465.878,2955369.959,2954273.55,2953176.682,2952079.378,2950981.663
+247,tonnage,40.2,Xinwang H-B,Guangxi,Inner Mongolia,H-B,BXG,Other,Domestic,52,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+248,tonnage,40.2,Xinwang H-B,Guizhou,Inner Mongolia,H-B,BXG,Other,Domestic,52,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+249,tonnage,40.2,Xinwang H-B,Henan,Inner Mongolia,H-B,BXG,Other,Domestic,52,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+250,tonnage,40.2,Xinwang H-B,Shanxi,Inner Mongolia,H-B,BXG,Other,Domestic,52,279,3967.479017,3967.479017,3967.479017,3967.479017,3967.479017,3967.479017,3967.479017,3967.479017,3967.479017,3967.479017,3967.479017,3546.377678,2560.652146,2560.652146,2560.652146,2560.652146,2560.652146,2560.652146,2560.652146,2560.652146,2560.652146,2560.652146,2560.652146,2560.652146,2560.652146,2560.652146,2560.652146
+251,tonnage,40.2,Xinwang H-B,Other,Inner Mongolia,H-B,BXG,Other,Domestic,52,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+252,tonnage,41,Datang Tuoketuo Fly Ash,Guangxi,Inner Mongolia,fly ash,Private,Other,Fly ash,53,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+253,tonnage,41,Datang Tuoketuo Fly Ash,Guizhou,Inner Mongolia,fly ash,Private,Other,Fly ash,53,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+254,tonnage,41,Datang Tuoketuo Fly Ash,Henan,Inner Mongolia,fly ash,Private,Other,Fly ash,53,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+255,tonnage,41,Datang Tuoketuo Fly Ash,Shanxi,Inner Mongolia,fly ash,Private,Other,Fly ash,53,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+256,tonnage,41,Datang Tuoketuo Fly Ash,Other,Inner Mongolia,fly ash,Private,Other,Fly ash,53,334,9899999.801,9899999.801,9899999.801,9899999.801,9899999.801,9899999.801,9899999.801,9899999.801,9899999.801,9899490.003,9898980.206,9898980.206,9898583.696,9898187.187,9898187.187,9898187.187,9898187.187,9898187.187,9898187.187,9898187.187,9898187.187,9898187.187,9898187.187,9898187.187,9898187.187,9898187.187,9898187.187
+257,tonnage,42.1,Mengxi Fly Ash,Guangxi,Inner Mongolia,fly ash,Private,Other,Fly ash,54,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+258,tonnage,42.1,Mengxi Fly Ash,Guizhou,Inner Mongolia,fly ash,Private,Other,Fly ash,54,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+259,tonnage,42.1,Mengxi Fly Ash,Henan,Inner Mongolia,fly ash,Private,Other,Fly ash,54,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+260,tonnage,42.1,Mengxi Fly Ash,Shanxi,Inner Mongolia,fly ash,Private,Other,Fly ash,54,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+261,tonnage,42.1,Mengxi Fly Ash,Other,Inner Mongolia,fly ash,Private,Other,Fly ash,54,334,9899999.801,9899999.801,9899999.801,9899999.801,9899999.801,9899999.801,9899999.801,9899999.801,9899858.191,9899348.393,9898838.595,9898838.595,9898838.595,9898838.595,9898838.595,9898838.595,9898838.595,9898838.595,9898838.595,9898838.595,9898838.595,9898838.595,9898838.595,9898838.595,9898838.595,9898838.595,9898838.595
+262,tonnage,42.2,Mengxi import,Guangxi,Inner Mongolia,L-B,Private,Other,Imported,55,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+263,tonnage,42.2,Mengxi import,Guizhou,Inner Mongolia,L-B,Private,Other,Imported,55,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+264,tonnage,42.2,Mengxi import,Henan,Inner Mongolia,L-B,Private,Other,Imported,55,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+265,tonnage,42.2,Mengxi import,Shanxi,Inner Mongolia,L-B,Private,Other,Imported,55,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+266,tonnage,42.2,Mengxi import,Other,Inner Mongolia,L-B,Private,Other,Imported,55,334,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989890.7625,989471.9683,989029.4066,988585.6651,988140.9964,988140.9964,988140.9964,988140.9964,988140.9964,988140.9964,988140.9964,988140.9964,988140.9964,988140.9964
+267,tonnage,43.1,Qihui H-B,Guangxi,Inner Mongolia,H-B,Jinguotou,Other,Imported,56,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+268,tonnage,43.1,Qihui H-B,Guizhou,Inner Mongolia,H-B,Jinguotou,Other,Imported,56,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+269,tonnage,43.1,Qihui H-B,Henan,Inner Mongolia,H-B,Jinguotou,Other,Imported,56,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+270,tonnage,43.1,Qihui H-B,Shanxi,Inner Mongolia,H-B,Jinguotou,Other,Imported,56,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+271,tonnage,43.1,Qihui H-B,Other,Inner Mongolia,H-B,Jinguotou,Other,Imported,56,334,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,988909.9264,986681.8806,983764.877,980831.7464,977885.7541,973788.7864,969215.6256,964623.0597,960013.0113,955386.9082
+272,tonnage,43.2,Qihui L-B,Guangxi,Inner Mongolia,L-B,Jinguotou,Other,Imported,57,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+273,tonnage,43.2,Qihui L-B,Guizhou,Inner Mongolia,L-B,Jinguotou,Other,Imported,57,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+274,tonnage,43.2,Qihui L-B,Henan,Inner Mongolia,L-B,Jinguotou,Other,Imported,57,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+275,tonnage,43.2,Qihui L-B,Shanxi,Inner Mongolia,L-B,Jinguotou,Other,Imported,57,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+276,tonnage,43.2,Qihui L-B,Other,Inner Mongolia,L-B,Jinguotou,Other,Imported,57,334,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,988873.8053,986589.7441,983838.64,979237.344,974621.3653,969530.3386,963266.1786,956986.7953,950693.9676,944388.9814
+277,tonnage,44,Jinjiang Lianyungang,Guangxi,Jiangsu,L-B,Jinjiang,Jinjiang,Imported,58,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+278,tonnage,44,Jinjiang Lianyungang,Guizhou,Jiangsu,L-B,Jinjiang,Jinjiang,Imported,58,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+279,tonnage,44,Jinjiang Lianyungang,Henan,Jiangsu,L-B,Jinjiang,Jinjiang,Imported,58,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+280,tonnage,44,Jinjiang Lianyungang,Shanxi,Jiangsu,L-B,Jinjiang,Jinjiang,Imported,58,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+281,tonnage,44,Jinjiang Lianyungang,Other,Jiangsu,L-B,Jinjiang,Jinjiang,Imported,58,334,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,988873.4449,986589.381,983838.2757,979236.9784,974620.9987,969993.3225,965355.7083,960709.3346,956055.0554,951393.523
+282,tonnage,45,Chalco Lianyungang,Guangxi,Jiangsu,L-B,Chalco,Chalco,Imported,59,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+283,tonnage,45,Chalco Lianyungang,Guizhou,Jiangsu,L-B,Chalco,Chalco,Imported,59,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+284,tonnage,45,Chalco Lianyungang,Henan,Jiangsu,L-B,Chalco,Chalco,Imported,59,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+285,tonnage,45,Chalco Lianyungang,Shanxi,Jiangsu,L-B,Chalco,Chalco,Imported,59,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+286,tonnage,45,Chalco Lianyungang,Other,Jiangsu,L-B,Chalco,Chalco,Imported,59,334,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,988873.4449,986589.381,982919.3419,978545.3699,972308.341,965355.4699,958382.8494,951393.1991,944388.3795
+287,tonnage,46.1,Chalco Shandong L-B,Guangxi,Shandong,L-B,Chalco,Chalco,Imported,60,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+288,tonnage,46.1,Chalco Shandong L-B,Guizhou,Shandong,L-B,Chalco,Chalco,Imported,60,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+289,tonnage,46.1,Chalco Shandong L-B,Henan,Shandong,L-B,Chalco,Chalco,Imported,60,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+290,tonnage,46.1,Chalco Shandong L-B,Shanxi,Shandong,L-B,Chalco,Chalco,Imported,60,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+291,tonnage,46.1,Chalco Shandong L-B,Other,Shandong,L-B,Chalco,Chalco,Imported,60,334,3957693.857,3954661.023,3951620.304,3948574.43,3945524.635,3942206.035,3938884.28,3935293.731,3932099.79,3928104.594,3924106.631,3920106.164,3916103.403,3912098.525,3906354.789,3901008.465,3895659.191,3890307.169,3884952.572,3879595.55,3874236.236,3868874.744,3863511.179,3858145.633,3852778.19,3847408.925,3842037.907
+292,tonnage,46.2,Chalco Shandong sinter,Guangxi,Shandong,Sintering,Chalco,Chalco,Domestic,61,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+293,tonnage,46.2,Chalco Shandong sinter,Guizhou,Shandong,Sintering,Chalco,Chalco,Domestic,61,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+294,tonnage,46.2,Chalco Shandong sinter,Henan,Shandong,Sintering,Chalco,Chalco,Domestic,61,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+295,tonnage,46.2,Chalco Shandong sinter,Shanxi,Shandong,Sintering,Chalco,Chalco,Domestic,61,279,8403.573968,7928.514428,7354.123049,6775.905964,6388.517596,5999.6827,5217.827721,4232.772148,3238.799012,2234.912133,808.375037,808.375037,808.375037,808.375037,808.375037,808.375037,808.375037,808.375037,808.375037,808.375037,808.375037,808.375037,808.375037,808.375037,808.375037,808.375037,808.375037
+296,tonnage,46.2,Chalco Shandong sinter,Other,Shandong,Sintering,Chalco,Chalco,Domestic,61,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+297,tonnage,46.3,Chalco Shandong sinter import,Guangxi,Shandong,L-B,Chalco,Chalco,Imported,62,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+298,tonnage,46.3,Chalco Shandong sinter import,Guizhou,Shandong,L-B,Chalco,Chalco,Imported,62,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+299,tonnage,46.3,Chalco Shandong sinter import,Henan,Shandong,L-B,Chalco,Chalco,Imported,62,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+300,tonnage,46.3,Chalco Shandong sinter import,Shanxi,Shandong,L-B,Chalco,Chalco,Imported,62,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+301,tonnage,46.3,Chalco Shandong sinter import,Other,Shandong,L-B,Chalco,Chalco,Imported,62,334,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989556.9558,989110.3778,988663.1603,988215.4694,987767.3931,987318.9881,986870.2937,986421.3397,985972.149,985522.7403,985073.1288,984623.3274,984173.3471
+302,tonnage,47.1,Chiping Xinfa L-B,Guangxi,Shandong,L-B,Xinfa,Xinfa,Imported,63,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+303,tonnage,47.1,Chiping Xinfa L-B,Guizhou,Shandong,L-B,Xinfa,Xinfa,Imported,63,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+304,tonnage,47.1,Chiping Xinfa L-B,Henan,Shandong,L-B,Xinfa,Xinfa,Imported,63,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+305,tonnage,47.1,Chiping Xinfa L-B,Shanxi,Shandong,L-B,Xinfa,Xinfa,Imported,63,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+306,tonnage,47.1,Chiping Xinfa L-B,Other,Shandong,L-B,Xinfa,Xinfa,Imported,63,334,1979999.88,1978510.263,1973909.671,1969291.982,1964664.236,1960029.126,1953839.96,1945445.677,1937168.596,1934579.915,1930177.054,1924994.051,1917473.107,1909426.816,1900854.526,1892405.76,1883951.157,1875491.113,1867025.962,1858555.993,1850081.457,1841602.574,1833119.539,1824632.527,1816141.694,1807777.894,1799410.65
+307,tonnage,47.2,Chiping Xinfa H-B,Guangxi,Shandong,H-B,Xinfa,Xinfa,Imported,64,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+308,tonnage,47.2,Chiping Xinfa H-B,Guizhou,Shandong,H-B,Xinfa,Xinfa,Imported,64,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+309,tonnage,47.2,Chiping Xinfa H-B,Henan,Shandong,H-B,Xinfa,Xinfa,Imported,64,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+310,tonnage,47.2,Chiping Xinfa H-B,Shanxi,Shandong,H-B,Xinfa,Xinfa,Imported,64,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+311,tonnage,47.2,Chiping Xinfa H-B,Other,Shandong,H-B,Xinfa,Xinfa,Imported,64,334,989289.3202,987302.6451,985303.2583,982793.6658,980275.9109,977246.3112,975222.4496,973195.7089,971166.3729,966082.9837,960987.3134,955881.0824,950765.5332,946667.0319,943435.9478,940227.6183,937016.5502,933802.8663,930586.6765,927368.0796,924147.1652,920924.0147,917698.7025,914471.2969,911241.8608,908010.4523,904777.1254
+312,tonnage,48,Lubei,Guangxi,Shandong,L-B,Lubei Group,Jinjiang,Imported,65,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+313,tonnage,48,Lubei,Guizhou,Shandong,L-B,Lubei Group,Jinjiang,Imported,65,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+314,tonnage,48,Lubei,Henan,Shandong,L-B,Lubei Group,Jinjiang,Imported,65,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+315,tonnage,48,Lubei,Shanxi,Shandong,L-B,Lubei Group,Jinjiang,Imported,65,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+316,tonnage,48,Lubei,Other,Shandong,L-B,Lubei Group,Jinjiang,Imported,65,334,989999.8901,989999.8901,989366.7167,988733.5432,988100.3698,985884.2628,983668.1558,982085.2222,981293.7555,980502.2887,979710.8219,978127.8883,975278.6079,972429.3275,969516.7297,966667.4493,963818.1688,960968.8884,958119.608,955270.3276,952421.0471,949571.7667,946722.4863,943873.2059,941023.9254,938174.645,935325.3646
+317,tonnage,49.1,Nanshan Donghai H-B,Guangxi,Shandong,H-B,Nanshan Group,Nanshan,Imported,66,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+318,tonnage,49.1,Nanshan Donghai H-B,Guizhou,Shandong,H-B,Nanshan Group,Nanshan,Imported,66,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+319,tonnage,49.1,Nanshan Donghai H-B,Henan,Shandong,H-B,Nanshan Group,Nanshan,Imported,66,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+320,tonnage,49.1,Nanshan Donghai H-B,Shanxi,Shandong,H-B,Nanshan Group,Nanshan,Imported,66,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+321,tonnage,49.1,Nanshan Donghai H-B,Other,Shandong,H-B,Nanshan Group,Nanshan,Imported,66,334,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989099.8349,987111.5187,984735.2891,982349.4174,979956.547,977558.1031,975028.3879,972494.2191,969956.124,967414.5051,964869.6801,962321.9072,959771.4001,957218.3395,954662.8796,952105.1542,949545.2806,946983.3619,944419.4904,941853.7485,939286.2105,936716.9441
+322,tonnage,49.2,Nanshan Donghai L-B,Guangxi,Shandong,L-B,Nanshan Group,Nanshan,Imported,67,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+323,tonnage,49.2,Nanshan Donghai L-B,Guizhou,Shandong,L-B,Nanshan Group,Nanshan,Imported,67,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+324,tonnage,49.2,Nanshan Donghai L-B,Henan,Shandong,L-B,Nanshan Group,Nanshan,Imported,67,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+325,tonnage,49.2,Nanshan Donghai L-B,Shanxi,Shandong,L-B,Nanshan Group,Nanshan,Imported,67,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+326,tonnage,49.2,Nanshan Donghai L-B,Other,Shandong,L-B,Nanshan Group,Nanshan,Imported,67,334,989999.8901,989632.6287,988957.1008,988360.6474,987681.4328,986619.6738,985528.6289,983889.0567,982082.2695,980245.2895,978405.9252,976481.9986,974556.0858,972628.3918,970699.0791,968768.2798,966836.1035,964902.6426,962967.9765,961032.1738,959095.2946,957157.3921,955218.5137,953278.7016,951337.9943,949396.4264,947454.0295
+327,tonnage,50,Bochuang,Guangxi,Shandong,L-B,Chuangxin Group,Other,Imported,68,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+328,tonnage,50,Bochuang,Guizhou,Shandong,L-B,Chuangxin Group,Other,Imported,68,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+329,tonnage,50,Bochuang,Henan,Shandong,L-B,Chuangxin Group,Other,Imported,68,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+330,tonnage,50,Bochuang,Shanxi,Shandong,L-B,Chuangxin Group,Other,Imported,68,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+331,tonnage,50,Bochuang,Other,Shandong,L-B,Chuangxin Group,Other,Imported,68,334,4949999.851,4949999.851,4949999.851,4949999.851,4949999.851,4949999.851,4949999.851,4949999.851,4949683.264,4948416.917,4946833.983,4945409.343,4945092.756,4945092.756,4943858.068,4942275.135,4939742.441,4937209.747,4933410.707,4929611.666,4925812.626,4922013.585,4918214.544,4913782.33,4909350.116,4904917.902,4900485.688
+332,tonnage,51,Nanhan,Guangxi,Shandong,L-B,Private,Other,Imported,69,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+333,tonnage,51,Nanhan,Guizhou,Shandong,L-B,Private,Other,Imported,69,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+334,tonnage,51,Nanhan,Henan,Shandong,L-B,Private,Other,Imported,69,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+335,tonnage,51,Nanhan,Shanxi,Shandong,L-B,Private,Other,Imported,69,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+336,tonnage,51,Nanhan,Other,Shandong,L-B,Private,Other,Imported,69,334,989999.8901,989999.8901,989999.8901,989746.6207,989493.3514,989240.082,988986.8126,988733.5432,988480.2739,988227.0045,987973.7351,987720.4658,987467.1964,987467.1964,987467.1964,987467.1964,987467.1964,987467.1964,987467.1964,987467.1964,987467.1964,987467.1964,987467.1964,987467.1964,987467.1964,987467.1964,987467.1964
+337,tonnage,52.1,Weiqiao - Binzhou L-B,Guangxi,Shandong,L-B,Weiqiao,Weiqiao,Imported,70,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+338,tonnage,52.1,Weiqiao - Binzhou L-B,Guizhou,Shandong,L-B,Weiqiao,Weiqiao,Imported,70,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+339,tonnage,52.1,Weiqiao - Binzhou L-B,Henan,Shandong,L-B,Weiqiao,Weiqiao,Imported,70,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+340,tonnage,52.1,Weiqiao - Binzhou L-B,Shanxi,Shandong,L-B,Weiqiao,Weiqiao,Imported,70,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+341,tonnage,52.1,Weiqiao - Binzhou L-B,Other,Shandong,L-B,Weiqiao,Weiqiao,Imported,70,334,2227499.878,2225840.245,2219821.355,2214626.388,2209410.911,2200918.297,2190641.209,2175399.471,2159513.356,2150666.719,2141806.839,2131159.099,2119309.823,2107442.886,2096154.309,2084257.017,2072345.835,2060421.691,2048485.396,2036537.663,2024579.126,2012610.353,2000631.855,1988644.094,1976647.493,1964642.437,1952629.28
+342,tonnage,52.2,Weiqiao - Binzhou H-B,Guangxi,Shandong,H-B,Weiqiao,Weiqiao,Imported,71,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+343,tonnage,52.2,Weiqiao - Binzhou H-B,Guizhou,Shandong,H-B,Weiqiao,Weiqiao,Imported,71,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+344,tonnage,52.2,Weiqiao - Binzhou H-B,Henan,Shandong,H-B,Weiqiao,Weiqiao,Imported,71,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+345,tonnage,52.2,Weiqiao - Binzhou H-B,Shanxi,Shandong,H-B,Weiqiao,Weiqiao,Imported,71,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+346,tonnage,52.2,Weiqiao - Binzhou H-B,Other,Shandong,H-B,Weiqiao,Weiqiao,Imported,71,334,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,987697.9799,985288.4512,980928.9313,976064.7294,971185.4826,966294.4743,961393.6963,956484.4954,951567.8482,946644.4975,941715.0293,936779.9179,931839.5562,926894.275,921944.3571,916990.0471,912031.5588,907069.0809
+347,tonnage,53.1,Weiqiao-Wudi-Zhanhua L-B,Guangxi,Shandong,L-B,Weiqiao,Weiqiao,Imported,72,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+348,tonnage,53.1,Weiqiao-Wudi-Zhanhua L-B,Guizhou,Shandong,L-B,Weiqiao,Weiqiao,Imported,72,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+349,tonnage,53.1,Weiqiao-Wudi-Zhanhua L-B,Henan,Shandong,L-B,Weiqiao,Weiqiao,Imported,72,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+350,tonnage,53.1,Weiqiao-Wudi-Zhanhua L-B,Shanxi,Shandong,L-B,Weiqiao,Weiqiao,Imported,72,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+351,tonnage,53.1,Weiqiao-Wudi-Zhanhua L-B,Other,Shandong,L-B,Weiqiao,Weiqiao,Imported,72,334,2227499.878,2227499.878,2227499.878,2227499.878,2227499.878,2227499.878,2227499.878,2226670.061,2224105.455,2215469.785,2202407.443,2189269.48,2171671.148,2151052.996,2129770.044,2106049.365,2080776.028,2053949.09,2027062.565,2000123.589,1973137.775,1946109.668,1919043.029,1891941.026,1864806.373,1837641.419,1810448.221
+352,tonnage,53.2,Weiqiao-Wudi-Zhanhua H-B,Guangxi,Shandong,H-B,Weiqiao,Weiqiao,Imported,73,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+353,tonnage,53.2,Weiqiao-Wudi-Zhanhua H-B,Guizhou,Shandong,H-B,Weiqiao,Weiqiao,Imported,73,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+354,tonnage,53.2,Weiqiao-Wudi-Zhanhua H-B,Henan,Shandong,H-B,Weiqiao,Weiqiao,Imported,73,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+355,tonnage,53.2,Weiqiao-Wudi-Zhanhua H-B,Shanxi,Shandong,H-B,Weiqiao,Weiqiao,Imported,73,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+356,tonnage,53.2,Weiqiao-Wudi-Zhanhua H-B,Other,Shandong,H-B,Weiqiao,Weiqiao,Imported,73,334,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,988388.553,984049.4006,976764.2753,971886.9496,965038.7123,960135.666,955224.4737,949075.3731,942916.2831,936748.2047,930571.9237,924388.0739,918197.178,911999.675,905795.939,899586.2929,893371.0181
+357,tonnage,54,Aokaida,Guangxi,Shanxi,H-B,Aokaida,Other,Domestic,74,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+358,tonnage,54,Aokaida,Guizhou,Shanxi,H-B,Aokaida,Other,Domestic,74,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+359,tonnage,54,Aokaida,Henan,Shanxi,H-B,Aokaida,Other,Domestic,74,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+360,tonnage,54,Aokaida,Shanxi,Shanxi,H-B,Aokaida,Other,Domestic,74,279,7465.720344,7465.720344,7465.720344,7465.720344,7465.720344,7375.562899,7272.653275,6923.882061,6565.769448,6199.926672,5827.083907,5399.713165,4964.149382,4570.096372,3813.487735,3325.530576,2739.637625,2739.637625,2739.637625,2739.637625,2739.637625,2739.637625,2739.637625,2739.637625,2739.637625,2739.637625,2739.637625
+361,tonnage,54,Aokaida,Other,Shanxi,H-B,Aokaida,Other,Domestic,74,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+362,tonnage,55,Chalco Lvliang (Xing),Guangxi,Shanxi,H-B,Chalco,Chalco,Domestic,75,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+363,tonnage,55,Chalco Lvliang (Xing),Guizhou,Shanxi,H-B,Chalco,Chalco,Domestic,75,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+364,tonnage,55,Chalco Lvliang (Xing),Henan,Shanxi,H-B,Chalco,Chalco,Domestic,75,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+365,tonnage,55,Chalco Lvliang (Xing),Shanxi,Shanxi,H-B,Chalco,Chalco,Domestic,75,279,28062.02029,28062.02029,28062.02029,28062.02029,28062.02029,28062.02029,28062.02029,28062.02029,28062.02029,27047.48957,25056.44761,21356.58341,16743.02437,11888.44545,9086.41182,5987.679723,5987.679723,5987.679723,5987.679723,5987.679723,5987.679723,5987.679723,5987.679723,5987.679723,5987.679723,5987.679723,5987.679723
+366,tonnage,55,Chalco Lvliang (Xing),Other,Shanxi,H-B,Chalco,Chalco,Domestic,75,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+367,tonnage,56.1,Chalco Shanxi,Guangxi,Shanxi,"H-B (Lime), sinter",Chalco,Chalco,Domestic,76,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+368,tonnage,56.1,Chalco Shanxi,Guizhou,Shanxi,"H-B (Lime), sinter",Chalco,Chalco,Domestic,76,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+369,tonnage,56.1,Chalco Shanxi,Henan,Shanxi,"H-B (Lime), sinter",Chalco,Chalco,Domestic,76,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+370,tonnage,56.1,Chalco Shanxi,Shanxi,Shanxi,"H-B (Lime), sinter",Chalco,Chalco,Domestic,76,279,70232.244,65653.45823,61179.14188,56883.49075,54025.17308,51360.83352,48446.77639,44158.92358,39182.93765,34123.04442,28973.77503,24608.31875,19669.74078,14624.25326,11275.58538,8806.965517,5857.284317,5857.284317,5857.284317,5857.284317,5857.284317,5857.284317,5857.284317,5857.284317,5857.284317,5857.284317,5857.284317
+371,tonnage,56.1,Chalco Shanxi,Other,Shanxi,"H-B (Lime), sinter",Chalco,Chalco,Domestic,76,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+372,tonnage,56.2,Chalco Shanxi import,Guangxi,Shanxi,L-B,Chalco,Chalco,Imported,77,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+373,tonnage,56.2,Chalco Shanxi import,Guizhou,Shanxi,L-B,Chalco,Chalco,Imported,77,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+374,tonnage,56.2,Chalco Shanxi import,Henan,Shanxi,L-B,Chalco,Chalco,Imported,77,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+375,tonnage,56.2,Chalco Shanxi import,Shanxi,Shanxi,L-B,Chalco,Chalco,Imported,77,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+376,tonnage,56.2,Chalco Shanxi import,Other,Shanxi,L-B,Chalco,Chalco,Imported,77,334,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,988829.617,986438.3806,984041.2642,981640.4956,979237.003,976831.3126,974423.7662,972014.6052,969604.0097,967192.1197,964779.0471,962364.8839,959949.707
+377,tonnage,57.1,SPIC Shanxi,Guangxi,Shanxi,H-B & Sinter,SPIC,SPIC,Domestic,78,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+378,tonnage,57.1,SPIC Shanxi,Guizhou,Shanxi,H-B & Sinter,SPIC,SPIC,Domestic,78,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+379,tonnage,57.1,SPIC Shanxi,Henan,Shanxi,H-B & Sinter,SPIC,SPIC,Domestic,78,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+380,tonnage,57.1,SPIC Shanxi,Shanxi,Shanxi,H-B & Sinter,SPIC,SPIC,Domestic,78,279,85316.88643,84599.24391,82878.28322,81344.99689,79645.97561,76260.58279,72346.51194,68358.43421,64300.77813,60175.75482,53237.02829,46372.64681,39196.89493,31683.07249,26728.34042,23759.10804,20223.27686,16324.84885,12197.71179,8018.606578,8018.606578,8018.606578,8018.606578,8018.606578,8018.606578,8018.606578,8018.606578
+381,tonnage,57.1,SPIC Shanxi,Other,Shanxi,H-B & Sinter,SPIC,SPIC,Domestic,78,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+382,tonnage,57.2,SPIC Shanxi import,Guangxi,Shanxi,L-B,SPIC,SPIC,Imported,79,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+383,tonnage,57.2,SPIC Shanxi import,Guizhou,Shanxi,L-B,SPIC,SPIC,Imported,79,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+384,tonnage,57.2,SPIC Shanxi import,Henan,Shanxi,L-B,SPIC,SPIC,Imported,79,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+385,tonnage,57.2,SPIC Shanxi import,Shanxi,Shanxi,L-B,SPIC,SPIC,Imported,79,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+386,tonnage,57.2,SPIC Shanxi import,Other,Shanxi,L-B,SPIC,SPIC,Imported,79,334,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,988733.8395,984155.735,979547.9083,974922.794,970284.9671,965636.9237,960980.2551,957298.5946,953612.6674,949922.8106,946229.3033,942532.3806,938832.2439
+387,tonnage,58.1,Dongxu Tianyuan,Guangxi,Shanxi,H-B,Tianyuan Chemical,Other,Domestic,80,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+388,tonnage,58.1,Dongxu Tianyuan,Guizhou,Shanxi,H-B,Tianyuan Chemical,Other,Domestic,80,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+389,tonnage,58.1,Dongxu Tianyuan,Henan,Shanxi,H-B,Tianyuan Chemical,Other,Domestic,80,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+390,tonnage,58.1,Dongxu Tianyuan,Shanxi,Shanxi,H-B,Tianyuan Chemical,Other,Domestic,80,279,18160.43106,18096.29179,17940.21999,17777.09518,17731.42324,17501.05382,17218.40518,16454.40868,16064.5468,15320.76718,14561.32694,13838.89625,13050.53717,12247.37758,11429.23085,11429.23085,11429.23085,11429.23085,11429.23085,11429.23085,11429.23085,11429.23085,11429.23085,11429.23085,11429.23085,11429.23085,11429.23085
+391,tonnage,58.1,Dongxu Tianyuan,Other,Shanxi,H-B,Tianyuan Chemical,Other,Domestic,80,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+392,tonnage,58.2,Dongxu Tianyuan import,Guangxi,Shanxi,L-B,Tianyuan Chemical,Other,Imported,81,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+393,tonnage,58.2,Dongxu Tianyuan import,Guizhou,Shanxi,L-B,Tianyuan Chemical,Other,Imported,81,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+394,tonnage,58.2,Dongxu Tianyuan import,Henan,Shanxi,L-B,Tianyuan Chemical,Other,Imported,81,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+395,tonnage,58.2,Dongxu Tianyuan import,Shanxi,Shanxi,L-B,Tianyuan Chemical,Other,Imported,81,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+396,tonnage,58.2,Dongxu Tianyuan import,Other,Shanxi,L-B,Tianyuan Chemical,Other,Imported,81,334,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989345.6246,988680.7879,988013.7411,987345.0011,986674.846,986003.4565,986003.4565,986003.4565,986003.4565,986003.4565,986003.4565,986003.4565
+397,tonnage,59.1,East Hope Lingshi,Guangxi,Shanxi,H-B,East Hope,East Hope,Domestic,82,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+398,tonnage,59.1,East Hope Lingshi,Guizhou,Shanxi,H-B,East Hope,East Hope,Domestic,82,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+399,tonnage,59.1,East Hope Lingshi,Henan,Shanxi,H-B,East Hope,East Hope,Domestic,82,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+400,tonnage,59.1,East Hope Lingshi,Shanxi,Shanxi,H-B,East Hope,East Hope,Domestic,82,279,30061.69502,30061.69502,30061.69502,30061.69502,30061.69502,30061.69502,30061.69502,30061.69502,30061.69502,30061.69502,30061.69502,29089.18833,24668.6389,19615.65445,14328.20444,8879.227975,8879.227975,8879.227975,8879.227975,8879.227975,8879.227975,8879.227975,8879.227975,8879.227975,8879.227975,8879.227975,8879.227975
+401,tonnage,59.1,East Hope Lingshi,Other,Shanxi,H-B,East Hope,East Hope,Domestic,82,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+402,tonnage,59.2,East Hope Lingshi Import,Guangxi,Shanxi,L-B,East Hope,East Hope,Imported,83,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+403,tonnage,59.2,East Hope Lingshi Import,Guizhou,Shanxi,L-B,East Hope,East Hope,Imported,83,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+404,tonnage,59.2,East Hope Lingshi Import,Henan,Shanxi,L-B,East Hope,East Hope,Imported,83,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+405,tonnage,59.2,East Hope Lingshi Import,Shanxi,Shanxi,L-B,East Hope,East Hope,Imported,83,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+406,tonnage,59.2,East Hope Lingshi Import,Other,Shanxi,L-B,East Hope,East Hope,Imported,83,334,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989127.5694,987348.0883,985558.2697,983761.0191,981957.7018,980149.1506,978335.9373,976518.4839,974697.1172,972872.0993,971043.6457,969211.938,967377.131
+407,tonnage,60,Huaqing,Guangxi,Shanxi,H-B,Private,Other,Domestic,84,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+408,tonnage,60,Huaqing,Guizhou,Shanxi,H-B,Private,Other,Domestic,84,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+409,tonnage,60,Huaqing,Henan,Shanxi,H-B,Private,Other,Domestic,84,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+410,tonnage,60,Huaqing,Shanxi,Shanxi,H-B,Private,Other,Domestic,84,279,7681.65967,7681.65967,7681.65967,7681.65967,7618.572722,7519.646385,7410.146958,7225.757472,7037.813171,6846.734427,6652.769168,6456.07369,6356.732798,5850.490663,5062.095719,4087.360615,2872.883614,1260.161773,1260.161773,1260.161773,1260.161773,1260.161773,1260.161773,1260.161773,1260.161773,1260.161773,1260.161773
+411,tonnage,60,Huaqing,Other,Shanxi,H-B,Private,Other,Domestic,84,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+412,tonnage,61,Qiangjin Alumimium,Guangxi,Shanxi,H-B,Private,Other,Domestic,85,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+413,tonnage,61,Qiangjin Alumimium,Guizhou,Shanxi,H-B,Private,Other,Domestic,85,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+414,tonnage,61,Qiangjin Alumimium,Henan,Shanxi,H-B,Private,Other,Domestic,85,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+415,tonnage,61,Qiangjin Alumimium,Shanxi,Shanxi,H-B,Private,Other,Domestic,85,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+416,tonnage,61,Qiangjin Alumimium,Other,Shanxi,H-B,Private,Other,Domestic,85,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+417,tonnage,62,Senze,Guangxi,Shanxi,H-B & Sinter (1.2:0.1),Senze,Other,Domestic,86,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+418,tonnage,62,Senze,Guizhou,Shanxi,H-B & Sinter (1.2:0.1),Senze,Other,Domestic,86,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+419,tonnage,62,Senze,Henan,Shanxi,H-B & Sinter (1.2:0.1),Senze,Other,Domestic,86,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+420,tonnage,62,Senze,Shanxi,Shanxi,H-B & Sinter (1.2:0.1),Senze,Other,Domestic,86,279,28663.49054,28663.49054,28663.49054,28663.49054,28626.97801,28517.26464,28150.58038,27598.1845,26485.3026,25205.81228,23910.59876,22598.09878,21035.3653,18534.69143,16055.58435,13019.87291,9270.960465,4377.410105,4377.410105,4377.410105,4377.410105,4377.410105,4377.410105,4377.410105,4377.410105,4377.410105,4377.410105
+421,tonnage,62,Senze,Other,Shanxi,H-B & Sinter (1.2:0.1),Senze,Other,Domestic,86,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+422,tonnage,63,Taixing,Guangxi,Shanxi,H-B,Private,Other,Domestic,87,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+423,tonnage,63,Taixing,Guizhou,Shanxi,H-B,Private,Other,Domestic,87,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+424,tonnage,63,Taixing,Henan,Shanxi,H-B,Private,Other,Domestic,87,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+425,tonnage,63,Taixing,Shanxi,Shanxi,H-B,Private,Other,Domestic,87,279,5709.116356,5709.116356,5709.116356,5709.116356,5667.071548,5568.090603,5458.063371,5342.378989,5224.912008,5105.833505,4985.252737,4789.379411,4539.690753,3893.029156,2933.349604,1890.308544,1890.308544,1890.308544,1890.308544,1890.308544,1890.308544,1890.308544,1890.308544,1890.308544,1890.308544,1890.308544,1890.308544
+426,tonnage,63,Taixing,Other,Shanxi,H-B,Private,Other,Domestic,87,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+427,tonnage,64,Wusheng,Guangxi,Shanxi,H-B,Private,Other,Domestic,88,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+428,tonnage,64,Wusheng,Guizhou,Shanxi,H-B,Private,Other,Domestic,88,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+429,tonnage,64,Wusheng,Henan,Shanxi,H-B,Private,Other,Domestic,88,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+430,tonnage,64,Wusheng,Shanxi,Shanxi,H-B,Private,Other,Domestic,88,279,8993.034985,8993.034985,8780.20885,8433.890912,8339.693831,8101.38243,7748.784361,7150.860257,6535.050218,5901.672953,5250.443338,5250.443338,5250.443338,5250.443338,5250.443338,5250.443338,5250.443338,5250.443338,5250.443338,5250.443338,5250.443338,5250.443338,5250.443338,5250.443338,5250.443338,5250.443338,5250.443338
+431,tonnage,64,Wusheng,Other,Shanxi,H-B,Private,Other,Domestic,88,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+432,tonnage,65,Xinfa - Jiaokou,Guangxi,Shanxi,H-B,Xinfa,Xinfa,Domestic,89,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+433,tonnage,65,Xinfa - Jiaokou,Guizhou,Shanxi,H-B,Xinfa,Xinfa,Domestic,89,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+434,tonnage,65,Xinfa - Jiaokou,Henan,Shanxi,H-B,Xinfa,Xinfa,Domestic,89,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+435,tonnage,65,Xinfa - Jiaokou,Shanxi,Shanxi,H-B,Xinfa,Xinfa,Domestic,89,279,55815.16946,55815.16946,55815.16946,55413.92044,55372.18482,55372.18482,54158.9148,52593.48436,48552.33387,44365.57968,40047.27095,34091.53655,26847.36828,20077.66472,17275.31418,13586.63757,5219.026772,5219.026772,5219.026772,5219.026772,5219.026772,5219.026772,5219.026772,5219.026772,5219.026772,5219.026772,5219.026772
+436,tonnage,65,Xinfa - Jiaokou,Other,Shanxi,H-B,Xinfa,Xinfa,Domestic,89,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+437,tonnage,66,Xinfa - Xiaoyi,Guangxi,Shanxi,H-B,Xinfa,Xinfa,Domestic,90,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+438,tonnage,66,Xinfa - Xiaoyi,Guizhou,Shanxi,H-B,Xinfa,Xinfa,Domestic,90,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+439,tonnage,66,Xinfa - Xiaoyi,Henan,Shanxi,H-B,Xinfa,Xinfa,Domestic,90,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+440,tonnage,66,Xinfa - Xiaoyi,Shanxi,Shanxi,H-B,Xinfa,Xinfa,Domestic,90,279,35384.17979,35384.17979,35384.17979,35384.17979,35384.17979,35384.17979,35384.17979,35384.17979,34968.84624,33169.71393,29368.9157,24844.39816,19247.5671,13271.88534,3768.450984,3768.450984,3768.450984,3768.450984,3768.450984,3768.450984,3768.450984,3768.450984,3768.450984,3768.450984,3768.450984,3768.450984,3768.450984
+441,tonnage,66,Xinfa - Xiaoyi,Other,Shanxi,H-B,Xinfa,Xinfa,Domestic,90,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+442,tonnage,67.1,Xingan Chemical,Guangxi,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,91,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+443,tonnage,67.1,Xingan Chemical,Guizhou,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,91,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+444,tonnage,67.1,Xingan Chemical,Henan,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,91,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+445,tonnage,67.1,Xingan Chemical,Shanxi,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,91,279,55113.95627,55113.95627,55113.95627,55113.95627,54701.16084,53830.12949,51989.52417,47243.3911,41993.23005,36531.03512,30856.25094,24284.8604,17097.76121,9465.461087,9465.461087,9465.461087,9465.461087,9465.461087,9465.461087,9465.461087,9465.461087,9465.461087,9465.461087,9465.461087,9465.461087,9465.461087,9465.461087
+446,tonnage,67.1,Xingan Chemical,Other,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,91,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+447,tonnage,67.2,Xingan Chemical import,Guangxi,Shanxi,L-B,Jinjiang,Jinjiang,Imported,92,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+448,tonnage,67.2,Xingan Chemical import,Guizhou,Shanxi,L-B,Jinjiang,Jinjiang,Imported,92,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+449,tonnage,67.2,Xingan Chemical import,Henan,Shanxi,L-B,Jinjiang,Jinjiang,Imported,92,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+450,tonnage,67.2,Xingan Chemical import,Shanxi,Shanxi,L-B,Jinjiang,Jinjiang,Imported,92,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+451,tonnage,67.2,Xingan Chemical import,Other,Shanxi,L-B,Jinjiang,Jinjiang,Imported,92,334,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,988909.5142,987797.8452,986681.6944,985562.0986,984439.6125,983314.5974,982187.3113,981057.9494,980153.0711,979247.0283,978339.8772,977431.6667
+452,tonnage,68,Yangquan Zhaofeng,Guangxi,Shanxi,H-B (Lime),"Xinfa, Yangquan Coal",Xinfa,Domestic,93,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+453,tonnage,68,Yangquan Zhaofeng,Guizhou,Shanxi,H-B (Lime),"Xinfa, Yangquan Coal",Xinfa,Domestic,93,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+454,tonnage,68,Yangquan Zhaofeng,Henan,Shanxi,H-B (Lime),"Xinfa, Yangquan Coal",Xinfa,Domestic,93,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+455,tonnage,68,Yangquan Zhaofeng,Shanxi,Shanxi,H-B (Lime),"Xinfa, Yangquan Coal",Xinfa,Domestic,93,279,26597.59803,26597.59803,26588.75845,25888.67706,25504.82154,25070.87186,24592.78407,23624.22088,21914.29678,20037.72982,18098.06384,16094.38926,13722.19494,11253.75587,9978.415373,8044.733722,4992.653502,4992.653502,4992.653502,4992.653502,4992.653502,4992.653502,4992.653502,4992.653502,4992.653502,4992.653502,4992.653502
+456,tonnage,68,Yangquan Zhaofeng,Other,Shanxi,H-B (Lime),"Xinfa, Yangquan Coal",Xinfa,Domestic,93,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+457,tonnage,69,Gangyuan Jiaohua,Guangxi,Shanxi,H-B,Private,Other,Domestic,94,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+458,tonnage,69,Gangyuan Jiaohua,Guizhou,Shanxi,H-B,Private,Other,Domestic,94,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+459,tonnage,69,Gangyuan Jiaohua,Henan,Shanxi,H-B,Private,Other,Domestic,94,224,441.5500166,441.5500166,441.5500166,441.5500166,441.5500166,377.5808971,295.9082726,147.5231693,147.5231693,147.5231693,147.5231693,147.5231693,147.5231693,147.5231693,147.5231693,147.5231693,147.5231693,147.5231693,147.5231693,147.5231693,147.5231693,147.5231693,147.5231693,147.5231693,147.5231693,147.5231693,147.5231693
+460,tonnage,69,Gangyuan Jiaohua,Shanxi,Shanxi,H-B,Private,Other,Domestic,94,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+461,tonnage,69,Gangyuan Jiaohua,Other,Shanxi,H-B,Private,Other,Domestic,94,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+462,tonnage,70.1,Xinghua (Chalco Jiaokou),Guangxi,Shanxi,H-B,Chalco,Chalco,Domestic,95,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+463,tonnage,70.1,Xinghua (Chalco Jiaokou),Guizhou,Shanxi,H-B,Chalco,Chalco,Domestic,95,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+464,tonnage,70.1,Xinghua (Chalco Jiaokou),Henan,Shanxi,H-B,Chalco,Chalco,Domestic,95,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+465,tonnage,70.1,Xinghua (Chalco Jiaokou),Shanxi,Shanxi,H-B,Chalco,Chalco,Domestic,95,279,24612.42045,24612.42045,24612.42045,24612.42045,24612.42045,24612.42045,24612.42045,24612.42045,24612.42045,24612.42045,24206.45969,23520.32081,22284.04096,20183.24748,18613.40536,17742.11959,16704.2999,15417.59169,14514.38923,13611.89159,13080.32457,12544.3582,12003.89389,11458.81302,10908.98145,10354.2476,10074.98168
+466,tonnage,70.1,Xinghua (Chalco Jiaokou),Other,Shanxi,H-B,Chalco,Chalco,Domestic,95,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+467,tonnage,70.2,Xinghua (Chalco Jiaokou) import,Guangxi,Shanxi,H-B,Chalco,Chalco,Imported,96,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+468,tonnage,70.2,Xinghua (Chalco Jiaokou) import,Guizhou,Shanxi,H-B,Chalco,Chalco,Imported,96,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+469,tonnage,70.2,Xinghua (Chalco Jiaokou) import,Henan,Shanxi,H-B,Chalco,Chalco,Imported,96,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+470,tonnage,70.2,Xinghua (Chalco Jiaokou) import,Shanxi,Shanxi,H-B,Chalco,Chalco,Imported,96,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+471,tonnage,70.2,Xinghua (Chalco Jiaokou) import,Other,Shanxi,H-B,Chalco,Chalco,Imported,96,334,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989999.7901,989716.3184,988498.1809,987384.6609,986267.1495,985146.4311,984247.87,983347.723,982446.1191,981543.1612,980638.9341,979733.5088,978826.9461,977919.2986
+472,tonnage,71,Tiantong,Guangxi,Shanxi,H-B,Private,Other,Domestic,97,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+473,tonnage,71,Tiantong,Guizhou,Shanxi,H-B,Private,Other,Domestic,97,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+474,tonnage,71,Tiantong,Henan,Shanxi,H-B,Private,Other,Domestic,97,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+475,tonnage,71,Tiantong,Shanxi,Shanxi,H-B,Private,Other,Domestic,97,279,841.2276991,841.2276991,841.2276991,841.2276991,841.2276991,841.2276991,841.2276991,841.2276991,841.2276991,800.9574628,756.8168871,711.3563055,664.7684513,543.7642503,543.7642503,543.7642503,543.7642503,543.7642503,543.7642503,543.7642503,543.7642503,543.7642503,543.7642503,543.7642503,543.7642503,543.7642503,543.7642503
+476,tonnage,71,Tiantong,Other,Shanxi,H-B,Private,Other,Domestic,97,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+477,tonnage,72,Fusheng,Guangxi,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,98,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+478,tonnage,72,Fusheng,Guizhou,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,98,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+479,tonnage,72,Fusheng,Henan,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,98,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+480,tonnage,72,Fusheng,Shanxi,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,98,279,15184.46087,15184.46087,15184.46087,15184.46087,15184.46087,15184.46087,15184.46087,15184.46087,15184.46087,14844.23114,13433.76858,11690.16515,9587.609331,7365.463468,5006.38826,1995.128978,1995.128978,1995.128978,1995.128978,1995.128978,1995.128978,1995.128978,1995.128978,1995.128978,1995.128978,1995.128978,1995.128978
+481,tonnage,72,Fusheng,Other,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,98,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+482,tonnage,73,YMG - Wenshan,Guangxi,Yunnan,H-B,Yunnan Aluminium Companuy,Chalco,Domestic,99,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+483,tonnage,73,YMG - Wenshan,Guizhou,Yunnan,H-B,Yunnan Aluminium Companuy,Chalco,Domestic,99,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+484,tonnage,73,YMG - Wenshan,Henan,Yunnan,H-B,Yunnan Aluminium Companuy,Chalco,Domestic,99,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+485,tonnage,73,YMG - Wenshan,Shanxi,Yunnan,H-B,Yunnan Aluminium Companuy,Chalco,Domestic,99,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+486,tonnage,73,YMG - Wenshan,Other,Yunnan,H-B,Yunnan Aluminium Companuy,Chalco,Domestic,99,334,49861.77158,49861.77158,49861.77158,49861.77158,49861.77158,49861.77158,49313.17659,48835.6695,47378.65551,45895.51156,44391.13422,41842.95563,39640.64598,35812.11299,31486.65133,26557.01416,20690.78668,14778.36435,8960.667719,8960.667719,8960.667719,8960.667719,8960.667719,8960.667719,8960.667719,8960.667719,8960.667719
+487,tonnage,74,Guangxi - blending,Guangxi,Guangxi,H-B,spare,spare,Imported,100,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+488,tonnage,74,Guangxi - blending,Guizhou,Guangxi,H-B,spare,spare,Imported,100,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+489,tonnage,74,Guangxi - blending,Henan,Guangxi,H-B,spare,spare,Imported,100,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+490,tonnage,74,Guangxi - blending,Shanxi,Guangxi,H-B,spare,spare,Imported,100,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+491,tonnage,74,Guangxi - blending,Other,Guangxi,H-B,spare,spare,Imported,100,334,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989613.1692,988658.1643,988178.803,988178.803,988178.803,988178.803,988178.803,988178.803,988178.803,988178.803,988178.803,988178.803,988178.803
+492,tonnage,75,Guizhou - blending,Guangxi,Guizhou,H-B,spare,spare,Imported,101,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+493,tonnage,75,Guizhou - blending,Guizhou,Guizhou,H-B,spare,spare,Imported,101,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+494,tonnage,75,Guizhou - blending,Henan,Guizhou,H-B,spare,spare,Imported,101,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+495,tonnage,75,Guizhou - blending,Shanxi,Guizhou,H-B,spare,spare,Imported,101,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+496,tonnage,75,Guizhou - blending,Other,Guizhou,H-B,spare,spare,Imported,101,334,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901
+497,tonnage,76,Henan - blending,Guangxi,Henan,H-B,spare,spare,Imported,102,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+498,tonnage,76,Henan - blending,Guizhou,Henan,H-B,spare,spare,Imported,102,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+499,tonnage,76,Henan - blending,Henan,Henan,H-B,spare,spare,Imported,102,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+500,tonnage,76,Henan - blending,Shanxi,Henan,H-B,spare,spare,Imported,102,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+501,tonnage,76,Henan - blending,Other,Henan,H-B,spare,spare,Imported,102,334,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989700.6418,989700.6418,989700.6418,989700.6418,989700.6418,989700.6418,989700.6418,989700.6418,989700.6418,989700.6418,989700.6418,989700.6418,989700.6418
+502,tonnage,77,Shanxi - blending,Guangxi,Shanxi,H-B,spare,spare,Imported,103,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+503,tonnage,77,Shanxi - blending,Guizhou,Shanxi,H-B,spare,spare,Imported,103,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+504,tonnage,77,Shanxi - blending,Henan,Shanxi,H-B,spare,spare,Imported,103,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+505,tonnage,77,Shanxi - blending,Shanxi,Shanxi,H-B,spare,spare,Imported,103,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+506,tonnage,77,Shanxi - blending,Other,Shanxi,H-B,spare,spare,Imported,103,334,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,987582.8844,986740.7479,986740.7479,986740.7479,986740.7479,986740.7479,986740.7479,986740.7479,986740.7479,986740.7479,986740.7479,986740.7479,986740.7479
+507,tonnage,78,Other - blending,Guangxi,Other,H-B,spare,spare,Imported,104,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+508,tonnage,78,Other - blending,Guizhou,Other,H-B,spare,spare,Imported,104,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+509,tonnage,78,Other - blending,Henan,Other,H-B,spare,spare,Imported,104,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+510,tonnage,78,Other - blending,Shanxi,Other,H-B,spare,spare,Imported,104,279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+511,tonnage,78,Other - blending,Other,Other,H-B,spare,spare,Imported,104,334,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989999.8901,989640.7921,989640.7921,989640.7921,989640.7921,989640.7921,989640.7921,989640.7921,989640.7921,989640.7921,989640.7921,989640.7921,989640.7921,989640.7921
+512,tonnage,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+513,tonnage,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+514,tonnage,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+515,tonnage,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+516,tonnage,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
