@@ -1,0 +1,29 @@
+name,value
+Bauxite Grades default if no input,0.00000000000000000000
+Bauxite purchase proportion default if no input,0.00000000000000000000
+Maximum alumina content of diaspore,0.85000000000000000000
+Emipirical factor for maximum alumina grade based on quoted average,1.08200000000000000000
+Emipirical factor for alumina grade at depletion based on quoted average,0.88000000000000000000
+Cutoff grade alumina exploration Chinese Standard DZ/T 0202-2002,0.40000000000000000000
+Alumina scaled variance empirical factor 1,0.12000000000000000000
+Alumina scaled variance empirical factor 2,16.00000000000000000000
+Squared factor,2.00000000000000000000
+Unity value,1.00000000000000000000
+Emprical A/S start value scaling,1.82250000000000000000
+Emprical A/S depletion value scaling,0.72650000000000000000
+Cutoff A/S Chinese Standard DZ/T 0202-2002,2.60000000000000000000
+Silica scaled variance empirical factor 1,0.21500000000000000000
+No negative stocks value,0.00000000000000000000
+Default if no input,0.00000000000000000000
+Draw Down Protocol Sourcing factor,1.00000000000000000000
+Draw Down Protocol Scaling factor,1000000000.00000000000000000000
+DSP Alumin:Silica wt/wt ratio,1.23000000000000000000
+Bayer Mud Sinter DSP alumina loss allowance,0.25000000000000000000
+DSP NaOH:Silica ratio wt/wt,0.60000000000000000000
+Caustic lost in washing allowance,0.03500000000000000000
+Sodium carbonate mol wt,104.00000000000000000000
+NaOH mol wt,39.00000000000000000000
+Sinter caustic loss allowance per t alumina,0.10000000000000000000
+Mud sinter caustic loss scaling factor,0.20000000000000000000
+Diaspore mol wt (Al2O3.H2O),60.00000000000000000000
+Alumina mol wt (Al2O3),51.00000000000000000000

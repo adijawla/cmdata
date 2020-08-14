@@ -1,0 +1,146 @@
+column0,column1,column2,column3,column4,column5,column6,column7,column8,column9,column10,column11,column12,column13,column14,column15,column16,column17,column18,column19,column20,column21,column22,column23,column24,column25,column26,column27,column28,column29,column30,column31,column32,column33
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Mine,,Mine,,,,,, ,Weipa,Gove,Huntly,Metro,MRN,Dominic Rep.,Fiji,Ghana,Greece,CBG,SMB,Alufer,Guinea-Bissau,Guyana,Gujarat,Antam,Jamaica,Malaysia,Montenegro,Pakistan,Sierra Leone,Solomon Islands,Turkey,Vietnam,*
+Mine type,,Mine type,,,,"(open pit, underground, or mixed)",,,Open Pit,Open Pit,Open Pit,Open Pit,Open Pit,Open Pit,Open Pit,Open Pit,Under Ground,Open Pit,Open Pit,Open Pit,Open Pit,Open Pit,Open Pit,Open Pit,Open Pit,Open Pit,Under Ground,Open Pit,Open Pit,Open Pit,Open Pit,Open Pit,*
+Comment,,Comment,,,,,, ,,,copy of Weipa,copy of Weipa,,??,??,??,??,,??,copy of CBG,copy of CBG,copy of SMB+ extra transport,needs more work,values tuned using 2014 numbers,needs more work,needs more work,copy of Greece,copy of India but less taxes,Copy of SMB but less taxes,copy of Fiji + few changes,copy of Greece,copy off Fiji with few changes,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Tuning values,,Tuning values,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+,,,,,,,,,"labour rates & costs, diesel usage, royalties, and community charges estimated off 2013-2014 actuals",adjusted from Weipa - reduced processing costs,"labour rates & costs, diesel usage, royalties, and community charges estimated off 2013-2014 actuals","labour rates & costs, diesel usage, royalties, and community charges estimated off 2013-2014 actuals","data suggests 1,400 regulr employees in 2013  + nearly 3000 outsourced … but the outsourced make up ~10% of staff costs, alligned to 2013 costs per dpt! to the cent","data suggests 1,400 regulr employees in 2013  + nearly 3000 outsourced … but the outsourced make up ~10% of staff costs, alligned to 2013 costs per dpt! to the cent", , , , , , , , , ,,built off MRN,, , , , , , ,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Prices for energy and water,,Prices for energy and water,,,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Diesel,,,,Diesel,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,Comment,,please add, ,Australia has a diesel rebate,Australia has a diesel rebate,Australia has a diesel rebate,Australia has a diesel rebate,Australia has a diesel rebate,Australia has a diesel rebate,Australia has a diesel rebate,Australia has a diesel rebate,Australia has a diesel rebate,Australia has a diesel rebate,Australia has a diesel rebate,Australia has a diesel rebate,Australia has a diesel rebate,Australia has a diesel rebate,Australia has a diesel rebate,Australia has a diesel rebate,Australia has a diesel rebate,Australia has a diesel rebate,Australia has a diesel rebate,Australia has a diesel rebate,Australia has a diesel rebate,Australia has a diesel rebate,Australia has a diesel rebate,Australia has a diesel rebate,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Gasoline,,,,Gasoline,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,Comment,,please add, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+LPG Gas,,,,LPG Gas,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,Comment,,please add, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Electricity,,,,Electricity,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,Comment,,please add, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Explosives,,,,Explosives,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,Comment,,please add, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+New Water,,,,New Water,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,Comment,,, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Special,,,,Special,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,Comment,,, ,req'd if used,req'd if used,req'd if used,req'd if used,req'd if used,req'd if used,req'd if used,req'd if used,req'd if used,req'd if used,req'd if used,req'd if used,req'd if used,req'd if used,req'd if used,req'd if used,req'd if used,Equipment hire,req'd if used,req'd if used,req'd if used,req'd if used,req'd if used,req'd if used,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+"Direct energy, labour and water",,"Direct energy, labour and water",,,,dpt,dpt = dry product tonne, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Mining,,,Mining,,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Energy,,,,Energy,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Usage Rates,,,,,Usage Rates,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,0,leave notes per individual mine, ,"very little explosive used, electricity predominantly from diesel generators + some solar","very little explosive used, electricity predominantly from diesel generators + some solar","very little explosive used, electricity predominantly from diesel generators + some solar","very little explosive used, electricity predominantly from diesel generators + some solar","very little explosive used, electricity predominantly from diesel generators + some solar","very little explosive used, electricity predominantly from diesel generators + some solar","very little explosive used, electricity predominantly from diesel generators + some solar","very little explosive used, electricity predominantly from diesel generators + some solar","very little explosive used, electricity predominantly from diesel generators + some solar","very little explosive used, electricity predominantly from diesel generators + some solar","very little explosive used, electricity predominantly from diesel generators + some solar","very little explosive used, electricity predominantly from diesel generators + some solar","very little explosive used, electricity predominantly from diesel generators + some solar","very little explosive used, electricity predominantly from diesel generators + some solar","very little explosive used, electricity predominantly from diesel generators + some solar",equpmemnt hire = special,"very little explosive used, electricity predominantly from diesel generators + some solar",equpmemnt hire = special,"very little explosive used, electricity predominantly from diesel generators + some solar","very little explosive used, electricity predominantly from diesel generators + some solar","very little explosive used, electricity predominantly from diesel generators + some solar","very little explosive used, electricity predominantly from diesel generators + some solar","very little explosive used, electricity predominantly from diesel generators + some solar","very little explosive used, electricity predominantly from diesel generators + some solar",*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Prices,,,,,Prices,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,0,leave notes per individual mine, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Labour,,,,Labour,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Usage rates,,,,,Usage rates,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,leave notes per individual mine, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,leave notes per individual mine, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Prices,,,,,Prices,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Labour Price by Price Line 1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Labour Price by Price Line 2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Water,,,,Water,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Usage,,,,,Usage,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Processing,,,Processing,,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Energy,,,,Energy,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Usage rates,,,,,Usage rates,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,leave notes per individual mine, ,processing uses electricity predominantly from diesel generators + some solar,processing uses electricity predominantly from diesel generators,processing uses electricity predominantly from diesel generators + some solar,processing uses electricity predominantly from diesel generators + some solar,added extra litre for drying,added extra litre for drying,added extra litre for drying,added extra litre for drying,added extra litre for drying,added extra litre for drying,added extra litre for drying,added extra litre for drying,added extra litre for drying,added extra litre for drying,added extra litre for drying,added extra litre for drying,added extra litre for drying,added extra litre for drying,added extra litre for drying,added extra litre for drying,added extra litre for drying,added extra litre for drying,added extra litre for drying,added extra litre for drying,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Prices,,,,,Prices,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,0,leave notes per individual mine, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Labour,,,,Labour,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Usage rates,,,,,Usage rates,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,leave notes per individual mine, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,leave notes per individual mine, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Prices,,,,,Prices,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Labour Price by Price Line 1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Labour Price by Price Line 2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Water,,,,Water,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Usage,,,,,Usage,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Transport,,,Transport,,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Energy,,,,Energy,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Usage rates,,,,,Usage rates,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,leave notes per individual mine, ,processing uses electricity predominantly from diesel generators + some solar,processing uses electricity predominantly from diesel generators,processing uses electricity predominantly from diesel generators + some solar,processing uses electricity predominantly from diesel generators + some solar,processing uses electricity predominantly from diesel generators,processing uses electricity predominantly from diesel generators,processing uses electricity predominantly from diesel generators,processing uses electricity predominantly from diesel generators,processing uses electricity predominantly from diesel generators,processing uses electricity predominantly from diesel generators,processing uses electricity predominantly from diesel generators,processing uses electricity predominantly from diesel generators,processing uses electricity predominantly from diesel generators,processing uses electricity predominantly from diesel generators,processing uses electricity predominantly from diesel generators,processing uses electricity predominantly from diesel generators,processing uses electricity predominantly from diesel generators,processing uses electricity predominantly from diesel generators,processing uses electricity predominantly from diesel generators,processing uses electricity predominantly from diesel generators,processing uses electricity predominantly from diesel generators,processing uses electricity predominantly from diesel generators,processing uses electricity predominantly from diesel generators,processing uses electricity predominantly from diesel generators,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Prices,,,,,Prices,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,0,leave notes per individual mine, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Labour,,,,Labour,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Usage rates,,,,,Usage rates,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,leave notes per individual mine, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,leave notes per individual mine, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Prices,,,,,Prices,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Labour Price by Price Line 1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Labour Price by Price Line 2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Water,,,,Water,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Usage,,,,,Usage,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Taxes & Royalties & Other Charges,,,Taxes & Royalties & Other Charges,,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Charge 1,,,,Charge 1,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+comment,,,,,comment,,leave notes per individual mine, ,if req'd,if req'd,if req'd,if req'd,based on sales … so USD denominated,5% FOB,3% FOB,3% FOB also,4% FOB also,4% FOB also,4% FOB also,4% FOB also,,,,based on sales … so USD denominated,based on sales … so USD denominated,based on sales … so USD denominated,4% FOB also,,4% FOB also,3% FOB,4% FOB also,3% FOB,*
+Charge 2,,,,Charge 2,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+comment,,,,,comment,,leave notes per individual mine, ,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,*
+Charge 3,,,,Charge 3,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+comment,,,,,comment,,leave notes per individual mine, ,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,*
+Charge 4,,,,Charge 4,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+comment,,,,,comment,,leave notes per individual mine, ,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,*
+Charge 5,,,,Charge 5,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+comment,,,,,comment,,leave notes per individual mine, ,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,if req'd,*
+Common Distributables,,Common Distributables,,,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Maintenance,,,Maintenance,,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Materials & Equipment,,,,Materials & Equipment,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+comment,,,,,comment,,, ,"need better estimate, does not include sustaining capital","need better estimate, does not include sustaining capital","need better estimate, does not include sustaining capital","need better estimate, does not include sustaining capital","need better estimate, does not include sustaining capital","need better estimate, does not include sustaining capital","need better estimate, does not include sustaining capital","need better estimate, does not include sustaining capital","need better estimate, does not include sustaining capital","need better estimate, does not include sustaining capital","need better estimate, does not include sustaining capital","need better estimate, does not include sustaining capital","need better estimate, does not include sustaining capital","need better estimate, does not include sustaining capital","need better estimate, does not include sustaining capital","need better estimate, does not include sustaining capital","need better estimate, does not include sustaining capital","need better estimate, does not include sustaining capital","need better estimate, does not include sustaining capital","need better estimate, does not include sustaining capital","need better estimate, does not include sustaining capital","need better estimate, does not include sustaining capital","need better estimate, does not include sustaining capital","need better estimate, does not include sustaining capital",*
+Labour,,,,Labour,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Usage rates,,,,,Usage rates,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,leave notes per individual mine, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,leave notes per individual mine, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Prices,,,,,Prices,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+Labour Price by Price Line 2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Site & Overheads,,,Site & Overheads,,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Labour,,,,Labour,,,, ,,,,,,,,,,,,,,,,,,,,,,,,,*
+Usage rates,,,,,Usage rates,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,leave notes per individual mine, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,leave notes per individual mine, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Prices,,,,,Prices,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Labour Price by Price Line 1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Labour Price by Price Line 2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,*
+Comment,,,,,,,, ,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,if required,*

@@ -1,0 +1,10 @@
+{
+    "Draw Down Model": {
+        "All Refinery Sheet Codeups": {
+            "db_type": "multiple year multiple output",
+            "config": {
+                "label": "Year"
+            }
+        }
+    }
+}
