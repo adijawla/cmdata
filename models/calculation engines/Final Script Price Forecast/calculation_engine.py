@@ -1,10 +1,7 @@
-
-
-
-
 import pandas as pd
 import numpy as np 
-from flatdbconverter import Flatdbconverter
+from flatdb.flatdbconverter import Flatdbconverter
+from outputdb import uploadtodb
 
 pf_flat = Flatdbconverter("Price forecast model")
 override_store = {}
@@ -1109,8 +1106,8 @@ except :
 
 snapshot_output_data = snapshot_output_data.loc[:, pf_flat.out_col]
 print(len(dblist))
-snapshot_output_data.to_csv('snapshot_output_data.csv', index=False)
-
+# snapshot_output_data.to_csv('snapshot_output_data.csv', index=False)
+uploadtodb.upload(snapshot_output_data)
 
 
 

@@ -101,8 +101,9 @@ class Flatdbconverter():
 
     # supports dfdb.csv, db.csv
     def single_year_mult_out(self, filepath, output_set_name, model=None, path=False):
-	    output_set_name = ' '.join(output_set_name.split('_'))
+        output_set_name = ' '.join(output_set_name.split('_'))
         output_set_name = output_set_name.title()
+        #output_set_name = output_set_name.title()
         if model is None:
             model = self.model
          # store setups
@@ -238,7 +239,7 @@ class Flatdbconverter():
 
     # supports alumina grade output
     def mult_year_single_output(self, filepath, output_set_name, idx_of_index=[], idx_of_values=[], label="Year", model=None, path=False, col_params=[]):
-	    output_set_name = ' '.join(output_set_name.split('_'))
+        output_set_name = ' '.join(output_set_name.split('_'))
         output_set_name = output_set_name.title()
         if model is None:
             model = self.model

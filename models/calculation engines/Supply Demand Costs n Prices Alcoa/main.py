@@ -1,13 +1,13 @@
 import time, os
 import numpy as np
 import pandas as pd
-from flatdbconverter import Flatdbconverter
+from flatdbconverter import Flatdbconverter, read_from_database
 
 sdc_flat = Flatdbconverter("Supply Demand Costs n Prices Alcoa")
 
 snapshot_output_data = pd.DataFrame(columns=sdc_flat.out_col)
 
-pr = pd.read_csv("price_forecast_snapshot.csv")
+pr = read_output_database(3)
 row = pd.read_csv('row_mining_snapshot.csv')
 row_rev = sdc_flat.reverse(row, "ROW minind model", ["Collector Full_Cost_Cfr_(Us$-Dmt)", "Collector Freight_(Us$-Dmt)", "Collector Organics", "Collector Moisture", "Collector Bauxite_Style", "Collector Total_Alumina", "Collector Lt_Avail_Alumina", "Collector Vessels", "Collector Monohydrate", "Collector Total_Silica", "Collector Lt_R._Silica"])
 row_rev = row_rev["ROW minind model"]

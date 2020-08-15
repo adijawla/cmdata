@@ -1,16 +1,37 @@
 import time, os
 import numpy as np 
 import pandas as pd
+from flatdbconverter import Flatdbconverter
 from extension import DB_TO_FILE
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+r_flat = Flatdbconverter('ROW minind model')
+snapshot_output_data = pd.DataFrame(columns=r_flat.out_col)
+db_list = [snapshot_output_data]
 
+cbix_snap = pd.read_csv('cbix2_snapshot_output_data.csv')
+
+cbix_rev = r_flat.reverse(cbix_snap, model="CBIX machine version used in price forecasts", output_set=["Capesize Data_Tables Freight_Inputs_For_Row_Mining_Model"])
+cbix_rev = cbix_rev["CBIX machine version used in price forecasts"]
+
+override_store = {}
+try:
+    snaps = pd.read_csv('snapshot_output_data.csv')
+    override_rows = snaps.loc[snaps['override_value'] == 1]
+    # print(override_rows.values)
+    for v in override_rows.values:
+        override_store[f'{v[2]}_{v[4]}_{v[5]}'] = float(v[6])
+    print(override_store)
+except FileNotFoundError:
+    pass
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 class RestOfWorld:
     def __init__(self):
         # Generate inputs directly from db
         # ext = DB_TO_FILE()
         # ext.bd_to_excel()
-
+        #                 
         # List of all inputs are declared here
         rows = [] # list of all seperate mines first few inputs
         mine_names = [] # respective mine name for all inputs in rows list
@@ -19,9 +40,9 @@ class RestOfWorld:
         # sust_chrgs = [] # contains Sustaining Capital Charge values for all mines
         costinputs = [] # contains 2015 C1 mining cost, Duties and royalties, 2015 C1 transp. cost inc ship loading
         
-        m_infos       = pd.read_excel(os.path.join(BASE_DIR, "mineinfo.xlsx"))
-        row_inputs    = pd.read_excel(os.path.join(BASE_DIR, "cost_n_spec_input.xlsx"), sheet_name="Sheet1")
-        costinputs_df = pd.read_excel(os.path.join(BASE_DIR, "cost_n_spec_input.xlsx"), sheet_name="Sheet2")
+        m_infos       = pd.read_excel("mineinfo.xlsx")
+        row_inputs    = pd.read_excel("cost_n_spec_input.xlsx", sheet_name="Sheet1")
+        costinputs_df = pd.read_excel("cost_n_spec_input.xlsx", sheet_name="Sheet2")
         
         
         
@@ -164,13 +185,19 @@ class RestOfWorld:
         self.selected_mines = self.COLLECTOR_MINES
         self.mine_infos_cols_tab     = pd.read_excel(os.path.join(BASE_DIR, "mineinfo.xlsx"))
 
-        self.capefreight  = pd.read_excel(os.path.join(BASE_DIR, "capefreight.xlsx"))
+        # here
+        # self.capefreight  = pd.read_excel(os.path.join(BASE_DIR, "capefreight.xlsx"))        
+
+        self.capefreight = cbix_rev["Capesize Data_Tables Freight_Inputs_For_Row_Mining_Model"]
+        self.capefreight.columns = ["Country", "Mine", *range(2014, 2031)]
         self.diesel       = pd.read_excel(os.path.join(BASE_DIR, "diesel_index.xlsx"))
         self.diesel.set_index("Year", drop=True, inplace=True)
 
         self.fxrates      = pd.read_excel(os.path.join(BASE_DIR, "fxratestominesasindex.xlsx"))
+
+        # here
         self.panamax      = pd.read_excel(os.path.join(BASE_DIR, "panamax.xlsx"))
-        self.split_factor = pd.read_excel(os.path.join(BASE_DIR, "splittingfactor.xlsx"))
+        self.split_factor = pd.read_excel(os.path.join(BASE_DIR, "splittingfactor.xlsx"))     
         self.rows         = rows
         self.mine_names   = mine_names
         self.mine_infos   = mine_infos
@@ -183,7 +210,6 @@ class RestOfWorld:
         df = pd.read_excel(os.path.join(BASE_DIR, "fxrates.xlsx"))
         new_df = pd.DataFrame(columns=df.columns)
         new_df.at[:, "Country"] = df.loc[:, "Country"]
-    
         for i in range(df.shape[0]):
             for year in new_df.columns[1:]:
                 
@@ -193,8 +219,9 @@ class RestOfWorld:
                     new_df.at[i, year] = 1.0 if year in range(2014,2016) else np.average([df.loc[i, '2014'], df.loc[i, '2015']]) / df.loc[i, str(year)]
     
         # new_df.to_excel("fxratestominesasindex.xlsx", index=False)
+
+        db_list.append(r_flat.mult_year_single_output(new_df, "fx rates to mines as index"))
         self.db["fxratestominesasindex.xlsx"] = new_df
-        
         
 
     def mine_function(self, row_inputs, mine, mine_info, cost_inputs):
@@ -243,9 +270,9 @@ class RestOfWorld:
         colA_df.at[9, "Value"] = mine_info.loc[1, mine]
         
         
-
-        self.colA_db[f"outputs/mines_column_A_calcs/{mine.lower()}_col_A.xlsx"] = colA_df
-        colA_df = self.colA_db[f"outputs/mines_column_A_calcs/{mine.lower()}_col_A.xlsx"]
+        db_list.append(r_flat.single_year_mult_out(colA_df, mine.lower()))
+        self.colA_db[f"outputs/mines_column_A_calcs/{mine.lower()}_col_A.csv"] = colA_df
+        colA_df = self.colA_db[f"outputs/mines_column_A_calcs/{mine.lower()}_col_A.csv"]
 
         data = []
         for year in range(2014,2031):            
@@ -320,7 +347,7 @@ class RestOfWorld:
             new_df.at[28, 2014] = float(vlp(mine_info.loc[3, mine], self.split_factor.loc[:, "Country"], self.split_factor.loc[:, "mining diesel"]))
 
             new_df.at[29, "Field"] = "% mining cost = local currency denominated"
-            new_df.at[29, 2014] = float(vlp(mine_info.loc[3, mine], self.split_factor.loc[:, "Country"], self.split_factor.loc[:, "mining local currency"]))
+            new_df.at[29, 2014] = vlp(mine_info.loc[3, mine], self.split_factor.loc[:, "Country"], self.split_factor.loc[:, "Mining Local Currency"])
 
             new_df.at[30, "Field"] = "other mining cost %"
             new_df.at[30, 2014] = 1 - sum([new_df.loc[28, 2014], new_df.loc[29, 2014]])
@@ -487,13 +514,23 @@ class RestOfWorld:
             new_df.at[64, "Field"] = "IRR required for project"
             new_df.at[64, year] = row_inputs.loc[13, year]
             
+            # here
             new_df.at[65, "Field"] = "Sustaining Capital Charge ($/t)"
-            if mine in ["Amrun", "Amrun HT"]:
-                new_df.at[65, year] = 1.44174310639839 if year == 2014 else new_df.loc[65, year - 1]
-            elif mine in ["Metro BH1", "Metro Blend", "Metro LT"]:
-                new_df.at[65, year] = 0.43*0.75 if year == 2014 else new_df.loc[65, year - 1]                
+            all_yrs = list(new_df.columns[4:])
+            axis_1 = f'{mine.lower()}_Sustaining Capital Charge ($/t)_{all_yrs.index(year)}'
+            # print(axis_1)
+            # print(all_yrs.index(year))
+            if axis_1 in override_store:
+                print("entered")
+                new_df.at[65, year] = override_store[axis_1]
             else:
-                new_df.at[65, year] = colA_df.loc[7, "Value"] * new_df.loc[61, year] if year == 2014 else new_df.loc[65, year - 1]
+                if mine in ["Amrun", "Amrun HT"]:
+                    new_df.at[65, year] = 1.44174310639839 if year == 2014 else new_df.loc[65, year - 1]
+                elif mine in ["Metro BH1", "Metro Blend", "Metro LT"]:
+                    new_df.at[65, year] = 0.43*0.75 if year == 2014 else new_df.loc[65, year - 1]                
+                else:
+                    new_df.at[65, year] = colA_df.loc[7, "Value"] * new_df.loc[61, year] if year == 2014 else new_df.loc[65, year - 1]
+
 
             new_df.at[66, "Field"] = "Partner & Other payments"    
             if mine in ["Other Ghana", "Kurubuka", "Guyana Others", "Goa", "Bintan"]:
@@ -508,11 +545,21 @@ class RestOfWorld:
             new_df.at[68, "Field"] = "adjustment (new project, expansion, old mine)"
             new_df.at[68, year] = 1.0 if mine_info.loc[5, mine] == "New" else 0.20 if mine_info.loc[5, mine] == "Expansion" else 0
             
+            # here
+            axis_2 = f'{mine.lower()}_capital payback charge_{all_yrs.index(year)}'
             new_df.at[69, "Field"] = "capital payback charge"
-            new_df.at[69, year] = new_df.loc[67, year] * new_df.loc[68, year]
+            if axis_2 in override_store:
+                new_df.at[69, year] = override_store[axis_2]
+            else:
+                new_df.at[69, year] = new_df.loc[67, year] * new_df.loc[68, year]
             
+            # here
             new_df.at[70, "Field"] = "C1 Cost FOB"
-            new_df.at[70, year] = sum([new_df.loc[23, year], new_df.loc[24, year], new_df.loc[25, year]])
+            axis_3 = f'{mine.lower()}_C1 Cost FOB_{all_yrs.index(year)}'
+            if axis_3 in override_store:
+                new_df.at[70, year] = override_store[axis_3]
+            else:
+                new_df.at[70, year] = sum([new_df.loc[23, year], new_df.loc[24, year], new_df.loc[25, year]])
             
             new_df.at[71, "Field"] = "C1 Cost CFR Shandong"
             new_df.at[71, year] = new_df.loc[70, year] + new_df.loc[60, year]
@@ -610,7 +657,8 @@ class RestOfWorld:
                 self.choosenmines.at[11, self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[95,  year] # Other processing penalties (US$/t_bx)
                 self.choosenmines.at[12, self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[8,  year] # Vessel Class choosen
 
-        self.db[f"outputs/{mine.lower()}.xlsx"] = new_df
+        db_list.append(r_flat.multi_year_multi_out(new_df, mine.lower()))
+        self.db[f"outputs/{mine.lower()}.csv"] = new_df
 
     def calcall(self):
         self.fxratestominesasindex()
@@ -629,8 +677,8 @@ class RestOfWorld:
         
 
         for mine, ind in zip(new_df.loc[:, "Mine"], range(len(new_df.loc[:, "Mine"]))):
-            mine_df = self.db[f"outputs/{mine.lower()}.xlsx"]
-            mine_colA_df = self.colA_db[f"outputs/mines_column_A_calcs/{mine.lower()}_col_A.xlsx"]
+            mine_df = self.db[f"outputs/{mine.lower()}.csv"]
+            mine_colA_df = self.colA_db[f"outputs/mines_column_A_calcs/{mine.lower()}_col_A.csv"]
 
             # Start filling in the dataframe
             new_df.at[ind, "FOB Cash Cost"]              = mine_df.loc[70, self.CHOOSEN_YEAR]
@@ -661,7 +709,8 @@ class RestOfWorld:
             new_df.at[ind, "Vessel Class"]                      = mine_df.loc[8, self.CHOOSEN_YEAR]
             new_df.at[ind, "Capital US$/dmt"]                   = mine_df.loc[61, self.CHOOSEN_YEAR]
 
-        self.db["outputs/collector_tab_tables/cost_breakdown.xlsx"] = new_df
+        db_list.append(r_flat.single_year_mult_out(new_df, "Collector Cost breakdown"))
+        self.db["outputs/collector_tab_tables/cost_breakdown.csv"] = new_df
     
 
 
@@ -674,13 +723,14 @@ class RestOfWorld:
         new_df.at[:, "Mine"] = self.selected_mines
 
         for mine, ind in zip(new_df.loc[:, "Mine"], range(len(new_df.loc[:, "Mine"]))):
-            mine_df = self.db[f"outputs/{mine.lower()}.xlsx"]
+            mine_df = self.db[f"outputs/{mine.lower()}.csv"]
             for year in range(2016,2031):
                 new_df.at[ind, year] = mine_df.loc[cell_ref, year]
                 
         table_name = "_".join(table_name.split(" "))
         
-        self.db[f"outputs/collector_tab_tables/{table_name.lower()}.xlsx"] = new_df
+        db_list.append(r_flat.mult_year_single_output(new_df, f'Collector {table_name.lower()}'))
+        self.db[f"outputs/collector_tab_tables/{table_name.lower()}.csv"] = new_df
 
 
 
@@ -701,8 +751,7 @@ class RestOfWorld:
             else:
                 os.mkdir(dirname1)
 
-            print(filepath1)
-            file1.to_excel(filepath1, index=False)
+            file1.to_csv(filepath1, index=False)
 
         for filepath2, file2 in self.db.items():
             dirname2 = os.path.dirname(filepath2)
@@ -710,9 +759,7 @@ class RestOfWorld:
                 pass
             else:
                 os.mkdir(dirname2)
-
-            print(filepath2)
-            file2.to_excel(filepath2, index=False)
+            file2.to_csv(filepath2, index=False)
 
 
 start = time.process_time() # Start time
@@ -723,8 +770,18 @@ row.calcall()
 # Collector tab Tables Engine
 row.runall()
 
-row.choosenmines.to_excel(os.path.join(BASE_DIR, f"outputs/{row.CHOOSEN_YEAR}_choosenmines.xlsx"), index=False)
+db_list.append(r_flat.single_year_mult_out(row.choosenmines, "Chosen mines"))
+row.choosenmines.to_csv(f"outputs/{row.CHOOSEN_YEAR}_choosenmines.csv", index=False)
 end = time.process_time() - start
+snapshot_output_data = pd.concat(db_list, ignore_index=True)
+# overrides data
+override_res = override_rows.values
+for i, v in enumerate(override_rows.index):
+    # print(snapshot_output_data.loc[v], override_res[i])
+    override_res[i][7] = int(override_res[i][7])
+    snapshot_output_data.loc[v] = override_res[i]
+# stops here
+# snapshot_output_data.to_csv("snapshot_output_data.csv", index=False)
 
 
 print(f"Done in {round(end/60, 2)} minutes")

@@ -12,7 +12,7 @@ from sqlalchemy import create_engine
 
 
 def startupCheck():
-    filename = "flatdbconfig.json"
+    filename = "../flatdbconfig.json"
     if os.path.isfile(filename) and os.access(filename, os.R_OK):
         # checks if file exists
         print ("File exists and is readable")
@@ -29,7 +29,7 @@ models = {
 	"Draw Down Model": 1,
 	"China mining cost model": 2,
 	"Economic overlay": 3,
-	"ROW minind model": 4,
+	"Row mining model": 4,
 	"Price forecast model": 5,
 	"Margin Analysis preparation sheets": 6,
 	"World trade data processing": 7,
@@ -62,6 +62,13 @@ def read_from_database(table):
         # converts number strings to numeric
         return data.apply(lambda x: pd.to_numeric(x.astype(str).str.replace(',',''), errors='coerce')).fillna(data)
 
+def read_output_database(snapshot_id):
+        engine = create_engine("mssql+pyodbc://letmetry:Ins201799@magdb.database.windows.net:1433/outputdb_updated?driver=ODBC+Driver+17+for+SQL+Server")
+        query = f'SELECT * FROM snapshot_output_data WHERE snapshot_id = {snapshot_id}'
+        data = pd.read_sql(sql=query, con=engine)
+        data = data.rename(columns={"outrow" : "output_row", "output_lebel": "output_label" })
+        # converts number strings to numeric
+        return data
 
 class Flatdbconverter():
     def __init__(self, model):
@@ -101,7 +108,7 @@ class Flatdbconverter():
 
     # supports dfdb.csv, db.csv
     def single_year_mult_out(self, filepath, output_set_name, model=None, path=False):
-	    output_set_name = ' '.join(output_set_name.split('_'))
+        output_set_name = ' '.join(output_set_name.split('_'))
         output_set_name = output_set_name.title()
         if model is None:
             model = self.model
@@ -238,7 +245,7 @@ class Flatdbconverter():
 
     # supports alumina grade output
     def mult_year_single_output(self, filepath, output_set_name, idx_of_index=[], idx_of_values=[], label="Year", model=None, path=False, col_params=[]):
-	    output_set_name = ' '.join(output_set_name.split('_'))
+        output_set_name = ' '.join(output_set_name.split('_'))
         output_set_name = output_set_name.title()
         if model is None:
             model = self.model
@@ -315,13 +322,23 @@ class Flatdbconverter():
         return output
 
     
-    def reverse(self, snapshot_output_df=None):
-        if snapshot_output_df is None:
+    def reverse(self, snapshot=None, model=None, output_set=None):
+        if snapshot is not None:
+            flatdb = snapshot
+        else:
             flatdb = pd.read_csv("snapshot_output_data.csv")
-        else: 
-            flatdb = snapshot_output_df
         flatdb_config = load_setups()
+        if model is not None:
+            # print(flatdb_config.keys())
+            if model not in flatdb_config.keys():
+                raise RuntimeError("Model name not in flatdbconfig.json, please rerun this model or ensure there's not typo error")
+            flatdb_config = {model: flatdb_config[model]}
+            if output_set is not None:
+                flatdb_config = {model: {k: flatdb_config[model][k] for k in output_set}}
+                
+
         result = {}
+        # print(flatdb_config)
         for v in flatdb_config.keys():
             result[v] = {}
             for s in flatdb_config[v]:
@@ -330,8 +347,8 @@ class Flatdbconverter():
                     result[v][s] = res
 
                 elif flatdb_config[v][s]["db_type"] == 'multiple year multiple output':
-                    continue
-                    res = self.reverse_3(s, flatdb, flatdb_config[v][s]["configs"])
+                    # continue
+                    res = self.reverse_3(s, flatdb, flatdb_config[v][s]["config"])
                     result[v][s] = res
 
                 elif flatdb_config[v][s]["db_type"] == 'single year multiple output':
@@ -347,6 +364,8 @@ class Flatdbconverter():
         res = pd.DataFrame(columns=[])
         for l in labels:
             res[l] = data.loc[df["output_label"] == l, "output_value"].values
+        df2 = res.apply(lambda x: pd.to_numeric(x.astype(str).str.replace(',',''), errors='coerce'))
+        res = df2.fillna(res)
         return res
         
     
@@ -366,42 +385,64 @@ class Flatdbconverter():
             res[l] = vals
         all_mult_label_col = data.loc[data['output_label'] == mult_label, "output_value"].unique()
         all_mult_values = data.loc[data['output_label'] == output_set, "output_value"].values.reshape(-1, len(all_mult_label_col)).transpose()
+        # print(res, all_mult_label_col)
         for i in range(len(all_mult_label_col)):
+            # print(len(all_mult_values[i]))
             res[all_mult_label_col[i]] = all_mult_values[i]
+        df2 = res.apply(lambda x: pd.to_numeric(x.astype(str).str.replace(',',''), errors='coerce'))
+        res = df2.fillna(res)
         return res
 
-    # not fully ready
     def reverse_3(self, output_set, df, params):
         output_set = output_set.title()
         mult_label = params["label"]
         data = df.loc[df["output_set"] == output_set, ["output_row", "output_value", "output_label"]]
-        labels = list(data.loc[:, "output_label"].unique())
-        if len(labels) == 0:
+        
+        if data.empty:
             raise Exception("Output_set not found in snapshot output, improper use of dataframe for the right flatdbconverter method can cause this")
-        labels.remove(output_set)
-        labels.remove(mult_label)
-        res = pd.DataFrame(columns=[])
-        for l in labels:
-            vals = data.loc[(df["output_label"] == l) , ["output_value", "output_row"]].drop_duplicates()
-            vals = vals["output_value"].values
-            res[l] = vals
-        all_mult_label_col = data.loc[data['output_label'] == mult_label, "output_value"].unique()
-        all_mult_values = data.loc[data['output_label'] == output_set, "output_value"].values.reshape(-1, res.shape[0])
-        for i in range(len(all_mult_label_col)):
-            res[all_mult_label_col[i]] = all_mult_values[i]
-        # print(res)
-        return res
+        get_multi_labels = data.loc[data["output_label"] == mult_label, "output_value"].unique()
+        get_fields = data.loc[data["output_row"] == 0, 'output_label'].unique().tolist()
+        stop_idx = get_fields.index(mult_label)
+        get_fields = get_fields[:stop_idx]
+        get_fields.append(params["field"])
+        max_row = data["output_row"].max()
+        curr_min = 0
+        curr_max = len(get_multi_labels)
+        # print(max_row)
+        result = pd.DataFrame(columns=[*get_fields, *get_multi_labels])
+        # print(output_set)
+        while curr_max < max_row + len(get_multi_labels):
+            print(curr_min, curr_max)
+            df = pd.DataFrame(columns=[*get_fields, *get_multi_labels])
+            all_labels = data.loc[~data["output_label"].isin([*get_fields, mult_label ]), "output_label"].unique()
+            values = data.loc[(~data["output_label"].isin([*get_fields, mult_label ]) & ((data["output_row"] < curr_max) & (data["output_row"] >= curr_min) )), "output_value"].values.reshape(-1, len(all_labels)).transpose()
+            # print(len(values[0]))
+            # print(values)
+            df[params['field']] = all_labels
+            df[get_multi_labels] = values
+            for a in get_fields[:-1]:
+                df[a] = data.loc[(data["output_row"] == curr_min) & (data["output_label"] == a), "output_value"].values[0]
+            curr_min = curr_max
+            curr_max = curr_max + len(get_multi_labels)
+            result = pd.concat([result, df], ignore_index=True)
+        # print(result)
+        if params["make_multi"] is not None:
+            result.drop(params["make_multi"], inplace=True, axis=1)
+            
+        df2 = result.apply(lambda x: pd.to_numeric(x.astype(str).str.replace(',',''), errors='coerce'))
+        result = df2.fillna(result)
+        return result
 
     # def auto_decide(*args):
     #     if 
 def load_setups():
-    filename = "flatdbconfig.json"
+    filename = "../flatdbconfig.json"
     with open(filename) as f:
         data = json.load(f)
     return data
     
 def dump_configs(data):
-    filename = "flatdbconfig.json"
+    filename = "../flatdbconfig.json"
     with io.open(os.path.join('.', filename), 'w') as db_file:
         db_file.write(json.dumps(data)) 
 

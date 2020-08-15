@@ -1,8 +1,9 @@
 
 
 import pandas as pd
-from flatdbconverter import Flatdbconverter, upload
+from flatdbconverter import Flatdbconverter
 import time
+from outputdb import uploadtodb
 
 ma_conv = Flatdbconverter("Margin Analysis preparation sheets")
 
@@ -739,19 +740,19 @@ db_list = [
 ]
 
 snapshot_output_data = pd.concat(db_list, ignore_index=True)
-snapshot_output_data.to_csv("snapshot_output_data.csv", index=False)
+# snapshot_output_data.to_csv("snapshot_output_data.csv", index=False)
 
 print("Time taken to convet to flat db: {0} ".format(time.perf_counter() - maflat_time))
 
 
-'''
+
 
 print('uploading to output db')
 snapshot_output_data = snapshot_output_data
 
-upload(snapshot_output_data)
+uploadtodb.upload(snapshot_output_data)
 
-'''
+
 
 
 # print(db_list[45])

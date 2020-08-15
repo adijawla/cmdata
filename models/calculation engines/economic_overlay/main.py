@@ -4,7 +4,7 @@ import pandas as pd
 from flatdbconverter import Flatdbconverter
 from extension import DB_TO_FILE
 from scipy.stats import beta
-import uploadtodb
+from outputdb import uploadtodb
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -1919,4 +1919,6 @@ if __name__ == "__main__":
 
 snapshot_output_data = pd.concat(dblist, ignore_index=True)
 snapshot_output_data = snapshot_output_data.loc[:, db_conv.out_col]
-snapshot_output_data.to_csv("snapshot_output_data.csv", index=False)
+# snapshot_output_data.to_csv("snapshot_output_data.csv", index=False)
+
+uploadtodb.upload(snapshot_output_data)

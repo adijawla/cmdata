@@ -12,7 +12,7 @@ from sqlalchemy import create_engine
 
 
 def startupCheck():
-    filename = "flatdbconfig.json"
+    filename = "../flatdbconfig.json"
     if os.path.isfile(filename) and os.access(filename, os.R_OK):
         # checks if file exists
         print ("File exists and is readable")
@@ -29,7 +29,7 @@ models = {
 	"Draw Down Model": 1,
 	"China mining cost model": 2,
 	"Economic overlay": 3,
-	"ROW minind model": 4,
+	"Row mining model": 4,
 	"Price forecast model": 5,
 	"Margin Analysis preparation sheets": 6,
 	"World trade data processing": 7,
@@ -101,7 +101,7 @@ class Flatdbconverter():
 
     # supports dfdb.csv, db.csv
     def single_year_mult_out(self, filepath, output_set_name, model=None, path=False):
-	    output_set_name = ' '.join(output_set_name.split('_'))
+        output_set_name = ' '.join(output_set_name.split('_'))
         output_set_name = output_set_name.title()
         if model is None:
             model = self.model
@@ -238,7 +238,7 @@ class Flatdbconverter():
 
     # supports alumina grade output
     def mult_year_single_output(self, filepath, output_set_name, idx_of_index=[], idx_of_values=[], label="Year", model=None, path=False, col_params=[]):
-	    output_set_name = ' '.join(output_set_name.split('_'))
+        output_set_name = ' '.join(output_set_name.split('_'))
         output_set_name = output_set_name.title()
         if model is None:
             model = self.model
@@ -395,13 +395,13 @@ class Flatdbconverter():
     # def auto_decide(*args):
     #     if 
 def load_setups():
-    filename = "flatdbconfig.json"
+    filename = "../flatdbconfig.json"
     with open(filename) as f:
         data = json.load(f)
     return data
     
 def dump_configs(data):
-    filename = "flatdbconfig.json"
+    filename = "../flatdbconfig.json"
     with io.open(os.path.join('.', filename), 'w') as db_file:
         db_file.write(json.dumps(data)) 
 
