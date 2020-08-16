@@ -34,7 +34,7 @@ class DB_TO_FILE:
 
         self.df6=pd.read_sql_query("SELECT * FROM [dbo].[other_controls]", conn)
         self.df6.drop(columns =["creation_date","updation_date"], inplace = True)
-# 
+
     # Input
     def inputs(self):
         join1=self.df1.merge(self.df3,on='province_id',how='left')
@@ -57,10 +57,11 @@ class DB_TO_FILE:
             try:
                 join3[i] = join3[i].astype(float)
             except:
-                pass
-        join4=join3.copy()    
-        join3=join3.pivot_table(index=['province'], columns=['cost_type'], values='cost',aggfunc='sum')
+                pass        
+        #join4=join3.copy()    
+        join3=join3.pivot_table(index=['province'], columns=['cost_type'], values='cost') #,aggfunc='sum')
         join3.reset_index(inplace=True)
+
         return join3
 
     #other controls and Province switch

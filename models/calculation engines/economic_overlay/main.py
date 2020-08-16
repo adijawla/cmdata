@@ -4,7 +4,7 @@ import pandas as pd
 from flatdbconverter import Flatdbconverter
 from extension import DB_TO_FILE
 from scipy.stats import beta
-from outputdb import uploadtodb
+import uploadtodb
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -292,7 +292,7 @@ class Inventory:
         self.avg9 = (self.min9 + self.max9)/2
         self.avg10 = (self.min10 +self.max10)/2
 
-        self.range_max.at[2, "Mine Type"] = 'Avg for range (m)'
+        self.range_max.at[2, "mine_type"] = 'Avg for range (m)'
         self.range_max.at[2, "open_pit1":"underground7"] = [self.avg1, self.avg2, self.avg3, self.avg4, self.avg5, self.avg6, self.avg7, self.avg8, self.avg9, self.avg10]
 
         # Dataframes
@@ -1216,7 +1216,6 @@ class Inventory:
         new_df1.at[0,:] = row2_sl
         new_df1.at[1,:] = row3_sl
         new_df1.at[2,:] = row4_sl
-
         
         for i in range(1, len(df)):
             data = []
@@ -1226,7 +1225,7 @@ class Inventory:
                     v = (float(aa_sb.loc[i, f"percentile mined {k/100}"])*(float(tm_sb.iloc[i, j])+float(rg_rr.loc[i, "Delivery Costs"]))) + (float(cu_sb.loc[i, f"percentile mined {k/100}"])*self.main_vlookup(df.iloc[i-1], province, caustic_sd)) + float(rg_rr.loc[i,"Energy Costs"]) + float(rg_rr.loc[i,"Lime Costs"]) + ((float(aa_sb.loc[i, f"percentile mined {k/100}"])-1 + float(cu_sb.loc[i, f"percentile mined {k/100}"])+0.22) * self.main_vlookup(df.iloc[-1], province, mud_d)) + float(rg_rr.loc[i, "Other Costs (labour, maintenance, other consumables)"]) + 0                    
                     data.append(v)
                                         
-            new_df1.at[i,:] = data
+            new_df1.at[i+2,:] = data
 
         # Sed'try high
         row1_sh = [f"Sed'try {i}" for i in range(1,201)]
@@ -1282,7 +1281,7 @@ class Inventory:
         perct_sulpher_sb  = self.perct_inventory_sulphur_contaminated_db_df     # pd.read_csv("outputs/suplhur_contamination_sedimentary_bauxite_only/perct_inventory_sulphur_contaminated_by_depth_bucket.csv")
         depth_range_sb    = self.sedimentary_bauxite_td_df        # pd.read_csv("outputs/sedimentary_bauxite-tonnages_per_depth_range.csv")
         depth_range_cab   = self.collapse_accm_bauxite_df        # pd.read_csv("outputs/collapse_accumulated_bauxite-tonnages_per_depth_range.csv")
-        
+
         avgs = [self.avg1, self.avg2, self.avg3, self.avg4, self.avg5, self.avg6, self.avg7, self.avg8, self.avg9, self.avg10]
         
         # Sed'try low
@@ -1413,18 +1412,15 @@ class Inventory:
         self.ranks_by_costs_df.at[1,:] = row3_sl
         self.ranks_by_costs_df.at[2,:] = row4_sl
         self.ranks_by_costs_df.at[3,:] = [f"rank {i}" for i in range(1, 421)]
-
         
         for i in range(3, len(df)):            
             self.ranks_by_costs_df.at[i+1,:] = df.loc[i,:].rank(method="min", ascending=True)
-                    
-        
 
     def cell_columns_by_cost_rank(self):
-        df = self.ranks_by_costs_df     # pd.read_csv("outputs/ranks_by_costs.csv")
+        df = self.ranks_by_costs_df     # pd.read_csv("outputs/ranks_by_costs.csv")        
 
         avgs = [self.avg1, self.avg2, self.avg3, self.avg4, self.avg5, self.avg6, self.avg7, self.avg8, self.avg9, self.avg10]
-        
+
         # Sed'try low
         row1_sl = [f"Sed'try {i}" if i <= 400 else f"Coll. Acc. {i}" for i in range(1,421)]
         row2_sl = ["Low" if i <= 200 else "High" for i in range(1,401)]        
@@ -1441,18 +1437,17 @@ class Inventory:
         self.cell_columns_by_cost_rank_df.at[1,:] = row3_sl
         self.cell_columns_by_cost_rank_df.at[2,:] = row4_sl
         self.cell_columns_by_cost_rank_df.at[3,:] = [f"rank {i}" for i in range(1, 421)]
-
         
         for i in range(4, len(df)):            
             data = []
             col_val = 1854.0
             for j in range(1,421):
-                for k in range(420):
+                for k in range(420):                    
                     if float(df.iloc[i,k]) == float(j):
-                        data.append(k+col_val)
+                        data.append(k+col_val)                        
                         break
-
-            self.cell_columns_by_cost_rank_df.at[i,:] = data            
+                    
+            self.cell_columns_by_cost_rank_df.at[i,:] = data
         
         
 
@@ -1578,28 +1573,28 @@ class Inventory:
     def high_sulphur_tablename_func(self):
         mine_switch = self.other_controls.loc[0, 'switch_control']
         _cols = ["Deposit Consumption (percentile)", "A/S"]
+        
         [_cols.append(f"{int(self.range_max.loc[0, c])} - {int(self.range_max.loc[1, c])} - Low Sulphur") for c in self.range_max.columns[1:]]
         [_cols.append(f"{int(self.range_max.loc[0, c])} - {int(self.range_max.loc[1, c])} - High Sulphur") for c in self.range_max.columns[1:]]
         _cols.append(f"{int(self.range_max.iloc[0, 1])} - {int(self.range_max.iloc[1, 1])} - Collapse Acc. Deposits")
-        
         final_costs_df_temp = self.final_costs_df.copy()
         tonnages_in_categories_df_temp = self.tonnages_in_categories_df.copy()
         ranks_by_costs_df_temp = self.ranks_by_costs_df.copy()
 
         final_costs_df_temp = final_costs_df_temp.loc[3:, :].reset_index()
         tonnages_in_categories_df_temp = tonnages_in_categories_df_temp.loc[3:, :].reset_index()
-        ranks_by_costs_df_temp = ranks_by_costs_df_temp.loc[4:, :].reset_index()        
-       
-        table1 = final_costs_df_temp[self.output_db.loc[:, "County"] == mine_switch].drop(['index'], axis=1)
-        table2 = tonnages_in_categories_df_temp[self.output_db.loc[:, "County"] == mine_switch].drop(['index'], axis=1)
-        table3 = ranks_by_costs_df_temp[self.output_db.loc[:, "County"] == mine_switch].drop(['index'], axis=1)
-
+        ranks_by_costs_df_temp = ranks_by_costs_df_temp.loc[4:, :].reset_index()
+        
+        table1 = final_costs_df_temp[self.output_db.loc[:, "County"].astype(str).map(lambda x: x.lower() == mine_switch.lower())].drop(['index'], axis=1)
+        table2 = tonnages_in_categories_df_temp[self.output_db.loc[:, "County"].astype(str).map(lambda x: x.lower() == mine_switch.lower())].drop(['index'], axis=1)
+        table3 = ranks_by_costs_df_temp[self.output_db.loc[:, "County"].astype(str).map(lambda x: x.lower() == mine_switch.lower())].drop(['index'], axis=1)
+        
         as_col = []
         for k in range(5,101,5):           
-
-            v1 = self.perct_AA_percentile_mined_cab_df.loc[1:, :].reset_index()[self.output_db.loc[:, "County"] == self.other_controls.loc[0, 'switch_control']].drop(['index'], axis=1).reset_index()
-            v2 = self.perct_SiO2_percentile_mined_cab_df.loc[1:, :].reset_index()[self.output_db.loc[:, "County"] == self.other_controls.loc[0, 'switch_control']].drop(['index'], axis=1).reset_index()
-            
+            v1 = self.perct_AA_percentile_mined_cab_df.loc[1:, :].reset_index()[self.output_db.loc[:, "County"].astype(str).map(lambda x: x.lower() == mine_switch.lower())].drop(['index'], axis=1).reset_index()
+            v2 = self.perct_SiO2_percentile_mined_cab_df.loc[1:, :].reset_index()[self.output_db.loc[:, "County"].astype(str).map(lambda x: x.lower() == mine_switch.lower())].drop(['index'], axis=1).reset_index()
+            print(v1)
+            print(v2)
             v1 = v1.loc[0, f"percentile mined {k/100}"]
             v2 = v2.loc[0, f"percentile mined {k/100}"]
             
@@ -1643,7 +1638,6 @@ class Inventory:
         self.Costs_RMBtAA  = Costs_RMBtAA
         self.Tonnages_kt = Tonnages_kt
         self.Rank_AA_proc_cost  = Rank_AA_proc_cost
-
 
     # All functions are called in calcall() function
     
