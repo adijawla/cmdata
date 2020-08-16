@@ -3160,9 +3160,9 @@ class CBIX2:
                         dblist.append(db_conv.mult_year_single_output(file, filename, [[0,1]], [[1,]], label="Date"))
                     elif name == 'viu_cost_data_table':
                         dblist.append(db_conv.mult_year_single_output(file, filename, [[0,1]], [[1,]], label="Date"))
-                
                 print(PureWindowsPath(os.path.join(BASE_DIR, filepath)))
                 file.to_excel(PureWindowsPath(os.path.join(BASE_DIR, filepath)), index=False)
+            self.db = {}
 
 
 # if __name__ == "__main__":
