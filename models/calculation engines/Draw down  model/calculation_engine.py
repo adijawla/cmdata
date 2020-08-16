@@ -1,4 +1,4 @@
-import connect
+# import connect
 import simply
 from simply import *
 import warnings
@@ -6,14 +6,15 @@ from scipy import stats
 import numpy as np
 import pandas as pd
 import statistics as stat
-import openpyxl
+# import openpyxl
 from ddm import newprovincial
 from ddm import reservesummary
 from collections import defaultdict
 from ddm.newprovincial import provincial
 from ddm.reservesummary import summary
 from ddm.codetimer.timer import Timer
-from ddm.flatdbconvert.flatdbconverter import Flatdbconverter
+from flatdb.flatdbconverter import Flatdbconverter
+from outputdb.uploadtodb import upload
 import time
 import asyncio
 #from aiostream import stream,pipe
@@ -2480,14 +2481,13 @@ b1_aluminadata,
 b1_plotlink,
 b1_silicadata,
 # b1_production,
-b1_prodout
-]
-# r_db,
-# r_provt,
-# r_bfdb,
-# r_hdb,
-# r_totaldb,
-# r_newallocdb]
+b1_prodout,
+r_db,
+r_provt,
+r_bfdb,
+r_hdb,
+r_totaldb,
+r_newallocdb]
 snapshot_output_data = pd.concat(dblist, ignore_index=True)
 snapshot_output_data = snapshot_output_data.loc[:, db_conv.out_col]
 snapshot_output_data.to_csv("snapshot_output_data.csv", index=False)
@@ -2554,22 +2554,6 @@ with pd.option_context('display.max_rows',None, 'display.max_columns', None):
 
 
 print('uploading to output db')
-##################
-# a = connect.to_db()
-# conn = a.outputstart()
-# cursor = conn.cursor()
-# cursor.fast_executemany = True
-# output_db_upload_time = time.perf_counter()
-# for i in range(snapshot_output_data.shape[0]):
-#     x = snapshot_output_data.loc[i]
-#     cursor.execute("INSERT INTO dbo.snapshot_output_data([model_id],[output_set],[output_lebel],[outrow],[output_value],[override_value],[actual_value]) values (?,?,?,?,?,?,?)",str(x[1]),str(x[2]),str(x[5]),str(x[4]),str(x[6]),'' if pd.isna(x[7]) else str(x[7]),'' if pd.isna(x[8]) else str(x[8]))
-# print("Time taken to upload to output db: {0} ".format(time.perf_counter() - output_db_upload_time))
-'''
-for i in range(snapshot_output_data.shape[0]):
-    chunk = snapshot_output_data.iloc[i:i+1,:].values.tolist()
-    t =  tuple(tuple(x) for x in chunk)
-    cursor.executemany("INSERT INTO dbo.snapshot_output_data([model_id],[output_set],[output_lebel],[outrow],[output_value],[override_value],[actual_value]) values (?,?,?,?,?,?,?)",t)
-    
-    '''
+upload(snapshot_output_data)
 
 print("done")
