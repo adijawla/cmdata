@@ -5,8 +5,21 @@ Created on Sun Aug  2 15:28:56 2020
 @author: JOHN
 """
 import pandas as pd
+from flatdb.flatdbconverter import Flatdbconverter
 import time
 
+q_flat = Flatdbconverter("Quarterly Chart Pack")
+
+override_store = {}
+try:
+    snaps = pd.read_csv('snapshot_output_data.csv')
+    override_rows = snaps.loc[snaps['override_value'] == 1]
+    # print(override_rows.values)
+    for v in override_rows.values:
+        override_store[f'{v[4]}_{v[5]}'] = v[6]
+    print(override_store)
+except FileNotFoundError:
+    pass
 
 class qrtlymodel():
     def __init__ (self):
@@ -906,6 +919,7 @@ class qrtlymodel():
         self.main_labour_summary['Total'] = self.main_labour_summary[['Mining','Processing','Transport','Other direct charges','Common Distributables']].sum(axis=1)
         self.main_labour_summary['Total 2'] = 1/self.main_labour_summary['Total']
         
+        # add override
         self.main_raw_cost['Mine'] =  self.mainInput['Mine']
         self.main_raw_cost['Mining'] =  self.main_labour_summary['Mining Costs'] 
         self.main_raw_cost['Processing'] = self.labour2_processing['Processing Cost']
@@ -916,8 +930,19 @@ class qrtlymodel():
         self.main_raw_cost['Transloading charges'] =self.main_other_direct_charges['Trans. Charges - Charge amount 2']
         self.main_raw_cost['Taxes and Royalties'] =self.main_taxes_loyalties['Total Taxes & Royalties']
         self.main_raw_cost['Common Distributables'] =self.main_corporate_charge['Total Common distributables']
+
+        for v in override_store.keys():
+            col = '_'.join(v.split('_')[:-1])
+            row = int(v.split('_')[-1])
+            self.main_raw_cost.loc[row, col] = override_store[v]
+
         self.main_raw_cost['Total'] = self.main_raw_cost[['Mining','Processing','Transport','Other direct charges','Common Distributables']].sum(axis=1)
 
+        for v in override_store.keys():
+            col = '_'.join(v.split('_')[:-1])
+            if col == 'Total':
+                row = int(v.split('_')[0])
+                self.main_raw_cost.loc[row, col] = override_store[v]
         
         
     
@@ -973,9 +998,16 @@ x.gasoline_price_exVAT.to_excel(writer2, sheet_name='Final Prices ', index=False
 writer2.save()
 
 writer3 = pd.ExcelWriter('outputs\\calculations\\LPG prices and rebates.xlsx')
-x.gasoline_price_rebates.to_excel(writer3, sheet_name='Prices Rebates', index=False)
-x.gasoline_price_vat.to_excel(writer3, sheet_name='VATs as decimal', index=False)
-x.gasoline_price_exVAT.to_excel(writer3, sheet_name='Final Prices ', index=False)
+# this is lpg but gasoline is used
+# x.gasoline_price_rebates.to_excel(writer3, sheet_name='Prices Rebates', index=False)
+# x.gasoline_price_vat.to_excel(writer3, sheet_name='VATs as decimal', index=False)
+# x.gasoline_price_exVAT.to_excel(writer3, sheet_name='Final Prices ', index=False)
+
+# assumption
+x.lpg_price_rebates.to_excel(writer3, sheet_name='Prices Rebates', index=False)
+x.lpg_price_vat.to_excel(writer3, sheet_name='VATs as decimal', index=False)
+x.lpg_price_exVAT.to_excel(writer3, sheet_name='Final Prices ', index=False)
+
 writer3.save()
 
 writer4 = pd.ExcelWriter('outputs\\calculations\\Explosives prices and rebates.xlsx')
@@ -1033,3 +1065,68 @@ x.main_water.to_excel(writer, sheet_name='Water Use', index=False)
 x.main_labour_summary.to_excel(writer, sheet_name='LAbour Use', index=False)
 x.main_raw_cost.to_excel(writer, sheet_name='Raw Costs', index=False)
 writer.save()
+
+dblist = []
+
+dblist.append(q_flat.mult_year_single_output(x.diesel_price_rebates, "Diesel Prices Rebates"))
+dblist.append(q_flat.mult_year_single_output(x.diesel_price_vat, "Diesel Prices Vats"))
+dblist.append(q_flat.mult_year_single_output(x.diesel_price_exVAT, "Diesel Prices final price"))
+dblist.append(q_flat.mult_year_single_output(x.gasoline_price_rebates, "Gasoline Prices Rebates"))
+dblist.append(q_flat.mult_year_single_output(x.gasoline_price_vat, "Gasoline Prices vats"))
+dblist.append(q_flat.mult_year_single_output(x.gasoline_price_exVAT, "Gasoline Prices final"))
+dblist.append(q_flat.mult_year_single_output(x.lpg_price_rebates, "LPG Prices Rebates"))
+dblist.append(q_flat.mult_year_single_output(x.lpg_price_vat, "LPG Prices vats"))
+dblist.append(q_flat.mult_year_single_output(x.lpg_price_exVAT, "LPG Prices final"))
+dblist.append(q_flat.mult_year_single_output(x.explosives_price_rebates, "Explosives Prices Rebates"))
+dblist.append(q_flat.mult_year_single_output(x.explosives_price_vat, "Explosives Prices vats"))
+dblist.append(q_flat.mult_year_single_output(x.explosives_price_exVAT, "Explosives Prices final"))
+dblist.append(q_flat.mult_year_single_output(x.water_price_rebates, "Water Prices Rebates"))
+dblist.append(q_flat.mult_year_single_output(x.water_price_vat, "Water Prices vats"))
+dblist.append(q_flat.mult_year_single_output(x.water_price_exVAT, "Water Prices final"))
+dblist.append(q_flat.mult_year_single_output(x.labour_price_rebates, "Labour Prices Rebates"))
+dblist.append(q_flat.mult_year_single_output(x.labour_price_vat, "Labour Prices vats"))
+dblist.append(q_flat.mult_year_single_output(x.labour_price_exVAT, "Labour Prices final"))
+dblist.append(q_flat.mult_year_single_output(x.electricity_price_rebates, "Electricity Prices Rebates"))
+dblist.append(q_flat.mult_year_single_output(x.electricity_price_vat, "Electricity Prices vats"))
+dblist.append(q_flat.mult_year_single_output(x.electricity_price_exVAT, "Electricity Prices final"))
+
+dblist.append(q_flat.single_year_mult_out(x.main_tunning_values, "Main sheet Tunning Values"))
+dblist.append(q_flat.single_year_mult_out(x.main_pricesEnergyWater, "Main sheet Prices"))
+dblist.append(q_flat.single_year_mult_out(x.main_directCharges, "Main sheet Direct Charges"))
+dblist.append(q_flat.single_year_mult_out(x.main_labour, "Main sheet Labour "))
+dblist.append(q_flat.single_year_mult_out(x.main_labour_summary, "Main sheet Labour cost and sum"))
+dblist.append(q_flat.single_year_mult_out(x.main_processing, "Main sheet processing"))
+dblist.append(q_flat.single_year_mult_out(x.labour2_processing, "Main sheet Labour 2 Processing"))
+dblist.append(q_flat.single_year_mult_out(x.main_transport, "Main sheet Transport"))
+dblist.append(q_flat.single_year_mult_out(x.main_other_direct_charges, "Main sheet Other Direct Charges"))
+dblist.append(q_flat.single_year_mult_out(x.main_taxes_loyalties, "Main sheet Taxes and Loyalties"))
+dblist.append(q_flat.single_year_mult_out(x.main_maintenance, "Main sheet Maintenance"))
+dblist.append(q_flat.single_year_mult_out(x.main_site_Overheads, "Main sheet Sites and Overheads"))
+dblist.append(q_flat.single_year_mult_out(x.main_corporate_charge, "Main sheet Corporate Charges"))
+
+dblist.append(q_flat.single_year_mult_out(x.main_diesel, "Main sheet output Diesel Use"))
+dblist.append(q_flat.single_year_mult_out(x.main_gasoline, "Main sheet output Gasoline Use"))
+dblist.append(q_flat.single_year_mult_out(x.main_lpg, "Main sheet output LPG Use"))
+dblist.append(q_flat.single_year_mult_out(x.main_electricity, "Main sheet output Electricity Use"))
+dblist.append(q_flat.single_year_mult_out(x.main_explosives, "Main sheet output Explosives Use"))
+dblist.append(q_flat.single_year_mult_out(x.main_special, "Main sheet output Special Use"))
+dblist.append(q_flat.single_year_mult_out(x.main_water, "Main sheet output Water Use"))
+dblist.append(q_flat.single_year_mult_out(x.main_labour_summary, "Main sheet output LAbour Use"))
+dblist.append(q_flat.single_year_mult_out(x.main_raw_cost, "Main sheet output Raw Costs"))
+
+snapshot_output_data = pd.concat(dblist, ignore_index=True)
+snapshot_output_data = snapshot_output_data.loc[:, q_flat.out_col]
+
+try:
+    override_res = override_rows.values
+    for i, v in enumerate(override_rows.index):
+        print(snapshot_output_data.loc[v], )
+        set_it = snapshot_output_data.loc[v].values
+        print(override_res[i][-2:])
+        set_it[-2:] = override_res[i][-2:]
+        snapshot_output_data.loc[v] = set_it 
+except Exception as err:
+    print(err)
+    print("Error caught and skipped")
+
+snapshot_output_data.to_csv("snapshot_output_data.csv", index=False)
