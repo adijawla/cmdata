@@ -643,19 +643,22 @@ class RestOfWorld:
             new_df.at[9:, "Mine"] = mine # set rest of mine cells to current mine name
             new_df.at[9:, "Country"] = row_inputs.loc[0, "Country"]
 
-            if year == self.CHOOSEN_YEAR:
-                self.choosenmines.at[1,  self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[81, year] # Alumina (%)
-                self.choosenmines.at[2,  self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[82, year] # Silica (%)
-                self.choosenmines.at[3,  self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[83, year] # Moisture (%)
-                self.choosenmines.at[4,  self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[80, year] # Bauxite style
-                self.choosenmines.at[5,  self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[84, year] # t/t (dry bauxite/alumina)
-                self.choosenmines.at[6,  self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[88, year] # C1 Cost CFR
-                self.choosenmines.at[7,  self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[92, year] # Cash + Sustaining Capital CFR
-                self.choosenmines.at[8,  self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[93, year] # Full Cost
-                self.choosenmines.at[9,  self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[4,  year]  # Monohydrate (%)
-                self.choosenmines.at[10, self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[7,  year] # Total Organic Carbon
-                self.choosenmines.at[11, self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[95,  year] # Other processing penalties (US$/t_bx)
-                self.choosenmines.at[12, self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[8,  year] # Vessel Class choosen
+            # if year == self.CHOOSEN_YEAR:
+            self.choosenmines.at[1,  self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[81, year] # Alumina (%)
+            self.choosenmines.at[2,  self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[82, year] # Silica (%)
+            self.choosenmines.at[3,  self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[83, year] # Moisture (%)
+            self.choosenmines.at[4,  self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[80, year] # Bauxite style
+            self.choosenmines.at[5,  self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[84, year] # t/t (dry bauxite/alumina)
+            self.choosenmines.at[6,  self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[88, year] # C1 Cost CFR
+            self.choosenmines.at[7,  self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[92, year] # Cash + Sustaining Capital CFR
+            self.choosenmines.at[8,  self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[93, year] # Full Cost
+            self.choosenmines.at[9,  self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[4,  year]  # Monohydrate (%)
+            self.choosenmines.at[10, self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[7,  year] # Total Organic Carbon
+            self.choosenmines.at[11, self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[95,  year] # Other processing penalties (US$/t_bx)
+            self.choosenmines.at[12, self.choosenmines.columns[self.choosenmines.iloc[0, :] == mine]] = new_df.loc[8,  year] # Vessel Class choosen
+
+            db_list.append(r_flat.single_year_mult_out(self.choosenmines, "{year} Chosen mines"))
+            self.db[f"outputs/choosenmines/{year}_choosenmines.csv"] = self.choosenmines
 
         db_list.append(r_flat.multi_year_multi_out(new_df, mine.lower()))
         self.db[f"outputs/{mine.lower()}.csv"] = new_df
@@ -770,8 +773,6 @@ row.calcall()
 # Collector tab Tables Engine
 row.runall()
 
-db_list.append(r_flat.single_year_mult_out(row.choosenmines, "Chosen mines"))
-row.choosenmines.to_csv(f"outputs/{row.CHOOSEN_YEAR}_choosenmines.csv", index=False)
 end = time.process_time() - start
 snapshot_output_data = pd.concat(db_list, ignore_index=True)
 # overrides data
