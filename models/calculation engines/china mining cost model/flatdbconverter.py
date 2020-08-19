@@ -56,7 +56,7 @@ models = {
 }
 
 def read_from_database(table):
-        engine = create_engine("mssql+pyodbc://letmetry:Ins201799@magdb.database.windows.net:1433/input_db?driver=ODBC+Driver+17+for+SQL+Server")
+        engine = create_engine("mssql+pyodbc://letmetry:T@lst0y50@magdb.database.windows.net:1433/input_db?driver=ODBC+Driver+17+for+SQL+Server")
         query = f'SELECT * FROM {table}'
         data = pd.read_sql(sql=query, con=engine)
         # converts number strings to numeric

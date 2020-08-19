@@ -1,10 +1,11 @@
 ,province_id,province,creation_date_x,updation_date_x,costinputs_id,Diesel Usage,open_pit_washing_cost_automation_labour_productivity_low,open pit Washing Cost automation & labour productivity medium,open_pit_washing_cost_automation_labour_productivity_high,Water Consumption,underground_washing_cost_automation_labour_productivity_low,underground_washing_cost_automation_labour_productivity_medium,underground_washing_cost_automation_labour_productivity_high,Resouce tax,Other Fixed,creation_date_y,updation_date_y
-0,province_1,Guangxi,,,3,0.41,0.24,0.21,0.18,1.8,0.08,0.07,0.06,20.0,6.5,,
+0,province_1,Guangxi,,2020-08-13 10:46:45.210,3,0.41,0.24,0.21,0.18,1.8,0.08,0.07,0.06,20.0,6.5,,
 1,province_13,Guizhou,,,5,0.41,0.24,0.21,0.18,1.8,0.08,0.07,0.06,20.0,6.5,,
 2,province_14,Hubei,,,7,0.41,0.24,0.21,0.18,1.8,0.08,0.07,0.06,20.0,6.5,,
-3,province_5,Qinghai,,,1,0.41,0.24,0.21,0.18,1.8,0.08,0.07,0.06,20.0,6.5,,
-4,province_5,Qinghai,,,8,0.41,0.24,0.21,0.18,1.8,0.08,0.07,0.06,20.0,6.5,,
-5,province_7,Shanxi,,,2,0.41,0.24,0.21,0.18,1.8,0.08,0.07,0.06,20.0,6.5,,
-6,province_8,Yunnan,,,4,0.41,0.24,0.21,0.18,1.8,0.08,0.07,0.06,20.0,6.5,,
-7,province_8,Yunnan,,,10,0.41,0.24,0.21,0.18,1.8,0.08,0.07,0.06,20.0,6.5,,
-8,province_9,Chongqing,,,6,0.41,0.24,0.21,0.18,1.8,0.08,0.07,0.06,20.0,6.5,,
+3,province_236,Russia,,,9,0.41,0.24,0.21,0.18,1.8,0.08,0.07,0.06,20.0,6.5,,
+4,province_5,Qinghai,,,1,0.41,0.24,0.21,0.18,1.8,0.08,0.07,0.06,20.0,6.5,,2020-08-14 18:24:14.217
+5,province_5,Qinghai,,,8,0.41,0.24,0.21,0.18,1.8,0.08,0.07,0.06,20.0,6.5,,
+6,province_7,Shanxi,,,2,0.41,0.24,0.21,0.18,1.8,0.08,0.07,0.06,20.0,6.5,,
+7,province_8,Yunnan,,,4,0.41,0.24,0.21,0.18,1.8,0.08,0.07,0.06,20.0,6.5,,
+8,province_8,Yunnan,,,10,0.41,0.24,0.21,0.18,1.8,0.08,0.07,0.06,20.0,6.5,,
+9,province_9,Chongqing,,,6,0.41,0.24,0.21,0.18,1.8,0.08,0.07,0.06,20.0,6.5,,

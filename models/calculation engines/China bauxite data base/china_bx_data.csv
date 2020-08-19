@@ -1,7 +1,7 @@
 Province,county,china_bx_data2_id,deposit_mine,inventory_000_t,geological_endowment_000_t,inventory_reference,endowment_reference,filter_for_DDM
 Guizhou,Kaiyang,1,CM data,500,500,BHL2008,BHL2008,
 Beijing,Beijing,2,Beijing,420,420,BHL2008,BHL2008,
-Chongqing,Fengdu,3,Fengdu County Huilong,1346,1346,BHL2008,BHL2008,
+Chongqing,Fengdu,3,Fengdu County Huilong,500,1346,BHL2008,BHL2008,
 Chongqing,Nanchuan,4,Nanchuan City Caizhuba,8102,8102,BHL2008,BHL2008,
 Chongqing,Nanchuan,5,Nanchuan City Bozishan,5570,5570,BHL2008,BHL2008,
 Chongqing,Nanchuan,6,Nanchuan City Hongguandu-Guangnan,781,781,BHL2008,BHL2008,
