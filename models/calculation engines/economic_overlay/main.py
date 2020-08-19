@@ -4,7 +4,7 @@ import pandas as pd
 from flatdbconverter import Flatdbconverter
 from extension import DB_TO_FILE
 from scipy.stats import beta
-import uploadtodb
+from outputdb import uploadtodb
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -1841,6 +1841,14 @@ class Inventory:
         self.caustic_use_percentile_mined_cab_df.to_excel(os.path.join(BASE_DIR, "outputs/delivery_costs/caustic_use_by_percentile_mined-collapse_accumlulated_bx.xlsx"), index=False)
         self.CBIX_BX_AA_production_cost_df.to_excel(os.path.join(BASE_DIR, "outputs/CBIX_BX_AA_production_cost.xlsx"), index=False)
         self.final_costs_df.to_excel(os.path.join(BASE_DIR, "outputs/final_costs/final_costs.xlsx"), index=False)
+
+        cols=pd.Series(self.tonnages_in_categories_df.columns)
+        for dup in cols[cols.duplicated()].unique(): 
+            cols[cols[cols == dup].index.values.tolist()] = [dup + '_' + str(i) if i != 0 else dup for i in range(sum(cols == dup))]
+        # rename the columns with the cols list.
+        self.tonnages_in_categories_df.columns = cols
+        print(cols)
+
         self.tonnages_in_categories_df.to_excel(os.path.join(BASE_DIR, "outputs/tonnages_in_categories.xlsx"), index=False)
         self.cost_with_dummy_for_ranking_df.to_excel(os.path.join(BASE_DIR, "outputs/cost_with_dummy_for_ranking_reasons.xlsx"), index=False)
         self.ranks_by_costs_df.to_excel(os.path.join(BASE_DIR, "outputs/ranks_by_costs.xlsx"), index=False)
@@ -1853,6 +1861,7 @@ class Inventory:
         self.Tonnages_kt.to_excel(os.path.join(BASE_DIR, "outputs/choosen_mine/Tonnages_kt.xlsx"), index=False)
         self.Rank_AA_proc_cost.to_excel(os.path.join(BASE_DIR, "outputs/choosen_mine/Rank_by_AA_processing_cost.xlsx"), index=False)
 
+        print(self.tonnages_in_categories_df)
 
         dblist.append(db_conv.single_year_mult_out(self.linear_eqn_sb_df, "depth_splits_sedimentary_bauxite linear_eqn-depth_buckets_percent_tonnage_per_depth_range.xlsx"))
         dblist.append(db_conv.single_year_mult_out(self.depth_splits_sb_df, "depth_splits_sedimentary_bauxite depth_buckets-percent_tonnage_per_depth_range.xlsx"))

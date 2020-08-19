@@ -4,8 +4,9 @@ import time
 import inspect
 import datetime
 import csv
-from flatdbconverter import Flatdbconverter
-import connect
+from flatdb.flatdbconverter import Flatdbconverter
+from outputdb import uploadtodb
+# import connect
 
 ma_conv = Flatdbconverter("Aa Cost Model (CHN)")
 
@@ -1542,6 +1543,8 @@ db_list = [
 snapshot_output_data = pd.concat(db_list, ignore_index=True)
 snapshot_output_data = snapshot_output_data.loc[:, ma_conv.out_col]
 snapshot_output_data.to_csv("snapshot_output_data.csv", index=False)
+
+uploadtodb.upload(snapshot_output_data)
 
 print("Time taken to convet to flat db: {0} ".format(time.perf_counter() - maflat_time))
 

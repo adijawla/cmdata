@@ -14,7 +14,7 @@ from datetime import datetime
 server = 'magdb.database.windows.net'
 database = 'input_db'
 username = 'letmetry'
-password = 'Ins201799'
+password = 'T@lst0y50'
 driver= '{ODBC Driver 17 for SQL Server}'
      
 #tables not found in input_db 

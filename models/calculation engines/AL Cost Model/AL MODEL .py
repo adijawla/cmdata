@@ -5,7 +5,8 @@
 import pandas as pd
 import numpy as np
 import datetime 
-from flatdbconverter import Flatdbconverter
+from flatdb.flatdbconverter import Flatdbconverter
+from outputdb import uploadtodb
 
 ai_flat = Flatdbconverter("Al Cost Model")
 class AlCostModel():
@@ -1078,11 +1079,6 @@ db_list = [
 snapshot_output_data = pd.concat(db_list, ignore_index=True)
 snapshot_output_data = snapshot_output_data.loc[:, ai_flat.out_col]
 snapshot_output_data.to_csv("snapshot_output_data.csv")
-
-
-
-
-
-
+uploadtodb.upload(snapshot_output_data)
         
         

@@ -1,13 +1,13 @@
 import pandas as pd
-#from simply import *
 import warnings
-#import pyodbc
-#import connect
 import extension as et
-#from outputdb import uploadtodb
+from outputdb import uploadtodb
+from flatdb.flatdbconverter import Flatdbconverter
 warnings.filterwarnings("ignore")
 ids = ['county','expence','mine_status','Province','mine','Year']
 
+
+ch_flat = Flatdbconverter("China mining cost model")
 inputs = ['costinputs','lookup','rsdatabase','taxtrance']
 idname = ['county_id','expence_id','status_id','province_id','mine_id','year_id']
 x = et.inputprocess(ids,inputs,idname)
@@ -48,37 +48,57 @@ for i in range(13):
     taxtrans.at[i,"In Mine"] = y
 taxtrans.at[0,"In Mine"] = m
 empty = rsdatabase["empty"].tolist()
-data = {"province":rsdatabase["Province"].tolist(),
-        "County":rsdatabase["County"].tolist(),
-        "Mine":rsdatabase["Mine"].tolist(),
-        "Status":rsdatabase["Status"].tolist(),
-        "Tonnes Produced(kt)":rsdatabase["TonnesProduced"].tolist(),
-        "Grade (%Al2O3)":rsdatabase["GradeAl2O3"].tolist(),
-        "A/S":rsdatabase["AS"].tolist(),
-        "Mining Scale":rsdatabase["MiningScale"].tolist(),
-        "Mine Autonomous":rsdatabase["Dressingautolevel"].tolist(),
-        "%OpenPit":rsdatabase["MineTypeOpenPit"].tolist(),
-        "%Underground":rsdatabase["MineTypeUnderground"].tolist(),
-        "Depth Open Pit":rsdatabase["DepthOpenPit"].tolist(),
-        "Depth Underground":rsdatabase["DepthUnderground"].tolist(),
-        "Stripping ratio Open Pit":rsdatabase["StrippingRatioOpenPit"].tolist(),
-        "Stripping ratio Underground":rsdatabase["StrippingRatioUnderground"].tolist(),
-        "Dressing Automation Level":rsdatabase["Dressingautolevel"].tolist(),
-        "Distance Open Pit":rsdatabase["DistanceOpenPit"].tolist(),
-        "Distance Underground":rsdatabase["DistanceUnderground"].tolist(),
-        "Local Tax and fees":rsdatabase["LocalTaxandfees"].tolist(),
-        "Distance(to Refinery)":rsdatabase["Distance"].tolist(),
-        "Dressing Ratio":rsdatabase["DressingRatio"].tolist(),
+print(rsdatabase.columns)
+data = {"province":rsdatabase["province"].tolist(),
+        "County":rsdatabase["county"].tolist(),
+        "Mine":rsdatabase["mine"].tolist(),
+        "Status":rsdatabase["mine_status"].tolist(),
+        "Tonnes Produced(kt)":rsdatabase["tonnesproduced"].tolist(),
+        "Grade (%Al2O3)":rsdatabase["gradeal2o3"].tolist(),
+        "A/S":rsdatabase["asa"].tolist(),
+        "Mining Scale":rsdatabase["miningscale"].tolist(),
+        "Mine Autonomous":rsdatabase["dressingautolevel"].tolist(),
+        "%OpenPit":rsdatabase["minetypeopenpit"].tolist(),
+        "%Underground":rsdatabase["minetypeunderground"].tolist(),
+        "Depth Open Pit":rsdatabase["depthopenpit"].tolist(),
+        "Depth Underground":rsdatabase["depthunderground"].tolist(),
+        "Stripping ratio Open Pit":rsdatabase["strippingratioopenpit"].tolist(),
+        
+        """
+        Index(['status_id', 'mine_status', 'creation_date', 'updation_date', 'mine',
+       'mine_id', 'creation_date_x', 'updation_date_x', 'county_id', 'county',
+       'creation_date_y', 'updation_date_y', 'province_id', 'province',
+       'creation_date_x', 'updation_date_x', 'rsdatabase_id', 'tonnesproduced',
+       'gradeal2o3', 'asa', 'miningscale', 'mineautolevel', 'minetypeopenpit',
+       'minetypeunderground', 'depthopenpit', 'depthunderground',
+       'strippingratioopenpit', 'strippingratiounderground',
+       'dressingautolevel', 'distanceopenpit', 'distanceunderground',
+       'localtaxandfees', 'distance', 'dressingratio', 'empty',
+       'creation_date_y', 'updation_date_y'],
+      dtype='object')
+        """
+        
+        
+        
+       
+        
+        "Stripping ratio Underground":rsdatabase["strippingratiounderground"].tolist(),
+        "Dressing Automation Level":rsdatabase["dressingautolevel"].tolist(),
+        "Distance Open Pit":rsdatabase["distanceopenpit"].tolist(),
+        "Distance Underground":rsdatabase["distanceunderground"].tolist(),
+        "Local Tax and fees":rsdatabase["localtaxandfees"].tolist(),
+        "Distance(to Refinery)":rsdatabase["distance"].tolist(),
+        "Dressing Ratio":rsdatabase["dressingratio"].tolist(),
         #input data field ends here
-        "Mine Automation level":rsdatabase["Mineautolevel"].tolist() ,
-        "Open Pit":rsdatabase["DepthOpenPit"].tolist(),
-        "Underground":rsdatabase["DepthUnderground"].tolist(),
-        "Dressing automation level":rsdatabase["Dressingautolevel"].tolist(),
-        "Production":rsdatabase["TonnesProduced"].tolist(),
-        "Mine Type open":rsdatabase["MineTypeOpenPit"].tolist(),
-        "Mine Type underground":rsdatabase["MineTypeUnderground"].tolist(),
-        "Stripping ratio open pit":rsdatabase["StrippingRatioOpenPit"].tolist(),
-        "Stripping ratio underground":rsdatabase["StrippingRatioUnderground"].tolist(),
+        "Mine Automation level":rsdatabase["mineautolevel"].tolist() ,
+        "Open Pit":rsdatabase["depthopenpit"].tolist(),
+        "Underground":rsdatabase["depthunderground"].tolist(),
+        "Dressing automation level":rsdatabase["dressingautolevel"].tolist(),
+        "Production":rsdatabase["tonnesproduced"].tolist(),
+        "Mine Type open":rsdatabase["minetypeopenpit"].tolist(),
+        "Mine Type underground":rsdatabase["minetypeunderground"].tolist(),
+        "Stripping ratio open pit":rsdatabase["strippingratioopenpit"].tolist(),
+        "Stripping ratio underground":rsdatabase["strippingratiounderground"].tolist(),
         "total tonnes mined open pit":empty,
         "total tonnes mined underground":empty,
         #starts here
@@ -94,33 +114,33 @@ data = {"province":rsdatabase["Province"].tolist(),
         "open pit mining cost labour rate":empty,
         "open pit mining cost labour cost1":empty,
         "open pit mining cost labour cost2":empty,
-        "open pit mining cost distance":rsdatabase["DistanceOpenPit"].tolist(),
+        "open pit mining cost distance":rsdatabase["distanceopenpit"].tolist(),
         "open pit mining cost unit price":empty,
         "open pit mining cost freight cost1":empty,
         "open pit mining cost freight cost2":empty,
         "open pit mining cost total mining cost":empty,
-        "open pit mining cost stripping ratio":rsdatabase["StrippingRatioOpenPit"].tolist(),
+        "open pit mining cost stripping ratio":rsdatabase["strippingratioopenpit"].tolist(),
         "open pit mining cost ":empty,
-        "open pit Washing Cost dressing ratio":rsdatabase["DressingRatio"].tolist(),
+        "open pit Washing Cost dressing ratio":rsdatabase["dressingratio"].tolist(),
         "open pit Washing Cost automation & electricity usage low":empty,
         "open pit Washing Cost automation & electricity usage medium":empty,
         "open pit Washing Cost automation & electricity usage high":empty,
         "open pit Washing Cost electricity consumption":empty,
         "open pit Washing Cost electricity price":empty,
         "open pit Washing Cost electricity cost":empty,
-        "open pit Washing Cost diesel usage":[ costinputs.loc[costinputs.province==i]["Diesel Usage"].sum() for i in rsdatabase["Province"] ],
+        "open pit Washing Cost diesel usage":[ costinputs.loc[costinputs.province==i]["Diesel Usage"].sum() for i in rsdatabase["province"] ],
         "open pit Washing Cost diesel price":empty,
         "open pit Washing Cost diesel cost":empty,
-        "open pit Washing Cost automation & labour productivity low":[ costinputs.loc[costinputs.province==i]["open pit Washing Cost automation & labour productivity low"].sum() for i in rsdatabase["Province"] ],
-        "open pit Washing Cost automation & labour productivity medium":[ costinputs.loc[costinputs.province==i]["open pit Washing Cost automation & labour productivity medium"].sum() for i in rsdatabase["Province"] ],
-        "open pit Washing Cost automation & labour productivity high":[ costinputs.loc[costinputs.province==i]["open pit Washing Cost automation & labour productivity high"].sum() for i in rsdatabase["Province"] ] ,
+        "open pit Washing Cost automation & labour productivity low":[ costinputs.loc[costinputs.province==i]["open pit Washing Cost automation & labour productivity low"].sum() for i in rsdatabase["province"] ],
+        "open pit Washing Cost automation & labour productivity medium":[ costinputs.loc[costinputs.province==i]["open pit Washing Cost automation & labour productivity medium"].sum() for i in rsdatabase["province"] ],
+        "open pit Washing Cost automation & labour productivity high":[ costinputs.loc[costinputs.province==i]["open pit Washing Cost automation & labour productivity high"].sum() for i in rsdatabase["province"] ] ,
         "open pit Washing Cost labour productivity":empty,
         "open pit Washing Cost labour rate":empty,
         "open pit Washing Cost labour cost":empty,
         "open pit Washing Cost material usage":empty,
         "open pit Washing Cost material price":empty,
         "open pit Washing Cost material cost":empty,
-        "open pit Washing Cost water consumption":[ costinputs.loc[costinputs.province==i]["Water Consumption"].sum() for i in rsdatabase["Province"] ],
+        "open pit Washing Cost water consumption":[ costinputs.loc[costinputs.province==i]["Water Consumption"].sum() for i in rsdatabase["province"] ],
         "open pit Washing Cost water price":empty,
         "open pit Washing Cost water cost":empty,
         "open pit Washing Cost total dressing cost1":empty,
@@ -164,22 +184,22 @@ data = {"province":rsdatabase["Province"].tolist(),
         "underground mining cost labour rate":empty,
         "underground mining cost labour cost1":empty,
         "underground mining cost labour cost2":empty,
-        "underground mining cost distance":rsdatabase["DistanceUnderground"].tolist(),
+        "underground mining cost distance":rsdatabase["distanceunderground"].tolist(),
         "underground mining cost unit price":empty,
         "underground mining cost freight cost1":empty,
         "underground mining cost freight cost2":empty,
         "underground explosives":empty,
         "underground mining cost total mining cost":empty,
-        "underground mining cost stripping ratio":rsdatabase["StrippingRatioUnderground"].tolist(),
+        "underground mining cost stripping ratio":rsdatabase["strippingratiounderground"].tolist(),
         "underground mining cost ":empty,
-        "underground Washing Cost dressing ratio":rsdatabase["DressingRatio"].tolist(),
+        "underground Washing Cost dressing ratio":rsdatabase["dressingratio"].tolist(),
         "underground Washing Cost automation & electricity usage low":empty,
         "underground Washing Cost automation & electricity usage medium":empty,
         "underground Washing Cost automation & electricity usage high":empty,
         "underground Washing Cost electricity consumption":empty,
         "underground Washing Cost electricity price":empty,
         "underground Washing Cost electricity cost":empty,
-        "underground Washing Cost diesel usage":[ costinputs.loc[costinputs.province==i]["Diesel Usage"].sum() for i in rsdatabase["Province"] ],
+        "underground Washing Cost diesel usage":[ costinputs.loc[costinputs.province==i]["Diesel Usage"].sum() for i in rsdatabase["province"] ],
         "underground Washing Cost diesel price":empty,
         "underground Washing Cost diesel cost":empty,
         "underground Washing Cost automation & labour productivity low":empty,
@@ -212,11 +232,11 @@ data = {"province":rsdatabase["Province"].tolist(),
 
         
 
-        "other tax and fees":rsdatabase["LocalTaxandfees"].tolist(),
-        "resource tax":[ costinputs.loc[costinputs.province==i]["Resouce tax"].sum() for i in rsdatabase["Province"] ],
+        "other tax and fees":rsdatabase["localtaxandfees"].tolist(),
+        "resource tax":[ costinputs.loc[costinputs.province==i]["Resouce tax"].sum() for i in rsdatabase["province"] ],
         "total tax and fees":empty,
         "other proportional":empty,
-        "other fixed":[ costinputs.loc[costinputs.province==i]["Other Fixed"].sum() for i in rsdatabase["Province"] ] ,
+        "other fixed":[ costinputs.loc[costinputs.province==i]["Other Fixed"].sum() for i in rsdatabase["province"] ] ,
         "other cost":empty,
         "summary labour":empty,
         "summary energy":empty,
@@ -1436,4 +1456,6 @@ b['fsumother'] = dbi.db['fsumother']
 with pd.option_context('display.max_rows', None, 'display.max_columns', None):
     #ldb.to_csv('outputdata/snapshot_output_data.csv',index=False)
     a.to_csv("outputdata/costmodeloutput.csv")
+    data = ch_flat.single_year_mult_out(a,  "cost model output")
+    uploadtodb.upload(data)
     #b.to_csv("sumout.csv",index=False)

@@ -2,7 +2,8 @@ import time, os
 from pathlib import Path, PureWindowsPath
 import numpy  as np
 import pandas as pd
-from flatdbconverter import Flatdbconverter, upload
+from flatdb.flatdbconverter import Flatdbconverter
+from outputdb import uploadtodb
 import re
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -3131,37 +3132,40 @@ class CBIX2:
                 count += 1
 
             #Save files
-            for filepath, file in self.db.items():
-                dirname = PureWindowsPath(os.path.dirname(filepath))
-                Path(dirname).mkdir(parents=True, exist_ok=True)
+        for filepath, file in self.db.items():
+            dirname = PureWindowsPath(os.path.dirname(filepath))
+            Path(dirname).mkdir(parents=True, exist_ok=True)
 
-                # if os.path.exists(dirname):
-                #     dirname1 =  os.path.dirname(dirname)
-                #     if not os.path.exists(dirname1):
-                #         os.mkdir(dirname1)
-                # else:
-                #     os.mkdir(dirname)
+            if os.path.exists(dirname):
+                dirname1 =  os.path.dirname(dirname)
+                if not os.path.exists(dirname1):
+                    os.mkdir(dirname1)
+            else:
+                os.mkdir(dirname)
 
-                # store in flatdb
-                print(filepath)
-                filename = filepath.split('/')[-1].split('.')[0]
-                filename = f"{' '.join(filepath.split('/')[1:-1])} {filename}"
-                # if filepath.split('/')[-2] != "outputs":
-                #     filename = f"{filepath.split('/')[-2]} {filename}"
-                if filepath.split('/')[-2] != "data_tables":
-                    dblist.append(db_conv.single_year_mult_out(file, filename))
-                else:
-                    name = filepath.split('/')[-1].split('.')[0]
-                    if name == 'data_table_for_freights':
-                        dblist.append(db_conv.mult_year_single_output(file, filename, [[0,1]], [[1,]], label="Date"))
-                    elif name == 'freight_inputs_for_ROW_mining_model':
-                        dblist.append(db_conv.mult_year_single_output(file, filename, [[0,3]], [[3,]], label="Date"))
-                    elif name == 'price_forecast_datatable':
-                        dblist.append(db_conv.mult_year_single_output(file, filename, [[0,1]], [[1,]], label="Date"))
-                    elif name == 'viu_cost_data_table':
-                        dblist.append(db_conv.mult_year_single_output(file, filename, [[0,1]], [[1,]], label="Date"))
-                print(PureWindowsPath(os.path.join(BASE_DIR, filepath)))
+            # store in flatdb
+            print(filepath)
+            filename = filepath.split('/')[-1].split('.')[0]
+            filename = f"{' '.join(filepath.split('/')[1:-1])} {filename}"
+            # if filepath.split('/')[-2] != "outputs":
+            #     filename = f"{filepath.split('/')[-2]} {filename}"
+            if filepath.split('/')[-2] != "data_tables":
+                dblist.append(db_conv.single_year_mult_out(file, filename))
+            else:
+                name = filepath.split('/')[-1].split('.')[0]
+                if name == 'data_table_for_freights':
+                    dblist.append(db_conv.mult_year_single_output(file, filename, [[0,1]], [[1,]], label="Date"))
+                elif name == 'freight_inputs_for_ROW_mining_model':
+                    dblist.append(db_conv.mult_year_single_output(file, filename, [[0,3]], [[3,]], label="Date"))
+                elif name == 'price_forecast_datatable':
+                    dblist.append(db_conv.mult_year_single_output(file, filename, [[0,1]], [[1,]], label="Date"))
+                elif name == 'viu_cost_data_table':
+                    dblist.append(db_conv.mult_year_single_output(file, filename, [[0,1]], [[1,]], label="Date"))
+            print(PureWindowsPath(os.path.join(BASE_DIR, filepath)))
+            try:
                 file.to_excel(PureWindowsPath(os.path.join(BASE_DIR, filepath)), index=False)
+            except Exception as err:
+                print(err)
             self.db = {}
 
 
@@ -3183,6 +3187,6 @@ dbflat_time = time.perf_counter()
 snapshot_output_data = pd.concat(dblist, ignore_index=True)
 snapshot_output_data = snapshot_output_data.loc[: , db_conv.out_col]
 snapshot_output_data.to_csv("snapshot_output_data.csv", index=False)
-# upload(snapshot_output_data)
+uploadtodb.upload(snapshot_output_data)
 
 print("Total time taken for FlatDB Conversion : " + str(round((time.perf_counter() - dbflat_time) / 60, 2)))

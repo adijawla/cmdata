@@ -1,7 +1,7 @@
 import pandas as pd
 import math
 import warnings
-from flatdbconverter import Flatdbconverter
+from flatdb.flatdbconverter import Flatdbconverter
 from outputdb import uploadtodb
 db_conv = Flatdbconverter("Cost curve charting sheet")
 
@@ -286,6 +286,6 @@ dblist = [
 
 snapshot_output_data = pd.concat(dblist, ignore_index=True)
 snapshot_output_data = snapshot_output_data.loc[: , db_conv.out_col]
-snapshot_output_data.to_csv('snapshot_output_data.csv', index=False)
+# snapshot_output_data.to_csv('snapshot_output_data.csv', index=False)
 uploadtodb.upload(snapshot_output_data)
 

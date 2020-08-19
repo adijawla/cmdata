@@ -3,7 +3,8 @@
 import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
-from flatdbconverter import Flatdbconverter
+from flatdb.flatdbconverter import Flatdbconverter
+from outputdb import uploadtodb
 
 al_flat = Flatdbconverter("Quarterly Chart Pack")
 
@@ -1411,3 +1412,4 @@ dblist = [
 snapshot_output_data = pd.concat(dblist, ignore_index=True)
 snapshot_output_data = snapshot_output_data.loc[:, al_flat.out_col]
 snapshot_output_data.to_csv('snapshot_output_data.csv', index=False)
+uploadtodb.upload(snapshot_output_data)

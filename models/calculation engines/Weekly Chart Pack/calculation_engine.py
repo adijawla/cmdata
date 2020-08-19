@@ -2,7 +2,8 @@ import pandas as pd
 import datetime as dt
 import warnings
 from outputdb import uploadtodb
-from flatdbconverter import Flatdbconverter
+from flatdb.flatdbconverter import Flatdbconverter
+
 warnings.filterwarnings("ignore")
 
 db_conv = Flatdbconverter("Weekly Chart Pack")

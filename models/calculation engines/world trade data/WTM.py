@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 from statistics import mean 
 import math
-from flatdbconverter import Flatdbconverter
+from flatdb.flatdbconverter import Flatdbconverter
 from outputdb import uploadtodb
 
 wtd_flat = Flatdbconverter('Trade Data Term Sheet')
@@ -1414,13 +1414,18 @@ self1 = WorldTradeModel()
 self1.calc()
 
 snapshot_output_data = pd.concat(db_list, ignore_index=True)
-override_res = override_rows.values
-for i, v in enumerate(override_rows.index):
-    print(snapshot_output_data.loc[v], override_res[i])
-    snapshot_output_data.loc[v] = override_res[i]
-snapshot_output_data = snapshot_output_data.loc[:, wtd_flat.out_col]
-snapshot_output_data.to_csv("snapshot_output_data.csv", index=False)
+snapshot_output_data = snapshot_output_data.loc[:, q_flat.out_col]
 
-snapshot_output_data = snapshot_output_data
+try:
+    override_res = override_rows.values
+    for i, v in enumerate(override_rows.index):
+        print(snapshot_output_data.loc[v], )
+        set_it = snapshot_output_data.loc[v].values
+        print(override_res[i][-2:])
+        set_it[-2:] = override_res[i][-2:]
+        snapshot_output_data.loc[v] = set_it 
+except Exception as err:
+    print(err)
+    print("Error caught and skipped")
 
 uploadtodb.upload(snapshot_output_data)

@@ -9,7 +9,8 @@ import time
 import inspect
 import datetime
 import csv
-from flatdbconverter import Flatdbconverter
+from flatdb.flatdbconverter import Flatdbconverter
+from outputdb import uploadtodb
 
 a_flat = Flatdbconverter("Aa Price Forecast (CHN)")
 
@@ -2119,6 +2120,7 @@ dblist = [
 snapshot_output_data = pd.concat(dblist, ignore_index=True)
 snapshot_output_data = snapshot_output_data.loc[:, a_flat.out_col]
 snapshot_output_data.to_csv("snapshot_output_data.csv", index=False)
+uploadtodb.upload(snapshot_output_data)
 
 
 # pdt = PDT_Cost_Current(2022)

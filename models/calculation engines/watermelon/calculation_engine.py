@@ -1,8 +1,8 @@
 import pandas as pd
 import warnings
 import timer
-from flatdbconverter import Flatdbconverter, read_from_database
-import uploadtodb
+from flatdb.flatdbconverter import Flatdbconverter, read_from_database
+from outputdb import uploadtodb
 from watermelon_script import restruct
 
 warnings.filterwarnings("ignore")
@@ -611,7 +611,7 @@ snapshot_output_data = pd.concat(dblist, ignore_index=True)
 snapshot_output_data = snapshot_output_data.loc[:, db_conv.out_col]
 snapshot_output_data.to_csv("snapshot_output_data.csv", index=False)
 snapshot_output_data = snapshot_output_data
-# uploadtodb.upload(snapshot_output_data)
+uploadtodb.upload(snapshot_output_data)
 
 # reverse snapshot
 # reversed_data = db_conv.reverse(snapshot_output_data)

@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 # import connect
 # import uploadtodb
-from flatdbconverter import Flatdbconverter
+from flatdb.flatdbconverter import Flatdbconverter
 from outputdb import uploadtodb
 
 db_conv =  Flatdbconverter("ViU/Freight(CBIX)")

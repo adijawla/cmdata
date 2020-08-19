@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
 
-basedata = pd.read_csv('basedata.csv')
-meidata = pd.read_csv('meiaadata.csv')
+# basedata = pd.read_csv('basedata.csv')
+# meidata = pd.read_csv('meiaadata.csv')
 
 meidata_store = {"province_1": "Guangxi", "province_13": "Guizhou", "province_6": "Henan", "province_7": "Shanxi", "province_218": "Other"}
 years = [*map(str,range(2005, 2032))]

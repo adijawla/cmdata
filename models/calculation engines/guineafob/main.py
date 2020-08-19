@@ -1,7 +1,7 @@
 import time, os
 import numpy as np
 import pandas as pd
-from flatdbconverter import Flatdbconverter
+from flatdb.flatdbconverter import Flatdbconverter
 from outputdb import uploadtodb
 
 g_flat = Flatdbconverter("Guinea FOB Cost Model")
@@ -957,15 +957,23 @@ class GuineaFOB:
         ]
 
         snapshot_output_data = pd.concat(db_list, ignore_index=True)
-        override_res = override_rows.values
-        for i, v in enumerate(override_rows.index):
-            print(snapshot_output_data.loc[v], override_res[i])
-            snapshot_output_data.loc[v] = override_res[i]
+
+        try:
+            override_res = override_rows.values
+            for i, v in enumerate(override_rows.index):
+                print(snapshot_output_data.loc[v], )
+                set_it = snapshot_output_data.loc[v].values
+                print(override_res[i][-2:])
+                set_it[-2:] = override_res[i][-2:]
+                snapshot_output_data.loc[v] = set_it 
+        except Exception as err:
+            print(err)
+            print("Error caught and skipped")
+
         snapshot_output_data.to_csv("snapshot_output_data.csv", index=False)
         self.db.to_csv("outputs/guinea_fob_output.csv", index=False)
         print('uploading to output db')
         
-        snapshot_output_data = pd.read_csv(r'C:\Users\magmarkd\Desktop\signedoff_models\guinea_fob\snapshot_output_data.csv')
         #snapshot_output_data = snapshot_output_data.drop(['Unnamed: 0'], axis=1)        
         uploadtodb.upload(snapshot_output_data)
 

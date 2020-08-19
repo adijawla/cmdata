@@ -3,7 +3,7 @@ import math
 import warnings
 warnings.filterwarnings("ignore")
 import costcurvesdb
-from flatdbconverter import Flatdbconverter
+from flatdb.flatdbconverter import Flatdbconverter
 from outputdb import uploadtodb
 a,b = costcurvesdb.func()
 db_conv = Flatdbconverter("Cost curve charting sheet")
@@ -285,7 +285,7 @@ dblist = [
 
 ]
 snapshot_output_data = pd.concat(dblist, ignore_index=True)
-snapshot_output_data.to_csv('output.csv')
+# snapshot_output_data.to_csv('output.csv')
 uploadtodb.upload(snapshot_output_data)
 '''
 r.table1data.to_csv('outputdata/table1data.csv')

@@ -1,5 +1,6 @@
 import pandas as pd
-from flatdbconverter import Flatdbconverter, read_from_database, upload
+from flatdb.flatdbconverter import Flatdbconverter, read_from_database
+from outputdb import uploadtodb
 
 country = pd.read_csv('country.csv')
 country_lk = country.loc[:, ['country_Id', 'Country']].values
@@ -20,6 +21,6 @@ db_list = [model.single_year_mult_out(g.global_bx_input, 'Main table'),]
 snapshot_output_data = pd.concat(db_list, ignore_index=True)
 snapshot_output_data = snapshot_output_data.loc[:, model.out_col]
 snapshot_output_data.to_csv("snapshot_output_data.csv", index=False)
-upload(snapshot_output_data)
-reversed_model = model.reverse()
-print(reversed_model)
+uploadtodb.upload(snapshot_output_data)
+#reversed_model = model.reverse(snapshot_output_data)
+#print(reversed_model)

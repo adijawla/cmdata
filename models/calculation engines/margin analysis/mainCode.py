@@ -1,7 +1,7 @@
 
 
 import pandas as pd
-from flatdbconverter import Flatdbconverter
+from flatdb.flatdbconverter import Flatdbconverter
 import time
 from outputdb import uploadtodb
 
@@ -22,46 +22,46 @@ class marginAnalysis:
         
 
         # row mining inputs
-        row = pd.read_csv('row_mining_snapshot.csv')
-        all_rev = ma_conv.reverse(row, "ROW minind model", ["Collector Cash_Fob_(Us$-Dmt)", "Collector Full_Fob_(Us$-Dmt)", "Collector Cash_Cost_Cfr_(Us$-Dmt)", "Collector Full_Cost_Cfr_(Us$-Dmt)", "Collector Sustaining_Capital_(Us$-Dmt)", "Collector Capital_(Us$-Dmt)", "Collector Freight_(Us$-Dmt)", "Collector Moisture"])
-        all_rev = all_rev["ROW minind model"]
+        # row = pd.read_csv('row_mining_snapshot.csv')
+        # all_rev = ma_conv.reverse(row, "ROW minind model", ["Collector Cash_Fob_(Us$-Dmt)", "Collector Full_Fob_(Us$-Dmt)", "Collector Cash_Cost_Cfr_(Us$-Dmt)", "Collector Full_Cost_Cfr_(Us$-Dmt)", "Collector Sustaining_Capital_(Us$-Dmt)", "Collector Capital_(Us$-Dmt)", "Collector Freight_(Us$-Dmt)", "Collector Moisture"])
+        # all_rev = all_rev["ROW minind model"]
 
         # replaced here
 
-        # self.cashCost           = pd.read_csv('inputs\\Cash Cost CFR table.csv',  encoding='ISO-8859-1')
-        self.cashCost           = all_rev["Collector Cash_Cost_Cfr_(Us$-Dmt)"]
-        self.cashCost.columns   = self.cols1
+        self.cashCost           = pd.read_csv('inputs\\Cash Cost CFR table.csv',  encoding='ISO-8859-1')
+        # self.cashCost           = all_rev["Collector Cash_Cost_Cfr_(Us$-Dmt)"]
+        # self.cashCost.columns   = self.cols1
 
-        # self.sustCapital        = pd.read_csv('inputs\\Sustaining Capital table.csv',  encoding='ISO-8859-1')
-        self.sustCapital         = all_rev["Collector Sustaining_Capital_(Us$-Dmt)"]
-        self.sustCapital.columns = self.cols1
+        self.sustCapital        = pd.read_csv('inputs\\Sustaining Capital table.csv',  encoding='ISO-8859-1')
+        # self.sustCapital         = all_rev["Collector Sustaining_Capital_(Us$-Dmt)"]
+        # self.sustCapital.columns = self.cols1
 
-        # self.cashFOB            = pd.read_csv('inputs\\Cash FOB table.csv', encoding='ISO-8859-1')
-        self.cashFOB            = all_rev["Collector Cash_Fob_(Us$-Dmt)"]
-        self.cashFOB.columns    = self.cols1
+        self.cashFOB            = pd.read_csv('inputs\\Cash FOB table.csv', encoding='ISO-8859-1')
+        # self.cashFOB            = all_rev["Collector Cash_Fob_(Us$-Dmt)"]
+        # self.cashFOB.columns    = self.cols1
 
-        # self.capital            = pd.read_csv('inputs\\Capital table.csv', encoding='ISO-8859-1')
-        self.capital            = all_rev["Collector Capital_(Us$-Dmt)"]
-        self.capital.columns    = self.cols1
+        self.capital            = pd.read_csv('inputs\\Capital table.csv', encoding='ISO-8859-1')
+        # self.capital            = all_rev["Collector Capital_(Us$-Dmt)"]
+        # self.capital.columns    = self.cols1
 
-        # self.fullFOB            = pd.read_csv('inputs\\Full FOB table.csv', encoding='ISO-8859-1')
-        self.fullFOB            = all_rev["Collector Full_Fob_(Us$-Dmt)"]
-        self.fullFOB.columns    = self.cols1
+        self.fullFOB            = pd.read_csv('inputs\\Full FOB table.csv', encoding='ISO-8859-1')
+        # self.fullFOB            = all_rev["Collector Full_Fob_(Us$-Dmt)"]
+        # self.fullFOB.columns    = self.cols1
 
-        # self.freight            = pd.read_csv('inputs\\Freight table.csv', encoding='ISO-8859-1')
-        self.freight            = all_rev["Collector Freight_(Us$-Dmt)"]
-        self.freight.columns   = self.cols1
+        self.freight            = pd.read_csv('inputs\\Freight table.csv', encoding='ISO-8859-1')
+        # self.freight            = all_rev["Collector Freight_(Us$-Dmt)"]
+        # self.freight.columns   = self.cols1
 
-        # self.Moisture           = pd.read_csv('inputs\\Moisture table.csv', encoding='ISO-8859-1')
-        self.Moisture           = all_rev["Collector Moisture"]
-        self.Moisture.columns   = self.cols1
+        self.Moisture           = pd.read_csv('inputs\\Moisture table.csv', encoding='ISO-8859-1')
+        # self.Moisture           = all_rev["Collector Moisture"]
+        # self.Moisture.columns   = self.cols1
 
         self.CashPrice          = pd.read_csv('inputs\\Cash Price table.csv', encoding='ISO-8859-1')
         self.fullPrice          = pd.read_csv('inputs\\Full Price table.csv', encoding='ISO-8859-1')
 
-        # self.fullCostCFR        = pd.read_csv('inputs\\Full Cost CFR table.csv', encoding='ISO-8859-1')
-        self.fullCostCFR        = all_rev["Collector Full_Cost_Cfr_(Us$-Dmt)"]
-        self.fullCostCFR.columns = self.cols1
+        self.fullCostCFR        = pd.read_csv('inputs\\Full Cost CFR table.csv', encoding='ISO-8859-1')
+        # self.fullCostCFR        = all_rev["Collector Full_Cost_Cfr_(Us$-Dmt)"]
+        # self.fullCostCFR.columns = self.cols1
 
         self.viuCashCost        = pd.read_csv('inputs\\ViU Cash Cost CFR table.csv', encoding='ISO-8859-1')
         self.viuCashSustCapital = pd.read_csv('inputs\\ViU Cash Cost + Sustaining Capital CFR table.csv', encoding='ISO-8859-1')
