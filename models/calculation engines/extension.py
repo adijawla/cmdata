@@ -11,17 +11,26 @@ class inputprocess():
         server = 'magdb.database.windows.net'
         database = 'input_db'
         username = 'letmetry'
-        password = 'Ins201799'
+        password = 'T@lst0y50'
         driver= '{ODBC Driver 17 for SQL Server}'
         conn = pyodbc.connect('DRIVER='+driver+';PORT=1433;SERVER='+server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD='+ password)
         for i in ids:
             self.id_db.append(pd.read_sql_query("SELECT * FROM [dbo].["+str(i)+"]", conn))
-            self.id_db.name = i
+            self.id_db[-1].name = i
         for i in inputs:
             self.input_db.append(pd.read_sql_query("SELECT * FROM [dbo].["+str(i)+"]", conn))
-            self.input_db.name = i
+            self.input_db[-1].name = i
+            
             try:
-                self.input_db[i].drop(columns =["creation_date","updation_date"], inplace = True)
+                self.input_db[-1].drop(columns =["creation_date","updation_date"], inplace = True)
+            except:
+                pass
+            try:
+                self.input_db[-1].drop(columns =["creation_date_x","updation_date_x"], inplace = True)
+            except:
+                pass
+            try:
+                self.input_db[-1].drop(columns =["creation_date_y","updation_date_y"], inplace = True)
             except:
                 pass
 
@@ -46,7 +55,7 @@ class inputprocess():
         return self.input_db[i]
     def pivot(self,inputname,col,val,indx=[]):
         i = self.inputs.index(inputname)
-        if indx = []:
+        if indx == []:
             tc = list(self.input_db[i].columns)
             tc.remove(val)
             tc.remove(col)
