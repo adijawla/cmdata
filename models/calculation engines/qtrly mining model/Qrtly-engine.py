@@ -7,6 +7,7 @@ Created on Sun Aug  2 15:28:56 2020
 import pandas as pd
 from flatdb.flatdbconverter import Flatdbconverter
 import time
+from outputdb import uploadtodb
 
 q_flat = Flatdbconverter("Quarterly Chart Pack")
 
@@ -1130,3 +1131,4 @@ except Exception as err:
     print("Error caught and skipped")
 
 snapshot_output_data.to_csv("snapshot_output_data.csv", index=False)
+uploadtodb.upload(snapshot_output_data)
