@@ -36,21 +36,21 @@ def get_table_name():
     "MRN or Juruti max cargo",
     "Ship Time Charter Rates",
     "China n Importing Ports",
-    "China Price Series",
-    "processing factors",
-    "Mud disposal cost",
-    "Ship Fuel Prices",
+    "China Price Series", # not found
+    "processing factors", # not found 
+    "Mud disposal cost", # not found 
+    "Ship Fuel Prices", # not found
     "Lignitious Coal",
-    "Sheetname_Class",
-    "Global factors",
-    "Trade Details",
+    "Sheetname_Class",  # only store for cbix2 (using like that for now)
+    "Global factors", # found lime data here
+    "Trade Details", # not found
     "Port Linkages",
     "Canals_Class",
     "Caustic Soda",
-    "Ship Speeds",
-    "FX Rates",
+    "Ship Speeds", 
+    "FX Rates", # found incorrect dataframe
     "Canals",
-    "Lime",
+    "Lime", # lime found in global factors 😅
     ]
     # print(db_table_names)
     tablenames = [difflib.get_close_matches(a, db_table_names, n=1, cutoff=0.6) for a in tables]
@@ -59,13 +59,11 @@ def get_table_name():
         h = difflib.get_close_matches(a, db_table_names, n=1, cutoff=0.6)
         if len(h) > 0:
             print(h)
-            # st[a] = read_from_database(h[0]).to_csv(f"inp/{a}")
-
-    print(st)
-
+            st[a] = read_from_database(h[0]).to_csv(f"inp/{a}")
+    # print(st)
     print(tablenames)
 
-
+get_table_name()
 
 
 
@@ -111,8 +109,9 @@ def normalize_col(df, ref):
 
 # restruct all
 def restruct_all():
-    # not found: "Master date cell"
-
+    # master date cell
+    master_date_cell = read_from_database('Master_date_cell')
+    master_date_cell = master_date_cell.loc[master_date_cell["model_id"] == 'model_8']
 
     # cbix_coefficients_determination
     cbix_coefficients_determination = read_from_database('cbix_coefficients_determination')
@@ -123,7 +122,9 @@ def restruct_all():
     freights_perwmt_tradedata = read_from_database('freights_perwmt_tradedata')
     freights_perwmt_tradedata = freights_perwmt_tradedata.replace(store)
 
-    # not found: "Target CBIX Price"
+    # "Target CBIX Price"
+    target_cbix = read_from_database('Target_CBIX_Price')
+    target_cbix = target_cbix.loc[target_cbix["model_id"] == 'model_8']
 
     # indices mines exporting
     indices_Mines_Exporting_Ports = read_from_database('Indices_Mines_Exporting_Ports')
@@ -133,7 +134,9 @@ def restruct_all():
     special_leg_shipping = read_from_database('special_leg_shipping')
     special_leg_shipping = special_leg_shipping.replace(store)
 
-    # not found: MRN or Juruti max cargo
+    # MRN or Juruti max cargo
+    mrn_juruti = read_from_database('MRN_Juruti_max_cargo')
+
 
     # ship time charter rates
     Ship_Time_Charter_Rates = read_from_database('Ship_Time_Charter_Rates')
@@ -151,7 +154,11 @@ def restruct_all():
     Lignitious_Coal = read_from_database('Lignitious_Coal_caustic_soda')
     # caustic also in lignitious coal caustic soda
 
-    # not found: "Sheetname_Class" (vessel_class, vessel)
+    # only store for cbix2 (using like that for now)
+    Sheetname_Class = read_from_database('vessel_class')
+    Sheetname_Class = Sheetname_Class.loc[Sheetname_Class["model_id"] == 'model_8']
+    Sheetname_Class = Sheetname_Class.replace(store)
+
     
     Port_Linkages = read_from_database('Port_Linkages')
     Port_Linkages = Port_Linkages.loc[Port_Linkages["model_id"] == 'model_8']
@@ -175,6 +182,13 @@ def restruct_all():
     Canal = read_from_database('Canal')
     Canal = Canal.loc[Canal["model_id"] == 'model_8']
     Canal = Canal.replace(store)
+
+    lime = read_from_database('global_factors')
+
+
+    master_date_cell_col = {
+        "date": "Date"
+    }
 
     cbix_col = {
         "Date": "Date",
@@ -213,6 +227,10 @@ def restruct_all():
         "Old_CBIX_type_Calc": "Old CBIX type Calc"
     }
 
+    target_cbix_col = {
+        "target_cbix_price_CBIX_LT": "Target CBIX Price (CBIX LT)"
+    }
+
 
     indexes_col = {
         "mine_id": "Mine",
@@ -249,6 +267,10 @@ def restruct_all():
         "First_Leg_1": "First Leg 1",
         "First_Leg_2": "First Leg 2",
         "Typical_River_Capable_Cargo": "Typical River Capable Cargo (dmt)"
+    }
+
+    mrn_juruti_col = {
+        "MRN_Juruti_max_cargo_single_leg_shipping": "MRN/Juruti max cargo single leg shipping"
     }
 
 
@@ -294,6 +316,11 @@ def restruct_all():
         "Date": "Date",
         "Lignitious_Coal_Price_RMB_t_exc_VAT": "Lignitious Coal Price(RMB/t)(exc VAT)",
         "Energy_value_kcal_kg": "Energy value (kcal/kg)"
+    }
+
+    Sheetname_Class_col = {
+        "DWT_tonnes": "DWT< tonnes",
+        "vessel_id": "class"
     }
 
     caustic_soda_col = {
@@ -416,22 +443,35 @@ def restruct_all():
         "Cargo_Tarrifs_rem": "Cargo Tarrifs – rem",
         "Days_delay": "Days delay"
     }
+
+    lime_col = {
+        "date": "Date",
+        "lime": "Lime Price (RMB/t)"
+    }
     
     result = {
+        "master_date_cell": normalize_col(master_date_cell, master_date_cell_col),
         "cbix_coefficients_determination": normalize_col(cbix_coefficients_determination, cbix_col),
         "freights_perwmt_tradedata": normalize_col(freights_perwmt_tradedata, freight_col),
+        "target_cbix": normalize_col(target_cbix, target_cbix_col),
         "indices_Mines_Exporting_Ports": normalize_col(indices_Mines_Exporting_Ports, indexes_col),
         "special_leg_shipping": normalize_col(special_leg_shipping, special_leg_shipping_col),
+        "mrn_juruti": normalize_col(mrn_juruti, mrn_juruti_col),
         "Ship_Time_Charter_Rates": normalize_col(Ship_Time_Charter_Rates, Ship_Time_Charter_Rates_col),
         "China_Importing_Ports": normalize_col(China_Importing_Ports, China_Importing_Ports_col),
         "Lignitious_Coal": normalize_col(Lignitious_Coal, Lignitious_Coal_col),
+        "sheetname_class": normalize_col(Sheetname_Class, Sheetname_Class_col),
         "caustic_soda": normalize_col(Lignitious_Coal, caustic_soda_col),
         "Port_Linkages": normalize_col(Port_Linkages, Port_Linkages_col),
         "Canals_Class": normalize_col(Canals_Class, Canals_Class_col),
         "ship_speed": normalize_col(ship_speed, ship_speed_col),
-        "canal": normalize_col(Canal, canals_col)
+        "canal": normalize_col(Canal, canals_col),
+        "lime": normalize_col(lime, lime_col)
     }
-    print(result)
+
+    for a in result.keys():
+        result[a].to_csv(f"outs/{a}.csv")
+    # print(result)
     return result
 
 # def match_col_name(df, db_df):
