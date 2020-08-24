@@ -1080,5 +1080,3 @@ snapshot_output_data = pd.concat(db_list, ignore_index=True)
 snapshot_output_data = snapshot_output_data.loc[:, ai_flat.out_col]
 snapshot_output_data.to_csv("snapshot_output_data.csv")
 uploadtodb.upload(snapshot_output_data)
-        
-        
