@@ -128,28 +128,7 @@ class TDP:
         self.use_translator = use_translator
         self.input_filename = "trade data processing inputs.xlsx"
         self.trade_data_inputs = pd.read_excel(self.input_filename, sheet_name="raw data")
-        # data = translate_data(shape_data(self.trade_data_inputs.columns, 10))
-        # print(data.values())
-        # translated_header = self.trade_data_inputs.copy()
-        # translated_header.columns = [a.title() for a in data.values()]
-        # translated_header.to_excel("translated header.xlsx")
-        # with open("lookup.txt", "w", encoding="utf-8") as fr:
-        #     for a in data.keys():
-        #         fr.write(f"{list(data.keys()).index(a)} {a}  {data[a].title()}\n")
-        #     arr = []
-        #     b = [37, 17, 4, 18, 21, 50, 33, 34, 8, 9, 10, 11, 13, 12, 14, 16, 15, 7, 6, 23, 24, 25, 26, 5, 70, 32, 20, 30, 72, 35, 36, 46, 47, 48, 49, 55, 40, 41, 42, 43, 44, 45, 3]
-        #     for i in b:
-        #         arr.append(list(data.values())[i-1].title())
-        #     fr.write('"~"'.join(arr))
-        #     print("done")
         self.force_use_trans = force_use_trans
-        # convert to ints
-        # df2 = self.trade_data_inputs.apply(lambda x: pd.to_numeric(x.astype(str).str.replace(',',''), errors='coerce'))
-        # self.trade_data_inputs = df2.fillna(self.trade_data_inputs)
-        # print(self.trade_data_inputs)
-        # if not self.use_translator:
-        #     self.lookup_input = pd.read_excel(self.input_filename, sheet_name="lookup")
-    
         self.dp_input = pd.read_excel(self.input_filename, sheet_name="data processing")
         self.trade_data_inputs.fillna(value=0, inplace=True)
         self.db = pd.concat([pd.DataFrame(columns=["Reference Key"]), self.trade_data_inputs], axis=1)
@@ -282,10 +261,6 @@ class TDP:
         indexes = [37, 17, 4, 18, 21, 50, 33, 34, 8, 9, 10, 11, 13, 12, 14, 16, 15, 7, 6, 23, 24, 25, 26, 5, 70, 32, 20, 30, 72, 35, 36, 46, 47, 48, 49, 55, 40, 41, 42, 43, 44, 45, 3]
         cols = ["Trade Method", "Month", "Declaration Date", "Production And Sales Country", "Foreign Ports", "Country Of Trade", "Destination", "Transaction Method", "Amount Usd", "Unit Price Usd", "Rmb", "Unit Price Rmb", "Currency", "Transaction Currency Amount", "Transaction Currency Price", "Declared Quantity Unit", "Declared Quantity", "Legal Quantity", "Legal Quantity Unit", "Gross Weight", "Net Weight", "Weight Unit", "Metric Ton", "Company Name", "Receiving And Shipping Company Name", "Domestic Receiving And Dispatching Place", "Chinese Port", "Customs Declaration", "Import And Export Port", "Transportation Method", "Transportation Name", "Number", "Package", "Fob Or Cif Usd", "Fob Or Cif Usd Unit Price", "Enterprise Nature", "Freight", "Freight Currency System", "Insurance Fee", "Insurance Fee Currency System", "Miscellaneous Fee", "Miscellaneous Fee Currency", "Product Specification Model"]
         # rest = self.raw_data_and_tiding.iloc[:, indexes]
-        # with open("enc.txt", "w", encoding="utf-8") as fr:
-        #     for i in indexes:
-        #         fr.write(f"{i}  {self.raw_data_and_tiding.columns[i]}\n")
-        #     print("done")
         rest = self.raw_data_and_tiding.loc[:, cols]
         self.data_to_be_processed = pd.concat([self.data_to_be_processed, rest], axis=1)
         timer.stop()
