@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from flatdb.flatdbconverter import Flatdbconverter
+from flatdb.flatdbconverter import Flatdbconverter, read_from_database
 from outputdb import uploadtodb
 
 db_conv = Flatdbconverter("Bauxite grades in use field study results")
@@ -13,7 +13,10 @@ def make_unique(data, enc):
     return cols.values
 
 collector = pd.read_csv("collector_2391.csv")
-bx = pd.read_csv('input/as_ratio_bauxite_grades.csv')
+# bx = pd.read_csv('input/as_ratio_bauxite_grades.csv')
+bx = read_from_database('as_ratio_bauxite_grades')
+bx = bx.loc[:, ['Date', 'Shanxi','Henan','Guizhou','Guangxi']]
+print(bx)
 bx["Date"] = make_unique(bx["Date"], '.')
 
 col_names = ['Date', 'Shanxi','Henan','Guizhou','Guangxi', 'Shanxi_1','Henan_1','Guizhou_1' ,'Guangxi_1', 'Shanxi Forecast','Henan Forecast','Guizhou Forecast','Guangxi Forecast']
