@@ -2477,8 +2477,7 @@ b1_depdata22 = db_conv.mult_year_single_output(b1.depdata22, "Collector 2384")
 b1_depdata23 = db_conv.mult_year_single_output(b1.depdata23, "Collector 2391")
 b1_depdata24 = db_conv.mult_year_single_output(b1.depdata24, "Collector 118")
 b1_depdata25 = db_conv.mult_year_single_output(b1.depdata25, "Collector 684")
-
-b1_db = db_conv.multi_year_multi_out(b1.db, "All Refinery Sheet Codeups", col_params=[(0, 'Refinery'), (1, 'Province'), (2, 'Fields')])
+# b1_db = db_conv.multi_year_multi_out(b1.db, "All Refinery Sheet Codeups", col_params=[(0, 'Refinery'), (1, 'Province'), (2, 'Fields')])
 b1_proddata1 = db_conv.mult_year_single_output(b1.proddata1, 'Base Production')
 b1_proddata2 = db_conv.mult_year_single_output(b1.proddata2, 'Tonnages of bauxite consumed by each refinery split by major province ')
 b1_proddata3 = db_conv.mult_year_single_output(b1.proddata3, 'Total Tonnages of bauxite consumed by each refinery')
@@ -2536,7 +2535,7 @@ b1_depdata22,
 b1_depdata23,
 b1_depdata24,
 b1_depdata25,
-b1_db,
+# b1_db,
 b1_proddata1,
 b1_provincialdb,
 b1_proddata2,
@@ -2582,12 +2581,16 @@ r_bfdb,
 r_hdb,
 r_totaldb,
 r_newallocdb]
+
+print("here")
+for i in sheets:
+    dblist.append(db_conv.multi_year_multi_out(b1.db.loc[i], f"refinery {i}"))
+    b1.db.loc[i].to_csv(f"ddm/outputdata/refinery/{i}.csv")
+
 snapshot_output_data = pd.concat(dblist, ignore_index=True)
 snapshot_output_data = snapshot_output_data.loc[:, db_conv.out_col]
 snapshot_output_data.to_csv("snapshot_output_data.csv", index=False)
 print("Time taken to convet to flat db: {0}".format(time.perf_counter() - dbflat_time))
-# for i in sheet:
-#     dblist.append(b1.db.loc[i])   
 # tdb = reltoflat(dblist,cnxn)            
 # pd.to_csv("ddm/outputdata/snapshot_output_data.csv")
 '''
