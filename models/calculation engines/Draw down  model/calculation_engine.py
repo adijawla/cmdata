@@ -2584,8 +2584,8 @@ r_newallocdb]
 
 print("here")
 for i in sheets:
-    dblist.append(db_conv.multi_year_multi_out(b1.db.loc[i], f"refinery {i}"))
     b1.db.loc[i].to_csv(f"ddm/outputdata/refinery/{i}.csv")
+    dblist.append(db_conv.multi_year_multi_out(b1.db.loc[i], f"refinery {i}", col_params=[(0, 'Province'), (1, 'Fields')]))
 
 snapshot_output_data = pd.concat(dblist, ignore_index=True)
 snapshot_output_data = snapshot_output_data.loc[:, db_conv.out_col]
