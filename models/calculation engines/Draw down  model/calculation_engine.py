@@ -136,6 +136,12 @@ class Bauxite():
         self.depdata17 = pd.read_csv("ddm/depdatae2.csv") # collector 2409
         self.depdata18 = pd.read_csv("ddm/depdatae2.csv") # collector 2417
         self.depdata19 = pd.read_csv("ddm/depdatae2.csv") # collector 2085
+        self.depdata20 = pd.read_csv("ddm/depdatae2.csv") # collector 2360
+        self.depdata21 = pd.read_csv("ddm/depdatae2.csv") # collector 2377
+        self.depdata22 = pd.read_csv("ddm/depdatae2.csv") # collector 2384
+        self.depdata23 = pd.read_csv("ddm/depdatae2.csv") # collector 2391
+        self.depdata24 = pd.read_csv("ddm/proddatae2.csv") # collector 118
+        self.depdata25 = pd.read_csv("ddm/proddatae2.csv") # collector 684
         self.bauxitedata1 = pd.read_csv("ddm/bauxitedatae.csv") # # cockpit 188
         self.bauxitedata2 = pd.read_csv("ddm/bauxitedatae.csv") # cockpit 204
         self.cockpitdata1 = pd.read_csv("ddm/cockpit3rdPartySwitching.csv")
@@ -164,6 +170,8 @@ class Bauxite():
         # self.pr2 = [a.lower() for a in self.pr2]
         self.pr1 = [a.lower() for a in self.pr1]
         self.pr = [*self.pr1]
+        self.years = list(map(str,range(int(self.init_col)+1, int(self.depdata15.columns[-1])+1)))
+        print(self.years)
         print(self.pr)
         timer.stop()
 
@@ -546,6 +554,9 @@ class Bauxite():
                 self.db.at[idx[sheet,province, "Grade Profile Alumina Grade"], self.init_col:str(int(self.init_col)+1)] = ag
                 self.db.at[idx[sheet,province, "Grade Profile Silica Grade"], self.init_col:str(int(self.init_col)+1)] = sg
                 self.db.at[idx[sheet,province, "A/S ratio draw-down"], self.init_col:str(int(self.init_col)+1)] = rdd
+                self.depdata24.loc[(self.depdata24['refinery'] == sheet) & (self.depdata24['province'] == province), str(int(self.init_col)+1)] = ag[1]
+                self.depdata25.loc[(self.depdata25['refinery'] == sheet) & (self.depdata25['province'] == province), str(int(self.init_col)+1)] = sg[1]
+
         # print('reserve', b)
         # print(self.db.loc[(sheet, province, "Grade Profile Alumina Grade")])
         timer.stop()
@@ -621,6 +632,9 @@ class Bauxite():
                 put(self.db,sheet,province,"Grade Profile Alumina Grade",year,a_result)
                 put(self.db,sheet,province,"Grade Profile Silica Grade",year,s_result)
                 put(self.db,sheet,province,"A/S ratio draw-down",year, rdd_result)
+                self.depdata24.loc[(self.depdata24['refinery'] == sheet) & (self.depdata24['province'] == province), year] = a_result 
+                self.depdata25.loc[(self.depdata25['refinery'] == sheet) & (self.depdata25['province'] == province), year] = s_result 
+
                 if a_result != a_result or s_result != s_result:
                     print(a_alpha, a_beta, ap_sg, ap_dg, s_alpha, s_beta, sp_sg, sp_dg, usage, cs, prev_rdd, cs_outlook_tot, close_stock )
                     print(a_result, s_result, rdd_result)
@@ -1746,6 +1760,63 @@ class Bauxite():
                 put(self.db,sheet,province,"Sourcing Mix",year,value)
         timer.stop(end=True)
 
+    """
+    timer.start()
+        self.depdata13[year] = self.depdata13[year].astype(float)
+        for i in range(5):
+            if i < 4:
+                v = self.proddata2.loc[self.proddata2.Province==self.depdata13['category'][i]][self.proddata2.bauxite==self.depdata13['bauxite'][i]][year].sum()
+            else:
+                v = (self.proddata2.loc[self.proddata2.bauxite==self.depdata13['bauxite'][i]][year].sum())-(self.depdata13[year][0]+self.depdata13[year][1]+self.depdata13[year][2]+self.depdata13[year][3])
+            self.depdata13.at[i,year] = v
+        self.depdata13.at[5,year] = self.proddata2.loc[self.proddata2.bauxite== self.depdata13.loc[4, 'bauxite']][year].sum() #checked formula
+        timer.stop()
+    """
+
+    def calcdep20(self): # collector 2360
+        timer.start()
+        print(self.proddata2.columns)
+        for year in self.years:
+            self.depdata20[year] = self.depdata20[year].astype(float)
+            for i in range(5):
+                v = self.proddata2.loc[self.proddata2["province"]== self.depdata20['category'][i]][self.proddata2.bauxite==self.depdata20['bauxite'][i]][year].sum()
+                self.depdata20.at[i,year] = v
+            self.depdata20.at[5,year] = self.proddata2.loc[self.proddata2.bauxite== self.depdata20.loc[4, 'bauxite']][year].sum() #checked formula
+        timer.stop()
+
+    def calcdep21(self): # collector 2377
+        for year in self.years:
+            self.depdata21[year] = self.depdata21[year].astype(float)
+            for i in range(5):
+                if self.depdata20.at[i,year] > 0:
+                    a = self.proddata2.loc[self.proddata2.province==self.depdata21['category'][i]][self.proddata2.bauxite==self.depdata21['bauxite'][i]][year]
+                    b = self.depdata24.loc[self.depdata24.province==self.depdata21['category'][i]][self.depdata24.bauxite==self.depdata21['bauxite'][i]][year]
+                    v = (a * b).sum()/self.depdata20.at[i,year]
+                    self.depdata21.at[i,year] = v
+                else: 
+                    self.depdata21.at[i,year] = 0
+            self.depdata21.at[5,year] = self.depdata21.loc[:, year].sum() #checked formula
+
+    def calcdep22(self): # collector 2384
+        for year in self.years:
+            self.depdata22[year] = self.depdata22[year].astype(float)
+            for i in range(5):
+                if self.depdata20.at[i,year] > 0:
+                    a = self.proddata2.loc[self.proddata2.province==self.depdata21['category'][i]][self.proddata2.bauxite==self.depdata21['bauxite'][i]][year]
+                    b = self.depdata25.loc[self.depdata25.province==self.depdata21['category'][i]][self.depdata25.bauxite==self.depdata21['bauxite'][i]][year]
+                    v = (a * b).sum()/self.depdata20.at[i,year]
+                    self.depdata22.at[i,year] = v
+                else:
+                    self.depdata22.at[i,year] = 0
+            self.depdata22.at[5,year] = self.depdata22.loc[: , year].sum() #checked formula
+
+    def calcdep23(self): # collector 2391s
+        for i in range(5):
+            m = self.depdata22.loc[i, self.years]
+            n = self.depdata21.loc[i, self.years]
+            v = [n[i]/m[i] if m[i] > 0 else 0 for i in range(len(m))]
+            self.depdata23.loc[i, self.years] = v
+
     def calc_cir_ref(self):
         pass
 
@@ -1878,11 +1949,14 @@ class Bauxite():
         Bauxite.closing_stock_portion_of_total(self,year)
         Bauxite.cs_outlook_total(self,year)
 
-
-
-
         if int(post_year) < 2032:
             Bauxite.alumina_silica_ratio_grade(self,post_year)
+
+    def calc_single_rest(self):
+        Bauxite.calcdep20(self)
+        Bauxite.calcdep21(self)
+        Bauxite.calcdep22(self)
+        Bauxite.calcdep23(self)
 
             
 
@@ -2324,6 +2398,7 @@ def calc2():
         print(y)
         b1.calc_in_seq(y)
         # break
+    b1.calc_single_rest()
 
 calc1()
 print('Start of bauxite circular ref')
@@ -2336,6 +2411,13 @@ r.calcall2(b1.proddata10)
 # loop.run_until_complete(calc2())
 
 print('Total time taken to run bauxite {0} secs'.format(time.perf_counter() - st))
+
+b1.depdata20.to_csv('ddm/outputdata/collector2360_depdata20.csv', index=False)
+b1.depdata21.to_csv('ddm/outputdata/collector2377_depdata21.csv', index=False)
+b1.depdata22.to_csv('ddm/outputdata/collector2384_depdata22.csv', index=False)
+b1.depdata23.to_csv('ddm/outputdata/collector2391_depdata23.csv', index=False)
+b1.depdata24.to_csv('ddm/outputdata/collector118_depdata24.csv', index=False)
+b1.depdata25.to_csv('ddm/outputdata/collector684_depdata25.csv', index=False)
 
 b1.db.to_csv('ddm/outputdata/wholerefinery.csv')
 b1.proddata1.to_csv('ddm/outputdata/capprod137_proddata1output.csv',index=False)
@@ -2389,8 +2471,13 @@ r.newallocdb.to_csv('ddm/outputdata/newallocdb.csv',index=False)
 print("Convert to flab db output")
 dbflat_time = time.perf_counter()
 # @halim there is dataframe called whole refinery which is b1.db is missing , if defined please name it "All Refinery Sheet Codeups Output"
-
-b1_db = db_conv.multi_year_multi_out(b1.db, "All Refinery Sheet Codeups", col_params=[(0, 'Refinery'), (1, 'Province'), (2, 'Fields')])
+b1_depdata20 = db_conv.mult_year_single_output(b1.depdata20, "Collector 2360")
+b1_depdata21 = db_conv.mult_year_single_output(b1.depdata21, "Collector 2377")
+b1_depdata22 = db_conv.mult_year_single_output(b1.depdata22, "Collector 2384")
+b1_depdata23 = db_conv.mult_year_single_output(b1.depdata23, "Collector 2391")
+b1_depdata24 = db_conv.mult_year_single_output(b1.depdata24, "Collector 118")
+b1_depdata25 = db_conv.mult_year_single_output(b1.depdata25, "Collector 684")
+# b1_db = db_conv.multi_year_multi_out(b1.db, "All Refinery Sheet Codeups", col_params=[(0, 'Refinery'), (1, 'Province'), (2, 'Fields')])
 b1_proddata1 = db_conv.mult_year_single_output(b1.proddata1, 'Base Production')
 b1_proddata2 = db_conv.mult_year_single_output(b1.proddata2, 'Tonnages of bauxite consumed by each refinery split by major province ')
 b1_proddata3 = db_conv.mult_year_single_output(b1.proddata3, 'Total Tonnages of bauxite consumed by each refinery')
@@ -2442,7 +2529,13 @@ r_newallocdb = db_conv.single_year_mult_out(r.newallocdb, 'Bx allocation Tonnage
 snapshot_output_data = pd.DataFrame(columns=db_conv.out_col)
 dblist = [
 snapshot_output_data,
-b1_db,
+b1_depdata20,
+b1_depdata21,
+b1_depdata22,
+b1_depdata23,
+b1_depdata24,
+b1_depdata25,
+# b1_db,
 b1_proddata1,
 b1_provincialdb,
 b1_proddata2,
@@ -2488,12 +2581,16 @@ r_bfdb,
 r_hdb,
 r_totaldb,
 r_newallocdb]
+
+print("here")
+for i in sheets:
+    dblist.append(db_conv.multi_year_multi_out(b1.db.loc[i], f"refinery {i}"))
+    b1.db.loc[i].to_csv(f"ddm/outputdata/refinery/{i}.csv")
+
 snapshot_output_data = pd.concat(dblist, ignore_index=True)
 snapshot_output_data = snapshot_output_data.loc[:, db_conv.out_col]
 snapshot_output_data.to_csv("snapshot_output_data.csv", index=False)
 print("Time taken to convet to flat db: {0}".format(time.perf_counter() - dbflat_time))
-# for i in sheet:
-#     dblist.append(b1.db.loc[i])   
 # tdb = reltoflat(dblist,cnxn)            
 # pd.to_csv("ddm/outputdata/snapshot_output_data.csv")
 '''

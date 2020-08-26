@@ -129,13 +129,6 @@ class TDP:
         self.input_filename = "trade data processing inputs.xlsx"
         self.trade_data_inputs = pd.read_excel(self.input_filename, sheet_name="raw data")
         self.force_use_trans = force_use_trans
-        # convert to ints
-        # df2 = self.trade_data_inputs.apply(lambda x: pd.to_numeric(x.astype(str).str.replace(',',''), errors='coerce'))
-        # self.trade_data_inputs = df2.fillna(self.trade_data_inputs)
-        # print(self.trade_data_inputs)
-        # if not self.use_translator:
-        #     self.lookup_input = pd.read_excel(self.input_filename, sheet_name="lookup")
-    
         self.dp_input = pd.read_excel(self.input_filename, sheet_name="data processing")
         self.trade_data_inputs.fillna(value=0, inplace=True)
         self.db = pd.concat([pd.DataFrame(columns=["Reference Key"]), self.trade_data_inputs], axis=1)
@@ -153,44 +146,44 @@ class TDP:
         self.is_number_mapper()
         self.get_to_data_to_be_processed()
         # if self.use_translator:
-        self.translate_unique_col_names(['贸易方式', '产销国', '国外港口', '币种', '申报数量单位','法定数量单位', '重量单位', '境内收发货地', '运输方式', '包装形式', '企业性质', '企业名称', '收发货企业名称', '中国港口', '贸易国', '申报海关', '目的地', '进出口岸'])
+        self.translate_unique_col_names(['Trade Method', 'Production And Sales Country', 'Foreign Ports', 'Currency', 'Declared Quantity Unit', 'Legal Quantity Unit', 'Weight Unit', 'Domestic Receiving And Dispatching Place', 'Transportation Method', 'Package', 'Enterprise Nature', 'Company Name', 'Receiving And Shipping Company Name', 'Chinese Port', 'Country Of Trade', 'Customs Declaration', 'Destination', 'Import And Export Port'])
         self.write_col(0, "Data Index Key")
-        self.lookup_translated_data("贸易方式", "Type of Trade", 'Trade Type' )
+        self.lookup_translated_data("Trade Method", "Type of Trade", 'Trade Type' )
         self.write_col(2, "Month")
         self.write_col(3, "Date of Declaration")
-        self.lookup_translated_data('产销国', 'Country Names', 'Producing Country')
-        self.lookup_translated_data('贸易国', 'Country Names', 'Trading Country')
-        self.lookup_translated_data('目的地', 'Country Names', 'Destination')
-        self.lookup_translated_data('国外港口', 'Port of Loading', 'Port of Loading')
+        self.lookup_translated_data('Production And Sales Country', 'Country Names', 'Producing Country')
+        self.lookup_translated_data('Country Of Trade', 'Country Names', 'Trading Country')
+        self.lookup_translated_data('Destination', 'Country Names', 'Destination')
+        self.lookup_translated_data('Foreign Ports', 'Port of Loading', 'Port of Loading')
         self.write_col(8, "Price Type")
         self.write_col(9, 'USD Gross Amount')
         self.write_col(10, 'USD Price')
         self.write_col(11, 'RMB Gross Amount')
         self.write_col(12, 'RMB Price')
-        self.lookup_translated_data('币种', 'Currency', 'Currency')
+        self.lookup_translated_data('Currency', 'Currency', 'Currency')
         self.write_col(14, 'Gross Amount of Trading Currency')
         self.write_col(15, 'Price of Trading Currency')
-        self.lookup_translated_data('申报数量单位', 'Unit of Declared Quantity', 'Unit of Declared Quantity')
+        self.lookup_translated_data('Declared Quantity Unit', 'Unit of Declared Quantity', 'Unit of Declared Quantity')
         self.write_col(17, 'Declared Quantity')
         self.write_col(18, 'Legal Quantity')
-        self.lookup_translated_data('法定数量单位', 'Unit of Declared Quantity', 'Unit of Legal Quantity')
+        self.lookup_translated_data('Legal Quantity Unit', 'Unit of Declared Quantity', 'Unit of Legal Quantity')
         self.write_col(20, 'Gross Weight')
         self.write_col(21, 'Net Weight')
-        self.lookup_translated_data('重量单位', 'Unit of Declared Quantity' , 'Legal Unit of Measurement')
+        self.lookup_translated_data('Weight Unit', 'Unit of Declared Quantity' , 'Legal Unit of Measurement')
         self.write_col(23, 'Metric Tons')
-        self.lookup_translated_data('企业名称', 'Company Name', 'Company Name')
-        self.lookup_translated_data('收发货企业名称', 'Company Name', 'Recepient Company Name', )
-        self.lookup_translated_data('境内收发货地', 'Recepient Location', 'Recepient Location')
-        self.lookup_translated_data('中国港口', 'Port of Landing', 'Chinese Port')
-        self.lookup_translated_data('申报海关', 'Port of Landing', 'Port of Declaration')
-        self.lookup_translated_data('进出口岸', 'Port of Landing', 'Customs')
-        self.lookup_translated_data('运输方式', 'Transportation Method', 'Transportation Method' )
+        self.lookup_translated_data('Company Name', 'Company Name', 'Company Name')
+        self.lookup_translated_data('Receiving And Shipping Company Name', 'Company Name', 'Recepient Company Name', )
+        self.lookup_translated_data('Domestic Receiving And Dispatching Place', 'Recepient Location', 'Recepient Location')
+        self.lookup_translated_data('Chinese Port', 'Port of Landing', 'Chinese Port')
+        self.lookup_translated_data('Customs Declaration', 'Port of Landing', 'Port of Declaration')
+        self.lookup_translated_data('Import And Export Port', 'Port of Landing', 'Customs')
+        self.lookup_translated_data('Transportation Method', 'Transportation Method', 'Transportation Method' )
         self.write_col(31, 'Name of Vessel')
         self.write_col(32, 'Number of Cargo')
-        self.lookup_translated_data('包装形式', 'Packaging Method', 'Method of Packaging')
+        self.lookup_translated_data('Package', 'Packaging Method', 'Method of Packaging')
         self.write_col(34, 'FOB/CIF Gross USD')
         self.write_col(35, 'FOB/CIF USD Price')
-        self.lookup_translated_data('企业性质', 'Nature of Business', 'Nature of Business')
+        self.lookup_translated_data('Enterprise Nature', 'Nature of Business', 'Nature of Business')
         self.write_col(37, 'Freight Rate')
         self.write_col(38, 'Currency of Freight Rate')
         self.write_col(39, 'Insurance')
@@ -198,7 +191,7 @@ class TDP:
         self.write_col(41, 'Other Charges')
         self.write_col(42, 'Currency of Other Charges')
         if self.use_translator:
-            self.lookup_translated_data('产品规格型号', None, 'Specifications')
+            self.lookup_translated_data('Product Specification Model', None, 'Specifications')
         else:
             self.write_col(43, 'Specifications')
         # # AL203
@@ -236,13 +229,13 @@ class TDP:
         self.regency_workings()
         self.get_all_h2O()
         self.extract_needed_col()
-        self.translate_unique_col_names(['产品规格型号'], 35)
-        self.lookup_translated_data('产品规格型号', None, 'Specifications')
+        self.translate_unique_col_names(['Product Specification Model'], 35)
+        self.lookup_translated_data('Product Specification Model', None, 'Specifications')
         self.final_data["Specs and Description"] = self.processed_data['Specifications']
 
     def convert(self):
         timer.start()
-        self.db.loc[:, '申报日期'] = self.db.loc[:, '申报日期'].map(lambda x: x.date())
+        self.db.loc[:, 'Declaration Date'] = self.db.loc[:, 'Declaration Date'].map(lambda x: x.date())
         for i in range(self.db.shape[0]):            
             if i <= 3234:
                 self.db.at[i, "Reference Key"] = f'{self.db.iloc[i, 4].strftime("%Y%m%d")} 1'
@@ -266,9 +259,9 @@ class TDP:
         timer.start()
         self.data_to_be_processed.loc[:, "Data Index Key"] = self.raw_data_and_tiding["Reference Key"]
         indexes = [37, 17, 4, 18, 21, 50, 33, 34, 8, 9, 10, 11, 13, 12, 14, 16, 15, 7, 6, 23, 24, 25, 26, 5, 70, 32, 20, 30, 72, 35, 36, 46, 47, 48, 49, 55, 40, 41, 42, 43, 44, 45, 3]
-        # cols = ["贸易方式", "月度", "申报日期", "产销国", "国外港口", "贸易国", "目的地", "成交方式", "金额美元", "单价美元", "人民币", "单价人民币", "币种", "交易币种金额", "交易币种价格", "申报数量单位", "申报数量", "法定数量", "法定数量单位", "毛重", "净重", "重量单位", "公吨", "企业名称", "收发货企业名称", "境内收发货地", "中国港口", "申报海关", "进出口岸", "运输方式", "运输工具名称", "件数", "包装形式", "FOB或CIF美元", "FOB或CIF美元单价", "企业性质", "运费", "运费币制", "保险费", "保险费币制", "杂费", "杂费币制", "产品规格型号"]
-        rest = self.raw_data_and_tiding.iloc[:, indexes]
-        # rest = self.raw_data_and_tiding.loc[:, cols]
+        cols = ["Trade Method", "Month", "Declaration Date", "Production And Sales Country", "Foreign Ports", "Country Of Trade", "Destination", "Transaction Method", "Amount Usd", "Unit Price Usd", "Rmb", "Unit Price Rmb", "Currency", "Transaction Currency Amount", "Transaction Currency Price", "Declared Quantity Unit", "Declared Quantity", "Legal Quantity", "Legal Quantity Unit", "Gross Weight", "Net Weight", "Weight Unit", "Metric Ton", "Company Name", "Receiving And Shipping Company Name", "Domestic Receiving And Dispatching Place", "Chinese Port", "Customs Declaration", "Import And Export Port", "Transportation Method", "Transportation Name", "Number", "Package", "Fob Or Cif Usd", "Fob Or Cif Usd Unit Price", "Enterprise Nature", "Freight", "Freight Currency System", "Insurance Fee", "Insurance Fee Currency System", "Miscellaneous Fee", "Miscellaneous Fee Currency", "Product Specification Model"]
+        # rest = self.raw_data_and_tiding.iloc[:, indexes]
+        rest = self.raw_data_and_tiding.loc[:, cols]
         self.data_to_be_processed = pd.concat([self.data_to_be_processed, rest], axis=1)
         timer.stop()
     
@@ -400,7 +393,7 @@ class TDP:
         timer.start()
         values = ["W-Kalimantan", "CBG", "Bel Air", "Spain Refractory", "Bintan", "W-Kalimantan", "SMB-WAP", "Bel Air", "Awaso", "W-Kalimantan", "Rennell Island", "Weipa", "Juruti", "Bauxite Hills", "Bintan", "Huntly", "SMB-WAP", "Gove", "Rennell Island", "Weipa", "Gove", "Gujarat", "Kuantan"]
         keys = ["关" ,"古" ,"夫" ,"WEIPA" ,"RENN" ,"GOVE" ,"KATOUGOUMA" ,"KWINANA" ,"BINTAN" ,"SKARDON" ,"JURUTI" ,"韦帕" ,"伦内尔" ,"西加" ,"AWASO" ,"VERGA" ,"几内亚/博凯" ,"WEST KAL" ,"TANJUNG" ,"西班牙" ,"BEL AIR" ,"CBG" ,"加里曼丹" ]
-        specs = np.array(self.data_to_be_processed.loc[:, '产品规格型号'])
+        specs = np.array(self.data_to_be_processed.loc[:, 'Product Specification Model'])
         hardcoded = np.array(self.dp_input["Regency workings 2"])
         mapped_values = dict(zip(keys, values[::-1]))
         reg_format = '|'.join(mapped_values.keys())
@@ -422,7 +415,7 @@ class TDP:
         h20_from_gross_weight = np.array(self.processed_data["H2O from Gross Weight & Net Weight"])
         n_h20 = [re.sub(r'[^0-9.]', '-', str(a)) for a in h20_7]
         # print(n_h20)
-        result = np.array([h20_7[i] if n_h20[i][0] is not '-' else h20_from_gross_weight[i] for i in np.arange(len(h20_from_gross_weight))])
+        result = np.array([h20_7[i] if n_h20[i][0] != '-' else h20_from_gross_weight[i] for i in np.arange(len(h20_from_gross_weight))])
         self.processed_data["H2O"] = result
         df2 = pd.to_numeric(self.processed_data["H2O"],errors='coerce')
         self.processed_data["H2O"] = df2.fillna(self.processed_data["H2O"])
