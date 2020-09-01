@@ -7,12 +7,18 @@ import difflib
 # basedata = pd.read_csv('basedata.csv')
 # meidata = pd.read_csv('meiaadata.csv')
 
+engine = create_engine("mssql+pyodbc://letmetry:T@lst0y50@magdb.database.windows.net:1433/input_db?driver=ODBC+Driver+17+for+SQL+Server")
 def read_from_database(table):
-    engine = create_engine("mssql+pyodbc://letmetry:T@lst0y50@magdb.database.windows.net:1433/input_db?driver=ODBC+Driver+17+for+SQL+Server")
     query = f'SELECT * FROM {table}'
     data = pd.read_sql(sql=query, con=engine)
     # converts number strings to numeric
-    return data.apply(lambda x: pd.to_numeric(x.astype(str).str.replace(',',''), errors='coerce')).fillna(data)
+    # df1 = data.copy()
+    # df1 = df1.loc[:].str.strip('"').strip('$')
+    if "Date" in data.columns:
+        data["Date"] = data["Date"].astype('datetime64[ns]')
+    if "date" in data.columns:
+        data["date"] = data["date"].astype('datetime64[ns]')
+    return data.apply(lambda x: pd.to_numeric(x.astype(str).str.strip('"').str.strip('$').str.replace(',',''), errors='coerce')).fillna(data)
 
 
 def read_tables():
@@ -36,23 +42,25 @@ def get_table_name():
     "MRN or Juruti max cargo",
     "Ship Time Charter Rates",
     "China n Importing Ports",
-    "China Price Series", # not found
-    "processing factors", # not found 
-    "Mud disposal cost", # not found 
-    "Ship Fuel Prices", # not found
+    "China Price Series", # mud disposal needs to completed in china price series table
+    "processing factors",
+    "Mud disposal cost",
+    "Ship Fuel Prices", # lNG column missing
     "Lignitious Coal",
-    "Sheetname_Class",  # only store for cbix2 (using like that for now)
-    "Global factors", # found lime data here
-    "Trade Details", # not found
+    "Sheetname_Class",  
+    "Global factors", # needs special treatment
+    "Trade Details", 
     "Port Linkages",
     "Canals_Class",
     "Caustic Soda",
     "Ship Speeds", 
-    "FX Rates", # found incorrect dataframe
+    "FX Rates", # "fUS$ per US$"  and  "IMF Special Drawing Rights to US Dollar" columns are missing
     "Canals",
     "Lime", # lime found in global factors 😅
     ]
     # print(db_table_names)
+
+
     tablenames = [difflib.get_close_matches(a, db_table_names, n=1, cutoff=0.6) for a in tables]
     st = {}
     for a in tables:
@@ -63,25 +71,7 @@ def get_table_name():
     # print(st)
     print(tablenames)
 
-get_table_name()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# caustic = read_from_database('caustic')
-
-
-
+# get_table_name()
 
 
 
@@ -102,10 +92,16 @@ currency_store = dict(currency.loc[:, ['currency_id', 'currency']].values)
 store = {**canal_store, **mine_store, **port_store, **vessel_store, **currency_store}
 # not found: lime
 
-def normalize_col(df, ref):
+def normalize_col(df, ref, nan_col=[], percent_col=[]):
     df = df.rename(columns=ref)
     df = df.loc[:, ref.values()]
+    df = df.reset_index(drop=True)
+    if len(percent_col) > 0:
+        df.loc[:, percent_col] = df.loc[:, percent_col].apply(lambda x: x.astype(str).str.strip('%').astype('float') / 100.0 )
+    if len(nan_col) > 0:
+        df.loc[:, nan_col] = df.loc[:,nan_col].replace(0, np.nan)
     return df
+
 
 # restruct all
 def restruct_all():
@@ -116,11 +112,15 @@ def restruct_all():
     # cbix_coefficients_determination
     cbix_coefficients_determination = read_from_database('cbix_coefficients_determination')
     cbix_coefficients_determination = cbix_coefficients_determination.replace(store)
+    cbix_coefficients_determination = cbix_coefficients_determination.replace({0: np.nan, "0": np.nan})
+    # cbix_coefficients_determination = make_nan(cbix_coefficients_determination, ["Total Alumina","LT Avail. Alumina","Total Silica","LT R.Silica","Quartz / HT Silica","Mono-hydrate / HT Extble Alumina","Moisture","Exporting_Port"])
 
     
     # freight
     freights_perwmt_tradedata = read_from_database('freights_perwmt_tradedata')
+    # freights_perwmt_tradedata = make_nan(freights_perwmt_tradedata, ["Exporting_Port"])
     freights_perwmt_tradedata = freights_perwmt_tradedata.replace(store)
+    freights_perwmt_tradedata = freights_perwmt_tradedata.replace({0: np.nan, "0": np.nan})
 
     # "Target CBIX Price"
     target_cbix = read_from_database('Target_CBIX_Price')
@@ -136,6 +136,7 @@ def restruct_all():
 
     # MRN or Juruti max cargo
     mrn_juruti = read_from_database('MRN_Juruti_max_cargo')
+    # mrn_juruti["MRN_Juruti_max_cargo_single_leg_shipping"] = mrn_juruti["MRN_Juruti_max_cargo_single_leg_shipping"].str.strip('"').strip(',').as_float() 
 
 
     # ship time charter rates
@@ -146,17 +147,27 @@ def restruct_all():
     China_Importing_Ports = read_from_database('China_Importing_Ports')
     China_Importing_Ports = China_Importing_Ports.loc[China_Importing_Ports["model_id"] == 'model_8']
     China_Importing_Ports =  China_Importing_Ports.replace(store)
+    China_Importing_Ports = China_Importing_Ports.replace({0: np.nan, "0": np.nan})
     
     # not found: "China Price Series"
 
     #not found: processing factor
+    processing_factors = read_from_database('processing_factors')
+    processing_factors["spare"] = np.nan
+
+    # mud disposal
+    mud_disposal = read_from_database("lime_mud_disposal")
+
+    # ship fuel prices
+    ship_fuel_prices = read_from_database("Ship_Fuel_Prices")
+    ship_fuel_prices["LNG"] = np.nan
+    ship_fuel_prices = ship_fuel_prices.replace({0: np.nan, "0": np.nan})
 
     Lignitious_Coal = read_from_database('Lignitious_Coal_caustic_soda')
     # caustic also in lignitious coal caustic soda
 
     # only store for cbix2 (using like that for now)
     Sheetname_Class = read_from_database('vessel_class')
-    Sheetname_Class = Sheetname_Class.loc[Sheetname_Class["model_id"] == 'model_8']
     Sheetname_Class = Sheetname_Class.replace(store)
 
     
@@ -164,8 +175,17 @@ def restruct_all():
     Port_Linkages = Port_Linkages.loc[Port_Linkages["model_id"] == 'model_8']
     Port_Linkages = Port_Linkages.replace(store)
 
-    global_factors = read_from_database('global_factors') # incomplete
+    temp_global_factors = read_from_database('cbix_global_factors') # incomplete
+    print(temp_global_factors)
+    global_factor = pd.DataFrame(columns=["Date", *temp_global_factors["global_factor"]])
+    global_factor.loc[0] = [temp_global_factors["Date"][0], *temp_global_factors["value"]]
+    print(global_factor)
     # not found: "Trade Details" 
+
+    trade_details = read_from_database('Trade_Details')
+    trade_details["exporting_port"] = trade_details["exporting_port"].replace(0, np.nan) 
+    trade_details = trade_details.replace(store)
+    trade_details = trade_details.replace({0: np.nan, "0": np.nan})
 
     # canal class
     Canals_Class = read_from_database('Canals_Class')
@@ -173,10 +193,15 @@ def restruct_all():
     Canals_Class = Canals_Class.replace(store)
 
     # not found: fx rates
+    fx_rates = read_from_database("fxrates_withdates")
+    fx_rates = fx_rates.loc[fx_rates["model_id"] == 'model_8']
+    fx_rates = fx_rates.replace(store)
+    fx_rates = fx_rates.replace({0: np.nan, "0": np.nan})
 
     # ship speed
     ship_speed = read_from_database('ship_speed')
     ship_speed = ship_speed.loc[ship_speed["model_id"] == 'model_8']
+    ship_speed = ship_speed.replace(store)
 
     # canal
     Canal = read_from_database('Canal')
@@ -186,7 +211,7 @@ def restruct_all():
     lime = read_from_database('global_factors')
 
 
-    master_date_cell_col = {
+    master_date_cell_col = { 
         "date": "Date"
     }
 
@@ -209,13 +234,27 @@ def restruct_all():
         "port_id": "Importing Port",
         "Final_Specs_Price_Type": "Final Specs Price Type",
         "Final_Specs_Price_Basis": "Final Specs Price Basis",
-        "Old_CBIX_type_Calc": "Old CBIX type Cal"
+        "Old_CBIX_type_Calc": "Old CBIX type Calc"
     }
 
     # [Quartz / HT Silica	Mono-hydrate / HT Extble Alumina	Moisture	Tonnage	Exporting Port	Importing Port	Final Specs Price Type	Final Specs Price Basis	Old CBIX type Calc]
     # freights_perwmt_tradedata_id,Date,CM_Data_Source,mine_id,Price,Price_Type,Price_Basis,Total_Alumina,LT_Avail_Alumina,Total_Silica,LT_R_Silica,Quartz_HT_Silica,Mono_hydrate_HT_Extble_Alumina,Moisture,Tonnage,Exporting_Port,Importing_Port,Final_Specs_Price_Type,Final_Specs_Price_Basis,Old_CBIX_type_Calc,creation_date,updation_date
 
+    # Date,CM_Data_Source,mine_id,Price,Price_Type,Price_Basis,Total_Alumina,LT_Avail_Alumina,Total_Silica,LT_R_Silica
+    # Date	CM Data Source	Mine	Price	Price Type	Price Basis	Total Alumina	LT Avail. Alumina	Total Silica	LT R.Silica
+
+
     freight_col = {
+        "Date": "Date",
+        "CM_Data_Source": "CM Data Source",
+        "mine_id": "Mine",
+        "Price": "Price",
+        "Price_Type": "Price Type",
+        "Price_Basis": "Price Basis",
+        "Total_Alumina": "Total Alumina",
+        "LT_Avail_Alumina": "LT Avail. Alumina",
+        "Total_Silica": "Total Silica",
+        "LT_R_Silica": "LT R.Silica",
         "Quartz_HT_Silica": "Quartz / HT Silica",
         "Mono_hydrate_HT_Extble_Alumina": "Mono-hydrate / HT Extble Alumina",
         "Moisture": "Moisture",
@@ -281,10 +320,7 @@ def restruct_all():
         "Vessel_Time_Charter_Rates": "Vessel Time Charter Rates"
     }
 
-    # China_Importing_Ports_id,model_id,port_id,Date,Unloading_rate_Handysize,Unloading_rate_Supramax,Unloading_rate_Panamax,Unloading_rate_NeoPanamax,Unloading_rate_Suezmax,Unloading_rate_Capesize,Unloading_rate_VLOC,Currency,RMB_Fixed_fee,RMB_per_day_berthed,RMB_per_day_anchored,RMB_T_Cargo_wet,RMB_T_Cargo_wet_day_berthed,RMB_T_Cargo_wet_day_anchored,RMB_NRT,RMB_NRT_day_berthed,RMB_NRT_day_anchored,RMB_GRT,RMB_GRT_day_berthed,RMB_GRT_day_anchored,RMB_LOA,RMB_LOA_day_berthed,RMB_LOA_day_anchored,creation_date,updation_date
-
-    # Port	Date	Unloading rate Handysize	Unloading rate Supramax	Unloading rate Panamax	Unloading rate NeoPanamax	Unloading rate Suezmax	Unloading rate Capesize	Unloading rate VLOC	Currency	RMB Fixed fee	RMB per day berthed	RMB per day anchored	RMB/T_Cargo (wet)	RMB/T_Cargo (wet)/day berthed	RMB/T_Cargo (wet)/day anchored	RMB/NRT	RMB/NRT/day berthed	RMB/NRT/day anchored	RMB/GRT	RMB/GRT/day berthed	RMB/GRT/day anchored	RMB/LOA	RMB/LOA/day berthed	RMB/LOA/day anchored	spare	spare	spare	spare	Comment
-
+    
 
     China_Importing_Ports_col = {
         "port_id": "Port",
@@ -302,14 +338,47 @@ def restruct_all():
         "RMB_per_day_anchored": "RMB per day anchored",
         "RMB_T_Cargo_wet": "RMB/T_Cargo (wet)",
         "RMB_T_Cargo_wet_day_berthed": "RMB/T_Cargo (wet)/day berthed",
-        "RMB_T_Cargo_wet_day_anchored": "RMB/GRT/day anchored",
-        "RMB_NRT": "RMB/LOA",
-     	"RMB_NRT_day_berthed": "RMB/NRT/day berthed",
+        "RMB_T_Cargo_wet_day_anchored": "RMB/T_Cargo (wet)/day anchored",
+        "RMB_NRT": "RMB/NRT",
+        "RMB_NRT_day_berthed": "RMB/NRT/day berthed",
         "RMB_NRT_day_anchored": "RMB/NRT/day anchored",
+        "RMB_GRT": "RMB/GRT",
+        "RMB_GRT_day_berthed": "RMB/GRT/day berthed",
+        "RMB_GRT_day_anchored": "RMB/GRT/day anchored",
         "RMB_LOA": "RMB/LOA",
         "RMB_LOA_day_berthed": "RMB/LOA/day berthed",
         "RMB_LOA_day_anchored": "RMB/LOA/day anchored",
+    }
 
+    processing_factors_col = {
+        "date": "Date",
+        "processing_regime": "Processing Regime",
+        "ht_alumina_dissolution": "HT Alumina Dissolution",
+        "dsp_al2o3_sio2_wt_wt": "DSP Al2O3:SiO2 (wt/wt)",
+        "dsp_naoh_sio2_wt_wt": "DSP NaOH:SiO2 (wt/wt)",
+        "lime_rate_wt_wt_aa": "Lime rate (wt/wt_AA)",
+        "lig_coal_gj_t": "Lig Coal (GJ/t)",
+        "quartz_attack": "Quartz Attack",
+        "extraction_efficiency": "Extraction Efficiency %",
+        "caustic_wash_loss_t_naoh_t_aa": "Caustic wash loss (t.NaOH/t.aa)",
+        "spare": "spare"
+    }
+
+
+    mud_disposal_col = {
+        # "lime_price_rmb_t": "",
+        "date": "Date",
+        "mud_disposal_cost_price_rmb_t_mud_dry": "Mud disposal cost Price (RMB/t.mud dry)"
+    }
+
+    ship_fuel_prices_col = {
+        "date": "Date",
+        "fuel_region": "Fuel Region",
+        "hsfo_180_380": "HSFO(180 / 380)",
+        "vlsfo": "VLSFO",
+        "LNG": "LNG",
+        "mdo_mgo_regular": "MDO/MGO Regular",
+        "mdo_mgo_low_sulphur": "MDO/MGO Low Sulphur"
     }
 
     Lignitious_Coal_col = {
@@ -320,7 +389,7 @@ def restruct_all():
 
     Sheetname_Class_col = {
         "DWT_tonnes": "DWT< tonnes",
-        "vessel_id": "class"
+        "vessel_id": "Class"
     }
 
     caustic_soda_col = {
@@ -383,7 +452,67 @@ def restruct_all():
         "Handysize_Main_Engine_Fuel": "Handysize – Main Engine Fuel",
         "Handysize_Auxiliary_Fuel": "Handysize – Auxiliary Fuel",
         "Handysize_Canals_used": "Handysize – Canals used"
-    }   
+    }  
+    
+     
+
+    global_factor_col = {
+        "Date": "Date",
+        "kcal_per_GJ": "kcal per GJ",
+        "conversion_kt_to_t": "conversion kt to t",
+        "hours_per_day": "hours per day",
+        "legs_per_round_trip": "legs per round trip",
+        "shipping_profit_rate": "shipping profit rate",
+        "Alumina_mol_weight": "Alumina mol weight",
+        "Silica_Mol_Wt": "Silica Mol Wt",
+        "Kaolinite_(Al2O3_2SiO2_2H20)_-_Al2O3:SiO2_ratio": "Kaolinite (Al2O3.2SiO2.2H20) - Al2O3:SiO2 ratio",
+        "Max_%_of_vessel_deadweight_allowed_for_loading": "Max % of vessel deadweight allowed for loading",
+        "LOA_estimate_correlation_multiplier": "LOA estimate correlation multiplier",
+        "LOA_estimate_correlation_constant": "LOA estimate correlation constant",
+        "NRT_estimate_correlation_multiplier": "NRT estimate correlation multiplier",
+        "NRT_estimate_correlation_constant": "NRT estimate correlation constant",
+        "GRT_estimate_correlation_multiplier": "GRT estimate correlation multiplier",
+        "GRT_estimate_correlation_constant": "GRT estimate correlation constant",
+        "Minimum_Lay_days_allowed": "Minimum Lay days allowed",
+        "Minimum_Lay_days_allowed_as_%_of_sailing_time": "Minimum Lay days allowed as % of sailing time",
+        "Lay_allowance_Loading_port": "Lay allowance Loading port",
+        "Extra_time_tie_up_+_untie_at_each_port": "Extra time tie up + untie at each port",
+        "MDO_MGO_burn_vessel_DWT_denominator": "MDO/MGO burn vessel DWT denominator",
+        "MDO_MGO_burn_vessel_DWT_slope": "MDO/MGO burn vessel DWT slope",
+        "MDO_MGO_burn_vessel_DWT_constant": "MDO/MGO burn vessel DWT constant",
+        "Main_engine_burn_vessel_DWT_denominator": "Main engine burn vessel DWT denominator",
+        "Main_engine_burn_vessel_DWT_exponent": "Main engine burn vessel DWT exponent",
+        "Main_engine_burn_speed_linear_coefficient": "Main engine burn speed linear coefficient",
+        "Main_engine_burn_speed_^2_coefficient": "Main engine burn speed ^2 coefficient",
+        "Main_engine_burn_speed_^3_coefficient": "Main engine burn speed ^3 coefficient",
+        "Main_engine_burn_overall_correction_factor": "Main engine burn overall correction factor",
+        "Reference_Port": "Reference Port",
+        "Freight_Insurance_Rate": "Freight Insurance Rate",
+        "Freight_Commission": "Freight Commission"
+    }
+
+    
+    trade_details_col = {
+        "date": "Date",
+        "cm_data_source": "CM Data Source",
+        "mine_id": "Mine",
+        "price": "Price",
+        "price_type": "Price Type",
+        "price_basis": "Price Basis",
+        "total_alumina": "Total Alumina",
+        "lt_avail_alumina": "LT Avail. Alumina",
+        "total_silica": "Total Silica",
+        "lt_r_silica": "LT R.Silica",
+        "quartz_ht_silica": "Quartz / HT Silica",
+        "mono_hydrate_ht_extble_alumina": "Mono-hydrate / HT Extble Alumina",
+        "moisture": "Moisture",
+        "tonnage": "Tonnage",
+        "exporting_port": "Exporting Port",
+        "port_id": "Importing Port",
+        "final_specs_price_type": "Final Specs Price Type",
+        "final_specs_price_basis": "Final Specs Price Basis",
+        "old_cbix_type_calc": "Old CBIX type Calc",
+    }
 
 
     Canals_Class_col = {
@@ -397,6 +526,16 @@ def restruct_all():
         "vessel_id": "Vesssel class",
         "vessel_cruising_speed": "Vessel Cruising speed"
     }
+
+
+    fx_rates_col = {
+        "date": "Date",
+        "rmb_per_us": "RMB per US$",
+        "au_per_us": "AU$ per US$",
+        "fus_per_us": "US$ per US$",
+        "imf_special_drawing_rights_to_us_dollar": "IMF Special Drawing Rights to US Dollar"
+    }
+
 
     canals_col = {
         "Date": "Date",			
@@ -448,25 +587,57 @@ def restruct_all():
         "date": "Date",
         "lime": "Lime Price (RMB/t)"
     }
+
+    # assemble chine price series
+    a_mud_disposal = mud_disposal.rename(columns={'date': "Mud_Date"})
+    a_mud_disposal.drop(['creation_date', 'updation_date'], inplace=True, axis=1)
+    lime.drop(['creation_date', 'updation_date'], inplace=True, axis=1)
+    Lignitious_Coal.drop(['creation_date', 'updation_date'], inplace=True, axis=1)
+    Lignitious_Coal["Date1"] = Lignitious_Coal["Date"]
+    a = Lignitious_Coal.join(lime)
+    china_price_series = a.join(a_mud_disposal)
+    # china_price_series = pd.concat([Lignitious_Coal, lime, a_mud_disposal], axis='col' )
+
+    china_price_series_col = {
+        "Date": "Lignitious Coal – Date",
+        "Lignitious_Coal_Price_RMB_t_exc_VAT": "Lignitious Coal – Price",
+        "Energy_value_kcal_kg": "Lignitious Coal – Energy value",
+        "Date1": "Caustic Soda – Date",
+        "Caustic_Soda_Price_RMB_t_exc_VAT": "Caustic Soda – Price",
+        "Grade": "Caustic Soda – Grade",
+        "date": "Lime – Date",
+        "lime": "Lime – Price",
+        "Mud_Date": "Mud disposal cost - Date",
+        "mud_disposal_cost_price_rmb_t_mud_dry": "Mud disposal cost – Price"
+    }
+
+    china_price_series.loc[:, ["Date", "Date1", "date", "Mud_Date"]] = china_price_series.loc[:, ["Date", "Date1", "date", "Mud_Date"]].astype("datetime64[ns]")
     
     result = {
         "master_date_cell": normalize_col(master_date_cell, master_date_cell_col),
-        "cbix_coefficients_determination": normalize_col(cbix_coefficients_determination, cbix_col),
-        "freights_perwmt_tradedata": normalize_col(freights_perwmt_tradedata, freight_col),
+        "cbix_coefficients_determination": normalize_col(cbix_coefficients_determination, cbix_col, ["Total Alumina","LT Avail. Alumina","Total Silica","LT R.Silica","Quartz / HT Silica","Mono-hydrate / HT Extble Alumina","Moisture", "Exporting Port"], ["Total Alumina","LT Avail. Alumina","Total Silica","LT R.Silica","Quartz / HT Silica","Mono-hydrate / HT Extble Alumina","Moisture", "Exporting Port"]),
+        "freights_perwmt_tradedata": normalize_col(freights_perwmt_tradedata, freight_col, ["Total Alumina","LT Avail. Alumina","Total Silica","LT R.Silica","Quartz / HT Silica","Mono-hydrate / HT Extble Alumina","Moisture", "Exporting Port"]),
         "target_cbix": normalize_col(target_cbix, target_cbix_col),
         "indices_Mines_Exporting_Ports": normalize_col(indices_Mines_Exporting_Ports, indexes_col),
         "special_leg_shipping": normalize_col(special_leg_shipping, special_leg_shipping_col),
         "mrn_juruti": normalize_col(mrn_juruti, mrn_juruti_col),
         "Ship_Time_Charter_Rates": normalize_col(Ship_Time_Charter_Rates, Ship_Time_Charter_Rates_col),
-        "China_Importing_Ports": normalize_col(China_Importing_Ports, China_Importing_Ports_col),
+        "China_Importing_Ports": normalize_col(China_Importing_Ports, China_Importing_Ports_col, ['RMB per day berthed', 'RMB per day anchored', 'RMB/T_Cargo (wet)/day berthed', 'RMB/T_Cargo (wet)/day anchored', 'RMB/GRT', 'RMB/GRT/day berthed', 'RMB/GRT/day anchored', 'RMB/LOA/day berthed', 'RMB/LOA/day anchored']),
+        "processing_factors": normalize_col(processing_factors, processing_factors_col),
+        "mud_disposal": normalize_col(mud_disposal, mud_disposal_col),
+        "ship_fuel_prices": normalize_col(ship_fuel_prices, ship_fuel_prices_col,  ["VLSFO", "LNG", "MDO/MGO Low Sulphur"]),
         "Lignitious_Coal": normalize_col(Lignitious_Coal, Lignitious_Coal_col),
         "sheetname_class": normalize_col(Sheetname_Class, Sheetname_Class_col),
         "caustic_soda": normalize_col(Lignitious_Coal, caustic_soda_col),
         "Port_Linkages": normalize_col(Port_Linkages, Port_Linkages_col),
+        "trade_details": normalize_col(trade_details, trade_details_col, ["Total Alumina","LT Avail. Alumina","Total Silica","LT R.Silica","Quartz / HT Silica","Mono-hydrate / HT Extble Alumina","Moisture", "Exporting Port"]),
+        "global_factors": normalize_col(global_factor, global_factor_col),
         "Canals_Class": normalize_col(Canals_Class, Canals_Class_col),
         "ship_speed": normalize_col(ship_speed, ship_speed_col),
         "canal": normalize_col(Canal, canals_col),
-        "lime": normalize_col(lime, lime_col)
+        "fx_rates": normalize_col(fx_rates, fx_rates_col, ["IMF Special Drawing Rights to US Dollar"]),
+        "lime": normalize_col(lime, lime_col),
+        "china_price_series": normalize_col(china_price_series, china_price_series_col)
     }
 
     for a in result.keys():
@@ -476,7 +647,7 @@ def restruct_all():
 
 # def match_col_name(df, db_df):
 
-restruct_all()
+# restruct_all()
 
 
 
