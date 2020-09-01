@@ -5,6 +5,9 @@ import pandas as pd
 from flatdb.flatdbconverter import Flatdbconverter
 from outputdb import uploadtodb
 import re
+import cbix2_script as cs
+
+cbix_input = cs.restruct()
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 db_conv = Flatdbconverter("CBIX machine version used in price forecasts")
@@ -12,18 +15,25 @@ dblist = []
 
 class CBIX2:
     def __init__(self):
+        """
         self.master_date_cell                      = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="Master date cell")        
         self.cbix_cf_trade_details                 = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="Actual Price determination from CBIX price")
         self.target_cbix_price                     = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="Target CBIX Price")
         self.cbix_cf_trade_details.loc[:, "Date"]  = self.master_date_cell.loc[0, "Date"]
+        """
         self.shipping_distn_costs_specs            = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="Shipping Distn n Costs n Specs")
         self.shipping_distn_costs_specs.loc[:, "Bauxite style"]  =  self.shipping_distn_costs_specs.loc[:, "Bauxite style"].astype(str)
         self.shipping_distn_costs_specs.loc[:, "Total Organic Carbon"]  =  self.shipping_distn_costs_specs.loc[:, "Total Organic Carbon"].astype(str)
         self.shipping_distn_costs_specs.loc[:, "Vessel Class Choosen"]  =  self.shipping_distn_costs_specs.loc[:, "Vessel Class Choosen"].astype(str)
+        
         self.shipping_distn_costs_specs_inps       = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="Shipping Distn n Costs n Specs Calc inps")
+    
+
         self.freight_datatable_row                 = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="Freight inputs for ROW Mining Model")
         self.freight_datatable                     = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="Data Table for Freights")
         self.price_forecast_datatable              = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="Data Table for Forecast prices")
+
+        """
         self.indexes_mines_2                       = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="Indices Mines Exporting Ports 2")
         self.indexes_mines                         = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="Indices Mines Exporting Ports")
         self.spc_leg_shp_table                     = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="Special 2 Leg Shipping Table")
@@ -31,7 +41,14 @@ class CBIX2:
         self.ship_time_cr                          = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="Ship Time Charter Rates")
         self.china_imp_prts                        = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="China n Importing Ports")
         self.freight_table                         = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="Freight table selector")
+
+        """
+
+
         self.viu_cost_data_table                   = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="ViU cost data table")
+
+        """
+        
         self.china_ps                              = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="China Price Series")
         self.processing_factors                    = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="processing factors")
         self.mud_disposal_cost                     = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="Mud disposal cost")
@@ -48,8 +65,67 @@ class CBIX2:
         self.fx_rates                              = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="FX Rates")
         self.canals                                = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="Canals")
         self.lime                                  = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="Lime")
+    
+        """
+
+        self.master_date_cell                      = cbix_input["cbix2_Master_date_cell"]
+        self.cbix_cf_trade_details                 = cbix_input["cbix2_Actual_Price_determination_from_CBIX_price"]
+        self.target_cbix_price                     = cbix_input["cbix2_Target_CBIX_Price"]
+        self.cbix_cf_trade_details.loc[:, "Date"]  = self.master_date_cell.loc[0, "Date"]
+        # self.shipping_distn_costs_specs            = cbix_input["cbix2_Shipping_Distn_n_Costs_n_Specs"]
+        # self.shipping_distn_costs_specs.loc[:, "Bauxite style"]  =  self.shipping_distn_costs_specs.loc[:, "Bauxite style"].astype(str)
+        # self.shipping_distn_costs_specs.loc[:, "Total Organic Carbon"]  =  self.shipping_distn_costs_specs.loc[:, "Total Organic Carbon"].astype(str)
+        # self.shipping_distn_costs_specs.loc[:, "Vessel Class Choosen"]  =  self.shipping_distn_costs_specs.loc[:, "Vessel Class Choosen"].astype(str)
+        """
+        self.shipping_distn_costs_specs_inps       = cbix_input["cbix2_Shipping_Distn_n_Costs_n_Specs_Calc_inps"]
+        new_cols = []
+        for c in self.shipping_distn_costs_specs_inps.columns:
+            try:
+                c = int(float(c))
+                new_cols.append(c)
+                print(c)
+            except:
+                new_cols.append(c)
+        self.shipping_distn_costs_specs_inps.columns = new_cols
+        """
+        # self.freight_datatable_row                 = cbix_input["cbix2_Freight_inputs_for_ROW_Mining_Model"]
+        # self.freight_datatable                     = cbix_input["cbix2_Data_Table_for_Freights"]
+        # self.price_forecast_datatable              = cbix_input["cbix2_Data_Table_for_Forecast_prices"]
+        self.indexes_mines_2                       = cbix_input["cbix2_Indices_Mines_Exporting_Ports_"]
+        self.indexes_mines                         = cbix_input["cbix2_Indices_Mines_Exporting_Ports"]
+        self.spc_leg_shp_table                     = cbix_input["cbix2_Special__Leg_Shipping_Table"]
+        self.mj_max_cargo                          = cbix_input["cbix2_MRN_or_Juruti_max_cargo"]
+        self.ship_time_cr                          = cbix_input["cbix2_Ship_Time_Charter_Rates"]
+        self.china_imp_prts                        = cbix_input["cbix2_China_n_Importing_Ports"]
+        self.freight_table                         = cbix_input["cbix2_Freight_table_selector"]
+        # self.viu_cost_data_table                   = cbix_input["cbix2_ViU_cost_data_table"]
+        self.china_ps                              = cbix_input["cbix2_China_Price_Series"]
+        self.china_ps["Lignitious Coal – Date"]    = self.china_ps["Lignitious Coal – Date"].astype("datetime64[ns]")
+        self.china_ps["Caustic Soda – Date"]       = self.china_ps["Caustic Soda – Date"].astype("datetime64[ns]")
+        self.china_ps["Lime – Date"]               = self.china_ps["Lime – Date"].astype("datetime64[ns]")
+        self.china_ps["Mud disposal cost - Date"]  = self.china_ps["Mud disposal cost - Date"].astype("datetime64[ns]")
+        self.processing_factors                    = cbix_input["cbix2_processing_factors"]
+        self.mud_disposal_cost                     = cbix_input["cbix2_Mud_disposal_cost"]
+        self.ship_fuel_prices                      = cbix_input["cbix2_Ship_Fuel_Prices"]
+        self.lignitious_coal                       = cbix_input["cbix2_Lignitious_Coal"]
+
+        self.lignitious_coal.columns               = ["Date", "Lignitious Coal Price (RMB/t) (exc VAT)", "Energy value (kcal/kg)"]
+        self.lignitious_coal                       = self.lignitious_coal[1:]
+
+        self.vessel_class                          = cbix_input["cbix2_vessel_classes"]
+        self.global_factors                        = cbix_input["cbix2_Global_factors"]
+        self.trade_details                         = cbix_input["cbix2_Trade_Details"]
+        self.trade_details.loc[:, "Date"]          = self.master_date_cell.loc[0, "Date"]
+        self.port_linkages                         = cbix_input["cbix2_Port_Linkages"]
+        self.canals_class                          = cbix_input["cbix2_Canals_Class"]
+        self.caustic_soda                          = cbix_input["cbix2_Caustic_Soda"]
+        self.ship_speeds                           = cbix_input["cbix2_Ship_Speeds"]
+        self.fx_rates                              = cbix_input["cbix2_FX_Rates"]
+        self.canals                                = cbix_input["cbix2_Canals"]
+        self.lime                                  = cbix_input["cbix2_Lime"]
         self.freight_table_value                   = "default"
         self.db                                    = {} #All generated outputs are temporarily stored here
+
 
         self.cdi_glb_factors_columns = [
             "kcal per GJ",
@@ -439,6 +515,7 @@ class CBIX2:
         def calc1_vlookup(search1, target):
             v = temp_df.loc[:, "Mine"] == search1
             try:
+                print(target[v].tolist()[0])
                 return target[v].tolist()[0]
             except Exception as e:
                 print(e)
@@ -450,6 +527,7 @@ class CBIX2:
                 return target[v].tolist()[0]
             except Exception:
                 return np.nan
+        print("##############################",temp_df)
 
         for i in range(self.shipping_distn_costs_specs.shape[0]):
             self.shipping_distn_costs_specs.at[i, "Alumina (%)"]                           = calc1_vlookup(self.shipping_distn_costs_specs.loc[i, "Mine"], temp_df.loc[:, "Alumina (%)"])   * 100.0
@@ -462,8 +540,9 @@ class CBIX2:
             self.shipping_distn_costs_specs.at[i, "Total Organic Carbon"]                  = calc1_vlookup(self.shipping_distn_costs_specs.loc[i, "Mine"], temp_df.loc[:, "Total Organic Carbon"])
             self.shipping_distn_costs_specs.at[i, "Other processing Penalties (US$/t_bx)"] = calc1_vlookup(self.shipping_distn_costs_specs.loc[i, "Mine"], temp_df.loc[:, "Other processing Penalties (US$/t_bx)"])
             self.shipping_distn_costs_specs.at[i, "Vessel Class Choosen"]                  = calc1_vlookup(self.shipping_distn_costs_specs.loc[i, "Mine"], temp_df.loc[:, "Vessel Class Choosen"])
+            print("Total Processing Penalties (US$/t_bx)", self.shipping_distn_costs_specs.loc[i, "Total Organic Carbon"])
             self.shipping_distn_costs_specs.at[i, "Total Processing Penalties (US$/t_bx)"] = (1 if self.shipping_distn_costs_specs.loc[i, "Total Organic Carbon"] == "V_High" else (0.67 if self.shipping_distn_costs_specs.loc[i, "Total Organic Carbon"] == "High" else (0.33 if self.shipping_distn_costs_specs.loc[i, "Total Organic Carbon"] == "Moderate" else (0 if self.shipping_distn_costs_specs.loc[i, "Total Organic Carbon"] == "Low" else "error"))) + self.shipping_distn_costs_specs.loc[i, "Other processing Penalties (US$/t_bx)"] + (0.5 * (self.shipping_distn_costs_specs.loc[i, "Monohydrate (%)"] - 4) if (self.shipping_distn_costs_specs.loc[i, "Bauxite style"] == "LT" and self.shipping_distn_costs_specs.loc[i, "Monohydrate (%)"] > 4) else 0))
-        
+        raise Exception("Stop here")
         
         '''Calc Two'''
         print(self.freight_table_value)
