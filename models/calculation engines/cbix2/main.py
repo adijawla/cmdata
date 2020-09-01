@@ -515,7 +515,6 @@ class CBIX2:
         def calc1_vlookup(search1, target):
             v = temp_df.loc[:, "Mine"] == search1
             try:
-                print(target[v].tolist()[0])
                 return target[v].tolist()[0]
             except Exception as e:
                 print(e)
@@ -527,7 +526,6 @@ class CBIX2:
                 return target[v].tolist()[0]
             except Exception:
                 return np.nan
-        print("##############################",temp_df)
 
         for i in range(self.shipping_distn_costs_specs.shape[0]):
             self.shipping_distn_costs_specs.at[i, "Alumina (%)"]                           = calc1_vlookup(self.shipping_distn_costs_specs.loc[i, "Mine"], temp_df.loc[:, "Alumina (%)"])   * 100.0
@@ -540,12 +538,10 @@ class CBIX2:
             self.shipping_distn_costs_specs.at[i, "Total Organic Carbon"]                  = calc1_vlookup(self.shipping_distn_costs_specs.loc[i, "Mine"], temp_df.loc[:, "Total Organic Carbon"])
             self.shipping_distn_costs_specs.at[i, "Other processing Penalties (US$/t_bx)"] = calc1_vlookup(self.shipping_distn_costs_specs.loc[i, "Mine"], temp_df.loc[:, "Other processing Penalties (US$/t_bx)"])
             self.shipping_distn_costs_specs.at[i, "Vessel Class Choosen"]                  = calc1_vlookup(self.shipping_distn_costs_specs.loc[i, "Mine"], temp_df.loc[:, "Vessel Class Choosen"])
-            print("Total Processing Penalties (US$/t_bx)", self.shipping_distn_costs_specs.loc[i, "Total Organic Carbon"])
             self.shipping_distn_costs_specs.at[i, "Total Processing Penalties (US$/t_bx)"] = (1 if self.shipping_distn_costs_specs.loc[i, "Total Organic Carbon"] == "V_High" else (0.67 if self.shipping_distn_costs_specs.loc[i, "Total Organic Carbon"] == "High" else (0.33 if self.shipping_distn_costs_specs.loc[i, "Total Organic Carbon"] == "Moderate" else (0 if self.shipping_distn_costs_specs.loc[i, "Total Organic Carbon"] == "Low" else "error"))) + self.shipping_distn_costs_specs.loc[i, "Other processing Penalties (US$/t_bx)"] + (0.5 * (self.shipping_distn_costs_specs.loc[i, "Monohydrate (%)"] - 4) if (self.shipping_distn_costs_specs.loc[i, "Bauxite style"] == "LT" and self.shipping_distn_costs_specs.loc[i, "Monohydrate (%)"] > 4) else 0))
-        raise Exception("Stop here")
         
         '''Calc Two'''
-        print(self.freight_table_value)
+       
         self.indexes_mines_2.loc[:, "Workings"] = self.indexes_mines_2.loc[:, "Workings"].astype(str)
         for a in range(self.indexes_mines_2.shape[0]):            
             if self.indexes_mines_2.loc[a, "Mine"] in ["Metro BH1", "Metro LT", "Metro Blend", "Metallica"]:

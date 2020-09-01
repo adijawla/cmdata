@@ -59,7 +59,7 @@ def restruct():
         if "date" in cols:
             data["date"] = data["date"].astype('datetime64[ns]')
         data.reset_index(drop=True, inplace=True)
-        data.to_csv(f"outs/{name}.csv")
+        # data.to_csv(f"outs/{name}.csv")
         dfs[name] = data
     return dfs
 
