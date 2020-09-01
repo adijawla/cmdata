@@ -1,5 +1,6 @@
 import pandas as pd
 import warnings
+import numpy as np
 import timer
 from flatdb.flatdbconverter import Flatdbconverter, read_from_database
 from outputdb import uploadtodb
@@ -13,14 +14,18 @@ t = timer.Timer()
 
 meidata = read_from_database('meiaadata')
 basedata = read_from_database('basedata')
-# print(meidata)
-# print(basedata.columns)
 
+# stockpiles and year mappings
+year = read_from_database("year")
+year_map = dict(year[["year_id", "year"]].values)
+other_controls = read_from_database("other_controls").replace(year_map)
+includestockpile = other_controls["includestockpile"][0]
+current_year = other_controls["current_year_for_watermelon"][0]
+
+#input restructure
 basedata_r = restruct(basedata, 'ind', 'year_id', 'Value')
-print(basedata_r)
 meidata_r = restruct(meidata, 'province_id', 'year_id', 'value')
 meidata_r = meidata_r.rename(columns={'province_id': 'province'})
-print(meidata_r)
 
 
 class watermelondatamodel():
@@ -41,8 +46,8 @@ class watermelondatamodel():
         # self.meiaadata = pd.read_csv('inputs/smeiaadata.csv')
         self.basedata = basedata_r
         self.meiaadata = meidata_r
-        self.current_year = 2019
-        self.includestockpile = "no"
+        self.current_year = current_year
+        self.includestockpile = includestockpile
         self.aluminadata = pd.DataFrame(columns=years,index=indx1)
         self.bauxitedata = pd.DataFrame(columns=years,index=indx1)
         self.meipropdata = pd.DataFrame(columns=years,index=indx2)
@@ -64,6 +69,7 @@ class watermelondatamodel():
         self.bauxitedata2.name = 'bauxitedata2'
         self.allcbixdata.name = 'allcbixdata'
         self.cbix55data.name = 'cbix55data'
+        self.bauxite_charting = None
 
     def basedata_cbix65(self,col):
         t.start()
@@ -133,7 +139,7 @@ class watermelondatamodel():
         value = (d[0]*d[3]+d[1]*d[2])/(d[2]+d[3])
         self.basedata.at[20,col] = value
         t.stop()
-    
+
 ##############
     def basedata_planned(self,col):
         t.start()
@@ -155,7 +161,7 @@ class watermelondatamodel():
         value = d[0]-d[1]
         self.aluminadata.at["Domestic Bx",col] = value
         t.stop()
-    
+
     def alumina_CBIXUS45(self,col):
         d = [self.basedata[col][9],self.aluminadata[col][2:7].sum()]
         value = d[0]-d[1] if int(col) < 2016 or int(col) > 2018 else 0
@@ -211,7 +217,7 @@ class watermelondatamodel():
         d = [self.basedata[col][12],self.aluminadata[col][0]]
         value = d[0]*d[1]
         self.bauxitedata.at["Domestic Bx",col] = value
-    
+
     def bauxite_CBIXUS45(self,col):
         d = [self.basedata[col][12],self.aluminadata[col][1]]
         value = d[0]*d[1]
@@ -260,7 +266,7 @@ class watermelondatamodel():
         d = [self.bauxitedata[col][0:8].sum()]
         value = d[0]
         self.bauxitedata.at["Demand L",col] = value
-    
+
     def demandcalc1(self,col):
         value = self.basedata[col][12]*self.cbixus55[col][self.indx4[1]]
         self.bxdemandcbix55.at[self.indx5[0],col] = value
@@ -276,12 +282,12 @@ class watermelondatamodel():
     def demandcalc5(self,col):
         value = self.bauxitedata[col][12] - self.bxdemandcbix55[col][3]
         self.bxdemandcbix55.at[self.indx5[4],col] = value
-    
+
     def meiprop_calc(self,indx,col):
         d = [self.meiaadata[col][indx],self.meiaadata[col].sum()]
         value = d[0]/d[1]
         self.meipropdata.at[self.indx2[indx],col] = value
-    
+
 
 
     def bauxitedata2_calc(self,indx,col):
@@ -366,6 +372,24 @@ class watermelondatamodel():
         self.cbix55datav2.at[self.indx3[6],col] = value7
         self.cbix55datav2.at[self.indx3[7],col] = value8
 
+
+    def baux_charting(self):
+        yrs = list(map(str,list(range(2019, 2032))))
+        baux = self.bauxitedata.copy().reset_index()
+        alum = self.aluminadata.copy().reset_index()
+        self.bauxite_charting = pd.DataFrame(columns=["Field", *yrs ])
+        inds = ["Future Domestic Bx Demand ie CBIX 45 line","Future Imported Bx Demand","Exsiting Converted Demand","Curtailed","Domestic Demand","Real Demand L","Namely Demand L"]
+        self.bauxite_charting["Field"] = inds
+        # store values
+        self.bauxite_charting.loc[0, yrs] = baux.loc[0:1, yrs].sum().values
+        self.bauxite_charting.loc[1, yrs] = baux.loc[2:3, yrs].sum().values + ((self.basedata.loc[17, yrs].values - alum.loc[0:3, yrs].sum().values) * self.basedata.loc[0,yrs].values)
+        self.bauxite_charting.loc[2, yrs] = self.basedata.loc[18, yrs].values * self.basedata.loc[0, yrs].values
+        self.bauxite_charting.loc[3, yrs] = (self.basedata.loc[16, yrs].values - (self.basedata.loc[17, yrs].values + self.basedata.loc[18, yrs].values)) * self.basedata.loc[0, yrs].values
+        self.bauxite_charting.loc[4, yrs] = self.bauxite_charting.loc[0, yrs]
+        self.bauxite_charting.loc[5, yrs] = self.bauxite_charting.loc[0:2, yrs].sum()
+        self.bauxite_charting.loc[6, yrs] = self.bauxite_charting.loc[0:3, yrs].sum()
+        
+
     def calc_all(self):
         for i in self.years:
             watermelondatamodel.basedata_cbix65(self,i)
@@ -381,11 +405,11 @@ class watermelondatamodel():
             watermelondatamodel.cbix45calc2(self,i)
             watermelondatamodel.blendbar(self,i)
             #watermelondatamodel.basedata_estimates(self,i)
-            
+
 
             watermelondatamodel.basedata_planned(self,i)
             watermelondatamodel.alumina_DemandL(self,i)
-            
+
             watermelondatamodel.alumina_ImportedAlumina(self,i)
             watermelondatamodel.alumina_ExistingDemandImports(self,i)
             watermelondatamodel.alumina_PlannedAdditionalImports(self,i)
@@ -398,7 +422,7 @@ class watermelondatamodel():
             watermelondatamodel.alumina_CBIXUS45L(self,i)
             watermelondatamodel.alumina_CBIXUS55L(self,i)
             watermelondatamodel.alumina_CBIXUS65L(self,i)
-            
+
             watermelondatamodel.bauxite_Domestic(self,i)
             watermelondatamodel.bauxite_CBIXUS45(self,i)
             watermelondatamodel.bauxite_CBIXUS55(self,i)
@@ -418,7 +442,7 @@ class watermelondatamodel():
             watermelondatamodel.demandcalc3(self,i)
             watermelondatamodel.demandcalc4(self,i)
             watermelondatamodel.demandcalc5(self,i)
-            
+
             watermelondatamodel.allcbix(self,i)
             watermelondatamodel.cbix55(self,i)
             watermelondatamodel.allcbix2(self,i)
@@ -426,6 +450,8 @@ class watermelondatamodel():
             for j in range(5):
                 watermelondatamodel.meiprop_calc(self,j,i)
                 watermelondatamodel.bauxitedata2_calc(self,j,i)
+        watermelondatamodel.baux_charting(self)
+
     def name_all(self):
         self.aluminadata.loc[0,"df_info"] = 'aluminadata'
         self.bauxitedata.loc[0,"df_info"] = 'bauxitedata'
@@ -433,8 +459,8 @@ class watermelondatamodel():
         self.bauxitedata2.loc[0,"df_info"] = 'bauxitedata2'
         self.allcbixdata.loc[0,"df_info"] = 'allcbixdata'
         self.cbix55data.loc[0,"df_info"] = 'cbix55data'
-            
-        
+
+
 
 t.end_time()
 class watermelongriffinmodel():
@@ -573,22 +599,24 @@ w.cbixus55.to_csv('outputdata/cbixus55.csv')
 w.cbixus45.to_csv('outputdata/cbixus45.csv')
 w.bxdemandcbix55.to_csv('outputdata/bxdemandcbix55.csv')
 w.basedata.to_csv('outputdata/basedata.csv', index=False)
+w.bauxite_charting.to_csv("outputdata/bauxitecharting.csv", index=False)
 
 
-w_aluminadata = db_conv.multi_year_multi_out(w.aluminadata, "alumina data", col_params=[(0, "Field")], make_multi="Table")
-w_bauxitedata = db_conv.multi_year_multi_out(w.bauxitedata, "bauxite data", col_params=[(0, "Field")], make_multi="Table")
-w_meipropdata = db_conv.multi_year_multi_out(w.meipropdata, "mei prop data", col_params=[(0, "category")], make_multi="Table")
-w_bauxitedata2 = db_conv.multi_year_multi_out(w.bauxitedata2, "bauxite data2", col_params=[(0, "Field")], make_multi="Table")
-w_allcbixdata = db_conv.multi_year_multi_out(w.allcbixdata, "all cbix data", col_params=[(0, "Field")], make_multi="Table")
-w_cbix55data = db_conv.multi_year_multi_out(w.cbix55data, "cbix55 data", col_params=[(0, "Field")], make_multi="Table")
-w_allcbixdatav2 = db_conv.multi_year_multi_out(w.allcbixdatav2, "all cbix datav2", col_params=[(0, "Field")], make_multi="Table")
-w_cbix55datav2 = db_conv.multi_year_multi_out(w.cbix55datav2, "cbix 55 data v2", col_params=[(0, "Field")], make_multi="Table")
-w_meidata = db_conv.multi_year_multi_out(w.meidata, "mei data", col_params=[(0, "Field")], make_multi="Table")
-w_cbixus65 = db_conv.multi_year_multi_out(w.cbixus65, "cbix us65", col_params=[(0, "Field")], make_multi="Table")
-w_cbixus55 = db_conv.multi_year_multi_out(w.cbixus55, "cbix us55", col_params=[(0, "Field")], make_multi="Table")
-w_cbixus45 = db_conv.multi_year_multi_out(w.cbixus45, "cbix us45", col_params=[(0, "Field")], make_multi="Table")
-w_bxdemandcbix55 = db_conv.multi_year_multi_out(w.bxdemandcbix55, "bx demand cbix55", col_params=[(0, "Field")], make_multi="Table")
+w_aluminadata = db_conv.multi_year_multi_out(w.aluminadata, "alumina data", col_params=[(0, "Field")], make_multi="Table", not_num_indexed=True)
+w_bauxitedata = db_conv.multi_year_multi_out(w.bauxitedata, "bauxite data", col_params=[(0, "Field")], make_multi="Table", not_num_indexed=True)
+w_meipropdata = db_conv.multi_year_multi_out(w.meipropdata, "mei prop data", col_params=[(0, "category")], make_multi="Table", not_num_indexed=True)
+w_bauxitedata2 = db_conv.multi_year_multi_out(w.bauxitedata2, "bauxite data2", col_params=[(0, "Field")], make_multi="Table", not_num_indexed=True)
+w_allcbixdata = db_conv.multi_year_multi_out(w.allcbixdata, "all cbix data", col_params=[(0, "Field")], make_multi="Table", not_num_indexed=True)
+w_cbix55data = db_conv.multi_year_multi_out(w.cbix55data, "cbix55 data", col_params=[(0, "Field")], make_multi="Table", not_num_indexed=True)
+w_allcbixdatav2 = db_conv.multi_year_multi_out(w.allcbixdatav2, "all cbix datav2", col_params=[(0, "Field")], make_multi="Table", not_num_indexed=True)
+w_cbix55datav2 = db_conv.multi_year_multi_out(w.cbix55datav2, "cbix 55 data v2", col_params=[(0, "Field")], make_multi="Table", not_num_indexed=True)
+w_meidata = db_conv.multi_year_multi_out(w.meidata, "mei data", col_params=[(0, "Field")], make_multi="Table", not_num_indexed=True)
+w_cbixus65 = db_conv.multi_year_multi_out(w.cbixus65, "cbix us65", col_params=[(0, "Field")], make_multi="Table", not_num_indexed=True)
+w_cbixus55 = db_conv.multi_year_multi_out(w.cbixus55, "cbix us55", col_params=[(0, "Field")], make_multi="Table", not_num_indexed=True)
+w_cbixus45 = db_conv.multi_year_multi_out(w.cbixus45, "cbix us45", col_params=[(0, "Field")], make_multi="Table", not_num_indexed=True)
+w_bxdemandcbix55 = db_conv.multi_year_multi_out(w.bxdemandcbix55, "bx demand cbix55", col_params=[(0, "Field")], make_multi="Table", not_num_indexed=True)
 w_basedata = db_conv.mult_year_single_output(w.basedata, "base data")
+w_bauxite = db_conv.mult_year_single_output(w.bauxite_charting, "Charting - Bauxite Demand by Domestic Capacity")
 
 dblist = [
     w_aluminadata,
@@ -611,12 +639,12 @@ snapshot_output_data = pd.concat(dblist, ignore_index=True)
 snapshot_output_data = snapshot_output_data.loc[:, db_conv.out_col]
 snapshot_output_data.to_csv("snapshot_output_data.csv", index=False)
 snapshot_output_data = snapshot_output_data
-# uploadtodb.upload(snapshot_output_data)
+uploadtodb.upload(snapshot_output_data)
 
 # reverse snapshot
 # reversed_data = db_conv.reverse(snapshot_output_data)
 # for a in reversed_data['Watermelon charts'].keys():
-#     reversed_data['Watermelon charts'][a].to_csv(f"reversed_watermelon/{a}.csv", index=False) 
+#     reversed_data['Watermelon charts'][a].to_csv(f"reversed_watermelon/{a}.csv", index=False)
 
 '''
 x.meidata.to_csv('outputdata/meidata.csv')
