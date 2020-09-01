@@ -16,7 +16,7 @@ basedata = read_from_database('basedata')
 # print(meidata)
 # print(basedata.columns)
 
-basedata_r = restruct(basedata, 'ind', 'year_id', 'value')
+basedata_r = restruct(basedata, 'ind', 'year_id', 'Value')
 print(basedata_r)
 meidata_r = restruct(meidata, 'province_id', 'year_id', 'value')
 meidata_r = meidata_r.rename(columns={'province_id': 'province'})
@@ -611,7 +611,7 @@ snapshot_output_data = pd.concat(dblist, ignore_index=True)
 snapshot_output_data = snapshot_output_data.loc[:, db_conv.out_col]
 snapshot_output_data.to_csv("snapshot_output_data.csv", index=False)
 snapshot_output_data = snapshot_output_data
-uploadtodb.upload(snapshot_output_data)
+# uploadtodb.upload(snapshot_output_data)
 
 # reverse snapshot
 # reversed_data = db_conv.reverse(snapshot_output_data)
