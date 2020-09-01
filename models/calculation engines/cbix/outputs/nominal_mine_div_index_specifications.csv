@@ -1,15 +1,15 @@
 Mine,Date,Total Alumina,LT Avail. Alumina,Total Silica,LT R.Silica,Quartz / HT Silica,Mono-hydrate / HT Alumina,Moisture,Processing,Processing Penalties to be applied,Tonnage typical vessel,Exporting Port,Specific Index,General Index
 SMB Generic,2020-02-14,0.448,0.4,0.023,0.013,0.01,0.035,0.1,LT,0.33,180000.0,SMB-WAP_Nunez_Offshore,Guinea 45/3 LT,CBIX LT
 West Kalimantan Generic,2020-04-02,0.48,0.44,0.08,0.035,0.045,0.005,0.15,LT,0.33,57000.0,West_Kal_Generic_Offshore,Indonesian LT,CBIX LT
-Weipa/Amrun Generic,2020-04-02,0.53,0.3625,0.09,0.0675,0.0225,0.1,0.13,HT-D,0.67,76000.0,Weipa_Amrun_Wharf,Australia HT,CBIX HT
+Weipa/Amrun Generic,2020-04-02,0.53,0.3625,0.08999999999999998,0.0675,0.0225,0.1,0.13,HT-D,0.67,76000.0,Weipa_Amrun_Wharf,Australia HT,CBIX HT
 Gove,2020-04-02,0.495,0.425,0.05,0.042,0.008,0.028,0.095,LT,0.67,95000.0,Gove_wharf,CBIX LT,CBIX LT
 Alufer Bel Air,2020-04-02,0.46,0.405,0.048,0.017,0.031,0.038,0.101,LT,0.33,180000.0,Alufer_Cape_Verga_Offshore,Guinea 45/3 LT,CBIX LT
 Central Kalimantan Generic,2020-04-02,0.48,0.44,0.08,0.035,0.045,0.005,0.15,LT,0.33,57000.0,Central_Kal_Generic_Offshore,Indonesian LT,CBIX LT
 CBG LT,2020-04-02,0.487,0.433,0.022,0.019,0.003,0.035,0.071,LT,0.33,66000.0,CBG_Wharf,Guinea 45/3 LT,CBIX LT
-Huntly,2020-04-02,0.35,0.33,0.2,0.011,0.189,0.00899999999999996,0.08,LT,1.0,47500.0,Kwinana_wharf,CBIX LT,CBIX LT
+Huntly,2020-04-02,0.35,0.33,0.2,0.011,0.18899999999999997,0.008999999999999958,0.08,LT,1.0,47500.0,Kwinana_wharf,CBIX LT,CBIX LT
 Turkey,2020-04-02,0.562,0.45,0.082,0.05,0.032,0.062,0.05,HT-D,0.0,84000.0,Turkey,CBIX HT,CBIX HT
 Bauxite Hills,2020-04-02,0.513,0.405,0.095,0.051,0.044,0.057,0.1,HT-D,0.67,63500.0,Bauxite_Hills_offshore,Australia HT,CBIX HT
-Chalco Boffa,2020-04-02,0.42,0.371,0.019,0.014,0.005,0.035,0.1,LT,0.33,180000.0,Chalco_Boffa_offshore,Guinea 45/3 LT,CBIX LT
-Rennell Island,2020-04-02,0.48,0.47,0.011,0.01,0.000999999999999999,0.0,0.15,HT-D,2.5,72000.0,Rennell_Is._offshore,CBIX HT,CBIX HT
-Discovery Bay,2020-04-02,0.49,0.43,0.015,0.01,0.005,0.05,0.17,HT-D,0.83,60000.0,Discovery_Bay_wharf,CBIX HT,CBIX HT
+Chalco Boffa,2020-04-02,0.42,0.371,0.019,0.013999999999999999,0.005,0.035,0.1,LT,0.33,180000.0,Chalco_Boffa_offshore,Guinea 45/3 LT,CBIX LT
+Rennell Island,2020-04-02,0.48,0.47,0.011,0.01,0.0009999999999999987,0.0,0.15,HT-D,2.5,72000.0,Rennell_Is._offshore,CBIX HT,CBIX HT
+Discovery Bay,2020-04-02,0.49,0.43,0.015,0.01,0.005,0.05,0.17,HT-D,0.8299999999999998,60000.0,Discovery_Bay_wharf,CBIX HT,CBIX HT
 MRN,2020-04-02,0.55,0.49,0.06,0.055,0.005,0.00500000000000005,0.12,LT,0.0,180000.0,Pt_Lisas,CBIX LT,CBIX LT
