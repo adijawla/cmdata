@@ -14,7 +14,7 @@ from ddm.newprovincial import provincial
 from ddm.reservesummary import summary
 from ddm.codetimer.timer import Timer
 import ddm.template_script as ts
-from flatdb.flatdbconverter import Flatdbconverter
+from flatdb.flatdbconverter import Flatdbconverter, read_output_database
 from outputdb.uploadtodb import upload
 import time
 import asyncio
