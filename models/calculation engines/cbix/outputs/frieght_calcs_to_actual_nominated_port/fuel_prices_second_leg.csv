@@ -1,15 +1,3 @@
-HSFO(180 / 380),VLSFO,LNG,MDO/MGO Regular,MDO/MGO Low Sulphur
-0,0,0,0,0
-0,0,0,0,0
-0,0,0,0,0
-0,0,0,0,0
-0,0,0,0,0
-0,0,0,0,0
-0,0,0,0,0
-0,0,0,0,0
-0,0,0,0,0
-0,0,0,0,0
-0,0,0,0,0
-0,0,0,0,0
-0,0,0,0,0
-194.4,273.8,,301.2,293.9
+version https://git-lfs.github.com/spec/v1
+oid sha256:8a6a3e73594117eb26ed1510d6ab0d0b4000dee0a85fecbba2cc0634875c5a41
+size 217

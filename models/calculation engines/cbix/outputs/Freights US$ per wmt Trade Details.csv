@@ -1,10 +1,3 @@
-Freights US$/wmt,Date,CM Data Source,Mine,Price,Price Type,Price Basis,Total Alumina,LT Avail. Alumina,Total Silica,LT R.Silica,Quartz / HT Silica,Mono-hydrate / HT Extble Alumina,Moisture,Tonnage,Exporting Port,Importing Port,Final Specs Price Type,Final Specs Price Basis,Old CBIX type Calc
-4.341508532748368,2020-04-13,somebody,West Kalimantan Generic,45,CIF,dmt,,,,,,,,77000,,Qingdao,CIF,dmt,CBIX
-3.865219283479335,2020-04-13,somebody,West Kalimantan Generic,45,CIF,dmt,,,,,,,,153000,,Qingdao,CIF,dmt,CBIX
-4.999025176923103,2020-04-13,somebody,Weipa/Amrun Generic,45,CFR,dmt,,,,,,,,78000,,Qingdao,CIF,dmt,CBIX
-5.604078537689127,2020-04-13,somebody,Malaysia Kuantan washed,45,CFR,dmt,,,,,,,,47000,,Qingdao,CIF,dmt,CBIX
-4.416219782352239,2020-04-13,somebody,Malaysia Kuantan washed,45,CFR,dmt,,,,,,,,75000,,Qingdao,CIF,dmt,CBIX
-6.009295709931308,2020-04-13,somebody,India Gujarat,45,CFR,dmt,,,,,,,,151000,,Qingdao,CIF,dmt,CBIX
-7.415235694054829,2020-04-13,somebody,India Gujarat,45,CFR,dmt,,,,,,,,76000,,Qingdao,CIF,dmt,CBIX
-9.753553617982924,2020-04-13,somebody,India Gujarat,45,CFR,dmt,,,,,,,,47000,,Qingdao,CIF,dmt,CBIX
-11.048839334555828,2020-04-13,somebody,SMB Generic,45,CFR,dmt,,,,,,,,151000,,Qingdao,CIF,dmt,CBIX
+version https://git-lfs.github.com/spec/v1
+oid sha256:41aeb47f391b6e847f57b8a6502df73dafd0db9129bd9bb38853d9c0bb7432e3
+size 1223

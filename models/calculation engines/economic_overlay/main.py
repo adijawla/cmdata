@@ -1,15 +1,16 @@
 import time, os
 import numpy as np
 import pandas as pd
-from flatdbconverter import Flatdbconverter
+from flatdb.flatdbconverter import Flatdbconverter
 from extension import DB_TO_FILE
 from scipy.stats import beta
 from outputdb import uploadtodb
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-db_conv = Flatdbconverter("Economic overlay")
 dblist = []
+
+db_conv = Flatdbconverter("Economic overlay")
 
 # Start of Rahul's Code
 class Summary:
@@ -35,7 +36,7 @@ class Summary:
         idx = pd.IndexSlice
         mxidd = pd.MultiIndex.from_product([self.col,self.pr])
         self.newallocdb = pd.read_csv(os.path.join(BASE_DIR, "reserve_summary_inputs/newcalallo.csv"))
-        
+
         self.db["deep bauxite"] = self.moddb["deep bauxite"]
         self.db['deposit'] = self.reservedb["Deposit"]
         self.bfdb["cumulative_factored_up_production"] = self.bfdb["cumulative_factored_up_production"].astype(float)
@@ -47,7 +48,7 @@ class Summary:
         v = self.reservedb['Inventory'][i]-self.moddb['deep bauxite'][i]
         self.db.at[i,"minable_shallow_inventory"] = v
     def calc2(self,i):#refractory_allocation
-        v = self.reservedb['Inventory'][i]*self.moddb['unique case'][i] 
+        v = self.reservedb['Inventory'][i]*self.moddb['unique case'][i]
         self.db.at[i,"refractory_allocation"] = v
     def calc3(self,i):#remaining_inventory_available_to_mining_for_SGA000t
         v = self.db["minable_shallow_inventory"][i] - self.db["refractory_allocation"][i]
@@ -58,7 +59,7 @@ class Summary:
         self.db.at[i,"working_stock_prior_to_AA_and_AS_de_rating_AA"] = v
     def calc5(self,i):#working_stock_prior_to_AA_and_AS_de_rating_AS
         v = self.db["remaining_inventory_available_to_mining_for_SGA_AA"][i]/((self.db["minable_shallow_inventory"][i]*self.reservedb["AI203"][i]/self.reservedb["AS"][i] - self.db["refractory_allocation"][i]*self.gradeAlO3/self.gradeAS)/self.db["remaining_inventory_available_to_mining_for_SGA000t"][i])
-        
+
         self.db.at[i,"remaining_inventory_available_to_mining_for_SGA_AS"] = v
         self.db.at[i,"working_stock_prior_to_AA_and_AS_de_rating_AS"] = v
     def calc6(self,i):#remaining_inventory_available_to_mining_for_SGA_SiO2
@@ -94,7 +95,7 @@ class Summary:
         z = x*y
         z = z.sum()
         v = min(1,z)/(1-self.moddb["unique case"][i])
-        
+
         self.db.at[i,"SGA_depletion_end_2009"] = v
         if self.reservedb["Province"][i] == "Shandong" and self.reservedb["County"][i] != "Zouwu":
             self.db.at[i,"SGA_depletion_end_2009"] = 1.0
@@ -167,7 +168,7 @@ class Summary:
         v = self.staticdb.iloc[i,2:834:8].sum() + self.moddb['unique case'][i]
         self.db.at[i,"check_sum"] = v
 
-    def calcall1(self): # calculation sequence 
+    def calcall1(self): # calculation sequence
         for i in range(self.l):
             if self.reservedb["Deposit"][i] == "Yes":
                 self.calc0(i)
@@ -194,12 +195,12 @@ class Summary:
                 self.calc16(i)
             if self.reservedb["Switch"][i] ==  "Y1":
                 self.calc17(i)
-            
+
             if self.reservedb["Deposit"][i] == "NO" and pd.isnull(self.db["County"][i]):
                 self.calc18(i)
-                
-            if self.reservedb["Deposit"][i] == "Yes":                
-                self.calc19(i)                
+
+            if self.reservedb["Deposit"][i] == "Yes":
+                self.calc19(i)
                 self.calc28(i)
                 self.calc29(i)
                 self.calc30(i)
@@ -219,23 +220,24 @@ class Summary:
         self.calcall1()
         self.calcall2()
 
-        if self.db.iloc[-1, 0] == "China Total":            
+        if self.db.iloc[-1, 0] == "China Total":
             self.db = self.db.loc[:len(self.db)-2, :] # To Remove the last un-required row
 
-        dblist.append(db_conv.single_year_mult_out(self.db, "Reserve Summary DB"))   
+        dblist.append(db_conv.single_year_mult_out(self.db, "Reserve Summary DB"))
         self.db.to_csv("db.csv", index=False)
 
 # End of Rahul's code
-    
+
 
 
 class Inventory:
     def __init__(self):
-        summary_instance = Summary().calc_all_funcs()
+        Summary().calc_all_funcs()
         ext = DB_TO_FILE()
-        
+
         self.output_db          = pd.read_csv(os.path.join(BASE_DIR, "db.csv"))
         self.inputs             = ext.inputs()
+        self.inputs.drop(['creation_date', 'updation_date', 'inputs_id'], axis=1, inplace=True)
         self.lookuptable        = ext.lookuptable()
         self.other_controls     = ext.other_controls()
         self.range_max          = ext.depth_buckets()
@@ -268,7 +270,7 @@ class Inventory:
         self.max7 =  self.range_max.loc[1, "underground4"]   # (500.0-125.0)*1.0/7.0 + self.max6
         self.max8 =  self.range_max.loc[1, "underground5"]   # (500.0-125.0)*1.0/7.0 + self.max7
         self.max9 =  self.range_max.loc[1, "underground6"]   # (500.0-125.0)*1.0/7.0 + self.max8
-        self.max10 = self.range_max.loc[1, "underground7"]   #  (500.0-125.0)*1.0/7.0 + self.max9 
+        self.max10 = self.range_max.loc[1, "underground7"]   #  (500.0-125.0)*1.0/7.0 + self.max9
 
         self.min1 =  self.range_max.loc[0, "open_pit1"]
         self.min2 =  self.range_max.loc[0, "open_pit2"]
@@ -294,6 +296,9 @@ class Inventory:
 
         self.range_max.at[2, "mine_type"] = 'Avg for range (m)'
         self.range_max.at[2, "open_pit1":"underground7"] = [self.avg1, self.avg2, self.avg3, self.avg4, self.avg5, self.avg6, self.avg7, self.avg8, self.avg9, self.avg10]
+        self.range_max.drop(['depthbuckets_percentoftonnage_id'], axis=1, inplace=True)
+        print(self.range_max.columns)
+        print(self.range_max)
 
         # Dataframes
         self.linear_eqn_sb_df = 0
@@ -347,20 +352,21 @@ class Inventory:
     # Depth Splits - sedimentary bauxite
     def linear_eqn_sb(self):
         df = self.inputs
+        print(df.columns)
         self.linear_eqn_sb_df = pd.DataFrame(columns=["m","c"])
-        
+
         for i in range(len(self.output_db)):
-            m = 1.0 / float(df.loc[:, "maximum_burial"][i] - df.loc[:,"minimum_burial"][i] )            
+            m = 1.0 / float(df.loc[:, "maximum_burial"][i] - df.loc[:,"minimum_burial"][i] )
             c = 0.0 - float(df.loc[:,"minimum_burial"][i] * m)
 
             self.linear_eqn_sb_df.at[i,"m"] = m
             self.linear_eqn_sb_df.at[i,"c"] = c
-        
-    
+
+
     def main_vlookup(self, search, province, target):
         v = province.map(lambda x: x.lower() == search.lower())
         try:
-            return float(target[v].tolist()[0])            
+            return float(target[v].tolist()[0])
         except Exception:
             return np.nan
 
@@ -369,7 +375,7 @@ class Inventory:
         # df = pd.read_csv('outputs/depth_splits_sedimentary_bauxite/linear_eqn-depth_buckets_percent_tonnage_per_depth_range.csv')
         df = self.linear_eqn_sb_df
         self.depth_splits_sb_df = pd.DataFrame(columns=self.op_ug_cols)
-        
+
         for i in range(len(df)):
             to_be_summed = [] # all max values are to be stored in here for further calculations
 
@@ -392,7 +398,7 @@ class Inventory:
                 open_pit_2 = (float(df.loc[i, "m"]) * self.max2) + float(df.loc[i, "c"]) - sum(to_be_summed)
             self.depth_splits_sb_df.at[i, "open_pit2"] = open_pit_2
             to_be_summed.append(open_pit_2)
-            
+
             #open pit 3 (open_pit)
             if ((float(df.loc[i, "m"]) * self.max3) + float(df.loc[i, "c"])) <= 0:
                 open_pit_3 = 0
@@ -439,7 +445,7 @@ class Inventory:
             elif ((float(df.loc[i, "m"]) * self.max7) + float(df.loc[i, "c"])) > 1:
                 underground_4 = 1 - sum(to_be_summed)
             else:
-                underground_4 = (float(df.loc[i, "m"]) * self.max7) + float(df.loc[i, "c"]) - sum(to_be_summed)            
+                underground_4 = (float(df.loc[i, "m"]) * self.max7) + float(df.loc[i, "c"]) - sum(to_be_summed)
             self.depth_splits_sb_df.at[i, "underground4"] = underground_4
             to_be_summed.append(underground_4)
 
@@ -469,7 +475,7 @@ class Inventory:
             elif ((float(df.loc[i, "m"]) * self.max10) + float(df.loc[i, "c"])) > 1:
                 underground_7 = 1 - sum(to_be_summed)
             else:
-                underground_7 = (float(df.loc[i, "m"]) * self.max10) + float(df.loc[i, "c"]) - sum(to_be_summed)            
+                underground_7 = (float(df.loc[i, "m"]) * self.max10) + float(df.loc[i, "c"]) - sum(to_be_summed)
             self.depth_splits_sb_df.at[i, "underground7"] = underground_7
             to_be_summed.append(underground_7)
 
@@ -491,11 +497,11 @@ class Inventory:
         # df = pd.read_csv("outputs/depth_splits_sedimentary_bauxite/depth_buckets-percent_tonnage_per_depth_range.csv")
         df = self.depth_splits_sb_df
         self.sedimentary_bauxite_td_df = pd.DataFrame(columns=self.op_ug_cols)
-        
+
         def main_func(col, i):
             v = (1.0 -float(collapse_acc[i])) * float(df.loc[i, col]) * float(working_stock[i])
             return 0 if pd.isna(v) else v
-        
+
         for i in range(len(working_stock)):
             self.sedimentary_bauxite_td_df.at[i, "open_pit1"] = main_func("open_pit1", i)
             self.sedimentary_bauxite_td_df.at[i, "open_pit2"] = main_func("open_pit2", i)
@@ -508,7 +514,7 @@ class Inventory:
             self.sedimentary_bauxite_td_df.at[i, "underground6"] = main_func("underground6", i)
             self.sedimentary_bauxite_td_df.at[i, "underground7"] = main_func("underground7", i)
 
-        
+
 
     # Collapse Accumulated Bauxite - tonnages per depth range
     def collapse_accm_bauxite(self):
@@ -517,7 +523,7 @@ class Inventory:
         # df = pd.read_csv("outputs/depth_splits-collapse_accumulated_bauxite.csv")
         df = self.depth_split_cab_df
         self.collapse_accm_bauxite_df = pd.DataFrame(columns=self.op_ug_cols)
-        
+
         def main_func(col, i):
             v = float(collapse_acc[i]) * float(df.loc[i, col]) * float(working_stock[i])
             return 0 if pd.isna(v) else v
@@ -534,21 +540,21 @@ class Inventory:
             self.collapse_accm_bauxite_df.at[i, "underground6"] = main_func("underground6", i)
             self.collapse_accm_bauxite_df.at[i, "underground7"] = main_func("underground7", i)
 
-        
+
 
     def linear_eqn_sb_only(self):
         max_burial = self.inputs.loc[:, "maximumburial_plataeu"]
         min_burial = self.inputs.loc[:,"minimumburial_contamination_start"]
         self.linear_eqn_sb_only_df = pd.DataFrame(columns=["m","c"])
-        
+
         for i in range(len(max_burial)):
             m = 1.0 / float(max_burial[i] - min_burial[i] )
             c = 0.0 - float(min_burial[i] * m)
 
             self.linear_eqn_sb_only_df.at[i,"m"] = m
             self.linear_eqn_sb_only_df.at[i,"c"] = c
-        
-        
+
+
 
     # Suplhur contamination - sedimentary bauxite only
     # --depth multiplier for sulphur contamination
@@ -557,7 +563,7 @@ class Inventory:
         df = self.linear_eqn_sb_only_df
         min_burial = self.inputs.loc[: , "minimumburial_contamination_start"]
         self.depth_multiplier_sulphur_cntm_df = pd.DataFrame(columns=self.op_ug_cols)
-        
+
         def main_func(i, min_val, max_val):
             calc1 = min([0 if float(min_burial[i]) > max_val else (max_val-float(min_burial[i]))/(max_val-min_val) ], [1])[0]
 
@@ -571,25 +577,25 @@ class Inventory:
             #open pit 1 (open_pit)
             self.depth_multiplier_sulphur_cntm_df.at[i, "open_pit1"] = main_func(i, 0.0, self.max1)
             #open pit 2 (open_pit)
-            self.depth_multiplier_sulphur_cntm_df.at[i, "open_pit2"] = main_func(i, self.max1, self.max2)            
+            self.depth_multiplier_sulphur_cntm_df.at[i, "open_pit2"] = main_func(i, self.max1, self.max2)
             #open pit 3 (open_pit)
-            self.depth_multiplier_sulphur_cntm_df.at[i, "open_pit3"] = main_func(i, self.max2, self.max3)            
+            self.depth_multiplier_sulphur_cntm_df.at[i, "open_pit3"] = main_func(i, self.max2, self.max3)
             #underground 1 (underground)
-            self.depth_multiplier_sulphur_cntm_df.at[i, "underground1"] = main_func(i, self.max3, self.max4)            
+            self.depth_multiplier_sulphur_cntm_df.at[i, "underground1"] = main_func(i, self.max3, self.max4)
             #underground 2 (underground)
-            self.depth_multiplier_sulphur_cntm_df.at[i, "underground2"] = main_func(i, self.max4, self.max5)            
+            self.depth_multiplier_sulphur_cntm_df.at[i, "underground2"] = main_func(i, self.max4, self.max5)
             #underground 3 (underground)
-            self.depth_multiplier_sulphur_cntm_df.at[i, "underground3"] = main_func(i, self.max5, self.max6)            
+            self.depth_multiplier_sulphur_cntm_df.at[i, "underground3"] = main_func(i, self.max5, self.max6)
             #underground 4 (underground)
-            self.depth_multiplier_sulphur_cntm_df.at[i, "underground4"] = main_func(i, self.max6, self.max7)            
+            self.depth_multiplier_sulphur_cntm_df.at[i, "underground4"] = main_func(i, self.max6, self.max7)
             #underground 5 (underground)
-            self.depth_multiplier_sulphur_cntm_df.at[i, "underground5"] = main_func(i, self.max7, self.max8)            
+            self.depth_multiplier_sulphur_cntm_df.at[i, "underground5"] = main_func(i, self.max7, self.max8)
             #underground 6 (underground)
-            self.depth_multiplier_sulphur_cntm_df.at[i, "underground6"] = main_func(i, self.max8, self.max9)            
+            self.depth_multiplier_sulphur_cntm_df.at[i, "underground6"] = main_func(i, self.max8, self.max9)
             #underground 7 (underground)
             self.depth_multiplier_sulphur_cntm_df.at[i, "underground7"] = main_func(i, self.max9, self.max10)
-        
-    
+
+
     # Suplhur contamination - sedimentary bauxite only
     # --% Inventory Sulphur contaminated by depth bucket
     def perct_inventory_sulphur_contaminated_db(self):
@@ -598,7 +604,7 @@ class Inventory:
         # df         = pd.read_csv("outputs/suplhur_contamination_sedimentary_bauxite_only/depth_multiplier_for_sulphur_contamination.csv")
         df = self.depth_multiplier_sulphur_cntm_df
         self.perct_inventory_sulphur_contaminated_db_df     = pd.DataFrame(columns=self.op_ug_cols)
-        
+
         def main_func(col, i):
             return float(max_contm[i])*float(df.loc[i, col]) if np.isnan(gnr_percnt[i]) else float(gnr_percnt[i])
 
@@ -614,7 +620,7 @@ class Inventory:
             self.perct_inventory_sulphur_contaminated_db_df.at[i, "underground6"] = main_func("underground6", i)
             self.perct_inventory_sulphur_contaminated_db_df.at[i, "underground7"] = main_func("underground7", i)
 
-        
+
 
     # A/S workings for sedimentary bauxite
     def perct_AA_percentile_mined_sb(self):
@@ -627,23 +633,23 @@ class Inventory:
         for i in range(len(dr_ai203)):
             str_gd  = min((1.0+0.164/2.0)*float(dr_ai203[i]), 0.85) if float(dr_ai203[i])>0 else np.nan       # Starting grade
             dpl_gd  = max((1.0+(0.76-1.0)/2.0)*float(dr_ai203[i]), 0.40) if float(dr_ai203[i])>0 else np.nan   # Depletion grade
-            sc_mn   = (float(dr_ai203[i])-(min([str_gd,dpl_gd])))/(max([str_gd,dpl_gd])-min([str_gd,dpl_gd])) if float(dr_ai203[i])>0 else np.nan   # Scaled mean 
+            sc_mn   = (float(dr_ai203[i])-(min([str_gd,dpl_gd])))/(max([str_gd,dpl_gd])-min([str_gd,dpl_gd])) if float(dr_ai203[i])>0 else np.nan   # Scaled mean
             sc_vr   = ((((0.12*float(dr_ai203[i]))**2.0/16.0)/ (float(pf_factr[i]) if factr_x_flag == 1 else 1)))/(max([str_gd,dpl_gd])-min([str_gd,dpl_gd]))**2 if float(dr_ai203[i])>0 else np.nan    # Scaled variance
             alp_v   = (sc_mn*(sc_mn/sc_vr*(1.0-sc_mn)-1.0)) if float(dr_ai203[i])>0 else np.nan   # Alpha value
             bt_vl   = (1.0-sc_mn)*(sc_mn/sc_vr*(1.0-sc_mn)-1.0) if float(dr_ai203[i])>0 else np.nan   # Beta value
             perct_5th = (beta.ppf(1-0.05,alp_v, bt_vl, dpl_gd, str_gd - dpl_gd) + str_gd)/2 if float(dr_ai203[i])>0 else np.nan # percentile mined 5th
-            
+
             data = [str_gd,dpl_gd,sc_mn,sc_vr,alp_v,bt_vl,perct_5th]
-            
+
             # percentile mined 10th - 100th
             prev_pect = 0.05
-            for j in range(10,101,5):                  
+            for j in range(10,101,5):
                 v = (beta.ppf(1-prev_pect,alp_v, bt_vl, dpl_gd, str_gd - dpl_gd) + beta.ppf(1-j/100.0,alp_v, bt_vl, dpl_gd, str_gd - dpl_gd))/2 if float(dr_ai203[i])>0 else np.nan
                 prev_pect = j/100.0
                 data.append(v)
-                
+
             self.perct_AA_percentile_mined_sb_df.at[i+1, :] = data
-        
+
 
     # %SiO2 by percentile mined - sedimentary bauxite
     def perct_SiO2_percentile_mined_sb(self):
@@ -655,9 +661,9 @@ class Inventory:
         df = self.perct_AA_percentile_mined_sb_df
         factr_x_flag = 1
         self.perct_SiO2_percentile_mined_sb_df = pd.DataFrame(columns= self.perct_SiO2_df_cols)#creating sub-columns
-            
+
         self.perct_SiO2_percentile_mined_sb_df.at[0, :] = self.perct_SiO2_df_data0
-        
+
         for i in range(len(dr_ai203)):
             if np.isnan(float(dr_ai203[i])):
                 dr_ai203.at[i] = 0
@@ -678,16 +684,16 @@ class Inventory:
             perct_5th = np.nan if errors == 1 else (beta.ppf(0.05,aplha_val, beta_val, start_grade ,dpl_grade-start_grade)+ start_grade)/2    # percentile mined 5th
 
             data = [errors,as_approx_max,as_approx_min,silica_avg,silica_total,start_grade,dpl_grade,scaled_mean,scaled_var,aplha_val,beta_val,perct_5th]
-            
+
             # percentile mined 10th - 100th
             prev_pect = 0.05
-            for j in range(10,101,5):                  
+            for j in range(10,101,5):
                 v = np.nan if errors == 1 else (beta.ppf(prev_pect,aplha_val, beta_val, start_grade ,dpl_grade-start_grade) + beta.ppf(j/100.0,aplha_val, beta_val,start_grade ,dpl_grade-start_grade))/2
                 prev_pect = j/100.0
                 data.append(v)
 
             self.perct_SiO2_percentile_mined_sb_df.at[i+1, :] = data
-        
+
 
     # A/S workings for collapse accumulated bauxite
     def perct_AA_percentile_mined_cab(self):
@@ -701,23 +707,23 @@ class Inventory:
         for i in range(len(dr_ai203)):
             str_gd  = min((1.0+0.164/2.0)*float(dr_ai203[i]), 0.85) if float(dr_ai203[i])>0 else np.nan        # Starting grade
             dpl_gd  = max((1.0+(0.76-1.0)/2.0)*float(dr_ai203[i]), 0.40) if float(dr_ai203[i])>0 else np.nan   # Depletion grade
-            sc_mn   = (float(dr_ai203[i])-(min([str_gd,dpl_gd])))/(max([str_gd,dpl_gd])-min([str_gd,dpl_gd])) if float(dr_ai203[i])>0 else np.nan   # Scaled mean 
+            sc_mn   = (float(dr_ai203[i])-(min([str_gd,dpl_gd])))/(max([str_gd,dpl_gd])-min([str_gd,dpl_gd])) if float(dr_ai203[i])>0 else np.nan   # Scaled mean
             sc_vr   = ((((0.12*float(dr_ai203[i]))**2.0/16.0)/ (float(pf_factr[i]) if factr_x_flag == 1 else 1)))/(max([str_gd,dpl_gd])-min([str_gd,dpl_gd]))**2 if float(dr_ai203[i])>0 else np.nan    # Scaled variance
             alp_v   = (sc_mn*(sc_mn/sc_vr*(1.0-sc_mn)-1.0)) if float(dr_ai203[i])>0 else np.nan   # Alpha value
             bt_vl   = (1.0-sc_mn)*(sc_mn/sc_vr*(1.0-sc_mn)-1.0) if float(dr_ai203[i])>0 else np.nan   # Beta value
             perct_5th = (beta.ppf(1-0.05,alp_v, bt_vl, dpl_gd, str_gd - dpl_gd) + str_gd)/2 if float(dr_ai203[i])>0 else np.nan # percentile mined 5th
-            
+
             data = [str_gd,dpl_gd,sc_mn,sc_vr,alp_v,bt_vl,perct_5th]
-            
+
             # percentile mined 10th - 100th
             prev_pect = 0.05
-            for j in range(10,101,5):                  
+            for j in range(10,101,5):
                 v = (beta.ppf(1-prev_pect,alp_v, bt_vl, dpl_gd, str_gd - dpl_gd) + beta.ppf(1-j/100.0,alp_v, bt_vl, dpl_gd, str_gd - dpl_gd))/2 if float(dr_ai203[i])>0 else np.nan
                 prev_pect = j/100.0
                 data.append(v)
-                
+
             self.perct_AA_percentile_mined_cab_df.at[i+1, :] = data
-        
+
 
     def perct_SiO2_percentile_mined_cab(self):
         dr_ai203 = self.output_db.loc[:, "de_rated_Al2O3"] # sub-column %Al2O3
@@ -728,7 +734,7 @@ class Inventory:
         df = self.perct_AA_percentile_mined_sb_df
         factr_x_flag = 1
         self.perct_SiO2_percentile_mined_cab_df = pd.DataFrame(columns= self.perct_SiO2_cab_df_cols) #creating sub-columns
-            
+
         self.perct_SiO2_percentile_mined_cab_df.at[0, :] = self.perct_SiO2_cab_df_data0
 
         for i in range(len(dr_ai203)):
@@ -751,22 +757,22 @@ class Inventory:
             perct_5th = np.nan if errors == 1 else (beta.ppf(0.05,aplha_val, beta_val, start_grade ,dpl_grade-start_grade)+ start_grade)/2    # percentile mined 5th
 
             data = [errors,as_approx_max,as_approx_min,silica_avg,silica_total,start_grade,dpl_grade,scaled_mean,scaled_var,aplha_val,beta_val,perct_5th]
-            
+
             # percentile mined 10th - 100th
             prev_pect = 0.05
-            for j in range(10,101,5):                  
+            for j in range(10,101,5):
                 v = np.nan if errors == 1 else (beta.ppf(prev_pect,aplha_val, beta_val, start_grade ,dpl_grade-start_grade) + beta.ppf(j/100.0,aplha_val, beta_val,start_grade ,dpl_grade-start_grade))/2
                 prev_pect = j/100.0
                 data.append(v)
 
             self.perct_SiO2_percentile_mined_cab_df.at[i+1, :] = data
-        
+
 
     # Mining costs
     def stripping_ratio_sb(self):
         deposit_tick = self.inputs.loc[:, "deposit_thickness"]
         self.stripping_ratio_sb_df = pd.DataFrame(columns=self.op_ug_cols)
-        
+
         def main_func(avg, ind):
             return avg/float(deposit_tick[ind])
 
@@ -777,27 +783,27 @@ class Inventory:
             self.stripping_ratio_sb_df.at[i, "open_pit1":"open_pit3"] = [main_func(self.avg1, i), main_func(self.avg2, i), main_func(self.avg3, i)]
             self.stripping_ratio_sb_df.at[i, "underground1":"underground7"] = 0.5
 
-        
+
 
     def stripping_ratio_ca_bx(self):
-        df = self.inputs        
+        df = self.inputs
         self.stripping_ratio_ca_bx_df = pd.DataFrame(columns=self.op_ug_cols)
 
         for i in range(len(df)):
             self.stripping_ratio_ca_bx_df.at[i, "open_pit1"] = 0.33
-        
+
 
     def electricity_costs_msb_RMBt_ROM_ore(self):
         province   = self.lookuptable.loc[:, "province"] # Lookup table province column
-        elc_use    = self.lookuptable.loc[:, "Electricity Use"] # open_pit specific rates sub-column -- Electricity Use
-        bs_elc_use = self.lookuptable.loc[:, "Base electricy use"] # Under Ground specific rates -- Base electricy use
-        elctr      = self.lookuptable.loc[:, "Electricity"] # General rates and costs sub-column -- Electricity
-        
+        elc_use    = self.lookuptable.loc[:, "electricity_use"] # open_pit specific rates sub-column -- Electricity Use
+        bs_elc_use = self.lookuptable.loc[:, "base_electricy_use"] # Under Ground specific rates -- Base electricy use
+        elctr      = self.lookuptable.loc[:, "electricity"] # General rates and costs sub-column -- Electricity
+
         df         = self.inputs.loc[:, "province"] # Inputs province table
         # mc = pd.read_csv("outputs/mining_costs/stripping_ratio-sedimentary_bauxite.csv")
         mc = self.stripping_ratio_sb_df
         self.electricity_costs_msb_RMBt_ROM_ore_df      = pd.DataFrame(columns=self.op_ug_cols)
-       
+
         for i in range(len(mc)):
             self.electricity_costs_msb_RMBt_ROM_ore_df.at[i, "open_pit1"] = self.main_vlookup(df[i], province, elc_use) * (self.main_vlookup(df[i], province, elctr)*(1+float(mc.loc[i, "open_pit1"])))
             self.electricity_costs_msb_RMBt_ROM_ore_df.at[i, "open_pit2"] = self.main_vlookup(df[i], province, elc_use) * (self.main_vlookup(df[i], province, elctr)*(1+float(mc.loc[i, "open_pit2"])))
@@ -810,13 +816,13 @@ class Inventory:
             self.electricity_costs_msb_RMBt_ROM_ore_df.at[i, "underground6"] = (self.main_vlookup(df[i], province, bs_elc_use)*(0.002*self.avg9+0.796)) * (self.main_vlookup(df[i], province, elctr) * (1+float(mc.loc[i, "underground6"])))
             self.electricity_costs_msb_RMBt_ROM_ore_df.at[i, "underground7"] = (self.main_vlookup(df[i], province, bs_elc_use)*(0.002*self.avg10+0.796)) * (self.main_vlookup(df[i], province, elctr) * (1+float(mc.loc[i, "underground7"])))
 
-        
+
 
     def electricity_costs_cab_RMB_t_ROM_ore(self):
         province = self.lookuptable.loc[:, "province"] # Lookup table province column
-        elc_use  = self.lookuptable.loc[:, "Electricity Use"] # open_pit specific rates sub-column -- Electricity Use        
-        elctr    = self.lookuptable.loc[:, "Electricity"] # General rates and costs sub-column -- Electricity
-        
+        elc_use  = self.lookuptable.loc[:, "electricity_use"] # open_pit specific rates sub-column -- Electricity Use
+        elctr    = self.lookuptable.loc[:, "electricity"] # General rates and costs sub-column -- Electricity
+
         df       = self.inputs.loc[:, "province"] # Inputs province table
         # mc = pd.read_csv("outputs/mining_costs/stripping_ratio-sedimentary_bauxite.csv")
         mc = self.stripping_ratio_sb_df
@@ -824,13 +830,13 @@ class Inventory:
 
         for i in range(len(mc)):
             self.electricity_costs_cab_RMB_t_ROM_ore_df.at[i, "open_pit1"] = self.main_vlookup(df[i], province, elc_use) * self.main_vlookup(df[i], province, elctr)
-        
+
 
     def diesel_costs_msb_RMB_t_ROM_ore(self):
         # Scale of open_pit mining (ktpy)
-        province = self.lookuptable.loc[:, "province"] # Lookup table province columngnr_sr   
-        elctr    = self.lookuptable.loc[:, "Diesel"] # General rates and costs sub-column -- Electricity
-        
+        province = self.lookuptable.loc[:, "province"] # Lookup table province columngnr_sr
+        elctr    = self.lookuptable.loc[:, "diesel"] # General rates and costs sub-column -- Electricity
+
         df          = self.inputs.loc[:, "province"] # Inputs province table
         scale_op    = self.inputs.loc[:, "scale_openpit_mining"]
         scale_ug    = self.inputs.loc[:, "scale_underground_mining"]
@@ -851,11 +857,11 @@ class Inventory:
             self.diesel_costs_msb_RMB_t_ROM_ore_df.at[i, "underground6"] =  (((1.5*(scale_ug[i]**-0.129))*3.5*1.2*2) * ((self.main_vlookup(df[i], province, elctr) / 1000) * (1+float(mc.loc[i, "underground6"]))))
             self.diesel_costs_msb_RMB_t_ROM_ore_df.at[i, "underground7"] =  (((1.5*(scale_ug[i]**-0.129))*3.5*1.2*2) * ((self.main_vlookup(df[i], province, elctr) / 1000) * (1+float(mc.loc[i, "underground7"]))))
 
-        
+
 
     def diesel_costs_mca_RMB_t_ROM_ore(self):
-        province = self.lookuptable.loc[:, "province"] # Lookup table province column       
-        diesel   = self.lookuptable.loc[:, "Diesel"] # General rates and costs sub-column -- Diesel
+        province = self.lookuptable.loc[:, "province"] # Lookup table province column
+        diesel   = self.lookuptable.loc[:, "diesel"] # General rates and costs sub-column -- Diesel
         scale_op    = self.inputs.loc[:, "scale_openpit_mining"]
 
         df          = self.inputs.loc[:, "province"] # Inputs province table
@@ -864,14 +870,14 @@ class Inventory:
         self.diesel_costs_mca_RMB_t_ROM_ore_df      = pd.DataFrame(columns=self.op_ug_cols)
 
         for i in range(len(mc)):
-            avg = 5        
-            self.diesel_costs_mca_RMB_t_ROM_ore_df.at[i, "open_pit1"] =  ((0.005*avg+1+(1*scale_op[i]**-0.129))/2.7) * (self.main_vlookup(df[i], province, diesel) / 1000) * (1+float(mc.loc[i, "open_pit1"]))            
-        
+            avg = 5
+            self.diesel_costs_mca_RMB_t_ROM_ore_df.at[i, "open_pit1"] =  ((0.005*avg+1+(1*scale_op[i]**-0.129))/2.7) * (self.main_vlookup(df[i], province, diesel) / 1000) * (1+float(mc.loc[i, "open_pit1"]))
+
 
     def labour_costs_msb_RMB_t_ROM_ore(self):
         province = self.lookuptable.loc[:, "province"] # Lookup table province column
-        lab2    = self.lookuptable.loc[:, "LabourHours"] # General rates and costs sub-column -- Labour Hours/year
-        lab1    = self.lookuptable.loc[:, "LabourRMB"] # General rates and costs sub-column -- Labour RMB/year
+        lab1    = self.lookuptable.loc[:, "labourrmb"] # General rates and costs sub-column -- Labour RMB/year
+        lab2    = self.lookuptable.loc[:, "labourhours"] # General rates and costs sub-column -- Labour Hours/year
         df      = self.inputs.loc[:, "province"] # Inputs province table
         # mc = pd.read_csv("outputs/mining_costs/stripping_ratio-sedimentary_bauxite.csv")
         mc = self.stripping_ratio_sb_df
@@ -889,40 +895,40 @@ class Inventory:
             self.labour_costs_msb_RMB_t_ROM_ore_df.at[i, "underground6"] =  (((0.7 if self.avg9<125.0 else (0.01*self.avg9-0.5 if self.avg9<450.0 else 4)) *(0.66)+0.2) * 0.7*1.2*2)*(self.main_vlookup(df[i], province, lab1)/self.main_vlookup(df[i], province, lab2)) * (1+float(mc.loc[i, "underground1"]))
             self.labour_costs_msb_RMB_t_ROM_ore_df.at[i, "underground7"] =  (((0.7 if self.avg10<125.0 else (0.01*self.avg10-0.5 if self.avg10<450.0 else 4)) *(0.66)+0.2) * 0.7*1.2*2)*(self.main_vlookup(df[i], province, lab1)/self.main_vlookup(df[i], province, lab2)) * (1+float(mc.loc[i, "underground1"]))
 
-        
+
 
     def labour_costs_mcab_RMB_t_ROM_ore(self):
-        province = self.lookuptable.loc[:, "province"] # Lookup table province column        
-        lab1    = self.lookuptable.loc[:, "LabourRMB"] # General rates and costs sub-column -- Labour RMB/year
-        lab2    = self.lookuptable.loc[:, "LabourHours"] # General rates and costs sub-column -- Labour Hours/year
-                
+        province = self.lookuptable.loc[:, "province"] # Lookup table province column
+        lab1    = self.lookuptable.loc[:, "labourrmb"] # General rates and costs sub-column -- Labour RMB/year
+        lab2    = self.lookuptable.loc[:, "labourhours"] # General rates and costs sub-column -- Labour Hours/year
+
         df      = self.inputs.loc[:, "province"] # Inputs province table
         # mc = pd.read_csv("outputs/mining_costs/stripping_ratio-collapse_accumulated_bx.csv")
         mc = self.stripping_ratio_ca_bx_df
         self.labour_costs_mcab_RMB_t_ROM_ore_df      = pd.DataFrame(columns=self.op_ug_cols)
-        
+
         for i in range(len(mc)):
             avg = 5
             self.labour_costs_mcab_RMB_t_ROM_ore_df.at[i, "open_pit1"] =  ((0.0022*avg+0.44)/2.7) * (self.main_vlookup(df[i], province, lab1)/self.main_vlookup(df[i], province, lab2)) * (1+float(mc.loc[i, "open_pit1"]))
-            
-        
+
+
 
     def mine_transport_costs_sedimentary(self):
         # df = pd.read_csv('outputs/mining_costs/labour_costs-mining_collapse_accumulated_bauxite-RMB-tROM_ore.csv')
         df = self.labour_costs_mcab_RMB_t_ROM_ore_df
         self.mine_transport_costs_sedimentary_df = pd.DataFrame(columns=self.op_ug_cols)
-        
+
         for i in range(len(df)):
             self.mine_transport_costs_sedimentary_df.at[i, "open_pit1":"underground7"] = 0
 
-        
+
 
     def washing_factor(self):
         self.washing_factor_df = pd.DataFrame(columns=["For Collapse Accumulated bauxite … to dry ore assume 17.5% H2O"])
-    
+
         for i in range(len(self.inputs)):
             self.washing_factor_df.at[i,"For Collapse Accumulated bauxite … to dry ore assume 17.5% H2O"] = 2/(1-17.5/100)
-        
+
 
     def costs_RMB_t_ROM_ore_before_per_t_ore_charges_sb(self):
         ec_msb  = self.electricity_costs_msb_RMBt_ROM_ore_df # pd.read_csv("outputs/mining_costs/electricity_costs-mining_sedimentary_bauxite-RMB-t_ROM_ore.csv")
@@ -936,7 +942,7 @@ class Inventory:
         self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_sb_df  = pd.DataFrame(columns=self.op_ug_cols)
 
         def main_func(col, i, exp_df):
-            return (ec_msb.loc[i,col] + dc_msb.loc[i,col] + ls_msb.loc[i,col] + im_cost.loc[i,col] + dc_sb[i] + exp_df[i]) 
+            return (ec_msb.loc[i,col] + dc_msb.loc[i,col] + ls_msb.loc[i,col] + im_cost.loc[i,col] + dc_sb[i] + exp_df[i])
 
         for i in range(len(ec_msb)):
             self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_sb_df.at[i, "open_pit1"] = main_func("open_pit1", i, ec_op)
@@ -949,7 +955,7 @@ class Inventory:
             self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_sb_df.at[i, "underground5"] = main_func("underground5", i, ec_ug)
             self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_sb_df.at[i, "underground6"] = main_func("underground6", i, ec_ug)
             self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_sb_df.at[i, "underground7"] = main_func("underground7", i, ec_ug)
-        
+
 
     def costs_RMB_t_ROM_ore_before_per_t_ore_charges_ca_bx(self):
         ec_ecab  = self.electricity_costs_cab_RMB_t_ROM_ore_df  # pd.read_csv("outputs/mining_costs/electricity_costs-collapse_accumulated_bauxite-RMB-t_ROM_ore.csv")
@@ -961,49 +967,49 @@ class Inventory:
         ec_op   = self.inputs.loc[:, "explosivecost_openpit"]
 
         self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_ca_bx_df  = pd.DataFrame(columns=self.op_ug_cols)
-        
+
         def main_func(col, ind):
             return (((ec_ecab.loc[i,col]*2) + (dc_mcab.loc[i,col]*2) + (ls_mcab.loc[i,col]*2) + (im_cost.loc[i,col]*2)) + float(dc_cab[i]) + float(ec_op[i])) * float(ws_fac.iloc[i, 0])
 
         for i in range(len(ec_ecab)):
-            self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_ca_bx_df.at[i, "open_pit1"] = main_func("open_pit1", i)            
-        
+            self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_ca_bx_df.at[i, "open_pit1"] = main_func("open_pit1", i)
+
 
     def taxes_royalties_Other_allowance_Capital_up_front_costs_charge(self):
         province    = self.lookuptable.loc[:, "province"] # Lookup table province column
-        tax_royalty = self.lookuptable.loc[:, "Tax - Royalty"] # General rates and costs sub-column -- Tax - Royalty
-        tax_other   = self.lookuptable.loc[:, "Tax - Other"] # General rates and costs sub-column -- Tax - Other
-        
+        tax_royalty = self.lookuptable.loc[:, "tax_-_royalty"] # General rates and costs sub-column -- Tax - Royalty
+        tax_other   = self.lookuptable.loc[:, "tax_-_other"] # General rates and costs sub-column -- Tax - Other
+
         df          = self.inputs.loc[:, "province"]
 
         self.taxes_royalties_Other_allowance_Capital_up_front_costs_charge_df  = pd.DataFrame(
             columns=["Taxes and Royalties","Other Allowance","Capital  / Up Front Costs Charge","Capital  / Up Front Costs Charge.1"]
         )
 
-        self.taxes_royalties_Other_allowance_Capital_up_front_costs_charge_df.at[0,:] = ["","","open pit - RMB/t ROM ore","underground - RMB/t ROM ore"]            
+        self.taxes_royalties_Other_allowance_Capital_up_front_costs_charge_df.at[0,:] = ["","","open pit - RMB/t ROM ore","underground - RMB/t ROM ore"]
         self.taxes_royalties_Other_allowance_Capital_up_front_costs_charge_df.at[1,:] = ["","","all depths","all depths"]
-        
+
         for i in range(len(df)):
             self.taxes_royalties_Other_allowance_Capital_up_front_costs_charge_df.at[i+2, "Taxes and Royalties"] = self.main_vlookup(df[i], province, tax_royalty) + self.main_vlookup(df[i], province, tax_other)
             self.taxes_royalties_Other_allowance_Capital_up_front_costs_charge_df.at[i+2, "Other Allowance"] = 0
             self.taxes_royalties_Other_allowance_Capital_up_front_costs_charge_df.at[i+2, "Capital  / Up Front Costs Charge"] = 15
             self.taxes_royalties_Other_allowance_Capital_up_front_costs_charge_df.at[i+2, "Capital  / Up Front Costs Charge.1"] = 60
 
-        
+
 
     def total_mining_costs_RMB_t_ore_sb(self):
         cost_cb    = self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_sb_df    # pd.read_csv("outputs/mining_costs/costs_RMB-t_ROM_ore_before_per-t-ore_charges-sedimentary_bauxite.csv")
-        tax_others = self.taxes_royalties_Other_allowance_Capital_up_front_costs_charge_df  # pd.read_csv("outputs/mining_costs/taxes_royalties_Other_allowance_Capital_up_front_costs_charge.csv")        
+        tax_others = self.taxes_royalties_Other_allowance_Capital_up_front_costs_charge_df  # pd.read_csv("outputs/mining_costs/taxes_royalties_Other_allowance_Capital_up_front_costs_charge.csv")
 
         self.total_mining_costs_RMB_t_ore_sb_df     = pd.DataFrame(columns=self.op_ug_cols)
-        
+
         def main_func(col, a, op_ug):
             return ((float(cost_cb.loc[a,col]) + float(tax_others.loc[a+2,"Taxes and Royalties"])) * (1 + float(tax_others.loc[a+2,"Other Allowance"])) + float(op_ug.iloc[a+2]))
 
         for i in range(len(cost_cb)):
             op = tax_others.loc[:, "Capital  / Up Front Costs Charge"]
             ug = tax_others.loc[:, "Capital  / Up Front Costs Charge.1"]
-            
+
             self.total_mining_costs_RMB_t_ore_sb_df.at[i, "open_pit1"] = main_func("open_pit1", i, op)
             self.total_mining_costs_RMB_t_ore_sb_df.at[i, "open_pit2"] = main_func("open_pit2", i, op)
             self.total_mining_costs_RMB_t_ore_sb_df.at[i, "open_pit3"] = main_func("open_pit3", i, op)
@@ -1015,37 +1021,37 @@ class Inventory:
             self.total_mining_costs_RMB_t_ore_sb_df.at[i, "underground6"] = main_func("underground6", i, ug)
             self.total_mining_costs_RMB_t_ore_sb_df.at[i, "underground7"] = main_func("underground7", i, ug)
 
-        
+
 
     def total_mining_costs_RMB_t_ore_cab(self):
         cost_cabx    = self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_ca_bx_df   # pd.read_csv("outputs/mining_costs/costs_RMB-t_ROM_ore_before_per-t-ore_charges-collapse_accumulated_bx.csv")
-        tax_others = self.taxes_royalties_Other_allowance_Capital_up_front_costs_charge_df  # pd.read_csv("outputs/mining_costs/taxes_royalties_Other_allowance_Capital_up_front_costs_charge.csv")        
+        tax_others = self.taxes_royalties_Other_allowance_Capital_up_front_costs_charge_df  # pd.read_csv("outputs/mining_costs/taxes_royalties_Other_allowance_Capital_up_front_costs_charge.csv")
         ws_fac  = self.washing_factor_df       # pd.read_csv("outputs/mining_costs/washing_factor.csv")
 
         self.total_mining_costs_RMB_t_ore_cab_df     = pd.DataFrame(columns=self.op_ug_cols)
-        
+
         def main_func(col, a, op_ug):
             return ((float(cost_cabx.loc[a,col]) + float(tax_others.loc[a+2,"Taxes and Royalties"])) * (1 + float(tax_others.loc[a+2,"Other Allowance"])) + (float(op_ug.iloc[a+2]) * float(ws_fac.iloc[a])))
 
         for i in range(len(cost_cabx)):
             op = tax_others.loc[:, "Capital  / Up Front Costs Charge"]
-            
+
             self.total_mining_costs_RMB_t_ore_cab_df.at[i, "open_pit1"] = main_func("open_pit1", i, op)
 
-        
+
 
     # Delivery costs
-    def delivery_costs_RG_RT(self):        
+    def delivery_costs_RG_RT(self):
         province  = self.lookuptable.loc[:, "province"] # Lookup table province column
-        transp    = self.lookuptable.loc[:, "Transport"].astype(float)
+        transp    = self.lookuptable.loc[:, "transport"].astype(float)
         avd_dist  = self.inputs.loc[:, "average_distance_refinery"].astype(float)
 
         df = self.inputs.loc[:,"province"]
-        lime      = self.lookuptable.loc[:, "Lime"].astype(float)
-        ter_rmb   = self.lookuptable.loc[:, "Thermal CoalRMB"].astype(float)
-        ter_kcal  = self.lookuptable.loc[:, "Thermal CoalKcal"].astype(float)
-        anth_rmb  = self.lookuptable.loc[:, "Anthratcite CoalRMB"].astype(float)
-        anth_kcal = self.lookuptable.loc[:, "Anthratcite CoalKcal"].astype(float)
+        lime      = self.lookuptable.loc[:, "lime"].astype(float)
+        ter_rmb   = self.lookuptable.loc[:, "thermal_coalrmb"].astype(float)
+        ter_kcal  = self.lookuptable.loc[:, "thermal_coalkcal"].astype(float)
+        anth_rmb  = self.lookuptable.loc[:, "anthratcite_coalrmb"].astype(float)
+        anth_kcal = self.lookuptable.loc[:, "anthratcite_coalkcal"].astype(float)
 
         self.delivery_costs_RG_RT_df = pd.DataFrame(columns=[
             "Delivery Costs",
@@ -1059,11 +1065,11 @@ class Inventory:
         ])
 
         self.delivery_costs_RG_RT_df.at[0, :] = ["RMB/t ore", "RMB/t_AA", "", "", "", "RMB/t_AA", "RMB/t_AA", "RMB/t_AA"]
-        
+
         def mvl(search, target):
             v = province.map(lambda x: x.lower() == search.lower())
             try:
-                return float(target[v].tolist()[0])            
+                return float(target[v].tolist()[0])
             except Exception:
                 pass
 
@@ -1076,44 +1082,44 @@ class Inventory:
             self.delivery_costs_RG_RT_df.at[i+1,"Energy Costs"] = (13.5/(4.18* mvl(df[i],ter_kcal) /1000) * mvl(df[i],ter_rmb)) + (5 / (4.18*mvl(df[i],anth_kcal) / 1000) * mvl(df[i],anth_rmb))
             self.delivery_costs_RG_RT_df.at[i+1,"Lime Costs"] = 0.22 * mvl(df[i],lime)
             self.delivery_costs_RG_RT_df.at[i+1,"Other Costs (labour, maintenance, other consumables)"] = self.other_controls.loc[0,"other_costs"]
-        
-    
+
+
     def t_div_t_BX_AA_percentile_mined_sb(self):
         rg_rr   = self.delivery_costs_RG_RT_df
         df_sio2 = self.perct_SiO2_percentile_mined_sb_df
         df_aa   = self.perct_AA_percentile_mined_sb_df
-        
+
         self.t_div_t_BX_AA_percentile_mined_sb_df = pd.DataFrame(
             columns= [f"percentile mined {i/100}"  for i in range(5,101,5)]
         )
         self.t_div_t_BX_AA_percentile_mined_sb_df.at[0,:] = [f"{i}th" for i in range(5,101,5)]
-        
+
         for i in range(1, len(df_aa)):
             for a in range(5,101,5):
                 self.t_div_t_BX_AA_percentile_mined_sb_df.at[i, f"percentile mined {a/100}"] = 0 if (np.isnan(float(df_aa.loc[i, f"percentile mined {a/100}"])) or np.isnan(float(df_sio2.loc[i, f"percentile mined {a/100}"]))) else 1/((float(df_aa.loc[i, f"percentile mined {a/100}"]) - float(rg_rr.loc[i, "Alumina DSP Factor t.aa/t.R.Si"]) * float(df_sio2.loc[i, f"percentile mined {a/100}"])) * float(rg_rr.loc[i, "Recovery of AA after losses"]))
-        
+
 
     def t_div_t_BX_AA_percentile_mined_cab(self):
         rg_rr   = self.delivery_costs_RG_RT_df      # pd.read_csv("outputs/delivery_costs/RGtoRR_Diesel_cost.csv")
         df_sio2 = self.perct_SiO2_percentile_mined_cab_df       # pd.read_csv("outputs/as_workings_collapse_accumulated_bauxite/perct_SiO2_percentile_mined-collapse_sedimentary_bauxite.csv")
         df_aa   = self.perct_AA_percentile_mined_cab_df     # pd.read_csv("outputs/as_workings_collapse_accumulated_bauxite/perct_AA_percentile_mined-collapse_accumulated_bauxite.csv")
-        
+
         self.t_div_t_BX_AA_percentile_mined_cab_df = pd.DataFrame(
             columns= [f"percentile mined {i/100}"  for i in range(5,101,5)]
         )
         self.t_div_t_BX_AA_percentile_mined_cab_df.at[0,:] = [f"{i}th" for i in range(5,101,5)]
-        
+
         for i in range(1, len(df_aa)):
             for a in range(5,101,5):
                 self.t_div_t_BX_AA_percentile_mined_cab_df.at[i, f"percentile mined {a/100}"] = 0 if (np.isnan(float(df_aa.loc[i, f"percentile mined {a/100}"])) or np.isnan(float(df_sio2.loc[i, f"percentile mined {a/100}"]))) else 1/((float(df_aa.loc[i, f"percentile mined {a/100}"]) - float(rg_rr.loc[i, "Alumina DSP Factor t.aa/t.R.Si"]) * float(df_sio2.loc[i, f"percentile mined {a/100}"])) * float(rg_rr.loc[i, "Recovery of AA after losses"]))
-        
-        
+
+
 
     def caustic_use_percentile_mined_sb_t_div_t_AA(self):
         rg_rr   = self.delivery_costs_RG_RT_df      # pd.read_csv("outputs/delivery_costs/RGtoRR_Diesel_cost.csv")
         df_sio2 = self.perct_SiO2_percentile_mined_sb_df     # pd.read_csv("outputs/as_workings_sedimentary_bauxite/perct_SiO2_percentile_mined-sedimentary_bauxite.csv")
         tt_sb   = self.t_div_t_BX_AA_percentile_mined_sb_df  # pd.read_csv("outputs/delivery_costs/t-t_BX:AA_by_percentile_mined-sedimentary_bauxite.csv")
-        
+
         self.caustic_use_percentile_mined_sb_t_div_t_AA_df = pd.DataFrame(
             columns= [f"percentile mined {i/100}"  for i in range(5,101,5)]
         )
@@ -1122,8 +1128,8 @@ class Inventory:
         for i in range(1, len(tt_sb)):
             for a in range(5,101,5):
                 self.caustic_use_percentile_mined_sb_t_div_t_AA_df.at[i,f"percentile mined {a/100}"] = 0 if np.isnan(float(df_sio2.loc[i, f"percentile mined {a/100}"])) else float(df_sio2.loc[i, f"percentile mined {a/100}"]) * float(rg_rr.loc[i, "Caustic Use Factor t.NAOH/t.R.Si"]) * float(tt_sb.loc[i, f"percentile mined {a/100}"]) + 0.035
-        
-        
+
+
 
     def caustic_use_percentile_mined_cab(self):
         rg_rr   = self.delivery_costs_RG_RT_df      # pd.read_csv("outputs/delivery_costs/RGtoRR_Diesel_cost.csv")
@@ -1138,20 +1144,20 @@ class Inventory:
         for i in range(1, len(tt_sb)):
             for a in range(5,101,5):
                 self.caustic_use_percentile_mined_cab_df.at[i,f"percentile mined {a/100}"] = 0 if np.isnan(float(df_sio2.loc[i, f"percentile mined {a/100}"])) else float(df_sio2.loc[i, f"percentile mined {a/100}"]) * float(rg_rr.loc[i, "Caustic Use Factor t.NAOH/t.R.Si"]) * float(tt_sb.loc[i, f"percentile mined {a/100}"]) + 0.035
-        
-        
+
+
 
     def CBIX_BX_AA_production_cost(self):
         index = -1 * int(self.lookuptable.shape[0] - self.lookuptable[self.lookuptable.loc[:, "province"].map(lambda x: x.lower() == 'shaanxi')].index.to_numpy()[-1])
-        
+
         oc_df = self.other_controls
-        lime       = float(self.lookuptable.loc[:, "Lime"].iloc[index])
-        caustic_sd = float(self.lookuptable.loc[:, "Caustic Soda"].iloc[index])
-        tc_rmb     = float(self.lookuptable.loc[:, "Thermal CoalRMB"].iloc[index])
-        tc_kcal    = float(self.lookuptable.loc[:, "Thermal CoalKcal"].iloc[index])
-        ant_rmb    = float(self.lookuptable.loc[:, "Anthratcite CoalRMB"].iloc[index])
-        ant_kcal   = float(self.lookuptable.loc[:, "Anthratcite CoalKcal"].iloc[index])
-        mud_d      = float(self.lookuptable.loc[:, "Mud disposal"].iloc[index])
+        lime       = float(self.lookuptable.loc[:, "lime"].iloc[index])
+        caustic_sd = float(self.lookuptable.loc[:, "caustic_soda"].iloc[index])
+        tc_rmb     = float(self.lookuptable.loc[:, "thermal_coalrmb"].iloc[index])
+        tc_kcal    = float(self.lookuptable.loc[:, "thermal_coalkcal"].iloc[index])
+        ant_rmb    = float(self.lookuptable.loc[:, "anthratcite_coalrmb"].iloc[index])
+        ant_kcal   = float(self.lookuptable.loc[:, "anthratcite_coalkcal"].iloc[index])
+        mud_d      = float(self.lookuptable.loc[:, "mud_disposal"].iloc[index])
 
         self.CBIX_BX_AA_production_cost_df     = pd.DataFrame(
             columns= [
@@ -1170,7 +1176,7 @@ class Inventory:
         )
         self.CBIX_BX_AA_production_cost_df.at[0,:] = ["RMB/dmt","RMB/dmt","","","","","","","","RMB/dmt",""]
 
-        
+
         self.CBIX_BX_AA_production_cost_df.at[1, "Bx delivery cost (RMB/dmt)"] = 60
         self.CBIX_BX_AA_production_cost_df.at[1, "Bx Delivered Cost"] = oc_df.loc[0, "cbix_Bx_price"] * oc_df.loc[0, "fxrate"] + self.CBIX_BX_AA_production_cost_df.loc[1, "Bx delivery cost (RMB/dmt)"]
         self.CBIX_BX_AA_production_cost_df.at[1, "Bx (t/t_AA)"]  = 1/((50/100-5/100*1)*90/100)
@@ -1182,20 +1188,20 @@ class Inventory:
         self.CBIX_BX_AA_production_cost_df.at[1, "Residue disposal cost (RMB/t_AA)"] =  (self.CBIX_BX_AA_production_cost_df.loc[1, "Bx (t/t_AA)"] -1 + self.CBIX_BX_AA_production_cost_df.loc[1, "NaOH use (t/t_AA)"] + +0.036) * mud_d
         self.CBIX_BX_AA_production_cost_df.at[1, "Other Costs (labour, maintenance, other consumables)"] = oc_df.loc[0, "other_costs"]
         self.CBIX_BX_AA_production_cost_df.at[1, "Total Cost - CBIX BX"] = float(self.CBIX_BX_AA_production_cost_df.loc[1, "Bx cost (RMB/t_AA)"]) + float(self.CBIX_BX_AA_production_cost_df.loc[1, "Caustic cost (RMB/t_AA)"]) + float(self.CBIX_BX_AA_production_cost_df.loc[1, "Energy Cost (RMB/t_AA)"]) + float(self.CBIX_BX_AA_production_cost_df.loc[1, "Lime Cost (RMB/t_AA)"]) + float(self.CBIX_BX_AA_production_cost_df.loc[1, "Residue disposal cost (RMB/t_AA)"]) + float(self.CBIX_BX_AA_production_cost_df.loc[1, "Other Costs (labour, maintenance, other consumables)"])
-        
+
         for i in range(len(self.inputs)):
             self.CBIX_BX_AA_production_cost_df.at[i+2, "Total Cost - CBIX BX"] = self.CBIX_BX_AA_production_cost_df.loc[1, "Total Cost - CBIX BX"]
 
-        
+
 
     def final_costs(self):
-        province = self.lookuptable.loc[:, "province"] # Lookup table province column        
-        caustic_sd = self.lookuptable.loc[:, "Caustic Soda"]
-        mud_d      = self.lookuptable.loc[:,  "Mud disposal"]
+        province = self.lookuptable.loc[:, "province"] # Lookup table province column
+        caustic_sd = self.lookuptable.loc[:, "caustic_soda"]
+        mud_d      = self.lookuptable.loc[:,  "mud_disposal"]
 
         df      = self.inputs.loc[:, "province"] # Inputs province table
         rg_rr   = self.delivery_costs_RG_RT_df      # pd.read_csv("outputs/delivery_costs/RGtoRR_Diesel_cost.csv")
-        aa_sb   = self.t_div_t_BX_AA_percentile_mined_sb_df     # pd.read_csv("outputs/delivery_costs/t-t_BX:AA_by_percentile_mined-sedimentary_bauxite.csv")        
+        aa_sb   = self.t_div_t_BX_AA_percentile_mined_sb_df     # pd.read_csv("outputs/delivery_costs/t-t_BX:AA_by_percentile_mined-sedimentary_bauxite.csv")
         cu_sb   = self.caustic_use_percentile_mined_sb_t_div_t_AA_df     # pd.read_csv("outputs/delivery_costs/caustic_use_by_percentile_mined-sedimentary_bauxite_t-t_AA.csv")
         aa_cab  = self.t_div_t_BX_AA_percentile_mined_cab_df        # pd.read_csv("outputs/delivery_costs/t-t_BX:AA_by_percentile_mined-collapse_accumlulated_bx.csv")
         cu_cab  = self.caustic_use_percentile_mined_cab_df      # pd.read_csv("outputs/delivery_costs/caustic_use_by_percentile_mined-collapse_accumlulated_bx.csv")
@@ -1203,7 +1209,7 @@ class Inventory:
         tm_cab  = self.total_mining_costs_RMB_t_ore_cab_df      # pd.read_csv("outputs/mining_costs/total_mining_costs_RMB-t_ore-collapse_accumulated_bauxite.csv")
 
         avgs = [self.avg1, self.avg2, self.avg3, self.avg4, self.avg5, self.avg6, self.avg7, self.avg8, self.avg9, self.avg10]
-        
+
         # Sed'try low
         row1_sl = [f"Sed'try {i}" for i in range(1,201)]
         row2_sl = ["Low" for i in range(1,201)]
@@ -1216,15 +1222,15 @@ class Inventory:
         new_df1.at[0,:] = row2_sl
         new_df1.at[1,:] = row3_sl
         new_df1.at[2,:] = row4_sl
-        
+
         for i in range(1, len(df)):
             data = []
-            
+
             for j in range(len(avgs)):
                 for k in range(5,101,5):
-                    v = (float(aa_sb.loc[i, f"percentile mined {k/100}"])*(float(tm_sb.iloc[i, j])+float(rg_rr.loc[i, "Delivery Costs"]))) + (float(cu_sb.loc[i, f"percentile mined {k/100}"])*self.main_vlookup(df.iloc[i-1], province, caustic_sd)) + float(rg_rr.loc[i,"Energy Costs"]) + float(rg_rr.loc[i,"Lime Costs"]) + ((float(aa_sb.loc[i, f"percentile mined {k/100}"])-1 + float(cu_sb.loc[i, f"percentile mined {k/100}"])+0.22) * self.main_vlookup(df.iloc[-1], province, mud_d)) + float(rg_rr.loc[i, "Other Costs (labour, maintenance, other consumables)"]) + 0                    
+                    v = (float(aa_sb.loc[i, f"percentile mined {k/100}"])*(float(tm_sb.iloc[i, j])+float(rg_rr.loc[i, "Delivery Costs"]))) + (float(cu_sb.loc[i, f"percentile mined {k/100}"])*self.main_vlookup(df.iloc[i-1], province, caustic_sd)) + float(rg_rr.loc[i,"Energy Costs"]) + float(rg_rr.loc[i,"Lime Costs"]) + ((float(aa_sb.loc[i, f"percentile mined {k/100}"])-1 + float(cu_sb.loc[i, f"percentile mined {k/100}"])+0.22) * self.main_vlookup(df.iloc[-1], province, mud_d)) + float(rg_rr.loc[i, "Other Costs (labour, maintenance, other consumables)"]) + 0
                     data.append(v)
-                                        
+
             new_df1.at[i+2,:] = data
 
         # Sed'try high
@@ -1240,17 +1246,17 @@ class Inventory:
         new_df2.at[1,:] = row3_sh
         new_df2.at[2,:] = row4_sh
 
-        
+
         for i in range(1, len(df)):
             data = []
-            
+
             for j in range(len(avgs)):
-                for k in range(5,101,5):                    
+                for k in range(5,101,5):
                     v = (float(aa_sb.loc[i, f"percentile mined {k/100}"])*(float(tm_sb.iloc[i, j])+float(rg_rr.loc[i, "Delivery Costs"]))) + (float(cu_sb.loc[i, f"percentile mined {k/100}"])*self.main_vlookup(df.iloc[i-1], province, caustic_sd)) + float(rg_rr.loc[i,"Energy Costs"]) + float(rg_rr.loc[i,"Lime Costs"]) + ((float(aa_sb.loc[i, f"percentile mined {k/100}"])-1 + float(cu_sb.loc[i, f"percentile mined {k/100}"])+0.22) * self.main_vlookup(df.iloc[i-1], province, mud_d)) + float(rg_rr.loc[i, "Other Costs (labour, maintenance, other consumables)"]) + float(rg_rr.loc[i,"High sulphur treatmenty charge"])
                     data.append(v)
-                    
+
             new_df2.at[i+2,:] = data
-            
+
         # Coll. Acc. low
         row1_cl = [f"Coll. Acc. {i}" for i in range(1,21)]
         row2_cl = ["Low" for i in range(1,21)]
@@ -1264,17 +1270,17 @@ class Inventory:
         new_df3.at[1,:] = row3_cl
         new_df3.at[2,:] = row4_cl
 
-        
+
         for i in range(1, len(df)):
             data = []
-            for k in range(5,101,5):                
+            for k in range(5,101,5):
                 v = (float(aa_cab.loc[i, f"percentile mined {k/100}"])*(float(tm_cab.iloc[i, 0])+float(rg_rr.loc[i, "Delivery Costs"]))) + (float(cu_cab.loc[i, f"percentile mined {k/100}"])*self.main_vlookup(df.iloc[i-1], province, caustic_sd)) + float(rg_rr.loc[i,"Energy Costs"]) + float(rg_rr.loc[i,"Lime Costs"]) + ((float(aa_cab.loc[i, f"percentile mined {k/100}"])-1 + float(cu_cab.loc[i, f"percentile mined {k/100}"])+0.22) * self.main_vlookup(df.iloc[i-1], province, mud_d)) + float(rg_rr.loc[i, "Other Costs (labour, maintenance, other consumables)"]) + 0
                 data.append(v)
-                    
+
             new_df3.at[i+2,:] = data
-        
+
         # concat(objs, axis=0, join="outer", join_axes=None, ignore_index=False, keys=None, levels=None, names=None, verify_integrity=False, sort=None, copy=True)
-        self.final_costs_df = pd.concat([new_df1, new_df2, new_df3], axis=1, join="outer", sort=True)        
+        self.final_costs_df = pd.concat([new_df1, new_df2, new_df3], axis=1, join="outer", sort=True)
 
 
     def tonnages_in_categories(self):
@@ -1283,7 +1289,7 @@ class Inventory:
         depth_range_cab   = self.collapse_accm_bauxite_df        # pd.read_csv("outputs/collapse_accumulated_bauxite-tonnages_per_depth_range.csv")
 
         avgs = [self.avg1, self.avg2, self.avg3, self.avg4, self.avg5, self.avg6, self.avg7, self.avg8, self.avg9, self.avg10]
-        
+
         # Sed'try low
         row1_sl = [f"Sed'try {i}" for i in range(1,201)]
         row2_sl = ["Low" for i in range(1,201)]
@@ -1297,16 +1303,16 @@ class Inventory:
         new_df1.at[1,:] = row3_sl
         new_df1.at[2,:] = row4_sl
 
-        
+
         for i in range(len(self.inputs)):
             data = []
             for k in range(len(avgs)):
-                for j in range(20):                
+                for j in range(20):
                     v = float(depth_range_sb.iloc[i, k])/20 * (1-float(perct_sulpher_sb.iloc[i, k]))
                     data.append(v)
-                    
+
             new_df1.at[i+3,:] = data
-            
+
         # Sed'try high
         row1_sh = [f"Sed'try {i}" for i in range(1,201)]
         row2_sh = ["High" for i in range(1,201)]
@@ -1320,16 +1326,16 @@ class Inventory:
         new_df2.at[1,:] = row3_sh
         new_df2.at[2,:] = row4_sh
 
-        
+
         for i in range(len(self.inputs)):
             data = []
             for k in range(len(avgs)):
-                for j in range(20):                
+                for j in range(20):
                     v = float(depth_range_sb.iloc[i, k])/20 * float(perct_sulpher_sb.iloc[i, k])
                     data.append(v)
-                       
+
             new_df2.at[i+3,:] = data
-            
+
         # Coll. Acc. low
         row1_cl = [f"Coll. Acc. {i}" for i in range(1,21)]
         row2_cl = ["Low" for i in range(1,21)]
@@ -1343,28 +1349,28 @@ class Inventory:
         new_df3.at[1,:] = row3_cl
         new_df3.at[2,:] = row4_cl
 
-        
+
         for i in range(len(self.inputs)):
             data = []
             for k in range(len(avgs)):
-                for j in range(2):            
-                    v = float(depth_range_cab.iloc[i, 0])/20 
-                    data.append(v)               
+                for j in range(2):
+                    v = float(depth_range_cab.iloc[i, 0])/20
+                    data.append(v)
             new_df3.at[i+3,:] = data
-        
+
         # concat(objs, axis=0, join="outer", join_axes=None, ignore_index=False, keys=None, levels=None, names=None, verify_integrity=False, sort=None, copy=True)
         self.tonnages_in_categories_df = pd.concat([new_df1, new_df2, new_df3], axis=1, join="outer", sort=True)
-        
+
 
     def cost_with_dummy_for_ranking(self):
         df = self.final_costs_df        # pd.read_csv("outputs/final_costs/final_costs.csv")
 
         avgs = [self.avg1, self.avg2, self.avg3, self.avg4, self.avg5, self.avg6, self.avg7, self.avg8, self.avg9, self.avg10]
-        
+
         # Sed'try low
         row1_sl = [f"Sed'try {i}" if i <= 400 else f"Coll. Acc. {i}" for i in range(1,421)]
-        row2_sl = ["Low" if i <= 200 else "High" for i in range(1,401)]        
-        row3_sl = [avgs[i] for h in range(2) for i in range(10) for j in range(20)]        
+        row2_sl = ["Low" if i <= 200 else "High" for i in range(1,401)]
+        row3_sl = [avgs[i] for h in range(2) for i in range(10) for j in range(20)]
         row4_sl = [f"{k}th" for i in range(21) for k in range(5,101,5)]
 
         [row2_sl.append("Low") for i in range(20)]
@@ -1377,7 +1383,7 @@ class Inventory:
         self.cost_with_dummy_for_ranking_df.at[1,:] = row3_sl
         self.cost_with_dummy_for_ranking_df.at[2,:] = row4_sl
 
-        
+
         for i in range(3, len(df)):
             data = []
             col_val = 1432
@@ -1385,21 +1391,21 @@ class Inventory:
                 v = float(df.iloc[i, j]) + col_val / 1000000000
                 data.append(v)
                 col_val += 1
-                    
+
             self.cost_with_dummy_for_ranking_df.at[i,:] = data
-            
-        
-        
+
+
+
 
     def ranks_by_costs(self):
         df = self.cost_with_dummy_for_ranking_df    # pd.read_csv("outputs/cost_with_dummy_for_ranking_reasons.csv")
 
         avgs = [self.avg1, self.avg2, self.avg3, self.avg4, self.avg5, self.avg6, self.avg7, self.avg8, self.avg9, self.avg10]
-        
+
         # Sed'try low
         row1_sl = [f"Sed'try {i}" if i <= 400 else f"Coll. Acc. {i}" for i in range(1,421)]
-        row2_sl = ["Low" if i <= 200 else "High" for i in range(1,401)]        
-        row3_sl = [avgs[i] for h in range(2) for i in range(10) for j in range(20)]        
+        row2_sl = ["Low" if i <= 200 else "High" for i in range(1,401)]
+        row3_sl = [avgs[i] for h in range(2) for i in range(10) for j in range(20)]
         row4_sl = [f"{k}th" for i in range(21) for k in range(5,101,5)]
 
         [row2_sl.append("Low") for i in range(20)]
@@ -1412,19 +1418,19 @@ class Inventory:
         self.ranks_by_costs_df.at[1,:] = row3_sl
         self.ranks_by_costs_df.at[2,:] = row4_sl
         self.ranks_by_costs_df.at[3,:] = [f"rank {i}" for i in range(1, 421)]
-        
-        for i in range(3, len(df)):            
+
+        for i in range(3, len(df)):
             self.ranks_by_costs_df.at[i+1,:] = df.loc[i,:].rank(method="min", ascending=True)
 
     def cell_columns_by_cost_rank(self):
-        df = self.ranks_by_costs_df     # pd.read_csv("outputs/ranks_by_costs.csv")        
+        df = self.ranks_by_costs_df     # pd.read_csv("outputs/ranks_by_costs.csv")
 
         avgs = [self.avg1, self.avg2, self.avg3, self.avg4, self.avg5, self.avg6, self.avg7, self.avg8, self.avg9, self.avg10]
 
         # Sed'try low
         row1_sl = [f"Sed'try {i}" if i <= 400 else f"Coll. Acc. {i}" for i in range(1,421)]
-        row2_sl = ["Low" if i <= 200 else "High" for i in range(1,401)]        
-        row3_sl = [avgs[i] for h in range(2) for i in range(10) for j in range(20)]        
+        row2_sl = ["Low" if i <= 200 else "High" for i in range(1,401)]
+        row3_sl = [avgs[i] for h in range(2) for i in range(10) for j in range(20)]
         row4_sl = [f"{k}th" for i in range(21) for k in range(5,101,5)]
 
         [row2_sl.append("Low") for i in range(20)]
@@ -1437,30 +1443,30 @@ class Inventory:
         self.cell_columns_by_cost_rank_df.at[1,:] = row3_sl
         self.cell_columns_by_cost_rank_df.at[2,:] = row4_sl
         self.cell_columns_by_cost_rank_df.at[3,:] = [f"rank {i}" for i in range(1, 421)]
-        
-        for i in range(4, len(df)):            
+
+        for i in range(4, len(df)):
             data = []
             col_val = 1854.0
             for j in range(1,421):
-                for k in range(420):                    
+                for k in range(420):
                     if float(df.iloc[i,k]) == float(j):
-                        data.append(k+col_val)                        
+                        data.append(k+col_val)
                         break
-                    
+
             self.cell_columns_by_cost_rank_df.at[i,:] = data
-        
-        
+
+
 
     def costs_by_cost_rank(self):
         final_costs  = self.final_costs_df      #  pd.read_csv("outputs/final_costs/final_costs.csv")
         cc_cost_rank = self.cell_columns_by_cost_rank_df        # pd.read_csv("outputs/cell_columns_by_cost_rank.csv")
 
         avgs = [self.avg1, self.avg2, self.avg3, self.avg4, self.avg5, self.avg6, self.avg7, self.avg8, self.avg9, self.avg10]
-        
+
         # Sed'try low
         row1_sl = [f"Sed'try {i}" if i <= 400 else f"Coll. Acc. {i}" for i in range(1,421)]
-        row2_sl = ["Low" if i <= 200 else "High" for i in range(1,401)]        
-        row3_sl = [avgs[i] for h in range(2) for i in range(10) for j in range(20)]        
+        row2_sl = ["Low" if i <= 200 else "High" for i in range(1,401)]
+        row3_sl = [avgs[i] for h in range(2) for i in range(10) for j in range(20)]
         row4_sl = [f"{k}th" for i in range(21) for k in range(5,101,5)]
 
         [row2_sl.append("Low") for i in range(20)]
@@ -1479,21 +1485,21 @@ class Inventory:
             for j in range(420):
                 v = final_costs.iloc[i-1, int(float(cc_cost_rank.iloc[i, j])-1854.0)]
                 data.append(v)
-            
+
             self.costs_by_cost_rank_df.at[i,:] = data
-        
-        
+
+
 
     def tonages_by_cost_rank(self):
         tonnages  = self.tonnages_in_categories_df  # pd.read_csv("outputs/tonnages_in_categories.csv")
         cc_cost_rank = self.cell_columns_by_cost_rank_df    # pd.read_csv("outputs/cell_columns_by_cost_rank.csv")
 
         avgs = [self.avg1, self.avg2, self.avg3, self.avg4, self.avg5, self.avg6, self.avg7, self.avg8, self.avg9, self.avg10]
-        
+
         # Sed'try low
         row1_sl = [f"Sed'try {i}" if i <= 400 else f"Coll. Acc. {i}" for i in range(1,421)]
-        row2_sl = ["Low" if i <= 200 else "High" for i in range(1,401)]        
-        row3_sl = [avgs[i] for h in range(2) for i in range(10) for j in range(20)]        
+        row2_sl = ["Low" if i <= 200 else "High" for i in range(1,401)]
+        row3_sl = [avgs[i] for h in range(2) for i in range(10) for j in range(20)]
         row4_sl = [f"{k}th" for i in range(21) for k in range(5,101,5)]
 
         [row2_sl.append("Low") for i in range(20)]
@@ -1512,10 +1518,10 @@ class Inventory:
             for j in range(420):
                 v = tonnages.iloc[i-1, int(float(cc_cost_rank.iloc[i, j])-1854.0)]
                 data.append(v)
-            
+
             self.tonages_by_cost_rank_df.at[i,:] = data
-        
-        
+
+
 
     def max_blended_tonnes_entity_cost_limit(self):
         tn_cr  = self.tonages_by_cost_rank_df   # pd.read_csv("outputs/tonnages_by_cost_rank.csv")
@@ -1523,11 +1529,11 @@ class Inventory:
         cbix   = self.CBIX_BX_AA_production_cost_df       #pd.read_csv("outputs/CBIX_BX_AA_production_cost.csv")
 
         avgs = [self.avg1, self.avg2, self.avg3, self.avg4, self.avg5, self.avg6, self.avg7, self.avg8, self.avg9, self.avg10]
-        
+
         # Sed'try low
         row1_sl = [f"Sed'try {i}" if i <= 400 else f"Coll. Acc. {i}" for i in range(1,421)]
-        row2_sl = ["Low" if i <= 200 else "High" for i in range(1,401)]        
-        row3_sl = [avgs[i] for h in range(2) for i in range(10) for j in range(20)]        
+        row2_sl = ["Low" if i <= 200 else "High" for i in range(1,401)]
+        row3_sl = [avgs[i] for h in range(2) for i in range(10) for j in range(20)]
         row4_sl = [f"{k}th" for i in range(21) for k in range(5,101,5)]
 
         [row2_sl.append("Low") for i in range(20)]
@@ -1557,23 +1563,27 @@ class Inventory:
 
         fn_cost.columns = [f"Sed'try {i}" if i <= 400 else f"Coll. Acc. {i}" for i in range(1,421)]
 
-
         self.max_economic_tonnes_df   = pd.DataFrame(columns=[
+            "Province",
+            "County",
             "Max Economic Tonnes - blending in country",
             "Max Economic Tonnes - NO blending in country",
             ])
 
         for i in range(4, len(df)):
-            x = np.where(fn_cost.loc[i-1,:].astype(float) <= float(cbix.loc[i-3, "Total Cost - CBIX BX"]), 1, 0)            
+            x = np.where(fn_cost.loc[i-1,:].astype(float) <= float(cbix.loc[i-3, "Total Cost - CBIX BX"]), 1, 0)
             y = tn_cat.loc[i-1, :].astype(float)
 
-            self.max_economic_tonnes_df.at[i-4, "Max Economic Tonnes - blending in country"] = max(df.loc[i, :].astype(float))                                    
+            self.max_economic_tonnes_df.at[i-4, "Province"] = self.inputs.at[i-4, "province"]
+            self.max_economic_tonnes_df.at[i-4, "County"]   = self.inputs.at[i-4, "county"]
+            self.max_economic_tonnes_df.at[i-4, "Max Economic Tonnes - blending in country"] = max(df.loc[i, :].astype(float))
             self.max_economic_tonnes_df.at[i-4, "Max Economic Tonnes - NO blending in country"] = sum(x*y)
+        print(self.max_economic_tonnes_df)
 
     def high_sulphur_tablename_func(self):
         mine_switch = self.other_controls.loc[0, 'switch_control']
         _cols = ["Deposit Consumption (percentile)", "A/S"]
-        
+
         [_cols.append(f"{int(self.range_max.loc[0, c])} - {int(self.range_max.loc[1, c])} - Low Sulphur") for c in self.range_max.columns[1:]]
         [_cols.append(f"{int(self.range_max.loc[0, c])} - {int(self.range_max.loc[1, c])} - High Sulphur") for c in self.range_max.columns[1:]]
         _cols.append(f"{int(self.range_max.iloc[0, 1])} - {int(self.range_max.iloc[1, 1])} - Collapse Acc. Deposits")
@@ -1584,20 +1594,20 @@ class Inventory:
         final_costs_df_temp = final_costs_df_temp.loc[3:, :].reset_index()
         tonnages_in_categories_df_temp = tonnages_in_categories_df_temp.loc[3:, :].reset_index()
         ranks_by_costs_df_temp = ranks_by_costs_df_temp.loc[4:, :].reset_index()
-        
+
         table1 = final_costs_df_temp[self.output_db.loc[:, "County"].astype(str).map(lambda x: x.lower() == mine_switch.lower())].drop(['index'], axis=1)
         table2 = tonnages_in_categories_df_temp[self.output_db.loc[:, "County"].astype(str).map(lambda x: x.lower() == mine_switch.lower())].drop(['index'], axis=1)
         table3 = ranks_by_costs_df_temp[self.output_db.loc[:, "County"].astype(str).map(lambda x: x.lower() == mine_switch.lower())].drop(['index'], axis=1)
-        
+
         as_col = []
-        for k in range(5,101,5):           
+        for k in range(5,101,5):
             v1 = self.perct_AA_percentile_mined_cab_df.loc[1:, :].reset_index()[self.output_db.loc[:, "County"].astype(str).map(lambda x: x.lower() == mine_switch.lower())].drop(['index'], axis=1).reset_index()
             v2 = self.perct_SiO2_percentile_mined_cab_df.loc[1:, :].reset_index()[self.output_db.loc[:, "County"].astype(str).map(lambda x: x.lower() == mine_switch.lower())].drop(['index'], axis=1).reset_index()
             print(v1)
             print(v2)
             v1 = v1.loc[0, f"percentile mined {k/100}"]
             v2 = v2.loc[0, f"percentile mined {k/100}"]
-            
+
             v = v1/v2 if v2 > 0 else 0
             as_col.append(v)
 
@@ -1634,13 +1644,13 @@ class Inventory:
             # print(table1.iloc[0, x:x+20])
             z +=20
         print(Rank_AA_proc_cost)
-        
+
         self.Costs_RMBtAA  = Costs_RMBtAA
         self.Tonnages_kt = Tonnages_kt
         self.Rank_AA_proc_cost  = Rank_AA_proc_cost
 
     # All functions are called in calcall() function
-    
+
     def calcall(self):
         #Run reserve summary codes
         self.linear_eqn_sb()
@@ -1732,7 +1742,7 @@ class Inventory:
 
         #Add Min, Max, Avg and total
         metrics = self.range_max.copy()
-        # add_avgs 
+        # add_avgs
         self.depth_splits_sb_df = pd.concat([metrics.loc[:,  "open_pit1":"underground7"], self.depth_splits_sb_df], axis=0)
         self.depth_split_cab_df = pd.concat([metrics.loc[:,  "open_pit1":"underground7"], self.depth_split_cab_df], axis=0)
         self.depth_multiplier_sulphur_cntm_df = pd.concat([metrics.loc[:,  "open_pit1":"underground7"], self.depth_multiplier_sulphur_cntm_df], axis=0)
@@ -1745,7 +1755,7 @@ class Inventory:
         self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_sb_df = pd.concat([metrics.loc[:,  "open_pit1":"underground7"], self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_sb_df], axis=0)
         self.total_mining_costs_RMB_t_ore_sb_df = pd.concat([metrics.loc[:,  "open_pit1":"underground7"], self.total_mining_costs_RMB_t_ore_sb_df], axis=0)
 
-        
+
         # add_avg_5
         metrics.at[2, "open_pit1"] = 5
         self.electricity_costs_cab_RMB_t_ROM_ore_df = pd.concat([metrics.loc[:,  "open_pit1":"underground7"], self.electricity_costs_cab_RMB_t_ROM_ore_df], axis=0)
@@ -1754,7 +1764,7 @@ class Inventory:
         self.mine_transport_costs_sedimentary_df = pd.concat([metrics.loc[:,  "open_pit1":"underground7"], self.mine_transport_costs_sedimentary_df], axis=0)
         self.total_mining_costs_RMB_t_ore_cab_df  = pd.concat([metrics.loc[:,  "open_pit1":"underground7"], self.total_mining_costs_RMB_t_ore_cab_df], axis=0)
         self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_ca_bx_df = pd.concat([metrics.loc[:,  "open_pit1":"underground7"], self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_ca_bx_df], axis=0)
-        
+
 
         # add_totals
         totals = pd.DataFrame(columns=self.sedimentary_bauxite_td_df.columns)
@@ -1762,9 +1772,9 @@ class Inventory:
 
         totals1 = pd.DataFrame(columns=self.collapse_accm_bauxite_df.columns)
         totals1.at[0, :] = [self.collapse_accm_bauxite_df.iloc[:, i].sum() for i in range(self.collapse_accm_bauxite_df.shape[1])]
-        
-        self.sedimentary_bauxite_td_df = pd.concat([totals, self.sedimentary_bauxite_td_df], axis=0) 
-        self.collapse_accm_bauxite_df = pd.concat([totals1, self.collapse_accm_bauxite_df], axis=0) 
+
+        self.sedimentary_bauxite_td_df = pd.concat([totals, self.sedimentary_bauxite_td_df], axis=0)
+        self.collapse_accm_bauxite_df = pd.concat([totals1, self.collapse_accm_bauxite_df], axis=0)
 
 
         self.depth_splits_sb_df.reset_index()
@@ -1843,7 +1853,7 @@ class Inventory:
         self.final_costs_df.to_excel(os.path.join(BASE_DIR, "outputs/final_costs/final_costs.xlsx"), index=False)
 
         cols=pd.Series(self.tonnages_in_categories_df.columns)
-        for dup in cols[cols.duplicated()].unique(): 
+        for dup in cols[cols.duplicated()].unique():
             cols[cols[cols == dup].index.values.tolist()] = [dup + '_' + str(i) if i != 0 else dup for i in range(sum(cols == dup))]
         # rename the columns with the cols list.
         self.tonnages_in_categories_df.columns = cols
@@ -1863,51 +1873,51 @@ class Inventory:
 
         print(self.tonnages_in_categories_df)
 
-        dblist.append(db_conv.single_year_mult_out(self.linear_eqn_sb_df, "depth_splits_sedimentary_bauxite linear_eqn-depth_buckets_percent_tonnage_per_depth_range.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.depth_splits_sb_df, "depth_splits_sedimentary_bauxite depth_buckets-percent_tonnage_per_depth_range.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.depth_split_cab_df, "depth_splits-collapse_accumulated_bauxite.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.sedimentary_bauxite_td_df, "sedimentary_bauxite-tonnages_per_depth_range.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.collapse_accm_bauxite_df, "collapse_accumulated_bauxite-tonnages_per_depth_range.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.linear_eqn_sb_only_df, "suplhur_contamination_sedimentary_bauxite_only linear_equation-Suplhur_contamination-sedimentary_bauxite_only.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.depth_multiplier_sulphur_cntm_df, "suplhur_contamination_sedimentary_bauxite_only depth_multiplier_for_sulphur_contamination.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.perct_inventory_sulphur_contaminated_db_df, "suplhur_contamination_sedimentary_bauxite_only perct_inventory_sulphur_contaminated_by_depth_bucket.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.perct_AA_percentile_mined_sb_df, "as_workings_sedimentary_bauxite perct_AA_percentile_mined-sedimentary_bauxite.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.perct_SiO2_percentile_mined_sb_df, "as_workings_sedimentary_bauxite perct_SiO2_percentile_mined-sedimentary_bauxite.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.perct_AA_percentile_mined_cab_df, "as_workings_collapse_accumulated_bauxite perct_AA_percentile_mined-collapse_accumulated_bauxite.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.perct_SiO2_percentile_mined_cab_df, "as_workings_collapse_accumulated_bauxite perct_SiO2_percentile_mined-collapse_sedimentary_bauxite.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.stripping_ratio_sb_df, "mining_costs stripping_ratio-sedimentary_bauxite.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.stripping_ratio_ca_bx_df, "mining_costs stripping_ratio-collapse_accumulated_bx.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.electricity_costs_msb_RMBt_ROM_ore_df, "mining_costs electricity_costs-mining_sedimentary_bauxite-RMB-t_ROM_ore.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.electricity_costs_cab_RMB_t_ROM_ore_df, "mining_costs electricity_costs-collapse_accumulated_bauxite-RMB-t_ROM_ore.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.diesel_costs_msb_RMB_t_ROM_ore_df, "mining_costs diesel_costs-mining_sedimentary_bauxite-RMB-t_ROM_ore.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.diesel_costs_mca_RMB_t_ROM_ore_df, "mining_costs diesel_costs-mining_collapse_accumulated_bauxite-RMB-t_ROM_ore.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.labour_costs_msb_RMB_t_ROM_ore_df, "mining_costs labour_costs-mining_sedimentary_bauxite-RMB-t_ROM_ore.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.labour_costs_mcab_RMB_t_ROM_ore_df, "mining_costs labour_costs-mining_collapse_accumulated_bauxite-RMB-tROM_ore.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.mine_transport_costs_sedimentary_df, "mining_costs In_Mine_Transport_costs-sedimentary.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.washing_factor_df, "mining_costs washing_factor.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_sb_df, "mining_costs costs_RMB-t_ROM_ore_before_per-t-ore_charges-sedimentary_bauxite.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_ca_bx_df, "mining_costs costs_RMB-t_ROM_ore_before_per-t-ore_charges-collapse_accumulated_bx.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.taxes_royalties_Other_allowance_Capital_up_front_costs_charge_df, "mining_costs taxes_royalties_Other_allowance_Capital_up_front_costs_charge.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.total_mining_costs_RMB_t_ore_sb_df, "mining_costs total_mining_costs_RMB-t_ore-sedimentary_bauxite.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.total_mining_costs_RMB_t_ore_cab_df, "mining_costs total_mining_costs_RMB-t_ore-collapse_accumulated_bauxite.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.delivery_costs_RG_RT_df, "delivery_costs RGtoRR_Diesel_cost.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.t_div_t_BX_AA_percentile_mined_sb_df, "delivery_costs t-t_BX:AA_by_percentile_mined-sedimentary_bauxite.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.t_div_t_BX_AA_percentile_mined_cab_df, "delivery_costs t-t_BX:AA_by_percentile_mined-collapse_accumlulated_bx.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.caustic_use_percentile_mined_sb_t_div_t_AA_df, "delivery_costs caustic_use_by_percentile_mined-sedimentary_bauxite_t-t_AA.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.caustic_use_percentile_mined_cab_df, "delivery_costs caustic_use_by_percentile_mined-collapse_accumlulated_bx.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.CBIX_BX_AA_production_cost_df, "CBIX_BX_AA_production_cost.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.final_costs_df, "final_costs final_costs.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.tonnages_in_categories_df, "tonnages_in_categories.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.cost_with_dummy_for_ranking_df, "cost_with_dummy_for_ranking_reasons.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.ranks_by_costs_df, "ranks_by_costs.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.cell_columns_by_cost_rank_df, "cell_columns_by_cost_rank.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.costs_by_cost_rank_df, "costs_by_cost_rank.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.tonages_by_cost_rank_df, "tonnages_by_cost_rank.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.max_blended_tonnes_entity_cost_limit_df, "max_blended_tonnes_entity_cost_limit.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.max_economic_tonnes_df, "max_economic_tonnes max_economic_tonnes.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.Costs_RMBtAA, "choosen_mine Costs_RMBtAA.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.Tonnages_kt, "choosen_mine Tonnages_kt.xlsx"))
-        dblist.append(db_conv.single_year_mult_out(self.Rank_AA_proc_cost, "choosen_mine Rank_by_AA_processing_cost.xlsx"))
+        dblist.append(db_conv.single_year_mult_out(self.linear_eqn_sb_df, "depth_splits_sedimentary_bauxite linear_eqn-depth_buckets_percent_tonnage_per_depth_range"))
+        dblist.append(db_conv.single_year_mult_out(self.depth_splits_sb_df, "depth_splits_sedimentary_bauxite depth_buckets-percent_tonnage_per_depth_range"))
+        dblist.append(db_conv.single_year_mult_out(self.depth_split_cab_df, "depth_splits-collapse_accumulated_bauxite"))
+        dblist.append(db_conv.single_year_mult_out(self.sedimentary_bauxite_td_df, "sedimentary_bauxite-tonnages_per_depth_range"))
+        dblist.append(db_conv.single_year_mult_out(self.collapse_accm_bauxite_df, "collapse_accumulated_bauxite-tonnages_per_depth_range"))
+        dblist.append(db_conv.single_year_mult_out(self.linear_eqn_sb_only_df, "suplhur_contamination_sedimentary_bauxite_only linear_equation-Suplhur_contamination-sedimentary_bauxite_only"))
+        dblist.append(db_conv.single_year_mult_out(self.depth_multiplier_sulphur_cntm_df, "suplhur_contamination_sedimentary_bauxite_only depth_multiplier_for_sulphur_contamination"))
+        dblist.append(db_conv.single_year_mult_out(self.perct_inventory_sulphur_contaminated_db_df, "suplhur_contamination_sedimentary_bauxite_only perct_inventory_sulphur_contaminated_by_depth_bucket"))
+        dblist.append(db_conv.single_year_mult_out(self.perct_AA_percentile_mined_sb_df, "as_workings_sedimentary_bauxite perct_AA_percentile_mined-sedimentary_bauxite"))
+        dblist.append(db_conv.single_year_mult_out(self.perct_SiO2_percentile_mined_sb_df, "as_workings_sedimentary_bauxite perct_SiO2_percentile_mined-sedimentary_bauxite"))
+        dblist.append(db_conv.single_year_mult_out(self.perct_AA_percentile_mined_cab_df, "as_workings_collapse_accumulated_bauxite perct_AA_percentile_mined-collapse_accumulated_bauxite"))
+        dblist.append(db_conv.single_year_mult_out(self.perct_SiO2_percentile_mined_cab_df, "as_workings_collapse_accumulated_bauxite perct_SiO2_percentile_mined-collapse_sedimentary_bauxite"))
+        dblist.append(db_conv.single_year_mult_out(self.stripping_ratio_sb_df, "mining_costs stripping_ratio-sedimentary_bauxite"))
+        dblist.append(db_conv.single_year_mult_out(self.stripping_ratio_ca_bx_df, "mining_costs stripping_ratio-collapse_accumulated_bx"))
+        dblist.append(db_conv.single_year_mult_out(self.electricity_costs_msb_RMBt_ROM_ore_df, "mining_costs electricity_costs-mining_sedimentary_bauxite-RMB-t_ROM_ore"))
+        dblist.append(db_conv.single_year_mult_out(self.electricity_costs_cab_RMB_t_ROM_ore_df, "mining_costs electricity_costs-collapse_accumulated_bauxite-RMB-t_ROM_ore"))
+        dblist.append(db_conv.single_year_mult_out(self.diesel_costs_msb_RMB_t_ROM_ore_df, "mining_costs diesel_costs-mining_sedimentary_bauxite-RMB-t_ROM_ore"))
+        dblist.append(db_conv.single_year_mult_out(self.diesel_costs_mca_RMB_t_ROM_ore_df, "mining_costs diesel_costs-mining_collapse_accumulated_bauxite-RMB-t_ROM_ore"))
+        dblist.append(db_conv.single_year_mult_out(self.labour_costs_msb_RMB_t_ROM_ore_df, "mining_costs labour_costs-mining_sedimentary_bauxite-RMB-t_ROM_ore"))
+        dblist.append(db_conv.single_year_mult_out(self.labour_costs_mcab_RMB_t_ROM_ore_df, "mining_costs labour_costs-mining_collapse_accumulated_bauxite-RMB-tROM_ore"))
+        dblist.append(db_conv.single_year_mult_out(self.mine_transport_costs_sedimentary_df, "mining_costs In_Mine_Transport_costs-sedimentary"))
+        dblist.append(db_conv.single_year_mult_out(self.washing_factor_df, "mining_costs washing_factor"))
+        dblist.append(db_conv.single_year_mult_out(self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_sb_df, "mining_costs costs_RMB-t_ROM_ore_before_per-t-ore_charges-sedimentary_bauxite"))
+        dblist.append(db_conv.single_year_mult_out(self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_ca_bx_df, "mining_costs costs_RMB-t_ROM_ore_before_per-t-ore_charges-collapse_accumulated_bx"))
+        dblist.append(db_conv.single_year_mult_out(self.taxes_royalties_Other_allowance_Capital_up_front_costs_charge_df, "mining_costs taxes_royalties_Other_allowance_Capital_up_front_costs_charge"))
+        dblist.append(db_conv.single_year_mult_out(self.total_mining_costs_RMB_t_ore_sb_df, "mining_costs total_mining_costs_RMB-t_ore-sedimentary_bauxite"))
+        dblist.append(db_conv.single_year_mult_out(self.total_mining_costs_RMB_t_ore_cab_df, "mining_costs total_mining_costs_RMB-t_ore-collapse_accumulated_bauxite"))
+        dblist.append(db_conv.single_year_mult_out(self.delivery_costs_RG_RT_df, "delivery_costs RGtoRR_Diesel_cost"))
+        dblist.append(db_conv.single_year_mult_out(self.t_div_t_BX_AA_percentile_mined_sb_df, "delivery_costs t-t_BX:AA_by_percentile_mined-sedimentary_bauxite"))
+        dblist.append(db_conv.single_year_mult_out(self.t_div_t_BX_AA_percentile_mined_cab_df, "delivery_costs t-t_BX:AA_by_percentile_mined-collapse_accumlulated_bx"))
+        dblist.append(db_conv.single_year_mult_out(self.caustic_use_percentile_mined_sb_t_div_t_AA_df, "delivery_costs caustic_use_by_percentile_mined-sedimentary_bauxite_t-t_AA"))
+        dblist.append(db_conv.single_year_mult_out(self.caustic_use_percentile_mined_cab_df, "delivery_costs caustic_use_by_percentile_mined-collapse_accumlulated_bx"))
+        dblist.append(db_conv.single_year_mult_out(self.CBIX_BX_AA_production_cost_df, "CBIX_BX_AA_production_cost"))
+        dblist.append(db_conv.single_year_mult_out(self.final_costs_df, "final_costs final_costs"))
+        dblist.append(db_conv.single_year_mult_out(self.tonnages_in_categories_df, "tonnages_in_categories"))
+        dblist.append(db_conv.single_year_mult_out(self.cost_with_dummy_for_ranking_df, "cost_with_dummy_for_ranking_reasons"))
+        dblist.append(db_conv.single_year_mult_out(self.ranks_by_costs_df, "ranks_by_costs"))
+        dblist.append(db_conv.single_year_mult_out(self.cell_columns_by_cost_rank_df, "cell_columns_by_cost_rank"))
+        dblist.append(db_conv.single_year_mult_out(self.costs_by_cost_rank_df, "costs_by_cost_rank"))
+        dblist.append(db_conv.single_year_mult_out(self.tonages_by_cost_rank_df, "tonnages_by_cost_rank"))
+        dblist.append(db_conv.single_year_mult_out(self.max_blended_tonnes_entity_cost_limit_df, "max_blended_tonnes_entity_cost_limit"))
+        dblist.append(db_conv.single_year_mult_out(self.max_economic_tonnes_df, "max_economic_tonnes"))
+        dblist.append(db_conv.single_year_mult_out(self.Costs_RMBtAA, "choosen_mine Costs_RMBtAA"))
+        dblist.append(db_conv.single_year_mult_out(self.Tonnages_kt, "choosen_mine Tonnages_kt"))
+        dblist.append(db_conv.single_year_mult_out(self.Rank_AA_proc_cost, "choosen_mine Rank_by_AA_processing_cost"))
 
 if __name__ == "__main__":
     inventory = Inventory()

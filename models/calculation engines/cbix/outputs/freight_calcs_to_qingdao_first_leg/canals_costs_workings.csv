@@ -1,15 +1,3 @@
-Amount per Capacity Tarrif Graduations - Tonnage Reference,Amount per Capacity Tarrif Graduations - 1st,Amount per Capacity Tarrif Graduations - 2nd,Amount per Capacity Tarrif Graduations - 3rd,Amount per Capacity Tarrif Graduations - 4th,Amount per Capacity Tarrif Graduations - 5th,Amount per Capacity Tarrif Graduations - 6th,Amount per Capacity Tarrif Graduations - 7th,Amount per Capacity Tarrif Graduations - 8th,Amount per Capacity Tarrif Graduations - 9th,Amounts per Cargo Tarrif Graduations - Tonnage Reference,Amounts per Cargo Tarrif Graduations - 1st,Amounts per Cargo Tarrif Graduations - 2nd,Amounts per Cargo Tarrif Graduations - 3rd,Amounts per Cargo Tarrif Graduations - 4th,Amounts per Cargo Tarrif Graduations - 5th,Amounts per Cargo Tarrif Graduations - 6th,Amounts per Cargo Tarrif Graduations - 7th,Amounts per Cargo Tarrif Graduations - 8th,Amounts per Cargo Tarrif Graduations - 9th
-165000.0,165000.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,160875.0,160875.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-57000.0,57000.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,55575.0,55575.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-76000.0,76000.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,74100.0,74100.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-95000.0,95000.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,92625.0,92625.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-180000.0,180000.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,175500.0,175500.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-57000.0,57000.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,55575.0,55575.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-66000.0,66000.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,64350.0,64350.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-47500.0,47500.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,46312.5,46312.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-33885.6,5000,5000,10000,13885.599999999999,0.0,0.0,0.0,0.0,0.0,81900.0,81900.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-25615.899999999998,5000,5000,10000,5615.899999999998,0.0,0.0,0.0,0.0,0.0,61912.5,61912.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-180000.0,180000.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,175500.0,175500.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-72000.0,72000.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,70200.0,70200.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-60000.0,5000,5000,10000,20000,20000.0,0.0,0.0,0.0,0.0,58500.0,58500.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-54390.054390054385,54390.054390054385,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,53030.303030303025,53030.303030303025,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+version https://git-lfs.github.com/spec/v1
+oid sha256:3043edb5cd7dd3611a3876a52662b48c5f54b39616af9fe2bf3359a9c5f971f8
+size 2354

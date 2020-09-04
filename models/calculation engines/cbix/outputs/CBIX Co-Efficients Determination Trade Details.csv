@@ -1,9 +1,3 @@
-CBIX Co-Efficients Determination,Date,CM Data Source,Mine,Price,Price Type,Price Basis,Total Alumina,LT Avail. Alumina,Total Silica,LT R.Silica,Quartz / HT Silica,Mono-hydrate / HT Extble Alumina,Moisture,Tonnage,Exporting Port,Importing Port,Final Specs Price Type,Final Specs Price Basis,Old CBIX type Calc
-39.428177076421676,2020-04-13,somebody,West Kalimantan Generic,36.1238826617404,CIF,dmt,,0.44000000000000006,,0.09,,,0.15000000000000002,50000,,Qingdao,CIF,dmt,CBIX
-39.428177076421676,2020-04-13,somebody,West Kalimantan Generic,36.1238826617404,CIF,dmt,,0.44000000000000006,,0.09,,,0.05,50000,,Qingdao,CIF,dmt,CBIX
-61.31348106799636,2020-04-13,somebody,West Kalimantan Generic,55.7172167740998,CIF,dmt,,0.5,,0.03,,,0.15000000000000002,50000,,Qingdao,CIF,dmt,CBIX
-61.31348106799636,2020-04-13,somebody,West Kalimantan Generic,55.7172167740998,CIF,dmt,,0.5,,0.03,,,0.05,50000,,Qingdao,CIF,dmt,CBIX
-24.933577951516824,2020-04-13,somebody,West Kalimantan Generic,22.9614756007022,CIF,dmt,,0.33999999999999997,,0.09,,,0.15000000000000002,50000,,Qingdao,CIF,dmt,CBIX
-24.933577951516824,2020-04-13,somebody,West Kalimantan Generic,22.9614756007022,CIF,dmt,,0.33999999999999997,,0.09,,,0.05,50000,,Qingdao,CIF,dmt,CBIX
-46.81888194309153,2020-04-13,somebody,West Kalimantan Generic,42.5548097130616,CIF,dmt,,0.4,,0.03,,,0.15000000000000002,50000,,Qingdao,CIF,dmt,CBIX
-46.81888194309153,2020-04-13,somebody,West Kalimantan Generic,42.5548097130616,CIF,dmt,,0.4,,0.03,,,0.05,50000,,Qingdao,CIF,dmt,CBIX
+version https://git-lfs.github.com/spec/v1
+oid sha256:1a0aed3f8979b14c03bd57ac03070c2f1299b32d9a1f82e3a196845b46c7a7f5
+size 1501

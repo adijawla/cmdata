@@ -1,10 +1,3 @@
-Vessel dwt,Vessel Class for timecharter & fuel burn rates,"Vessel Class for distance, canals, loading and unloading rates, fuel prices",Estimated LOA (length over all) (m),Estimated NRT (net register tons),Estimated GRT (gross register tons)
-0.0,Handysize,Handysize,145.89,0.0,4797.0
-0.0,Handysize,Handysize,145.89,0.0,4797.0
-0.0,Handysize,Handysize,145.89,0.0,4797.0
-0.0,Handysize,Handysize,145.89,0.0,4797.0
-0.0,Handysize,Handysize,145.89,0.0,4797.0
-0.0,Handysize,Handysize,145.89,0.0,4797.0
-0.0,Handysize,Handysize,145.89,0.0,4797.0
-0.0,Handysize,Handysize,145.89,0.0,4797.0
-0.0,Handysize,Handysize,145.89,0.0,4797.0
+version https://git-lfs.github.com/spec/v1
+oid sha256:1905c3847c78cd5cbcf01db67ee34c17e4c47cd4158a691e15b49023ae2274b9
+size 620
