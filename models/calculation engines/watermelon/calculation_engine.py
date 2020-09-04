@@ -388,7 +388,7 @@ class watermelondatamodel():
         self.bauxite_charting.loc[4, yrs] = self.bauxite_charting.loc[0, yrs]
         self.bauxite_charting.loc[5, yrs] = self.bauxite_charting.loc[0:2, yrs].sum()
         self.bauxite_charting.loc[6, yrs] = self.bauxite_charting.loc[0:3, yrs].sum()
-        
+
 
     def calc_all(self):
         for i in self.years:
@@ -616,7 +616,7 @@ w_cbixus55 = db_conv.multi_year_multi_out(w.cbixus55, "cbix us55", col_params=[(
 w_cbixus45 = db_conv.multi_year_multi_out(w.cbixus45, "cbix us45", col_params=[(0, "Field")], make_multi="Table", not_num_indexed=True)
 w_bxdemandcbix55 = db_conv.multi_year_multi_out(w.bxdemandcbix55, "bx demand cbix55", col_params=[(0, "Field")], make_multi="Table", not_num_indexed=True)
 w_basedata = db_conv.mult_year_single_output(w.basedata, "base data")
-w_bauxite = db_conv.mult_year_single_output(w.bauxite_charting, "Charting - Bauxite Demand by Domestic Capacity")
+w_bauxite = db_conv.multi_year_multi_out(w.bauxite_charting, "Charting - Bauxite Demand by Domestic Capacity", make_multi="Table")
 
 dblist = [
     w_aluminadata,
@@ -632,7 +632,8 @@ dblist = [
     w_cbixus55,
     w_cbixus45,
     w_bxdemandcbix55,
-    w_basedata
+    w_basedata,
+    w_bauxite
 ]
 
 snapshot_output_data = pd.concat(dblist, ignore_index=True)
