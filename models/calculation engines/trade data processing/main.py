@@ -9,6 +9,7 @@ import csv
 from googletrans import Translator
 from flatdb.flatdbconverter import Flatdbconverter
 from outputdb import uploadtodb
+import trade_data_script as td
 
 db_conv = Flatdbconverter("World trade data processing")
 
@@ -117,6 +118,7 @@ class Timer():
         with open('{0}'.format(self.out_file), 'a') as file:
             file.write(text)
 
+rest = td.restruct()
 
 timer = Timer('Trade data', txt=True, log_result=False)
 translator = Translator()
@@ -127,9 +129,11 @@ class TDP:
         timer.start()
         self.use_translator = use_translator
         self.input_filename = "trade data processing inputs.xlsx"
-        self.trade_data_inputs = pd.read_excel(self.input_filename, sheet_name="raw data")
+        # self.trade_data_inputs = pd.read_excel(self.input_filename, sheet_name="raw data")
+        self.trade_data_inputs = rest["raw"]
         self.force_use_trans = force_use_trans
         self.dp_input = pd.read_excel(self.input_filename, sheet_name="data processing")
+        # self.dp_input = rest["lookup"]
         self.trade_data_inputs.fillna(value=0, inplace=True)
         self.db = pd.concat([pd.DataFrame(columns=["Reference Key"]), self.trade_data_inputs], axis=1)
         self.raw_data_and_tiding = None

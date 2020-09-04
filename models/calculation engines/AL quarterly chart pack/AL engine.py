@@ -1295,19 +1295,37 @@ writer6.save()
 
 writer7= pd.ExcelWriter('Outputs\Mines and Bx Productions.xlsx')
 al.minesBxPrdocution1.to_excel(writer7,sheet_name='Main Table', encoding='utf-8', index=False)
-al.minesBxPrdocution_final.to_excel(writer7,sheet_name='final', encoding='utf-8', index=False, header=False)
+al.minesBxPrdocution_final.columns = al.minesBxPrdocution_final.loc[0]
+al.minesBxPrdocution_final = al.minesBxPrdocution_final[1:]
+al.minesBxPrdocution_final.to_excel(writer7,sheet_name='final', encoding='utf-8', index=False)
 writer7.save()
 
 writer8= pd.ExcelWriter('Outputs\Bauxite Sources.xlsx')
-al.BauxiteSources.to_excel(writer8,sheet_name='Main Table', encoding='utf-8', index=False, header=False)
-al.BauxiteSourcesSummary.to_excel(writer8,sheet_name='Summary', encoding='utf-8', index=False, header=False)
+al.BauxiteSources.columns = al.BauxiteSources.loc[0]
+al.BauxiteSources = al.BauxiteSources[1:]
+al.BauxiteSources.to_excel(writer8,sheet_name='Main Table', encoding='utf-8', index=False)
+al.BauxiteSourcesSummary.columns = al.BauxiteSourcesSummary.loc[0]
+al.BauxiteSourcesSummary = al.BauxiteSourcesSummary[1:]
+al.BauxiteSourcesSummary.to_excel(writer8,sheet_name='Summary', encoding='utf-8', index=False)
 writer8.save()
 
 writer9 = pd.ExcelWriter('Outputs\Global Bx Quarterly Data.xlsx')
-al.GlobalBx.to_excel(writer9,sheet_name='Main Table', encoding='utf-8', index=False, header=False)
+al.GlobalBx.columns = al.GlobalBx.loc[0]
+cols=pd.Series(al.GlobalBx.columns)
+for dup in cols[cols.duplicated()].unique(): 
+    cols[cols[cols == dup].index.values.tolist()] = [f"{dup}'_'{str(i)}" if i != 0 else dup for i in range(sum(cols == dup))]
+al.GlobalBx.columns = cols
+al.GlobalBx = al.GlobalBx[1:]
+al.GlobalBx.to_excel(writer9,sheet_name='Main Table', encoding='utf-8', index=False)
 writer9.save()
                        
 writer10 = pd.ExcelWriter('Outputs\AA Productions from Imp Bx Monthly.xlsx')
+# al.AAproductions.columns = al.AAproductions.loc[0]
+# cols=pd.Series(al.AAproductions.columns)
+# for dup in cols[cols.duplicated()].unique(): 
+#     cols[cols[cols == dup].index.values.tolist()] = [f"{dup}'_'{str(i)}" if i != 0 else dup for i in range(sum(cols == dup))]
+# al.AAproductions.columns = cols
+# al.AAproductions = al.AAproductions[1:]
 al.AAproductions.to_excel(writer10,sheet_name='Main Table', encoding='utf-8', index=False, header=False)
 writer10.save()
                       
@@ -1412,4 +1430,4 @@ dblist = [
 snapshot_output_data = pd.concat(dblist, ignore_index=True)
 snapshot_output_data = snapshot_output_data.loc[:, al_flat.out_col]
 snapshot_output_data.to_csv('snapshot_output_data.csv', index=False)
-uploadtodb.upload(snapshot_output_data)
+# uploadtodb.upload(snapshot_output_data)

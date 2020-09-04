@@ -13,7 +13,8 @@ from collections import defaultdict
 from ddm.newprovincial import provincial
 from ddm.reservesummary import summary
 from ddm.codetimer.timer import Timer
-from flatdb.flatdbconverter import Flatdbconverter, read_output_database
+import ddm.template_script as ts
+from flatdb.flatdbconverter import Flatdbconverter
 from outputdb.uploadtodb import upload
 import time
 import asyncio
@@ -22,6 +23,8 @@ import sys
 warnings.filterwarnings("ignore")
 # a = connect.to_db()
 # cnxn = a.outputstart()
+templates = ts.get_templates()
+# print(templates.keys())
 db_conv = Flatdbconverter("Draw Down Model")
 bayersinterdb = pd.read_csv("ddm/caustic.csv")
 sheets = bayersinterdb['refinery'].tolist()
@@ -68,7 +71,7 @@ list of db from csv file
 # proddata10 = pd.read_csv("ddm/proddatae.csv")
 # production = pd.read_csv("ddm/proddatae.csv")
 # prodout = pd.read_csv("ddm/proddatae.csv") # production
-# depdata1 = pd.read_csv("ddm/depdatae.csv")
+# depdata1 = templates.depdatae
 # depdata2 = pd.read_csv("ddm/depdatae.csv")
 # depdata3 = pd.read_csv("ddm/depdatae.csv")
 # depdata4 = pd.read_csv("ddm/depdatae.csv")
@@ -110,52 +113,52 @@ class Bauxite():
         self.summarydb = summarydb                    # reserve summary db 
         self.provincialdb = provincialdb
         self.capdata1 = pd.read_csv("ddm/capbase.csv") #capacity 
-        self.depcap1 = pd.read_csv("ddm/proddatae.csv")
+        self.depcap1 = templates["proddatae"]
         self.proddata1 = pd.read_csv("ddm/proddatah.csv") # cap prod 137
-        self.proddata2 = pd.read_csv("ddm/proddatae2.csv") # bauxite consumption # collector 1256
-        self.proddata3 = pd.read_csv("ddm/proddatae.csv") # collector 1828
-        self.proddata4 = pd.read_csv("ddm/proddatae.csv") # collector 1959
-        self.proddata5 = pd.read_csv("ddm/proddatae.csv") # cap prod 531
-        self.proddata6 = pd.read_csv("ddm/proddatae.csv") # cap prod 720
-        self.proddata7 = pd.read_csv("ddm/proddatae.csv") # cap prod 867
-        self.proddata8 = pd.read_csv("ddm/proddatae.csv") # cap prod 1589
-        self.proddata9 = pd.read_csv("ddm/proddatae.csv") # cap prod 1713
-        self.proddata10 = pd.read_csv("ddm/proddatae.csv") # cap prod 1004
-        self.production = pd.read_csv("ddm/proddatae.csv")
-        self.prodout = pd.read_csv("ddm/proddatae.csv") # production
-        self.depdata1 = pd.read_csv("ddm/depdatae.csv") # cap prod 644
-        self.depdata2 = pd.read_csv("ddm/depdatae.csv") # not needed
-        self.depdata3 = pd.read_csv("ddm/depdatae.csv") # cap prod 657
-        self.depdata4 = pd.read_csv("ddm/depdatae.csv") # cap prod 250
-        self.depdata5 = pd.read_csv("ddm/depdatae.csv") # not needed 
-        self.depdata6 = pd.read_csv("ddm/depdatae.csv") # cap prod 667
-        self.depdata7 = pd.read_csv("ddm/QuickSummarySwitches.csv") # cap prod 701
-        self.depdata8 = pd.read_csv("ddm/depdatae.csv") # collector 2333
-        self.depdata9 = pd.read_csv("ddm/depdatae.csv") # collector 2073
-        self.depdata10 = pd.read_csv("ddm/depdatae.csv") # cockpit 102
-        self.depdata11 = pd.read_csv("ddm/depdatae.csv") # cockpit 159
-        self.depdata12 = pd.read_csv("ddm/depdatae.csv") # cockpit 172
-        self.depdata13 = pd.read_csv("ddm/depdatae2.csv") # collector 2343
-        self.depdata14 = pd.read_csv("ddm/depdatae2.csv") # collector 2350
-        self.depdata15 = pd.read_csv("ddm/depdatae.csv") # collector 1949
-        self.depdata16 = pd.read_csv("ddm/depdatae2.csv") # collector 2400
-        self.depdata17 = pd.read_csv("ddm/depdatae2.csv") # collector 2409
-        self.depdata18 = pd.read_csv("ddm/depdatae2.csv") # collector 2417
-        self.depdata19 = pd.read_csv("ddm/depdatae2.csv") # collector 2085
-        self.depdata20 = pd.read_csv("ddm/depdatae2.csv") # collector 2360
-        self.depdata21 = pd.read_csv("ddm/depdatae2.csv") # collector 2377
-        self.depdata22 = pd.read_csv("ddm/depdatae2.csv") # collector 2384
-        self.depdata23 = pd.read_csv("ddm/depdatae2.csv") # collector 2391
-        self.depdata24 = pd.read_csv("ddm/proddatae2.csv") # collector 118
-        self.depdata25 = pd.read_csv("ddm/proddatae2.csv") # collector 684
-        self.bauxitedata1 = pd.read_csv("ddm/bauxitedatae.csv") # # cockpit 188
-        self.bauxitedata2 = pd.read_csv("ddm/bauxitedatae.csv") # cockpit 204
-        self.cockpitdata1 = pd.read_csv("ddm/cockpit3rdPartySwitching.csv")
-        self.plotlink = pd.read_csv('ddm/plotlink.csv')
-        self.cockpitdata2 = pd.read_csv("ddm/cockpitdatae.csv")
-        self.cockpitdata3 = pd.read_csv("ddm/cockpitAllow3rdPartyTrade.csv")
-        self.silicadata = pd.read_csv("ddm/proddatae2.csv") #grade profile silica grade
-        self.aluminadata = pd.read_csv("ddm/proddatae2.csv")#grade profile alumina grade
+        self.proddata2 = templates["proddatae2"] # bauxite consumption # collector 1256
+        self.proddata3 = templates["proddatae"] # collector 1828
+        self.proddata4 = templates["proddatae"] # collector 1959
+        self.proddata5 = templates["proddatae"] # cap prod 531
+        self.proddata6 = templates["proddatae"] # cap prod 720
+        self.proddata7 = templates["proddatae"] # cap prod 867
+        self.proddata8 = templates["proddatae"] # cap prod 1589
+        self.proddata9 = templates["proddatae"] # cap prod 1713
+        self.proddata10 = templates["proddatae"] # cap prod 1004
+        self.production = templates["proddatae"]
+        self.prodout = templates["proddatae"] # production
+        self.depdata1 = templates["depdatae"] # cap prod 644
+        self.depdata2 = templates["depdatae"] # not needed
+        self.depdata3 = templates["depdatae"] # cap prod 657
+        self.depdata4 = templates["depdatae"] # cap prod 250
+        self.depdata5 = templates["depdatae"] # not needed 
+        self.depdata6 = templates["depdatae"] # cap prod 667
+        self.depdata7 = templates["QuickSummarySwitches"] # cap prod 701
+        self.depdata8 = templates["depdatae"] # collector 2333
+        self.depdata9 = templates["depdatae"] # collector 2073
+        self.depdata10 = templates["depdatae"] # cockpit 102
+        self.depdata11 = templates["depdatae"] # cockpit 159
+        self.depdata12 = templates["depdatae"] # cockpit 172
+        self.depdata13 = templates["depdatae2"] # collector 2343
+        self.depdata14 = templates["depdatae2"] # collector 2350
+        self.depdata15 = templates["depdatae"] # collector 1949
+        self.depdata16 = templates["depdatae2"] # collector 2400
+        self.depdata17 = templates["depdatae2"] # collector 2409
+        self.depdata18 = templates["depdatae2"] # collector 2417
+        self.depdata19 = templates["depdatae2"] # collector 2085
+        self.depdata20 = templates["depdatae2"] # collector 2360
+        self.depdata21 = templates["depdatae2"] # collector 2377
+        self.depdata22 = templates["depdatae2"] # collector 2384
+        self.depdata23 = templates["depdatae2"] # collector 2391
+        self.depdata24 = templates["proddatae2"] # collector 118
+        self.depdata25 = templates["proddatae2"] # collector 684
+        self.bauxitedata1 = templates["bauxitedatae"] # # cockpit 188
+        self.bauxitedata2 = templates["bauxitedatae"] # cockpit 204
+        self.cockpitdata1 = templates["cockpit3rdPartySwitching"]
+        self.plotlink = templates["plotlink"]
+        self.cockpitdata2 = templates["cockpitdatae"]
+        self.cockpitdata3 = templates["cockpitAllow3rdPartyTrade"]
+        self.silicadata = templates["proddatae2"] #grade profile silica grade
+        self.aluminadata = templates["proddatae2"]#grade profile alumina grade
         self.capout = pd.read_csv("ddm/proddatae.csv")
 
         self.smalldata = pd.read_csv("ddm/importe.csv")

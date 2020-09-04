@@ -14,6 +14,7 @@ yg = dict(zip(g_cols, years))
 # print(yg)
 
 def restruct(data, ind, col, val):
+    print(data)
     cols = data[col].unique()
     result = pd.DataFrame(columns=[ind, *cols])
     indexes =  data.loc[0::len(cols), ind].values

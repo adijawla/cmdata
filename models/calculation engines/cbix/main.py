@@ -5,21 +5,41 @@ import numpy as np
 # import uploadtodb
 from flatdb.flatdbconverter import Flatdbconverter
 from outputdb import uploadtodb
+import cbix_script1 as cp
+
+cbix_input = cp.restruct()
 
 db_conv =  Flatdbconverter("ViU/Freight(CBIX)")
 dblist = []
+
+"""
+
+"master_date_cell": normalize_col(master_date_cell, master_date_cell_col),
+        "cbix_coefficients_determination": normalize_col(cbix_coefficients_determination, cbix_col),
+        "freights_perwmt_tradedata": normalize_col(freights_perwmt_tradedata, freight_col),
+        "target_cbix": normalize_col(target_cbix, target_cbix_col),
+
+    """
 
 
 
 class CBIX:
     def __init__(self):
         
-        self.master_date_cell            = pd.read_excel("cbixinput.xlsx", sheet_name="Master date cell")
-        self.cbix_co_efficients_inputs   = pd.read_excel("cbixinput.xlsx", sheet_name="CBIX Co-Efficients Determination Inputs")
+        # self.master_date_cell            = pd.read_excel("cbixinput.xlsx", sheet_name="Master date cell")
+        # self.cbix_co_efficients_inputs   = pd.read_excel("cbixinput.xlsx", sheet_name="CBIX Co-Efficients Determination Inputs")
 
-        self.freights_trade_details      = pd.read_excel("cbixinput.xlsx", sheet_name="Freights US$ per wmt Trade Details")
-        self.cbix_cf_trade_details       = pd.read_excel("cbixinput.xlsx", sheet_name="CBIX Co-Efficients Determination")
-        self.target_cbix_price           = pd.read_excel("cbixinput.xlsx", sheet_name="Target CBIX Price")
+        # self.freights_trade_details      = pd.read_excel("cbixinput.xlsx", sheet_name="Freights US$ per wmt Trade Details")
+        # self.cbix_cf_trade_details       = pd.read_excel("cbixinput.xlsx", sheet_name="CBIX Co-Efficients Determination")
+        # self.target_cbix_price           = pd.read_excel("cbixinput.xlsx", sheet_name="Target CBIX Price")
+
+        self.master_date_cell            = cbix_input["cbix_Master_date_cell"]
+        self.cbix_co_efficients_inputs   = cbix_input["cbix_CBIX_CoEfficients_Determination_Inputs"]
+
+        self.freights_trade_details      = cbix_input["cbix_Freights_US_per_wmt_Trade_Details"]
+        self.cbix_cf_trade_details       = cbix_input["cbix_CBIX_CoEfficients_Determination"]
+        self.target_cbix_price           = cbix_input["cbix_Target_CBIX_Price"]
+
         self.freights_trade_details.loc[:, "Date"] = self.master_date_cell.loc[0, "Date"]
         self.cbix_cf_trade_details.loc[:, "Date"]  = self.master_date_cell.loc[0, "Date"]
 
@@ -39,9 +59,11 @@ class CBIX:
             if (z) % 2 == 0:
                 self.cbix_cf_trade_details.at[z, "Moisture"]            = self.cbix_co_efficients_inputs.loc[0, "Moisture"] + self.cbix_co_efficients_inputs.loc[1, "Moisture"]
             else:
-                self.cbix_cf_trade_details.at[z, "Moisture"]            = self.cbix_co_efficients_inputs.loc[0, "Moisture"] - self.cbix_co_efficients_inputs.loc[1, "Moisture"]        
+                self.cbix_cf_trade_details.at[z, "Moisture"]            = self.cbix_co_efficients_inputs.loc[0, "Moisture"] - self.cbix_co_efficients_inputs.loc[1, "Moisture"]    
 
 
+
+        """
         self.indexes_mines               = pd.read_excel("cbixinput.xlsx", sheet_name="Indices Mines Exporting Ports")
         self.spc_leg_shp_table           = pd.read_excel("cbixinput.xlsx", sheet_name="Special 2 Leg Shipping Table")
         self.mj_max_cargo                = pd.read_excel("cbixinput.xlsx", sheet_name="MRN or Juruti max cargo")
@@ -62,6 +84,63 @@ class CBIX:
         self.fx_rates                    = pd.read_excel("cbixinput.xlsx", sheet_name="FX Rates")
         self.canals                      = pd.read_excel("cbixinput.xlsx", sheet_name="Canals")
         self.lime                        = pd.read_excel("cbixinput.xlsx", sheet_name="Lime")
+
+        """    
+
+
+        """
+            "indices_Mines_Exporting_Ports": normalize_col(indices_Mines_Exporting_Ports, indexes_col),
+        "special_leg_shipping": normalize_col(special_leg_shipping, special_leg_shipping_col),
+        "mrn_juruti": normalize_col(mrn_juruti, mrn_juruti_col),
+        "Ship_Time_Charter_Rates": normalize_col(Ship_Time_Charter_Rates, Ship_Time_Charter_Rates_col),
+        "China_Importing_Ports": normalize_col(China_Importing_Ports, China_Importing_Ports_col),
+        "processing_factors": normalize_col(processing_factors, processing_factors_col),
+        "mud_disposal": normalize_col(mud_disposal, mud_disposal_col),
+        "ship_fuel_prices": normalize_col(ship_fuel_prices, ship_fuel_prices_col),
+        "Lignitious_Coal": normalize_col(Lignitious_Coal, Lignitious_Coal_col),
+        "sheetname_class": normalize_col(Sheetname_Class, Sheetname_Class_col),
+        "caustic_soda": normalize_col(Lignitious_Coal, caustic_soda_col),
+        "trade_details": normalize_col(trade_details, trade_details_col),
+        "Port_Linkages": normalize_col(Port_Linkages, Port_Linkages_col),
+        "global_factors": normalize_col(global_factor, global_factor_col),
+        "Canals_Class": normalize_col(Canals_Class, Canals_Class_col),
+        "ship_speed": normalize_col(ship_speed, ship_speed_col),
+        "canal": normalize_col(Canal, canals_col),
+        "fx_rates": normalize_col(fx_rates, fx_rates_col),
+        "lime": normalize_col(lime, lime_col),
+        "china_price_series": normalize_col(china_price_series, china_price_series_col)
+
+        """
+
+
+        self.indexes_mines               = cbix_input["cbix_Indices_Mines_Exporting_Ports"]
+        self.spc_leg_shp_table           = cbix_input["cbix_Special__Leg_Shipping_Table"]
+        self.mj_max_cargo                = cbix_input["cbix_MRN_or_Juruti_max_cargo"]
+        self.ship_time_cr                = cbix_input["cbix_Ship_Time_Charter_Rates"]
+        self.china_imp_prts              = cbix_input["cbix_China_n_Importing_Ports"]
+        self.china_ps                    = cbix_input["cbix_China_Price_Series"]
+        self.china_ps["Lignitious Coal – Date"]     = self.china_ps["Lignitious Coal – Date"].astype("datetime64[ns]")
+        self.china_ps["Caustic Soda – Date"]        = self.china_ps["Caustic Soda – Date"].astype("datetime64[ns]")
+        self.china_ps["Lime – Date"]                = self.china_ps["Lime – Date"].astype("datetime64[ns]")
+        self.china_ps["Mud disposal cost - Date"]   = self.china_ps["Mud disposal cost - Date"].astype("datetime64[ns]")
+        self.processing_factors          = cbix_input["cbix_processing_factors"]
+        self.mud_disposal_cost           = cbix_input["cbix_Mud_disposal_cost"]
+        self.ship_fuel_prices            = cbix_input["cbix_Ship_Fuel_Prices"]
+        self.lignitious_coal             = cbix_input["cbix_Lignitious_Coal"]
+        print(self.lignitious_coal)
+        self.lignitious_coal.columns     = ["Date", "Lignitious Coal Price (RMB/t) (exc VAT)", "Energy value (kcal/kg)"]
+        self.lignitious_coal             = self.lignitious_coal[1:]
+        print(self.lignitious_coal)
+        self.sheetname_class             = cbix_input["cbix_Sheetname_Class"]
+        self.global_factors              = cbix_input["cbix_Global_factors"]
+        self.trade_details               = cbix_input["cbix_Trade_Details"]
+        self.port_linkages               = cbix_input["cbix_Port_Linkages"]
+        self.canals_class                = cbix_input["cbix_Canals_Class"]
+        self.caustic_soda                = cbix_input["cbix_Caustic_Soda"]
+        self.ship_speeds                 = cbix_input["cbix_Ship_Speeds"]
+        self.fx_rates                    = cbix_input["cbix_FX_Rates"]
+        self.canals                      = cbix_input["cbix_Canals"]
+        self.lime                        = cbix_input["cbix_Lime"]
         self.db                          = {} #All generated outputs are temporarily stored here
 
         #CBIX
@@ -538,7 +617,11 @@ class CBIX:
         
         nominal_mine = self.db["outputs/nominal_mine_div_index_specifications.csv"]
         freights_nominal_mine = self.db["outputs/freights/nominal_mine_div_index_specifications.csv"]
-        cbix_coe_nominal_mine = self.db["outputs/cbix_co_efficients_determination/nominal_mine_div_index_specifications.csv"]        
+        cbix_coe_nominal_mine = self.db["outputs/cbix_co_efficients_determination/nominal_mine_div_index_specifications.csv"] 
+
+        print(nominal_mine)
+        print(freights_nominal_mine)
+        print(cbix_coe_glb_factors)
         
         new_df       = pd.DataFrame(columns=self.final_specs_columns)
         freights_df  = pd.DataFrame(columns=self.final_specs_columns)
@@ -880,6 +963,7 @@ class CBIX:
 
         def lookup(search, target_date, target):
             for ind in range(self.china_ps.shape[0]):
+                # print(target_date.iloc[:].values)
                 filt = target[target_date.iloc[:].map(lambda x: x.date()) <= search]
                 if filt is None:
                      filt = target[target_date.iloc[:].map(lambda x: x.date()) >= search]
@@ -975,8 +1059,11 @@ class CBIX:
             ind = (self.indexes_mines.loc[:, "Date"].map(lambda x: x.date()) <= search1) #.map(lambda i: 1 if i == True else 0)
             idx = (self.indexes_mines.loc[:, "Exporting Port"].map(lambda x: x == search2)) #.map(lambda i: 1 if i == True else 0)
             v = target[ind & idx]
-
+            print(v)
             return v.iloc[0]
+        print(final_spec.loc[:, "Exporting Port"])
+        print(freights_fin_spec_df.loc[:, "Exporting Port"])
+        print(cbix_coe_fin_spec_df.loc[:, "Exporting Port"])
 
         for i in range(len(self.trade_details)):
             for col in new_df.columns:
@@ -984,6 +1071,7 @@ class CBIX:
 
         for i in range(len(self.freights_trade_details)):
             for col in freights_df.columns:
+                print(col)
                 freights_df.at[i, col] = lookup(self.freights_trade_details.loc[i, "Date"].date(), freights_fin_spec_df.loc[i, "Exporting Port"], self.indexes_mines.loc[:, col])
 
 
