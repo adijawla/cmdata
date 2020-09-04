@@ -56,11 +56,11 @@ models = {
 }
 
 def read_from_database(table):
-        engine = create_engine("mssql+pyodbc://letmetry:Ins201799@magdb.database.windows.net:1433/input_db?driver=ODBC+Driver+17+for+SQL+Server")
-        query = f'SELECT * FROM {table}'
-        data = pd.read_sql(sql=query, con=engine)
-        # converts number strings to numeric
-        return data.apply(lambda x: pd.to_numeric(x.astype(str).str.replace(',',''), errors='coerce')).fillna(data)
+    engine = create_engine("mssql+pyodbc://letmetry:Ins201799@magdb.database.windows.net:1433/input_db?driver=ODBC+Driver+17+for+SQL+Server")
+    query = f'SELECT * FROM {table}'
+    data = pd.read_sql(sql=query, con=engine)
+    # converts number strings to numeric
+    return data.apply(lambda x: pd.to_numeric(x.astype(str).str.replace(',',''), errors='coerce')).fillna(data)
 
 
 class Flatdbconverter():
@@ -77,31 +77,31 @@ class Flatdbconverter():
 
     # helper function
     def get_label_id(self, labels):
-            lookup = {**self.output_labels}
-            max_id =  max(lookup.values()) if len(lookup.values()) > 0 else 0
-            for i in range(len(labels)):
-                labels[i] = str(labels[i])
-                if labels[i] in lookup:
-                    labels[i] = lookup[labels[i]]
-                else:
-                    max_id += 1
-                    lookup[labels[i]] = max_id 
-                    labels[i] = max_id
-            self.output_labels = lookup
-            return labels
+        lookup = {**self.output_labels}
+        max_id =  max(lookup.values()) if len(lookup.values()) > 0 else 0
+        for i in range(len(labels)):
+            labels[i] = str(labels[i])
+            if labels[i] in lookup:
+                labels[i] = lookup[labels[i]]
+            else:
+                max_id += 1
+                lookup[labels[i]] = max_id 
+                labels[i] = max_id
+        self.output_labels = lookup
+        return labels
 
     def get_snapshot_id(self, snapshot):
-            v = uploadtodb.snapshot()
-            return int(v.id)
+        v = uploadtodb.snapshot()
+        return int(v.id)
 
         
     def get_model_ids(self, model):
-            if model in models:
-                return models[model]            
+        if model in models:
+            return models[model]            
 
     # supports dfdb.csv, db.csv
     def single_year_mult_out(self, filepath, output_set_name, model=None, path=False):
-	    output_set_name = ' '.join(output_set_name.split('_'))
+        output_set_name = ' '.join(output_set_name.split('_'))
         output_set_name = output_set_name.title()
         if model is None:
             model = self.model
@@ -238,7 +238,7 @@ class Flatdbconverter():
 
     # supports alumina grade output
     def mult_year_single_output(self, filepath, output_set_name, idx_of_index=[], idx_of_values=[], label="Year", model=None, path=False, col_params=[]):
-	    output_set_name = ' '.join(output_set_name.split('_'))
+        output_set_name = ' '.join(output_set_name.split('_'))
         output_set_name = output_set_name.title()
         if model is None:
             model = self.model
