@@ -2,8 +2,8 @@ import pandas as pd
 from flatdb.flatdbconverter import Flatdbconverter, read_from_database
 from outputdb import uploadtodb
 
-country = pd.read_csv('country.csv')
-country_lk = country.loc[:, ['country_Id', 'Country']].values
+country = read_from_database("country")
+country_lk = country.loc[:, ['country_id', 'country']].values
 country_lk = dict(country_lk)
 print(country_lk)
 model = Flatdbconverter('Global Resource Reserve and Production charting')
