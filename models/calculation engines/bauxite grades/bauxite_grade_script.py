@@ -1,9 +1,14 @@
 import pandas as pd
 import numpy as np
-from flatdb.flatdbconverter import Flatdbconverter, read_from_database
+from flatdb.flatdbconverter import Flatdbconverter, read_from_database , read_output_database
 from outputdb import uploadtodb
 
 db_conv = Flatdbconverter("Bauxite grades in use field study results")
+
+coll = read_output_database(74, ["Collector 2391"])
+rev_col = db_conv.reverse(coll, 'Draw Down Model', ["Collector 2391"])
+rev_col = rev_col["Draw Down Model"]
+collector = rev_col["Collector 2391"]
 
 def make_unique(data, enc):
     data = list(map(str, data))
@@ -12,7 +17,7 @@ def make_unique(data, enc):
         cols[cols[cols == dup].index.values.tolist()] = [dup + enc + str(i) if i != 0 else dup for i in range(sum(cols == dup))]
     return cols.values
 
-collector = pd.read_csv("collector_2391.csv")
+# collector = pd.read_csv("collector_2391.csv")
 # bx = pd.read_csv('input/as_ratio_bauxite_grades.csv')
 bx = read_from_database('as_ratio_bauxite_grades')
 bx = bx.loc[:, ['Date', 'Shanxi','Henan','Guizhou','Guangxi']]

@@ -13,7 +13,7 @@ from collections import defaultdict
 from ddm.newprovincial import provincial
 from ddm.reservesummary import summary
 from ddm.codetimer.timer import Timer
-from flatdb.flatdbconverter import Flatdbconverter
+from flatdb.flatdbconverter import Flatdbconverter, read_output_database
 from outputdb.uploadtodb import upload
 import time
 import asyncio
@@ -36,6 +36,12 @@ Provinces =['Guangxi',
             'Other'
             ]
 print("ddm sql connected")
+
+em = read_output_database(80, ["Max Economic Tonnes"])
+max_economic_tonnes = db_conv.reverse(em, "Economic overlay", ["Max Economic Tonnes"])
+print(max_economic_tonnes)
+
+
 '''
 
 Bauxite main model starts here
@@ -2518,7 +2524,7 @@ b1_plotlink = db_conv.mult_year_single_output(b1.plotlink, 'Plotlink')
 b1_silicadata = db_conv.mult_year_single_output(b1.silicadata, 'Silica a grades of bauxite consumed by each refinery split by major province')
 # b1_production = db_conv.mult_year_single_output(b1.production, 'Production')
 b1_prodout = db_conv.mult_year_single_output(b1.prodout, 'Product')
-b1_provincialdb = db_conv.multi_year_multi_out(provicialcalc.db, 'Provincial', col_params=[(0, 'Province'), (1, 'Field')])
+b1_provincialdb = db_conv.multi_year_multi_out(provicialcalc.db, 'Provincial', col_params=[(0, 'Province'), (1, 'Field')], not_num_indexed=True)
 r_db = db_conv.single_year_mult_out(r.db, 'Inventroy Processing output ')
 r_provt = db_conv.single_year_mult_out(r.provt, 'Reserve Summary Prov Summaries ')
 r_bfdb = db_conv.single_year_mult_out(r.bfdb, 'bfdb')
@@ -2584,8 +2590,8 @@ r_newallocdb]
 
 print("here")
 for i in sheets:
-    dblist.append(db_conv.multi_year_multi_out(b1.db.loc[i], f"refinery {i}"))
     b1.db.loc[i].to_csv(f"ddm/outputdata/refinery/{i}.csv")
+    dblist.append(db_conv.multi_year_multi_out(b1.db.loc[i], f"refinery {i}", col_params=[(0, 'Province'), (1, 'Fields')], not_num_indexed=True))
 
 snapshot_output_data = pd.concat(dblist, ignore_index=True)
 snapshot_output_data = snapshot_output_data.loc[:, db_conv.out_col]

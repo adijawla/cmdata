@@ -129,7 +129,7 @@ data = {"province":rsdatabase['Province'].tolist(),
         "open pit Washing Cost total dressing cost1":empty,
         "open pit Washing Cost total dressing cost2":empty,
 
-        
+
 
         "open pit Capital & Equipment Charges mine establishment":empty,
         "open pit Capital & Equipment Charges mine capital cost":empty,
@@ -142,7 +142,7 @@ data = {"province":rsdatabase['Province'].tolist(),
         "open pit Capital & Equipment Charges maintenance & equipment charge":empty,
         "open pit Capital & Equipment Charges sustaining capital charge":empty,
 
-        
+
 
         #ends here
         "underground mining cost automation & electricity usage low":empty,
@@ -200,7 +200,7 @@ data = {"province":rsdatabase['Province'].tolist(),
         "underground Washing Cost total dressing cost1":empty,
         "underground Washing Cost total dressing cost2":empty,
 
-        
+
 
         "underground Capital & Equipment Charges mine establishment":empty,
         "underground Capital & Equipment Charges mine capital cost":empty,
@@ -213,7 +213,7 @@ data = {"province":rsdatabase['Province'].tolist(),
         "underground Capital & Equipment Charges maintenance & equipment charge":empty,
         "underground Capital & Equipment Charges sustaining capital charge":empty,
 
-        
+
 
         "other tax and fees":rsdatabase["localtaxandfees"].tolist(),
         "resource tax":[ costinputs.loc[costinputs.province==i]["Resouce tax"].sum() for i in rsdatabase['Province'] ],
@@ -233,7 +233,7 @@ data = {"province":rsdatabase['Province'].tolist(),
         "fsumtaxandfees":empty,
         "fsumexplosives":empty,
         "fsumother":empty,
-        
+
 }
 
 
@@ -244,7 +244,7 @@ for i in inputdatadb.columns:
         inputdatadb[i] = inputdatadb[i].astype(float)
     except:
         pass
-        
+
 
 class CostModel():
     def __init__(self,db,taxtrans):
@@ -262,11 +262,11 @@ class CostModel():
         ]
         #print(type(d[0]),type(d[1]),type(d[2]))
         value = d[0]*d[1]*(1+d[2])
-            
+
         self.db.at[index,"total tonnes mined open pit"] = value
-                
+
     def ttmug(self,index):
-        
+
         d = [
                 self.db.loc[index,"Production"],
                 self.db.loc[index,"Mine Type underground"],
@@ -274,25 +274,25 @@ class CostModel():
         ]
         value = d[0]*d[1]*(1+d[2] )
         self.db.at[index,"total tonnes mined underground"] = value
-        
+
     def elcons(self,index):
         d = [1.5,
                  -0.129,
                  2.7,
                  self.db.loc[index,"total tonnes mined open pit"]]
-            
+
         value = d[0]*pow(d[3],d[1])/d[2] if d[3] > 0 else 0
         self.db.at[index,"open pit mining cost electricity consumption"] = value
-            
+
     def elprice(self,index):
         value = self.lookup.loc[self.lookup.province==self.db["province"][index]][self.lookup.expence=="electicity"]["2018"].sum()/1.17
-            
+
         self.db.at[index,"open pit mining cost electricity price"] = value
         self.db.at[index,"open pit Washing Cost electricity price"] = value
         self.db.at[index,"underground mining cost electricity price"] = value
         self.db.at[index,"underground Washing Cost electricity price"] = value
-        
-    
+
+
     def elcost1(self,index):
         d = [
             self.db.loc[index,"open pit mining cost electricity consumption"],
@@ -300,9 +300,9 @@ class CostModel():
                 ]
         value = d[0]*d[1]
         self.db.at[index,"open pit mining cost electricity cost1"] = value
-        
+
     def elcost2(self,index):
-        
+
         d = [
             self.db.loc[index,"Stripping ratio open pit"],
             self.db.loc[index,"total tonnes mined open pit"],
@@ -310,13 +310,13 @@ class CostModel():
                 ]
         value = d[2]*(1+d[0]) if d[1] > 0 else 0
         self.db.at[index,"open pit mining cost electricity cost2"] = value
-        
-    
+
+
     def unitprice(self,index):
         value = self.taxtrans.loc[self.taxtrans.province==self.db["province"][index]]["In Mine"].sum()
         self.db.at[index,"open pit mining cost unit price"] = value
         self.db.at[index,"underground mining cost unit price"] = value
-        
+
     def dieselusg(self,index):
         d = [
                 0.005,
@@ -335,33 +335,33 @@ class CostModel():
         self.db.at[index,"open pit Washing Cost diesel price"] = value
         self.db.at[index,"underground mining cost diesel price"] = value
         self.db.at[index,"underground Washing Cost diesel price"] = value
-                
-        
+
+
     def dieselcost1(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"open pit mining cost diesel usage"],
                 self.db.loc[index,"open pit mining cost diesel price"],
                 ]
             value = d[0]*d[1]
             self.db.at[index,"open pit mining cost diesel cost1"] = value
-        
+
     def dieselcost2(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"Stripping ratio open pit"],
                 self.db.loc[index,"total tonnes mined open pit"],
                 self.db.loc[index,"open pit mining cost diesel cost1"],
                 ]
             value = d[2]*(1+d[0]) if d[1] > 0 else 0
-            
+
             self.db.at[index,"open pit mining cost diesel cost2"] = value
-        
+
     def labpro(self,index):
-        
-            
+
+
             d = [
                 0.0022,
                 0.44,
@@ -370,30 +370,30 @@ class CostModel():
                 ]
             value = (d[0]*d[3]+d[1])/d[2]
             self.db.at[index,"open pit mining cost labour productivity"] = value
-        
+
     def labrate(self,index):
-        
+
             value = self.lookup.loc[self.lookup.province==self.db["province"][index]][self.lookup.expence=="labor"]["2018"].sum()/300/8
             self.db.at[index,"open pit mining cost labour rate"] = value
             self.db.at[index,"open pit Washing Cost labour rate"] = value
             self.db.at[index,"underground mining cost labour rate"] = value
             self.db.at[index,"underground Washing Cost labour rate"] = value
-        
-    
-    
+
+
+
     def labourcost1(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"open pit mining cost labour productivity"],
                 self.db.loc[index,"open pit mining cost labour rate"],
                 ]
             value = d[0]*d[1]
             self.db.at[index,"open pit mining cost labour cost1"] = value
-        
+
     def labourcost2(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"Stripping ratio open pit"],
                 self.db.loc[index,"total tonnes mined open pit"],
@@ -401,20 +401,20 @@ class CostModel():
                 ]
             value = d[2]*(1+d[0]) if d[1] > 0 else 0
             self.db.at[index,"open pit mining cost labour cost2"] = value
-        
+
     def freightcost1(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"open pit mining cost distance"],
                 self.db.loc[index,"open pit mining cost unit price"],
                 ]
             value = d[0]*d[1]
             self.db.at[index,"open pit mining cost freight cost1"] = value
-        
+
     def freightcost2(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"Stripping ratio open pit"],
                 self.db.loc[index,"total tonnes mined open pit"],
@@ -422,10 +422,10 @@ class CostModel():
                 ]
             value = d[2]*(d[0]+1) if d[1] > 0 else 0
             self.db.at[index,"open pit mining cost freight cost2"] = value
-        
+
     def totalminingcost(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"open pit mining cost electricity cost1"],
                 self.db.loc[index,"open pit mining cost diesel cost1"],
@@ -435,18 +435,18 @@ class CostModel():
                 ]
             value = d[0]+d[1]+d[2]+d[3]+d[4]
             self.db.at[index,"open pit mining cost total mining cost"] = value
-        
-    
+
+
     def strippingratio(self,index):
-        
-            
+
+
             value = rsdatabase["StrippingRatioOpenPit"].tolist()[index]
             self.db.at[index,"open pit mining cost stripping ratio"] = value
-        
-    
+
+
     def openpitminingcost(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"total tonnes mined open pit"],
                 self.db.loc[index,"open pit mining cost total mining cost"],
@@ -454,11 +454,11 @@ class CostModel():
                 ]
             value = d[1]*(d[2]+1) if d[0] > 0 else 0
             self.db.at[index,"open pit mining cost "] = value
-        
+
 
     def autolow(self,index):
-        
-            
+
+
             d = [
                 8,
                 -0.07,
@@ -466,10 +466,10 @@ class CostModel():
                 ]
             value = 0 if d[2] <= 0 else d[0]*pow(d[2],-0.07)
             self.db.at[index,"open pit Washing Cost automation & electricity usage low"] = value
-        
+
     def automed(self,index):
-        
-            
+
+
             d = [
                 9,
                 -0.07,
@@ -477,10 +477,10 @@ class CostModel():
                 ]
             value = 0 if d[2] <= 0 else d[0]*pow(d[2],-0.07)
             self.db.at[index,"open pit Washing Cost automation & electricity usage medium"] = value
-        
+
     def autohigh(self,index):
-        
-            
+
+
             d = [
                 10,
                 -0.07,
@@ -488,10 +488,10 @@ class CostModel():
                 ]
             value = 0 if d[2] <= 0 else d[0]*pow(d[2],-0.07)
             self.db.at[index,"open pit Washing Cost automation & electricity usage high"] = value
-        
+
     def washingelecons(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"Dressing automation level"],
                 self.db.loc[index,"total tonnes mined open pit"],
@@ -501,10 +501,10 @@ class CostModel():
                 ]
             value =  0 if d[1] <= 0 else d[2] if d[0] == 1 else d[3] if d[0] == 2 else d[4]
             self.db.at[index,"open pit Washing Cost electricity consumption"] = value
-        
+
     def washingelecost(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"total tonnes mined open pit"],
                 self.db.loc[index,"Dressing Ratio"],
@@ -513,10 +513,10 @@ class CostModel():
                 ]
             value =  d[2]*d[3] if d[0] > 0 and d[1] > 0 else 0
             self.db.at[index,"open pit Washing Cost electricity cost"] = value
-        
+
     def washingdieselcost(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"total tonnes mined open pit"],
                 self.db.loc[index,"Dressing Ratio"],
@@ -525,10 +525,10 @@ class CostModel():
                 ]
             value =  d[2]*d[3] if d[0] > 0 and d[1] > 0 else 0
             self.db.at[index,"open pit Washing Cost diesel cost"] = value
-        
+
     def washinglabourproductivity(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"Dressing automation level"],
                 self.db.loc[index,"open pit Washing Cost automation & labour productivity low"],
@@ -537,10 +537,10 @@ class CostModel():
                 ]
             value = d[1] if d[0] == 1 else d[2] if d[0] == 2 else d[3] if d[0] == 3 else 0
             self.db.at[index,"open pit Washing Cost labour productivity"] = value
-        
+
     def labourcost(self,index):
-        
-            
+
+
 
             d = [
                 self.db.loc[index,"total tonnes mined open pit"],
@@ -550,19 +550,19 @@ class CostModel():
                 ]
             value = d[2]*d[3] if d[0] > 0 and d[1] > 0 else 0
             self.db.at[index,"open pit Washing Cost labour cost"] = value
-        
+
     def materialprice(self,index):
-        
+
             value = self.lookup.loc[self.lookup.province==self.db["province"][index]][self.lookup.expence=="water"]["2018"].sum()
             self.db.at[index,"open pit Washing Cost material price"] = value
             self.db.at[index,"open pit Washing Cost water price"] = value
             self.db.at[index,"underground Washing Cost water price"] = value
             self.db.at[index,"underground Washing Cost material price"] = 0
-        
-            
+
+
     def materialcost(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"Dressing Ratio"],
                 self.db.loc[index,"total tonnes mined open pit"],
@@ -571,24 +571,24 @@ class CostModel():
                 ]
             value = d[2]*d[3] if d[0] > 0 and d[1] > 0 else 0
             self.db.at[index,"open pit Washing Cost material cost"] = value
-        
-    
+
+
     def watercost(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"total tonnes mined open pit"],
                 self.db.loc[index,"Dressing Ratio"],
                 self.db.loc[index,"open pit Washing Cost water consumption"],
                 self.db.loc[index,"open pit Washing Cost water price"],
-    
+
                 ]
             value = d[2]*d[3] if d[0] > 0 and d[1] > 0 else 0
             self.db.at[index,"open pit Washing Cost water cost"] = value
-        
+
     def totaldressingcost1(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"total tonnes mined open pit"],
                 self.db.loc[index,"Dressing Ratio"],
@@ -600,11 +600,11 @@ class CostModel():
                 ]
             value = d[2]+d[3]+d[4]+d[5]+d[6] if d[0] > 0 and d[1] > 0 else 0
             self.db.at[index,"open pit Washing Cost total dressing cost1"] = value
-        
+
 
     def totaldressingcost2(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"total tonnes mined open pit"],
                 self.db.loc[index,"Dressing Ratio"],
@@ -612,30 +612,30 @@ class CostModel():
                 ]
             value = d[2]*d[1] if d[0] > 0 and d[1] > 0 else 0
             self.db.at[index,"open pit Washing Cost total dressing cost2"] = value
-        
+
     def totalequipcost(self,index):
-        
-            
+
+
             d = [
             self.db.loc[index,"Stripping ratio open pit"],
             self.db.loc[index,"open pit Capital & Equipment Charges mine capital cost"]
             ]
             value = d[1]*(1+d[0])
             self.db.at[index,"open pit Capital & Equipment Charges mine equipment cost"] = value
-        
+
     def totalequiphire(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"Stripping ratio Open Pit"],
                 self.db.loc[index,"open pit Capital & Equipment Charges mine equipment hire1"]
                 ]
             value = d[1]*(1+d[0])
             self.db.at[index,"open pit Capital & Equipment Charges mine equipment hire2"] = value
-        
+
     def maintancecost(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"open pit Capital & Equipment Charges % of equipment maintenance cost"],
                 self.db.loc[index,"open pit Capital & Equipment Charges mine equipment ownership"],
@@ -644,10 +644,10 @@ class CostModel():
                 ]
             value = d[2]*d[0]*d[1]+d[3]*(1-d[1])
             self.db.at[index,"open pit Capital & Equipment Charges maintenance & equipment charge"] = value
-        
+
     def capitalcharge(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"open pit Capital & Equipment Charges mine establishment"],
                 self.db.loc[index,"open pit Capital & Equipment Charges % of equipment sustaining cost"],
@@ -656,13 +656,13 @@ class CostModel():
                 ]
             value = d[3]*d[1]*d[2]+d[0]*d[1]
             self.db.at[index,"open pit Capital & Equipment Charges sustaining capital charge"] = value
-        
+
 
    #underground starts here
 
     def ulow(self,index):
-        
-            
+
+
             d = [3.5,
             self.db.loc[index,"total tonnes mined underground"],
              -0.129,
@@ -670,7 +670,7 @@ class CostModel():
                  ]
             value = 0 if d[1]<=0 else  d[0]*d[3]*pow(d[1],d[2])
             self.db.at[index,"underground mining cost automation & electricity usage low"] = value
-        
+
     def umed(self,index):
         #
             d = [3.5,
@@ -684,8 +684,8 @@ class CostModel():
             #print(e)
             #self.db.at[index,"underground mining cost automation & electricity usage medium"] = 0
     def uhigh(self,index):
-        
-            
+
+
             d = [3.5,
             self.db.loc[index,"total tonnes mined underground"],
              -0.17,
@@ -693,13 +693,13 @@ class CostModel():
                  ]
             value = 0 if d[1]<=0 else  d[0]*d[3]*pow(d[1],d[2])
             self.db.at[index,"underground mining cost automation & electricity usage high"] = value
-        
 
-    
+
+
 
     def usizefactor(self,index):
-        
-            
+
+
             d = [self.db.loc[index,"Mine Automation level"],
                 self.db.loc[index,"underground mining cost automation & electricity usage low"],
                  self.db.loc[index,"underground mining cost automation & electricity usage medium"],
@@ -708,43 +708,43 @@ class CostModel():
             value = d[1] if d[0] == 1 else d[2] if d[0] == 2 else d[3] if d[0] == 3 else 0
             self.db.at[index,"underground mining cost size factor"] = value
     def udepthfactor(self,index):
-        
-            
+
+
             d = [0.002,
                  0.796,
                  self.db.loc[index,"Underground"],
             ]
             value = d[0]*d[2]+d[1]
             self.db.at[index,"underground mining cost depth factor"] = value
-        
-        
+
+
 
     def uelecons(self,index):
-        
-            
+
+
             d = [self.db.loc[index,"underground mining cost size factor"],
                  self.db.loc[index,"underground mining cost depth factor"],
-                 
+
             ]
             value = d[0]*d[1]
             self.db.at[index,"underground mining cost electricity consumption"] = value
-        
+
 
     def uelccost1(self,index):
-        
-            
+
+
             d = [self.db.loc[index,"underground mining cost electricity consumption"],
                  self.db.loc[index,"underground mining cost electricity price"],
                  self.db.loc[index,"total tonnes mined underground"]
             ]
             value = d[0]*d[1] if d[2] > 0 else 0
-            
+
             self.db.at[index,"underground mining cost electricity cost1"] = value
-        
+
 
     def uelccost2(self,index):
-        
-            
+
+
             d = [self.db.loc[index,"underground mining cost electricity cost1"],
                  self.db.loc[index,"underground mining cost electricity price"],
                  self.db.loc[index,"Stripping ratio Underground"],
@@ -752,10 +752,10 @@ class CostModel():
             ]
             value = d[0]*(1+d[2]) if d[3] > 0 else 0
             self.db.at[index,"underground mining cost electricity cost2"] = value
-        
+
     def ulabprolow(self,index):
-        
-            
+
+
             d = [100,
                  1.015,
                  1.4,
@@ -764,9 +764,9 @@ class CostModel():
             ]
             value = d[1] if d[4] < d[0] else d[2]*pow(d[4],d[3])
             self.db.at[index,"underground mining cost automation & labour productivity low"] = value
-        
+
     def ulabpromed(self,index):
-        
+
             d = [200,
                  0.936,
                  3,
@@ -775,10 +775,10 @@ class CostModel():
             ]
             value = d[1] if d[4] < d[0] else d[2]*pow(d[4],d[3])
             self.db.at[index,"underground mining cost automation & labour productivity medium"] = value
-        
+
     def ulabprohigh(self,index):
-        
-            
+
+
             d = [300,
                  0.785,
                  8.6,
@@ -787,11 +787,11 @@ class CostModel():
             ]
             value = d[1] if d[4] < d[0] else d[2]*pow(d[4],d[3])
             self.db.at[index,"underground mining cost automation & labour productivity high"] = value
-        
+
 
     def uautodepth(self,index):
-        
-            
+
+
             d = [125,
                  0.7,
                  450,
@@ -801,14 +801,14 @@ class CostModel():
                  self.db.loc[index,"Underground"],
                  450
                  ]
-            
-            value = 0.7 if d[6]<d[0] else d[3]*d[6]-d[4] if d[6]<d[7] else d[5] 
+
+            value = 0.7 if d[6]<d[0] else d[3]*d[6]-d[4] if d[6]<d[7] else d[5]
             self.db.at[index,"underground mining cost automation depth factor"] = value
-        
+
 
     def uautofactor(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"Mine Automation level"],
                 self.db.loc[index,"underground mining cost automation & labour productivity low"],
@@ -818,11 +818,11 @@ class CostModel():
 
             value = d[1] if d[0] == 1 else d[2] if d[0] == 2 else d[3] if d[0] == 3 else 0
             self.db.at[index,"underground mining cost automation factor"] = value
-        
+
 
     def ulabpro(self,index):
-        
-            
+
+
             d = [
                 0.2,
                 0.7,
@@ -832,18 +832,18 @@ class CostModel():
 
             value = (d[2]*d[3]+d[0])*d[1]
             self.db.at[index,"underground mining cost labour productivity"] = value
-        
+
     def ulabrate(self,index):
-        
-            
+
+
             d = [self.db.loc[index,"open pit mining cost labour rate"]]
             value = 1.2*d[0]
             self.db.at[index,"underground mining cost labour rate"] = value
-        
-            
+
+
     def ulabourcost1(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"underground mining cost labour productivity"],
                 self.db.loc[index,"underground mining cost labour rate"],
@@ -851,10 +851,10 @@ class CostModel():
                 ]
             value = d[0]*d[1] if d[2] > 0 else 0
             self.db.at[index,"underground mining cost labour cost1"] = value
-        
+
     def ulabourcost2(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"Stripping ratio underground"],
                 self.db.loc[index,"total tonnes mined underground"],
@@ -862,20 +862,20 @@ class CostModel():
                 ]
             value = d[2]*(1+d[0]) if d[1] > 0 else 0
             self.db.at[index,"underground mining cost labour cost2"] = value
-        
+
     def ufreightcost1(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"underground mining cost distance"],
                 self.db.loc[index,"underground mining cost unit price"],
                 ]
             value = d[0]*d[1]
             self.db.at[index,"underground mining cost freight cost1"] = value
-        
+
     def ufreightcost2(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"Stripping ratio underground"],
                 self.db.loc[index,"total tonnes mined underground"],
@@ -883,20 +883,20 @@ class CostModel():
                 ]
             value = d[2]*(d[0]+1) if d[1] > 0 else 0
             self.db.at[index,"underground mining cost freight cost2"] = value
-        
+
     def uexplosives(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"total tonnes mined underground"]
             ]
             value = 16 if d[0] > 0 else 0
             self.db.at[index,"underground explosives"] = value
-        
+
 
     def udieselusage(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"total tonnes mined underground"],
                 3.5,
@@ -906,11 +906,11 @@ class CostModel():
                 ]
             value = 0 if d[0] <= 0 else d[1]*d[3]*pow(d[0],d[4])
             self.db.at[index,"underground mining cost diesel usage"] = value
-        
+
 
     def udieselcost1(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"underground mining cost diesel price"],
                 self.db.loc[index,"underground mining cost diesel usage"],
@@ -918,11 +918,11 @@ class CostModel():
             ]
             value = d[0]*d[1] if d[2] > 0 else 0
             self.db.at[index,"underground mining cost diesel cost1"] = value
-        
+
 
     def udieselcost2(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"Stripping ratio underground"],
                 self.db.loc[index,"total tonnes mined underground"],
@@ -930,11 +930,11 @@ class CostModel():
                 ]
             value = d[2]*(1+d[0]) if d[1] > 0 else 0
             self.db.at[index,"underground mining cost diesel cost2"] = value
-        
-            
+
+
     def utotalminingcost(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"underground mining cost electricity cost1"],
                 self.db.loc[index,"underground mining cost diesel cost1"],
@@ -944,10 +944,10 @@ class CostModel():
                 ]
             value = d[0]+d[1]+d[2]+d[3]+d[4]
             self.db.at[index,"underground mining cost total mining cost"] = value
-        
+
     def ustripingratio(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"total tonnes mined open pit"],
                 self.db.loc[index,"underground mining cost total mining cost"],
@@ -955,10 +955,10 @@ class CostModel():
                 ]
             value = d[1]*(d[2]+1) if d[0] > 0 else 0
             self.db.at[index,"underground mining cost "] = value
-        
+
     def ueleclow(self,index):
-        
-            
+
+
             d = [18,
                 self.db.loc[index,"total tonnes mined underground"],
                  -0.07,
@@ -966,11 +966,11 @@ class CostModel():
                 ]
             value = d[0]*pow(d[1],d[2])/d[3] if d[1] > 0 else 0
             self.db.at[index,"underground Washing Cost automation & electricity usage low"] = value
-        
+
 
     def uelecmed(self,index):
-        
-            
+
+
             d = [19,
                 self.db.loc[index,"total tonnes mined underground"],
                  -0.07,
@@ -978,11 +978,11 @@ class CostModel():
                 ]
             value = d[0]*pow(d[1],d[2])/d[3] if d[1] > 0 else 0
             self.db.at[index,"underground Washing Cost automation & electricity usage medium"] = value
-        
+
 
     def uelechigh(self,index):
-        
-            
+
+
             d = [20,
                 self.db.loc[index,"total tonnes mined underground"],
                  -0.07,
@@ -990,12 +990,12 @@ class CostModel():
                 ]
             value = d[0]*pow(d[1],d[2])/d[3] if d[1] > 0 else 0
             self.db.at[index,"underground Washing Cost automation & electricity usage high"] = value
-        
 
-    
+
+
     def uelecusagecons(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"Dressing automation level"],
                 self.db.loc[index,"underground Washing Cost automation & electricity usage low"],
@@ -1003,12 +1003,12 @@ class CostModel():
                 self.db.loc[index,"underground Washing Cost automation & electricity usage high"],
                 self.db.loc[index,"total tonnes mined underground"],
                 ]
-            value =  d[1] if d[0] == 1 and d[4] > 0 else d[2] if d[0] == 2 and d[4] > 0 else d[3] if d[0] == 3 and d[4] > 0 else 0  
+            value =  d[1] if d[0] == 1 and d[4] > 0 else d[2] if d[0] == 2 and d[4] > 0 else d[3] if d[0] == 3 and d[4] > 0 else 0
             self.db.at[index,"underground Washing Cost electricity consumption"] = value
-        
+
     def uwashingelecost(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"total tonnes mined underground"],
                 self.db.loc[index,"Dressing Ratio"],
@@ -1020,10 +1020,10 @@ class CostModel():
             self.db.at[index,"underground Washing Cost automation & labour productivity low"] = 0.08
             self.db.at[index,"underground Washing Cost automation & labour productivity medium"] = 0.07
             self.db.at[index,"underground Washing Cost automation & labour productivity high"] = 0.06
-        
+
     def uwashingdieselcost(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"total tonnes mined underground"],
                 self.db.loc[index,"Dressing Ratio"],
@@ -1032,10 +1032,10 @@ class CostModel():
                 ]
             value =  d[2]*d[3] if d[0] > 0 and d[1] > 0 else 0
             self.db.at[index,"underground Washing Cost diesel cost"] = value
-        
+
     def uwashinglabourproductivity(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"Dressing automation level"],
                 self.db.loc[index,"underground Washing Cost automation & labour productivity low"],
@@ -1045,10 +1045,10 @@ class CostModel():
 
             value = d[1] if d[0] == 1 else d[2] if d[0] == 2 else d[3] if d[0] == 3 else 0
             self.db.at[index,"underground Washing Cost labour productivity"] = value
-        
+
     def ulabourcost(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"total tonnes mined underground"],
                 self.db.loc[index,"Dressing Ratio"],
@@ -1057,11 +1057,11 @@ class CostModel():
                 ]
             value = d[2]*d[3] if d[0] > 0 and d[1] > 0 else 0
             self.db.at[index,"underground Washing Cost labour cost"] = value
-        
-    
+
+
     def umaterialcost(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"Dressing Ratio"],
                 self.db.loc[index,"total tonnes mined underground"],
@@ -1070,32 +1070,32 @@ class CostModel():
                 ]
             value = d[2]*d[3] if d[0] > 0 and d[1] > 0 else 0
             self.db.at[index,"underground Washing Cost material cost"] = value
-        
+
     def uwaterconsumption(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"province"]
                 ]
             value = 3 if d[0] == "Gunagxi" else 0
             self.db.at[index,"underground Washing Cost water consumption"] = value
-        
+
     def uwatercost(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"total tonnes mined underground"],
                 self.db.loc[index,"Dressing Ratio"],
                 self.db.loc[index,"underground Washing Cost water consumption"],
                 self.db.loc[index,"underground Washing Cost water price"],
-    
+
                 ]
             value = d[2]*d[3] if d[0] > 0 and d[1] > 0 else 0
             self.db.at[index,"underground Washing Cost water cost"] = value
-        
+
     def utotaldressingcost1(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"total tonnes mined underground"],
                 self.db.loc[index,"Dressing Ratio"],
@@ -1107,32 +1107,32 @@ class CostModel():
                 ]
             value = d[2]+d[3]+d[4]+d[5]+d[6] if d[0] > 0 and d[1] > 0 else 0
             self.db.at[index,"underground Washing Cost total dressing cost1"] = value
-        
-    
-    
+
+
+
     def utotalequipcost(self,index):
-        
-            
+
+
             d = [
             self.db.loc[index,"Stripping ratio underground"],
             self.db.loc[index,"underground Capital & Equipment Charges mine capital cost"]
             ]
             value = d[1]*(1+d[0])
             self.db.at[index,"underground Capital & Equipment Charges mine equipment cost"] = value
-        
+
     def utotalequiphire(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"Stripping ratio underground"],
                 self.db.loc[index,"underground Capital & Equipment Charges mine equipment hire1"]
                 ]
             value = d[1]*(1+d[0])
             self.db.at[index,"underground Capital & Equipment Charges mine equipment hire2"] = value
-        
+
     def umaintancecost(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"underground Capital & Equipment Charges % of equipment maintenance cost"],
                 self.db.loc[index,"underground Capital & Equipment Charges mine equipment ownership"],
@@ -1141,10 +1141,10 @@ class CostModel():
                 ]
             value = d[2]*d[0]*d[1]+d[3]*(1-d[1])
             self.db.at[index,"underground Capital & Equipment Charges maintenance & equipment charge"] = value
-        
+
     def ucapitalcharge(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"underground Capital & Equipment Charges mine establishment"],
                 self.db.loc[index,"underground Capital & Equipment Charges % of equipment sustaining cost"],
@@ -1153,9 +1153,9 @@ class CostModel():
                 ]
             value = d[3]*d[1]*d[2]+d[0]*d[1]
             self.db.at[index,"underground Capital & Equipment Charges sustaining capital charge"] = value
-      
+
     def totaltaxandfees(self,index):
-        
+
         tax = "on"
         d = [
                 self.db.loc[index,"total tonnes mined open pit"],
@@ -1166,10 +1166,10 @@ class CostModel():
                 ]
         value = ((d[2]+d[3]) if (d[0]+d[1]) > 0 else 0)*(1 if tax == "on" else 0)*(1 if d[4]==0 else 0)
         self.db.at[index,"total tax and fees"] = value
-            
+
     def sumlabour(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"open pit mining cost labour cost2"],
                 self.db.loc[index,"open pit Washing Cost labour cost"],
@@ -1182,9 +1182,9 @@ class CostModel():
                 ]
             value = (d[0]+d[1])*max(1,d[2])*d[3]+(d[4]+d[5])*max(1,d[6])*d[7]
             self.db.at[index,"summary labour"] = value
-        
+
     def sumenergy(self,index):
-        
+
         d = [
                 self.db.loc[index,"open pit mining cost electricity cost2"],
                 self.db.loc[index,"open pit mining cost diesel cost2"],
@@ -1199,12 +1199,12 @@ class CostModel():
                 self.db.loc[index,"underground Washing Cost dressing ratio"],
                 self.db.loc[index,"Mine Type underground"]
                 ]
-        value = (d[0]+d[1]+d[2]+d[3])*max(1,d[4])*d[5]+(d[6]+d[7]+d[8]+d[9])*max(1,d[10])*d[11]           
+        value = (d[0]+d[1]+d[2]+d[3])*max(1,d[4])*d[5]+(d[6]+d[7]+d[8]+d[9])*max(1,d[10])*d[11]
         self.db.at[index,"summary energy"] = value
 
     def sumwater(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"open pit Washing Cost water cost"],
                 self.db.loc[index,"open pit Washing Cost dressing ratio"],
@@ -1215,29 +1215,29 @@ class CostModel():
                 ]
             value = d[0]*max(1,d[1])*d[2]+d[3]*max(1,d[4])*d[5]
             self.db.at[index,"summary water"] = value
-        
+
 
     def sumtax(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"total tax and fees"]
                 ]
             value = d[0]
             self.db.at[index,"summary tax and fees"] = value
-        
+
     def sumexplosives(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"underground explosives"],
                 self.db.loc[index,"Mine Type underground"],
                 ]
             value = d[0]*d[1]
             self.db.at[index,"summary explosives"] = value
-        
+
     def otherproportional(self,index):
-        
+
         d = [
                 self.db.loc[index,"summary labour"],
                 self.db.loc[index,"summary energy"],
@@ -1246,10 +1246,10 @@ class CostModel():
                 0.1
                 ]
         value = (d[0]+d[1]+d[2]+d[3])*d[4]
-        self.db.at[index,"other proportional"] = value 
+        self.db.at[index,"other proportional"] = value
     def othercost(self,index):
-        
-       # 
+
+       #
         d = [
             self.db.loc[index,"total tonnes mined open pit"],
             self.db.loc[index,"total tonnes mined underground"],
@@ -1258,13 +1258,13 @@ class CostModel():
             ]
         value = d[2]+d[3] if (d[0]+d[1]) > 0 else 0
        # print('---'+str(d[2]))
-        
+
         self.db.at[index,"other cost"] = value
      #   except:
     #        self.db.at[index,"other cost"] = 0
     def sumother(self,index):
-        
-            
+
+
             d = [
                 self.db.loc[index,"open pit Washing Cost material cost"],
                 self.db.loc[index,"open pit mining cost freight cost2"],
@@ -1278,49 +1278,49 @@ class CostModel():
                 ]
             value = (d[0]+d[1])*max(1,d[2])*d[3]+d[4]+(d[5]+d[6])*max(1,d[7])*d[8]
             self.db.at[index,"summary other"] = value
-        
+
     def summarylabour(self,index):
-        
+
         d = [
-               self.db.loc[index,"summary labour"] 
-               ]   
+               self.db.loc[index,"summary labour"]
+               ]
         value = d[0]/fxrate
         self.db.at[index,"fsumlabour"] = value
     def summaryenergy(self,index):
-        
+
         d = [
-            self.db.loc[index,"summary energy"] 
-            ]   
+            self.db.loc[index,"summary energy"]
+            ]
         value = d[0]/fxrate
         self.db.at[index,"fsumenergy"] = value
     def summarywater(self,index):
-        
+
         d = [
-               self.db.loc[index,"summary water"] 
-               ]   
+               self.db.loc[index,"summary water"]
+               ]
         value = d[0]/fxrate
         self.db.at[index,"fsumwater"] = value
     def summarytaxandfees(self,index):
-        
+
         d = [
-            self.db.loc[index,"summary tax and fees"] 
-            ]   
+            self.db.loc[index,"summary tax and fees"]
+            ]
         value = d[0]/fxrate
         self.db.at[index,"fsumtaxandfees"] = value
     def summaryexplosives(self,index):
-        
+
         d = [
-               self.db.loc[index,"summary explosives"] 
-               ]   
+               self.db.loc[index,"summary explosives"]
+               ]
         value = d[0]/fxrate
-        self.db.at[index,"fsumexplosives"] = value 
+        self.db.at[index,"fsumexplosives"] = value
     def summaryother(self,index):
-        
+
         d = [
-               self.db.loc[index,"summary other"] 
-               ]   
+               self.db.loc[index,"summary other"]
+               ]
         value = d[0]/fxrate
-        self.db.at[index,"fsumother"] = value      
+        self.db.at[index,"fsumother"] = value
     def calcall(self,index):
         CostModel.ttmop(self,index)
         CostModel.ttmug(self,index)
@@ -1389,7 +1389,7 @@ class CostModel():
         CostModel.uelecmed(self,index)
         CostModel.uelechigh(self,index)
         CostModel.uelecusagecons(self,index)
-        
+
         CostModel.uwashingelecost(self,index)
         CostModel.uwashingdieselcost(self,index)
         CostModel.uwashinglabourproductivity(self,index)
@@ -1401,8 +1401,8 @@ class CostModel():
         CostModel.umaintancecost(self,index)
         CostModel.ucapitalcharge(self,index)
         CostModel.totaltaxandfees(self,index)
-        
-        
+
+
         CostModel.sumlabour(self,index)
         CostModel.sumenergy(self,index)
         CostModel.sumwater(self,index)
@@ -1411,7 +1411,7 @@ class CostModel():
         CostModel.otherproportional(self,index)
         CostModel.othercost(self,index)
         CostModel.sumother(self,index)
-        
+
         CostModel.summarylabour(self,index)
         CostModel.summaryenergy(self,index)
         CostModel.summarywater(self,index)
@@ -1421,7 +1421,7 @@ class CostModel():
 
 
 
-            
+
 dbi = CostModel(inputdatadb,taxtrans)
 
 
@@ -1443,8 +1443,8 @@ b['fsumother'] = dbi.db['fsumother']
 with pd.option_context('display.max_rows', None, 'display.max_columns', None):
     #ldb.to_csv('outputdata/snapshot_output_data.csv',index=False)
     a = a.transpose()
-    a.to_csv("outputdata/costmodeloutput.csv")
-    
-    snapshot = db_conv.mult_year_single_output(a, "cost model output", idx_of_index=[[0,4]], idx_of_values=[[4,]],label="Field")
+    # a.to_csv("outputdata/costmodeloutput.csv")
+
+    snapshot = db_conv.multi_year_multi_out(a, "cost model output", idx_of_index=[[0,4]], idx_of_values=[[4,]],label="Field")
     snapshot.to_csv("snapshot_output_data.csv", index =False)
     uploadtodb.upload(snapshot)
