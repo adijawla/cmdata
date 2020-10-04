@@ -1,73 +1,40 @@
 import time, os
 import numpy as np
 import pandas as pd
-from flatdbconverter import Flatdbconverter, read_from_database
-
+from flatdb.flatdbconverter import Flatdbconverter, read_from_database, read_output_database
+from outputdb import uploadtodb
+from test import interrelationship_rest
 sdc_flat = Flatdbconverter("Supply Demand Costs n Prices Alcoa")
 
-snapshot_output_data = pd.DataFrame(columns=sdc_flat.out_col)
-
-pr = read_output_database(3)
-row = pd.read_csv('row_mining_snapshot.csv')
-row_rev = sdc_flat.reverse(row, "ROW minind model", ["Collector Full_Cost_Cfr_(Us$-Dmt)", "Collector Freight_(Us$-Dmt)", "Collector Organics", "Collector Moisture", "Collector Bauxite_Style", "Collector Total_Alumina", "Collector Lt_Avail_Alumina", "Collector Vessels", "Collector Monohydrate", "Collector Total_Silica", "Collector Lt_R._Silica"])
-row_rev = row_rev["ROW minind model"]
-pr_rev = sdc_flat.reverse(pr, "Price forecast model", ["Lbt 451", "1688" , "1689", "1690", "1818"])
-pr_rev = pr_rev["Price forecast model"]
-
-# convert row mining inputs to the rigth format
-
-full_c_cfr_shadong_dataframe = row_rev["Collector Full_Cost_Cfr_(Us$-Dmt)"] 
-full_c_cfr_shadong_dataframe.drop(list(map(str, range(2016, 2019))), inplace=True, axis=1)
-full_c_cfr_shadong_dataframe.rename(columns={"Mine":"Project"}, inplace=True)
-samp = pd.to_numeric(full_c_cfr_shadong_dataframe.columns, errors="coerce")
-full_c_cfr_shadong_dataframe.columns = [full_c_cfr_shadong_dataframe.columns[i] if np.isnan(samp[i]) else samp[i] for i in np.arange(len(samp))]
-
-
-# convert all price forecast inputs to the rigt format
-demand_inps = pd.concat([pr_rev["1688"], pr_rev["1689"], pr_rev["1690"]], ignore_index=True)
-demand_inps.drop(list(map(str, [*range(2014, 2019), *range(2032, 2041)])), inplace=True, axis=1)
-demand_inps =  demand_inps.rename(columns={"2031":"Total"})
-samp1 = pd.to_numeric(demand_inps.columns, errors="coerce")
-demand_inps.columns = [demand_inps.columns[i] if np.isnan(samp1[i]) else samp1[i] for i in np.arange(len(samp1))]
-
-cbix_price_forecast = pr_rev["1818"]
-cbix_price_forecast.drop(list(map(str, [*range(2014, 2019), *range(2031, 2041)])), inplace=True, axis=1)
-samp2 = pd.to_numeric(cbix_price_forecast.columns, errors="coerce")
-cbix_price_forecast.columns = [cbix_price_forecast.columns[i] if np.isnan(samp2[i]) else samp2[i] for i in np.arange(len(samp2))]
-
-f_supply_mt = pr_rev["Lbt 451"]
-f_supply_mt.drop(list(map(str, [*range(2014, 2019), *range(2032, 2041)])), inplace=True, axis=1)
-f_supply_mt = f_supply_mt.rename(columns={"Name":"Project"})
-
-from_price_forecast_max = f_supply_mt.loc[(f_supply_mt['Project'] == 'Amrun') | (f_supply_mt['Project'] == "AMRUN HT")].reset_index(drop=True)
-f_supply_mt.drop(['2019', '2031'], inplace=True, axis=1)
-samp3 = pd.to_numeric(f_supply_mt.columns, errors="coerce")
-f_supply_mt.columns = [f_supply_mt.columns[i] if np.isnan(samp3[i]) else int(samp3[i]) for i in np.arange(len(samp3))]
-samp4 = pd.to_numeric(from_price_forecast_max.columns, errors="coerce")
-from_price_forecast_max.columns = [from_price_forecast_max.columns[i] if np.isnan(samp4[i]) else int(samp4[i]) for i in np.arange(len(samp4))]
-# print(from_price_forecast_max)
+# snapshot_output_data = pd.DataFrame(columns=sdc_flat.out_col)
+rest = interrelationship_rest()
+for a in rest:
+    rest[a].to_csv(f"inter/{a}.csv", index=False)
 
 class SUPPLY_DEMAND_COST:
     def __init__(self):
         # self.demand_inps                        = pd.read_excel("supply demand cost inputs.xlsx", sheet_name="Demand (Mt)")
-        self.demand_inps                        = demand_inps
+        self.demand_inps                        = rest["demand_inps"]
         self.cbix_model_outputs                 = pd.read_excel("supply demand cost inputs.xlsx", sheet_name="cbix model outputs")
+        self.cbix_model_outputs                 = rest["cbix_model_output"]
         self.cbix_model_mine_names              = pd.read_excel("supply demand cost inputs.xlsx", sheet_name="cbix model outputs mine names")
         # self.cbix_price_forecast_inps           = pd.read_excel("supply demand cost inputs.xlsx", sheet_name="CBIX Price forecast")
-        self.cbix_price_forecast_inps           = cbix_price_forecast
+        self.cbix_price_forecast_inps           = rest["cbix_price_forecast"]
         # self.forecast_supply_inps               = pd.read_excel("supply demand cost inputs.xlsx", sheet_name="Forecast Supply (Mt)")
-        self.forecast_supply_inps               = f_supply_mt
+        self.forecast_supply_inps               = rest["f_supply_mt"]
         self.potential_supply_inps              = pd.read_excel("supply demand cost inputs.xlsx", sheet_name="Potential Supply (Mt)")
-        self.full_cost_shandong_inps            = pd.read_excel("supply demand cost inputs.xlsx", sheet_name="Full Costs CFR Shandong")
+        # self.full_cost_shandong_inps            = pd.read_excel("supply demand cost inputs.xlsx", sheet_name="Full Costs CFR Shandong")
+        self.full_cost_shandong_inps            = rest["full_c_cfr_shadong_dataframe"]
         self.market_seff_supply_inps            = pd.read_excel("supply demand cost inputs.xlsx", sheet_name="Off Market or Seff Supply")        
         self.price_forecasts_inps               = pd.read_excel("supply demand cost inputs.xlsx", sheet_name="Project or Mine Price Forecasts")
         self.viu_djusted_cost_shandong_inps     = pd.read_excel("supply demand cost inputs.xlsx", sheet_name="ViU Adjusted Full Costs CFR Shandong")
         # self.amrun_max_out_demand               = pd.read_excel("supply demand cost inputs.xlsx", sheet_name='from price foreacst model - max out demand')
-        self.amrun_max_out_demand               = from_price_forecast_max
+        self.amrun_max_out_demand               = rest["from_price_forecast_max"]
 
 
         # self.full_cost_shandong_df              = pd.read_excel("supply demand cost inputs.xlsx", sheet_name="Full Costs CFR Shandong DataFrame")
-        self.full_cost_shandong_df              = full_c_cfr_shadong_dataframe
+        self.full_cost_shandong_df              = rest["full_c_cfr_shadong_dataframe_df"]
+
         self.viu_djusted_cost_shandong_df       = pd.read_excel("supply demand cost inputs.xlsx", sheet_name="ViU Adjusted Full Costs CFR Shandong DataFrame")
         self.price_forecasts_df                 = pd.read_excel("supply demand cost inputs.xlsx", sheet_name="Project or Mine Price Forecasts DataFrame")
         self.potential_supply_df                = pd.read_excel("supply demand cost inputs.xlsx", sheet_name="Potential Supply DataFrame")
@@ -81,7 +48,7 @@ class SUPPLY_DEMAND_COST:
         self.ctz_df                             = pd.DataFrame(columns=["ctz", 2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030])
         self.inputs_total_df                    = pd.DataFrame(columns=["Total", 2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030])
         self.contestable_df                     = pd.DataFrame(columns=["contestable", 2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030])
-        self.db_list = [snapshot_output_data]
+        self.db_list                            = []
 
         close = False
         for a in range(self.potential_supply_inps.shape[0]):
@@ -368,6 +335,7 @@ if __name__ == "__main__":
     supply_cost.save()
     print(len(supply_cost.db_list))
     snapshot_output_data = pd.concat(supply_cost.db_list, ignore_index=True)
+    # uploadtodb.upload(snapshot_output_data)
     print(snapshot_output_data)
     snapshot_output_data.to_csv("snapshot_output_data.csv", index=False)
     end = time.process_time() - start

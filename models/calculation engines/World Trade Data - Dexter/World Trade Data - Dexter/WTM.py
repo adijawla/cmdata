@@ -4,7 +4,7 @@ import numpy as np
 from statistics import mean 
 import math
 from flatdbconverter import Flatdbconverter
-from outputdb import uploadtodb
+import uploadtodb
 
 
 #input db integration
@@ -22,7 +22,7 @@ try:
     for v in override_rows.values:
         override_store[v[4]+ '_' + str(v[5])] = v[6]
     print(override_store)
-except:
+except FileNotFoundError:
     pass
 
 
@@ -127,7 +127,7 @@ class WorldTradeModel():
         db_list.append(wtd_flat.mult_year_single_output(join5, "BigMatrix RST"))
         import os
         print(os.getcwd())
-        join5.to_csv(r"C:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\World Trade Data - Dexter\World Trade Data - Dexter\Outputs\BigMatrix RST.csv", index=False)
+        join5.to_csv(r"Outputs\BigMatrix RST.csv", index=False)
         return join5,Projects2 
 
     def WtoAK(self):
@@ -199,7 +199,7 @@ class WorldTradeModel():
         DF1=DF1.sort_values(by=['Importer'])
         df4=df4.sort_values(by=['Importer'])
         db_list.append(wtd_flat.mult_year_single_output(DF1, "Big Matrix WtoAK"))
-        DF1.to_csv(r"C:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\World Trade Data - Dexter\World Trade Data - Dexter\Outputs\BigMatrix WtoAK.csv", index=False)
+        DF1.to_csv(r"Outputs\BigMatrix WtoAK.csv", index=False)
         return DF1,df4
 
     def Quarter1(self):
@@ -429,7 +429,7 @@ class WorldTradeModel():
             i=i+1
         
         db_list.append(wtd_flat.mult_year_single_output(Value, "Big Matrix ARtoAT"))
-        Value.to_csv(r"C:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\World Trade Data - Dexter\World Trade Data - Dexter\Outputs\BigMatrix ARtoAT.csv", index=False)
+        Value.to_csv(r"Outputs\BigMatrix ARtoAT.csv", index=False)
 
         return Value,Average
     def AVtoAX(self):
@@ -467,7 +467,7 @@ class WorldTradeModel():
             i=i+1
     
         db_list.append(wtd_flat.mult_year_single_output(AVToAX, "BigMatrix AVtoAX"))
-        AVToAX.to_csv(r"C:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\World Trade Data - Dexter\World Trade Data - Dexter\Outputs\BigMatrix AVtoAX.csv", index=False)
+        AVToAX.to_csv(r"Outputs\BigMatrix AVtoAX.csv", index=False)
 
         return AVToAX
     def BBtoBP(self):
@@ -560,7 +560,7 @@ class WorldTradeModel():
 
         df4.columns = new_header
         db_list.append(wtd_flat.mult_year_single_output(joinExporter, "BigMatrix BBtoBP"))
-        joinExporter.to_csv(r"C:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\World Trade Data - Dexter\World Trade Data - Dexter\Outputs\BigMatrix BBtoBP.csv", index=False)
+        joinExporter.to_csv(r"Outputs\BigMatrix BBtoBP.csv", index=False)
         return joinExporter,df4
    
     def BStoCH(self):
@@ -577,7 +577,7 @@ class WorldTradeModel():
         DF2 = DF2.groupby("Exporter").sum()
         
         db_list.append(wtd_flat.mult_year_single_output(DF2, "BigMatrix BStoCH"))
-        DF2.to_csv(r"C:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\World Trade Data - Dexter\World Trade Data - Dexter\Outputs\BigMatrix BStoCH.csv", index=False)
+        DF2.to_csv(r"Outputs\BigMatrix BStoCH.csv", index=False)
         DF3=DF2.transpose()
         DF3=DF3.reset_index()
         new1 = DF3["index"].str.split("_", n = 1, expand = True)
@@ -848,7 +848,7 @@ class WorldTradeModel():
     
         Average2=Average.copy()
         db_list.append(wtd_flat.mult_year_single_output(value, "BigMatrix COtoCQ" ))
-        value.to_csv(r"C:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\World Trade Data - Dexter\World Trade Data - Dexter\Outputs\BigMatrix COtoCQ.csv", index=False)
+        value.to_csv(r"Outputs\BigMatrix COtoCQ.csv", index=False)
         return value,Average2
     
     
@@ -893,7 +893,7 @@ class WorldTradeModel():
                 j=j+1
             i=i+1
         db_list.append(wtd_flat.mult_year_single_output(AVtoAX, "BigMatrix CStoCU"))
-        AVtoAX.to_csv(r"C:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\World Trade Data - Dexter\World Trade Data - Dexter\Outputs\BigMatrix CStoCU.csv", index=False)
+        AVtoAX.to_csv(r"Outputs\BigMatrix CStoCU.csv", index=False)
         return AVtoAX
     def CXtoDA(self):
 
@@ -1000,7 +1000,7 @@ class WorldTradeModel():
         
         CX=CX.iloc[:,1:]
         db_list.append(wtd_flat.mult_year_single_output(CX, "BigMatrix CXtoDA"))
-        CX.to_csv(r"C:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\World Trade Data - Dexter\World Trade Data - Dexter\Outputs\BigMatrix CXtoDA.csv", index=False)
+        CX.to_csv(r"Outputs\BigMatrix CXtoDA.csv", index=False)
 
         return CX
 
@@ -1044,7 +1044,7 @@ class WorldTradeModel():
             i=i+1
         DC1=DC1.iloc[:,0:7]
         db_list.append(wtd_flat.mult_year_single_output(DC1, "BigMatrix DCtoDI"))
-        DC1.to_csv(r"C:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\World Trade Data - Dexter\World Trade Data - Dexter\Outputs\BigMatrix DCtoDI.csv", index=False)
+        DC1.to_csv(r"Outputs\BigMatrix DCtoDI.csv", index=False)
 
         return DC1,DC2                   
 
@@ -1103,7 +1103,7 @@ class WorldTradeModel():
         DCV.rename(columns={'Importer.Exporter Combination':'Ranking total'},inplace=True)
         DCV['Rank'] = DCV["Ranking total"].rank(ascending=0,method='max')
         db_list.append(wtd_flat.single_year_mult_out(DCV, "BigMatrix DKtoDS"))
-        DCV.to_csv(r"C:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\World Trade Data - Dexter\World Trade Data - Dexter\Outputs\BigMatrix DKtoDS.csv", index=False)
+        DCV.to_csv(r"Outputs\BigMatrix DKtoDS.csv", index=False)
 
         return DCV      
     
@@ -1127,7 +1127,7 @@ class WorldTradeModel():
             DK.loc[i,'Annualised']=((DK.loc[i,'Total']/Q)*Y)
             i=i+1
         db_list.append(wtd_flat.single_year_mult_out(DK, "BigMatrix DWtoEB"))
-        DK.to_csv(r"C:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\World Trade Data - Dexter\World Trade Data - Dexter\Outputs\BigMatrix DWtoEB.csv", index=False)
+        DK.to_csv(r"Outputs\BigMatrix DWtoEB.csv", index=False)
             
         return DK
   
@@ -1154,7 +1154,7 @@ class WorldTradeModel():
         DK2=DK.copy()
         Total1=DK2['Annualised'].sum()
         db_list.append(wtd_flat.single_year_mult_out(DK, "Final processing DtoI"))
-        DK.to_csv(r"C:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\World Trade Data - Dexter\World Trade Data - Dexter\Outputs\Final processing DtoI.csv", index=False)
+        DK.to_csv(r"Outputs\Final processing DtoI.csv", index=False)
 
         '''MtoR'''
         
@@ -1162,13 +1162,13 @@ class WorldTradeModel():
         DK1=DK1[DK1['Importer']!='China']
         Total2=DK1['Annualised'].sum()
         db_list.append(wtd_flat.single_year_mult_out(DK1, "Final processing MtoR"))
-        DK1.to_csv(r"C:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\World Trade Data - Dexter\World Trade Data - Dexter\Outputs\Final processing MtoR.csv", index=False)
+        DK1.to_csv(r"Outputs\Final processing MtoR.csv", index=False)
 
         '''VtoAA'''
         DK3=DK3[DK3['Exporter']!='Guinea'] 
         DK3=DK3[DK3['Importer']!='China']
         db_list.append(wtd_flat.single_year_mult_out(DK3, "Final processing VtoAA"))
-        DK3.to_csv(r"C:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\World Trade Data - Dexter\World Trade Data - Dexter\Outputs\Final processing VtoAA.csv", index=False)
+        DK3.to_csv(r"Outputs\Final processing VtoAA.csv", index=False)
 
         Total3=DK3['Annualised'].sum()
         '''Final Table'''
@@ -1288,10 +1288,10 @@ class WorldTradeModel():
             FT2.loc[int(i), c] = override_store[h]
             
         LastYear2=pd.concat([LastYear, LastYear2],axis=1)
-        FT2.to_csv(r"C:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\World Trade Data - Dexter\World Trade Data - Dexter\Outputs\Final Processing AEtoAG.csv", index=False)
-        FT3.to_csv(r"C:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\World Trade Data - Dexter\World Trade Data - Dexter\Outputs\Final Processing AItoAK.csv", index=False)
-        LastQuarter2.to_csv(r"C:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\World Trade Data - Dexter\World Trade Data - Dexter\Outputs\Final Processing Last Quarter.csv", index=False)
-        LastYear2.to_csv(r"C:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\World Trade Data - Dexter\World Trade Data - Dexter\Outputs\Final Processing Last Year.csv", index=False)
+        FT2.to_csv(r"Outputs\Final Processing AEtoAG.csv", index=False)
+        FT3.to_csv(r"Outputs\Final Processing AItoAK.csv", index=False)
+        LastQuarter2.to_csv(r"Outputs\Final Processing Last Quarter.csv", index=False)
+        LastYear2.to_csv(r"Outputs\Final Processing Last Year.csv", index=False)
         db_list.append(wtd_flat.single_year_mult_out(FT2, "Final Processing AEtoAG"))
         db_list.append(wtd_flat.single_year_mult_out(FT3, "Final Processing AItoAK.csv"))
         db_list.append(wtd_flat.single_year_mult_out(LastQuarter2, "Final Processing Last Quarter"))
@@ -1315,7 +1315,7 @@ class WorldTradeModel():
         
         Rank['Rank'] = Rank["Total for Quarter"].rank(ascending=0,method='max')
         db_list.append(wtd_flat.single_year_mult_out(Rank, "ROWEXPORTER Rank1")) 
-        Rank.to_csv(r"C:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\World Trade Data - Dexter\World Trade Data - Dexter\Outputs\ROWEXPORTER Rank1.csv", index=False)
+        Rank.to_csv(r"Outputs\ROWEXPORTER Rank1.csv", index=False)
 
         return Rank
     
@@ -1335,7 +1335,7 @@ class WorldTradeModel():
         
         Rank1['Rank'] = Rank1["Total for Quarter"].rank(ascending=0,method='max') 
         db_list.append(wtd_flat.single_year_mult_out(Rank1, "ROWEXPORTER Rank2"))
-        Rank1.to_csv(r"C:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\World Trade Data - Dexter\World Trade Data - Dexter\Outputs\ROWEXPORTER Rank2.csv", index=False)
+        Rank1.to_csv(r"Outputs\ROWEXPORTER Rank2.csv", index=False)
 
         
         return Rank1
@@ -1378,7 +1378,7 @@ class WorldTradeModel():
                           'Rank':'Rank','Importer':'ROW % World Imports'},inplace=True)
         RankValues = RankValues[['Rank','ROW Importer','ROW Tonnage','ROW % World Imports'] ] 
         db_list.append(wtd_flat.single_year_mult_out(RankValues, "ROW EXPORTER TABLE2")) 
-        RankValues.to_csv(r"C:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\World Trade Data - Dexter\World Trade Data - Dexter\Outputs\ROWEXPORTERTABLE2.csv", index=False)
+        RankValues.to_csv(r"Outputs\ROWEXPORTERTABLE2.csv", index=False)
 
         return RankValues
     def RowExporterOutpu1(self)  :
@@ -1406,11 +1406,23 @@ class WorldTradeModel():
                           'Rank':'Rank','Exporter':'ROW % World Exports'},inplace=True)
         RankValues1 = RankValues1[['Rank','ROW Importer','ROW Tonnage','ROW % World Exports'] ]  
         db_list.append(wtd_flat.single_year_mult_out(RankValues1, "ROW EXPORTER TABLE 1"))
-        RankValues1.to_csv(r"C:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\World Trade Data - Dexter\World Trade Data - Dexter\Outputs\ROWEXPORTERTABLE1.csv", index=False)
+        RankValues1.to_csv(r"Outputs\ROWEXPORTERTABLE1.csv", index=False)
 
         return RankValues1
         
-
+'''
+try:
+    override_res = override_rows.values
+    for i, v in enumerate(override_rows.index):
+        print(snapshot_output_data.loc[v], )
+        set_it = snapshot_output_data.loc[v].values
+        print(override_res[i][-2:])
+        set_it[-2:] = override_res[i][-2:]
+        snapshot_output_data.loc[v] = set_it 
+except Exception as err:
+    print(err)
+    print("Error caught and skipped")
+'''
     
     
         
@@ -1418,13 +1430,47 @@ self1 = WorldTradeModel()
 self1.calc()
 
 snapshot_output_data = pd.concat(db_list, ignore_index=True)
-override_res = override_rows.values
-for i, v in enumerate(override_rows.index):
-    print(snapshot_output_data.loc[v], override_res[i])
-    snapshot_output_data.loc[v] = override_res[i]
+
+
+try:
+    override_res = override_rows.values
+    for i, v in enumerate(override_rows.index):
+        print(snapshot_output_data.loc[v], override_res[i])
+        snapshot_output_data.loc[v] = override_res[i]
+except Exception as err:
+    print(err)
+    print('Error caught and skipped')
+   
+    
+   
+
 snapshot_output_data = snapshot_output_data.loc[:, wtd_flat.out_col]
 snapshot_output_data.to_csv("snapshot_output_data.csv", index=False)
 
 snapshot_output_data = snapshot_output_data
 
 uploadtodb.upload(snapshot_output_data)
+
+'''
+self1 = WorldTradeModel()
+self1.calc()
+
+snapshot_output_data = pd.concat(db_list, ignore_index=True)
+
+
+override_res = override_rows.values
+for i, v in enumerate(override_rows.index):
+    print(snapshot_output_data.loc[v], override_res[i])
+    snapshot_output_data.loc[v] = override_res[i]
+   
+    
+   
+
+snapshot_output_data = snapshot_output_data.loc[:, wtd_flat.out_col]
+snapshot_output_data.to_csv("snapshot_output_data.csv", index=False)
+
+snapshot_output_data = snapshot_output_data
+
+uploadtodb.upload(snapshot_output_data)
+
+'''

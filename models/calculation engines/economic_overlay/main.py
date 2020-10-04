@@ -1,11 +1,12 @@
 import time, os
 import numpy as np
 import pandas as pd
+from pathlib import Path
 from flatdb.flatdbconverter import Flatdbconverter
 from extension import DB_TO_FILE
 from scipy.stats import beta
 from outputdb import uploadtodb
-
+from restruc import *
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 dblist = []
@@ -15,40 +16,52 @@ db_conv = Flatdbconverter("Economic overlay")
 # Start of Rahul's Code
 class Summary:
     def __init__(self):
-        self.db = pd.read_csv(os.path.join(BASE_DIR, 'reserve_summary_inputs/output.csv'),encoding = "utf-8")
-        self.reservedb = pd.read_csv(os.path.join(BASE_DIR, 'reserve_summary_inputs/reserve.csv'))
-        self.lookupdb = pd.read_csv(os.path.join(BASE_DIR, 'reserve_summary_inputs/datalookup.csv'))
-        self.moddb = pd.read_csv(os.path.join(BASE_DIR, 'reserve_summary_inputs/reserve.csv'))
-        self.staticdb = pd.read_csv(os.path.join(BASE_DIR, 'reserve_summary_inputs/reservestatic.csv'))
-        self.hdb = pd.read_csv(os.path.join(BASE_DIR, 'reserve_summary_inputs/hhdb.csv'))
+        #self.db = pd.read_csv(os.path.join(BASE_DIR, 'reserve_summary_inputs/output.csv'),encoding = "utf-8")
+        self.db = pd.DataFrame(columns=['Province','County','minable_shallow_inventory','refractory_allocation','remaining_inventory_available_to_mining_for_SGA000t','remaining_inventory_available_to_mining_for_SGA_AA','remaining_inventory_available_to_mining_for_SGA_SiO2','remaining_inventory_available_to_mining_for_SGA_AS','extractable_to_SGA','working_stock_prior_to_AA_and_AS_de_rating000t','working_stock_prior_to_AA_and_AS_de_rating_AA','working_stock_prior_to_AA_and_AS_de_rating_AS','de_rated_Al2O3','de_rated_AS','de_rated_SiO2','province_county_000twstockprior','refractory_depletion_end_2009','refractory_depletion_end_2009_000t','SGA_depletion_end_2009','SGA_depletion_end_2009_000t','endowment_end_2009_prov_totals','geol_endowment_end_2009','endowment_end_2009_all','max_extr_inventory_end_2009_1','AA_end_2009_1','SiO2_end_2009_1','AS_end_2009_1','max_extr_inventory_end_2009_2','AA_end_2009_2','SiO2_end_2009_2','AS_end_2009_2','max_extr_inventory_end_2009_3','AA_end_2009_3','SiO2_end_2009_3','AS_end_2009_3','unallocated','check_sum','deposit'])
+        self.reservedb = x.data('reserve')
+        self.db['Province'] = self.reservedb['Province']
+        self.db['County'] = self.reservedb['County']
+        self.lookupdb = x.data('domesticbarscumulative')
+        self.moddb = x.data('reserve')
+        self.staticdb = x.data('bauxite_allocations')
+        self.hdb = pd.DataFrame(columns=self.staticdb.columns)
+        self.hdb.at[0,'province'] = 'Guangxi'
+        self.hdb.at[1,'province'] = 'Guizhou'
+        self.hdb.at[2,'province'] = 'Henan'
+        self.hdb.at[3,'province'] = 'Shanxi'
+        self.hdb.at[4,'province'] = 'Other'
+        self.hdb.at[5,'province'] = 'Total'
+        #self.hdb = pd.read_csv(os.path.join(BASE_DIR, 'reserve_summary_inputs/hhdb.csv'))
         self.gradeAlO3 = 0.7
         self.gradeAS = 9
         self.extractable_to_SGA_input = 0.7
         self.reserve_data_to_use = "current"
-        self.totaldb = pd.read_csv(os.path.join(BASE_DIR, "reserve_summary_inputs/totaldb.csv"),encoding = "utf-8")
-        self.provt = pd.read_csv(os.path.join(BASE_DIR, 'reserve_summary_inputs/provt.csv'),encoding = "utf-8")
-        col = pd.read_csv(os.path.join(BASE_DIR, 'reserve_summary_inputs/caustic.csv'))
-        self.col = list(col['sheetname'][::-1])
+        self.totaldb = pd.DataFrame(columns=self.db.columns)
+        #self.totaldb = pd.read_csv(os.path.join(BASE_DIR, "reserve_summary_inputs/totaldb.csv"),encoding = "utf-8")
+        self.provt = pd.DataFrame(columns = ["Province","Inventory"])
+        #self.provt = pd.read_csv(os.path.join(BASE_DIR, 'reserve_summary_inputs/provt.csv'),encoding = "utf-8")
+        col = x.data('caustic')
+        self.col = list(col['refinery'][::-1])
         self.bfdb = pd.DataFrame(columns = ["Name","Province","year","estimated_reserves_consumed_per_year","cumulative_factored_up_production" ],index=range(len(self.col)+70))
         self.l = self.reservedb.shape[0]-1
         self.pr = self.reservedb["Province"]
         self.pr= list(self.pr)
         idx = pd.IndexSlice
         mxidd = pd.MultiIndex.from_product([self.col,self.pr])
-        self.newallocdb = pd.read_csv(os.path.join(BASE_DIR, "reserve_summary_inputs/newcalallo.csv"))
+        self.newallocdb = pd.read_csv(Path(os.path.join(BASE_DIR, "reserve_summary_inputs/newcalallo.csv")))
 
         self.db["deep bauxite"] = self.moddb["deep bauxite"]
-        self.db['deposit'] = self.reservedb["Deposit"]
+        self.db['deposit'] = self.reservedb["Include Inventory in Allocations Further Processed?"]
         self.bfdb["cumulative_factored_up_production"] = self.bfdb["cumulative_factored_up_production"].astype(float)
         self.bfdb["estimated_reserves_consumed_per_year"] = self.bfdb["estimated_reserves_consumed_per_year"].astype(float)
     def calc0(self,i):
-        v = 1/(1-self.moddb['unique case'][i]) if self.moddb['unique case'][i] > 0 else 1
+        v = 1/(1-self.moddb['refractory_allocation'][i]) if self.moddb['refractory_allocation'][i] > 0 else 1
         self.db.at[i,'correction_factor'] = v
     def calc1(self,i): #minable_shallow_inventory
         v = self.reservedb['Inventory'][i]-self.moddb['deep bauxite'][i]
         self.db.at[i,"minable_shallow_inventory"] = v
     def calc2(self,i):#refractory_allocation
-        v = self.reservedb['Inventory'][i]*self.moddb['unique case'][i]
+        v = self.reservedb['Inventory'][i]*self.moddb['refractory_allocation'][i]
         self.db.at[i,"refractory_allocation"] = v
     def calc3(self,i):#remaining_inventory_available_to_mining_for_SGA000t
         v = self.db["minable_shallow_inventory"][i] - self.db["refractory_allocation"][i]
@@ -81,7 +94,7 @@ class Summary:
         v = self.db["de_rated_Al2O3"][i]/self.db["de_rated_AS"][i] if self.db["de_rated_AS"][i] > 0 else 0
         self.db.at[i,"de_rated_SiO2"] = v
     def calc12(self,i):#province_county_000twstockprior
-        v = str(self.reservedb["Province"][i])+"-"+str(self.reservedb["County"][i])+"-"+str(int(self.db["working_stock_prior_to_AA_and_AS_de_rating000t"][i]))
+        v = str(self.reservedb["Province"][i])+"-"+str(self.reservedb["County"][i])+"-"+str(float(self.db["working_stock_prior_to_AA_and_AS_de_rating000t"][i]))
         self.db.loc[i,"province_county_000twstockprior"] = v
     def calc13(self,i):#refractory_depletion_end_2009
         v = self.db["refractory_allocation"].sum()/self.db["refractory_depletion_end_2009_000t"].sum() if self.db["refractory_depletion_end_2009_000t"].sum() > 0 else 0 #AD25
@@ -94,12 +107,12 @@ class Summary:
         y = self.bfdb["estimated_reserves_consumed_per_year"].reset_index(drop=True)
         z = x*y
         z = z.sum()
-        v = min(1,z)/(1-self.moddb["unique case"][i])
+        v = min(1,z)/(1-self.moddb["refractory_allocation"][i])
 
         self.db.at[i,"SGA_depletion_end_2009"] = v
         if self.reservedb["Province"][i] == "Shandong" and self.reservedb["County"][i] != "Zouwu":
             self.db.at[i,"SGA_depletion_end_2009"] = 1.0
-        if self.reservedb["Switch"][i] == "N1":
+        if self.reservedb["Include in Endowment in Further Processing? (Provinces only)"][i] == "N1":
             self.db.at[i,"SGA_depletion_end_2009"] = 0.0
     def calc16(self,i):#SGA_depletion_end_2009_000t
         v = self.db["SGA_depletion_end_2009"][i]*self.db["working_stock_prior_to_AA_and_AS_de_rating000t"][i]
@@ -160,17 +173,17 @@ class Summary:
         v = self.db["AA_end_2009_3"][i]/self.db["SiO2_end_2009_3"][i] if self.db["SiO2_end_2009_3"][i] > 0 else 0
         self.db.at[i,"AS_end_2009_3"] = v
     def calc32(self,i):#unallocated
-        v = 0 if self.staticdb.iloc[i,2:834:8].sum() > 0 else self.db["working_stock_prior_to_AA_and_AS_de_rating000t"][i]
+        v = 0 if self.staticdb.iloc[i,4:((self.staticdb.shape[1]-4)//8)+4].sum() > 0 else self.db["working_stock_prior_to_AA_and_AS_de_rating000t"][i]
         self.db.at[i,"unallocated"] = v
         if self.reservedb["Province"][i] == "Shandong":
             self.db.at[i,"unallocated"] = 0
     def calc33(self,i):#check_sum
-        v = self.staticdb.iloc[i,2:834:8].sum() + self.moddb['unique case'][i]
+        v = self.staticdb.iloc[i,4:((self.staticdb.shape[1]-4)//8)+4].sum() + self.moddb['refractory_allocation'][i]
         self.db.at[i,"check_sum"] = v
 
     def calcall1(self): # calculation sequence
         for i in range(self.l):
-            if self.reservedb["Deposit"][i] == "Yes":
+            if self.reservedb["Include Inventory in Allocations Further Processed?"][i] == "Yes"or not pd.isnull(self.reservedb["working_stock_prior_to_aa_and_as_de_rating000t"][i]):
                 self.calc0(i)
                 self.calc1(i)
                 self.calc2(i)
@@ -190,16 +203,16 @@ class Summary:
                 self.calc7(i)
     def calcall2(self):
         for i in range(self.l):
-            if self.reservedb["Deposit"][i] == "Yes":
+            if self.reservedb["Include Inventory in Allocations Further Processed?"][i] == "Yes":
                 self.calc15(i)
                 self.calc16(i)
-            if self.reservedb["Switch"][i] ==  "Y1":
+            if self.reservedb["Include in Endowment in Further Processing? (Provinces only)"][i] ==  "Y1":
                 self.calc17(i)
 
-            if self.reservedb["Deposit"][i] == "NO" and pd.isnull(self.db["County"][i]):
+            if self.reservedb["Include Inventory in Allocations Further Processed?"][i] == "NO" and pd.isnull(self.db["County"][i]):
                 self.calc18(i)
 
-            if self.reservedb["Deposit"][i] == "Yes":
+            if self.reservedb["Include Inventory in Allocations Further Processed?"][i] == "Yes":
                 self.calc19(i)
                 self.calc28(i)
                 self.calc29(i)
@@ -219,10 +232,9 @@ class Summary:
     def calc_all_funcs(self):
         self.calcall1()
         self.calcall2()
-
+        '''
         if self.db.iloc[-1, 0] == "China Total":
-            self.db = self.db.loc[:len(self.db)-2, :] # To Remove the last un-required row
-
+            self.db = self.db.loc[:len(self.db)-2, :] # To Remove the last un-required row'''
         dblist.append(db_conv.single_year_mult_out(self.db, "Reserve Summary DB"))
         self.db.to_csv("db.csv", index=False)
 
@@ -232,12 +244,21 @@ class Summary:
 
 class Inventory:
     def __init__(self):
-        Summary().calc_all_funcs()
+        self.s = Summary()
+        self.s.calc_all_funcs()
         ext = DB_TO_FILE()
 
-        self.output_db          = pd.read_csv(os.path.join(BASE_DIR, "db.csv"))
+        self.output_db          = self.s.db
         self.inputs             = ext.inputs()
-        self.inputs.drop(['creation_date', 'updation_date', 'inputs_id'], axis=1, inplace=True)
+        #self.inputs             = self.inputs.drop(['creation_date', 'updation_date', 'inputs_id'], axis=1, inplace=True)
+        o = x.data('country_reserve')
+        cc = self.inputs.shape[0]
+        for i in range(o.shape[0]):
+            self.inputs.at[cc+i,"county"] = o.loc[i,"county"]
+            self.inputs.at[cc+i,"province"] = o.loc[i,"province"]
+        self.inputs.at[cc+o.shape[0],"county"] = "China Total"
+        self.inputs.sort_values(by=['county','province'],ascending=[True, True],inplace=True)
+        self.inputs = self.inputs.reset_index()
         self.lookuptable        = ext.lookuptable()
         self.other_controls     = ext.other_controls()
         self.range_max          = ext.depth_buckets()
@@ -352,20 +373,20 @@ class Inventory:
     # Depth Splits - sedimentary bauxite
     def linear_eqn_sb(self):
         df = self.inputs
-        print(df.columns)
+        
         self.linear_eqn_sb_df = pd.DataFrame(columns=["m","c"])
 
-        for i in range(len(self.output_db)):
-            m = 1.0 / float(df.loc[:, "maximum_burial"][i] - df.loc[:,"minimum_burial"][i] )
-            c = 0.0 - float(df.loc[:,"minimum_burial"][i] * m)
-
+        for i in range(df.shape[0]):
+            m = 1.0 / (df.loc[i, "maximum_burial"].astype(float)- df.loc[i,"minimum_burial"].astype(float))
+            c = 0.0 - (float(df.loc[:,"minimum_burial"][i] * m))
             self.linear_eqn_sb_df.at[i,"m"] = m
             self.linear_eqn_sb_df.at[i,"c"] = c
+            self.linear_eqn_sb_df.at[i, "province"] = df.at[i, "province"]
+            self.linear_eqn_sb_df.at[i, "county"]   = df.at[i, "county"]
 
-
-    def main_vlookup(self, search, province, target):
-        v = province.map(lambda x: x.lower() == search.lower())
+    def main_vlookup(self, search, province, target):        
         try:
+            v = province.map(lambda x: x.lower() == search.lower())
             return float(target[v].tolist()[0])
         except Exception:
             return np.nan
@@ -675,8 +696,8 @@ class Inventory:
             as_approx_min = np.nan if errors == 1 else max([0, ((1+(0.453-1)/2)*float(dr_as[i]))])
             silica_avg    = np.nan if errors == 1 else float(dr_ai203[i])/float(dr_as[i])
             silica_total  = np.nan if errors == 1 else float(working_stock[i])*silica_avg
-            start_grade   = np.nan if errors == 1 else float(df.loc[i, "Starting grade"])/as_approx_max
-            dpl_grade     = np.nan if errors == 1 else float(df.loc[i, "Depletion grade"])/as_approx_min
+            start_grade   = np.nan if errors == 1 else float(df.loc[1+i, "Starting grade"])/as_approx_max
+            dpl_grade     = np.nan if errors == 1 else float(df.loc[1+i, "Depletion grade"])/as_approx_min
             scaled_mean   = np.nan if errors == 1 else (silica_avg - min([start_grade,dpl_grade]))/(max([start_grade,dpl_grade])-min([start_grade,dpl_grade]))
             scaled_var    = np.nan if errors == 1 else ((0.215*silica_avg)**2/(float(pf_factr[i]) if factr_x_flag==1 else 1)/(max([start_grade,dpl_grade])-min([start_grade,dpl_grade]))**2)
             aplha_val     = np.nan if errors == 1 else scaled_mean*(scaled_mean*(1-scaled_mean)/scaled_var-1)
@@ -748,8 +769,8 @@ class Inventory:
             as_approx_min = np.nan if errors == 1 else max([0, ((1+(0.453-1)/2)*float(dr_as[i]))])
             silica_avg    = np.nan if errors == 1 else float(dr_ai203[i])/float(dr_as[i])
             silica_total  = np.nan if errors == 1 else float(working_stock[i])*silica_avg
-            start_grade   = np.nan if errors == 1 else float(df.loc[i, "Starting grade"])/as_approx_max
-            dpl_grade     = np.nan if errors == 1 else float(df.loc[i, "Depletion grade"])/as_approx_min
+            start_grade   = np.nan if errors == 1 else float(df.loc[i+1, "Starting grade"])/as_approx_max
+            dpl_grade     = np.nan if errors == 1 else float(df.loc[i+1, "Depletion grade"])/as_approx_min
             scaled_mean   = np.nan if errors == 1 else (silica_avg - min([start_grade,dpl_grade]))/(max([start_grade,dpl_grade])-min([start_grade,dpl_grade]))
             scaled_var    = np.nan if errors == 1 else ((0.215*silica_avg)**2/(float(pf_factr[i]) if factr_x_flag==1 else 1)/(max([start_grade,dpl_grade])-min([start_grade,dpl_grade]))**2)
             aplha_val     = np.nan if errors == 1 else scaled_mean*(scaled_mean*(1-scaled_mean)/scaled_var-1)
@@ -1067,11 +1088,12 @@ class Inventory:
         self.delivery_costs_RG_RT_df.at[0, :] = ["RMB/t ore", "RMB/t_AA", "", "", "", "RMB/t_AA", "RMB/t_AA", "RMB/t_AA"]
 
         def mvl(search, target):
-            v = province.map(lambda x: x.lower() == search.lower())
+            
             try:
+                v = province.map(lambda x: x.lower() == search.lower())
                 return float(target[v].tolist()[0])
             except Exception:
-                pass
+                return np.nan
 
         for i in range(len(df)):
             self.delivery_costs_RG_RT_df.at[i+1,"Delivery Costs"] = mvl(df[i], transp) * float(avd_dist.iloc[i])
@@ -1192,7 +1214,14 @@ class Inventory:
         for i in range(len(self.inputs)):
             self.CBIX_BX_AA_production_cost_df.at[i+2, "Total Cost - CBIX BX"] = self.CBIX_BX_AA_production_cost_df.loc[1, "Total Cost - CBIX BX"]
 
+        prov_ind = self.inputs["province"].shape[0]
+        print(self.inputs[["province","county"]])
+        print(self.CBIX_BX_AA_production_cost_df.shape[0], (int(self.CBIX_BX_AA_production_cost_df.shape[0] - prov_ind) - 1))
+        self.CBIX_BX_AA_production_cost_df.at[:, ["province","county"]] = np.nan 
+        self.CBIX_BX_AA_production_cost_df.at[int(self.CBIX_BX_AA_production_cost_df.shape[0] - prov_ind) - 1:, ["province"]] = self.inputs["province"]
+        self.CBIX_BX_AA_production_cost_df.at[int(self.CBIX_BX_AA_production_cost_df.shape[0] - prov_ind) - 1:, ["county"]] = self.inputs["county"]
 
+        print(self.CBIX_BX_AA_production_cost_df)
 
     def final_costs(self):
         province = self.lookuptable.loc[:, "province"] # Lookup table province column
@@ -1452,7 +1481,8 @@ class Inventory:
                     if float(df.iloc[i,k]) == float(j):
                         data.append(k+col_val)
                         break
-
+            if data == []:
+                data = [np.nan for i in range(420)]
             self.cell_columns_by_cost_rank_df.at[i,:] = data
 
 
@@ -1483,7 +1513,7 @@ class Inventory:
         for i in range(4, len(cc_cost_rank)):
             data = []
             for j in range(420):
-                v = final_costs.iloc[i-1, int(float(cc_cost_rank.iloc[i, j])-1854.0)]
+                v = final_costs.iloc[i-1, int(float(cc_cost_rank.iloc[i, j])-1854.0 if not pd.isnull(cc_cost_rank.iloc[i, j]) else 0)]
                 data.append(v)
 
             self.costs_by_cost_rank_df.at[i,:] = data
@@ -1516,7 +1546,7 @@ class Inventory:
         for i in range(4, len(cc_cost_rank)):
             data = []
             for j in range(420):
-                v = tonnages.iloc[i-1, int(float(cc_cost_rank.iloc[i, j])-1854.0)]
+                v = tonnages.iloc[i-1, int(float(cc_cost_rank.iloc[i, j])-1854.0 if not pd.isnull(cc_cost_rank.iloc[i, j]) else 0)]
                 data.append(v)
 
             self.tonages_by_cost_rank_df.at[i,:] = data
@@ -1578,7 +1608,7 @@ class Inventory:
             self.max_economic_tonnes_df.at[i-4, "County"]   = self.inputs.at[i-4, "county"]
             self.max_economic_tonnes_df.at[i-4, "Max Economic Tonnes - blending in country"] = max(df.loc[i, :].astype(float))
             self.max_economic_tonnes_df.at[i-4, "Max Economic Tonnes - NO blending in country"] = sum(x*y)
-        print(self.max_economic_tonnes_df)
+        #print(self.max_economic_tonnes_df)
 
     def high_sulphur_tablename_func(self):
         mine_switch = self.other_controls.loc[0, 'switch_control']
@@ -1603,8 +1633,7 @@ class Inventory:
         for k in range(5,101,5):
             v1 = self.perct_AA_percentile_mined_cab_df.loc[1:, :].reset_index()[self.output_db.loc[:, "County"].astype(str).map(lambda x: x.lower() == mine_switch.lower())].drop(['index'], axis=1).reset_index()
             v2 = self.perct_SiO2_percentile_mined_cab_df.loc[1:, :].reset_index()[self.output_db.loc[:, "County"].astype(str).map(lambda x: x.lower() == mine_switch.lower())].drop(['index'], axis=1).reset_index()
-            print(v1)
-            print(v2)
+   
             v1 = v1.loc[0, f"percentile mined {k/100}"]
             v2 = v2.loc[0, f"percentile mined {k/100}"]
 
@@ -1817,61 +1846,152 @@ class Inventory:
             else:
                 os.mkdir(dirname)
 
-        self.linear_eqn_sb_df.to_excel(os.path.join(BASE_DIR, "outputs/depth_splits_sedimentary_bauxite/linear_eqn-depth_buckets_percent_tonnage_per_depth_range.xlsx"), index=False)
-        self.depth_splits_sb_df.to_excel(os.path.join(BASE_DIR, "outputs/depth_splits_sedimentary_bauxite/depth_buckets-percent_tonnage_per_depth_range.xlsx"), index=False)
-        self.depth_split_cab_df.to_excel(os.path.join(BASE_DIR, "outputs/depth_splits-collapse_accumulated_bauxite.xlsx"), index=False)
-        self.sedimentary_bauxite_td_df.to_excel(os.path.join(BASE_DIR, "outputs/sedimentary_bauxite-tonnages_per_depth_range.xlsx"), index=False)
-        self.collapse_accm_bauxite_df.to_excel(os.path.join(BASE_DIR, "outputs/collapse_accumulated_bauxite-tonnages_per_depth_range.xlsx"), index=False)
-        self.linear_eqn_sb_only_df.to_excel(os.path.join(BASE_DIR, "outputs/suplhur_contamination_sedimentary_bauxite_only/linear_equation-Suplhur_contamination-sedimentary_bauxite_only.xlsx"), index=False)
-        self.depth_multiplier_sulphur_cntm_df.to_excel(os.path.join(BASE_DIR, "outputs/suplhur_contamination_sedimentary_bauxite_only/depth_multiplier_for_sulphur_contamination.xlsx"), index=False)
-        self.perct_inventory_sulphur_contaminated_db_df.to_excel(os.path.join(BASE_DIR, "outputs/suplhur_contamination_sedimentary_bauxite_only/perct_inventory_sulphur_contaminated_by_depth_bucket.xlsx"), index=False)
-        self.perct_AA_percentile_mined_sb_df.to_excel(os.path.join(BASE_DIR, "outputs/as_workings_sedimentary_bauxite/perct_AA_percentile_mined-sedimentary_bauxite.xlsx"), index=False)
-        self.perct_SiO2_percentile_mined_sb_df.to_excel(os.path.join(BASE_DIR, "outputs/as_workings_sedimentary_bauxite/perct_SiO2_percentile_mined-sedimentary_bauxite.xlsx"), index=False)
-        self.perct_AA_percentile_mined_cab_df.to_excel(os.path.join(BASE_DIR, "outputs/as_workings_collapse_accumulated_bauxite/perct_AA_percentile_mined-collapse_accumulated_bauxite.xlsx"), index=False)
-        self.perct_SiO2_percentile_mined_cab_df.to_excel(os.path.join(BASE_DIR, "outputs/as_workings_collapse_accumulated_bauxite/perct_SiO2_percentile_mined-collapse_sedimentary_bauxite.xlsx"), index=False)
-        self.stripping_ratio_sb_df.to_excel(os.path.join(BASE_DIR, "outputs/mining_costs/stripping_ratio-sedimentary_bauxite.xlsx"), index=False)
-        self.stripping_ratio_ca_bx_df.to_excel(os.path.join(BASE_DIR, "outputs/mining_costs/stripping_ratio-collapse_accumulated_bx.xlsx"), index=False)
-        self.electricity_costs_msb_RMBt_ROM_ore_df.to_excel(os.path.join(BASE_DIR, "outputs/mining_costs/electricity_costs-mining_sedimentary_bauxite-RMB-t_ROM_ore.xlsx"), index=False)
-        self.electricity_costs_cab_RMB_t_ROM_ore_df.to_excel(os.path.join(BASE_DIR, "outputs/mining_costs/electricity_costs-collapse_accumulated_bauxite-RMB-t_ROM_ore.xlsx"), index=False)
-        self.diesel_costs_msb_RMB_t_ROM_ore_df.to_excel(os.path.join(BASE_DIR, "outputs/mining_costs/diesel_costs-mining_sedimentary_bauxite-RMB-t_ROM_ore.xlsx"), index=False)
-        self.diesel_costs_mca_RMB_t_ROM_ore_df.to_excel(os.path.join(BASE_DIR, "outputs/mining_costs/diesel_costs-mining_collapse_accumulated_bauxite-RMB-t_ROM_ore.xlsx"), index=False)
-        self.labour_costs_msb_RMB_t_ROM_ore_df.to_excel(os.path.join(BASE_DIR, "outputs/mining_costs/labour_costs-mining_sedimentary_bauxite-RMB-t_ROM_ore.xlsx"), index=False)
-        self.labour_costs_mcab_RMB_t_ROM_ore_df.to_excel(os.path.join(BASE_DIR, "outputs/mining_costs/labour_costs-mining_collapse_accumulated_bauxite-RMB-tROM_ore.xlsx"), index=False)
-        self.mine_transport_costs_sedimentary_df.to_excel(os.path.join(BASE_DIR, "outputs/mining_costs/In_Mine_Transport_costs-sedimentary.xlsx"), index=False)
-        self.washing_factor_df.to_excel(os.path.join(BASE_DIR, "outputs/mining_costs/washing_factor.xlsx"), index=False)
-        self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_sb_df.to_excel(os.path.join(BASE_DIR, "outputs/mining_costs/costs_RMB-t_ROM_ore_before_per-t-ore_charges-sedimentary_bauxite.xlsx"), index=False)
-        self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_ca_bx_df.to_excel(os.path.join(BASE_DIR, "outputs/mining_costs/costs_RMB-t_ROM_ore_before_per-t-ore_charges-collapse_accumulated_bx.xlsx"), index=False)
-        self.taxes_royalties_Other_allowance_Capital_up_front_costs_charge_df.to_excel(os.path.join(BASE_DIR, "outputs/mining_costs/taxes_royalties_Other_allowance_Capital_up_front_costs_charge.xlsx"), index=False)
-        self.total_mining_costs_RMB_t_ore_sb_df.to_excel(os.path.join(BASE_DIR, "outputs/mining_costs/total_mining_costs_RMB-t_ore-sedimentary_bauxite.xlsx"), index=False)
-        self.total_mining_costs_RMB_t_ore_cab_df.to_excel(os.path.join(BASE_DIR, "outputs/mining_costs/total_mining_costs_RMB-t_ore-collapse_accumulated_bauxite.xlsx"), index=False)
-        self.delivery_costs_RG_RT_df.to_excel(os.path.join(BASE_DIR, "outputs/delivery_costs/RGtoRR_Diesel_cost.xlsx"), index=False)
-        self.t_div_t_BX_AA_percentile_mined_sb_df.to_excel(os.path.join(BASE_DIR, "outputs/delivery_costs/t-t_BX:AA_by_percentile_mined-sedimentary_bauxite.xlsx"), index=False)
-        self.t_div_t_BX_AA_percentile_mined_cab_df.to_excel(os.path.join(BASE_DIR, "outputs/delivery_costs/t-t_BX:AA_by_percentile_mined-collapse_accumlulated_bx.xlsx"), index=False)
-        self.caustic_use_percentile_mined_sb_t_div_t_AA_df.to_excel(os.path.join(BASE_DIR, "outputs/delivery_costs/caustic_use_by_percentile_mined-sedimentary_bauxite_t-t_AA.xlsx"), index=False)
-        self.caustic_use_percentile_mined_cab_df.to_excel(os.path.join(BASE_DIR, "outputs/delivery_costs/caustic_use_by_percentile_mined-collapse_accumlulated_bx.xlsx"), index=False)
-        self.CBIX_BX_AA_production_cost_df.to_excel(os.path.join(BASE_DIR, "outputs/CBIX_BX_AA_production_cost.xlsx"), index=False)
-        self.final_costs_df.to_excel(os.path.join(BASE_DIR, "outputs/final_costs/final_costs.xlsx"), index=False)
+        prov_ind = self.inputs["province"].shape[0]    
+        
+
+        # .linear_eqn_sb_df = pd.concat([self.inputs[["province","county"]], self.linear_eqn_sb_df.loc[int(self.linear_eqn_sb_df.shape[0] - prov_ind):, :]], axis=0)
+        # self.linear_eqn_sb_df.at[:, ["province","county"]] = np.nan 
+        # self.linear_eqn_sb_df.at[int(self.linear_eqn_sb_df.shape[0] - prov_ind):, ["province","county"]] = self.inputs["province","county"]
+
+        self.linear_eqn_sb_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/depth_splits_sedimentary_bauxite/linear_eqn-depth_buckets_percent_tonnage_per_depth_range.xlsx")), index=False)
+        
+        # self.depth_splits_sb_df = pd.concat([self.inputs[["province","county"]], self.depth_splits_sb_df.loc[int(self.depth_splits_sb_df.shape[0] - prov_ind):, :]], axis=0)
+        self.depth_splits_sb_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/depth_splits_sedimentary_bauxite/depth_buckets-percent_tonnage_per_depth_range.xlsx")), index=False)
+
+        # self.depth_split_cab_df = pd.concat([self.inputs[["province","county"]], self.depth_split_cab_df.loc[int(self.depth_split_cab_df.shape[0] - prov_ind):, :]], axis=0)
+        self.depth_split_cab_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/depth_splits-collapse_accumulated_bauxite.xlsx")), index=False)
+        
+        # self.sedimentary_bauxite_td_df = pd.concat([self.inputs[["province","county"]], self.sedimentary_bauxite_td_df.loc[int(self.sedimentary_bauxite_td_df.shape[0] - prov_ind):, :]], axis=0)
+        self.sedimentary_bauxite_td_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/sedimentary_bauxite-tonnages_per_depth_range.xlsx")), index=False)
+        
+        # self.collapse_accm_bauxite_df = pd.concat([self.inputs[["province","county"]], self.collapse_accm_bauxite_df.loc[int(self.collapse_accm_bauxite_df.shape[0] - prov_ind):, :]], axis=0)
+        self.collapse_accm_bauxite_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/collapse_accumulated_bauxite-tonnages_per_depth_range.xlsx")), index=False)
+        
+        # self.linear_eqn_sb_only_df = pd.concat([self.inputs[["province","county"]], self.linear_eqn_sb_only_df.loc[int(self.linear_eqn_sb_only_df.shape[0] - prov_ind):, :]], axis=0)
+        self.linear_eqn_sb_only_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/suplhur_contamination_sedimentary_bauxite_only/linear_equation-Suplhur_contamination-sedimentary_bauxite_only.xlsx")), index=False)
+        
+        # self.depth_multiplier_sulphur_cntm_df = pd.concat([self.inputs[["province","county"]], self.depth_multiplier_sulphur_cntm_df.loc[int(self.depth_multiplier_sulphur_cntm_df.shape[0] - prov_ind):, :]], axis=0)
+        self.depth_multiplier_sulphur_cntm_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/suplhur_contamination_sedimentary_bauxite_only/depth_multiplier_for_sulphur_contamination.xlsx")), index=False)
+        
+        # self.perct_inventory_sulphur_contaminated_db_df = pd.concat([self.inputs[["province","county"]], self.perct_inventory_sulphur_contaminated_db_df.loc[int(self.perct_inventory_sulphur_contaminated_db_df.shape[0] - prov_ind):, :]], axis=0)        
+        self.perct_inventory_sulphur_contaminated_db_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/suplhur_contamination_sedimentary_bauxite_only/perct_inventory_sulphur_contaminated_by_depth_bucket.xlsx")), index=False)
+        
+        # self.perct_AA_percentile_mined_sb_df = pd.concat([self.inputs[["province","county"]], self.perct_AA_percentile_mined_sb_df.loc[int(self.perct_AA_percentile_mined_sb_df.shape[0] - prov_ind):, :]], axis=0)
+        self.perct_AA_percentile_mined_sb_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/as_workings_sedimentary_bauxite/perct_AA_percentile_mined-sedimentary_bauxite.xlsx")), index=False)
+        
+        # self.perct_SiO2_percentile_mined_sb_df = pd.concat([self.inputs[["province","county"]], self.perct_SiO2_percentile_mined_sb_df.loc[int(self.perct_SiO2_percentile_mined_sb_df.shape[0] - prov_ind):, :]], axis=0)
+        self.perct_SiO2_percentile_mined_sb_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/as_workings_sedimentary_bauxite/perct_SiO2_percentile_mined-sedimentary_bauxite.xlsx")), index=False)
+        
+        # self.perct_AA_percentile_mined_cab_df = pd.concat([self.inputs[["province","county"]], self.perct_AA_percentile_mined_cab_df.loc[int(self.perct_AA_percentile_mined_cab_df.shape[0] - prov_ind):, :]], axis=0)
+        self.perct_AA_percentile_mined_cab_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/as_workings_collapse_accumulated_bauxite/perct_AA_percentile_mined-collapse_accumulated_bauxite.xlsx")), index=False)
+        
+        # self.perct_SiO2_percentile_mined_cab_df = pd.concat([self.inputs[["province","county"]], self.perct_SiO2_percentile_mined_cab_df.loc[int(self.perct_SiO2_percentile_mined_cab_df.shape[0] - prov_ind):, :]], axis=0)
+        self.perct_SiO2_percentile_mined_cab_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/as_workings_collapse_accumulated_bauxite/perct_SiO2_percentile_mined-collapse_sedimentary_bauxite.xlsx")), index=False)
+        
+        # self.stripping_ratio_sb_df = pd.concat([self.inputs[["province","county"]], self.stripping_ratio_sb_df.loc[int(self.stripping_ratio_sb_df.shape[0] - prov_ind):, :]], axis=0)
+        self.stripping_ratio_sb_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/mining_costs/stripping_ratio-sedimentary_bauxite.xlsx")), index=False)
+        
+        # self.stripping_ratio_ca_bx_df = pd.concat([self.inputs[["province","county"]], self.stripping_ratio_ca_bx_df.loc[int(self.stripping_ratio_ca_bx_df.shape[0] - prov_ind):, :]], axis=0)
+        self.stripping_ratio_ca_bx_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/mining_costs/stripping_ratio-collapse_accumulated_bx.xlsx")), index=False)
+        
+        # self.electricity_costs_msb_RMBt_ROM_ore_df = pd.concat([self.inputs[["province","county"]], self.electricity_costs_msb_RMBt_ROM_ore_df.loc[int(self.electricity_costs_msb_RMBt_ROM_ore_df.shape[0] - prov_ind):, :]], axis=0)
+        self.electricity_costs_msb_RMBt_ROM_ore_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/mining_costs/electricity_costs-mining_sedimentary_bauxite-RMB-t_ROM_ore.xlsx")), index=False)
+        
+        # self.electricity_costs_cab_RMB_t_ROM_ore_df = pd.concat([self.inputs[["province","county"]], self.electricity_costs_cab_RMB_t_ROM_ore_df.loc[int(self.electricity_costs_cab_RMB_t_ROM_ore_df.shape[0] - prov_ind):, :]], axis=0)
+        self.electricity_costs_cab_RMB_t_ROM_ore_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/mining_costs/electricity_costs-collapse_accumulated_bauxite-RMB-t_ROM_ore.xlsx")), index=False)
+        
+        # self.diesel_costs_msb_RMB_t_ROM_ore_df = pd.concat([self.inputs[["province","county"]], self.diesel_costs_msb_RMB_t_ROM_ore_df.loc[int(self.diesel_costs_msb_RMB_t_ROM_ore_df.shape[0] - prov_ind):, :]], axis=0)
+        self.diesel_costs_msb_RMB_t_ROM_ore_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/mining_costs/diesel_costs-mining_sedimentary_bauxite-RMB-t_ROM_ore.xlsx")), index=False)
+        
+        # self.diesel_costs_mca_RMB_t_ROM_ore_df = pd.concat([self.inputs[["province","county"]], self.diesel_costs_mca_RMB_t_ROM_ore_df.loc[int(self.diesel_costs_mca_RMB_t_ROM_ore_df.shape[0] - prov_ind):, :]], axis=0)
+        self.diesel_costs_mca_RMB_t_ROM_ore_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/mining_costs/diesel_costs-mining_collapse_accumulated_bauxite-RMB-t_ROM_ore.xlsx")), index=False)
+        
+        # self.labour_costs_msb_RMB_t_ROM_ore_df = pd.concat([self.inputs[["province","county"]], self.labour_costs_msb_RMB_t_ROM_ore_df.loc[int(self.labour_costs_msb_RMB_t_ROM_ore_df.shape[0] - prov_ind):, :]], axis=0)
+        self.labour_costs_msb_RMB_t_ROM_ore_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/mining_costs/labour_costs-mining_sedimentary_bauxite-RMB-t_ROM_ore.xlsx")), index=False)
+        
+        # self.labour_costs_mcab_RMB_t_ROM_ore_df = pd.concat([self.inputs[["province","county"]], self.labour_costs_mcab_RMB_t_ROM_ore_df.loc[int(self.labour_costs_mcab_RMB_t_ROM_ore_df.shape[0] - prov_ind):, :]], axis=0)
+        self.labour_costs_mcab_RMB_t_ROM_ore_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/mining_costs/labour_costs-mining_collapse_accumulated_bauxite-RMB-tROM_ore.xlsx")), index=False)
+        
+        # self.mine_transport_costs_sedimentary_df = pd.concat([self.inputs[["province","county"]], self.mine_transport_costs_sedimentary_df.loc[int(self.mine_transport_costs_sedimentary_df.shape[0] - prov_ind):, :]], axis=0)
+        self.mine_transport_costs_sedimentary_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/mining_costs/In_Mine_Transport_costs-sedimentary.xlsx")), index=False)
+        
+        # self.washing_factor_df = pd.concat([self.inputs[["province","county"]], self.washing_factor_df.loc[int(self.washing_factor_df.shape[0] - prov_ind):, :]], axis=0)
+        self.washing_factor_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/mining_costs/washing_factor.xlsx")), index=False)
+        
+        # self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_sb_df = pd.concat([self.inputs[["province","county"]], self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_sb_df.loc[int(self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_sb_df.shape[0] - prov_ind):, :]], axis=0)
+        self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_sb_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/mining_costs/costs_RMB-t_ROM_ore_before_per-t-ore_charges-sedimentary_bauxite.xlsx")), index=False)
+        
+        # self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_ca_bx_df = pd.concat([self.inputs[["province","county"]], self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_ca_bx_df.loc[int(self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_ca_bx_df.shape[0] - prov_ind):, :]], axis=0)
+        self.costs_RMB_t_ROM_ore_before_per_t_ore_charges_ca_bx_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/mining_costs/costs_RMB-t_ROM_ore_before_per-t-ore_charges-collapse_accumulated_bx.xlsx")), index=False)
+        
+        # self.taxes_royalties_Other_allowance_Capital_up_front_costs_charge_df = pd.concat([self.inputs[["province","county"]], self.taxes_royalties_Other_allowance_Capital_up_front_costs_charge_df.loc[int(self.taxes_royalties_Other_allowance_Capital_up_front_costs_charge_df.shape[0] - prov_ind):, :]], axis=0)
+        self.taxes_royalties_Other_allowance_Capital_up_front_costs_charge_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/mining_costs/taxes_royalties_Other_allowance_Capital_up_front_costs_charge.xlsx")), index=False)
+        
+        # self.total_mining_costs_RMB_t_ore_sb_df = pd.concat([self.inputs[["province","county"]], self.total_mining_costs_RMB_t_ore_sb_df.loc[int(self.total_mining_costs_RMB_t_ore_sb_df.shape[0] - prov_ind):, :]], axis=0)
+        self.total_mining_costs_RMB_t_ore_sb_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/mining_costs/total_mining_costs_RMB-t_ore-sedimentary_bauxite.xlsx")), index=False)
+        
+        # self.total_mining_costs_RMB_t_ore_cab_df = pd.concat([self.inputs[["province","county"]], self.total_mining_costs_RMB_t_ore_cab_df.loc[int(self.total_mining_costs_RMB_t_ore_cab_df.shape[0] - prov_ind):, :]], axis=0)
+        self.total_mining_costs_RMB_t_ore_cab_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/mining_costs/total_mining_costs_RMB-t_ore-collapse_accumulated_bauxite.xlsx")), index=False)
+        
+        # self.delivery_costs_RG_RT_df = pd.concat([self.inputs[["province","county"]], self.delivery_costs_RG_RT_df.loc[int(self.delivery_costs_RG_RT_df.shape[0] - prov_ind):, :]], axis=0)
+        self.delivery_costs_RG_RT_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/delivery_costs/RGtoRR_Diesel_cost.xlsx")), index=False)
+        
+        # self.t_div_t_BX_AA_percentile_mined_sb_df = pd.concat([self.inputs[["province","county"]], self.t_div_t_BX_AA_percentile_mined_sb_df.loc[int(self.t_div_t_BX_AA_percentile_mined_sb_df.shape[0] - prov_ind):, :]], axis=0)
+        self.t_div_t_BX_AA_percentile_mined_sb_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/delivery_costs/t-t_BX:AA_by_percentile_mined-sedimentary_bauxite.xlsx")), index=False)
+        
+        # self.t_div_t_BX_AA_percentile_mined_cab_df = pd.concat([self.inputs[["province","county"]], self.t_div_t_BX_AA_percentile_mined_cab_df.loc[int(self.t_div_t_BX_AA_percentile_mined_cab_df.shape[0] - prov_ind):, :]], axis=0)
+        self.t_div_t_BX_AA_percentile_mined_cab_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/delivery_costs/t-t_BX:AA_by_percentile_mined-collapse_accumlulated_bx.xlsx")), index=False)
+
+        # self.caustic_use_percentile_mined_sb_t_div_t_AA_df = pd.concat([self.inputs[["province","county"]], self.caustic_use_percentile_mined_sb_t_div_t_AA_df.loc[int(self.caustic_use_percentile_mined_sb_t_div_t_AA_df.shape[0] - prov_ind):, :]], axis=0)
+        self.caustic_use_percentile_mined_sb_t_div_t_AA_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/delivery_costs/caustic_use_by_percentile_mined-sedimentary_bauxite_t-t_AA.xlsx")), index=False)
+        
+        # self.caustic_use_percentile_mined_cab_df = pd.concat([self.inputs[["province","county"]], self.caustic_use_percentile_mined_cab_df.loc[int(self.caustic_use_percentile_mined_cab_df.shape[0] - prov_ind):, :]], axis=0)
+        self.caustic_use_percentile_mined_cab_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/delivery_costs/caustic_use_by_percentile_mined-collapse_accumlulated_bx.xlsx")), index=False)
+        
+        # self.CBIX_BX_AA_production_cost_df = pd.concat([self.inputs[["province","county"]], self.CBIX_BX_AA_production_cost_df.loc[int(self.CBIX_BX_AA_production_cost_df.shape[0] - prov_ind):, :]], axis=0)
+        self.CBIX_BX_AA_production_cost_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/CBIX_BX_AA_production_cost.xlsx")), index=False)
+        
+        # self.final_costs_df = pd.concat([self.inputs[["province","county"]], self.final_costs_df.loc[int(self.final_costs_df.shape[0] - prov_ind):, :]], axis=0)
+        self.final_costs_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/final_costs/final_costs.xlsx")), index=False)
 
         cols=pd.Series(self.tonnages_in_categories_df.columns)
         for dup in cols[cols.duplicated()].unique():
             cols[cols[cols == dup].index.values.tolist()] = [dup + '_' + str(i) if i != 0 else dup for i in range(sum(cols == dup))]
         # rename the columns with the cols list.
         self.tonnages_in_categories_df.columns = cols
-        print(cols)
+        # self.tonnages_in_categories_df = pd.concat([self.inputs[["province","county"]], self.tonnages_in_categories_df.loc[int(self.tonnages_in_categories_df.shape[0] - prov_ind):, :]], axis=0)
+        self.tonnages_in_categories_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/tonnages_in_categories.xlsx")), index=False)
+        
+        # self.cost_with_dummy_for_ranking_df = pd.concat([self.inputs[["province","county"]], self.cost_with_dummy_for_ranking_df.loc[int(self.cost_with_dummy_for_ranking_df.shape[0] - prov_ind):, :]], axis=0)
+        self.cost_with_dummy_for_ranking_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/cost_with_dummy_for_ranking_reasons.xlsx")), index=False)
+        
+        # self.ranks_by_costs_df = pd.concat([self.inputs[["province","county"]], self.ranks_by_costs_df.loc[int(self.ranks_by_costs_df.shape[0] - prov_ind):, :]], axis=0)
+        self.ranks_by_costs_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/ranks_by_costs.xlsx")), index=False)
+        
+        # self.cell_columns_by_cost_rank_df = pd.concat([self.inputs[["province","county"]], self.cell_columns_by_cost_rank_df.loc[int(self.cell_columns_by_cost_rank_df.shape[0] - prov_ind):, :]], axis=0)
+        self.cell_columns_by_cost_rank_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/cell_columns_by_cost_rank.xlsx")), index=False)
+        
+        # self.costs_by_cost_rank_df = pd.concat([self.inputs[["province","county"]], self.costs_by_cost_rank_df.loc[int(self.costs_by_cost_rank_df.shape[0] - prov_ind):, :]], axis=0)
+        self.costs_by_cost_rank_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/costs_by_cost_rank.xlsx")), index=False)
+        
+        # self.tonages_by_cost_rank_df = pd.concat([self.inputs[["province","county"]], self.tonages_by_cost_rank_df.loc[int(self.tonages_by_cost_rank_df.shape[0] - prov_ind):, :]], axis=0)
+        self.tonages_by_cost_rank_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/tonnages_by_cost_rank.xlsx")), index=False)
+        
+        # self.max_blended_tonnes_entity_cost_limit_df = pd.concat([self.inputs[["province","county"]], self.max_blended_tonnes_entity_cost_limit_df.loc[int(self.max_blended_tonnes_entity_cost_limit_df.shape[0] - prov_ind):, :]], axis=0)
+        self.max_blended_tonnes_entity_cost_limit_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/max_blended_tonnes_entity_cost_limit.xlsx")), index=False)
+        
+        self.max_economic_tonnes_df.to_excel(Path(os.path.join(BASE_DIR, "outputs/max_economic_tonnes/max_economic_tonnes.xlsx")), index=False)
+        
+        # self.Costs_RMBtAA = pd.concat([self.inputs[["province","county"]], self.Costs_RMBtAA.loc[int(self.Costs_RMBtAA.shape[0] - prov_ind):, :]], axis=0)
+        self.Costs_RMBtAA.to_excel(Path(os.path.join(BASE_DIR, "outputs/choosen_mine/Costs_RMBtAA.xlsx")), index=False)
+        
+        # self.Tonnages_kt = pd.concat([self.inputs[["province","county"]], self.Tonnages_kt.loc[int(self.Tonnages_kt.shape[0] - prov_ind):, :]], axis=0)
+        self.Tonnages_kt.to_excel(Path(os.path.join(BASE_DIR, "outputs/choosen_mine/Tonnages_kt.xlsx")), index=False)
+        
+        # self.Rank_AA_proc_cost = pd.concat([self.inputs[["province","county"]], self.Rank_AA_proc_cost.loc[int(self.Rank_AA_proc_cost.shape[0] - prov_ind):, :]], axis=0)
+        self.Rank_AA_proc_cost.to_excel(Path(os.path.join(BASE_DIR, "outputs/choosen_mine/Rank_by_AA_processing_cost.xlsx")), index=False)
 
-        self.tonnages_in_categories_df.to_excel(os.path.join(BASE_DIR, "outputs/tonnages_in_categories.xlsx"), index=False)
-        self.cost_with_dummy_for_ranking_df.to_excel(os.path.join(BASE_DIR, "outputs/cost_with_dummy_for_ranking_reasons.xlsx"), index=False)
-        self.ranks_by_costs_df.to_excel(os.path.join(BASE_DIR, "outputs/ranks_by_costs.xlsx"), index=False)
-        self.cell_columns_by_cost_rank_df.to_excel(os.path.join(BASE_DIR, "outputs/cell_columns_by_cost_rank.xlsx"), index=False)
-        self.costs_by_cost_rank_df.to_excel(os.path.join(BASE_DIR, "outputs/costs_by_cost_rank.xlsx"), index=False)
-        self.tonages_by_cost_rank_df.to_excel(os.path.join(BASE_DIR, "outputs/tonnages_by_cost_rank.xlsx"), index=False)
-        self.max_blended_tonnes_entity_cost_limit_df.to_excel(os.path.join(BASE_DIR, "outputs/max_blended_tonnes_entity_cost_limit.xlsx"), index=False)
-        self.max_economic_tonnes_df.to_excel(os.path.join(BASE_DIR, "outputs/max_economic_tonnes/max_economic_tonnes.xlsx"), index=False)
-        self.Costs_RMBtAA.to_excel(os.path.join(BASE_DIR, "outputs/choosen_mine/Costs_RMBtAA.xlsx"), index=False)
-        self.Tonnages_kt.to_excel(os.path.join(BASE_DIR, "outputs/choosen_mine/Tonnages_kt.xlsx"), index=False)
-        self.Rank_AA_proc_cost.to_excel(os.path.join(BASE_DIR, "outputs/choosen_mine/Rank_by_AA_processing_cost.xlsx"), index=False)
-
-        print(self.tonnages_in_categories_df)
+        
 
         dblist.append(db_conv.single_year_mult_out(self.linear_eqn_sb_df, "depth_splits_sedimentary_bauxite linear_eqn-depth_buckets_percent_tonnage_per_depth_range"))
         dblist.append(db_conv.single_year_mult_out(self.depth_splits_sb_df, "depth_splits_sedimentary_bauxite depth_buckets-percent_tonnage_per_depth_range"))
@@ -1926,7 +2046,7 @@ if __name__ == "__main__":
     inventory.calcall()                 # call all functions
     end = time.process_time() - start   # end timer
 
-    print(f"Total runtime -- {round(end/60, 2)} mins.")
+    print(f"Total runtime -- {end} secs.")
 
 # print(pd.concat([self.range_max.loc[:,  "open_pit1":"underground7"], self.depth_splits_sb_df], axis=0).reset_index())
 

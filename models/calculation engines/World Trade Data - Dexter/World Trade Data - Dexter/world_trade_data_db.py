@@ -54,12 +54,12 @@ class world_trade_db():
         #self.final_processing_lastquarter_lastyear
         self.Final_Processing_Last_Quarter['Exporter'] = [ dcountry[ self.final_processing_lastquarter_lastyear.loc[i,'exporter_id'] ] for i in  self.Final_Processing_Last_Quarter.index]
         self.Final_Processing_Last_Quarter['Importer'] = [ dcountry[ self.final_processing_lastquarter_lastyear.loc[i,'importer_id'] ] for i in  self.Final_Processing_Last_Quarter.index]
-        self.Final_Processing_Last_Quarter['Mln t'] = self.final_processing_lastquarter_lastyear['Mlnt_last_quarter']
+        self.Final_Processing_Last_Quarter['Mln t'] = self.final_processing_lastquarter_lastyear['Mlnt_last_quarter'].astype(float)
        
         
         self.Final_Processing_Last_Year['Exporter'] = [ dcountry[ self.final_processing_lastquarter_lastyear.loc[i,'exporter_id'] ] for i in  self.Final_Processing_Last_Quarter.index]
         self.Final_Processing_Last_Year['Importer'] = [ dcountry[ self.final_processing_lastquarter_lastyear.loc[i,'importer_id'] ] for i in  self.Final_Processing_Last_Quarter.index]
-        self.Final_Processing_Last_Year['Mln t'] = self.final_processing_lastquarter_lastyear['Mlnt_last_year']
+        self.Final_Processing_Last_Year['Mln t'] = self.final_processing_lastquarter_lastyear['Mlnt_last_year'].astype(float)
         
         
         self.Final_Table_Final_Processing['Exporter'] = self.Final_Processing_Last_Year['Exporter']
@@ -68,7 +68,7 @@ class world_trade_db():
         
         self.importer_exporter_combination.rename(columns={
             'importer_exporter_combination':'Importer.Exporter Combination'},inplace=True)
-        self.importer_exporter_combination = self.importer_exporter_combination.drop(['creation_date', 'updation_date'], axis=1)
+        self.importer_exporter_combination = self.importer_exporter_combination.drop(['importer_exporter_combination_id','creation_date', 'updation_date'], axis=1)
         
         self.directinput_worldtradedata.rename(columns={
             'exporter_id':'Exporter',
@@ -80,6 +80,12 @@ class world_trade_db():
         self.directinput_worldtradedata['Exporter'] = [ dcountry[self.directinput_worldtradedata['Exporter'][i]] for i in self.directinput_worldtradedata.index]
         self.directinput_worldtradedata['Importer'] = [ dcountry[self.directinput_worldtradedata['Importer'][i]] for i in self.directinput_worldtradedata.index]
         self.directinput_worldtradedata = self.directinput_worldtradedata.drop(['directinput_worldtradedata_id','creation_date','updation_date'], axis=1)
+        #Dexter
+        self.directinput_worldtradedata['Annualised'] = self.directinput_worldtradedata['Annualised'].replace(' -   ',0).astype(float)
+        self.directinput_worldtradedata['Total for Quarter'] =self.directinput_worldtradedata['Total for Quarter'].replace(' -   ',0).astype(float)
+        self.directinput_worldtradedata["% of total"] = [float(p.strip('%'))/100 for p in self.directinput_worldtradedata["% of total"]]
+        
+        
         
         self.declared_importer.rename(columns={
             'year_id':'YEAR',

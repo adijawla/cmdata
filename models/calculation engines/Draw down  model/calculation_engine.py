@@ -7,6 +7,7 @@ import numpy as np
 import pandas as pd
 import statistics as stat
 # import openpyxl
+from restruc import *
 from ddm import newprovincial
 from ddm import reservesummary
 from collections import defaultdict
@@ -25,10 +26,17 @@ warnings.filterwarnings("ignore")
 # cnxn = a.outputstart()
 templates = ts.get_templates()
 # print(templates.keys())
-db_conv = Flatdbconverter("Draw Down Model")
-bayersinterdb = pd.read_csv("ddm/caustic.csv")
+
+#db_conv = Flatdbconverter("Draw Down Model")
+bayersinterdb = x.data('caustic')
 sheets = bayersinterdb['refinery'].tolist()
+while True:
+    try:
+        sheets.remove('spare')
+    except:
+        break
 sheets = np.array(sheets)
+#print(list(sheets).index("Chalco Pingguo"))
 _, idx = np.unique(sheets, return_index=True)
 sheets = sheets[np.sort(idx)]
 print(sheets)
@@ -40,82 +48,29 @@ Provinces =['Guangxi',
             ]
 print("ddm sql connected")
 
-em = read_output_database(80, ["Max Economic Tonnes"])
-max_economic_tonnes = db_conv.reverse(em, "Economic overlay", ["Max Economic Tonnes"])
-print(max_economic_tonnes)
+
+#print(max_economic_tonnes)
 
 
 '''
 
 Bauxite main model starts here
 '''
-# print(sheets)
-
-# excel files 
-
-'''
-list of db from csv file
-
-'''
-# capdata1 = pd.read_csv("ddm/capbase.csv") #capacity 
-# depcap1 = pd.read_csv("ddm/proddatae.csv")
-# proddata1 = pd.read_csv("ddm/proddatah.csv")
-# proddata2 = pd.read_csv("ddm/proddatae2.csv") # bauxite consumption
-# proddata3 = pd.read_csv("ddm/proddatae.csv")
-# proddata4 = pd.read_csv("ddm/proddatae.csv")
-# proddata5 = pd.read_csv("ddm/proddatae.csv")
-# proddata6 = pd.read_csv("ddm/proddatae.csv")
-# proddata7 = pd.read_csv("ddm/proddatae.csv")
-# proddata8 = pd.read_csv("ddm/proddatae.csv")
-# proddata9 = pd.read_csv("ddm/proddatae.csv")
-# proddata10 = pd.read_csv("ddm/proddatae.csv")
-# production = pd.read_csv("ddm/proddatae.csv")
-# prodout = pd.read_csv("ddm/proddatae.csv") # production
-# depdata1 = templates.depdatae
-# depdata2 = pd.read_csv("ddm/depdatae.csv")
-# depdata3 = pd.read_csv("ddm/depdatae.csv")
-# depdata4 = pd.read_csv("ddm/depdatae.csv")
-# depdata5 = pd.read_csv("ddm/depdatae.csv")
-# depdata6 = pd.read_csv("ddm/depdatae.csv")
-# depdata7 = pd.read_csv("ddm/QuickSummarySwitches.csv")
-# depdata8 = pd.read_csv("ddm/depdatae.csv")
-# depdata9 = pd.read_csv("ddm/depdatae.csv")
-# depdata10 = pd.read_csv("ddm/depdatae.csv")
-# depdata11 = pd.read_csv("ddm/depdatae.csv")
-# depdata12 = pd.read_csv("ddm/depdatae.csv")
-# depdata13 = pd.read_csv("ddm/depdatae2.csv")
-# depdata14 = pd.read_csv("ddm/depdatae2.csv")
-# depdata15 = pd.read_csv("ddm/depdatae.csv")
-# depdata16 = pd.read_csv("ddm/depdatae2.csv")
-# depdata17 = pd.read_csv("ddm/depdatae2.csv")
-# depdata18 = pd.read_csv("ddm/depdatae2.csv")
-# depdata19 = pd.read_csv("ddm/depdatae2.csv")
-# bauxitedata1 = pd.read_csv("ddm/bauxitedatae.csv")
-# bauxitedata2 = pd.read_csv("ddm/bauxitedatae.csv")
-# cockpitdata1 = pd.read_csv("ddm/cockpit3rdPartySwitching.csv")
-# plotlink = pd.read_csv('ddm/plotlink.csv')
-
-# cockpitdata2 = pd.read_csv("ddm/cockpitdatae.csv")
-# cockpitdata3 = pd.read_csv("ddm/cockpitAllow3rdPartyTrade.csv")
-# silicadata = pd.read_csv("ddm/proddatae2.csv") #grade profile silica grade
-# aluminadata = pd.read_csv("ddm/proddatae2.csv")#grade profile alumina grade
-# capout = pd.read_csv("ddm/proddatae.csv")
-
-
-
 timer = Timer("bauxite", txt=True)
 class Bauxite():
     def __init__(self,db,datadb,globaldb,summarydb,provincialdb,otherlist,exlist):  # These are all different static databases
         timer.start()
-        self.db = db                                                                             
+        self.db = db
         self.globaldb = globaldb                      # global values db cell 42 to 54
         self.datadb = datadb
-        self.summarydb = summarydb                    # reserve summary db 
+        self.summarydb = summarydb                    # reserve summary db
         self.provincialdb = provincialdb
-        self.capdata1 = pd.read_csv("ddm/capbase.csv") #capacity 
+        self.capdata1 =  x.data('capbase') #capacity
         self.depcap1 = templates["proddatae"]
-        self.proddata1 = pd.read_csv("ddm/proddatah.csv") # cap prod 137
+        self.proddata1 = x.data('proddatah')  # cap prod 137
         self.proddata2 = templates["proddatae2"] # bauxite consumption # collector 1256
+        self.all_bauxite_usage = self.proddata2.copy()
+        self.all_closing_stock = self.proddata2.copy()
         self.proddata3 = templates["proddatae"] # collector 1828
         self.proddata4 = templates["proddatae"] # collector 1959
         self.proddata5 = templates["proddatae"] # cap prod 531
@@ -130,9 +85,9 @@ class Bauxite():
         self.depdata2 = templates["depdatae"] # not needed
         self.depdata3 = templates["depdatae"] # cap prod 657
         self.depdata4 = templates["depdatae"] # cap prod 250
-        self.depdata5 = templates["depdatae"] # not needed 
+        self.depdata5 = templates["depdatae"] # not needed
         self.depdata6 = templates["depdatae"] # cap prod 667
-        self.depdata7 = templates["QuickSummarySwitches"] # cap prod 701
+        self.depdata7 = x.data('quicksummaryswitches') # cap prod 701
         self.depdata8 = templates["depdatae"] # collector 2333
         self.depdata9 = templates["depdatae"] # collector 2073
         self.depdata10 = templates["depdatae"] # cockpit 102
@@ -153,24 +108,24 @@ class Bauxite():
         self.depdata25 = templates["proddatae2"] # collector 684
         self.bauxitedata1 = templates["bauxitedatae"] # # cockpit 188
         self.bauxitedata2 = templates["bauxitedatae"] # cockpit 204
-        self.cockpitdata1 = templates["cockpit3rdPartySwitching"]
+        self.cockpitdata1 = x.data('cockpit3rdpartyswitching')
         self.plotlink = templates["plotlink"]
         self.cockpitdata2 = templates["cockpitdatae"]
-        self.cockpitdata3 = templates["cockpitAllow3rdPartyTrade"]
+        self.cockpitdata3 = x.data('cockpitallow3rdpartytrade')
         self.silicadata = templates["proddatae2"] #grade profile silica grade
         self.aluminadata = templates["proddatae2"]#grade profile alumina grade
-        self.capout = pd.read_csv("ddm/proddatae.csv")
+        self.capout = templates["proddatae"]
 
-        self.smalldata = pd.read_csv("ddm/importe.csv")
+        self.smalldata = x.data('import')
         # print(self.plotlink)
         # print(plotlink.index)
-        self.causticdata = pd.read_csv('ddm/caustic.csv')
+        self.causticdata = x.data('caustic')
         # self.otherlist = otherlist
         province1 = 'Chongqing'
-        self.sheetdata = self.datadb["refinery"].tolist()
+        self.sheetdata = x.data('import')
         self.exlist = exlist
-        self.factx = pd.read_csv('ddm/DrawDownTechFactorInputs_1.csv')
-        constant = pd.read_csv('ddm/DrawDownTechFactorInputs_2.csv')
+        self.factx = x.data('drawdowntechfactorinputs1')
+        constant = x.data('drawdowntechfactorinputs2')
         self.constant = constant['value']
         self.max_col = len(self.db.columns)
         self.init_col = '2004'
@@ -196,7 +151,7 @@ class Bauxite():
                 else:
                     self.plotlink.loc[(self.plotlink['refinery'] == sheet) & (self.plotlink['province'] == province) & (self.plotlink['bauxite'] == 'Domestic') , 'open stock'] = 0
                 put(self.db,sheet,province,"Reserve",self.init_col,v)
-        
+
                 # print('reserve')
         timer.stop()
 
@@ -206,7 +161,7 @@ class Bauxite():
         for sheet in sheets:
             for province in Provinces:
                 v = self.summarydb.loc[self.summarydb.province==province, sheet+" Avg %Al2O3"].sum()
-                self.plotlink.loc[(self.plotlink['refinery'] == sheet) & (self.plotlink['province'] == province), 'Alumina Grade'] = v 
+                self.plotlink.loc[(self.plotlink['refinery'] == sheet) & (self.plotlink['province'] == province), 'Alumina Grade'] = v
                 put(self.db,sheet,province,"Alumina Grade",self.init_col,v)
         timer.stop()
 
@@ -215,7 +170,7 @@ class Bauxite():
         for sheet in sheets:
             for province in Provinces:
                 v = self.summarydb.loc[self.summarydb.province==province, sheet+" Avg A/S"].sum()
-                self.plotlink.loc[(self.plotlink['refinery'] == sheet) & (self.plotlink['province'] == province), 'A/S'] = v 
+                self.plotlink.loc[(self.plotlink['refinery'] == sheet) & (self.plotlink['province'] == province), 'A/S'] = v
                 put(self.db,sheet,province,"A/S",self.init_col,v)
         timer.stop()
 
@@ -236,7 +191,7 @@ class Bauxite():
                 put(self.db,sheet,province,"Demand Profile",self.init_col,v)
         timer.stop()
 
-        #constant2 
+        #constant2
     def usagee(self,year):
         timer.start()
         dh = ['Bosai Wanzhou','Tuoyuan', 'Jinjiang Chongzuo import', 'Xinfa Jingxi', 'Huafei', 'Qizheng Chemical Added LT', 'Kaiman', 'Kaiman Import', 'East Hope Mianchi', 'East Hope Mianchi Added LT', 'Huiyuan Lushan', 'Shenhuo', 'Wanji', 'Wanji import', 'Weilai', 'Yifeng Gongyi (Yulian Xinya)', 'Yima Yixiang', 'Shaoxing', 'Kaisheng', 'Zhongmei', 'Zhongchao', 'Jialu Xianfeng', 'Jinshi', 'Huixiang', 'Mengxi import', 'Tiangui', 'Jinjiang Lianyungang', 'Chalco Lianyungang', 'SPIC - Wuchuan', 'Chalco Shandong sinter import', 'Aokaida', 'Huajin', 'Dongxu Tianyuan', 'Dongxu Tianyuan import', 'East Hope Lingshi import', 'Huaqing', 'Taixing', 'Wusheng', 'Xinfa - Jiaokou', 'Xingan Chemical', 'Xingan Chemical import', 'Yangquan Zhaofeng', 'Gangyuan Jiaohua', 'Xinghua (Chalco Jiaokou) import', 'YMG - Wenshan', 'Senze', 'Fusheng', 'Tiantong']
@@ -258,8 +213,8 @@ class Bauxite():
         for sheet in sheets:
             for province in Provinces:
                 v = self.factx.loc[self.factx.refinery==sheet][self.factx.province==province]['factorx'].sum()
-                self.plotlink.loc[(self.plotlink['refinery'] == sheet) & (self.plotlink['province'] == province), 'Factor X'] = v 
-                put(self.db,sheet,province,"Factor X",self.init_col,v)    
+                self.plotlink.loc[(self.plotlink['refinery'] == sheet) & (self.plotlink['province'] == province), 'Factor X'] = v
+                put(self.db,sheet,province,"Factor X",self.init_col,v)
         timer.stop()
 
     def purchased(self):
@@ -379,7 +334,7 @@ class Bauxite():
                 value = (pow(d[0]*d[2],d[8])/(d[1]*d[3]))/pow(max(d[4],d[5])-min(d[4],d[5]),d[8]) if d[6] > d[7] else d[7]
                 put(self.db,sheet,province,"Alumina Profile Scaled variance",self.init_col,value)
         timer.stop()
-            
+
     def alumina_profile_alpha_value(self):
         timer.start()
         for sheet in sheets:
@@ -393,7 +348,7 @@ class Bauxite():
                 value = 0 if value <= 0 else value
                 put(self.db,sheet,province,"Alumina Profile Alpha value",self.init_col,value)
         timer.stop()
-            
+
     def alumina_profile_beta_value(self):
         timer.start()
         for sheet in sheets:
@@ -406,6 +361,9 @@ class Bauxite():
                 value = d[1]*(1-d[0])/d[0] if d[2] > d[3] else d[3]
                 if value != value:
                     print(d)
+                if str(value) == '-0.0' or str(value) == '-0' :
+                    value = 0
+
                 put(self.db,sheet,province,"Alumina Profile Beta value",self.init_col,value)
         timer.stop()
 
@@ -420,7 +378,7 @@ class Bauxite():
                 value = d[0]/d[1] if d[1] > d[2] else d[2]
                 put(self.db,sheet,province,"Silica Profile Starting grade",self.init_col,value)
         timer.stop()
-            
+
     def silica_profile_depletion_grade(self):
         timer.start()
         for sheet in sheets:
@@ -443,7 +401,7 @@ class Bauxite():
                     self.constant[0]
                     ]
                 value = (d[0]-min(d[2],d[3]))/(max(d[2],d[3])-min(d[2],d[3])) if d[1] > 0 else 0
-                put(self.db,sheet,province,"Silica Profile Scaled mean",self.init_col,value)   
+                put(self.db,sheet,province,"Silica Profile Scaled mean",self.init_col,value)
         timer.stop()
 
         # constant 17
@@ -463,7 +421,7 @@ class Bauxite():
                 value = (pow(d[0]*d[1],d[7])/d[2])/pow(max(d[4],d[5])-min(d[4],d[5]),d[7]) if d[3] > 0 else 0
                 put(self.db,sheet,province,"Silica Profile Scaled variance",self.init_col,value)
         timer.stop()
-            
+
     def silica_profile_alpha_value(self):
         timer.start()
         for sheet in sheets:
@@ -486,8 +444,8 @@ class Bauxite():
                     get(self.db,sheet,province,"Silica Profile Alpha value",self.init_col),
                     self.constant[0]
                     ]
-                value = d[1]*(1-d[0])/d[0] if d[0] > d[2] else d[2] 
-                put(self.db,sheet,province,"Silica Profile Beta value",self.init_col,value)    
+                value = d[1]*(1-d[0])/d[0] if d[0] > d[2] else d[2]
+                put(self.db,sheet,province,"Silica Profile Beta value",self.init_col,value)
         timer.stop()
 
     def get_grade(self, sg, dg, alpha, beta, d115, d118):
@@ -496,10 +454,14 @@ class Bauxite():
                 if sg == dg:
                     value = sg
                 else:
-                    if sg < dg:
+                    # not sure if this can cause unexpected errors
+                    if alpha  == 0 and beta == 0:
+                        return 0
+                    elif sg < dg:
                         value = stats.beta.ppf(1-stat.mean([d115, d118]),alpha,beta,min(sg,dg),max(sg,dg)-min(sg,dg))
                     else:
-                        value = stats.beta.ppf(stat.mean([d115, d118]),alpha,beta,min(sg,dg),max(sg,dg)-min(sg,dg)) 
+                        value = stats.beta.ppf(stat.mean([d115, d118]),alpha,beta,min(sg,dg),max(sg,dg)-min(sg,dg))
+            value = 0 if value != value else value
             return value
 
 
@@ -521,7 +483,7 @@ class Bauxite():
                 ap_dg = get(self.db,sheet,province,"Alumina Profile Depletion grade",self.init_col)
                 as_sr = get(self.db,sheet,province,"Starting ratio",self.init_col)
                 as_dr = get(self.db,sheet,province,"Depletion ratio",self.init_col)
-                
+
                 d112 = a * b
                 d114 = d112 - c if d112 - c > 0 else 0
                 d117 = d114 - c
@@ -531,7 +493,7 @@ class Bauxite():
                 # get first alumina and silica grade
                 d96 = ap_sg
                 d97 = sp_sg if b > 0 else 0
-                # get second alumina and silica grade 
+                # get second alumina and silica grade
 
                 if (province == 'Other') and (sheet.lower() in self.pr1):
                     ag = [d96, 0]
@@ -541,7 +503,7 @@ class Bauxite():
                     s_ag = ag[1]
                     s_sg = sg[1]
                 # elif (province == 'Other') and (sheet.lower() in self.pr2):
-                #     ag = [d96, d96] 
+                #     ag = [d96, d96]
                 #     sg = [d97, d97]
                 #     s_ag = ag[1]
                 #     s_sg = sg[1]
@@ -553,7 +515,7 @@ class Bauxite():
 
                 s_rdd =  s_ag/s_sg if d98 > 0 and d114 - c > c and s_sg > 0 else 0
                 rdd = [d98, s_rdd]
-                
+
 
                 put(self.db,sheet,province, "Opening Stock",self.init_col, d112)
                 put(self.db,sheet,province, "Closing Stock",self.init_col, d114)
@@ -562,6 +524,11 @@ class Bauxite():
                 put(self.db,sheet,province, "C/S Outlook (n+1) % of total",self.init_col, d118)
                 self.db.at[idx[sheet,province, "Grade Profile Alumina Grade"], self.init_col:str(int(self.init_col)+1)] = ag
                 self.db.at[idx[sheet,province, "Grade Profile Silica Grade"], self.init_col:str(int(self.init_col)+1)] = sg
+                # if f"{sheet} {province}" == "Jinjiang Longzhou Guangxi":
+                #     print(ap_sg, ap_dg, a_alpha, a_beta, d115, d118)
+                #     print(sp_sg, sp_dg, s_alpha, s_beta, d115, d118)
+                #     print(rdd, ag, sg)
+                #     raise RuntimeError('stop')
                 self.db.at[idx[sheet,province, "A/S ratio draw-down"], self.init_col:str(int(self.init_col)+1)] = rdd
                 self.depdata24.loc[(self.depdata24['refinery'] == sheet) & (self.depdata24['province'] == province), str(int(self.init_col)+1)] = ag[1]
                 self.depdata25.loc[(self.depdata25['refinery'] == sheet) & (self.depdata25['province'] == province), str(int(self.init_col)+1)] = sg[1]
@@ -610,6 +577,7 @@ class Bauxite():
             for province in Provinces:
                 a_alpha = get(self.db,sheet,province,"Alumina Profile Alpha value",self.init_col)
                 a_beta  =  get(self.db,sheet,province,"Alumina Profile Beta value",self.init_col)
+
                 ap_sg = get(self.db,sheet,province,"Alumina Profile Starting grade",self.init_col)
                 ap_dg = get(self.db,sheet,province,"Alumina Profile Depletion grade",self.init_col)
 
@@ -620,7 +588,7 @@ class Bauxite():
                 prev_year = str(int(year) - 1)
                 usage = get(self.db,sheet,province,"Usage", prev_year)
                 cs = get(self.db,sheet,province, "Closing Stock", prev_year)
-                prev_rdd = get(self.db,sheet,province, "A/S ratio draw-down", prev_year)
+                prev_rdd = get(self.db,sheet,province,"A/S ratio draw-down", prev_year)
 
 
                 cs_outlook_tot = get(self.db,sheet,province,"C/S Outlook (n+1) % of total", prev_year)
@@ -641,14 +609,15 @@ class Bauxite():
                 put(self.db,sheet,province,"Grade Profile Alumina Grade",year,a_result)
                 put(self.db,sheet,province,"Grade Profile Silica Grade",year,s_result)
                 put(self.db,sheet,province,"A/S ratio draw-down",year, rdd_result)
-                self.depdata24.loc[(self.depdata24['refinery'] == sheet) & (self.depdata24['province'] == province), year] = a_result 
-                self.depdata25.loc[(self.depdata25['refinery'] == sheet) & (self.depdata25['province'] == province), year] = s_result 
+                self.depdata24.loc[(self.depdata24['refinery'] == sheet) & (self.depdata24['province'] == province), year] = a_result
+                self.depdata25.loc[(self.depdata25['refinery'] == sheet) & (self.depdata25['province'] == province), year] = s_result
 
                 if a_result != a_result or s_result != s_result:
                     print(a_alpha, a_beta, ap_sg, ap_dg, s_alpha, s_beta, sp_sg, sp_dg, usage, cs, prev_rdd, cs_outlook_tot, close_stock )
                     print(a_result, s_result, rdd_result)
+                    print(sheet,province)
                     raise RuntimeError('Error wliek')
-                    
+
         timer.stop(['alumina grade', a_result, 'silica grade', s_result, "A/S ratio", rdd_result])
 
     def aa_production_protocol(self,year):
@@ -658,10 +627,10 @@ class Bauxite():
                 a = get(self.db,sheet,province,"Sourcing Mix",year)
                 b = self.proddata7.loc[self.proddata7.refinery==sheet, year].values[0]
                 c = get(self.db,sheet,province,"Bauxite Usage",year)
-                result = a*b*1000 if c > 0 else 0 
+                result = a*b*1000 if c > 0 else 0
                 # value = d[0]*d[1] if d[2] > 0 else 0
                 put(self.db,sheet,province,"Aa Production - based on protocol",year,result)
-        timer.stop() 
+        timer.stop()
 
     def bauxite_usage_bayer(self,year):
         timer.start()
@@ -684,7 +653,7 @@ class Bauxite():
                 value = 1/(((d[0]-(d[7]*d[6]))*(1-d[2])*(1-d[3])*d[4])/d[5]) if d[1] > 0 else 0 # d[6] changed to d[8]
                 put(self.db,sheet,province,"Bauxite Usage-Bayer",year,value)
         timer.stop()
-            
+
     def bauxite_usage_bayer_mud_sinter(self,year):
         timer.start()
         for sheet in sheets:
@@ -705,7 +674,7 @@ class Bauxite():
                 value = 1/((d[0]-d[7]*d[6])*(1-d[2])*(1-d[3])*d[4]/d[5]) if d[1] > 0 else 0
                 put(self.db,sheet,province,"Bauxite Usage-Bayer Mud Sinter",year,value)
         timer.stop()
-            
+
     def bauxite_usage_sinter(self,year):
         timer.start()
         for sheet in sheets:
@@ -723,7 +692,7 @@ class Bauxite():
                 value = 1/(d[0]*(1-d[2])*(1-d[3])*d[4]/d[5]) if d[1] > 0 else 0
                 put(self.db,sheet,province,"Bauxite Usage-Sinter",year,value)
         timer.stop()
-            
+
     def bauxite_usage(self,year):
         timer.start()
         for sheet in sheets:
@@ -738,8 +707,9 @@ class Bauxite():
                     ]
                 value = d[0]*d[3]+d[1]*d[4]+d[2]*d[5]
                 put(self.db,sheet,province,"Bauxite Usage",year,value)
+                self.all_bauxite_usage.loc[(self.all_bauxite_usage.refinery == sheet) & (self.all_bauxite_usage.province == province), year] = value
         timer.stop()
-            
+
     def bauxite_consumption(self,year):
         timer.start()
         for sheet in sheets:
@@ -753,7 +723,7 @@ class Bauxite():
                 value = d[0] if year == '2004' else d[1]*d[2]
                 total += value
                 if int(year) > 2004:
-                    self.proddata2.loc[(self.proddata2['refinery'] == sheet) & (self.proddata2['province'] == province), year] = value 
+                    self.proddata2.loc[(self.proddata2['refinery'] == sheet) & (self.proddata2['province'] == province), year] = value
                 put(self.db,sheet,province,"Bauxite Consumption",year,value)
             self.proddata3.loc[(self.proddata3['refinery'] == sheet), year] = total
             prod4 = 0
@@ -769,7 +739,7 @@ class Bauxite():
                     else:
                         prod4 = 0
             self.proddata4.loc[(self.proddata4['refinery'] == sheet), year] = prod4
-            self.proddata5.loc[(self.proddata5['refinery'] == sheet), year] = self.proddata1.loc[(self.proddata1['refinery'] == sheet), year].sum() if prod4 > 0 else 0     
+            self.proddata5.loc[(self.proddata5['refinery'] == sheet), year] = self.proddata1.loc[(self.proddata1['refinery'] == sheet), year].sum() if prod4 > 0 else 0
         timer.stop()
 
     def calcdep1(self,year):
@@ -782,11 +752,12 @@ class Bauxite():
         self.depdata1.at[8,year] = self.depdata1[year].sum()
         timer.stop()
 
-    #capacity 
+    #capacity
     def depcap(self,year): #
         timer.start()
         self.depcap1[year] = self.depcap1[year].astype(float)
         for refinery in sheets:
+
             v = self.capdata1.loc[(self.capdata1['refinery'] == refinery), year].values[0] if self.proddata4.loc[(self.proddata4['refinery'] == refinery), year].values[0] > 0 else 0
             self.depcap1.loc[(self.depcap1['refinery'] == refinery), year] = v
         timer.stop()
@@ -809,7 +780,7 @@ class Bauxite():
             self.depdata6.at[i,year] = w-v
         self.depdata6.at[8,year] = self.depdata6[year].sum()
         timer.stop()
-    
+
     def calcdep7(self,year):
         timer.start()
         for i in range(5):
@@ -825,7 +796,9 @@ class Bauxite():
     def calcprod6(self,year):
         timer.start()
         for refinery in sheets:
+            print(refinery)
             tp = self.proddata6[self.proddata6['refinery'] == refinery]
+
             v = self.depdata7.loc[ (self.depdata7.category == tp['category'].values[0]) & (self.depdata7.bauxite == tp['bauxite'].values[0]), year ].sum()
             w = self.depdata7.loc[ (self.depdata7.technology == tp['technology'].values[0]) & (self.depdata7.bauxite == tp['bauxite'].values[0]), year ].sum()
             z = self.proddata1.loc[self.proddata1['refinery'] == refinery, year].sum()
@@ -840,7 +813,7 @@ class Bauxite():
             self.proddata6.loc[self.proddata6['refinery'] == refinery,year] = (v+w)*z
         timer.stop()
 
-    # const needs to extracted 
+    # const needs to extracted
     def calcprod7(self,year):
         timer.start()
         s = 2020
@@ -880,7 +853,7 @@ class Bauxite():
                 prod_1 = self.proddata1.loc[self.proddata1['refinery'] == refinery, year]
                 prod_8 = self.proddata8.loc[self.proddata8['refinery'] == refinery, year]
                 v = prod_1 - prod_8
-            else: 
+            else:
                 v = 0
             self.proddata9.loc[self.proddata9['refinery'] == refinery, year] = v
         timer.stop()
@@ -904,7 +877,7 @@ class Bauxite():
             w = np.array(self.db.loc[(refinery, slice(None), "Sourcing Mix"), year])
             bu = sum(d*w)
             if bu > 0:
-                v = self.proddata7.loc[self.proddata7['refinery'] == refinery,year] 
+                v = self.proddata7.loc[self.proddata7['refinery'] == refinery,year]
             else:
                 v = 0
             self.prodout.loc[self.prodout['refinery'] == refinery,year] = v
@@ -970,7 +943,7 @@ class Bauxite():
         self.depdata13[year] = self.depdata13[year].astype(float)
         for i in range(5):
             if i < 4:
-                v = self.proddata2.loc[self.proddata2.Province==self.depdata13['category'][i]][self.proddata2.bauxite==self.depdata13['bauxite'][i]][year].sum()
+                v = self.proddata2.loc[self.proddata2.province==self.depdata13['category'][i]][self.proddata2.bauxite==self.depdata13['bauxite'][i]][year].sum()
             else:
                 v = (self.proddata2.loc[self.proddata2.bauxite==self.depdata13['bauxite'][i]][year].sum())-(self.depdata13[year][0]+self.depdata13[year][1]+self.depdata13[year][2]+self.depdata13[year][3])
             self.depdata13.at[i,year] = v
@@ -1044,7 +1017,7 @@ class Bauxite():
         v4 = v1+v3
         self.bauxitedata1.at[0,year] = v1
         self.bauxitedata1.at[1,year] = v2
-        
+
         self.bauxitedata1.at[2,year] = v3
         self.bauxitedata1.at[3,year] = v4
         timer.stop()
@@ -1062,7 +1035,7 @@ class Bauxite():
         self.bauxitedata2.at[2,year] = v3
         self.bauxitedata2.at[3,year] = v4
         timer.stop()
-            
+
     def bauxite_cumulative(self,year):
         timer.start()
         for sheet in sheets:
@@ -1077,7 +1050,7 @@ class Bauxite():
                 put(self.db,sheet,province,"Bauxite Cumulative",year,value)
         timer.stop()
 
-    # starts here   
+    # starts here
     def opening_stock(self,year):
         timer.start()
         for sheet in sheets:
@@ -1113,8 +1086,9 @@ class Bauxite():
                     ]
                 value = d[0]-d[1] if d[0]-d[1] > 0 else 0
                 put(self.db,sheet,province,"Closing Stock",year,value)
+                self.all_closing_stock.loc[(self.all_closing_stock.refinery == sheet) & (self.all_closing_stock.province == province), year] = value
         timer.stop()
-            
+
     def closing_stock_portion_of_total(self,year):
         timer.start()
         for sheet in sheets:
@@ -1128,7 +1102,7 @@ class Bauxite():
                     self.plotlink.loc[(self.plotlink['refinery'] == sheet) & (self.plotlink['province'] == province), year] = value
                 put(self.db,sheet,province,"Closing Stock - portion of total",year,value)
         timer.stop()
-            
+
     def cs_outlook(self,year):
         timer.start()
         for sheet in sheets:
@@ -1152,9 +1126,9 @@ class Bauxite():
                             value = (d[1]-d[0]*d[4]/d[3])
                     else:
                         value = 0
-                put(self.db,sheet,province,"C/S Outlook (n+1)",year,value)            
+                put(self.db,sheet,province,"C/S Outlook (n+1)",year,value)
         timer.stop()
-            
+
     def cs_outlook_total(self,year):
         timer.start()
         for sheet in sheets:
@@ -1166,7 +1140,7 @@ class Bauxite():
                 value = d[1]/d[0] if d[0] > 0 else 0
                 put(self.db,sheet,province,"C/S Outlook (n+1) % of total",year,value)
         timer.stop()
-    
+
     def domesticopenstrip(self):
         timer.start()
         for sheet in sheets:
@@ -1325,7 +1299,7 @@ class Bauxite():
             "Henan":0,
             "Shanxi":0,
             "Other":30
-        } 
+        }
         for sheet in sheets:
             for province in Provinces:
                 value = self.summarydb.loc[self.summarydb.province==province][sheet+' Avg Distance'].sum()
@@ -1334,9 +1308,9 @@ class Bauxite():
         timer.stop(result)
 
     def Rail01(self):# 19 cell 507
-        timer.start()    
+        timer.start()
         for sheet in sheets:
-            for province in Provinces:    
+            for province in Provinces:
                 val = 0
                 result = [0, *np.full(self.max_col-1, val)]
                 put(self.db,sheet,province,"Rail-1", None, result)
@@ -1491,11 +1465,11 @@ class Bauxite():
                         np.array(get(self.db,sheet,province,"thirdparty sea freight")),
                         np.array(get(self.db,sheet,province,"thirdparty port to refinery")),
                         np.array([0, *self.exlist])
-                    ] 
+                    ]
                 result = (d[0]+d[1])*d[3]+d[2] #formula here
                 put(self.db,sheet,province,"thirdparty total-rmb", None, result)
         timer.stop(result)
-        
+
     def thirdpartytotalUS(self):# 19 cell 482
         timer.start()
         for sheet in sheets:
@@ -1537,7 +1511,7 @@ class Bauxite():
         timer.start()
         for sheet in sheets:
             for province in Provinces:
-                result = get(self.db,sheet,province,"Road-1")    
+                result = get(self.db,sheet,province,"Road-1")
                 put(self.db,sheet,province,"Road1", None, result)
         timer.stop(result)
 
@@ -1678,7 +1652,7 @@ class Bauxite():
                 put(self.db,sheet,province,"Bauxite cost delivered to aa refinery", None, result)
         timer.stop(result)
 
-    #  back to WORK 
+    #  back to WORK
     def BauxitePriceCost1(self,year):# 19 cell 368
         timer.start()
         for sheet in sheets:
@@ -1728,7 +1702,7 @@ class Bauxite():
 
                     ]
                 value = (d[0]*d[8]*d[3]+d[9])*d[4]*d[10] + d[1]*d[6]*d[11]*d[12]/d[13]+(d[9]+d[2]*d[0]*d[8]*d[3])*d[11]*d[12]/d[13] if d[7] > 0 else 0
-                
+
                 put(self.db,sheet,province,"Caustic Cost",year,value)
         timer.stop([value])
 
@@ -1765,7 +1739,7 @@ class Bauxite():
                         self.db.loc[(sheet,slice(None),"Pre-Calculation"), year].sum(),
                         get(self.db,sheet,province,"Pre-Calculation",year),
                     ]
-                value = d[1]/d[0] if d[0] > 0 else 0 
+                value = d[1]/d[0] if d[0] > 0 else 0
                 put(self.db,sheet,province,"Sourcing Mix",year,value)
         timer.stop(end=True)
 
@@ -1802,7 +1776,7 @@ class Bauxite():
                     b = self.depdata24.loc[self.depdata24.province==self.depdata21['category'][i]][self.depdata24.bauxite==self.depdata21['bauxite'][i]][year]
                     v = (a * b).sum()/self.depdata20.at[i,year]
                     self.depdata21.at[i,year] = v
-                else: 
+                else:
                     self.depdata21.at[i,year] = 0
             self.depdata21.at[5,year] = self.depdata21.loc[:, year].sum() #checked formula
 
@@ -1967,7 +1941,7 @@ class Bauxite():
         Bauxite.calcdep22(self)
         Bauxite.calcdep23(self)
 
-            
+
 
 """
 sequence
@@ -1994,7 +1968,7 @@ depdata7
 # proddata1 with hardcoded value 137,406
 # cockpitdata3 with hardcoded value 88888
 
-# production precedent proddata7 8888 
+# production precedent proddata7 8888
 # aaproduction precedent production 8888
 # bauxiteconsumption precedent aaproduction 8888
 # proddata2 with precedent bauxiteconsumption 8888
@@ -2010,12 +1984,12 @@ depdata7
 
 
 # proddata2 with precedent bauxiteconsumption L119
-# proddata3 with precedent sumifs of proddata2 
+# proddata3 with precedent sumifs of proddata2
 # proddata4 with precedent pre proddata3,proddata1
 # proddata5 with precedent proddata4,proddata1
 # depdata1 with precedent sumifs of proddata2
 # cockpitdata1 with half-hardcoded value
-# cockpitdata2 with precedent cockpitdata1 
+# cockpitdata2 with precedent cockpitdata1
 # depdata2 with precedent cockpitdata2,depdata1
 # depdata3 with precedent pre depdata2
 # depdata4 with precedent sumifs of proddata1
@@ -2048,7 +2022,7 @@ proparam = [
     'mining characteristics mine depth underground',
     'mining characteristics dressing automation level',
     'mining characteristics production',
-    'mining characteristics mine type open',    
+    'mining characteristics mine type open',
     'mining characteristics mine type underground',
     'mining characteristics stripping ratio open pit',
     'mining characteristics stripping ratio underground',
@@ -2152,7 +2126,7 @@ proparam = [
     'underground anthracite coal delivered price'
     ]
 
-# provicial db calculations starts here 
+# provicial db calculations starts here
 
 
 globaldata = {
@@ -2195,7 +2169,7 @@ yearsinput = [
     "2029",
     "2030",
     "2031"
-    
+
 ]
 exlist = [
     8.1943,
@@ -2228,7 +2202,7 @@ exlist = [
 ]
 
 globaldb = pd.DataFrame(globaldata)
-bayersinterdb = pd.read_csv("ddm/caustic.csv")
+bayersinterdb = x.data("caustic")
 # sheet = bayersinterdb['refinery'].tolist()
 # sheet = sheets
 # _, idx = np.unique(sheet, return_index=True)
@@ -2297,7 +2271,7 @@ pm = ["Reserve",
       "Grade Profile Silica Grade",
       "A/S ratio draw-down",
       "Demand Profile",
-      "Sourcing factor",     
+      "Sourcing factor",
       "Aa Production - based on protocol",
       "Bauxite Usage-Bayer",
       "Bauxite Usage-Bayer Mud Sinter",
@@ -2356,11 +2330,11 @@ pm = ["Reserve",
       "Caustic Cost",
       "Bauxite & Caustic Cost",
       "Pre-Calculation",
-      "Sourcing Mix", 
+      "Sourcing Mix",
       "Caustic Usage",
       ]
 #pass#print("here")
-proddata1 = pd.read_csv("ddm/proddatah.csv")
+proddata1 = x.data("proddatah")
 
 otherlist = proddata1['province']
 provicialcalc = provincial()
@@ -2371,7 +2345,17 @@ provicialcalc.provincialcalcall()
 
 print('TIme taken to run provincial {0} secs'.format(time.perf_counter() - st))
 sm = time.perf_counter()
-r = summary()
+s = x.data('other_controls')
+cs = s['cbix_switch'][0]
+if 1==1:
+    r = summary('ddm')
+    db_conv = Flatdbconverter("Draw Down Model")
+elif cs == 'yes':
+    r = summary('cbix')
+    tt = s['cbix_Bx_price'][0]
+    print("Draw Down Model CBIX "+str(int(tt)))
+    # db_conv = Flatdbconverter("Draw Down Model CBIX "+str(int(tt)))
+    db_conv = Flatdbconverter("Draw Down Model CBIX "+str(int(tt)))
 r.calcall1()
 smt = time.perf_counter() - sm
 print('TIme taken to run economic {0}'.format(smt))
@@ -2380,7 +2364,7 @@ mxid = pd.MultiIndex.from_product([sheets,province,pm])
 mxid2 = pd.MultiIndex.from_product([Province,proparam])
 db = pd.DataFrame(index=mxid,columns=yearsinput)
 idx = pd.IndexSlice
-summarydb = r.hdb 
+summarydb = r.hdb
 summarydb.to_csv('ddm/calc_sample_output.csv')
 # summarydb = pd.read_csv('ddm/calc_sample_output.csv')
 b1 = Bauxite(db,bayersinterdb,globaldb,summarydb,provicialcalc.db,otherlist,exlist)
@@ -2401,7 +2385,7 @@ def calc1():
     print('Time taken to initialise single cols: {0} secs'.format(l))
     b1.calc_bauxite_cost()
     print('Time taken to run bauxite prod cost for all years {0} secs'.format(time.perf_counter() - st - l))
-    
+
 def calc2():
     for y in years:
         print(y)
@@ -2496,6 +2480,9 @@ b1_proddata6 = db_conv.mult_year_single_output(b1.proddata6, 'Capprod 720')
 b1_proddata7 = db_conv.mult_year_single_output(b1.proddata7, 'Productions Sent to Refinery Sheets ')
 b1_proddata8 = db_conv.mult_year_single_output(b1.proddata8, 'AA Prodction from Domestic Bx')
 b1_proddata9 = db_conv.mult_year_single_output(b1.proddata9, 'AA Production from Import Bx')
+b1_closing_stock = db_conv.mult_year_single_output(b1.all_closing_stock, "Closing Stock Output")
+print(b1_closing_stock)
+b1_bauxite_usage = db_conv.mult_year_single_output(b1.all_bauxite_usage, "Bauxite Usage")
 b1_proddata10 = db_conv.mult_year_single_output(b1.proddata10, 'Capprod 1004')
 b1_depdata1 = db_conv.mult_year_single_output(b1.depdata1, 'Capprod 644')
 b1_capdata1 = db_conv.mult_year_single_output(b1.capdata1, 'decap1output')
@@ -2555,6 +2542,8 @@ b1_proddata6,
 b1_proddata7,
 b1_proddata8,
 b1_proddata9,
+b1_closing_stock,
+b1_bauxite_usage,
 b1_proddata10,
 b1_depdata1,
 b1_capdata1,
@@ -2600,11 +2589,11 @@ snapshot_output_data = pd.concat(dblist, ignore_index=True)
 snapshot_output_data = snapshot_output_data.loc[:, db_conv.out_col]
 snapshot_output_data.to_csv("snapshot_output_data.csv", index=False)
 print("Time taken to convet to flat db: {0}".format(time.perf_counter() - dbflat_time))
-# tdb = reltoflat(dblist,cnxn)            
+# tdb = reltoflat(dblist,cnxn)
 # pd.to_csv("ddm/outputdata/snapshot_output_data.csv")
 '''
 with pd.option_context('display.max_rows',None, 'display.max_columns', None):
-    
+
     b1.db.to_csv('outputdata/wholerefinery.csv')
     b1.proddata1.to_csv('outputdata/capprod137_proddata1output.csv',index=False)
     b1.proddata2.to_csv('outputdata/collector1256_proddata2output.csv',index=False)

@@ -48,6 +48,7 @@ class DB_TO_FILE:
         cols = list(join2.columns)
         cols = [cols[-1]] + cols[:-1]
         join2= join2[cols]
+        # join2.to_excel("db_inputs/inputs.xlsx")
         return join2
 
     # lookuptabels
@@ -61,15 +62,17 @@ class DB_TO_FILE:
         #join4=join3.copy()    
         join3=join3.pivot_table(index=['province'], columns=['cost_type'], values='cost') #,aggfunc='sum')
         join3.reset_index(inplace=True)
-
+        # join3.to_excel("db_inputs/lookuptables.xlsx")
         return join3
 
-    #other controls and Province switch
+    # depth_buckets
     def depth_buckets(self):
+        # self.df5.to_excel("db_inputs/depth_buckets.xlsx")
         return self.df5
 
     #other controls and Province switch
     def other_controls(self):
+        # self.df6.to_excel("db_inputs/other_controls_and_Province_switch.xlsx")
         return self.df6
 
 

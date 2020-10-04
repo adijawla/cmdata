@@ -6,6 +6,7 @@ Created on Sat Feb  1 12:38:05 2020
 """
 import simply
 from simply import *
+from restruc import *
 import warnings
 from ddm.codetimer.timer import Timer
 import numpy as np
@@ -183,7 +184,7 @@ class provincial():
         self.years = ["2005", "2006", "2007", "2008", '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031']
         self.db = pd.DataFrame(index=mxid,columns=self.years)
         self.pdi = pd.DataFrame(index=mxid1, columns=self.years)
-        self.df = pd.read_csv('ddm/provincialdb.csv')
+        self.df = x.data('provincialdb')
         self.pdi_input = pd.read_csv('ddm/price_cost_index_input.csv')
         self.idx = pd.IndexSlice 
         self.max_col = len(self.years)

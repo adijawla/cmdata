@@ -21,11 +21,20 @@ dblist = []
 
     """
 
+def join_indexer(r, df):
+    return r.join(df)
 
+all_indexers = {
+
+}
+
+all_dependencies = {
+
+}
 
 class CBIX:
     def __init__(self):
-        
+
         # self.master_date_cell            = pd.read_excel("cbixinput.xlsx", sheet_name="Master date cell")
         # self.cbix_co_efficients_inputs   = pd.read_excel("cbixinput.xlsx", sheet_name="CBIX Co-Efficients Determination Inputs")
 
@@ -33,34 +42,34 @@ class CBIX:
         # self.cbix_cf_trade_details       = pd.read_excel("cbixinput.xlsx", sheet_name="CBIX Co-Efficients Determination")
         # self.target_cbix_price           = pd.read_excel("cbixinput.xlsx", sheet_name="Target CBIX Price")
 
-        self.master_date_cell            = cbix_input["cbix_Master_date_cell"]
-        self.cbix_co_efficients_inputs   = cbix_input["cbix_CBIX_CoEfficients_Determination_Inputs"]
+        self.master_date_cell            = cbix_input["Master_date_cell"]
+        self.cbix_co_efficients_inputs   = cbix_input["cbix_coefficients_determination_inputs"]
 
-        self.freights_trade_details      = cbix_input["cbix_Freights_US_per_wmt_Trade_Details"]
-        self.cbix_cf_trade_details       = cbix_input["cbix_CBIX_CoEfficients_Determination"]
-        self.target_cbix_price           = cbix_input["cbix_Target_CBIX_Price"]
+        self.freights_trade_details      = cbix_input["freights_perwmt_tradedata"]
+        self.cbix_cf_trade_details       = cbix_input["cbix_coefficients_determination"]
+        self.target_cbix_price           = cbix_input["Target_CBIX_Price"]
 
         self.freights_trade_details.loc[:, "Date"] = self.master_date_cell.loc[0, "Date"]
         self.cbix_cf_trade_details.loc[:, "Date"]  = self.master_date_cell.loc[0, "Date"]
+
+        self.all_indexers                 = {}
 
         for z, i in zip(range(0, self.cbix_cf_trade_details.shape[0], 2), range(int(self.cbix_cf_trade_details.shape[0]/2))):
             if i % 2 == 0:
                 self.cbix_cf_trade_details.at[z:z+2, "LT R.Silica"]         = self.cbix_co_efficients_inputs.loc[0, "LT R.Silica"] + self.cbix_co_efficients_inputs.loc[1, "LT R.Silica"]
             else:
                 self.cbix_cf_trade_details.at[z:z+2, "LT R.Silica"]         = self.cbix_co_efficients_inputs.loc[0, "LT R.Silica"] - self.cbix_co_efficients_inputs.loc[1, "LT R.Silica"]
-        
-        v1 = 4
+
+        # v1 = 4
         for z in range(self.cbix_cf_trade_details.shape[0]):
             if (z+1) <= int(self.cbix_cf_trade_details.shape[0] / 2):
                 self.cbix_cf_trade_details.at[z, "LT Avail. Alumina"]   = self.cbix_co_efficients_inputs.loc[0, "LT Avail. Alumina"] + self.cbix_co_efficients_inputs.loc[1, "LT Avail. Alumina"] - self.cbix_cf_trade_details.loc[z, "LT R.Silica"]
             else:
                 self.cbix_cf_trade_details.at[z, "LT Avail. Alumina"]   = self.cbix_co_efficients_inputs.loc[0, "LT Avail. Alumina"] - self.cbix_co_efficients_inputs.loc[1, "LT Avail. Alumina"] - self.cbix_cf_trade_details.loc[z, "LT R.Silica"]
-            
             if (z) % 2 == 0:
                 self.cbix_cf_trade_details.at[z, "Moisture"]            = self.cbix_co_efficients_inputs.loc[0, "Moisture"] + self.cbix_co_efficients_inputs.loc[1, "Moisture"]
             else:
-                self.cbix_cf_trade_details.at[z, "Moisture"]            = self.cbix_co_efficients_inputs.loc[0, "Moisture"] - self.cbix_co_efficients_inputs.loc[1, "Moisture"]    
-
+                self.cbix_cf_trade_details.at[z, "Moisture"]            = self.cbix_co_efficients_inputs.loc[0, "Moisture"] - self.cbix_co_efficients_inputs.loc[1, "Moisture"]
 
 
         """
@@ -85,7 +94,7 @@ class CBIX:
         self.canals                      = pd.read_excel("cbixinput.xlsx", sheet_name="Canals")
         self.lime                        = pd.read_excel("cbixinput.xlsx", sheet_name="Lime")
 
-        """    
+        """
 
 
         """
@@ -113,43 +122,58 @@ class CBIX:
         """
 
 
-        self.indexes_mines               = cbix_input["cbix_Indices_Mines_Exporting_Ports"]
-        self.spc_leg_shp_table           = cbix_input["cbix_Special__Leg_Shipping_Table"]
-        self.mj_max_cargo                = cbix_input["cbix_MRN_or_Juruti_max_cargo"]
-        self.ship_time_cr                = cbix_input["cbix_Ship_Time_Charter_Rates"]
-        self.china_imp_prts              = cbix_input["cbix_China_n_Importing_Ports"]
-        self.china_ps                    = cbix_input["cbix_China_Price_Series"]
+        self.indexes_mines               = cbix_input["Indices_Mines_Exporting_Port"]
+        self.spc_leg_shp_table           = cbix_input["special_leg_shipping"]
+        self.mj_max_cargo                = cbix_input["MRN_Juruti_max_cargo"]
+        self.ship_time_cr                = cbix_input["Ship_Time_Charter_Rates"]
+        self.china_imp_prts              = cbix_input["China_Importing_Ports"]
+        self.processing_factors          = cbix_input["processing_factors"]
+        self.ship_fuel_prices            = cbix_input["Ship_Fuel_Prices"]
+        self.china_ps                    = cbix_input["china_price_series"]
         self.china_ps["Lignitious Coal – Date"]     = self.china_ps["Lignitious Coal – Date"].astype("datetime64[ns]")
         self.china_ps["Caustic Soda – Date"]        = self.china_ps["Caustic Soda – Date"].astype("datetime64[ns]")
         self.china_ps["Lime – Date"]                = self.china_ps["Lime – Date"].astype("datetime64[ns]")
         self.china_ps["Mud disposal cost - Date"]   = self.china_ps["Mud disposal cost - Date"].astype("datetime64[ns]")
-        self.processing_factors          = cbix_input["cbix_processing_factors"]
-        self.mud_disposal_cost           = cbix_input["cbix_Mud_disposal_cost"]
-        self.ship_fuel_prices            = cbix_input["cbix_Ship_Fuel_Prices"]
-        self.lignitious_coal             = cbix_input["cbix_Lignitious_Coal"]
-        print(self.lignitious_coal)
+
+        self.lignitious_coal             = self.china_ps.loc[:, ["Lignitious Coal – Date", 'Lignitious Coal – Price', 'Lignitious Coal – Energy value']]
         self.lignitious_coal.columns     = ["Date", "Lignitious Coal Price (RMB/t) (exc VAT)", "Energy value (kcal/kg)"]
-        self.lignitious_coal             = self.lignitious_coal[1:]
-        print(self.lignitious_coal)
-        self.sheetname_class             = cbix_input["cbix_Sheetname_Class"]
-        self.global_factors              = cbix_input["cbix_Global_factors"]
-        self.trade_details               = cbix_input["cbix_Trade_Details"]
-        self.port_linkages               = cbix_input["cbix_Port_Linkages"]
-        self.canals_class                = cbix_input["cbix_Canals_Class"]
-        self.caustic_soda                = cbix_input["cbix_Caustic_Soda"]
-        self.ship_speeds                 = cbix_input["cbix_Ship_Speeds"]
-        self.fx_rates                    = cbix_input["cbix_FX_Rates"]
-        self.canals                      = cbix_input["cbix_Canals"]
-        self.lime                        = cbix_input["cbix_Lime"]
+
+        self.mud_disposal_cost           = self.china_ps.loc[:, ["Mud disposal cost - Date", "Mud disposal cost – Price"]]
+        self.mud_disposal_cost.columns   = ["Date", "Mud disposal cost Price (RMB/t.mud dry)"]
+
+        self.caustic_soda                = self.china_ps.loc[:, ["Caustic Soda – Date","Caustic Soda – Price", "Caustic Soda – Grade"]]
+        self.caustic_soda.columns        = ["Date", "Caustic Soda Price (RMB/t) (exc VAT)", "Grade"]
+
+        self.lime                        = self.china_ps.loc[:, ["Lime – Date", "Lime – Price"]]
+        self.lime.columns                = ["Date", "Lime Price (RMB/t)"]
+
+
+        self.sheetname_class             = cbix_input["vessel_class"]
+        self.global_factors              = cbix_input["global_factors"]
+        self.trade_details               = cbix_input["Trade_Details"]
+        self.trade_details               = self.trade_details.loc[:13,:]
+        self.port_linkages               = cbix_input["Port_Linkages"]
+        self.canals_class                = cbix_input["Canals_Class"]
+        self.ship_speeds                 = cbix_input["ship_speed"]
+        self.fx_rates                    = cbix_input["fxrates_withdates"]
+        self.canals                      = cbix_input["Canal"]
+
+        # self.canals_class                = self.canals_class[self.canals_class["model_id"] == "model_8"].reset_index().drop(['index'],axis=1)
+        # self.global_factors              = self.global_factors[self.global_factors["model_id"] == "model_8"].reset_index().drop(['index'],axis=1)
+        # self.trade_details               = self.trade_details[self.trade_details["model_id"] == "model_8"].reset_index().drop(['index'],axis=1)
+        # self.port_linkages               = self.port_linkages[self.port_linkages["model_id"] == "model_8"].reset_index().drop(['index'],axis=1)
+        # self.ship_speeds                 = self.ship_speeds[self.ship_speeds["model_id"] == "model_8"].reset_index().drop(['index'],axis=1)
+        # self.fx_rates                    = self.fx_rates[self.fx_rates["model_id"] == "model_8"].reset_index().drop(['index'],axis=1)
+        # self.canals                      = self.canals[self.canals["model_id"] == "model_8"].reset_index().drop(['index'],axis=1)
         self.db                          = {} #All generated outputs are temporarily stored here
 
         #CBIX
         co_efficient_df = pd.DataFrame(columns=["Coefficient", "Value"])
         co_efficient_df.at[0, "Coefficient"] = "C0"
-        co_efficient_df.at[0, "Value"]       = self.cbix_cf_trade_details.loc[:, "Price"].mean()        
-        
+        co_efficient_df.at[0, "Value"]       = self.cbix_cf_trade_details.loc[:, "Price"].mean()
+
         co_efficient_df.at[1, "Coefficient"] = "C1"
-        co_efficient_df.at[1, "Value"]       = (np.mean(self.cbix_cf_trade_details.loc[:3, "Price"]) - np.mean(self.cbix_cf_trade_details.loc[4:, "Price"])) / (2 * self.cbix_co_efficients_inputs.loc[1, "LT Avail. Alumina"]) / 100        
+        co_efficient_df.at[1, "Value"]       = (np.mean(self.cbix_cf_trade_details.loc[:3, "Price"]) - np.mean(self.cbix_cf_trade_details.loc[4:, "Price"])) / (2 * self.cbix_co_efficients_inputs.loc[1, "LT Avail. Alumina"]) / 100
 
         co_efficient_df.at[2, "Coefficient"] = "C2"
         co_efficient_df.at[2, "Value"]       = (np.mean([self.cbix_cf_trade_details.loc[0:1, "Price"], self.cbix_cf_trade_details.loc[4:5, "Price"]]) - np.mean([self.cbix_cf_trade_details.loc[2:3, "Price"], self.cbix_cf_trade_details.loc[6:, "Price"]])) / (2 * self.cbix_co_efficients_inputs.loc[1, "LT R.Silica"]) / 100
@@ -540,19 +564,23 @@ class CBIX:
 
         new_df.at[:, "Mine"] = self.trade_details.loc[:, "Mine"]
         new_df.at[:, "Date"] = self.trade_details.loc[:, "Date"].map(lambda x: x.date())
-
+        
         freights_df.at[:, "Mine"] = self.freights_trade_details.loc[:, "Mine"]
         freights_df.at[:, "Date"] = self.freights_trade_details.loc[:, "Date"].map(lambda x: x.date())
 
         cbix_coe_df.at[:, "Mine"] = self.cbix_cf_trade_details.loc[:, "Mine"]
         cbix_coe_df.at[:, "Date"] = self.cbix_cf_trade_details.loc[:, "Date"].map(lambda x: x.date())
-
-
+        
         def lookup(search1, search2, target):
-            for ind in range(self.indexes_mines.shape[0]):
-                if self.indexes_mines.loc[ind, "Mine"] == search1 and self.indexes_mines.loc[ind, "Date"].date() <= search2:
-                    return target.iloc[ind]
-            return 0
+            # for ind in range(self.indexes_mines.shape[0]):
+            idx = self.indexes_mines.loc[:, "Mine"].map(lambda x: x.lower() == search1.lower())
+            ind =  self.indexes_mines.loc[:, "Date"].map(lambda x: x.date() <= search2)
+            v = idx & ind
+            
+            try:
+                return target[v].tolist()[0]
+            except Exception:
+                return np.nan
         #trade details
         for col in self.nominal_mine_col[2:]:
             for i in range(self.trade_details.shape[0]):
@@ -566,11 +594,17 @@ class CBIX:
             for i in range(self.cbix_cf_trade_details.shape[0]):
                 cbix_coe_df.at[i, col] = lookup(cbix_coe_df.loc[i, "Mine"], cbix_coe_df.loc[i, "Date"], self.indexes_mines.loc[:, "DWT" if col == 'Tonnage typical vessel' else col])
 
+        self.all_indexers = {
+            **self.all_indexers,
+            "outputs/nominal_mine_div_index_specifications.csv": pd.DataFrame(new_df["Mine"].values, columns=["Mine"]),
+            "outputs/freights/nominal_mine_div_index_specifications.csv": pd.DataFrame(freights_df["Mine"].values, columns=["Mine"]),
+            "outputs/cbix_co_efficients_determination/nominal_mine_div_index_specifications.csv": pd.DataFrame(cbix_coe_df["Mine"].values, columns=["Mine"])
+        }
 
         self.db["outputs/nominal_mine_div_index_specifications.csv"] = new_df
         self.db["outputs/freights/nominal_mine_div_index_specifications.csv"] = freights_df
         self.db["outputs/cbix_co_efficients_determination/nominal_mine_div_index_specifications.csv"] = cbix_coe_df
-
+        
     def global_factors_func(self):
         cols = self.global_factors.columns.tolist()
         cols.insert(23, "MDO/MGO burn vessel DWT ^2 coefficient")
@@ -587,7 +621,7 @@ class CBIX:
                     new_df.at[i, new_df.columns[j]] = self.global_factors.loc[0, new_df.columns[j]]
                 else:
                     new_df.at[i, new_df.columns[j]] = 0
-        
+
         for i in range(len(self.freights_trade_details)):
             for j in range(len(freights_df.columns)):
                 if freights_df.columns[j] in self.global_factors.columns:
@@ -605,24 +639,19 @@ class CBIX:
         new_df.drop("Date", axis=1, inplace=True)
         freights_df.drop("Date", axis=1, inplace=True)
         cbix_coe_df.drop("Date", axis=1, inplace=True)
-        
         self.db["outputs/global_factors.csv"] = new_df
         self.db["outputs/freights/global_factors.csv"] = freights_df
         self.db["outputs/cbix_co_efficients_determination/global_factors.csv"] = cbix_coe_df
-    
+
     def final_specifications_to_viu_adjustment(self):
         glb_factors  = self.db["outputs/global_factors.csv"]
         freights_glb_factors  = self.db["outputs/freights/global_factors.csv"]
         cbix_coe_glb_factors  = self.db["outputs/cbix_co_efficients_determination/global_factors.csv"]
-        
+
         nominal_mine = self.db["outputs/nominal_mine_div_index_specifications.csv"]
         freights_nominal_mine = self.db["outputs/freights/nominal_mine_div_index_specifications.csv"]
-        cbix_coe_nominal_mine = self.db["outputs/cbix_co_efficients_determination/nominal_mine_div_index_specifications.csv"] 
+        cbix_coe_nominal_mine = self.db["outputs/cbix_co_efficients_determination/nominal_mine_div_index_specifications.csv"]
 
-        print(nominal_mine)
-        print(freights_nominal_mine)
-        print(cbix_coe_glb_factors)
-        
         new_df       = pd.DataFrame(columns=self.final_specs_columns)
         freights_df  = pd.DataFrame(columns=self.final_specs_columns)
         cbix_coe_df  = pd.DataFrame(columns=self.final_specs_columns)
@@ -667,7 +696,7 @@ class CBIX:
 
             #freights
         for i in range(len(self.freights_trade_details)):
-            freights_df.at[i, "Mine"]                             = self.freights_trade_details.loc[i, "Mine"]
+            freights_df.at[i, "Mine"]                             = self.freights_trade_details.loc[i, "Mine"]           
             freights_df.at[i, "Total Alumina"]                    = freights_nominal_mine.loc[i, "Total Alumina"] if pd.isna(self.freights_trade_details.loc[i, "Total Alumina"]) else self.freights_trade_details.loc[i, "Total Alumina"]
             freights_df.at[i, "LT Avail. Alumina"]                = freights_nominal_mine.loc[i, "LT Avail. Alumina"] if pd.isna(self.freights_trade_details.loc[i, "LT Avail. Alumina"]) else self.freights_trade_details.loc[i, "LT Avail. Alumina"]
             freights_df.at[i, "Total Silica"]                     = freights_nominal_mine.loc[i, "Total Silica"] if pd.isna(self.freights_trade_details.loc[i, "Total Silica"]) else self.freights_trade_details.loc[i, "Total Silica"]
@@ -717,8 +746,7 @@ class CBIX:
 
         self.db["outputs/final_specifications_to_viu_adjustment.csv"] = new_df
         self.db["outputs/freights/final_specifications_to_viu_adjustment.csv"] = freights_df
-        self.db["outputs/cbix_co_efficients_determination/final_specifications_to_viu_adjustment.csv"] = cbix_coe_df
-
+        self.db["outputs/cbix_co_efficients_determination/final_specifications_to_viu_adjustment.csv"] = cbix_coe_df        
 
     def bauxite_details_input_func(self):
         fin_spec_df = self.db["outputs/final_specifications_to_viu_adjustment.csv"]
@@ -730,7 +758,7 @@ class CBIX:
         cbix_coe_df = pd.DataFrame(columns=self.bauxite_details_columns)
 
         for i in range(len(self.trade_details)):
-            # new_df.at[i, "Price"]   = 
+            # new_df.at[i, "Price"]   =
             new_df.at[i, "Total Alumina"]           = fin_spec_df.loc[i, "Total Alumina"]
             new_df.at[i, "LT Avail. Alumina"]       = fin_spec_df.loc[i, "LT Avail. Alumina"]
             new_df.at[i, "Total Silica"]            = fin_spec_df.loc[i, "Total Silica"]
@@ -740,9 +768,9 @@ class CBIX:
             new_df.at[i, "Moisture"]                = fin_spec_df.loc[i, "Moisture"]
             new_df.at[i, "Processing"]              = fin_spec_df.loc[i, "Processing"]
             new_df.at[i, "Processing Penalties"]    = fin_spec_df.loc[i, "Processing Penalties to be applied (for organics, goehtite, impurities, crushing etc)"]
-        
+
         for i in range(len(self.freights_trade_details)):
-            # freights_df.at[i, "Price"]   = 
+            # freights_df.at[i, "Price"]   =
             freights_df.at[i, "Total Alumina"]           = freights_fin_spec_df.loc[i, "Total Alumina"]
             freights_df.at[i, "LT Avail. Alumina"]       = freights_fin_spec_df.loc[i, "LT Avail. Alumina"]
             freights_df.at[i, "Total Silica"]            = freights_fin_spec_df.loc[i, "Total Silica"]
@@ -752,9 +780,9 @@ class CBIX:
             freights_df.at[i, "Moisture"]                = freights_fin_spec_df.loc[i, "Moisture"]
             freights_df.at[i, "Processing"]              = freights_fin_spec_df.loc[i, "Processing"]
             freights_df.at[i, "Processing Penalties"]    = freights_fin_spec_df.loc[i, "Processing Penalties to be applied (for organics, goehtite, impurities, crushing etc)"]
-        
+
         for i in range(len(self.cbix_cf_trade_details)):
-            # cbix_coe_df.at[i, "Price"]   = 
+            # cbix_coe_df.at[i, "Price"]   =
             cbix_coe_df.at[i, "Total Alumina"]           = cbix_coe_fin_spec_df.loc[i, "Total Alumina"]
             cbix_coe_df.at[i, "LT Avail. Alumina"]       = cbix_coe_fin_spec_df.loc[i, "LT Avail. Alumina"]
             cbix_coe_df.at[i, "Total Silica"]            = cbix_coe_fin_spec_df.loc[i, "Total Silica"]
@@ -764,7 +792,7 @@ class CBIX:
             cbix_coe_df.at[i, "Moisture"]                = cbix_coe_fin_spec_df.loc[i, "Moisture"]
             cbix_coe_df.at[i, "Processing"]              = cbix_coe_fin_spec_df.loc[i, "Processing"]
             cbix_coe_df.at[i, "Processing Penalties"]    = cbix_coe_fin_spec_df.loc[i, "Processing Penalties to be applied (for organics, goehtite, impurities, crushing etc)"]
-        
+
         self.db["outputs/workings_for_viu_adjustmnet_of_trade_bauxite/bauxite_at_hand_cost_to_alumina_bauxite_details-input.csv"] = new_df
         self.db["outputs/workings_for_viu_adjustmnet_of_trade_bauxite/freights/bauxite_at_hand_cost_to_alumina_bauxite_details-input.csv"] = freights_df
         self.db["outputs/workings_for_viu_adjustmnet_of_trade_bauxite/cbix_co_efficients_determination/bauxite_at_hand_cost_to_alumina_bauxite_details-input.csv"] = cbix_coe_df
@@ -773,7 +801,7 @@ class CBIX:
         baux_dets_inputs          = self.db["outputs/workings_for_viu_adjustmnet_of_trade_bauxite/bauxite_at_hand_cost_to_alumina_bauxite_details-input.csv"]
         freights_baux_dets_inputs = self.db["outputs/workings_for_viu_adjustmnet_of_trade_bauxite/freights/bauxite_at_hand_cost_to_alumina_bauxite_details-input.csv"]
         cbix_coe_baux_dets_inputs = self.db["outputs/workings_for_viu_adjustmnet_of_trade_bauxite/cbix_co_efficients_determination/bauxite_at_hand_cost_to_alumina_bauxite_details-input.csv"]
-        
+
         new_df      = pd.DataFrame(columns=self.china_prcs_factrs_columns)
         freights_df = pd.DataFrame(columns=self.china_prcs_factrs_columns)
         cbix_coe_df = pd.DataFrame(columns=self.china_prcs_factrs_columns)
@@ -790,7 +818,7 @@ class CBIX:
         for i in range(len(self.trade_details)):
             for col in new_df.columns:
                 new_df.at[i, col] = lookup(self.trade_details.loc[i, "Date"].date(), baux_dets_inputs.loc[i, "Processing"], self.processing_factors.loc[:, col])
-        
+
         #frieghts
         for i in range(len(self.freights_trade_details)):
             for col in freights_df.columns:
@@ -809,12 +837,12 @@ class CBIX:
         bx_details = self.db["outputs/workings_for_viu_adjustmnet_of_trade_bauxite/bauxite_at_hand_cost_to_alumina_bauxite_details-input.csv"]     # pd.read_excel("outputs/workings_for_viu_adjustmnet_of_trade_bauxite/bauxite_at_hand_cost_to_alumina_bauxite_details-input.csv")
         freights_baux_dets_inputs = self.db["outputs/workings_for_viu_adjustmnet_of_trade_bauxite/freights/bauxite_at_hand_cost_to_alumina_bauxite_details-input.csv"]
         cbix_coe_baux_dets_inputs = self.db["outputs/workings_for_viu_adjustmnet_of_trade_bauxite/cbix_co_efficients_determination/bauxite_at_hand_cost_to_alumina_bauxite_details-input.csv"]
-        
+
 
         china_prc  = self.db["outputs/workings_for_viu_adjustmnet_of_trade_bauxite/bauxite_at_hand_cost_to_alumina_china_processing_factors.csv"]  # pd.read_excel("outputs/workings_for_viu_adjustmnet_of_trade_bauxite/bauxite_at_hand_cost_to_alumina_china_processing_factors.csv")
         freights_china_prc  = self.db["outputs/workings_for_viu_adjustmnet_of_trade_bauxite/freights/bauxite_at_hand_cost_to_alumina_china_processing_factors.csv"]
         cbix_coe_china_prc  = self.db["outputs/workings_for_viu_adjustmnet_of_trade_bauxite/cbix_co_efficients_determination/bauxite_at_hand_cost_to_alumina_china_processing_factors.csv"]
-        
+
         new_df      = pd.DataFrame(columns=self.alumina_prod_costs_columns)
         freights_df = pd.DataFrame(columns=self.alumina_prod_costs_columns)
         cbix_coe_df = pd.DataFrame(columns=self.alumina_prod_costs_columns)
@@ -830,7 +858,10 @@ class CBIX:
             freights_df.at[i, "Reactive Alumina"]     =  (freights_baux_dets_inputs.loc[i, "Total Alumina"] - freights_baux_dets_inputs.loc[i, "LT Avail. Alumina"] - freights_baux_dets_inputs.loc[i, "LT R.Silica"]) * freights_china_prc.loc[i, "HT Alumina Dissolution"] + freights_baux_dets_inputs.loc[i, "LT Avail. Alumina"] + freights_baux_dets_inputs.loc[i, "LT R.Silica"]
             freights_df.at[i, "Reactive Silica"]      =  freights_baux_dets_inputs.loc[i, "LT R.Silica"] + freights_china_prc.loc[i, "Quartz Attack"] * (freights_baux_dets_inputs.loc[i, "Total Silica"] - freights_baux_dets_inputs.loc[i, "LT R.Silica"])
             freights_df.at[i, "Available Alumina"]    =  freights_df.loc[i, "Reactive Alumina"] - freights_china_prc.loc[i, "DSP Al2O3:SiO2 (wt/wt)"] * freights_df.loc[i, "Reactive Silica"]
-            freights_df.at[i, "Tonnes per Tonne"]     =  1 / freights_df.loc[i, "Available Alumina"] / freights_china_prc.loc[i, "Extraction Efficiency %"]
+            try:
+                freights_df.at[i, "Tonnes per Tonne"]     =  1 / freights_df.loc[i, "Available Alumina"] / freights_china_prc.loc[i, "Extraction Efficiency %"]
+            except ZeroDivisionError:
+                freights_df.at[i, "Tonnes per Tonne"]  = 0
             freights_df.at[i, "Caustic Use t.NAOH / t.AA"] = freights_df.loc[i, "Reactive Silica"] * freights_china_prc.loc[i, "DSP NaOH:SiO2 (wt/wt)"] * freights_df.loc[i, "Tonnes per Tonne"] + freights_china_prc.loc[i, "Caustic wash loss (t.NaOH/t.aa)"]
 
 
@@ -851,10 +882,10 @@ class CBIX:
         freights_df = pd.DataFrame(columns=self.cdi_glb_factors_columns)
         cbix_coe_df = pd.DataFrame(columns=self.cdi_glb_factors_columns)
 
-        def lookup(search, target):           
+        def lookup(search, target):
             ind = (self.global_factors.loc[:, "Date"].map(lambda x: x.date()) <= search).map(lambda i: 1 if i == True else 0)
-            idx = (target.map(lambda x: pd.notna(x))).map(lambda i: 1 if i == True else 0)            
-            v = 1 / (ind * idx) 
+            idx = (target.map(lambda x: pd.notna(x))).map(lambda i: 1 if i == True else 0)
+            v = 1 / (ind * idx)
 
             return target.iloc[max(v.value_counts())-1]
 
@@ -892,11 +923,10 @@ class CBIX:
                     v = lookup(self.cbix_cf_trade_details.loc[i, "Date"], self.global_factors.loc[:, col])
 
                 cbix_coe_df.at[i, col] = v
-        
+
         self.db["outputs/common_data_inputs/common_data_inputs_global_factors.csv"] = new_df
         self.db["outputs/common_data_inputs/freights/common_data_inputs_global_factors.csv"] = freights_df
         self.db["outputs/common_data_inputs/cbix_co_efficients_determination/common_data_inputs_global_factors.csv"] = cbix_coe_df
-
 
     def common_data_inputs_fx_rates(self):
         comm_cols = [
@@ -912,7 +942,7 @@ class CBIX:
 
         def lookup(search, target):
             ind = (self.fx_rates.loc[:, "Date"].map(lambda x: x.date()) <= search) #.map(lambda i: 1 if i == True else 0)
-            idx = (target.map(lambda x: not pd.isna(x))) #.map(lambda i: 1 if i == True else 0)            
+            idx = (target.map(lambda x: not pd.isna(x))) #.map(lambda i: 1 if i == True else 0)
             v = (ind & idx)
             try:
                 return target[v].tolist()[-1]
@@ -923,20 +953,20 @@ class CBIX:
             new_df.at[i, "RMB per US$"] = lookup(self.trade_details.loc[i, "Date"].date(), self.fx_rates.loc[:, "RMB per US$"])
             new_df.at[i, "AU$ per US$"] = lookup(self.trade_details.loc[i, "Date"].date(), self.fx_rates.loc[:, "AU$ per US$"])
             new_df.at[i, "US$ per US$"] = lookup(self.trade_details.loc[i, "Date"].date(), self.fx_rates.loc[:, "US$ per US$"])
-            new_df.at[i, "IMF Special Drawing Rights to US Dollar"] = lookup(self.trade_details.loc[i, "Date"].date(), self.fx_rates.loc[:, "IMF Special Drawing Rights to US Dollar"])            
+            new_df.at[i, "IMF Special Drawing Rights to US Dollar"] = lookup(self.trade_details.loc[i, "Date"].date(), self.fx_rates.loc[:, "IMF Special Drawing Rights to US Dollar"])
 
         for i in range(len(self.freights_trade_details)):
             freights_df.at[i, "RMB per US$"] = lookup(self.freights_trade_details.loc[i, "Date"].date(), self.fx_rates.loc[:, "RMB per US$"])
             freights_df.at[i, "AU$ per US$"] = lookup(self.freights_trade_details.loc[i, "Date"].date(), self.fx_rates.loc[:, "AU$ per US$"])
             freights_df.at[i, "US$ per US$"] = lookup(self.freights_trade_details.loc[i, "Date"].date(), self.fx_rates.loc[:, "US$ per US$"])
-            freights_df.at[i, "IMF Special Drawing Rights to US Dollar"] = lookup(self.freights_trade_details.loc[i, "Date"].date(), self.fx_rates.loc[:, "IMF Special Drawing Rights to US Dollar"])            
+            freights_df.at[i, "IMF Special Drawing Rights to US Dollar"] = lookup(self.freights_trade_details.loc[i, "Date"].date(), self.fx_rates.loc[:, "IMF Special Drawing Rights to US Dollar"])
 
         for i in range(len(self.cbix_cf_trade_details)):
             cbix_coe_df.at[i, "RMB per US$"] = lookup(self.cbix_cf_trade_details.loc[i, "Date"].date(), self.fx_rates.loc[:, "RMB per US$"])
             cbix_coe_df.at[i, "AU$ per US$"] = lookup(self.cbix_cf_trade_details.loc[i, "Date"].date(), self.fx_rates.loc[:, "AU$ per US$"])
             cbix_coe_df.at[i, "US$ per US$"] = lookup(self.cbix_cf_trade_details.loc[i, "Date"].date(), self.fx_rates.loc[:, "US$ per US$"])
-            cbix_coe_df.at[i, "IMF Special Drawing Rights to US Dollar"] = lookup(self.cbix_cf_trade_details.loc[i, "Date"].date(), self.fx_rates.loc[:, "IMF Special Drawing Rights to US Dollar"])            
-                      
+            cbix_coe_df.at[i, "IMF Special Drawing Rights to US Dollar"] = lookup(self.cbix_cf_trade_details.loc[i, "Date"].date(), self.fx_rates.loc[:, "IMF Special Drawing Rights to US Dollar"])
+
         self.db["outputs/common_data_inputs/common_data_inputs_fx_rates.csv"] = new_df
         self.db["outputs/common_data_inputs/freights/common_data_inputs_fx_rates.csv"] = freights_df
         self.db["outputs/common_data_inputs/cbix_co_efficients_determination/common_data_inputs_fx_rates.csv"] = cbix_coe_df
@@ -962,14 +992,12 @@ class CBIX:
         cbix_coe_df = pd.DataFrame(columns=cip_cols)
 
         def lookup(search, target_date, target):
-            for ind in range(self.china_ps.shape[0]):
-                # print(target_date.iloc[:].values)
-                filt = target[target_date.iloc[:].map(lambda x: x.date()) <= search]
-                if filt is None:
-                     filt = target[target_date.iloc[:].map(lambda x: x.date()) >= search]
-                     return filt.iloc[0]
-                else:
-                    return filt.iloc[-1]
+            filt = target[target_date.iloc[:].map(lambda x: x.date()) <= search]
+            if filt is None:
+                filt = target[target_date.iloc[:].map(lambda x: x.date()) >= search]
+                return filt.iloc[0]
+            else:
+                return filt.iloc[-1]
 
         for i in range(len(self.trade_details)):
             new_df.at[i, "Energy Price"]  = lookup(self.trade_details.loc[i, "Date"].date(), self.china_ps.loc[:, "Lignitious Coal – Date"], self.china_ps.loc[:, "Lignitious Coal – Price"]) / fx_rates.loc[i, "RMB per US$"] / (lookup(self.trade_details.loc[i, "Date"].date(), self.china_ps.loc[:, "Lignitious Coal – Date"], self.china_ps.loc[:, "Lignitious Coal – Energy value"]) * glb_facs.loc[i, "conversion kt to t"] / glb_facs.loc[i, "kcal per GJ"])
@@ -988,7 +1016,7 @@ class CBIX:
             cbix_coe_df.at[i, "Caustic Price"] = lookup(self.cbix_cf_trade_details.loc[i, "Date"].date(), self.china_ps.loc[:, "Caustic Soda – Date"], self.china_ps.loc[:, "Caustic Soda – Price"]) / cbix_coe_fx_rates.loc[i, "RMB per US$"] / (lookup(self.cbix_cf_trade_details.loc[i, "Date"].date(), self.china_ps.loc[:, "Caustic Soda – Date"], self.china_ps.loc[:, "Caustic Soda – Grade"]))
             cbix_coe_df.at[i, "Lime Price"]    = lookup(self.cbix_cf_trade_details.loc[i, "Date"].date(), self.china_ps.loc[:, "Lime – Date"], self.china_ps.loc[:, "Lime – Price"]) / cbix_coe_fx_rates.loc[i, "RMB per US$"]
             cbix_coe_df.at[i, "Mud Disposal Cost"]    = lookup(self.cbix_cf_trade_details.loc[i, "Date"].date(), self.china_ps.loc[:, "Mud disposal cost - Date"], self.china_ps.loc[:, "Mud disposal cost – Price"]) / cbix_coe_fx_rates.loc[i, "RMB per US$"]
-            
+
 
         self.db["outputs/common_data_inputs/common_data_inputs_china_input_prices.csv"] = new_df
         self.db["outputs/common_data_inputs/freights/common_data_inputs_china_input_prices.csv"] = freights_df
@@ -1002,19 +1030,17 @@ class CBIX:
         final_spec           = self.db["outputs/final_specifications_to_viu_adjustment.csv"]     # pd.read_excel("outputs/final_specifications_to_viu_adjustment.csv")
         freights_fin_spec_df = self.db["outputs/freights/final_specifications_to_viu_adjustment.csv"]
         cbix_coe_fin_spec_df = self.db["outputs/cbix_co_efficients_determination/final_specifications_to_viu_adjustment.csv"]
-        
+
         new_df      = pd.DataFrame(columns=self.frieght_calcs_columns)
         freights_df = pd.DataFrame(columns=self.frieght_calcs_columns)
         cbix_coe_df = pd.DataFrame(columns=self.frieght_calcs_columns)
 
         def lookup(search, target_check, target):
-            for ind in range(target_check.shape[0]):
-                filt = target[target_check.iloc[:] <= search]
-                if filt is None:
-                     filt = target[target_check.iloc[:] >= search]
-                     return filt.iloc[0]
-                else:
-                    return filt.iloc[-1]
+            v = target_check.map(lambda x: float(x) <= float(search))
+            try:
+                return  target[v].tolist()[-1]
+            except Exception:
+                return np.nan
 
         for i in range(len(self.trade_details)):
             new_df.at[i, "Vessel dwt"] = ((final_spec.loc[i, "Cargo Tonnage"] if final_spec.loc[i, "Double Leg Shipping? (South America special transload leg)"] == "No" else final_spec.loc[i, "South america special transloading cargo tonnage"]) / (1 - final_spec.loc[i, "Moisture"])) / glb_facs.loc[i, "Max % of vessel deadweight allowed for loading"]
@@ -1022,7 +1048,7 @@ class CBIX:
             new_df.at[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] = lookup(new_df.loc[i, "Vessel dwt"], self.canals_class.loc[:, "DWT< tonnes"], self.canals_class.loc[:, "Class"])
             new_df.at[i, "Estimated LOA (length over all) (m)"]    = (new_df.loc[i, "Vessel dwt"] * glb_facs.loc[i, "LOA estimate correlation multiplier"] + glb_facs.loc[i, "LOA estimate correlation constant"])
             new_df.at[i, "Estimated NRT (net register tons)"]  = (new_df.loc[i, "Vessel dwt"] * glb_facs.loc[i, "NRT estimate correlation multiplier"] + glb_facs.loc[i, "NRT estimate correlation constant"])
-            new_df.at[i, "Estimated GRT (gross register tons)"]    = (new_df.loc[i, "Vessel dwt"] * glb_facs.loc[i, "GRT estimate correlation multiplier"] + glb_facs.loc[i, "GRT estimate correlation constant"])
+            new_df.at[i, "Estimated GRT (gross register tons)"]    = (new_df.loc[i, "Vessel dwt"] * glb_facs.loc[i, "GRT estimate correlation multiplier"] + glb_facs.loc[i, "GRT estimate correlation constant"])            
 
         for i in range(len(self.freights_trade_details)):
             freights_df.at[i, "Vessel dwt"] = ((freights_fin_spec_df.loc[i, "Cargo Tonnage"] if freights_fin_spec_df.loc[i, "Double Leg Shipping? (South America special transload leg)"] == "No" else freights_fin_spec_df.loc[i, "South america special transloading cargo tonnage"]) / (1 - freights_fin_spec_df.loc[i, "Moisture"])) / freights_glb_facs.loc[i, "Max % of vessel deadweight allowed for loading"]
@@ -1030,8 +1056,7 @@ class CBIX:
             freights_df.at[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] = lookup(freights_df.loc[i, "Vessel dwt"], self.canals_class.loc[:, "DWT< tonnes"], self.canals_class.loc[:, "Class"])
             freights_df.at[i, "Estimated LOA (length over all) (m)"]    = (freights_df.loc[i, "Vessel dwt"] * freights_glb_facs.loc[i, "LOA estimate correlation multiplier"] + freights_glb_facs.loc[i, "LOA estimate correlation constant"])
             freights_df.at[i, "Estimated NRT (net register tons)"]  = (freights_df.loc[i, "Vessel dwt"] * freights_glb_facs.loc[i, "NRT estimate correlation multiplier"] + freights_glb_facs.loc[i, "NRT estimate correlation constant"])
-            freights_df.at[i, "Estimated GRT (gross register tons)"]    = (freights_df.loc[i, "Vessel dwt"] * freights_glb_facs.loc[i, "GRT estimate correlation multiplier"] + freights_glb_facs.loc[i, "GRT estimate correlation constant"])
-
+            freights_df.at[i, "Estimated GRT (gross register tons)"]    = (freights_df.loc[i, "Vessel dwt"] * freights_glb_facs.loc[i, "GRT estimate correlation multiplier"] + freights_glb_facs.loc[i, "GRT estimate correlation constant"])            
 
         for i in range(len(self.cbix_cf_trade_details)):
             cbix_coe_df.at[i, "Vessel dwt"] = ((cbix_coe_fin_spec_df.loc[i, "Cargo Tonnage"] if cbix_coe_fin_spec_df.loc[i, "Double Leg Shipping? (South America special transload leg)"] == "No" else cbix_coe_fin_spec_df.loc[i, "South america special transloading cargo tonnage"]) / (1 - cbix_coe_fin_spec_df.loc[i, "Moisture"])) / cbix_coe_glb_facs.loc[i, "Max % of vessel deadweight allowed for loading"]
@@ -1040,6 +1065,7 @@ class CBIX:
             cbix_coe_df.at[i, "Estimated LOA (length over all) (m)"]    = (cbix_coe_df.loc[i, "Vessel dwt"] * cbix_coe_glb_facs.loc[i, "LOA estimate correlation multiplier"] + cbix_coe_glb_facs.loc[i, "LOA estimate correlation constant"])
             cbix_coe_df.at[i, "Estimated NRT (net register tons)"]  = (cbix_coe_df.loc[i, "Vessel dwt"] * cbix_coe_glb_facs.loc[i, "NRT estimate correlation multiplier"] + cbix_coe_glb_facs.loc[i, "NRT estimate correlation constant"])
             cbix_coe_df.at[i, "Estimated GRT (gross register tons)"]    = (cbix_coe_df.loc[i, "Vessel dwt"] * cbix_coe_glb_facs.loc[i, "GRT estimate correlation multiplier"] + cbix_coe_glb_facs.loc[i, "GRT estimate correlation constant"])
+            
 
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/frieght_calculations-actual_port-first_leg.csv"] = new_df
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/frieght_calculations-actual_port-first_leg.csv"] = freights_df
@@ -1055,15 +1081,14 @@ class CBIX:
         freights_df = pd.DataFrame(columns=self.exporting_port_dts_cols)
         cbix_coe_df = pd.DataFrame(columns=self.exporting_port_dts_cols)
 
-        def lookup(search1, search2, target):            
+        def lookup(search1, search2, target):
             ind = (self.indexes_mines.loc[:, "Date"].map(lambda x: x.date()) <= search1) #.map(lambda i: 1 if i == True else 0)
             idx = (self.indexes_mines.loc[:, "Exporting Port"].map(lambda x: x == search2)) #.map(lambda i: 1 if i == True else 0)
             v = target[ind & idx]
-            print(v)
-            return v.iloc[0]
-        print(final_spec.loc[:, "Exporting Port"])
-        print(freights_fin_spec_df.loc[:, "Exporting Port"])
-        print(cbix_coe_fin_spec_df.loc[:, "Exporting Port"])
+            try:
+                return v.iloc[0]
+            except:
+                return 0
 
         for i in range(len(self.trade_details)):
             for col in new_df.columns:
@@ -1071,7 +1096,6 @@ class CBIX:
 
         for i in range(len(self.freights_trade_details)):
             for col in freights_df.columns:
-                print(col)
                 freights_df.at[i, col] = lookup(self.freights_trade_details.loc[i, "Date"].date(), freights_fin_spec_df.loc[i, "Exporting Port"], self.indexes_mines.loc[:, col])
 
 
@@ -1082,6 +1106,9 @@ class CBIX:
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/exporting_port_details-loading_rates.csv"] = new_df
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/exporting_port_details-loading_rates.csv"] = freights_df
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/exporting_port_details-loading_rates.csv"] = cbix_coe_df
+        
+        
+        
 
 
 
@@ -1089,11 +1116,11 @@ class CBIX:
         fn_spec = self.db["outputs/final_specifications_to_viu_adjustment.csv"]    # pd.read_excel("outputs/final_specifications_to_viu_adjustment.csv")
         freights_fin_spec_df = self.db["outputs/freights/final_specifications_to_viu_adjustment.csv"]
         cbix_coe_fin_spec_df = self.db["outputs/cbix_co_efficients_determination/final_specifications_to_viu_adjustment.csv"]
-        
+
         new_df = pd.DataFrame(columns=self.port_linkages_cols)
         freights_df = pd.DataFrame(columns=self.port_linkages_cols)
         cbix_coe_df = pd.DataFrame(columns=self.port_linkages_cols)
-        
+
         def lookup(search1, search2, search3, target):
             for j in range(target.shape[0]):
                 if (self.port_linkages.loc[j, "Exporting Port"] == search1) and (self.port_linkages.loc[j, "Importing Port"] == search2) and (self.port_linkages.loc[j, "Date"].date() <= search3):
@@ -1102,27 +1129,27 @@ class CBIX:
         for i in range(len(self.trade_details)):
             for col in new_df.columns:
                 new_df.at[i, col] = lookup(
-                    fn_spec.loc[i, "Exporting Port"], 
-                    (fn_spec.loc[i, "South America special transloading Port"] if fn_spec.loc[i, "Double Leg Shipping? (South America special transload leg)"] == "Yes" else fn_spec.loc[i, "Importing Port"]), 
-                    self.trade_details.loc[i, "Date"].date(), 
+                    fn_spec.loc[i, "Exporting Port"],
+                    (fn_spec.loc[i, "South America special transloading Port"] if fn_spec.loc[i, "Double Leg Shipping? (South America special transload leg)"] == "Yes" else fn_spec.loc[i, "Importing Port"]),
+                    self.trade_details.loc[i, "Date"].date(),
                     self.port_linkages.loc[:, col])
 
         for i in range(len(self.freights_trade_details)):
             for col in freights_df.columns:
                 freights_df.at[i, col] = lookup(
-                    freights_fin_spec_df.loc[i, "Exporting Port"], 
-                    (freights_fin_spec_df.loc[i, "South America special transloading Port"] if freights_fin_spec_df.loc[i, "Double Leg Shipping? (South America special transload leg)"] == "Yes" else freights_fin_spec_df.loc[i, "Importing Port"]), 
-                    self.freights_trade_details.loc[i, "Date"].date(), 
+                    freights_fin_spec_df.loc[i, "Exporting Port"],
+                    (freights_fin_spec_df.loc[i, "South America special transloading Port"] if freights_fin_spec_df.loc[i, "Double Leg Shipping? (South America special transload leg)"] == "Yes" else freights_fin_spec_df.loc[i, "Importing Port"]),
+                    self.freights_trade_details.loc[i, "Date"].date(),
                     self.port_linkages.loc[:, col])
 
         for i in range(len(self.cbix_cf_trade_details)):
             for col in cbix_coe_df.columns:
                 cbix_coe_df.at[i, col] = lookup(
-                    cbix_coe_fin_spec_df.loc[i, "Exporting Port"], 
-                    (cbix_coe_fin_spec_df.loc[i, "South America special transloading Port"] if cbix_coe_fin_spec_df.loc[i, "Double Leg Shipping? (South America special transload leg)"] == "Yes" else cbix_coe_fin_spec_df.loc[i, "Importing Port"]), 
-                    self.cbix_cf_trade_details.loc[i, "Date"].date(), 
+                    cbix_coe_fin_spec_df.loc[i, "Exporting Port"],
+                    (cbix_coe_fin_spec_df.loc[i, "South America special transloading Port"] if cbix_coe_fin_spec_df.loc[i, "Double Leg Shipping? (South America special transload leg)"] == "Yes" else cbix_coe_fin_spec_df.loc[i, "Importing Port"]),
+                    self.cbix_cf_trade_details.loc[i, "Date"].date(),
                     self.port_linkages.loc[:, col])
-        
+
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/port_linkages.csv"] = new_df
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/port_linkages.csv"] = freights_df
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/port_linkages.csv"] = cbix_coe_df
@@ -1143,17 +1170,19 @@ class CBIX:
         def lookup(search1, search2, target):
             for j in range(target.shape[0]):
                 ind = (self.ship_fuel_prices.loc[:, "Fuel Region"] == search1) #.map(lambda i: 1 if i == True else 0)
-                idx = (self.ship_fuel_prices.loc[:, "Date"].map(lambda x: x.date()) <= search2) #.map(lambda i: 1 if i == True else 0)            
+                idx = (self.ship_fuel_prices.loc[:, "Date"].map(lambda x: x.date()) <= search2) #.map(lambda i: 1 if i == True else 0)
                 v = (ind & idx)
-
-                return target[v].tolist()[-1]
+                try:
+                    return target[v].tolist()[-1]
+                except:
+                    return 0
 
 
         for i in range(len(self.trade_details)):
             for col in new_df.columns:
                 if frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Handysize":
                     v = port_lkgs.loc[i, "Handysize – Applicable Fuel Region"]
-                
+
                 elif frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Supramax":
                     v = port_lkgs.loc[i, "Supramax – Applicable Fuel Region"]
 
@@ -1165,7 +1194,7 @@ class CBIX:
 
                 elif frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Suezmax":
                     v = port_lkgs.loc[i, "Suezmax – Applicable Fuel Region"]
-                
+
                 elif frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Capesize":
                     v = port_lkgs.loc[i, "Capesize – Applicable Fuel Region"]
 
@@ -1181,7 +1210,7 @@ class CBIX:
             for col in freights_df.columns:
                 if freights_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Handysize":
                     v = freights_port_lkgs.loc[i, "Handysize – Applicable Fuel Region"]
-                
+
                 elif freights_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Supramax":
                     v = freights_port_lkgs.loc[i, "Supramax – Applicable Fuel Region"]
 
@@ -1193,7 +1222,7 @@ class CBIX:
 
                 elif freights_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Suezmax":
                     v = freights_port_lkgs.loc[i, "Suezmax – Applicable Fuel Region"]
-                
+
                 elif freights_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Capesize":
                     v = freights_port_lkgs.loc[i, "Capesize – Applicable Fuel Region"]
 
@@ -1209,7 +1238,7 @@ class CBIX:
             for col in cbix_coe_df.columns:
                 if cbix_coe_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Handysize":
                     v = cbix_coe_port_lkgs.loc[i, "Handysize – Applicable Fuel Region"]
-                
+
                 elif cbix_coe_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Supramax":
                     v = cbix_coe_port_lkgs.loc[i, "Supramax – Applicable Fuel Region"]
 
@@ -1221,7 +1250,7 @@ class CBIX:
 
                 elif cbix_coe_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Suezmax":
                     v = cbix_coe_port_lkgs.loc[i, "Suezmax – Applicable Fuel Region"]
-                
+
                 elif cbix_coe_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Capesize":
                     v = cbix_coe_port_lkgs.loc[i, "Capesize – Applicable Fuel Region"]
 
@@ -1246,11 +1275,14 @@ class CBIX:
         cbix_coe_df = pd.DataFrame(columns=self.importing_port_det_cols)
 
         def lookup(search1, search2, target):
-            idx = (self.china_imp_prts.loc[:, "Date"].map(lambda x: x.date()) <= search1) #.map(lambda i: 1 if i == True else 0)            
+            idx = (self.china_imp_prts.loc[:, "Date"].map(lambda x: x.date()) <= search1) #.map(lambda i: 1 if i == True else 0)
             ind = (self.china_imp_prts.loc[:, "Port"] == search2)
             v = (ind & idx)
-            
-            return target[v].iloc[0]
+
+            try:                
+                return target[v].iloc[0]
+            except:
+                return 0
 
         for i in range(len(self.trade_details)):
             for col in new_df.columns:
@@ -1279,8 +1311,8 @@ class CBIX:
 
                 cbix_coe_df.at[i, col] = lookup(self.cbix_cf_trade_details.loc[i, "Date"].date(), val, self.china_imp_prts.loc[:, col])
 
-        
-        
+
+
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/importing_port_details.csv"] = new_df
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/importing_port_details.csv"] = freights_df
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/importing_port_details.csv"] = cbix_coe_df
@@ -1300,17 +1332,19 @@ class CBIX:
         cbix_coe_df = pd.DataFrame(columns=self.cost_details_cols)
 
         def lookup(search1, search2, target):
-            idx = (self.canals.loc[:, "Date"].map(lambda x: x.date()) <= search1) #.map(lambda i: 1 if i == True else 0)            
+            idx = (self.canals.loc[:, "Date"].map(lambda x: x.date()) <= search1) #.map(lambda i: 1 if i == True else 0)
             ind = (self.canals.loc[:, "Canal"] == search2)
             v = (ind & idx)
-            
-            return target[v].tolist()[-1]
+            try:
+                return target[v].tolist()[-1]
+            except:
+                return 0
 
         for i in range(len(self.trade_details)):
             for col in new_df.columns:
                 if frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Handysize":
                     v = port_lkgs.loc[i, "Handysize – Canals used"]
-                
+
                 elif frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Supramax":
                     v = port_lkgs.loc[i, "Supramax – Canals used"]
 
@@ -1322,7 +1356,7 @@ class CBIX:
 
                 elif frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Suezmax":
                     v = port_lkgs.loc[i, "Suezmax – Canals used"]
-                
+
                 elif frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Capesize":
                     v = port_lkgs.loc[i, "Capesize – Canals used"]
 
@@ -1336,7 +1370,7 @@ class CBIX:
             for col in freights_df.columns:
                 if freights_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Handysize":
                     v = freights_port_lkgs.loc[i, "Handysize – Canals used"]
-                
+
                 elif freights_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Supramax":
                     v = freights_port_lkgs.loc[i, "Supramax – Canals used"]
 
@@ -1348,7 +1382,7 @@ class CBIX:
 
                 elif freights_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Suezmax":
                     v = freights_port_lkgs.loc[i, "Suezmax – Canals used"]
-                
+
                 elif freights_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Capesize":
                     v = freights_port_lkgs.loc[i, "Capesize – Canals used"]
 
@@ -1362,7 +1396,7 @@ class CBIX:
             for col in cbix_coe_df.columns:
                 if cbix_coe_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Handysize":
                     v = cbix_coe_port_lkgs.loc[i, "Handysize – Canals used"]
-                
+
                 elif cbix_coe_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Supramax":
                     v = cbix_coe_port_lkgs.loc[i, "Supramax – Canals used"]
 
@@ -1374,7 +1408,7 @@ class CBIX:
 
                 elif cbix_coe_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Suezmax":
                     v = cbix_coe_port_lkgs.loc[i, "Suezmax – Canals used"]
-                
+
                 elif cbix_coe_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Capesize":
                     v = cbix_coe_port_lkgs.loc[i, "Capesize – Canals used"]
 
@@ -1384,7 +1418,7 @@ class CBIX:
                     v = None
                 cbix_coe_df.at[i, col] = lookup(self.cbix_cf_trade_details.loc[i, "Date"].date(), v, self.canals.loc[:, col])
 
-        
+
 
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/canals_details.csv"] = new_df
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/canals_details.csv"] = freights_df
@@ -1394,11 +1428,11 @@ class CBIX:
         canals_details             = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/canals_details.csv"]
         freights_df_canals_details = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/canals_details.csv"]
         cbix_coe_df_canals_details = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/canals_details.csv"]
-        
+
         fc_actual_port             = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/frieght_calculations-actual_port-first_leg.csv"]
         freights_df_fc_actual_port = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/frieght_calculations-actual_port-first_leg.csv"]
         cbix_coe_df_fc_actual_port = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/frieght_calculations-actual_port-first_leg.csv"]
-        
+
         glb_facs                   = self.db["outputs/common_data_inputs/common_data_inputs_global_factors.csv"]
         freights_df_glb_facs       = self.db["outputs/common_data_inputs/freights/common_data_inputs_global_factors.csv"]
         cbix_coe_df_glb_facs       = self.db["outputs/common_data_inputs/cbix_co_efficients_determination/common_data_inputs_global_factors.csv"]
@@ -1408,7 +1442,8 @@ class CBIX:
         cbix_coe_df = pd.DataFrame(columns=self.canal_cost_workings_cols)
 
         for i in range(len(self.trade_details)):
-            new_df.at[i, "Amount per Capacity Tarrif Graduations - Tonnage Reference"] = fc_actual_port.loc[i, "Vessel dwt"] if canals_details.loc[i, "Tonnage Reference"] == "DWT" else fc_actual_port.loc[i, "Estimated NRT (net register tons)"] if canals_details.loc[i, "Tonnage Reference"] == "NRT" else fc_actual_port.loc[i, "Estimated NRT (net register tons)"] if canals_details.loc[i, "Tonnage Reference"] == "GRT" else None
+            
+            new_df.at[i, "Amount per Capacity Tarrif Graduations - Tonnage Reference"] = fc_actual_port.loc[i, "Vessel dwt"] if canals_details.loc[i, "Tonnage Reference"] == "DWT" else fc_actual_port.loc[i, "Estimated NRT (net register tons)"] if canals_details.loc[i, "Tonnage Reference"] == "NRT" else fc_actual_port.loc[i, "Estimated NRT (net register tons)"] if canals_details.loc[i, "Tonnage Reference"] == "GRT" else np.nan
             new_df.at[i, "Amount per Capacity Tarrif Graduations - 1st"] = canals_details.loc[i, "Capacity Tarrif Graduations - 1st"]  if new_df.loc[i, "Amount per Capacity Tarrif Graduations - Tonnage Reference"] > canals_details.loc[i, "Capacity Tarrif Graduations - 1st"] else new_df.loc[i, "Amount per Capacity Tarrif Graduations - Tonnage Reference"]
             new_df.at[i, "Amount per Capacity Tarrif Graduations - 2nd"] = canals_details.loc[i, "Capacity Tarrif Graduations - 2nd"]  if new_df.loc[i, "Amount per Capacity Tarrif Graduations - Tonnage Reference"] > canals_details.loc[i, "Capacity Tarrif Graduations - 1st":"Capacity Tarrif Graduations - 2nd"].sum() else (new_df.loc[i, "Amount per Capacity Tarrif Graduations - Tonnage Reference"] - new_df.loc[i, "Amount per Capacity Tarrif Graduations - 1st"])
             new_df.at[i, "Amount per Capacity Tarrif Graduations - 3rd"] = canals_details.loc[i, "Capacity Tarrif Graduations - 3rd"]  if new_df.loc[i, "Amount per Capacity Tarrif Graduations - Tonnage Reference"] > canals_details.loc[i, "Capacity Tarrif Graduations - 1st":"Capacity Tarrif Graduations - 3rd"].sum() else (new_df.loc[i, "Amount per Capacity Tarrif Graduations - Tonnage Reference"] - new_df.loc[i, "Amount per Capacity Tarrif Graduations - 1st":"Amount per Capacity Tarrif Graduations - 2nd"].sum())
@@ -1430,7 +1465,7 @@ class CBIX:
             new_df.at[i, "Amounts per Cargo Tarrif Graduations - 9th"] = canals_details.loc[i, "Cargo Tarrif Graduations - 9th"]  if new_df.loc[i, "Amounts per Cargo Tarrif Graduations - Tonnage Reference"] > canals_details.loc[i, "Cargo Tarrif Graduations - 1st":"Cargo Tarrif Graduations - 9th"].sum() else (new_df.loc[i, "Amounts per Cargo Tarrif Graduations - Tonnage Reference"] - new_df.loc[i, "Amounts per Cargo Tarrif Graduations - 1st":"Amounts per Cargo Tarrif Graduations - 8th"].sum())
 
         for i in range(len(self.freights_trade_details)):
-            freights_df.at[i, "Amount per Capacity Tarrif Graduations - Tonnage Reference"] = freights_df_fc_actual_port.loc[i, "Vessel dwt"] if freights_df_canals_details.loc[i, "Tonnage Reference"] == "DWT" else freights_df_fc_actual_port.loc[i, "Estimated NRT (net register tons)"] if freights_df_canals_details.loc[i, "Tonnage Reference"] == "NRT" else freights_df_fc_actual_port.loc[i, "Estimated NRT (net register tons)"] if freights_df_canals_details.loc[i, "Tonnage Reference"] == "GRT" else None
+            freights_df.at[i, "Amount per Capacity Tarrif Graduations - Tonnage Reference"] = freights_df_fc_actual_port.loc[i, "Vessel dwt"] if freights_df_canals_details.loc[i, "Tonnage Reference"] == "DWT" else freights_df_fc_actual_port.loc[i, "Estimated NRT (net register tons)"] if freights_df_canals_details.loc[i, "Tonnage Reference"] == "NRT" else freights_df_fc_actual_port.loc[i, "Estimated NRT (net register tons)"] if freights_df_canals_details.loc[i, "Tonnage Reference"] == "GRT" else np.nan
             freights_df.at[i, "Amount per Capacity Tarrif Graduations - 1st"] = freights_df_canals_details.loc[i, "Capacity Tarrif Graduations - 1st"]  if freights_df.loc[i, "Amount per Capacity Tarrif Graduations - Tonnage Reference"] > freights_df_canals_details.loc[i, "Capacity Tarrif Graduations - 1st"] else freights_df.loc[i, "Amount per Capacity Tarrif Graduations - Tonnage Reference"]
             freights_df.at[i, "Amount per Capacity Tarrif Graduations - 2nd"] = freights_df_canals_details.loc[i, "Capacity Tarrif Graduations - 2nd"]  if freights_df.loc[i, "Amount per Capacity Tarrif Graduations - Tonnage Reference"] > freights_df_canals_details.loc[i, "Capacity Tarrif Graduations - 1st":"Capacity Tarrif Graduations - 2nd"].sum() else (freights_df.loc[i, "Amount per Capacity Tarrif Graduations - Tonnage Reference"] - freights_df.loc[i, "Amount per Capacity Tarrif Graduations - 1st"])
             freights_df.at[i, "Amount per Capacity Tarrif Graduations - 3rd"] = freights_df_canals_details.loc[i, "Capacity Tarrif Graduations - 3rd"]  if freights_df.loc[i, "Amount per Capacity Tarrif Graduations - Tonnage Reference"] > freights_df_canals_details.loc[i, "Capacity Tarrif Graduations - 1st":"Capacity Tarrif Graduations - 3rd"].sum() else (freights_df.loc[i, "Amount per Capacity Tarrif Graduations - Tonnage Reference"] - freights_df.loc[i, "Amount per Capacity Tarrif Graduations - 1st":"Amount per Capacity Tarrif Graduations - 2nd"].sum())
@@ -1452,7 +1487,7 @@ class CBIX:
             freights_df.at[i, "Amounts per Cargo Tarrif Graduations - 9th"] = freights_df_canals_details.loc[i, "Cargo Tarrif Graduations - 9th"]  if freights_df.loc[i, "Amounts per Cargo Tarrif Graduations - Tonnage Reference"] > freights_df_canals_details.loc[i, "Cargo Tarrif Graduations - 1st":"Cargo Tarrif Graduations - 9th"].sum() else (freights_df.loc[i, "Amounts per Cargo Tarrif Graduations - Tonnage Reference"] - freights_df.loc[i, "Amounts per Cargo Tarrif Graduations - 1st":"Amounts per Cargo Tarrif Graduations - 8th"].sum())
 
         for i in range(len(self.cbix_cf_trade_details)):
-            cbix_coe_df.at[i, "Amount per Capacity Tarrif Graduations - Tonnage Reference"] = cbix_coe_df_fc_actual_port.loc[i, "Vessel dwt"] if cbix_coe_df_canals_details.loc[i, "Tonnage Reference"] == "DWT" else cbix_coe_df_fc_actual_port.loc[i, "Estimated NRT (net register tons)"] if cbix_coe_df_canals_details.loc[i, "Tonnage Reference"] == "NRT" else cbix_coe_df_fc_actual_port.loc[i, "Estimated NRT (net register tons)"] if cbix_coe_df_canals_details.loc[i, "Tonnage Reference"] == "GRT" else None
+            cbix_coe_df.at[i, "Amount per Capacity Tarrif Graduations - Tonnage Reference"] = cbix_coe_df_fc_actual_port.loc[i, "Vessel dwt"] if cbix_coe_df_canals_details.loc[i, "Tonnage Reference"] == "DWT" else cbix_coe_df_fc_actual_port.loc[i, "Estimated NRT (net register tons)"] if cbix_coe_df_canals_details.loc[i, "Tonnage Reference"] == "NRT" else cbix_coe_df_fc_actual_port.loc[i, "Estimated NRT (net register tons)"] if cbix_coe_df_canals_details.loc[i, "Tonnage Reference"] == "GRT" else np.nan
             cbix_coe_df.at[i, "Amount per Capacity Tarrif Graduations - 1st"] = cbix_coe_df_canals_details.loc[i, "Capacity Tarrif Graduations - 1st"]  if cbix_coe_df.loc[i, "Amount per Capacity Tarrif Graduations - Tonnage Reference"] > cbix_coe_df_canals_details.loc[i, "Capacity Tarrif Graduations - 1st"] else cbix_coe_df.loc[i, "Amount per Capacity Tarrif Graduations - Tonnage Reference"]
             cbix_coe_df.at[i, "Amount per Capacity Tarrif Graduations - 2nd"] = cbix_coe_df_canals_details.loc[i, "Capacity Tarrif Graduations - 2nd"]  if cbix_coe_df.loc[i, "Amount per Capacity Tarrif Graduations - Tonnage Reference"] > cbix_coe_df_canals_details.loc[i, "Capacity Tarrif Graduations - 1st":"Capacity Tarrif Graduations - 2nd"].sum() else (cbix_coe_df.loc[i, "Amount per Capacity Tarrif Graduations - Tonnage Reference"] - cbix_coe_df.loc[i, "Amount per Capacity Tarrif Graduations - 1st"])
             cbix_coe_df.at[i, "Amount per Capacity Tarrif Graduations - 3rd"] = cbix_coe_df_canals_details.loc[i, "Capacity Tarrif Graduations - 3rd"]  if cbix_coe_df.loc[i, "Amount per Capacity Tarrif Graduations - Tonnage Reference"] > cbix_coe_df_canals_details.loc[i, "Capacity Tarrif Graduations - 1st":"Capacity Tarrif Graduations - 3rd"].sum() else (cbix_coe_df.loc[i, "Amount per Capacity Tarrif Graduations - Tonnage Reference"] - cbix_coe_df.loc[i, "Amount per Capacity Tarrif Graduations - 1st":"Amount per Capacity Tarrif Graduations - 2nd"].sum())
@@ -1473,49 +1508,49 @@ class CBIX:
             cbix_coe_df.at[i, "Amounts per Cargo Tarrif Graduations - 8th"] = cbix_coe_df_canals_details.loc[i, "Cargo Tarrif Graduations - 8th"]  if cbix_coe_df.loc[i, "Amounts per Cargo Tarrif Graduations - Tonnage Reference"] > cbix_coe_df_canals_details.loc[i, "Cargo Tarrif Graduations - 1st":"Cargo Tarrif Graduations - 8th"].sum() else (cbix_coe_df.loc[i, "Amounts per Cargo Tarrif Graduations - Tonnage Reference"] - cbix_coe_df.loc[i, "Amounts per Cargo Tarrif Graduations - 1st":"Amounts per Cargo Tarrif Graduations - 7th"].sum())
             cbix_coe_df.at[i, "Amounts per Cargo Tarrif Graduations - 9th"] = cbix_coe_df_canals_details.loc[i, "Cargo Tarrif Graduations - 9th"]  if cbix_coe_df.loc[i, "Amounts per Cargo Tarrif Graduations - Tonnage Reference"] > cbix_coe_df_canals_details.loc[i, "Cargo Tarrif Graduations - 1st":"Cargo Tarrif Graduations - 9th"].sum() else (cbix_coe_df.loc[i, "Amounts per Cargo Tarrif Graduations - Tonnage Reference"] - cbix_coe_df.loc[i, "Amounts per Cargo Tarrif Graduations - 1st":"Amounts per Cargo Tarrif Graduations - 8th"].sum())
 
-        
+
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/canals_costs_workings.csv"] = new_df
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/canals_costs_workings.csv"] = freights_df
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/canals_costs_workings.csv"] = cbix_coe_df
 
-         
+
     def final_costing_up_for_leg(self, folder=None):
         fxrates                = self.db["outputs/common_data_inputs/common_data_inputs_fx_rates.csv"]
         freights_fxrates       = self.db["outputs/common_data_inputs/freights/common_data_inputs_fx_rates.csv"]
         cbix_coe_fxrates       = self.db["outputs/common_data_inputs/cbix_co_efficients_determination/common_data_inputs_fx_rates.csv"]
-        
+
         fuel_prices            = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/fuel_prices.csv"]
         freights_fuel_prices   = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/fuel_prices.csv"]
         cbix_coe_fuel_prices   = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/fuel_prices.csv"]
-        
+
         port_lkgs              = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/port_linkages.csv"]
         freights_port_lkgs     = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/port_linkages.csv"]
         cbix_coe_port_lkgs     = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/port_linkages.csv"]
-        
+
         canals_detls           = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/canals_details.csv"]
         freights_canals_detls  = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/canals_details.csv"]
         cbix_coe_canals_detls  = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/canals_details.csv"]
-        
+
         glb_facs               = self.db["outputs/common_data_inputs/common_data_inputs_global_factors.csv"]
         freights_glb_facs      = self.db["outputs/common_data_inputs/freights/common_data_inputs_global_factors.csv"]
         cbix_coe_glb_facs      = self.db["outputs/common_data_inputs/cbix_co_efficients_determination/common_data_inputs_global_factors.csv"]
-        
+
         canals_costs           = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/canals_costs_workings.csv"]
         freights_canals_costs  = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/canals_costs_workings.csv"]
         cbix_coe_canals_costs  = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/canals_costs_workings.csv"]
-        
+
         imp_port_dets          = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/importing_port_details.csv"]
         freights_imp_port_dets = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/importing_port_details.csv"]
         cbix_coe_imp_port_dets = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/importing_port_details.csv"]
-        
+
         loading_rates          = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/exporting_port_details-loading_rates.csv"]
         freights_loading_rates = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/exporting_port_details-loading_rates.csv"]
         cbix_coe_loading_rates = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/exporting_port_details-loading_rates.csv"]
-        
+
         frieght_calcs          = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/frieght_calculations-actual_port-first_leg.csv"]
         freights_frieght_calcs = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/frieght_calculations-actual_port-first_leg.csv"]
         cbix_coe_frieght_calcs = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/frieght_calculations-actual_port-first_leg.csv"]
-        
+
         fnl_specs              = self.db["outputs/final_specifications_to_viu_adjustment.csv"]
         freights_fnl_specs     = self.db["outputs/freights/final_specifications_to_viu_adjustment.csv"]
         cbix_coe_fnl_specs     = self.db["outputs/cbix_co_efficients_determination/final_specifications_to_viu_adjustment.csv"]
@@ -1528,19 +1563,28 @@ class CBIX:
         fx_rates_lookup    = ["RMB", "AUD", "USD", "SDR"]
 
         def lookup(search1, search2, target):
-            idx = (self.ship_speeds.loc[:, "Date"].map(lambda x: x.date()) <= search1) #.map(lambda i: 1 if i == True else 0)            
+            idx = (self.ship_speeds.loc[:, "Date"].map(lambda x: x.date()) <= search1) #.map(lambda i: 1 if i == True else 0)
             ind = (self.ship_speeds.loc[:, "Vesssel class"] == search2)
             v = (ind & idx)
-            return target[v].tolist()[-1]
+            try:
+                return target[v].tolist()[-1]
+            except Exception as e:
+                
+                
+                return np.nan
+
 
         def lookup1(search1, search2, target):
             x = self.ship_time_cr.loc[:, "Applicable Time Charter Index"] == search1
-            y = self.ship_time_cr.loc[:, "Date"].map(lambda x: x.date()) <= search2 #.map(lambda i: 1 if i == True else 0)            
+            y = self.ship_time_cr.loc[:, "Date"].map(lambda x: x.date()) <= search2 #.map(lambda i: 1 if i == True else 0)
             z = self.ship_time_cr.loc[:, "Vessel Time Charter Rates"].map(lambda x: pd.notna(x))
 
             v =  (x & y & z)
-            return target[v].tolist()[-1]
-        
+            try:
+                return target[v].tolist()[-1]
+            except:
+                return 0
+
 
         for i in range(len(self.trade_details)):
             if frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Handysize":
@@ -1551,7 +1595,7 @@ class CBIX:
                 main_engine_fuel  = port_lkgs.loc[i, "Handysize – Main Engine Fuel"]
                 auxiliary_fuel    = port_lkgs.loc[i, "Handysize – Auxiliary Fuel"]
                 charter_ind       = port_lkgs.loc[i, "Handysize – Applicable Time Charter Index"]
-            
+
             elif frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Supramax":
                 rt_dist_main_fuel = port_lkgs.loc[i, "Supramax – Distance using Main Engine Fuel"]
                 rt_dist_aux_fuel  = port_lkgs.loc[i, "Supramax – Distance using Auxiliary Fuel"]
@@ -1587,7 +1631,7 @@ class CBIX:
                 main_engine_fuel  = port_lkgs.loc[i, "Suezmax – Main Engine Fuel"]
                 auxiliary_fuel    = port_lkgs.loc[i, "Suezmax – Auxiliary Fuel"]
                 charter_ind       = port_lkgs.loc[i, "Suezmax – Applicable Time Charter Index"]
-            
+
             elif frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Capesize":
                 rt_dist_main_fuel = port_lkgs.loc[i, "Capesize – Distance using Main Engine Fuel"]
                 rt_dist_aux_fuel  = port_lkgs.loc[i, "Capesize – Distance using Auxiliary Fuel"]
@@ -1623,10 +1667,10 @@ class CBIX:
             for j in range(len(fx_rates_lookup)):
                 if imp_port_dets.loc[i, "Currency"] == fx_rates_lookup[j]:
                     fxrate_lookup = j
-                
 
-            new_df.at[i, "Round trip distance Main fuel"] = rt_dist_main_fuel * glb_facs.loc[i, "legs per round trip"]
-            new_df.at[i, "Round Trip Distance on Auxiliary fuel"]  = rt_dist_aux_fuel * glb_facs.loc[i, "legs per round trip"]
+
+            new_df.at[i, "Round trip distance Main fuel"] = 0 if rt_dist_main_fuel == None else rt_dist_main_fuel * glb_facs.loc[i, "legs per round trip"]
+            new_df.at[i, "Round Trip Distance on Auxiliary fuel"]  =  0 if rt_dist_aux_fuel == None else rt_dist_aux_fuel * glb_facs.loc[i, "legs per round trip"]
             new_df.at[i, "Vessel Loading rate"]                    = vl_loading
             new_df.at[i, "Vessel Un-Loading rate"]                 = vl_unloading
             new_df.at[i, "Vessel Speed"]                           = lookup(self.trade_details.loc[i, "Date"].date(), frieght_calcs.loc[i, "Vessel Class for timecharter & fuel burn rates"],self.ship_speeds.loc[:, "Vessel Cruising speed"])
@@ -1640,8 +1684,8 @@ class CBIX:
             new_df.at[i, "Days unloading"]                         = (fnl_specs.loc[i, "Cargo Tonnage"] if fnl_specs.loc[i, "Double Leg Shipping? (South America special transload leg)"] == "No" else fnl_specs.loc[i, "South america special transloading cargo tonnage"]) / (1.0 - fnl_specs.loc[i, "Moisture"]) / new_df.loc[i, "Vessel Un-Loading rate"]
             new_df.at[i, "Extra Days due to Canal use"]            = canals_detls.loc[i, "Days delay"] * glb_facs.loc[i, "legs per round trip"]
             new_df.at[i, "Lay days allowance (50% each port)"]     = max([(new_df.loc[i, "Days at Avg Speed Main Fuel":"Extra Days due to Canal use"].sum() * glb_facs.loc[i, "Minimum Lay days allowed as % of sailing time"]),glb_facs.loc[i, "Minimum Lay days allowed"] ])
-            new_df.at[i, "Main Fuel HFO / VLSFO Fuel Price"]       = fuel_prices.iloc[i, fuel_lookup_col]
-            new_df.at[i, "Auxiliary Fuel (MDO / MGO / LNG) Price"] = fuel_prices.iloc[i, aux_fuel_lookup]
+            new_df.at[i, "Main Fuel HFO / VLSFO Fuel Price"]       = 0 if fuel_lookup_col == None else fuel_prices.iloc[i, fuel_lookup_col]
+            new_df.at[i, "Auxiliary Fuel (MDO / MGO / LNG) Price"] = 0 if aux_fuel_lookup == None else fuel_prices.iloc[i, aux_fuel_lookup]
             new_df.at[i, "Main Fuel Cost"]      = new_df.loc[i, "Days at Avg Speed Main Fuel"] * new_df.loc[i, "Main Engine Fuel burn rate"] * new_df.loc[i, "Main Fuel HFO / VLSFO Fuel Price"]
             new_df.at[i, "Auxiliary Fuel Cost"] = new_df.loc[i, "Days Loading":"Lay days allowance (50% each port)"].sum() * new_df.loc[i, "MDO / MGO burn rate"] * new_df.loc[i, "Auxiliary Fuel (MDO / MGO / LNG) Price"] + new_df.loc[i, "Days at Avg Speed Auxiliary Fuel"] * new_df.loc[i, "Main Engine Fuel burn rate"] * new_df.loc[i, "Auxiliary Fuel (MDO / MGO / LNG) Price"]
             new_df.at[i, "FX rate per USD"]     = fxrates.iloc[i, fxrate_lookup]
@@ -1662,7 +1706,7 @@ class CBIX:
             new_df.at[i, "RMB/LOA/day anchored"] = imp_port_dets.loc[i, "RMB/LOA/day anchored"] * frieght_calcs.loc[i, "Estimated LOA (length over all) (m)"] * (new_df.loc[i, "Lay days allowance (50% each port)"] * (1 - glb_facs.loc[i, "Lay allowance Loading port"])) / new_df.loc[i, "FX rate per USD"]
             new_df.at[i, "Time Charter Rate"] = lookup1(charter_ind, self.trade_details.loc[i, "Date"].date(), self.ship_time_cr.loc[:, "Vessel Time Charter Rates"])
             new_df.at[i, "Time Charter Cost"] = sum([new_df.loc[i, "Days at Avg Speed Main Fuel":"Lay days allowance (50% each port)"].sum(), glb_facs.loc[i, "legs per round trip"]*glb_facs.loc[i, "Lay allowance Loading port"]]) * new_df.loc[i, "Time Charter Rate"]
-            
+
             sum1 = np.array(canals_detls.loc[i, "Capacity Tarrifs - 1st":"Capacity Tarrifs - 9th"].tolist()) * np.array(canals_costs.loc[i, "Amount per Capacity Tarrif Graduations - 1st":"Amount per Capacity Tarrif Graduations - 9th"].tolist())
             sum2 = np.array(canals_detls.loc[i, "Cargo Tarrifs - 1st":"Cargo Tarrifs - 9th"].tolist()) * np.array(canals_costs.loc[i, "Amounts per Cargo Tarrif Graduations - 1st":"Amounts per Cargo Tarrif Graduations - 9th"].tolist())
             new_df.at[i, "Canal Costs"] = sum(sum1) + sum(sum2)
@@ -1680,7 +1724,7 @@ class CBIX:
                 main_engine_fuel  = freights_port_lkgs.loc[i, "Handysize – Main Engine Fuel"]
                 auxiliary_fuel    = freights_port_lkgs.loc[i, "Handysize – Auxiliary Fuel"]
                 charter_ind       = freights_port_lkgs.loc[i, "Handysize – Applicable Time Charter Index"]
-            
+
             elif freights_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Supramax":
                 rt_dist_main_fuel = freights_port_lkgs.loc[i, "Supramax – Distance using Main Engine Fuel"]
                 rt_dist_aux_fuel  = freights_port_lkgs.loc[i, "Supramax – Distance using Auxiliary Fuel"]
@@ -1716,7 +1760,7 @@ class CBIX:
                 main_engine_fuel  = freights_port_lkgs.loc[i, "Suezmax – Main Engine Fuel"]
                 auxiliary_fuel    = freights_port_lkgs.loc[i, "Suezmax – Auxiliary Fuel"]
                 charter_ind       = freights_port_lkgs.loc[i, "Suezmax – Applicable Time Charter Index"]
-            
+
             elif freights_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Capesize":
                 rt_dist_main_fuel = freights_port_lkgs.loc[i, "Capesize – Distance using Main Engine Fuel"]
                 rt_dist_aux_fuel  = freights_port_lkgs.loc[i, "Capesize – Distance using Auxiliary Fuel"]
@@ -1752,10 +1796,10 @@ class CBIX:
             for j in range(len(fx_rates_lookup)):
                 if freights_imp_port_dets.loc[i, "Currency"] == fx_rates_lookup[j]:
                     fxrate_lookup = j
-                
 
-            freights_df.at[i, "Round trip distance Main fuel"] = rt_dist_main_fuel * freights_glb_facs.loc[i, "legs per round trip"]
-            freights_df.at[i, "Round Trip Distance on Auxiliary fuel"]  = rt_dist_aux_fuel * freights_glb_facs.loc[i, "legs per round trip"]
+
+            freights_df.at[i, "Round trip distance Main fuel"] = 0 if rt_dist_main_fuel == None else rt_dist_main_fuel * freights_glb_facs.loc[i, "legs per round trip"]
+            freights_df.at[i, "Round Trip Distance on Auxiliary fuel"]  = 0 if rt_dist_aux_fuel == None else rt_dist_aux_fuel * freights_glb_facs.loc[i, "legs per round trip"]
             freights_df.at[i, "Vessel Loading rate"]                    = vl_loading
             freights_df.at[i, "Vessel Un-Loading rate"]                 = vl_unloading
             freights_df.at[i, "Vessel Speed"]                           = lookup(self.freights_trade_details.loc[i, "Date"].date(), freights_frieght_calcs.loc[i, "Vessel Class for timecharter & fuel burn rates"],self.ship_speeds.loc[:, "Vessel Cruising speed"])
@@ -1765,12 +1809,13 @@ class CBIX:
             freights_df.at[i, "MDO / MGO burn rate"]                    = (freights_frieght_calcs.loc[i, "Vessel dwt"] / freights_glb_facs.loc[i, "MDO/MGO burn vessel DWT denominator"]) * freights_glb_facs.loc[i, "MDO/MGO burn vessel DWT slope"] + freights_glb_facs.loc[i, "MDO/MGO burn vessel DWT constant"] + freights_glb_facs.loc[i, "MDO/MGO burn vessel DWT ^2 coefficient"] * (freights_frieght_calcs.loc[i, "Vessel dwt"] / freights_glb_facs.loc[i, "MDO/MGO burn vessel DWT denominator"]) ** 2
             freights_df.at[i, "Days at Avg Speed Main Fuel"]            = freights_df.loc[i, "Round trip distance Main fuel"] / freights_df.loc[i, "Vessel Speed"] / freights_glb_facs.loc[i, "hours per day"]
             freights_df.at[i, "Days at Avg Speed Auxiliary Fuel"]       = freights_df.loc[i, "Round Trip Distance on Auxiliary fuel"] /  freights_df.loc[i, "Vessel Speed"] / freights_glb_facs.loc[i, "hours per day"]
+            
             freights_df.at[i, "Days Loading"]                           = (freights_fnl_specs.loc[i, "Cargo Tonnage"] if freights_fnl_specs.loc[i, "Double Leg Shipping? (South America special transload leg)"] == "No" else freights_fnl_specs.loc[i, "South america special transloading cargo tonnage"]) / (1.0 - freights_fnl_specs.loc[i, "Moisture"]) / freights_df.loc[i, "Vessel Loading rate"]
             freights_df.at[i, "Days unloading"]                         = (freights_fnl_specs.loc[i, "Cargo Tonnage"] if freights_fnl_specs.loc[i, "Double Leg Shipping? (South America special transload leg)"] == "No" else freights_fnl_specs.loc[i, "South america special transloading cargo tonnage"]) / (1.0 - freights_fnl_specs.loc[i, "Moisture"]) / freights_df.loc[i, "Vessel Un-Loading rate"]
             freights_df.at[i, "Extra Days due to Canal use"]            = freights_canals_detls.loc[i, "Days delay"] * freights_glb_facs.loc[i, "legs per round trip"]
             freights_df.at[i, "Lay days allowance (50% each port)"]     = max([(freights_df.loc[i, "Days at Avg Speed Main Fuel":"Extra Days due to Canal use"].sum() * freights_glb_facs.loc[i, "Minimum Lay days allowed as % of sailing time"]),freights_glb_facs.loc[i, "Minimum Lay days allowed"] ])
-            freights_df.at[i, "Main Fuel HFO / VLSFO Fuel Price"]       = freights_fuel_prices.iloc[i, fuel_lookup_col]
-            freights_df.at[i, "Auxiliary Fuel (MDO / MGO / LNG) Price"] = freights_fuel_prices.iloc[i, aux_fuel_lookup]
+            freights_df.at[i, "Main Fuel HFO / VLSFO Fuel Price"]       = 0 if fuel_lookup_col == None else freights_fuel_prices.iloc[i, fuel_lookup_col]
+            freights_df.at[i, "Auxiliary Fuel (MDO / MGO / LNG) Price"] = 0 if aux_fuel_lookup == None else freights_fuel_prices.iloc[i, aux_fuel_lookup]
             freights_df.at[i, "Main Fuel Cost"]      = freights_df.loc[i, "Days at Avg Speed Main Fuel"] * freights_df.loc[i, "Main Engine Fuel burn rate"] * freights_df.loc[i, "Main Fuel HFO / VLSFO Fuel Price"]
             freights_df.at[i, "Auxiliary Fuel Cost"] = freights_df.loc[i, "Days Loading":"Lay days allowance (50% each port)"].sum() * freights_df.loc[i, "MDO / MGO burn rate"] * freights_df.loc[i, "Auxiliary Fuel (MDO / MGO / LNG) Price"] + freights_df.loc[i, "Days at Avg Speed Auxiliary Fuel"] * freights_df.loc[i, "Main Engine Fuel burn rate"] * freights_df.loc[i, "Auxiliary Fuel (MDO / MGO / LNG) Price"]
             freights_df.at[i, "FX rate per USD"]     = freights_fxrates.iloc[i, fxrate_lookup]
@@ -1791,14 +1836,14 @@ class CBIX:
             freights_df.at[i, "RMB/LOA/day anchored"] = freights_imp_port_dets.loc[i, "RMB/LOA/day anchored"] * freights_frieght_calcs.loc[i, "Estimated LOA (length over all) (m)"] * (freights_df.loc[i, "Lay days allowance (50% each port)"] * (1 - freights_glb_facs.loc[i, "Lay allowance Loading port"])) / freights_df.loc[i, "FX rate per USD"]
             freights_df.at[i, "Time Charter Rate"] = lookup1(charter_ind, self.freights_trade_details.loc[i, "Date"].date(), self.ship_time_cr.loc[:, "Vessel Time Charter Rates"])
             freights_df.at[i, "Time Charter Cost"] = sum([freights_df.loc[i, "Days at Avg Speed Main Fuel":"Lay days allowance (50% each port)"].sum(), freights_glb_facs.loc[i, "legs per round trip"]*freights_glb_facs.loc[i, "Lay allowance Loading port"]]) * freights_df.loc[i, "Time Charter Rate"]
-            
+
             sum1 = np.array(freights_canals_detls.loc[i, "Capacity Tarrifs - 1st":"Capacity Tarrifs - 9th"].tolist()) * np.array(freights_canals_costs.loc[i, "Amount per Capacity Tarrif Graduations - 1st":"Amount per Capacity Tarrif Graduations - 9th"].tolist())
             sum2 = np.array(freights_canals_detls.loc[i, "Cargo Tarrifs - 1st":"Cargo Tarrifs - 9th"].tolist()) * np.array(freights_canals_costs.loc[i, "Amounts per Cargo Tarrif Graduations - 1st":"Amounts per Cargo Tarrif Graduations - 9th"].tolist())
             freights_df.at[i, "Canal Costs"] = sum(sum1) + sum(sum2)
             freights_df.at[i, "Total Cost for Leg - before Insurance & Commission"] = freights_df.loc[i, "Main Fuel Cost":"Auxiliary Fuel Cost"].sum() + freights_df.loc[i, "Time Charter Cost"] + freights_df.loc[i, "Canal Costs"] + freights_df.loc[i, "Fixed fee":"RMB/LOA/day anchored"].sum()
             freights_df.at[i, "Total Cost for Leg - with Insurance & Commission"]   = freights_df.loc[i, "Total Cost for Leg - before Insurance & Commission"] * (1+freights_glb_facs.loc[i, "Freight Insurance Rate"])
             freights_df.at[i, "Per tonne cargo incl. Insurance & Commission"]       = 0 if freights_df.loc[i, "Total Cost for Leg - with Insurance & Commission"] == 0 else freights_df.loc[i, "Total Cost for Leg - with Insurance & Commission"]/(freights_frieght_calcs.loc[i, "Vessel dwt"] * (1 - freights_fnl_specs.loc[i, "Moisture"]) * freights_glb_facs.loc[i, "Max % of vessel deadweight allowed for loading"])
-            
+
         #cbix co-efficients
         for i in range(len(self.cbix_cf_trade_details)):
             if cbix_coe_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Handysize":
@@ -1809,7 +1854,7 @@ class CBIX:
                 main_engine_fuel  = cbix_coe_port_lkgs.loc[i, "Handysize – Main Engine Fuel"]
                 auxiliary_fuel    = cbix_coe_port_lkgs.loc[i, "Handysize – Auxiliary Fuel"]
                 charter_ind       = cbix_coe_port_lkgs.loc[i, "Handysize – Applicable Time Charter Index"]
-            
+
             elif cbix_coe_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Supramax":
                 rt_dist_main_fuel = cbix_coe_port_lkgs.loc[i, "Supramax – Distance using Main Engine Fuel"]
                 rt_dist_aux_fuel  = cbix_coe_port_lkgs.loc[i, "Supramax – Distance using Auxiliary Fuel"]
@@ -1845,7 +1890,7 @@ class CBIX:
                 main_engine_fuel  = cbix_coe_port_lkgs.loc[i, "Suezmax – Main Engine Fuel"]
                 auxiliary_fuel    = cbix_coe_port_lkgs.loc[i, "Suezmax – Auxiliary Fuel"]
                 charter_ind       = cbix_coe_port_lkgs.loc[i, "Suezmax – Applicable Time Charter Index"]
-            
+
             elif cbix_coe_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Capesize":
                 rt_dist_main_fuel = cbix_coe_port_lkgs.loc[i, "Capesize – Distance using Main Engine Fuel"]
                 rt_dist_aux_fuel  = cbix_coe_port_lkgs.loc[i, "Capesize – Distance using Auxiliary Fuel"]
@@ -1881,10 +1926,10 @@ class CBIX:
             for j in range(len(fx_rates_lookup)):
                 if cbix_coe_imp_port_dets.loc[i, "Currency"] == fx_rates_lookup[j]:
                     fxrate_lookup = j
-                
 
-            cbix_coe_df.at[i, "Round trip distance Main fuel"] = rt_dist_main_fuel * cbix_coe_glb_facs.loc[i, "legs per round trip"]
-            cbix_coe_df.at[i, "Round Trip Distance on Auxiliary fuel"]  = rt_dist_aux_fuel * cbix_coe_glb_facs.loc[i, "legs per round trip"]
+
+            cbix_coe_df.at[i, "Round trip distance Main fuel"] =  0 if rt_dist_main_fuel == None else rt_dist_main_fuel * cbix_coe_glb_facs.loc[i, "legs per round trip"]
+            cbix_coe_df.at[i, "Round Trip Distance on Auxiliary fuel"]  = 0 if rt_dist_aux_fuel == None else rt_dist_aux_fuel * cbix_coe_glb_facs.loc[i, "legs per round trip"]
             cbix_coe_df.at[i, "Vessel Loading rate"]                    = vl_loading
             cbix_coe_df.at[i, "Vessel Un-Loading rate"]                 = vl_unloading
             cbix_coe_df.at[i, "Vessel Speed"]                           = lookup(self.cbix_cf_trade_details.loc[i, "Date"].date(), cbix_coe_frieght_calcs.loc[i, "Vessel Class for timecharter & fuel burn rates"],self.ship_speeds.loc[:, "Vessel Cruising speed"])
@@ -1898,8 +1943,8 @@ class CBIX:
             cbix_coe_df.at[i, "Days unloading"]                         = (cbix_coe_fnl_specs.loc[i, "Cargo Tonnage"] if cbix_coe_fnl_specs.loc[i, "Double Leg Shipping? (South America special transload leg)"] == "No" else cbix_coe_fnl_specs.loc[i, "South america special transloading cargo tonnage"]) / (1.0 - cbix_coe_fnl_specs.loc[i, "Moisture"]) / cbix_coe_df.loc[i, "Vessel Un-Loading rate"]
             cbix_coe_df.at[i, "Extra Days due to Canal use"]            = cbix_coe_canals_detls.loc[i, "Days delay"] * cbix_coe_glb_facs.loc[i, "legs per round trip"]
             cbix_coe_df.at[i, "Lay days allowance (50% each port)"]     = max([(cbix_coe_df.loc[i, "Days at Avg Speed Main Fuel":"Extra Days due to Canal use"].sum() * cbix_coe_glb_facs.loc[i, "Minimum Lay days allowed as % of sailing time"]),cbix_coe_glb_facs.loc[i, "Minimum Lay days allowed"] ])
-            cbix_coe_df.at[i, "Main Fuel HFO / VLSFO Fuel Price"]       = cbix_coe_fuel_prices.iloc[i, fuel_lookup_col]
-            cbix_coe_df.at[i, "Auxiliary Fuel (MDO / MGO / LNG) Price"] = cbix_coe_fuel_prices.iloc[i, aux_fuel_lookup]
+            cbix_coe_df.at[i, "Main Fuel HFO / VLSFO Fuel Price"]       = 0 if fuel_lookup_col == None else cbix_coe_fuel_prices.iloc[i, fuel_lookup_col]
+            cbix_coe_df.at[i, "Auxiliary Fuel (MDO / MGO / LNG) Price"] = 0 if aux_fuel_lookup == None else cbix_coe_fuel_prices.iloc[i, aux_fuel_lookup]
             cbix_coe_df.at[i, "Main Fuel Cost"]      = cbix_coe_df.loc[i, "Days at Avg Speed Main Fuel"] * cbix_coe_df.loc[i, "Main Engine Fuel burn rate"] * cbix_coe_df.loc[i, "Main Fuel HFO / VLSFO Fuel Price"]
             cbix_coe_df.at[i, "Auxiliary Fuel Cost"] = cbix_coe_df.loc[i, "Days Loading":"Lay days allowance (50% each port)"].sum() * cbix_coe_df.loc[i, "MDO / MGO burn rate"] * cbix_coe_df.loc[i, "Auxiliary Fuel (MDO / MGO / LNG) Price"] + cbix_coe_df.loc[i, "Days at Avg Speed Auxiliary Fuel"] * cbix_coe_df.loc[i, "Main Engine Fuel burn rate"] * cbix_coe_df.loc[i, "Auxiliary Fuel (MDO / MGO / LNG) Price"]
             cbix_coe_df.at[i, "FX rate per USD"]     = cbix_coe_fxrates.iloc[i, fxrate_lookup]
@@ -1920,7 +1965,7 @@ class CBIX:
             cbix_coe_df.at[i, "RMB/LOA/day anchored"] = cbix_coe_imp_port_dets.loc[i, "RMB/LOA/day anchored"] * cbix_coe_frieght_calcs.loc[i, "Estimated LOA (length over all) (m)"] * (cbix_coe_df.loc[i, "Lay days allowance (50% each port)"] * (1 - cbix_coe_glb_facs.loc[i, "Lay allowance Loading port"])) / cbix_coe_df.loc[i, "FX rate per USD"]
             cbix_coe_df.at[i, "Time Charter Rate"] = lookup1(charter_ind, self.cbix_cf_trade_details.loc[i, "Date"].date(), self.ship_time_cr.loc[:, "Vessel Time Charter Rates"])
             cbix_coe_df.at[i, "Time Charter Cost"] = sum([cbix_coe_df.loc[i, "Days at Avg Speed Main Fuel":"Lay days allowance (50% each port)"].sum(), cbix_coe_glb_facs.loc[i, "legs per round trip"]*cbix_coe_glb_facs.loc[i, "Lay allowance Loading port"]]) * cbix_coe_df.loc[i, "Time Charter Rate"]
-            
+
             sum1 = np.array(cbix_coe_canals_detls.loc[i, "Capacity Tarrifs - 1st":"Capacity Tarrifs - 9th"].tolist()) * np.array(cbix_coe_canals_costs.loc[i, "Amount per Capacity Tarrif Graduations - 1st":"Amount per Capacity Tarrif Graduations - 9th"].tolist())
             sum2 = np.array(cbix_coe_canals_detls.loc[i, "Cargo Tarrifs - 1st":"Cargo Tarrifs - 9th"].tolist()) * np.array(cbix_coe_canals_costs.loc[i, "Amounts per Cargo Tarrif Graduations - 1st":"Amounts per Cargo Tarrif Graduations - 9th"].tolist())
             cbix_coe_df.at[i, "Canal Costs"] = sum(sum1) + sum(sum2)
@@ -1928,11 +1973,11 @@ class CBIX:
             cbix_coe_df.at[i, "Total Cost for Leg - with Insurance & Commission"]   = cbix_coe_df.loc[i, "Total Cost for Leg - before Insurance & Commission"] * (1+cbix_coe_glb_facs.loc[i, "Freight Insurance Rate"])
             cbix_coe_df.at[i, "Per tonne cargo incl. Insurance & Commission"]       = 0 if cbix_coe_df.loc[i, "Total Cost for Leg - with Insurance & Commission"] == 0 else cbix_coe_df.loc[i, "Total Cost for Leg - with Insurance & Commission"]/(cbix_coe_frieght_calcs.loc[i, "Vessel dwt"] * (1 - cbix_coe_fnl_specs.loc[i, "Moisture"]) * cbix_coe_glb_facs.loc[i, "Max % of vessel deadweight allowed for loading"])
 
-        
+
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/final_costing_up_for_leg.csv"] = new_df
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/final_costing_up_for_leg.csv"] = freights_df
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/final_costing_up_for_leg.csv"] = cbix_coe_df
-        
+
 
     def freight_calcualtions_actual_port_second_leg(self, folder=None):
         fnl_specs     = self.db["outputs/final_specifications_to_viu_adjustment.csv"]
@@ -1946,21 +1991,27 @@ class CBIX:
         new_df      = pd.DataFrame(columns=self.frieght_calcs_columns)
         freights_df = pd.DataFrame(columns=self.frieght_calcs_columns)
         cbix_coe_df = pd.DataFrame(columns=self.frieght_calcs_columns)
-
+        
         def lookup(search, target_check, target):
-            for ind in range(target_check.shape[0]):
-                filt = target[target_check.iloc[:] <= search]
-                if filt is None:
-                     filt = target[target_check.iloc[:] >= search]
-                     return filt.iloc[0]
-                else:
-                    return filt.iloc[-1]
+            # for ind in range(target_check.shape[0]):
+            # filt = target[target_check.iloc[:] <= search]
+            # if filt is None:
+            #     filt = target[target_check.iloc[:] >= search]
+            #     return filt.iloc[0]
+            # else:
+            #     return filt.iloc[-1]
+            v = target_check.map(lambda x: float(x) <= float(search))
+            try:
+                return  target[v].tolist()[-1]
+            except Exception:
+                return np.nan
 
         for i in range(len(self.trade_details)):
             new_df.at[i, "Vessel dwt"]  = (fnl_specs.loc[i, "Cargo Tonnage"] if fnl_specs.loc[i, "Double Leg Shipping? (South America special transload leg)"] == "Yes" else fnl_specs.loc[i, "South america special transloading cargo tonnage"]) / (1 - fnl_specs.loc[i,"Moisture"])/ glb_facs.loc[i, "Max % of vessel deadweight allowed for loading"]
             new_df.at[i, "Vessel Class for timecharter & fuel burn rates"]  = lookup(new_df.loc[i, "Vessel dwt"], self.sheetname_class.loc[:, "DWT< tonnes"], self.sheetname_class.loc[:, "Class"])
             new_df.at[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] = lookup(new_df.loc[i, "Vessel dwt"], self.canals_class.loc[:, "DWT< tonnes"], self.canals_class.loc[:, "Class"])
             new_df.at[i, "Estimated LOA (length over all) (m)"] = new_df.loc[i, "Vessel dwt"] * glb_facs.loc[i, "LOA estimate correlation multiplier"] + glb_facs.loc[i, "LOA estimate correlation constant"]
+            
             new_df.at[i, "Estimated NRT (net register tons)"]   = new_df.loc[i, "Vessel dwt"] * glb_facs.loc[i, "NRT estimate correlation multiplier"] + glb_facs.loc[i, "NRT estimate correlation constant"]
             new_df.at[i, "Estimated GRT (gross register tons)"] = new_df.loc[i, "Vessel dwt"] * glb_facs.loc[i, "GRT estimate correlation multiplier"] + glb_facs.loc[i, "GRT estimate correlation constant"]
 
@@ -1980,11 +2031,13 @@ class CBIX:
             cbix_coe_df.at[i, "Estimated NRT (net register tons)"]   = cbix_coe_df.loc[i, "Vessel dwt"] * cbix_coe_glb_factors.loc[i, "NRT estimate correlation multiplier"] + cbix_coe_glb_factors.loc[i, "NRT estimate correlation constant"]
             cbix_coe_df.at[i, "Estimated GRT (gross register tons)"] = cbix_coe_df.loc[i, "Vessel dwt"] * cbix_coe_glb_factors.loc[i, "GRT estimate correlation multiplier"] + cbix_coe_glb_factors.loc[i, "GRT estimate correlation constant"]
 
-        
+
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freight_calcualtions_actual_port_second_leg.csv"] = new_df
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/freight_calcualtions_actual_port_second_leg.csv"] = freights_df
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/freight_calcualtions_actual_port_second_leg.csv"] = cbix_coe_df
-
+        
+        
+        
     def exporting_port_details_loading_rate_second_leg(self, folder=None):
         final_spec        = self.db["outputs/final_specifications_to_viu_adjustment.csv"]
         freights_fin_spec = self.db["outputs/freights/final_specifications_to_viu_adjustment.csv"]
@@ -1994,7 +2047,7 @@ class CBIX:
         freights_df = pd.DataFrame(columns=self.exporting_port_dts_cols)
         cbix_coe_df = pd.DataFrame(columns=self.exporting_port_dts_cols)
 
-        def lookup(search1, search2, target):            
+        def lookup(search1, search2, target):
             ind = (self.indexes_mines.loc[:, "Date"].map(lambda x: x.date()) <= search1)
             idx = (self.indexes_mines.loc[:, "Exporting Port"].map(lambda x: x == search2))
             v = target[ind & idx]
@@ -2015,7 +2068,7 @@ class CBIX:
             for col in cbix_coe_df.columns:
                 cbix_coe_df.at[i, col] = lookup(self.cbix_cf_trade_details.loc[i, "Date"].date(), cbix_coe_fin_spec.loc[i, "South America special transloading Port"], self.indexes_mines.loc[:, col])
 
-        
+
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/exporting_port_details_loading_rate_second_leg.csv"] = new_df
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/exporting_port_details_loading_rate_second_leg.csv"] = freights_df
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/exporting_port_details_loading_rate_second_leg.csv"] = cbix_coe_df
@@ -2024,11 +2077,11 @@ class CBIX:
         fn_spec           = self.db["outputs/final_specifications_to_viu_adjustment.csv"]
         freights_fin_spec = self.db["outputs/freights/final_specifications_to_viu_adjustment.csv"]
         cbix_coe_fin_spec = self.db["outputs/cbix_co_efficients_determination/final_specifications_to_viu_adjustment.csv"]
-        
+
         new_df      = pd.DataFrame(columns=self.port_linkages_cols)
         freights_df = pd.DataFrame(columns=self.port_linkages_cols)
         cbix_coe_df = pd.DataFrame(columns=self.port_linkages_cols)
-        
+
         def lookup(search1, search2, search3, target):
             for j in range(target.shape[0]):
                 if (self.port_linkages.loc[j, "Exporting Port"] == search1) and (self.port_linkages.loc[j, "Importing Port"] == search2) and (self.port_linkages.loc[j, "Date"].date() <= search3):
@@ -2038,31 +2091,31 @@ class CBIX:
         for i in range(len(self.trade_details)):
             for col in new_df.columns:
                 new_df.at[i, col] = lookup(
-                    fn_spec.loc[i, "South America special transloading Port"], 
-                    (fn_spec.loc[i, "South America special transloading Port"] if fn_spec.loc[i, "Double Leg Shipping? (South America special transload leg)"] == "No" else fn_spec.loc[i, "Importing Port"]), 
-                    self.trade_details.loc[i, "Date"].date(), 
+                    fn_spec.loc[i, "South America special transloading Port"],
+                    (fn_spec.loc[i, "South America special transloading Port"] if fn_spec.loc[i, "Double Leg Shipping? (South America special transload leg)"] == "No" else fn_spec.loc[i, "Importing Port"]),
+                    self.trade_details.loc[i, "Date"].date(),
                     self.port_linkages.loc[:, col])
 
         for i in range(len(self.freights_trade_details)):
             for col in freights_df.columns:
                 freights_df.at[i, col] = lookup(
-                    freights_fin_spec.loc[i, "South America special transloading Port"], 
-                    (freights_fin_spec.loc[i, "South America special transloading Port"] if freights_fin_spec.loc[i, "Double Leg Shipping? (South America special transload leg)"] == "No" else freights_fin_spec.loc[i, "Importing Port"]), 
-                    self.freights_trade_details.loc[i, "Date"].date(), 
+                    freights_fin_spec.loc[i, "South America special transloading Port"],
+                    (freights_fin_spec.loc[i, "South America special transloading Port"] if freights_fin_spec.loc[i, "Double Leg Shipping? (South America special transload leg)"] == "No" else freights_fin_spec.loc[i, "Importing Port"]),
+                    self.freights_trade_details.loc[i, "Date"].date(),
                     self.port_linkages.loc[:, col])
 
         for i in range(len(self.cbix_cf_trade_details)):
             for col in cbix_coe_df.columns:
                 cbix_coe_df.at[i, col] = lookup(
-                    cbix_coe_fin_spec.loc[i, "South America special transloading Port"], 
-                    (cbix_coe_fin_spec.loc[i, "South America special transloading Port"] if cbix_coe_fin_spec.loc[i, "Double Leg Shipping? (South America special transload leg)"] == "No" else cbix_coe_fin_spec.loc[i, "Importing Port"]), 
-                    self.cbix_cf_trade_details.loc[i, "Date"].date(), 
+                    cbix_coe_fin_spec.loc[i, "South America special transloading Port"],
+                    (cbix_coe_fin_spec.loc[i, "South America special transloading Port"] if cbix_coe_fin_spec.loc[i, "Double Leg Shipping? (South America special transload leg)"] == "No" else cbix_coe_fin_spec.loc[i, "Importing Port"]),
+                    self.cbix_cf_trade_details.loc[i, "Date"].date(),
                     self.port_linkages.loc[:, col])
 
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/port_linkages_second_leg.csv"] = new_df
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/port_linkages_second_leg.csv"] = freights_df
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/port_linkages_second_leg.csv"] = cbix_coe_df
-        
+
     def fuel_prices_func_second_leg(self, folder=None):
         port_lkgs     = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/port_linkages_second_leg.csv"]
         freights_port_lkgs     = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/port_linkages_second_leg.csv"]
@@ -2075,10 +2128,10 @@ class CBIX:
         new_df      = pd.DataFrame(columns=self.fuel_prices_cols)
         freights_df = pd.DataFrame(columns=self.fuel_prices_cols)
         cbix_coe_df = pd.DataFrame(columns=self.fuel_prices_cols)
-        
+
         def lookup(search1, search2, target):
             ind = (self.ship_fuel_prices.loc[:, "Fuel Region"] == search1) #.map(lambda i: 1 if i == True else 0)
-            idx = (self.ship_fuel_prices.loc[:, "Date"].map(lambda x: x.date()) <= search2) #.map(lambda i: 1 if i == True else 0)            
+            idx = (self.ship_fuel_prices.loc[:, "Date"].map(lambda x: x.date()) <= search2) #.map(lambda i: 1 if i == True else 0)
             v =  (ind & idx)
             try:
                 return target[v].tolist()[-1]
@@ -2090,7 +2143,7 @@ class CBIX:
             for col in new_df.columns:
                 if frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Handysize":
                     v = port_lkgs.loc[i, "Handysize – Applicable Fuel Region"]
-                
+
                 elif frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Supramax":
                     v = port_lkgs.loc[i, "Supramax – Applicable Fuel Region"]
 
@@ -2102,7 +2155,7 @@ class CBIX:
 
                 elif frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Suezmax":
                     v = port_lkgs.loc[i, "Suezmax – Applicable Fuel Region"]
-                
+
                 elif frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Capesize":
                     v = port_lkgs.loc[i, "Capesize – Applicable Fuel Region"]
 
@@ -2117,7 +2170,7 @@ class CBIX:
             for col in freights_df.columns:
                 if freights_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Handysize":
                     v = freights_port_lkgs.loc[i, "Handysize – Applicable Fuel Region"]
-                
+
                 elif freights_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Supramax":
                     v = freights_port_lkgs.loc[i, "Supramax – Applicable Fuel Region"]
 
@@ -2129,7 +2182,7 @@ class CBIX:
 
                 elif freights_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Suezmax":
                     v = freights_port_lkgs.loc[i, "Suezmax – Applicable Fuel Region"]
-                
+
                 elif freights_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Capesize":
                     v = freights_port_lkgs.loc[i, "Capesize – Applicable Fuel Region"]
 
@@ -2144,7 +2197,7 @@ class CBIX:
             for col in cbix_coe_df.columns:
                 if cbix_coe_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Handysize":
                     v = cbix_coe_port_lkgs.loc[i, "Handysize – Applicable Fuel Region"]
-                
+
                 elif cbix_coe_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Supramax":
                     v = cbix_coe_port_lkgs.loc[i, "Supramax – Applicable Fuel Region"]
 
@@ -2156,7 +2209,7 @@ class CBIX:
 
                 elif cbix_coe_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Suezmax":
                     v = cbix_coe_port_lkgs.loc[i, "Suezmax – Applicable Fuel Region"]
-                
+
                 elif cbix_coe_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Capesize":
                     v = cbix_coe_port_lkgs.loc[i, "Capesize – Applicable Fuel Region"]
 
@@ -2167,11 +2220,11 @@ class CBIX:
 
                 cbix_coe_df.at[i, col] = lookup(v, self.cbix_cf_trade_details.loc[i, "Date"].date(), self.ship_fuel_prices.loc[:, col] )
 
-        
+
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/fuel_prices_second_leg.csv"] = new_df
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/fuel_prices_second_leg.csv"] = freights_df
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/fuel_prices_second_leg.csv"] = cbix_coe_df
-        
+
     def importing_port_details_second_leg(self, folder=None):
         final_spec = self.db["outputs/final_specifications_to_viu_adjustment.csv"]
         freights_fin_spec = self.db["outputs/freights/final_specifications_to_viu_adjustment.csv"]
@@ -2182,7 +2235,7 @@ class CBIX:
         cbix_coe_df = pd.DataFrame(columns=self.importing_port_det_cols)
 
         def lookup(search1, search2, target):
-            idx = (self.china_imp_prts.loc[:, "Date"].map(lambda x: x.date()) <= search1) #.map(lambda i: 1 if i == True else 0)            
+            idx = (self.china_imp_prts.loc[:, "Date"].map(lambda x: x.date()) <= search1) #.map(lambda i: 1 if i == True else 0)
             ind = (self.china_imp_prts.loc[:, "Port"] == search2)
             v = (ind & idx)
             try:
@@ -2220,22 +2273,22 @@ class CBIX:
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/importing_port_details_second_leg.csv"] = new_df
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/importing_port_details_second_leg.csv"] = freights_df
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/importing_port_details_second_leg.csv"] = cbix_coe_df
-        
+
     def canals_details_second_leg(self, folder=None):
         port_lkgs              = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/port_linkages_second_leg.csv"]
         freights_port_lkgs     = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/port_linkages_second_leg.csv"]
         cbix_coe_port_lkgs     = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/port_linkages_second_leg.csv"]
-        
+
         frieght_calcs          = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freight_calcualtions_actual_port_second_leg.csv"]
         freights_frieght_calcs = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/freight_calcualtions_actual_port_second_leg.csv"]
         cbix_coe_frieght_calcs = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/freight_calcualtions_actual_port_second_leg.csv"]
-        
+
         new_df      = pd.DataFrame(columns=self.cost_details_cols)
         freights_df = pd.DataFrame(columns=self.cost_details_cols)
         cbix_coe_df = pd.DataFrame(columns=self.cost_details_cols)
 
         def lookup(search1, search2, target):
-            idx = (self.canals.loc[:, "Date"].map(lambda x: x.date()) <= search1) #.map(lambda i: 1 if i == True else 0)            
+            idx = (self.canals.loc[:, "Date"].map(lambda x: x.date()) <= search1) #.map(lambda i: 1 if i == True else 0)
             ind = (self.canals.loc[:, "Canal"] == search2)
             v = (ind & idx)
             try:
@@ -2247,7 +2300,7 @@ class CBIX:
             for col in new_df.columns:
                 if frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Handysize":
                     v = port_lkgs.loc[i, "Handysize – Canals used"]
-                
+
                 elif frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Supramax":
                     v = port_lkgs.loc[i, "Supramax – Canals used"]
 
@@ -2259,7 +2312,7 @@ class CBIX:
 
                 elif frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Suezmax":
                     v = port_lkgs.loc[i, "Suezmax – Canals used"]
-                
+
                 elif frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Capesize":
                     v = port_lkgs.loc[i, "Capesize – Canals used"]
 
@@ -2273,7 +2326,7 @@ class CBIX:
             for col in freights_df.columns:
                 if freights_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Handysize":
                     v = freights_port_lkgs.loc[i, "Handysize – Canals used"]
-                
+
                 elif freights_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Supramax":
                     v = freights_port_lkgs.loc[i, "Supramax – Canals used"]
 
@@ -2285,7 +2338,7 @@ class CBIX:
 
                 elif freights_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Suezmax":
                     v = freights_port_lkgs.loc[i, "Suezmax – Canals used"]
-                
+
                 elif freights_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Capesize":
                     v = freights_port_lkgs.loc[i, "Capesize – Canals used"]
 
@@ -2299,7 +2352,7 @@ class CBIX:
             for col in cbix_coe_df.columns:
                 if cbix_coe_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Handysize":
                     v = cbix_coe_port_lkgs.loc[i, "Handysize – Canals used"]
-                
+
                 elif cbix_coe_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Supramax":
                     v = cbix_coe_port_lkgs.loc[i, "Supramax – Canals used"]
 
@@ -2311,7 +2364,7 @@ class CBIX:
 
                 elif cbix_coe_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Suezmax":
                     v = cbix_coe_port_lkgs.loc[i, "Suezmax – Canals used"]
-                
+
                 elif cbix_coe_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Capesize":
                     v = cbix_coe_port_lkgs.loc[i, "Capesize – Canals used"]
 
@@ -2329,11 +2382,11 @@ class CBIX:
         canals_details          = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/canals_details_second_leg.csv"]
         freights_canals_details = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/canals_details_second_leg.csv"]
         cbix_coe_canals_details = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/canals_details_second_leg.csv"]
-        
+
         fc_actual_port          = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freight_calcualtions_actual_port_second_leg.csv"]
         freights_fc_actual_port = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/freight_calcualtions_actual_port_second_leg.csv"]
         cbix_coe_fc_actual_port = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/freight_calcualtions_actual_port_second_leg.csv"]
-        
+
         glb_facs                = self.db["outputs/common_data_inputs/common_data_inputs_global_factors.csv"]
         freights_glb_facs       = self.db["outputs/common_data_inputs/freights/common_data_inputs_global_factors.csv"]
         cbix_coe_glb_facs       = self.db["outputs/common_data_inputs/cbix_co_efficients_determination/common_data_inputs_global_factors.csv"]
@@ -2408,7 +2461,7 @@ class CBIX:
             cbix_coe_df.at[i, "Amounts per Cargo Tarrif Graduations - 8th"] = cbix_coe_canals_details.loc[i, "Cargo Tarrif Graduations - 8th"]  if cbix_coe_df.loc[i, "Amounts per Cargo Tarrif Graduations - Tonnage Reference"] > cbix_coe_canals_details.loc[i, "Cargo Tarrif Graduations - 1st":"Cargo Tarrif Graduations - 8th"].sum() else (cbix_coe_df.loc[i, "Amounts per Cargo Tarrif Graduations - Tonnage Reference"] - cbix_coe_df.loc[i, "Amounts per Cargo Tarrif Graduations - 1st":"Amounts per Cargo Tarrif Graduations - 7th"].sum())
             cbix_coe_df.at[i, "Amounts per Cargo Tarrif Graduations - 9th"] = cbix_coe_canals_details.loc[i, "Cargo Tarrif Graduations - 9th"]  if cbix_coe_df.loc[i, "Amounts per Cargo Tarrif Graduations - Tonnage Reference"] > cbix_coe_canals_details.loc[i, "Cargo Tarrif Graduations - 1st":"Cargo Tarrif Graduations - 9th"].sum() else (cbix_coe_df.loc[i, "Amounts per Cargo Tarrif Graduations - Tonnage Reference"] - cbix_coe_df.loc[i, "Amounts per Cargo Tarrif Graduations - 1st":"Amounts per Cargo Tarrif Graduations - 8th"].sum())
 
-        
+
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/canals_costs_workings_second_leg.csv"] = new_df
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/canals_costs_workings_second_leg.csv"] = freights_df
         self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/canals_costs_workings_second_leg.csv"] = cbix_coe_df
@@ -2417,39 +2470,39 @@ class CBIX:
         fxrates                = self.db["outputs/common_data_inputs/common_data_inputs_fx_rates.csv"]
         freights_fxrates       = self.db["outputs/common_data_inputs/freights/common_data_inputs_fx_rates.csv"]
         cbix_coe_fxrates       = self.db["outputs/common_data_inputs/cbix_co_efficients_determination/common_data_inputs_fx_rates.csv"]
-        
+
         glb_facs               = self.db["outputs/common_data_inputs/common_data_inputs_global_factors.csv"]
         freights_glb_facs      = self.db["outputs/common_data_inputs/common_data_inputs_global_factors.csv"]
         cbix_coe_glb_facs      = self.db["outputs/common_data_inputs/common_data_inputs_global_factors.csv"]
-        
+
         fuel_prices            = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/fuel_prices_second_leg.csv"]
         freights_fuel_prices   = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/fuel_prices_second_leg.csv"]
         cbix_coe_fuel_prices   = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/fuel_prices_second_leg.csv"]
-        
+
         port_lkgs              = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/port_linkages_second_leg.csv"]
         freights_port_lkgs     = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/port_linkages_second_leg.csv"]
         cbix_coe_port_lkgs     = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/port_linkages_second_leg.csv"]
-        
+
         canals_detls           = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/canals_details_second_leg.csv"]
         freights_canals_detls  = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/canals_details_second_leg.csv"]
         cbix_coe_canals_detls  = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/canals_details_second_leg.csv"]
-        
+
         canals_costs           = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/canals_costs_workings_second_leg.csv"]
         freights_canals_costs  = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/canals_costs_workings_second_leg.csv"]
         cbix_coe_canals_costs  = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/canals_costs_workings_second_leg.csv"]
-        
+
         imp_port_dets          = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/importing_port_details_second_leg.csv"]
         freights_imp_port_dets = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/importing_port_details_second_leg.csv"]
         cbix_coe_imp_port_dets = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/importing_port_details_second_leg.csv"]
-        
+
         loading_rates          = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/exporting_port_details_loading_rate_second_leg.csv"]
         freights_loading_rates = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/exporting_port_details_loading_rate_second_leg.csv"]
         cbix_coe_loading_rates = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/exporting_port_details_loading_rate_second_leg.csv"]
-        
+
         frieght_calcs          = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freight_calcualtions_actual_port_second_leg.csv"]
         freights_frieght_calcs = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/freights/freight_calcualtions_actual_port_second_leg.csv"]
         cbix_coe_frieght_calcs = self.db[f"outputs/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/cbix_co_efficients_determination/freight_calcualtions_actual_port_second_leg.csv"]
-        
+
         fnl_specs              = self.db["outputs/final_specifications_to_viu_adjustment.csv"]
         freights_fnl_specs     = self.db["outputs/freights/final_specifications_to_viu_adjustment.csv"]
         cbix_coe_fnl_specs     = self.db["outputs/cbix_co_efficients_determination/final_specifications_to_viu_adjustment.csv"]
@@ -2462,14 +2515,17 @@ class CBIX:
         fx_rates_lookup    = ["RMB", "AUD", "USD", "SDR"]
 
         def lookup(search1, search2, target):
-            idx = (self.ship_speeds.loc[:, "Date"].map(lambda x: x.date()) <= search1) #.map(lambda i: 1 if i == True else 0)            
+            idx = (self.ship_speeds.loc[:, "Date"].map(lambda x: x.date()) <= search1) #.map(lambda i: 1 if i == True else 0)
             ind = (self.ship_speeds.loc[:, "Vesssel class"] == search2)
             v = (ind & idx)
-            return target[v].tolist()[-1]
+            try:
+                return target[v].tolist()[-1]
+            except Exception:
+                return np.nan
 
         def lookup1(search1, search2, target):
             x = self.ship_time_cr.loc[:, "Applicable Time Charter Index"] == search1
-            y = self.ship_time_cr.loc[:, "Date"].map(lambda x: x.date()) <= search2 #.map(lambda i: 1 if i == True else 0)            
+            y = self.ship_time_cr.loc[:, "Date"].map(lambda x: x.date()) <= search2 #.map(lambda i: 1 if i == True else 0)
             z = self.ship_time_cr.loc[:, "Vessel Time Charter Rates"].map(lambda x: pd.notna(x))
 
             v =  (x & y & z)
@@ -2477,7 +2533,7 @@ class CBIX:
                 return target[v].tolist()[-1]
             except Exception:
                 return 0
-        
+
         for i in range(len(self.trade_details)):
             if frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Handysize":
                 rt_dist_main_fuel = port_lkgs.loc[i, "Handysize – Distance using Main Engine Fuel"]
@@ -2487,7 +2543,7 @@ class CBIX:
                 main_engine_fuel  = port_lkgs.loc[i, "Handysize – Main Engine Fuel"]
                 auxiliary_fuel    = port_lkgs.loc[i, "Handysize – Auxiliary Fuel"]
                 charter_ind       = port_lkgs.loc[i, "Handysize – Applicable Time Charter Index"]
-            
+
             elif frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Supramax":
                 rt_dist_main_fuel = port_lkgs.loc[i, "Supramax – Distance using Main Engine Fuel"]
                 rt_dist_aux_fuel  = port_lkgs.loc[i, "Supramax – Distance using Auxiliary Fuel"]
@@ -2523,7 +2579,7 @@ class CBIX:
                 main_engine_fuel  = port_lkgs.loc[i, "Suezmax – Main Engine Fuel"]
                 auxiliary_fuel    = port_lkgs.loc[i, "Suezmax – Auxiliary Fuel"]
                 charter_ind       = port_lkgs.loc[i, "Suezmax – Applicable Time Charter Index"]
-            
+
             elif frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Capesize":
                 rt_dist_main_fuel = port_lkgs.loc[i, "Capesize – Distance using Main Engine Fuel"]
                 rt_dist_aux_fuel  = port_lkgs.loc[i, "Capesize – Distance using Auxiliary Fuel"]
@@ -2543,7 +2599,7 @@ class CBIX:
                 charter_ind       = port_lkgs.loc[i, "VLOC – Applicable Time Charter Index"]
             else:
                 rt_dist_main_fuel = None
-                
+
             for j in range(len(fuel_prices_lookup)):
                 if main_engine_fuel == fuel_prices_lookup[j]:
                     fuel_lookup_col = j
@@ -2564,7 +2620,7 @@ class CBIX:
                     break
                 else:
                     fxrate_lookup = None
-                    
+
             new_df.at[i, "Round trip distance Main fuel"] = rt_dist_main_fuel * glb_facs.loc[i, "legs per round trip"]
             new_df.at[i, "Round Trip Distance on Auxiliary fuel"]  = rt_dist_aux_fuel * glb_facs.loc[i, "legs per round trip"]
             new_df.at[i, "Vessel Loading rate"]                    = vl_loading
@@ -2584,7 +2640,7 @@ class CBIX:
             new_df.at[i, "Auxiliary Fuel (MDO / MGO / LNG) Price"] = 0 if aux_fuel_lookup == None else fuel_prices.iloc[i, aux_fuel_lookup]
             new_df.at[i, "Main Fuel Cost"]      = new_df.loc[i, "Days at Avg Speed Main Fuel"] * new_df.loc[i, "Main Engine Fuel burn rate"] * new_df.loc[i, "Main Fuel HFO / VLSFO Fuel Price"]
             new_df.at[i, "Auxiliary Fuel Cost"] = new_df.loc[i, "Days Loading":"Lay days allowance (50% each port)"].sum() * new_df.loc[i, "MDO / MGO burn rate"] * new_df.loc[i, "Auxiliary Fuel (MDO / MGO / LNG) Price"] + new_df.loc[i, "Days at Avg Speed Auxiliary Fuel"] * new_df.loc[i, "Main Engine Fuel burn rate"] * new_df.loc[i, "Auxiliary Fuel (MDO / MGO / LNG) Price"]
-            new_df.at[i, "FX rate per USD"]     = 0 if (new_df.loc[i, "Round trip distance Main fuel"] == 0 or fxrate_lookup == None) else fxrates.iloc[i, fxrate_lookup]            
+            new_df.at[i, "FX rate per USD"]     = 0 if (new_df.loc[i, "Round trip distance Main fuel"] == 0 or fxrate_lookup == None) else fxrates.iloc[i, fxrate_lookup]
             new_df.at[i, "Fixed fee"]        = 0 if (imp_port_dets.loc[i, "RMB Fixed fee"] == 0 and new_df.loc[i, "FX rate per USD"] == 0) else imp_port_dets.loc[i, "RMB Fixed fee"] / new_df.loc[i, "FX rate per USD"]
             new_df.at[i, "Berthing Charge"]  = 0 if new_df.loc[i, "Round trip distance Main fuel"] == 0 else  imp_port_dets.loc[i, "RMB per day berthed"] * sum([new_df.loc[i, "Days unloading"], glb_facs.loc[i, "Extra time tie up + untie at each port"]]) / new_df.loc[i, "FX rate per USD"]
             new_df.at[i, "Anchorage Charge"] = 0 if new_df.loc[i, "Round trip distance Main fuel"] == 0 else imp_port_dets.loc[i, "RMB per day anchored"] * (new_df.loc[i, "Lay days allowance (50% each port)"] * (1 - glb_facs.loc[i, "Lay allowance Loading port"])) / new_df.loc[i, "FX rate per USD"]
@@ -2601,7 +2657,7 @@ class CBIX:
             new_df.at[i, "RMB/LOA/day berthed"]  = 0 if new_df.loc[i, "Round trip distance Main fuel"] == 0 else imp_port_dets.loc[i, "RMB/LOA/day berthed"] * frieght_calcs.loc[i, "Estimated LOA (length over all) (m)"]  * sum([new_df.loc[i, "Days unloading"], glb_facs.loc[i, "Extra time tie up + untie at each port"]]) / new_df.loc[i, "FX rate per USD"]
             new_df.at[i, "RMB/LOA/day anchored"] =0 if new_df.loc[i, "Round trip distance Main fuel"] == 0 else imp_port_dets.loc[i, "RMB/LOA/day anchored"] * frieght_calcs.loc[i, "Estimated LOA (length over all) (m)"] * (new_df.loc[i, "Lay days allowance (50% each port)"] * (1 - glb_facs.loc[i, "Lay allowance Loading port"])) / new_df.loc[i, "FX rate per USD"]
             new_df.at[i, "Time Charter Rate"] = 0 if new_df.loc[i, "Round trip distance Main fuel"] == 0 else lookup1(charter_ind, self.trade_details.loc[i, "Date"].date(), self.ship_time_cr.loc[:, "Vessel Time Charter Rates"])
-            new_df.at[i, "Time Charter Cost"] = 0 if new_df.loc[i, "Round trip distance Main fuel"] == 0 else sum([new_df.loc[i, "Days at Avg Speed Main Fuel":"Lay days allowance (50% each port)"].sum(), glb_facs.loc[i, "legs per round trip"]*glb_facs.loc[i, "Lay allowance Loading port"]]) * new_df.loc[i, "Time Charter Rate"]            
+            new_df.at[i, "Time Charter Cost"] = 0 if new_df.loc[i, "Round trip distance Main fuel"] == 0 else sum([new_df.loc[i, "Days at Avg Speed Main Fuel":"Lay days allowance (50% each port)"].sum(), glb_facs.loc[i, "legs per round trip"]*glb_facs.loc[i, "Lay allowance Loading port"]]) * new_df.loc[i, "Time Charter Rate"]
             sum1 = np.array(canals_detls.loc[i, "Capacity Tarrifs - 1st":"Capacity Tarrifs - 9th"].tolist()) * np.array(canals_costs.loc[i, "Amount per Capacity Tarrif Graduations - 1st":"Amount per Capacity Tarrif Graduations - 9th"].tolist())
             sum2 = np.array(canals_detls.loc[i, "Cargo Tarrifs - 1st":"Cargo Tarrifs - 9th"].tolist()) * np.array(canals_costs.loc[i, "Amounts per Cargo Tarrif Graduations - 1st":"Amounts per Cargo Tarrif Graduations - 9th"].tolist())
             new_df.at[i, "Canal Costs"] = 0 if new_df.loc[i, "Round trip distance Main fuel"] == 0 else sum(sum1) + sum(sum2)
@@ -2618,7 +2674,7 @@ class CBIX:
                 main_engine_fuel  = freights_port_lkgs.loc[i, "Handysize – Main Engine Fuel"]
                 auxiliary_fuel    = freights_port_lkgs.loc[i, "Handysize – Auxiliary Fuel"]
                 charter_ind       = freights_port_lkgs.loc[i, "Handysize – Applicable Time Charter Index"]
-            
+
             elif freights_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Supramax":
                 rt_dist_main_fuel = freights_port_lkgs.loc[i, "Supramax – Distance using Main Engine Fuel"]
                 rt_dist_aux_fuel  = freights_port_lkgs.loc[i, "Supramax – Distance using Auxiliary Fuel"]
@@ -2654,7 +2710,7 @@ class CBIX:
                 main_engine_fuel  = freights_port_lkgs.loc[i, "Suezmax – Main Engine Fuel"]
                 auxiliary_fuel    = freights_port_lkgs.loc[i, "Suezmax – Auxiliary Fuel"]
                 charter_ind       = freights_port_lkgs.loc[i, "Suezmax – Applicable Time Charter Index"]
-            
+
             elif freights_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Capesize":
                 rt_dist_main_fuel = freights_port_lkgs.loc[i, "Capesize – Distance using Main Engine Fuel"]
                 rt_dist_aux_fuel  = freights_port_lkgs.loc[i, "Capesize – Distance using Auxiliary Fuel"]
@@ -2674,7 +2730,7 @@ class CBIX:
                 charter_ind       = freights_port_lkgs.loc[i, "VLOC – Applicable Time Charter Index"]
             else:
                 rt_dist_main_fuel = None
-                
+
             for j in range(len(fuel_prices_lookup)):
                 if main_engine_fuel == fuel_prices_lookup[j]:
                     fuel_lookup_col = j
@@ -2695,8 +2751,9 @@ class CBIX:
                     break
                 else:
                     fxrate_lookup = None
-                    
-            freights_df.at[i, "Round trip distance Main fuel"] = rt_dist_main_fuel * freights_glb_facs.loc[i, "legs per round trip"]
+            
+            freights_df.at[i, "Round trip distance Main fuel"] = 0 if rt_dist_main_fuel == None else rt_dist_main_fuel * freights_glb_facs.loc[i, "legs per round trip"]
+            # 
             freights_df.at[i, "Round Trip Distance on Auxiliary fuel"]  = rt_dist_aux_fuel * freights_glb_facs.loc[i, "legs per round trip"]
             freights_df.at[i, "Vessel Loading rate"]                    = vl_loading
             freights_df.at[i, "Vessel Un-Loading rate"]                 = vl_unloading
@@ -2715,7 +2772,7 @@ class CBIX:
             freights_df.at[i, "Auxiliary Fuel (MDO / MGO / LNG) Price"] = 0 if aux_fuel_lookup == None else freights_fuel_prices.iloc[i, aux_fuel_lookup]
             freights_df.at[i, "Main Fuel Cost"]      = freights_df.loc[i, "Days at Avg Speed Main Fuel"] * freights_df.loc[i, "Main Engine Fuel burn rate"] * freights_df.loc[i, "Main Fuel HFO / VLSFO Fuel Price"]
             freights_df.at[i, "Auxiliary Fuel Cost"] = freights_df.loc[i, "Days Loading":"Lay days allowance (50% each port)"].sum() * freights_df.loc[i, "MDO / MGO burn rate"] * freights_df.loc[i, "Auxiliary Fuel (MDO / MGO / LNG) Price"] + freights_df.loc[i, "Days at Avg Speed Auxiliary Fuel"] * freights_df.loc[i, "Main Engine Fuel burn rate"] * freights_df.loc[i, "Auxiliary Fuel (MDO / MGO / LNG) Price"]
-            freights_df.at[i, "FX rate per USD"]     = 0 if (freights_df.loc[i, "Round trip distance Main fuel"] == 0 or fxrate_lookup == None) else freights_fxrates.iloc[i, fxrate_lookup]            
+            freights_df.at[i, "FX rate per USD"]     = 0 if (freights_df.loc[i, "Round trip distance Main fuel"] == 0 or fxrate_lookup == None) else freights_fxrates.iloc[i, fxrate_lookup]
             freights_df.at[i, "Fixed fee"]        = 0 if (freights_imp_port_dets.loc[i, "RMB Fixed fee"] == 0 and freights_df.loc[i, "FX rate per USD"] == 0) else freights_imp_port_dets.loc[i, "RMB Fixed fee"] / freights_df.loc[i, "FX rate per USD"]
             freights_df.at[i, "Berthing Charge"]  = 0 if freights_df.loc[i, "Round trip distance Main fuel"] == 0 else  freights_imp_port_dets.loc[i, "RMB per day berthed"] * sum([freights_df.loc[i, "Days unloading"], freights_glb_facs.loc[i, "Extra time tie up + untie at each port"]]) / freights_df.loc[i, "FX rate per USD"]
             freights_df.at[i, "Anchorage Charge"] = 0 if freights_df.loc[i, "Round trip distance Main fuel"] == 0 else freights_imp_port_dets.loc[i, "RMB per day anchored"] * (freights_df.loc[i, "Lay days allowance (50% each port)"] * (1 - freights_glb_facs.loc[i, "Lay allowance Loading port"])) / freights_df.loc[i, "FX rate per USD"]
@@ -2732,7 +2789,7 @@ class CBIX:
             freights_df.at[i, "RMB/LOA/day berthed"]  = 0 if freights_df.loc[i, "Round trip distance Main fuel"] == 0 else freights_imp_port_dets.loc[i, "RMB/LOA/day berthed"] * freights_frieght_calcs.loc[i, "Estimated LOA (length over all) (m)"]  * sum([freights_df.loc[i, "Days unloading"], freights_glb_facs.loc[i, "Extra time tie up + untie at each port"]]) / freights_df.loc[i, "FX rate per USD"]
             freights_df.at[i, "RMB/LOA/day anchored"] =0 if freights_df.loc[i, "Round trip distance Main fuel"] == 0 else freights_imp_port_dets.loc[i, "RMB/LOA/day anchored"] * freights_frieght_calcs.loc[i, "Estimated LOA (length over all) (m)"] * (freights_df.loc[i, "Lay days allowance (50% each port)"] * (1 - freights_glb_facs.loc[i, "Lay allowance Loading port"])) / freights_df.loc[i, "FX rate per USD"]
             freights_df.at[i, "Time Charter Rate"] = 0 if freights_df.loc[i, "Round trip distance Main fuel"] == 0 else lookup1(charter_ind, self.freights_trade_details.loc[i, "Date"].date(), self.ship_time_cr.loc[:, "Vessel Time Charter Rates"])
-            freights_df.at[i, "Time Charter Cost"] = 0 if freights_df.loc[i, "Round trip distance Main fuel"] == 0 else sum([freights_df.loc[i, "Days at Avg Speed Main Fuel":"Lay days allowance (50% each port)"].sum(), freights_glb_facs.loc[i, "legs per round trip"]*freights_glb_facs.loc[i, "Lay allowance Loading port"]]) * freights_df.loc[i, "Time Charter Rate"]            
+            freights_df.at[i, "Time Charter Cost"] = 0 if freights_df.loc[i, "Round trip distance Main fuel"] == 0 else sum([freights_df.loc[i, "Days at Avg Speed Main Fuel":"Lay days allowance (50% each port)"].sum(), freights_glb_facs.loc[i, "legs per round trip"]*freights_glb_facs.loc[i, "Lay allowance Loading port"]]) * freights_df.loc[i, "Time Charter Rate"]
             sum1 = np.array(freights_canals_detls.loc[i, "Capacity Tarrifs - 1st":"Capacity Tarrifs - 9th"].tolist()) * np.array(freights_canals_costs.loc[i, "Amount per Capacity Tarrif Graduations - 1st":"Amount per Capacity Tarrif Graduations - 9th"].tolist())
             sum2 = np.array(freights_canals_detls.loc[i, "Cargo Tarrifs - 1st":"Cargo Tarrifs - 9th"].tolist()) * np.array(freights_canals_costs.loc[i, "Amounts per Cargo Tarrif Graduations - 1st":"Amounts per Cargo Tarrif Graduations - 9th"].tolist())
             freights_df.at[i, "Canal Costs"] = 0 if freights_df.loc[i, "Round trip distance Main fuel"] == 0 else sum(sum1) + sum(sum2)
@@ -2749,7 +2806,7 @@ class CBIX:
                 main_engine_fuel  = cbix_coe_port_lkgs.loc[i, "Handysize – Main Engine Fuel"]
                 auxiliary_fuel    = cbix_coe_port_lkgs.loc[i, "Handysize – Auxiliary Fuel"]
                 charter_ind       = cbix_coe_port_lkgs.loc[i, "Handysize – Applicable Time Charter Index"]
-            
+
             elif cbix_coe_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Supramax":
                 rt_dist_main_fuel = cbix_coe_port_lkgs.loc[i, "Supramax – Distance using Main Engine Fuel"]
                 rt_dist_aux_fuel  = cbix_coe_port_lkgs.loc[i, "Supramax – Distance using Auxiliary Fuel"]
@@ -2785,7 +2842,7 @@ class CBIX:
                 main_engine_fuel  = cbix_coe_port_lkgs.loc[i, "Suezmax – Main Engine Fuel"]
                 auxiliary_fuel    = cbix_coe_port_lkgs.loc[i, "Suezmax – Auxiliary Fuel"]
                 charter_ind       = cbix_coe_port_lkgs.loc[i, "Suezmax – Applicable Time Charter Index"]
-            
+
             elif cbix_coe_frieght_calcs.loc[i, "Vessel Class for distance, canals, loading and unloading rates, fuel prices"] == "Capesize":
                 rt_dist_main_fuel = cbix_coe_port_lkgs.loc[i, "Capesize – Distance using Main Engine Fuel"]
                 rt_dist_aux_fuel  = cbix_coe_port_lkgs.loc[i, "Capesize – Distance using Auxiliary Fuel"]
@@ -2805,7 +2862,7 @@ class CBIX:
                 charter_ind       = cbix_coe_port_lkgs.loc[i, "VLOC – Applicable Time Charter Index"]
             else:
                 rt_dist_main_fuel = None
-                
+
             for j in range(len(fuel_prices_lookup)):
                 if main_engine_fuel == fuel_prices_lookup[j]:
                     fuel_lookup_col = j
@@ -2826,7 +2883,7 @@ class CBIX:
                     break
                 else:
                     fxrate_lookup = None
-                    
+
             cbix_coe_df.at[i, "Round trip distance Main fuel"] = rt_dist_main_fuel * cbix_coe_glb_facs.loc[i, "legs per round trip"]
             cbix_coe_df.at[i, "Round Trip Distance on Auxiliary fuel"]  = rt_dist_aux_fuel * cbix_coe_glb_facs.loc[i, "legs per round trip"]
             cbix_coe_df.at[i, "Vessel Loading rate"]                    = vl_loading
@@ -2846,7 +2903,7 @@ class CBIX:
             cbix_coe_df.at[i, "Auxiliary Fuel (MDO / MGO / LNG) Price"] = 0 if aux_fuel_lookup == None else cbix_coe_fuel_prices.iloc[i, aux_fuel_lookup]
             cbix_coe_df.at[i, "Main Fuel Cost"]      = cbix_coe_df.loc[i, "Days at Avg Speed Main Fuel"] * cbix_coe_df.loc[i, "Main Engine Fuel burn rate"] * cbix_coe_df.loc[i, "Main Fuel HFO / VLSFO Fuel Price"]
             cbix_coe_df.at[i, "Auxiliary Fuel Cost"] = cbix_coe_df.loc[i, "Days Loading":"Lay days allowance (50% each port)"].sum() * cbix_coe_df.loc[i, "MDO / MGO burn rate"] * cbix_coe_df.loc[i, "Auxiliary Fuel (MDO / MGO / LNG) Price"] + cbix_coe_df.loc[i, "Days at Avg Speed Auxiliary Fuel"] * cbix_coe_df.loc[i, "Main Engine Fuel burn rate"] * cbix_coe_df.loc[i, "Auxiliary Fuel (MDO / MGO / LNG) Price"]
-            cbix_coe_df.at[i, "FX rate per USD"]     = 0 if (cbix_coe_df.loc[i, "Round trip distance Main fuel"] == 0 or fxrate_lookup == None) else cbix_coe_fxrates.iloc[i, fxrate_lookup]            
+            cbix_coe_df.at[i, "FX rate per USD"]     = 0 if (cbix_coe_df.loc[i, "Round trip distance Main fuel"] == 0 or fxrate_lookup == None) else cbix_coe_fxrates.iloc[i, fxrate_lookup]
             cbix_coe_df.at[i, "Fixed fee"]        = 0 if (cbix_coe_imp_port_dets.loc[i, "RMB Fixed fee"] == 0 and cbix_coe_df.loc[i, "FX rate per USD"] == 0) else cbix_coe_imp_port_dets.loc[i, "RMB Fixed fee"] / cbix_coe_df.loc[i, "FX rate per USD"]
             cbix_coe_df.at[i, "Berthing Charge"]  = 0 if cbix_coe_df.loc[i, "Round trip distance Main fuel"] == 0 else  cbix_coe_imp_port_dets.loc[i, "RMB per day berthed"] * sum([cbix_coe_df.loc[i, "Days unloading"], cbix_coe_glb_facs.loc[i, "Extra time tie up + untie at each port"]]) / cbix_coe_df.loc[i, "FX rate per USD"]
             cbix_coe_df.at[i, "Anchorage Charge"] = 0 if cbix_coe_df.loc[i, "Round trip distance Main fuel"] == 0 else cbix_coe_imp_port_dets.loc[i, "RMB per day anchored"] * (cbix_coe_df.loc[i, "Lay days allowance (50% each port)"] * (1 - cbix_coe_glb_facs.loc[i, "Lay allowance Loading port"])) / cbix_coe_df.loc[i, "FX rate per USD"]
@@ -2863,7 +2920,7 @@ class CBIX:
             cbix_coe_df.at[i, "RMB/LOA/day berthed"]  = 0 if cbix_coe_df.loc[i, "Round trip distance Main fuel"] == 0 else cbix_coe_imp_port_dets.loc[i, "RMB/LOA/day berthed"] * cbix_coe_frieght_calcs.loc[i, "Estimated LOA (length over all) (m)"]  * sum([cbix_coe_df.loc[i, "Days unloading"], cbix_coe_glb_facs.loc[i, "Extra time tie up + untie at each port"]]) / cbix_coe_df.loc[i, "FX rate per USD"]
             cbix_coe_df.at[i, "RMB/LOA/day anchored"] =0 if cbix_coe_df.loc[i, "Round trip distance Main fuel"] == 0 else cbix_coe_imp_port_dets.loc[i, "RMB/LOA/day anchored"] * cbix_coe_frieght_calcs.loc[i, "Estimated LOA (length over all) (m)"] * (cbix_coe_df.loc[i, "Lay days allowance (50% each port)"] * (1 - cbix_coe_glb_facs.loc[i, "Lay allowance Loading port"])) / cbix_coe_df.loc[i, "FX rate per USD"]
             cbix_coe_df.at[i, "Time Charter Rate"] = 0 if cbix_coe_df.loc[i, "Round trip distance Main fuel"] == 0 else lookup1(charter_ind, self.cbix_cf_trade_details.loc[i, "Date"].date(), self.ship_time_cr.loc[:, "Vessel Time Charter Rates"])
-            cbix_coe_df.at[i, "Time Charter Cost"] = 0 if cbix_coe_df.loc[i, "Round trip distance Main fuel"] == 0 else sum([cbix_coe_df.loc[i, "Days at Avg Speed Main Fuel":"Lay days allowance (50% each port)"].sum(), cbix_coe_glb_facs.loc[i, "legs per round trip"]*cbix_coe_glb_facs.loc[i, "Lay allowance Loading port"]]) * cbix_coe_df.loc[i, "Time Charter Rate"]            
+            cbix_coe_df.at[i, "Time Charter Cost"] = 0 if cbix_coe_df.loc[i, "Round trip distance Main fuel"] == 0 else sum([cbix_coe_df.loc[i, "Days at Avg Speed Main Fuel":"Lay days allowance (50% each port)"].sum(), cbix_coe_glb_facs.loc[i, "legs per round trip"]*cbix_coe_glb_facs.loc[i, "Lay allowance Loading port"]]) * cbix_coe_df.loc[i, "Time Charter Rate"]
             sum1 = np.array(cbix_coe_canals_detls.loc[i, "Capacity Tarrifs - 1st":"Capacity Tarrifs - 9th"].tolist()) * np.array(cbix_coe_canals_costs.loc[i, "Amount per Capacity Tarrif Graduations - 1st":"Amount per Capacity Tarrif Graduations - 9th"].tolist())
             sum2 = np.array(cbix_coe_canals_detls.loc[i, "Cargo Tarrifs - 1st":"Cargo Tarrifs - 9th"].tolist()) * np.array(cbix_coe_canals_costs.loc[i, "Amounts per Cargo Tarrif Graduations - 1st":"Amounts per Cargo Tarrif Graduations - 9th"].tolist())
             cbix_coe_df.at[i, "Canal Costs"] = 0 if cbix_coe_df.loc[i, "Round trip distance Main fuel"] == 0 else sum(sum1) + sum(sum2)
@@ -2879,19 +2936,19 @@ class CBIX:
         actual_nominated_port_final_costing_up_for_leg                 = self.db["outputs/frieght_calcs_to_actual_nominated_port/final_costing_up_for_leg.csv"]
         freights_actual_nominated_port_final_costing_up_for_leg        = self.db["outputs/frieght_calcs_to_actual_nominated_port/freights/final_costing_up_for_leg.csv"]
         cbix_coe_actual_nominated_port_final_costing_up_for_leg        = self.db["outputs/frieght_calcs_to_actual_nominated_port/cbix_co_efficients_determination/final_costing_up_for_leg.csv"]
-        
+
         actual_nominated_port_final_costing_up_for_second_leg          = self.db["outputs/frieght_calcs_to_actual_nominated_port/final_costing_up_for_second_leg.csv"]
         freights_actual_nominated_port_final_costing_up_for_second_leg = self.db["outputs/frieght_calcs_to_actual_nominated_port/freights/final_costing_up_for_second_leg.csv"]
         cbix_coe_actual_nominated_port_final_costing_up_for_second_leg = self.db["outputs/frieght_calcs_to_actual_nominated_port/cbix_co_efficients_determination/final_costing_up_for_second_leg.csv"]
-        
+
         qingdao_leg                  = self.db["outputs/freight_calcs_to_qingdao_first_leg/final_costing_up_for_leg.csv"]
         freights_qingdao_leg         = self.db["outputs/freight_calcs_to_qingdao_first_leg/freights/final_costing_up_for_leg.csv"]
         cbix_coe_qingdao_leg         = self.db["outputs/freight_calcs_to_qingdao_first_leg/cbix_co_efficients_determination/final_costing_up_for_leg.csv"]
-        
+
         qingdao_second_leg           = self.db["outputs/freight_calcs_to_qingdao_first_leg/final_costing_up_for_second_leg.csv"]
         freights_qingdao_second_leg  = self.db["outputs/freight_calcs_to_qingdao_first_leg/freights/final_costing_up_for_second_leg.csv"]
         cbix_coe_qingdao_second_leg  = self.db["outputs/freight_calcs_to_qingdao_first_leg/cbix_co_efficients_determination/final_costing_up_for_second_leg.csv"]
-        
+
         new_df      = pd.DataFrame(columns=["Qingdao Freight", "Actual Port Freight", "Freight Differential"])
         freights_df = pd.DataFrame(columns=["Qingdao Freight", "Actual Port Freight", "Freight Differential"])
         cbix_coe_df = pd.DataFrame(columns=["Qingdao Freight", "Actual Port Freight", "Freight Differential"])
@@ -2906,12 +2963,12 @@ class CBIX:
             freights_df.at[i, "Qingdao Freight"] = sum([freights_qingdao_leg.loc[i, "Per tonne cargo incl. Insurance & Commission"], freights_qingdao_second_leg.loc[i, "Per tonne cargo incl. Insurance & Commission"]])
             freights_df.at[i, "Actual Port Freight"] = sum([freights_actual_nominated_port_final_costing_up_for_leg.loc[i, "Per tonne cargo incl. Insurance & Commission"], freights_actual_nominated_port_final_costing_up_for_second_leg.loc[i, "Per tonne cargo incl. Insurance & Commission"]])
             freights_df.at[i, "Freight Differential"] = freights_df.loc[i, "Qingdao Freight"] - freights_df.loc[i, "Actual Port Freight"]
-        
+
         for i in range(len(self.cbix_cf_trade_details)):
             cbix_coe_df.at[i, "Qingdao Freight"] = sum([cbix_coe_qingdao_leg.loc[i, "Per tonne cargo incl. Insurance & Commission"], cbix_coe_qingdao_second_leg.loc[i, "Per tonne cargo incl. Insurance & Commission"]])
             cbix_coe_df.at[i, "Actual Port Freight"] = sum([cbix_coe_actual_nominated_port_final_costing_up_for_leg.loc[i, "Per tonne cargo incl. Insurance & Commission"], cbix_coe_actual_nominated_port_final_costing_up_for_second_leg.loc[i, "Per tonne cargo incl. Insurance & Commission"]])
             cbix_coe_df.at[i, "Freight Differential"] = cbix_coe_df.loc[i, "Qingdao Freight"] - cbix_coe_df.loc[i, "Actual Port Freight"]
-        
+
         self.db["outputs/final_freight_values.csv"] = new_df
         self.db["outputs/freights/final_freight_values.csv"] = freights_df
         self.db["outputs/cbix_co_efficients_determination/final_freight_values.csv"] = cbix_coe_df
@@ -2937,12 +2994,12 @@ class CBIX:
             new_df.at[i, "Freight (adjusted to Qingdao)"] = final_freight_values.loc[i, "Qingdao Freight"]
             new_df.at[i, "Price CIF (Port adjustyed to Qingdao)"] = (self.trade_details.loc[i, "Price"] * (1 if (self.trade_details.loc[i, "Price Type"] == "CIF") else (1+ glb_factors.loc[i, "Freight Insurance Rate"])) + final_freight_values.loc[i, "Freight Differential"]) if ((self.trade_details.loc[i, "Price Type"] < "FOB" or self.trade_details.loc[i, "Price Type"] > "FOB") and self.trade_details.loc[i, "Price Basis"]== "dmt") else self.trade_details.loc[i, "Price"] * (1 if (self.trade_details.loc[i, "Price Type"] == "CIF") else (1+ glb_factors.loc[i, "Freight Insurance Rate"])) / (1-new_df.loc[i, "Moisture"]) if ((self.trade_details.loc[i, "Price Type"] < "FOB" or self.trade_details.loc[i, "Price Type"] > "FOB") and self.trade_details.loc[i, "Price Basis"]== "wmt") else new_df.loc[i, "Price FOB"] + new_df.loc[i, "Freight (adjusted to Qingdao)"]
             new_df.at[i, "Price FOB"] = self.trade_details.loc[i, "Price"] if (self.trade_details.loc[i, "Price Type"]== "FOB" and self.trade_details.loc[i, "Price Basis"]== "dmt") else self.trade_details.loc[i, "Price"] / (1 - new_df.loc[i, "Moisture"]) if (self.trade_details.loc[i, "Price Type"]== "FOB" and self.trade_details.loc[i, "Price Basis"]== "wmt") else new_df.loc[i, "Price CIF (Port adjustyed to Qingdao)"] - new_df.loc[i, "Freight (adjusted to Qingdao)"]
-        
+
         for i in range(len(self.freights_trade_details)):
             freights_df.at[i, "Freight (adjusted to Qingdao)"] = freights_final_freight_values.loc[i, "Qingdao Freight"]
             freights_df.at[i, "Price CIF (Port adjustyed to Qingdao)"] = (self.freights_trade_details.loc[i, "Price"] * (1 if (self.freights_trade_details.loc[i, "Price Type"] == "CIF") else (1+ freights_glb_factors.loc[i, "Freight Insurance Rate"])) + freights_final_freight_values.loc[i, "Freight Differential"]) if ((self.freights_trade_details.loc[i, "Price Type"] < "FOB" or self.freights_trade_details.loc[i, "Price Type"] > "FOB") and self.freights_trade_details.loc[i, "Price Basis"]== "dmt") else self.freights_trade_details.loc[i, "Price"] * (1 if (self.freights_trade_details.loc[i, "Price Type"] == "CIF") else (1+ freights_glb_factors.loc[i, "Freight Insurance Rate"])) / (1-freights_df.loc[i, "Moisture"]) if ((self.freights_trade_details.loc[i, "Price Type"] < "FOB" or self.freights_trade_details.loc[i, "Price Type"] > "FOB") and self.freights_trade_details.loc[i, "Price Basis"]== "wmt") else freights_df.loc[i, "Price FOB"] + freights_df.loc[i, "Freight (adjusted to Qingdao)"]
             freights_df.at[i, "Price FOB"] = self.freights_trade_details.loc[i, "Price"] if (self.freights_trade_details.loc[i, "Price Type"]== "FOB" and self.freights_trade_details.loc[i, "Price Basis"]== "dmt") else self.freights_trade_details.loc[i, "Price"] / (1 - freights_df.loc[i, "Moisture"]) if (self.freights_trade_details.loc[i, "Price Type"]== "FOB" and self.freights_trade_details.loc[i, "Price Basis"]== "wmt") else freights_df.loc[i, "Price CIF (Port adjustyed to Qingdao)"] - freights_df.loc[i, "Freight (adjusted to Qingdao)"]
-        
+
         for i in range(len(self.cbix_cf_trade_details)):
             cbix_coe_df.at[i, "Freight (adjusted to Qingdao)"] = cbix_coe_final_freight_values.loc[i, "Qingdao Freight"]
             cbix_coe_df.at[i, "Price CIF (Port adjustyed to Qingdao)"] = (self.cbix_cf_trade_details.loc[i, "Price"] * (1 if (self.cbix_cf_trade_details.loc[i, "Price Type"] == "CIF") else (1+ cbix_coe_glb_factors.loc[i, "Freight Insurance Rate"])) + cbix_coe_final_freight_values.loc[i, "Freight Differential"]) if ((self.cbix_cf_trade_details.loc[i, "Price Type"] < "FOB" or self.cbix_cf_trade_details.loc[i, "Price Type"] > "FOB") and self.cbix_cf_trade_details.loc[i, "Price Basis"]== "dmt") else self.cbix_cf_trade_details.loc[i, "Price"] * (1 if (self.cbix_cf_trade_details.loc[i, "Price Type"] == "CIF") else (1+ cbix_coe_glb_factors.loc[i, "Freight Insurance Rate"])) / (1-cbix_coe_df.loc[i, "Moisture"]) if ((self.cbix_cf_trade_details.loc[i, "Price Type"] < "FOB" or self.cbix_cf_trade_details.loc[i, "Price Type"] > "FOB") and self.cbix_cf_trade_details.loc[i, "Price Basis"]== "wmt") else cbix_coe_df.loc[i, "Price FOB"] + cbix_coe_df.loc[i, "Freight (adjusted to Qingdao)"]
@@ -2972,7 +3029,7 @@ class CBIX:
         for i in range(len(self.cbix_cf_trade_details)):
             cbix_coe_df.at[i, "Price"] = cbix_coe_final_specs.loc[i, "Price CIF (Port adjustyed to Qingdao)"]
 
-        
+
         self.db["outputs/workings_for_viu_adjustmnet_of_trade_bauxite/bauxite_at_hand_cost_to_alumina_bauxite_details-input.csv"] = new_df
         self.db["outputs/workings_for_viu_adjustmnet_of_trade_bauxite/cbauxite_at_hand_cost_to_alumina_bauxite_details-input.csv"] = freights_df
         self.db["outputs/workings_for_viu_adjustmnet_of_trade_bauxite/cbauxite_at_hand_cost_to_alumina_bauxite_details-input.csv"] = cbix_coe_df
@@ -3003,7 +3060,7 @@ class CBIX:
             new_df.at[i, "Mud make"]              = (new_df.loc[i, "Tonnes per Tonne"] - 1 ) + new_df.loc[i, "Caustic Use t.NAOH / t.AA"] + china_prc.loc[i, "Lime rate (wt/wt_AA)"]
             new_df.at[i, "Mud Disposal Cost"]     = new_df.loc[i, "Mud make"] * china_inps.loc[i, "Mud Disposal Cost"]
             new_df.at[i, "Total Cost"]            = new_df.loc[i, "Bauxite Cost Incl. Processing Penalties"] + new_df.loc[i, "Caustic cost"] + new_df.loc[i, "Thermal Energy Cost"] + new_df.loc[i, "Lime Cost"] + new_df.loc[i, "Mud Disposal Cost"]
-        
+
         for i in range(len(self.freights_trade_details)):
             freights_df.at[i, "Bauxite Cost Incl. Processing Penalties"]  = (freights_bx_details.loc[i, "Price"] + freights_bx_details.loc[i, "Processing Penalties"]) * freights_df.loc[i, "Tonnes per Tonne"]
             freights_df.at[i, "Caustic cost"]          = freights_df.loc[i, "Caustic Use t.NAOH / t.AA"] * freights_china_inps.loc[i, "Caustic Price"]
@@ -3012,7 +3069,7 @@ class CBIX:
             freights_df.at[i, "Mud make"]              = (freights_df.loc[i, "Tonnes per Tonne"] - 1 ) + freights_df.loc[i, "Caustic Use t.NAOH / t.AA"] + freights_china_prc.loc[i, "Lime rate (wt/wt_AA)"]
             freights_df.at[i, "Mud Disposal Cost"]     = freights_df.loc[i, "Mud make"] * freights_china_inps.loc[i, "Mud Disposal Cost"]
             freights_df.at[i, "Total Cost"]            = freights_df.loc[i, "Bauxite Cost Incl. Processing Penalties"] + freights_df.loc[i, "Caustic cost"] + freights_df.loc[i, "Thermal Energy Cost"] + freights_df.loc[i, "Lime Cost"] + freights_df.loc[i, "Mud Disposal Cost"]
-        
+
         for i in range(len(self.cbix_cf_trade_details)):
             cbix_coe_df.at[i, "Bauxite Cost Incl. Processing Penalties"]  = (cbix_coe_bx_details.loc[i, "Price"] + cbix_coe_bx_details.loc[i, "Processing Penalties"]) * cbix_coe_df.loc[i, "Tonnes per Tonne"]
             cbix_coe_df.at[i, "Caustic cost"]          = cbix_coe_df.loc[i, "Caustic Use t.NAOH / t.AA"] * cbix_coe_china_inps.loc[i, "Caustic Price"]
@@ -3021,11 +3078,11 @@ class CBIX:
             cbix_coe_df.at[i, "Mud make"]              = (cbix_coe_df.loc[i, "Tonnes per Tonne"] - 1 ) + cbix_coe_df.loc[i, "Caustic Use t.NAOH / t.AA"] + cbix_coe_china_prc.loc[i, "Lime rate (wt/wt_AA)"]
             cbix_coe_df.at[i, "Mud Disposal Cost"]     = cbix_coe_df.loc[i, "Mud make"] * cbix_coe_china_inps.loc[i, "Mud Disposal Cost"]
             cbix_coe_df.at[i, "Total Cost"]            = cbix_coe_df.loc[i, "Bauxite Cost Incl. Processing Penalties"] + cbix_coe_df.loc[i, "Caustic cost"] + cbix_coe_df.loc[i, "Thermal Energy Cost"] + cbix_coe_df.loc[i, "Lime Cost"] + cbix_coe_df.loc[i, "Mud Disposal Cost"]
-        
+
         self.db["outputs/workings_for_viu_adjustmnet_of_trade_bauxite/bauxite_at_hand_cost_to_alumina_production_cost_calcs_excluding_common_elements.csv"] = new_df
         self.db["outputs/workings_for_viu_adjustmnet_of_trade_bauxite/freights/bauxite_at_hand_cost_to_alumina_production_cost_calcs_excluding_common_elements.csv"] = freights_df
         self.db["outputs/workings_for_viu_adjustmnet_of_trade_bauxite/cbix_co_efficients_determination/bauxite_at_hand_cost_to_alumina_production_cost_calcs_excluding_common_elements.csv"] = cbix_coe_df
-        
+
 
     #SPECIFIC INDEX
 
@@ -3084,7 +3141,7 @@ class CBIX:
             cbix_coe_df.at[i, "Processing"]                = lookup(self.cbix_cf_trade_details.loc[i, "Date"].date(), cbix_coe_final_specs.loc[i, "Specific Index"], self.indexes_mines.loc[:, "Processing"])
             cbix_coe_df.at[i, "Processing Penalties"]      = lookup(self.cbix_cf_trade_details.loc[i, "Date"].date(), cbix_coe_final_specs.loc[i, "Specific Index"], self.indexes_mines.loc[:, "Processing Penalties to be applied"])
 
-        
+
         self.db["outputs/workings_for_viu_adjustmnet_of_specific_index/specific_index_ViU_calculation_index_bauxite_details.csv"] = new_df
         self.db["outputs/workings_for_viu_adjustmnet_of_specific_index/freights/specific_index_ViU_calculation_index_bauxite_details.csv"] = freights_df
         self.db["outputs/workings_for_viu_adjustmnet_of_specific_index/cbix_co_efficients_determination/specific_index_ViU_calculation_index_bauxite_details.csv"] = cbix_coe_df
@@ -3119,7 +3176,7 @@ class CBIX:
             for col in cbix_coe_df.columns:
                 cbix_coe_df.at[i, col] = lookup(self.cbix_cf_trade_details.loc[i, "Date"].date(), cbix_coe_baux_dets_inputs.loc[i, "Processing"], self.processing_factors.loc[:, col])
 
-        
+
         self.db["outputs/workings_for_viu_adjustmnet_of_specific_index/specific_index_ViU_calculation_china_processing_factors.csv"] = new_df
         self.db["outputs/workings_for_viu_adjustmnet_of_specific_index/freights/specific_index_ViU_calculation_china_processing_factors.csv"] = freights_df
         self.db["outputs/workings_for_viu_adjustmnet_of_specific_index/cbix_co_efficients_determination/specific_index_ViU_calculation_china_processing_factors.csv"] = cbix_coe_df
@@ -3128,15 +3185,15 @@ class CBIX:
         bx_details          = self.db["outputs/workings_for_viu_adjustmnet_of_specific_index/specific_index_ViU_calculation_index_bauxite_details.csv"]
         freights_bx_details = self.db["outputs/workings_for_viu_adjustmnet_of_specific_index/freights/specific_index_ViU_calculation_index_bauxite_details.csv"]
         cbix_coe_bx_details = self.db["outputs/workings_for_viu_adjustmnet_of_specific_index/cbix_co_efficients_determination/specific_index_ViU_calculation_index_bauxite_details.csv"]
-        
+
         china_prc           = self.db["outputs/workings_for_viu_adjustmnet_of_specific_index/specific_index_ViU_calculation_china_processing_factors.csv"]
         freights_china_prc  = self.db["outputs/workings_for_viu_adjustmnet_of_specific_index/freights/specific_index_ViU_calculation_china_processing_factors.csv"]
         cbix_coe_china_prc  = self.db["outputs/workings_for_viu_adjustmnet_of_specific_index/cbix_co_efficients_determination/specific_index_ViU_calculation_china_processing_factors.csv"]
-        
+
         china_inps          = self.db["outputs/common_data_inputs/common_data_inputs_china_input_prices.csv"]
         freights_china_inps = self.db["outputs/common_data_inputs/freights/common_data_inputs_china_input_prices.csv"]
         cbix_coe_china_inps = self.db["outputs/common_data_inputs/cbix_co_efficients_determination/common_data_inputs_china_input_prices.csv"]
-        
+
         new_df      = pd.DataFrame(columns=self.alumina_prod_costs_columns)
         freights_df = pd.DataFrame(columns=self.alumina_prod_costs_columns)
         cbix_coe_df = pd.DataFrame(columns=self.alumina_prod_costs_columns)
@@ -3154,7 +3211,7 @@ class CBIX:
             new_df.at[i, "Mud make"]              = (new_df.loc[i, "Tonnes per Tonne"] - 1 ) + new_df.loc[i, "Caustic Use t.NAOH / t.AA"] + china_prc.loc[i, "Lime rate (wt/wt_AA)"]
             new_df.at[i, "Mud Disposal Cost"]     = new_df.loc[i, "Mud make"] * china_inps.loc[i, "Mud Disposal Cost"]
             new_df.at[i, "Total Cost"]            = new_df.loc[i, "Bauxite Cost Incl. Processing Penalties"] + new_df.loc[i, "Caustic cost"] + new_df.loc[i, "Thermal Energy Cost"] + new_df.loc[i, "Lime Cost"] + new_df.loc[i, "Mud Disposal Cost"]
-        
+
         for i in range(len(self.freights_trade_details)):
             freights_df.at[i, "Reactive Alumina"]     =  (freights_bx_details.loc[i, "Total Alumina"] - freights_bx_details.loc[i, "LT Avail. Alumina"] - freights_bx_details.loc[i, "LT R.Silica"]) * freights_china_prc.loc[i, "HT Alumina Dissolution"] + freights_bx_details.loc[i, "LT Avail. Alumina"] + freights_bx_details.loc[i, "LT R.Silica"]
             freights_df.at[i, "Reactive Silica"]      =  freights_bx_details.loc[i, "LT R.Silica"] + freights_china_prc.loc[i, "Quartz Attack"] * (freights_bx_details.loc[i, "Total Silica"] - freights_bx_details.loc[i, "LT R.Silica"])
@@ -3168,7 +3225,7 @@ class CBIX:
             freights_df.at[i, "Mud make"]              = (freights_df.loc[i, "Tonnes per Tonne"] - 1 ) + freights_df.loc[i, "Caustic Use t.NAOH / t.AA"] + freights_china_prc.loc[i, "Lime rate (wt/wt_AA)"]
             freights_df.at[i, "Mud Disposal Cost"]     = freights_df.loc[i, "Mud make"] * freights_china_inps.loc[i, "Mud Disposal Cost"]
             freights_df.at[i, "Total Cost"]            = freights_df.loc[i, "Bauxite Cost Incl. Processing Penalties"] + freights_df.loc[i, "Caustic cost"] + freights_df.loc[i, "Thermal Energy Cost"] + freights_df.loc[i, "Lime Cost"] + freights_df.loc[i, "Mud Disposal Cost"]
-        
+            print(freights_df.loc[i, :].tolist())
         for i in range(len(self.cbix_cf_trade_details)):
             cbix_coe_df.at[i, "Reactive Alumina"]     =  (cbix_coe_bx_details.loc[i, "Total Alumina"] - cbix_coe_bx_details.loc[i, "LT Avail. Alumina"] - cbix_coe_bx_details.loc[i, "LT R.Silica"]) * cbix_coe_china_prc.loc[i, "HT Alumina Dissolution"] + cbix_coe_bx_details.loc[i, "LT Avail. Alumina"] + cbix_coe_bx_details.loc[i, "LT R.Silica"]
             cbix_coe_df.at[i, "Reactive Silica"]      =  cbix_coe_bx_details.loc[i, "LT R.Silica"] + cbix_coe_china_prc.loc[i, "Quartz Attack"] * (cbix_coe_bx_details.loc[i, "Total Silica"] - cbix_coe_bx_details.loc[i, "LT R.Silica"])
@@ -3182,7 +3239,7 @@ class CBIX:
             cbix_coe_df.at[i, "Mud make"]              = (cbix_coe_df.loc[i, "Tonnes per Tonne"] - 1 ) + cbix_coe_df.loc[i, "Caustic Use t.NAOH / t.AA"] + cbix_coe_china_prc.loc[i, "Lime rate (wt/wt_AA)"]
             cbix_coe_df.at[i, "Mud Disposal Cost"]     = cbix_coe_df.loc[i, "Mud make"] * cbix_coe_china_inps.loc[i, "Mud Disposal Cost"]
             cbix_coe_df.at[i, "Total Cost"]            = cbix_coe_df.loc[i, "Bauxite Cost Incl. Processing Penalties"] + cbix_coe_df.loc[i, "Caustic cost"] + cbix_coe_df.loc[i, "Thermal Energy Cost"] + cbix_coe_df.loc[i, "Lime Cost"] + cbix_coe_df.loc[i, "Mud Disposal Cost"]
-        
+
 
         self.db["outputs/workings_for_viu_adjustmnet_of_specific_index/specific_index_ViU_calculation_alumina_production_cost_calcs_excluding_common_elements.csv"] = new_df
         self.db["outputs/workings_for_viu_adjustmnet_of_specific_index/freights/specific_index_ViU_calculation_alumina_production_cost_calcs_excluding_common_elements.csv"] = freights_df
@@ -3245,7 +3302,7 @@ class CBIX:
             cbix_coe_df.at[i, "Processing"]                = lookup(self.cbix_cf_trade_details.loc[i, "Date"].date(), cbix_coe_final_specs.loc[i, "General Index"], self.indexes_mines.loc[:, "Processing"])
             cbix_coe_df.at[i, "Processing Penalties"]      = lookup(self.cbix_cf_trade_details.loc[i, "Date"].date(), cbix_coe_final_specs.loc[i, "General Index"], self.indexes_mines.loc[:, "Processing Penalties to be applied"])
 
-        
+
         self.db["outputs/workings_for_viu_adjustmnet_of_general_index/general_index_ViU_calculation_index_bauxite_details.csv"] = new_df
         self.db["outputs/workings_for_viu_adjustmnet_of_general_index/freights/general_index_ViU_calculation_index_bauxite_details.csv"] = freights_df
         self.db["outputs/workings_for_viu_adjustmnet_of_general_index/cbix_co_efficients_determination/general_index_ViU_calculation_index_bauxite_details.csv"] = cbix_coe_df
@@ -3280,7 +3337,7 @@ class CBIX:
             for col in cbix_coe_df.columns:
                 cbix_coe_df.at[i, col] = lookup(self.cbix_cf_trade_details.loc[i, "Date"].date(), cbix_coe_baux_dets_inputs.loc[i, "Processing"], self.processing_factors.loc[:, col])
 
-        
+
         self.db["outputs/workings_for_viu_adjustmnet_of_general_index/general_index_ViU_calculation_china_processing_factors.csv"] = new_df
         self.db["outputs/workings_for_viu_adjustmnet_of_general_index/freights/general_index_ViU_calculation_china_processing_factors.csv"] = freights_df
         self.db["outputs/workings_for_viu_adjustmnet_of_general_index/cbix_co_efficients_determination/general_index_ViU_calculation_china_processing_factors.csv"] = cbix_coe_df
@@ -3319,7 +3376,7 @@ class CBIX:
             new_df.at[i, "Mud make"]              = (new_df.loc[i, "Tonnes per Tonne"] - 1 ) + new_df.loc[i, "Caustic Use t.NAOH / t.AA"] + china_prc_tb.loc[i, "Lime rate (wt/wt_AA)"]
             new_df.at[i, "Mud Disposal Cost"]     = new_df.loc[i, "Mud make"] * china_inps.loc[i, "Mud Disposal Cost"]
             new_df.at[i, "Total Cost"]            = new_df.loc[i, "Bauxite Cost Incl. Processing Penalties"] + new_df.loc[i, "Caustic cost"] + new_df.loc[i, "Thermal Energy Cost"] + new_df.loc[i, "Lime Cost"] + new_df.loc[i, "Mud Disposal Cost"]
-        
+
         for i in range(len(self.freights_trade_details)):
             freights_df.at[i, "Reactive Alumina"]     =  (freights_bx_details.loc[i, "Total Alumina"] - freights_bx_details.loc[i, "LT Avail. Alumina"] - freights_bx_details.loc[i, "LT R.Silica"]) * freights_china_prc_tb.loc[i, "HT Alumina Dissolution"] + freights_bx_details.loc[i, "LT Avail. Alumina"] + freights_bx_details.loc[i, "LT R.Silica"]
             freights_df.at[i, "Reactive Silica"]      =  freights_bx_details.loc[i, "LT R.Silica"] + freights_china_prc_tb.loc[i, "Quartz Attack"] * (freights_bx_details.loc[i, "Total Silica"] - freights_bx_details.loc[i, "LT R.Silica"])
@@ -3333,7 +3390,7 @@ class CBIX:
             freights_df.at[i, "Mud make"]              = (freights_df.loc[i, "Tonnes per Tonne"] - 1 ) + freights_df.loc[i, "Caustic Use t.NAOH / t.AA"] + freights_china_prc_tb.loc[i, "Lime rate (wt/wt_AA)"]
             freights_df.at[i, "Mud Disposal Cost"]     = freights_df.loc[i, "Mud make"] * freights_china_inps.loc[i, "Mud Disposal Cost"]
             freights_df.at[i, "Total Cost"]            = freights_df.loc[i, "Bauxite Cost Incl. Processing Penalties"] + freights_df.loc[i, "Caustic cost"] + freights_df.loc[i, "Thermal Energy Cost"] + freights_df.loc[i, "Lime Cost"] + freights_df.loc[i, "Mud Disposal Cost"]
-        
+
         for i in range(len(self.cbix_cf_trade_details)):
             cbix_coe_df.at[i, "Reactive Alumina"]     =  (cbix_coe_bx_details.loc[i, "Total Alumina"] - cbix_coe_bx_details.loc[i, "LT Avail. Alumina"] - cbix_coe_bx_details.loc[i, "LT R.Silica"]) * cbix_coe_china_prc.loc[i, "HT Alumina Dissolution"] + cbix_coe_bx_details.loc[i, "LT Avail. Alumina"] + cbix_coe_bx_details.loc[i, "LT R.Silica"]
             cbix_coe_df.at[i, "Reactive Silica"]      =  cbix_coe_bx_details.loc[i, "LT R.Silica"] + cbix_coe_china_prc.loc[i, "Quartz Attack"] * (cbix_coe_bx_details.loc[i, "Total Silica"] - cbix_coe_bx_details.loc[i, "LT R.Silica"])
@@ -3400,7 +3457,7 @@ class CBIX:
             cbix_coe_df.at[i, "Processing"]              = cbix_coe_final_spec.loc[i, "Processing"]
             cbix_coe_df.at[i, "Processing Penalties"]    = 0
 
-        
+
         self.db["outputs/workings_for_viu_adjustmnet_of_old_cbix_index/old_cbix_bauxite_at_hand_cost_to_alumina_bauxite_details-input.csv"] = new_df
         self.db["outputs/workings_for_viu_adjustmnet_of_old_cbix_index/freights/old_cbix_bauxite_at_hand_cost_to_alumina_bauxite_details-input.csv"] = freights_df
         self.db["outputs/workings_for_viu_adjustmnet_of_old_cbix_index/cbix_co_efficients_determination/old_cbix_bauxite_at_hand_cost_to_alumina_bauxite_details-input.csv"] = cbix_coe_df
@@ -3446,7 +3503,7 @@ class CBIX:
                 else:
                     cbix_coe_df.at[i, col] = lookup(self.cbix_cf_trade_details.loc[i, "Date"].date(), cbix_coe_baux_dets_inputs.loc[i, "Processing"], self.processing_factors.loc[:, col])
 
-        
+
         self.db["outputs/workings_for_viu_adjustmnet_of_old_cbix_index/old_cbix_bauxite_at_hand_cost_to_alumina_china_processing_factors.csv"] = new_df
         self.db["outputs/workings_for_viu_adjustmnet_of_old_cbix_index/freights/old_cbix_bauxite_at_hand_cost_to_alumina_china_processing_factors.csv"] = freights_df
         self.db["outputs/workings_for_viu_adjustmnet_of_old_cbix_index/cbix_co_efficients_determination/old_cbix_bauxite_at_hand_cost_to_alumina_china_processing_factors.csv"] = cbix_coe_df
@@ -3481,8 +3538,8 @@ class CBIX:
             new_df.at[i, "Mud make"]              = (new_df.loc[i, "Tonnes per Tonne"] - 1 ) + new_df.loc[i, "Caustic Use t.NAOH / t.AA"] + china_prc.loc[i, "Lime rate (wt/wt_AA)"]
             new_df.at[i, "Mud Disposal Cost"]     = new_df.loc[i, "Mud make"] * china_inps.loc[i, "Mud Disposal Cost"]
             new_df.at[i, "Total Cost"]            = new_df.loc[i, "Bauxite Cost Incl. Processing Penalties"] + new_df.loc[i, "Caustic cost"] + new_df.loc[i, "Thermal Energy Cost"] + new_df.loc[i, "Lime Cost"] + new_df.loc[i, "Mud Disposal Cost"]
-        
-        
+
+
         for i in range(len(self.freights_trade_details)):
             freights_df.at[i, "Reactive Alumina"]     =  (freights_bx_details.loc[i, "Total Alumina"] - freights_bx_details.loc[i, "LT Avail. Alumina"] - freights_bx_details.loc[i, "LT R.Silica"]) * freights_china_prc.loc[i, "HT Alumina Dissolution"] + freights_bx_details.loc[i, "LT Avail. Alumina"] + freights_bx_details.loc[i, "LT R.Silica"]
             freights_df.at[i, "Reactive Silica"]      =  freights_bx_details.loc[i, "LT R.Silica"] + freights_china_prc.loc[i, "Quartz Attack"] * (freights_bx_details.loc[i, "Total Silica"] - freights_bx_details.loc[i, "LT R.Silica"])
@@ -3496,7 +3553,7 @@ class CBIX:
             freights_df.at[i, "Mud make"]              = (freights_df.loc[i, "Tonnes per Tonne"] - 1 ) + freights_df.loc[i, "Caustic Use t.NAOH / t.AA"] + freights_china_prc.loc[i, "Lime rate (wt/wt_AA)"]
             freights_df.at[i, "Mud Disposal Cost"]     = freights_df.loc[i, "Mud make"] * freights_china_inps.loc[i, "Mud Disposal Cost"]
             freights_df.at[i, "Total Cost"]            = freights_df.loc[i, "Bauxite Cost Incl. Processing Penalties"] + freights_df.loc[i, "Caustic cost"] + freights_df.loc[i, "Thermal Energy Cost"] + freights_df.loc[i, "Lime Cost"] + freights_df.loc[i, "Mud Disposal Cost"]
-        
+
         for i in range(len(self.cbix_cf_trade_details)):
             cbix_coe_df.at[i, "Reactive Alumina"]     =  (cbix_coe_bx_details.loc[i, "Total Alumina"] - cbix_coe_bx_details.loc[i, "LT Avail. Alumina"] - cbix_coe_bx_details.loc[i, "LT R.Silica"]) * cbix_coe_china_prc.loc[i, "HT Alumina Dissolution"] + cbix_coe_bx_details.loc[i, "LT Avail. Alumina"] + cbix_coe_bx_details.loc[i, "LT R.Silica"]
             cbix_coe_df.at[i, "Reactive Silica"]      =  cbix_coe_bx_details.loc[i, "LT R.Silica"] + cbix_coe_china_prc.loc[i, "Quartz Attack"] * (cbix_coe_bx_details.loc[i, "Total Silica"] - cbix_coe_bx_details.loc[i, "LT R.Silica"])
@@ -3510,7 +3567,7 @@ class CBIX:
             cbix_coe_df.at[i, "Mud make"]              = (cbix_coe_df.loc[i, "Tonnes per Tonne"] - 1 ) + cbix_coe_df.loc[i, "Caustic Use t.NAOH / t.AA"] + cbix_coe_china_prc.loc[i, "Lime rate (wt/wt_AA)"]
             cbix_coe_df.at[i, "Mud Disposal Cost"]     = cbix_coe_df.loc[i, "Mud make"] * cbix_coe_china_inps.loc[i, "Mud Disposal Cost"]
             cbix_coe_df.at[i, "Total Cost"]            = cbix_coe_df.loc[i, "Bauxite Cost Incl. Processing Penalties"] + cbix_coe_df.loc[i, "Caustic cost"] + cbix_coe_df.loc[i, "Thermal Energy Cost"] + cbix_coe_df.loc[i, "Lime Cost"] + cbix_coe_df.loc[i, "Mud Disposal Cost"]
-        
+
         self.db["outputs/workings_for_viu_adjustmnet_of_old_cbix_index/old_cbix_alumina_production_cost_calcs_excluding_common_elements.csv"] = new_df
         self.db["outputs/workings_for_viu_adjustmnet_of_old_cbix_index/freights/old_cbix_alumina_production_cost_calcs_excluding_common_elements.csv"] = freights_df
         self.db["outputs/workings_for_viu_adjustmnet_of_old_cbix_index/cbix_co_efficients_determination/old_cbix_alumina_production_cost_calcs_excluding_common_elements.csv"] = cbix_coe_df
@@ -3569,8 +3626,8 @@ class CBIX:
             cbix_coe_df.at[i, "Moisture"]                  = lookup(self.cbix_cf_trade_details.loc[i, "Date"].date(), cbix_coe_final_specs.loc[i, "Old CBIX type Calc"], self.indexes_mines.loc[:, "Moisture"])
             cbix_coe_df.at[i, "Processing"]                = lookup(self.cbix_cf_trade_details.loc[i, "Date"].date(), cbix_coe_final_specs.loc[i, "Old CBIX type Calc"], self.indexes_mines.loc[:, "Processing"])
             cbix_coe_df.at[i, "Processing Penalties"]      = lookup(self.cbix_cf_trade_details.loc[i, "Date"].date(), cbix_coe_final_specs.loc[i, "Old CBIX type Calc"], self.indexes_mines.loc[:, "Processing Penalties to be applied"])
-            
-            
+
+
         self.db["outputs/workings_for_viu_adjustmnet_of_old_cbix_index/old_cbix_calculation_index_bauxite_details.csv"] = new_df
         self.db["outputs/workings_for_viu_adjustmnet_of_old_cbix_index/freights/old_cbix_calculation_index_bauxite_details.csv"] = freights_df
         self.db["outputs/workings_for_viu_adjustmnet_of_old_cbix_index/cbix_co_efficients_determination/old_cbix_calculation_index_bauxite_details.csv"] = cbix_coe_df
@@ -3614,7 +3671,7 @@ class CBIX:
                 else:
                     cbix_coe_df.at[i, col] = lookup(self.cbix_cf_trade_details.loc[i, "Date"].date(), cbix_coe_baux_dets_inputs.loc[i, "Processing"], self.processing_factors.loc[:, col])
 
-        
+
         self.db["outputs/workings_for_viu_adjustmnet_of_old_cbix_index/old_cbix_calculation_bauxite_at_hand_cost_to_alumina_china_processing_factors.csv"] = new_df
         self.db["outputs/workings_for_viu_adjustmnet_of_old_cbix_index/freights/old_cbix_calculation_bauxite_at_hand_cost_to_alumina_china_processing_factors.csv"] = freights_df
         self.db["outputs/workings_for_viu_adjustmnet_of_old_cbix_index/cbix_co_efficients_determination/old_cbix_calculation_bauxite_at_hand_cost_to_alumina_china_processing_factors.csv"] = cbix_coe_df
@@ -3681,7 +3738,7 @@ class CBIX:
             cbix_coe_df.at[i, "Mud make"]              = (cbix_coe_df.loc[i, "Tonnes per Tonne"] - 1 ) + cbix_coe_df.loc[i, "Caustic Use t.NAOH / t.AA"] + cbix_coe_china_prc_tb.loc[i, "Lime rate (wt/wt_AA)"]
             cbix_coe_df.at[i, "Mud Disposal Cost"]     = cbix_coe_df.loc[i, "Mud make"] * cbix_coe_china_inps.loc[i, "Mud Disposal Cost"]
             cbix_coe_df.at[i, "Total Cost"]            = cbix_coe_df.loc[i, "Bauxite Cost Incl. Processing Penalties"] + cbix_coe_df.loc[i, "Caustic cost"] + cbix_coe_df.loc[i, "Thermal Energy Cost"] + cbix_coe_df.loc[i, "Lime Cost"] + cbix_coe_df.loc[i, "Mud Disposal Cost"]
-        
+
         self.db["outputs/workings_for_viu_adjustmnet_of_old_cbix_index/old_cbix_calculation_alumina_production_cost_calcs_excluding_common_elements.csv"] = new_df
         self.db["outputs/workings_for_viu_adjustmnet_of_old_cbix_index/freights/old_cbix_calculation_alumina_production_cost_calcs_excluding_common_elements.csv"] = freights_df
         self.db["outputs/workings_for_viu_adjustmnet_of_old_cbix_index/cbix_co_efficients_determination/old_cbix_calculation_alumina_production_cost_calcs_excluding_common_elements.csv"] = cbix_coe_df
@@ -3706,10 +3763,10 @@ class CBIX:
 
         for i in range(len(self.freights_trade_details)):
             freights_df.at[i, "Calculated Index Price Equivalent"]   = (freights_trade_al_prod.loc[i, "Total Cost"] - spec_ind_al_prod.loc[i, "Total Cost"]) / freights_spec_ind_al_prod.loc[i, "Tonnes per Tonne"] - freights_df.loc[i, "Processing Penalties"]
-        
+
         for i in range(len(self.cbix_cf_trade_details)):
             cbix_coe_df.at[i, "Calculated Index Price Equivalent"]   = (cbix_coe_trade_al_prod.loc[i, "Total Cost"] - spec_ind_al_prod.loc[i, "Total Cost"]) / cbix_coe_spec_ind_al_prod.loc[i, "Tonnes per Tonne"] - cbix_coe_df.loc[i, "Processing Penalties"]
-        
+
         self.db["outputs/workings_for_viu_adjustmnet_of_specific_index/specific_index_ViU_calculation_index_bauxite_details.csv"] = new_df
         self.db["outputs/workings_for_viu_adjustmnet_of_specific_index/freights/specific_index_ViU_calculation_index_bauxite_details.csv"] = freights_df
         self.db["outputs/workings_for_viu_adjustmnet_of_specific_index/cbix_co_efficients_determination/specific_index_ViU_calculation_index_bauxite_details.csv"] = cbix_coe_df
@@ -3738,7 +3795,7 @@ class CBIX:
         for i in range(len(self.cbix_cf_trade_details)):
             cbix_coe_df.at[i, "Calculated Index Price Equivalent"]   = (cbix_coe_trade_al_prod.loc[i, "Total Cost"] - cbix_coe_gnr_ind_al_prod.loc[i, "Total Cost"]) / cbix_coe_gnr_ind_al_prod.loc[i, "Tonnes per Tonne"] - cbix_coe_df.loc[i, "Processing Penalties"]
 
-        
+
         self.db["outputs/workings_for_viu_adjustmnet_of_general_index/general_index_ViU_calculation_index_bauxite_details.csv"] = new_df
         self.db["outputs/workings_for_viu_adjustmnet_of_general_index/freights/general_index_ViU_calculation_index_bauxite_details.csv"] = freights_df
         self.db["outputs/workings_for_viu_adjustmnet_of_general_index/cbix_co_efficients_determination/general_index_ViU_calculation_index_bauxite_details.csv"] = cbix_coe_df
@@ -3756,7 +3813,7 @@ class CBIX:
         new_df      = self.db["outputs/workings_for_viu_adjustmnet_of_old_cbix_index/old_cbix_calculation_index_bauxite_details.csv"]
         freights_df = self.db["outputs/workings_for_viu_adjustmnet_of_old_cbix_index/freights/old_cbix_calculation_index_bauxite_details.csv"]
         cbix_coe_df = self.db["outputs/workings_for_viu_adjustmnet_of_old_cbix_index/cbix_co_efficients_determination/old_cbix_calculation_index_bauxite_details.csv"]
-        
+
         for i in range(len(self.trade_details)):
             new_df.at[i, "Calculated Index Price Equivalent"]   = (old_cbix_al_prod.loc[i, "Total Cost"] - old_cbix_clac_al_prod.loc[i, "Total Cost"]) / old_cbix_clac_al_prod.loc[i, "Tonnes per Tonne"] - new_df.loc[i, "Processing Penalties"]
 
@@ -3769,7 +3826,7 @@ class CBIX:
         self.db["outputs/workings_for_viu_adjustmnet_of_old_cbix_index/old_cbix_calculation_index_bauxite_details.csv"] = new_df
         self.db["outputs/workings_for_viu_adjustmnet_of_old_cbix_index/freights/old_cbix_calculation_index_bauxite_details.csv"] = freights_df
         self.db["outputs/workings_for_viu_adjustmnet_of_old_cbix_index/cbix_co_efficients_determination/old_cbix_calculation_index_bauxite_details.csv"] = cbix_coe_df
-    
+
     def final_specifications_to_viu_adjustment_continued2(self):
         spec_ind_bx             = self.db["outputs/workings_for_viu_adjustmnet_of_specific_index/specific_index_ViU_calculation_index_bauxite_details.csv"]
         freights_spec_ind_bx    = self.db["outputs/workings_for_viu_adjustmnet_of_specific_index/freights/specific_index_ViU_calculation_index_bauxite_details.csv"]
@@ -3811,7 +3868,7 @@ class CBIX:
             cbix_coe_final_spec.at[i, "CBIX LT"]  = cbix_coe_gnr_ind_bx.loc[i, "Calculated Index Price Equivalent"] if cbix_coe_final_spec.loc[i, "General Index"] == "CBIX LT" else 0
             cbix_coe_final_spec.at[i, "CBIX HT"]  = cbix_coe_gnr_ind_bx.loc[i, "Calculated Index Price Equivalent"] if cbix_coe_final_spec.loc[i, "General Index"] == "CBIX HT" else 0
             cbix_coe_final_spec.at[i, "Old CBIX"] = cbix_coe_old_cbix_clacs.loc[i, "Calculated Index Price Equivalent"]
-        
+
         self.db["outputs/final_specifications_to_viu_adjustment.csv"] = final_spec
         self.db["outputs/freights/final_specifications_to_viu_adjustment.csv"] = freights_final_spec
         self.db["outputs/cbix_co_efficients_determination/final_specifications_to_viu_adjustment.csv"] = cbix_coe_final_spec
@@ -3821,7 +3878,7 @@ class CBIX:
         final_spec = self.db["outputs/freights/final_specifications_to_viu_adjustment.csv"]
         for i in range(self.freights_trade_details.shape[0]):
             self.freights_trade_details.at[i, "Freights US$/wmt"] = final_spec.loc[i, "Freight (adjusted to Qingdao)"] * (1 -final_spec.loc[i, "Moisture"])
-        
+
         self.db["outputs/Freights US$ per wmt Trade Details.csv"] = self.freights_trade_details
 
     def cbix_coefficients_determination(self):
@@ -3831,10 +3888,10 @@ class CBIX:
 
         for i in range(self.cbix_cf_trade_details.shape[0]):
             self.cbix_cf_trade_details.at[i, "CBIX Co-Efficients Determination"] = ((gnr_ind_alu.loc[i, "Total Cost"] + gnr_ind_alu.loc[i, "Tonnes per Tonne"] * self.target_cbix_price.loc[0, "Target CBIX Price (CBIX LT)"]) - (alumina_prd.loc[i, "Total Cost"]-alumina_prd.loc[i, "Bauxite Cost Incl. Processing Penalties"]+trade_dets.loc[i, "Processing Penalties"]*alumina_prd.loc[i, "Tonnes per Tonne"])) / alumina_prd.loc[i, "Tonnes per Tonne"]
-        
+
         self.db["outputs/CBIX Co-Efficients Determination Trade Details.csv"] = self.cbix_cf_trade_details
 
-        
+
 
 
 
@@ -3920,9 +3977,42 @@ class CBIX:
         self.cbix_coefficients_determination()
 
         #Save files
-        for filepath, file in self.db.items():
-            dirname = os.path.dirname(filepath)
+        all_dependencies = {
+            # "outputs/global_factors.csv": "outputs/nominal_mine_div_index_specifications.csv",
+            # "outputs/freights/global_factors.csv": "outputs/freights/nominal_mine_div_index_specifications.csv",
+            # "outputs/cbix_co_efficients_determination/global_factors.csv": "outputs/cbix_co_efficients_determination/nominal_mine_div_index_specifications.csv",
+            # "outputs/final_freight_values.csv": "outputs/nominal_mine_div_index_specifications.csv",
+            # "outputs/freights/final_freight_values.csv": "outputs/freights/nominal_mine_div_index_specifications.csv",
+            # "outputs/cbix_co_efficients_determination/final_freight_values.csv": "outputs/cbix_co_efficients_determination/nominal_mine_div_index_specifications.csv",
+            # "outputs/CBIX Co-Efficients Determination Trade Details.csv": "outputs/nominal_mine_div_index_specifications.csv",
+            # "outputs/Freights US$ per wmt Trade Details.csv": "outputs/nominal_mine_div_index_specifications.csv",
+            # "outputs/common_data_inputs/common_data_inputs_global_factors.csv": "outputs/nominal_mine_div_index_specifications.csv",
+            # "outputs/common_data_inputs/freights/common_data_inputs_global_factors.csv": "outputs/freights/nominal_mine_div_index_specifications.csv",
+            # "outputs/common_data_inputs/cbix_co_efficients_determination/common_data_inputs_global_factors.csv": "outputs/cbix_co_efficients_determination/nominal_mine_div_index_specifications.csv",
+            # "outputs/common_data_inputs/common_data_inputs_fx_rates.csv": "outputs/nominal_mine_div_index_specifications.csv",
+            # "outputs/common_data_inputs/freights/common_data_inputs_fx_rates.csv": "outputs/freights/nominal_mine_div_index_specifications.csv",
+            # "outputs/common_data_inputs/cbix_co_efficients_determination/common_data_inputs_fx_rates.csv": "outputs/cbix_co_efficients_determination/nominal_mine_div_index_specifications.csv",
+            # "outputs/common_data_inputs/common_data_inputs_china_input_prices.csv": "outputs/nominal_mine_div_index_specifications.csv",
+            # "outputs/common_data_inputs/freights/common_data_inputs_china_input_prices.csv": "outputs/freights/nominal_mine_div_index_specifications.csv",
+            # "outputs/common_data_inputs/cbix_co_efficients_determination/common_data_inputs_china_input_prices.csv": "outputs/cbix_co_efficients_determination/nominal_mine_div_index_specifications.csv",
+        }
 
+        # for a in all_dependencies:
+        #     self.db[a] = join_indexer(self.all_indexers[all_dependencies[a]], self.db[a])
+
+        for filepath, file in self.db.items():
+
+            if 'Mine' not in file.columns :
+                s = file.shape[0]
+                # 
+                if s == 8:
+                    file = join_indexer(self.all_indexers["outputs/cbix_co_efficients_determination/nominal_mine_div_index_specifications.csv"], file)
+                elif s == 9:
+                    file = join_indexer(self.all_indexers["outputs/freights/nominal_mine_div_index_specifications.csv"], file)
+                elif s == 14:
+                    file = join_indexer(self.all_indexers["outputs/nominal_mine_div_index_specifications.csv"], file)
+
+            dirname = os.path.dirname(filepath)
             if os.path.exists(dirname):
                 pass
             else:
@@ -3945,7 +4035,7 @@ cbix_obj.calcall()
 
 end = time.process_time() - start
 
-print(f"{round(end/60, 2)} minutes")
+print(f"{end} secs")
 
 
 
@@ -3974,8 +4064,8 @@ for i in range(snapshot_output_data.shape[0]):
     chunk = snapshot_output_data.iloc[i:i+1,:].values.tolist()
     t =  tuple(tuple(x) for x in chunk)
     cursor.executemany("INSERT INTO dbo.snapshot_output_data([model_id],[output_set],[output_lebel],[outrow],[output_value],[override_value],[actual_value]) values (?,?,?,?,?,?,?)",t)
-    
-    
+
+
 cursor.close()
 print("done")
 '''

@@ -19,11 +19,11 @@ driver = '{ODBC Driver 17 for SQL Server}'
 
 # tables not found in input_db
 cbixrollingdata = pd.read_csv(
-    r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Input db\cbixrollingdata.csv')
+    r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Input db\cbixrollingdata.csv')
 cmaax_rolling_data = pd.read_csv(
-    r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Input db\cmaax_rolling_data.csv')
+    r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Input db\cmaax_rolling_data.csv')
 frieghtrollingdata = pd.read_csv(
-    r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Input db\frieghtrollingdata.csv')
+    r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Input db\frieghtrollingdata.csv')
 
 
 conn = pyodbc.connect('DRIVER='+driver+';PORT=1433;SERVER='+server +
@@ -71,7 +71,7 @@ daily_price_data['elementdatamonth'] = [(datetime.strptime(
 daily_price_data['elementdataday'] = [(datetime.strptime(
     daily_price_data.loc[i, 'date'], '%d-%m-%Y').day) for i in daily_price_data.index]
 daily_price_data['date'] = [excel_date(d) for d in daily_price_data['date']]
-daily_price_data.drop(['year_id', 'month_id', 'day_id'], axis=1, inplace=True)
+daily_price_data.drop(['year_id', 'month_id', 'day_id','creation_date', 'updation_date' ], axis=1, inplace=True)
 
 for col in frieght_data.columns[:-3]:
     frieght_data.rename(columns={
@@ -81,11 +81,15 @@ frieght_data['week,id'] = [d[frieght_data.loc[i, 'week,id']]
                            for i in frieght_data.index]
 frieght_data.rename(columns={
     'week,id': 'week'}, inplace=True)
+frieght_data['week'] = [excel_date(i) for i in frieght_data['week']]
+frieght_data.drop(columns=['creation_date','updation_date'], axis=1, inplace=True)
+
 
 domestic_price_data.rename(columns={
     'shanxi_4_5__5_0': 'Shanxi 4.5 - 5.0',
     'henan_4_0__5_0': 'Henan 4.0 - 5.0',
     'guizhou_5_5__6_5': 'Guizhou 5.5 - 6.5'}, inplace=True)
+domestic_price_data.drop(columns=['creation_date', 'updation_date'], axis=1, inplace=True)
 
 domestic_price_raw_data.rename(columns={
     'shanxi4_5': 'shanxi4.5',
@@ -106,7 +110,7 @@ values = []
 for i in checked_causticpricedata['date']:
     values.append(excel_date(i))
 checked_causticpricedata['date'] = values
-
+checked_causticpricedata.drop(columns=['creation_date','updation_date'],axis=1, inplace=True)
 
 cbixrollingdata.rename(columns={
     'day_id': 'Day'}, inplace=True)
@@ -126,28 +130,34 @@ cmaax_rolling_data['Day'] = [(d[cmaax_rolling_data.loc[i, 'Day']])
 frieghtrollingdata.rename(columns={
     'week_id': 'week'}, inplace=True)
 d = {week_id['week_id'][x]: week_id['week'][x] for x in week_id.index}
+frieghtrollingdata['week'] = [int(b.split('_')[1]) for b in frieghtrollingdata['week']]
+'''
 frieghtrollingdata['week'] = [
     (d[frieghtrollingdata.loc[i, 'week']]) for i in frieghtrollingdata.index]
+frieghtrollingdata['week'] = [excel_date(d) for d in frieghtrollingdata['week']]
+'''
 
+cmaaxdata1.drop(columns=['creation_date','updation_date'], axis=1, inplace=True)
+cmaaxdata2.drop(columns=['creation_date','updation_date'], axis=1, inplace=True)
 
 # outputs
 domestic_price_data.to_csv(
-    r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Inputs\domesticpricedata1.csv", index=False)
+    r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Inputs\domesticpricedata1.csv", index=False)
 checked_causticpricedata.to_csv(
-    r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Inputs\causticpricedata.csv', index=False)
+    r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Inputs\causticpricedata.csv', index=False)
 cbixrollingdata.to_csv(
-    r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Inputs\cbixrollingdata.csv', index=False)
+    r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Inputs\cbixrollingdata.csv', index=False)
 cmaaxdata1.to_csv(
-    r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Inputs\cmaaxdata1.csv', index=False)
+    r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Inputs\cmaaxdata1.csv', index=False)
 cmaaxdata2.to_csv(
-    r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Inputs\cmaaxdata2.csv', index=False)
+    r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Inputs\cmaaxdata2.csv', index=False)
 cmaax_rolling_data.to_csv(
-    r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Inputs\cmaaxrollingdata.csv', index=False)
+    r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Inputs\cmaaxrollingdata.csv', index=False)
 daily_price_data.to_csv(
-    r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Inputs\dailypricedata.csv', index=False)
+    r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Inputs\dailypricedata.csv', index=False)
 frieght_data.to_csv(
-    r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Inputs\frieghtdata.csv', index=False)
+    r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Inputs\frieghtdata.csv', index=False)
 frieghtrollingdata.to_csv(
-    r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Inputs\frieghtrollingdata.csv', index=False)
+    r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Inputs\frieghtrollingdata.csv', index=False)
 domestic_price_raw_data.to_csv(
-    r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Inputs\domesticpricerawdata1.csv', index=False)
+    r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Inputs\domesticpricerawdata1.csv', index=False)

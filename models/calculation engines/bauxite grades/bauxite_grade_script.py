@@ -4,8 +4,9 @@ from flatdb.flatdbconverter import Flatdbconverter, read_from_database , read_ou
 from outputdb import uploadtodb
 
 db_conv = Flatdbconverter("Bauxite grades in use field study results")
-
-coll = read_output_database(74, ["Collector 2391"])
+# snapshot_table = pd.read_sql_query('SELECT * FROM snapshot_table')
+coll = read_output_database(126, ["Collector 2391"])
+print(coll)
 rev_col = db_conv.reverse(coll, 'Draw Down Model', ["Collector 2391"])
 rev_col = rev_col["Draw Down Model"]
 collector = rev_col["Collector 2391"]
@@ -13,7 +14,7 @@ collector = rev_col["Collector 2391"]
 def make_unique(data, enc):
     data = list(map(str, data))
     cols=pd.Series(data)
-    for dup in cols[cols.duplicated()].unique(): 
+    for dup in cols[cols.duplicated()].unique():
         cols[cols[cols == dup].index.values.tolist()] = [dup + enc + str(i) if i != 0 else dup for i in range(sum(cols == dup))]
     return cols.values
 

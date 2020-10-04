@@ -26,10 +26,10 @@ class CBIX2:
         self.shipping_distn_costs_specs.loc[:, "Total Organic Carbon"]  =  self.shipping_distn_costs_specs.loc[:, "Total Organic Carbon"].astype(str)
         self.shipping_distn_costs_specs.loc[:, "Vessel Class Choosen"]  =  self.shipping_distn_costs_specs.loc[:, "Vessel Class Choosen"].astype(str)
         
-        self.shipping_distn_costs_specs_inps       = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="Shipping Distn n Costs n Specs Calc inps")
+        self.shipping_distn_costs_specs_inps       = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="Shipping inps")
     
 
-        self.freight_datatable_row                 = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="Freight inputs for ROW Mining Model")
+        self.freight_datatable_row                 = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="Freight inputs for")
         self.freight_datatable                     = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="Data Table for Freights")
         self.price_forecast_datatable              = pd.read_excel(os.path.join(BASE_DIR, "cbix2input.xlsx"), sheet_name="Data Table for Forecast prices")
 
@@ -68,9 +68,9 @@ class CBIX2:
     
         """
 
-        self.master_date_cell                      = cbix_input["cbix2_Master_date_cell"]
-        self.cbix_cf_trade_details                 = cbix_input["cbix2_Actual_Price_determination_from_CBIX_price"]
-        self.target_cbix_price                     = cbix_input["cbix2_Target_CBIX_Price"]
+        self.master_date_cell                      = cbix_input["Master_date_cell"]
+        self.cbix_cf_trade_details                 = cbix_input["Actual_Price_determination_from_CBIX_price"]
+        self.target_cbix_price                     = cbix_input["Target_CBIX_Price"]
         self.cbix_cf_trade_details.loc[:, "Date"]  = self.master_date_cell.loc[0, "Date"]
         # self.shipping_distn_costs_specs            = cbix_input["cbix2_Shipping_Distn_n_Costs_n_Specs"]
         # self.shipping_distn_costs_specs.loc[:, "Bauxite style"]  =  self.shipping_distn_costs_specs.loc[:, "Bauxite style"].astype(str)
@@ -91,41 +91,91 @@ class CBIX2:
         # self.freight_datatable_row                 = cbix_input["cbix2_Freight_inputs_for_ROW_Mining_Model"]
         # self.freight_datatable                     = cbix_input["cbix2_Data_Table_for_Freights"]
         # self.price_forecast_datatable              = cbix_input["cbix2_Data_Table_for_Forecast_prices"]
-        self.indexes_mines_2                       = cbix_input["cbix2_Indices_Mines_Exporting_Ports_"]
-        self.indexes_mines                         = cbix_input["cbix2_Indices_Mines_Exporting_Ports"]
-        self.spc_leg_shp_table                     = cbix_input["cbix2_Special__Leg_Shipping_Table"]
-        self.mj_max_cargo                          = cbix_input["cbix2_MRN_or_Juruti_max_cargo"]
-        self.ship_time_cr                          = cbix_input["cbix2_Ship_Time_Charter_Rates"]
-        self.china_imp_prts                        = cbix_input["cbix2_China_n_Importing_Ports"]
-        self.freight_table                         = cbix_input["cbix2_Freight_table_selector"]
+        self.indexes_mines_2                       = cbix_input["Indices_Mines_Exporting_Port_2"]
+        self.indexes_mines                         = cbix_input["Indices_Mines_Exporting_Port"]
+        self.spc_leg_shp_table                     = cbix_input["special_leg_shipping"]
+        self.mj_max_cargo                          = cbix_input["MRN_Juruti_max_cargo"]
+        self.ship_time_cr                          = cbix_input["Ship_Time_Charter_Rates"]
+        self.china_imp_prts                        = cbix_input["China_Importing_Ports"]
+        self.freight_table                         = cbix_input["Freights_table_selector"]
+
+
         # self.viu_cost_data_table                   = cbix_input["cbix2_ViU_cost_data_table"]
-        self.china_ps                              = cbix_input["cbix2_China_Price_Series"]
+        self.processing_factors                    = cbix_input["processing_factors"]
+        self.ship_fuel_prices                      = cbix_input["Ship_Fuel_Prices"]
+
+        self.china_ps                              = cbix_input["china_price_series"]
         self.china_ps["Lignitious Coal – Date"]    = self.china_ps["Lignitious Coal – Date"].astype("datetime64[ns]")
         self.china_ps["Caustic Soda – Date"]       = self.china_ps["Caustic Soda – Date"].astype("datetime64[ns]")
         self.china_ps["Lime – Date"]               = self.china_ps["Lime – Date"].astype("datetime64[ns]")
         self.china_ps["Mud disposal cost - Date"]  = self.china_ps["Mud disposal cost - Date"].astype("datetime64[ns]")
-        self.processing_factors                    = cbix_input["cbix2_processing_factors"]
-        self.mud_disposal_cost                     = cbix_input["cbix2_Mud_disposal_cost"]
-        self.ship_fuel_prices                      = cbix_input["cbix2_Ship_Fuel_Prices"]
-        self.lignitious_coal                       = cbix_input["cbix2_Lignitious_Coal"]
 
-        self.lignitious_coal.columns               = ["Date", "Lignitious Coal Price (RMB/t) (exc VAT)", "Energy value (kcal/kg)"]
-        self.lignitious_coal                       = self.lignitious_coal[1:]
 
-        self.vessel_class                          = cbix_input["cbix2_vessel_classes"]
-        self.global_factors                        = cbix_input["cbix2_Global_factors"]
-        self.trade_details                         = cbix_input["cbix2_Trade_Details"]
+        # self.indexes_mines                         = self.indexes_mines[self.indexes_mines["model_id"] == "model_9"].reset_index().drop(['index'],axis=1)
+        # self.spc_leg_shp_table                     = self.spc_leg_shp_table[self.spc_leg_shp_table["model_id"] == "model_9"].reset_index().drop(['index'],axis=1)
+        # self.mj_max_cargo                          = self.mj_max_cargo[self.mj_max_cargo["model_id"] == "model_9"].reset_index().drop(['index'],axis=1)
+        # self.ship_time_cr                          = self.ship_time_cr[self.ship_time_cr["model_id"] == "model_9"].reset_index().drop(['index'],axis=1)
+        # self.china_imp_prts                        = self.china_imp_prts[self.china_imp_prts["model_id"] == "model_9"].reset_index().drop(['index'],axis=1)        
+        # self.processing_factors                     = self.processing_factors[self.processing_factors["model_id"] == "model_9"].reset_index().drop(['index'],axis=1)
+        # self.ship_fuel_prices                       = self.ship_fuel_prices[self.ship_fuel_prices["model_id"] == "model_9"].reset_index().drop(['index'],axis=1)
+        # self.china_ps                               = self.china_ps[self.china_ps["model_id"] == "model_9"].reset_index().drop(['index'],axis=1)
+
+        self.lignitious_coal             = self.china_ps.loc[:, ["Lignitious Coal – Date", 'Lignitious Coal – Price', 'Lignitious Coal – Energy value']]
+        self.lignitious_coal.columns     = ["Date", "Lignitious Coal Price (RMB/t) (exc VAT)", "Energy value (kcal/kg)"]
+
+        self.mud_disposal_cost           = self.china_ps.loc[:, ["Mud disposal cost - Date", "Mud disposal cost – Price"]]
+        self.mud_disposal_cost.columns   = ["Date", "Mud disposal cost Price (RMB/t.mud dry)"]
+
+        self.caustic_soda                = self.china_ps.loc[:, ["Caustic Soda – Date","Caustic Soda – Price", "Caustic Soda – Grade"]]
+        self.caustic_soda.columns        = ["Date", "Caustic Soda Price (RMB/t) (exc VAT)", "Grade"]
+
+        self.lime                        = self.china_ps.loc[:, ["Lime – Date", "Lime – Price"]]
+        self.lime.columns                = ["Date", "Lime Price (RMB/t)"]
+
+        self.vessel_class                          = cbix_input["vessel_class"]
+        self.global_factors                        = cbix_input["global_factors"]
+        self.trade_details                         = cbix_input["Trade_Details"]
         self.trade_details.loc[:, "Date"]          = self.master_date_cell.loc[0, "Date"]
-        self.port_linkages                         = cbix_input["cbix2_Port_Linkages"]
-        self.canals_class                          = cbix_input["cbix2_Canals_Class"]
-        self.caustic_soda                          = cbix_input["cbix2_Caustic_Soda"]
-        self.ship_speeds                           = cbix_input["cbix2_Ship_Speeds"]
-        self.fx_rates                              = cbix_input["cbix2_FX_Rates"]
-        self.canals                                = cbix_input["cbix2_Canals"]
-        self.lime                                  = cbix_input["cbix2_Lime"]
+        self.port_linkages                         = cbix_input["Port_Linkages"]
+        self.canals_class                          = cbix_input["Canals_Class"]
+        self.ship_speeds                           = cbix_input["ship_speed"]
+        self.fx_rates                              = cbix_input["fxrates_withdates"]
+        self.canals                                = cbix_input["Canal"]
         self.freight_table_value                   = "default"
-        self.db                                    = {} #All generated outputs are temporarily stored here
-
+        
+        # self.canals_class                = self.canals_class[self.canals_class["model_id"] == "model_9"].reset_index().drop(['index'],axis=1)
+        # self.global_factors              = self.global_factors[self.global_factors["model_id"] == "model_9"].reset_index().drop(['index'],axis=1)
+        # self.trade_details               = self.trade_details[self.trade_details["model_id"] == "model_9"].reset_index().drop(['index'],axis=1)
+        # self.port_linkages               = self.port_linkages[self.port_linkages["model_id"] == "model_9"].reset_index().drop(['index'],axis=1)
+        # self.ship_speeds                 = self.ship_speeds[self.ship_speeds["model_id"] == "model_9"].reset_index().drop(['index'],axis=1)
+        # self.fx_rates                    = self.fx_rates[self.fx_rates["model_id"] == "model_9"].reset_index().drop(['index'],axis=1)
+        # self.canals                      = self.canals[self.canals["model_id"] == "model_9"].reset_index().drop(['index'],axis=1)
+        self.db                          = {} #All generated outputs are temporarily stored here
+        print("start".upper())
+        print("shipping_distn_costs_specs\n", self.shipping_distn_costs_specs)
+        print("shipping_distn_costs_specs_inps\n", self.shipping_distn_costs_specs_inps)
+        print("freight_datatable_row\n", self.freight_datatable_row)
+        print("freight_datatable\n", self.freight_datatable)
+        print("price_forecast_datatable\n", self.price_forecast_datatable)
+        print("viu_cost_data_table\n", self.viu_cost_data_table)
+        print("master_date_cell\n", self.master_date_cell)
+        print("cbix_cf_trade_details\n", self.cbix_cf_trade_details)
+        print("target_cbix_price\n", self.target_cbix_price)
+        print("indexes_mines_2\n", self.indexes_mines_2)
+        print("indexes_mines\n", self.indexes_mines)
+        print("spc_leg_shp_table\n", self.spc_leg_shp_table)
+        print("mj_max_cargo\n", self.mj_max_cargo)
+        print("ship_time_cr\n", self.ship_time_cr)
+        print("china_imp_prts\n", self.china_imp_prts)
+        print("freight_table\n", self.freight_table)
+        print("processing_factors\n", self.processing_factors)
+        print("ship_fuel_prices\n", self.ship_fuel_prices)
+        print("china_ps\n", self.china_ps)
+        print("lignitious_coal\n", self.lignitious_coal)
+        print("mud_disposal_cost\n", self.mud_disposal_cost)
+        print("caustic_soda\n", self.caustic_soda)
+        print("lime\n", self.lime)
+        print("end".upper())
 
         self.cdi_glb_factors_columns = [
             "kcal per GJ",
@@ -517,7 +567,6 @@ class CBIX2:
             try:
                 return target[v].tolist()[0]
             except Exception as e:
-                print(e)
                 return 0
 
         def calc3_vlookup(search1, target):
@@ -538,7 +587,8 @@ class CBIX2:
             self.shipping_distn_costs_specs.at[i, "Total Organic Carbon"]                  = calc1_vlookup(self.shipping_distn_costs_specs.loc[i, "Mine"], temp_df.loc[:, "Total Organic Carbon"])
             self.shipping_distn_costs_specs.at[i, "Other processing Penalties (US$/t_bx)"] = calc1_vlookup(self.shipping_distn_costs_specs.loc[i, "Mine"], temp_df.loc[:, "Other processing Penalties (US$/t_bx)"])
             self.shipping_distn_costs_specs.at[i, "Vessel Class Choosen"]                  = calc1_vlookup(self.shipping_distn_costs_specs.loc[i, "Mine"], temp_df.loc[:, "Vessel Class Choosen"])
-            self.shipping_distn_costs_specs.at[i, "Total Processing Penalties (US$/t_bx)"] = (1 if self.shipping_distn_costs_specs.loc[i, "Total Organic Carbon"] == "V_High" else (0.67 if self.shipping_distn_costs_specs.loc[i, "Total Organic Carbon"] == "High" else (0.33 if self.shipping_distn_costs_specs.loc[i, "Total Organic Carbon"] == "Moderate" else (0 if self.shipping_distn_costs_specs.loc[i, "Total Organic Carbon"] == "Low" else "error"))) + self.shipping_distn_costs_specs.loc[i, "Other processing Penalties (US$/t_bx)"] + (0.5 * (self.shipping_distn_costs_specs.loc[i, "Monohydrate (%)"] - 4) if (self.shipping_distn_costs_specs.loc[i, "Bauxite style"] == "LT" and self.shipping_distn_costs_specs.loc[i, "Monohydrate (%)"] > 4) else 0))
+            # print(i)
+            self.shipping_distn_costs_specs.at[i, "Total Processing Penalties (US$/t_bx)"] = (1 if self.shipping_distn_costs_specs.loc[i, "Total Organic Carbon"] == "V_High" else (0.67 if self.shipping_distn_costs_specs.loc[i, "Total Organic Carbon"] == "High" else (0.33 if self.shipping_distn_costs_specs.loc[i, "Total Organic Carbon"] == "Moderate" else (0 if self.shipping_distn_costs_specs.loc[i, "Total Organic Carbon"] == "Low" else 0))) + float(self.shipping_distn_costs_specs.loc[i, "Other processing Penalties (US$/t_bx)"]) + (0.5 * (self.shipping_distn_costs_specs.loc[i, "Monohydrate (%)"] - 4) if (self.shipping_distn_costs_specs.loc[i, "Bauxite style"] == "LT" and self.shipping_distn_costs_specs.loc[i, "Monohydrate (%)"] > 4) else 0))
         
         '''Calc Two'''
        
@@ -548,7 +598,7 @@ class CBIX2:
                 self.indexes_mines_2.at[a, "special add ons"] = 1.56 if choosen_year < 2019 else 1.56/2 if choosen_year == 2019 else 0            
             else:
                 self.indexes_mines_2.at[a, "special add ons"] = 0
-
+            # print(self.indexes_mines_2.shape[0],)
             self.indexes_mines_2.at[a, "Workings"] = self.shipping_distn_costs_specs.loc[a, "Vessel Class Choosen"] if self.freight_table_value == "default" else self.freight_table_value
             self.indexes_mines_2.at[a, "Final Vessel Size"] = self.indexes_mines_2.loc[a, "P'max dwt"] if self.indexes_mines_2.loc[a, "Workings"] == "Panamax" else self.indexes_mines_2.loc[a, "Cape dwt"]
             self.indexes_mines_2.at[a, "Final Add-On"] = sum([self.indexes_mines_2.loc[a, "Extra transloading charge US$/wmt if to Capesize"], self.indexes_mines_2.loc[a, "special add ons"]]) if self.indexes_mines_2.loc[a, "Workings"] == "Capesize" else 0
@@ -1980,7 +2030,6 @@ class CBIX2:
             cbix_ap_df.at[i, "Amounts per Cargo Tarrif Graduations - 8th"] = cbix_coe_canals_details.loc[i, "Cargo Tarrif Graduations - 8th"]  if cbix_ap_df.loc[i, "Amounts per Cargo Tarrif Graduations - Tonnage Reference"] > cbix_coe_canals_details.loc[i, "Cargo Tarrif Graduations - 1st":"Cargo Tarrif Graduations - 8th"].sum() else (cbix_ap_df.loc[i, "Amounts per Cargo Tarrif Graduations - Tonnage Reference"] - cbix_ap_df.loc[i, "Amounts per Cargo Tarrif Graduations - 1st":"Amounts per Cargo Tarrif Graduations - 7th"].sum())
             cbix_ap_df.at[i, "Amounts per Cargo Tarrif Graduations - 9th"] = cbix_coe_canals_details.loc[i, "Cargo Tarrif Graduations - 9th"]  if cbix_ap_df.loc[i, "Amounts per Cargo Tarrif Graduations - Tonnage Reference"] > cbix_coe_canals_details.loc[i, "Cargo Tarrif Graduations - 1st":"Cargo Tarrif Graduations - 9th"].sum() else (cbix_ap_df.loc[i, "Amounts per Cargo Tarrif Graduations - Tonnage Reference"] - cbix_ap_df.loc[i, "Amounts per Cargo Tarrif Graduations - 1st":"Amounts per Cargo Tarrif Graduations - 8th"].sum())
 
-        
         self.db[f"outputs/{self.freight_table_value}/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/canals_costs_workings_second_leg.xlsx"] = new_df
         self.db[f"outputs/{self.freight_table_value}/{'frieght_calcs_to_actual_nominated_port' if folder == None else folder}/actual_price_determination_from_CBIX_price/canals_costs_workings_second_leg.xlsx"] = cbix_ap_df
 
@@ -3054,7 +3103,6 @@ class CBIX2:
         self.db[f"outputs/{self.freight_table_value}/data_tables/data_table_for_freights.xlsx"] = self.freight_datatable
         #print(self.freight_datatable)
 
-
     def forecast_prices_datatable(self):
         price_determination = self.db[f"outputs/{self.freight_table_value}/Actual Price determination from CBIX price Trade Details.xlsx"]
 
@@ -3067,7 +3115,7 @@ class CBIX2:
                 #return 0
 
         #for i in range(self.price_forecast_datatable.shape[0]):
-        self.price_forecast_datatable.at[:, self.master_date_cell.loc[0, "Date"]] = price_determination.loc[:, "Actual Price determination from CBIX price"].tolist()
+        self.price_forecast_datatable.at[:, self.master_date_cell.loc[0, "Date"]] = price_determination.loc[:, "Actual Price determination from CBIX price"]
         
         self.db[f"outputs/{self.freight_table_value}/data_tables/price_forecast_datatable.xlsx"] = self.price_forecast_datatable
 
@@ -3077,7 +3125,7 @@ class CBIX2:
             v = self.indexes_mines_2.loc[:, "Mine"] == search1
             try:
                 return self.indexes_mines_2.loc[:, "Final Add-On"][v].tolist()[0]
-            except Exception as e:
+            except Exception:
                 return 0
 
         def gen_lookup(search, lookup, target):
@@ -3205,9 +3253,8 @@ class CBIX2:
                 self.calcall()
                 print(f"Runtime {count} for model successfully completed with date {master_date.date()}")
                 count += 1
-
             #Save files
-        for filepath, file in self.db.items():
+        for filepath, filee in self.db.items():
             dirname = PureWindowsPath(os.path.dirname(filepath))
             Path(dirname).mkdir(parents=True, exist_ok=True)
 
@@ -3225,20 +3272,23 @@ class CBIX2:
             # if filepath.split('/')[-2] != "outputs":
             #     filename = f"{filepath.split('/')[-2]} {filename}"
             if filepath.split('/')[-2] != "data_tables":
-                dblist.append(db_conv.single_year_mult_out(file, filename))
+                filee.to_clipboard()
+                print("")
+                print(filepath, filee)
+                dblist.append(db_conv.single_year_mult_out(filee, filename))
             else:
                 name = filepath.split('/')[-1].split('.')[0]
                 if name == 'data_table_for_freights':
-                    dblist.append(db_conv.mult_year_single_output(file, filename, [[0,1]], [[1,]], label="Date"))
+                    dblist.append(db_conv.mult_year_single_output(filee, filename, [[0,1]], [[1,]], label="Date"))
                 elif name == 'freight_inputs_for_ROW_mining_model':
-                    dblist.append(db_conv.mult_year_single_output(file, filename, [[0,3]], [[3,]], label="Date"))
+                    dblist.append(db_conv.mult_year_single_output(filee, filename, [[0,3]], [[3,]], label="Date"))
                 elif name == 'price_forecast_datatable':
-                    dblist.append(db_conv.mult_year_single_output(file, filename, [[0,1]], [[1,]], label="Date"))
+                    dblist.append(db_conv.mult_year_single_output(filee, filename, [[0,1]], [[1,]], label="Date"))
                 elif name == 'viu_cost_data_table':
-                    dblist.append(db_conv.mult_year_single_output(file, filename, [[0,1]], [[1,]], label="Date"))
+                    dblist.append(db_conv.mult_year_single_output(filee, filename, [[0,1]], [[1,]], label="Date"))
             print(PureWindowsPath(os.path.join(BASE_DIR, filepath)))
             try:
-                file.to_excel(PureWindowsPath(os.path.join(BASE_DIR, filepath)), index=False)
+                filee.to_excel(PureWindowsPath(os.path.join(BASE_DIR, filepath)), index=False)
             except Exception as err:
                 print(err)
             self.db = {}

@@ -12,23 +12,37 @@ db_conv = Flatdbconverter("Weekly Chart Pack")
 
 dblist = []
 
+#Dexter: general function to convert datevalue to date in format mm-dd-yyyy
+def dateformmater(d):
+    res= 0
+    try:
+        d = int(d)
+        #d=[d]
+        res = dt.datetime.fromordinal(dt.datetime(1900, 1, 1).toordinal() + d - 2)
+        #v=pd.TimedeltaIndex(d, unit='d') + dt.datetime(1900, 1, 1)
+        #res=v[0]
+    except:
+        res = pd.to_datetime(d)
+    return res.strftime('%m-%d-%Y')
+
 
 class Causticprice():
     def __init__(self):
         self.cpdata = pd.read_csv(
-            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Inputs\\causticpricedata.csv")
+            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Inputs\\causticpricedata.csv")
         self.ddata = pd.read_csv(
-            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Inputs\\domesticpricerawdata1.csv")
+            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Inputs\\domesticpricerawdata1.csv")
         self.caustic_price_data = pd.DataFrame(
-            columns=["month", "data", "Shandong", "Henan", "Shanxi"])
+            columns=["month", "Date", "Shandong", "Henan", "Shanxi"])
         self.caustic_check = pd.DataFrame(
             columns=["check1", "check2", "check3"])
         self.domesticpricedata = pd.read_csv(
-            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Inputs\\domesticpricedata1.csv")
+            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Inputs\\domesticpricedata1.csv")
         self.caustic_check1 = pd.DataFrame(
             columns=["check1", "check2", "check3"])
 
     def liquidcausticshandong(self, indx):
+        self.caustic_price_data.at[indx, 'Date'] = dateformmater(self.cpdata['date'][indx])
         d = [self.cpdata["Shandong L1"][indx],
              self.cpdata["Shandong L2"][indx]]
         v = (d[0]+d[1])/2
@@ -38,7 +52,8 @@ class Causticprice():
         d = [self.cpdata["date"][indx]]
         # dexter remove unit of datetime
         v = pd.TimedeltaIndex(d, unit='d') + dt.datetime(1900, 1, 1)
-        self.caustic_price_data.at[indx, "month"] = v[0].date()
+        #self.caustic_price_data.at[indx, "month"] = v[0].date()
+        self.caustic_price_data.at[indx, "month"] = v[0].strftime('%Y %m')
 
     def liquidcaustichenan(self, indx):
         d = [self.cpdata["Henan L1"][indx], self.cpdata["Henan L2"][indx]]
@@ -126,28 +141,28 @@ class Causticprice():
 class Frieght():
     def __init__(self):
         self.frieghtdata = pd.read_csv(
-            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Inputs\\frieghtdata.csv")
+            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Inputs\\frieghtdata.csv")
         self.dailypricedata = pd.read_csv(
-            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Inputs\\dailypricedata.csv")
+            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Inputs\\dailypricedata.csv")
         self.WeeklyChartDataFrame = pd.read_csv(
-            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Inputs\\cbixHitoricalDailyPrice.csv")
+            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Inputs\\cbixHitoricalDailyPrice.csv")
         self.cmaaxrollingdataFrame = pd.read_csv(
-            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Inputs\\cmaaxrollingdata1.csv")
+            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Inputs\\cmaaxrollingdata1.csv")
         self.cmaxrollingYearDataFrame = pd.read_csv(
-            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Inputs\\cmaxrollingYearData.csv")
-        self.cockpit = 43980
+            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Inputs\\cmaxrollingYearData.csv")
+        self.cockpit = 44085 #43831
         self.frieghtrollingdata = pd.read_csv(
-            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Inputs\\frieghtrollingdata.csv")
+            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Inputs\\frieghtrollingdata.csv")
         self.cbixrollingdata = pd.read_csv(
-            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Inputs\\cbixrollingdata.csv")
+            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Inputs\\cbixrollingdata.csv")
         self.cmaaxdata1 = pd.read_csv(
-            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Inputs\\cmaaxdata1.csv")
+            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Inputs\\cmaaxdata1.csv")
         self.cmaaxdata2 = pd.read_csv(
-            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Inputs\\cmaaxdata2.csv")
+            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Inputs\\cmaaxdata2.csv")
         self.cbixRollingYearData = pd.DataFrame(
             columns=["day", "date", "CBIX1", "CBIX2"])
         self.cmaaxrollingdata = pd.read_csv(
-            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\Inputs\\cmaaxrollingdata.csv")
+            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\Inputs\\cmaaxrollingdata.csv")
         self.cmaxrollingYearData = pd.DataFrame(
             columns=["date", "northprice", "southprice", "wacif"])
 
@@ -185,13 +200,17 @@ class Frieght():
                                   self.frieghtrollingdata["week"][indx]]["brazil,capesize"].sum()]
         v = 0
         self.frieghtrollingdata.at[indx, "BPI"] = v
-
+    '''
     def frieghtrollingdate(self, indx):
         d = [self.frieghtdata.loc[self.frieghtdata.weekbeforecbx ==
                                   self.frieghtrollingdata["week"][indx]]["brazil,capesize"].sum()]
         v = d[0]
         self.frieghtrollingdata.at[indx, "Date"] = v
-
+    '''
+    def frieghtrollingdate(self, indx):
+        d = self.frieghtdata.loc[self.frieghtdata['weekbeforecbx']==self.frieghtrollingdata.loc[indx, 'week'],'week' ]
+        d=int(d)
+        self.frieghtrollingdata.at[indx, 'Date'] = d
     def cbxrollingdate(self, indx):
         d = [self.dailypricedata.loc[self.dailypricedata.daybeforecbx ==
                                      self.cbixrollingdata["Day"][indx]]["date"].sum()]
@@ -281,6 +300,15 @@ class Frieght():
         self.cmaxrollingYearData.at[indx, "northprice"] = v2
         self.cmaxrollingYearData.at[indx, "southprice"] = v3
         self.cmaxrollingYearData.at[indx, "wacif"] = v4
+        
+    def function_to_format_dates(self):
+        #Dexter: format week for frieghtdata
+        self.frieghtdata['week'] = [dateformmater(i) for i in self.frieghtdata['week']]
+        self.dailypricedata['date'] = [dateformmater(d) for d in self.dailypricedata['date']]
+        self.frieghtrollingdata['Date'] = [dateformmater(d) for d in self.frieghtrollingdata['Date']]
+        self.cbixrollingdata['Date'] =  [dateformmater(d) for d in self.cbixrollingdata['Date']]
+        
+        
 
     def calcall(self):
         for i in range(self.frieghtdata.shape[0]):
@@ -310,65 +338,68 @@ class Frieght():
 
         for i in range(self.WeeklyChartDataFrame.shape[0]):
             Frieght.weeklychartdata(self, i)
+        Frieght.function_to_format_dates(self)
 
 
-def main():
-    caustic_price = Causticprice()
-    freight = Frieght()
-    caustic_price.calcall()
-    freight.calcall()
 
-    caustic_data_frames = ['caustic_price.caustic_price_data',
-                           'caustic_price.caustic_check',
-                           'caustic_price.domesticpricedata',
-                           'caustic_price.caustic_check1']
+caustic_price = Causticprice()
+freight = Frieght()
+caustic_price.calcall()
+freight.calcall()
 
-    freight_data_frames = ['freight.frieghtdata',
-                           'freight.dailypricedata',
-                           'freight.frieghtrollingdata',
-                           'freight.cbixrollingdata',
-                           'freight.cbixRollingYearData',
-                           'freight.cmaaxrollingdata',
-                           'freight.cmaxrollingYearData',
-                           'freight.cmaaxdata1',
-                           'freight.cmaaxdata2']
+caustic_data_frames = ['caustic_price.caustic_price_data',
+                        'caustic_price.caustic_check',
+                        'caustic_price.domesticpricedata',
+                        'caustic_price.caustic_check1']
 
-    for frame in caustic_data_frames:
-        dblist.append(db_conv.single_year_mult_out(
-            eval(frame), (str(frame).split('.'))[1]))
-        eval(frame).to_excel(
-            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\output\{(str(frame).split('.'))[1]}.xlsx", float_format='%.3f')
+freight_data_frames = ['freight.frieghtdata',
+                        'freight.dailypricedata',
+                        'freight.frieghtrollingdata',
+                        'freight.cbixrollingdata',
+                        'freight.cbixRollingYearData',
+                        'freight.cmaaxrollingdata',
+                        'freight.cmaxrollingYearData',
+                        'freight.cmaaxdata1',
+                        'freight.cmaaxdata2']
 
-    for frame in freight_data_frames:
-        dblist.append(db_conv.single_year_mult_out(
-            eval(frame), (str(frame).split('.'))[1]))
-        eval(frame).to_excel(
-            r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\output\{(str(frame).split('.'))[1]}.xlsx", float_format='%.3f')
+for frame in caustic_data_frames:
+    print(frame)
+    dblist.append(db_conv.single_year_mult_out(
+        eval(frame), (str(frame).split('.'))[1]))
+    eval(frame).to_excel(
+        r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\output\{(str(frame).split('.'))[1]}.xlsx", float_format='%.3f')
 
-    ''' 
-    same output with multiple sheets
-    using OPENPYXL module to create single xlsx file with multiple sheets as output
-    [optional]
-    '''
-    # with pd.ExcelWriter('output/caustic_output.xlsx') as writer:
-    #     caustic_price.outputdata1.to_excel(writer, sheet_name='outputdata1')
-    #     caustic_price.outputdata2.to_excel(writer, sheet_name='outputdata2')
-    #     caustic_price.outputdata3.to_excel(writer, sheet_name='outputdata3')
-    #     caustic_price.outputdata4.to_excel(writer, sheet_name='outputdata4')
-    # with pd.ExcelWriter('output/frieght_output.xlsx') as writer:
-    #     freight.fdata.to_excel(writer, sheet_name='fdata')
-    #     freight.ddata.to_excel(writer, sheet_name='ddata')
-    #     freight.outputdata3.to_excel(writer, sheet_name='outputdata3')
-    #     freight.outputdata4.to_excel(writer, sheet_name='outputdata4')
-    #     freight.outputdata5.to_excel(writer, sheet_name='outputdata5')
-    #     freight.outputdata6.to_excel(writer, sheet_name='outputdata6')
-    #     freight.outputdata7.to_excel(writer, sheet_name='outputdata7')
-    #     freight.cmaaxdata1.to_excel(writer, sheet_name='cmmaxdata1')
-    #     freight.cmaaxdata2.to_excel(writer, sheet_name='cmmaxdata2')
+for frame in freight_data_frames:
+    print(frame)
+    dblist.append(db_conv.single_year_mult_out(
+        eval(frame), (str(frame).split('.'))[1]))
+    eval(frame).to_excel(
+        r"c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\output\{(str(frame).split('.'))[1]}.xlsx", float_format='%.3f')
+
+''' 
+same output with multiple sheets
+using OPENPYXL module to create single xlsx file with multiple sheets as output
+[optional]
+'''
+with pd.ExcelWriter(r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\output\caustic_output.xlsx') as writer:
+     caustic_price.caustic_price_data.to_excel(writer, sheet_name='caustic_price_data')
+     caustic_price.caustic_check.to_excel(writer, sheet_name='caustic_check')
+     caustic_price.domesticpricedata.to_excel(writer, sheet_name='domesticpricedata')
+     caustic_price.caustic_check1.to_excel(writer, sheet_name='caustic_check1')
+with pd.ExcelWriter(r'c:\Users\magmarkd1\Desktop\cmdata\models\calculation engines\Weekly Chart Pack\\output\frieght_output.xlsx') as writer:
+     #freight.fdata.to_excel(writer, sheet_name='fdata')
+     #freight.ddata.to_excel(writer, sheet_name='ddata')
+     freight.frieghtdata.to_excel(writer, sheet_name='frieghtdata')
+     freight.dailypricedata.to_excel(writer, sheet_name='dailypricedata')
+     freight.frieghtrollingdata.to_excel(writer, sheet_name='frieghtrollingdata')
+     freight.cbixrollingdata.to_excel(writer, sheet_name='cbixrollingdata')
+     freight.cbixRollingYearData.to_excel(writer, sheet_name='cbixRollingYearData')
+     freight.cmaaxrollingdata.to_excel(writer, sheet_name='cmaaxrollingdata')
+     freight.cmaxrollingYearData.to_excel(writer, sheet_name='cmaxrollingYearData')
+     freight.cmaaxdata1.to_excel(writer, sheet_name='cmmaxdata1')
+     freight.cmaaxdata2.to_excel(writer, sheet_name='cmmaxdata2')
 
 
-if __name__ == '__main__':
-    main()
 
 snapshot_output_data = pd.concat(dblist, ignore_index=True)
 snapshot_output_data = snapshot_output_data.loc[:, db_conv.out_col]

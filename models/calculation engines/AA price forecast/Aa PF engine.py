@@ -11,7 +11,10 @@ import datetime
 import csv
 from flatdb.flatdbconverter import Flatdbconverter
 from outputdb import uploadtodb
+from Inputs.pdt_script import restruct
 
+
+rest_data = restruct()
 a_flat = Flatdbconverter("Aa Price Forecast (CHN)")
 
 default_year = 2020#pd.read_excel('Inputs\\AaPF.xlsx', sheet_name='Year').loc[0,'Year'] #main input year, default is 2020
@@ -123,19 +126,32 @@ class Timer():
             file.write(text)
 
 input_filename = 'Inputs\\AaPF.xlsx'
-pdt_inp = pd.read_excel (r'Inputs\\AaPF.xlsx',sheet_name='PDT').replace(np.nan, 0) 
-RefPDT_inp = pd.read_excel(input_filename, sheet_name='RefPDT').replace(np.nan, 0) 
-lookup_input_inp = pd.read_excel(input_filename, sheet_name='lookup').replace(np.nan, 0) 
-lookup1_input_inp = pd.read_excel(input_filename, sheet_name='lookup1').replace(np.nan, 0) 
-Prices_inp = pd.read_excel(input_filename, sheet_name='CbixPrices').replace(np.nan, 0) 
-Ref_base_cap_inp = pd.read_excel('Inputs\\Refineries Capacity and Production.xlsx', sheet_name='Base Capacity').replace(np.nan, 0) 
-Ref_base_cap_regions_inp = pd.read_excel('Inputs\\Refineries Capacity and Production.xlsx', sheet_name='Base Capacity by regions').replace(np.nan, 0) 
-Ref_base_prod_inp = pd.read_excel('Inputs\\Refineries Capacity and Production.xlsx', sheet_name='Base Production').replace(np.nan, 0) 
-Ref_base_prod_regions_inp = pd.read_excel('Inputs\\Refineries Capacity and Production.xlsx', sheet_name='Base Production by regions').replace(np.nan, 0) 
-Ref_aa_prod_inp = pd.read_excel('Inputs\\Refineries Capacity and Production.xlsx', sheet_name=' AA production_dom_bauxite').replace(np.nan, 0) 
-refPDT1_inp = pd.read_csv('Inputs\Refineries PDT inputs 1.csv').replace(np.nan, 0) 
-refPDT2_inp = pd.read_csv('Inputs\Refineries PDT inputs 2.csv').replace(np.nan, 0)        
-input_inp = pd.read_excel(input_filename, sheet_name="league master").replace(np.nan, 0) 
+# pdt_inp = pd.read_excel (input_filename,sheet_name='PDT').replace(np.nan, 0) 
+pdt_inp = rest_data["PDT"].replace(np.nan, 0)
+# RefPDT_inp = pd.read_excel(input_filename, sheet_name='RefPDT').replace(np.nan, 0) 
+RefPDT_inp=rest_data["RefPDT"].replace(np.nan, 0)
+# lookup_input_inp = pd.read_excel(input_filename, sheet_name='lookup').replace(np.nan, 0) 
+lookup_input_inp = rest_data["lookup"].replace(np.nan, 0)
+# lookup1_input_inp = pd.read_excel(input_filename, sheet_name='lookup1').replace(np.nan, 0) 
+lookup1_input_inp = rest_data["lookup1"].replace(np.nan, 0)
+# Prices_inp = pd.read_excel(input_filename, sheet_name='CbixPrices').replace(np.nan, 0) 
+Prices_inp = rest_data["cbixprices"].replace(np.nan, 0)
+# Ref_base_cap_inp = pd.read_excel('Inputs\\Refineries Capacity and Production.xlsx', sheet_name='Base Capacity').replace(np.nan, 0) 
+Ref_base_cap_inp = rest_data["basecapacity"].replace(np.nan, 0)
+# Ref_base_cap_regions_inp = pd.read_excel('Inputs\\Refineries Capacity and Production.xlsx', sheet_name='Base Capacity by regions').replace(np.nan, 0) 
+Ref_base_cap_regions_inp = rest_data["basecapacitybyregions"].replace(np.nan, 0)
+# Ref_base_prod_inp = pd.read_excel('Inputs\\Refineries Capacity and Production.xlsx', sheet_name='Base Production').replace(np.nan, 0) 
+Ref_base_prod_inp = rest_data["baseproduction"].replace(np.nan, 0)
+# Ref_base_prod_regions_inp = pd.read_excel('Inputs\\Refineries Capacity and Production.xlsx', sheet_name='Base Production by regions').replace(np.nan, 0) 
+Ref_base_prod_regions_inp = rest_data["baseproductionbyregions"].replace(np.nan, 0)
+# Ref_aa_prod_inp = pd.read_excel('Inputs\\Refineries Capacity and Production.xlsx', sheet_name=' AA production_dom_bauxite').replace(np.nan, 0) 
+Ref_aa_prod_inp = rest_data["aaprod_dom_bauxite"].replace(np.nan, 0)
+# refPDT1_inp = pd.read_csv('Inputs\Refineries PDT inputs 1.csv').replace(np.nan, 0)
+refPDT1_inp = rest_data["refineries_pdt_inputs_1"].replace(np.nan, 0)
+# refPDT2_inp = pd.read_csv('Inputs\Refineries PDT inputs 2.csv').replace(np.nan, 0)   
+refPDT2_inp = rest_data["refineries_pdt_inputs_2"].replace(np.nan, 0)
+# input_inp = pd.read_excel(input_filename, sheet_name="league master").replace(np.nan, 0)
+input_inp = rest_data["leaguemaster"].replace(np.nan, 0)
 
 #timer
 timer = Timer("pdt_cost_current", txt=True, log_result=False)
@@ -185,8 +201,10 @@ class PDT_Cost_Current():
         self.caustic = pd.DataFrame(columns=[])
         
         #main sheet inputs
-        self.mainSheet_demand = pd.read_excel('Inputs\Main Sheet Inputs.xlsx', sheet_name='Demand')
-        self.mainSheet_key_inputs = pd.read_excel('Inputs\Main Sheet Inputs.xlsx', sheet_name='Key Inputs')
+        # self.mainSheet_demand = pd.read_excel('Inputs\Main Sheet Inputs.xlsx', sheet_name='Demand')
+        self.mainSheet_demand = rest_data["demand"]
+        # self.mainSheet_key_inputs = pd.read_excel('Inputs\Main Sheet Inputs.xlsx', sheet_name='Key Inputs')
+        self.mainSheet_key_inputs = rest_data["keyinputs"]
         self.mainSheet_key_check = pd.DataFrame(columns=self.mainSheet_demand.columns, index= self.mainSheet_demand.index)
        
         
@@ -631,6 +649,7 @@ class PDT_Cost_Current():
         b = self.bauxite_domestic_supply['Bauxite 1 Alumina Grade (Reacting)']
         result = []
         for i in np.arange(len(a)):
+            print(a[i])
             if a[i] > 0:
                 result.append(b[i]/a[i])
             else:
@@ -1619,7 +1638,7 @@ class League_Master():
     
     def production_kt_index_match(self):
         timer.start()
-        first_col = np.array([ np.NaN , *self.index_helper('Production kT', 'Column 3', 'Rank', r=1)])
+        first_col = np.nan_to_num(np.array([ 0 , *self.index_helper('Production kT', 'Column 3', 'Rank', r=1)]))
         second_col = np.zeros(self.lm_max_row*3 + 1)
         third_col = np.zeros(self.lm_max_row*3 + 1)
         prev = 0
@@ -1973,11 +1992,59 @@ class Main_Sheet():
 pdt_cost = PDT_Cost_Current(default_year)
 pdt_cost.calc_all()
 
+
+
 writer = pd.ExcelWriter('Outputs\\PDT Output.xlsx')
 ref_PDT_writer = pd.ExcelWriter('Outputs\\Refineries PDT Output.xlsx')
 prices_writer = pd.ExcelWriter('Outputs\\Prices Output.xlsx')
 ref_cap_prod_writer = pd.ExcelWriter('Outputs\\Refineries Capacity and Production Output.xlsx')
+
+pdt_cost.refPDT1.to_excel(ref_PDT_writer, sheet_name='Refineries PDT 1',encoding='utf-8', index=False)
+refineries = pdt_cost.refPDT1["Refinery"].values
+pdt_cost.refPDT2.to_excel(ref_PDT_writer, sheet_name='Refineries PDT 2',encoding='utf-8', index=False)
+ref_PDT_writer.save() 
+
+ref = pd.DataFrame(columns=["Refinery"])
+ref["Refinery"] = refineries
+
+def con(r, df):
+    return r.join(df)
+
 # a_flat.single_year_mult_out
+
+pdt_cost.Global = con(ref, pdt_cost.Global)
+pdt_cost.bauxite_domestic_supply = con(ref, pdt_cost.bauxite_domestic_supply)
+pdt_cost.bauxite_domestic_purchased = con(ref, pdt_cost.bauxite_domestic_purchased)
+pdt_cost.bauxite_import_purchased = con(ref, pdt_cost.bauxite_import_purchased)
+pdt_cost.bauxite_sourcing_mix = con(ref, pdt_cost.bauxite_sourcing_mix)
+pdt_cost.bauxite_final_characteristics = con(ref, pdt_cost.bauxite_final_characteristics)
+pdt_cost.caustic_self_supplied = con(ref, pdt_cost.caustic_self_supplied)
+pdt_cost.caustic_purchased = con(ref, pdt_cost.caustic_purchased)
+pdt_cost.flocculent = con(ref, pdt_cost.flocculent)
+pdt_cost.bauxite = con(ref, pdt_cost.bauxite)
+pdt_cost.caustic = con(ref, pdt_cost.caustic)
+pdt_cost.energy_for_steam = con(ref, pdt_cost.energy_for_steam)
+pdt_cost.energy_calcining_alumina = con(ref, pdt_cost.energy_calcining_alumina)
+pdt_cost.lime = con(ref, pdt_cost.lime)
+pdt_cost.limestone = con(ref, pdt_cost.limestone)
+pdt_cost.labour = con(ref, pdt_cost.labour)
+pdt_cost.energy_usageR = con(ref, pdt_cost.energy_usageR)
+pdt_cost.lime_usageR = con(ref, pdt_cost.lime_usageR)
+pdt_cost.limestone_usageR = con(ref, pdt_cost.limestone_usageR)
+pdt_cost.labour_usageR = con(ref, pdt_cost.labour_usageR)
+pdt_cost.consumables_usageR = con(ref, pdt_cost.consumables_usageR)
+pdt_cost.bauxite_cost = con(ref, pdt_cost.bauxite_cost)
+pdt_cost.caustic_cost = con(ref, pdt_cost.caustic_cost)
+pdt_cost.energy_cost = con(ref, pdt_cost.energy_cost)
+pdt_cost.lime_cost = con(ref, pdt_cost.lime_cost)
+pdt_cost.labour_cost = con(ref, pdt_cost.labour_cost)
+pdt_cost.consumables_cost = con(ref, pdt_cost.consumables_cost)
+pdt_cost.maintenance_cost = con(ref, pdt_cost.maintenance_cost)
+pdt_cost.other_cost = con(ref, pdt_cost.other_cost)
+pdt_cost.PDTsummmary = con(ref, pdt_cost.PDTsummmary)
+pdt_cost.final_cost_summary = con(ref, pdt_cost.final_cost_summary)
+
+
 pdt_cost.Global.to_excel(writer, sheet_name='Global', encoding='utf-8', index=False)
 pdt_cost.bauxite_domestic_supply.to_excel(writer, sheet_name='Bauxite Domestic supply', encoding='utf-8', index=False)
 pdt_cost.bauxite_domestic_purchased.to_excel(writer, sheet_name='Bauxite Domestic purchased', encoding='utf-8', index=False)
@@ -2012,9 +2079,7 @@ pdt_cost.PDTsummmary.to_excel(writer, sheet_name='PDT Cost Current Summary', enc
 pdt_cost.final_cost_summary.to_excel(writer, sheet_name='Final Cost Summary', encoding='utf-8', index=False)
 writer.save()
 
-pdt_cost.refPDT1.to_excel(ref_PDT_writer, sheet_name='Refineries PDT 1',encoding='utf-8', index=False)
-pdt_cost.refPDT2.to_excel(ref_PDT_writer, sheet_name='Refineries PDT 2',encoding='utf-8', index=False)
-ref_PDT_writer.save() 
+
 
 pdt_cost.Prices.to_excel(prices_writer, sheet_name='Prices outputs', encoding='utf-8', index=False)
 prices_writer.save()
@@ -2053,8 +2118,6 @@ main_sheet.mainSheet_supplyCostRank.to_excel(writer2, sheet_name='Supply Cost Ra
 main_sheet.mainSheet_accumulatedSupplyCostRank.to_excel(writer2, sheet_name='Accumulated Cost Rnk',encoding='utf-8', index=False )
 main_sheet.mainSheet_costAvailable.to_excel(writer2, sheet_name='Cost Available',encoding='utf-8', index=False )
 main_sheet.mainSheet_CostMarginalTonne.to_excel(writer2, sheet_name='Cost Marginal Tonne',encoding='utf-8', index=False )
-main_sheet.mainSheet_CostMarginalTonne.to_excel(writer2, sheet_name='AA Price Marginal Tonne',encoding='utf-8', index=False )
-
 writer2.save()
 
 dblist = [
@@ -2104,16 +2167,6 @@ dblist = [
     a_flat.mult_year_single_output(main_sheet.mainSheet_demand, "main sheet mainSheet demand"),
     a_flat.mult_year_single_output(main_sheet.mainSheet_key_check, "main sheet mainSheet key check"),
     a_flat.mult_year_single_output(main_sheet.mainSheet_cost, "main sheet mainSheet cost"),
-    a_flat.mult_year_single_output(main_sheet.mainSheet_supplycost, "main sheet supply cost"),
-    a_flat.mult_year_single_output(main_sheet.mainSheet_supplystream, "main sheet supply stream "),
-    a_flat.mult_year_single_output(main_sheet.mainSheet_rankCosts, "main sheet rank costs"),
-    a_flat.mult_year_single_output(main_sheet.mainSheet_producesCostRank, "main sheet produces cost rank"),
-    a_flat.mult_year_single_output(main_sheet.mainSheet_costCostRank, "main sheet cost rank"),
-    a_flat.mult_year_single_output(main_sheet.mainSheet_supplyCostRank, "main sheet supply cost rank"),
-    a_flat.mult_year_single_output(main_sheet.mainSheet_accumulatedSupplyCostRank, "main sheet accumulated supply cost Rank"),
-    a_flat.mult_year_single_output(main_sheet.mainSheet_costAvailable, "main sheet cost available"),
-    a_flat.mult_year_single_output(main_sheet.mainSheet_CostMarginalTonne, "main sheet cost marginal tonnes"),
-    a_flat.mult_year_single_output(main_sheet.mainSheet_CostMarginalTonne, "main sheet aa price marginal tonnes")
 ]
 
 
@@ -2121,7 +2174,6 @@ snapshot_output_data = pd.concat(dblist, ignore_index=True)
 snapshot_output_data = snapshot_output_data.loc[:, a_flat.out_col]
 snapshot_output_data.to_csv("snapshot_output_data.csv", index=False)
 uploadtodb.upload(snapshot_output_data)
-
 
 # pdt = PDT_Cost_Current(2022)
 # pdt.calc_all()

@@ -11,7 +11,7 @@ from flatdb.flatdbconverter import Flatdbconverter
 from outputdb import uploadtodb
 import trade_data_script as td
 
-db_conv = Flatdbconverter("World trade data processing")
+db_conv = Flatdbconverter("Trade Data Tiding")
 
 class TimerException(Exception):
     pass

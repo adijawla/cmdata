@@ -1,13 +1,9 @@
-
-
-
-
 import pandas as pd
 import numpy as np
 import datetime 
 from flatdb.flatdbconverter import Flatdbconverter
 from outputdb import uploadtodb
-
+import al_cost_db
 ai_flat = Flatdbconverter("Al Cost Model")
 class AlCostModel():
     def __init__ (self):
@@ -22,47 +18,47 @@ class AlCostModel():
                           'Unit Ele Consumption, kW.h/t.Al','Grid','Captive','AlF3 Self-supply','Below 300'
                           ,'300','350','400','420','500','600','Below 300','300','350','400',	'420',	'500'	'600']
 
-        self.DataEngine=pd.read_excel (r'AL Cost Model.xlsx',sheet_name='Data Engine')
-        self.ElectricitySource=pd.read_excel (r'AL Cost Model.xlsx',sheet_name='Electricity Source')
+        self.DataEngine=pd.read_excel(r'_AL cost model.xlsx',sheet_name='Data Engine')
+        self.ElectricitySource=pd.read_excel(r'_AL cost model.xlsx',sheet_name='Electricity Source')
         self.Quarter=Quarters
         
         self.DataEngineCal = pd.DataFrame(columns=column)
         
-        self.Currency=pd.read_excel (r'AL Cost Model.xlsx',sheet_name='Currency')
-        self.Smeltercapacity=pd.read_excel (r'AL Cost Model.xlsx',sheet_name='Smelter Capacity')
-        self.Smelterproduction=pd.read_excel (r'AL Cost Model.xlsx',sheet_name='Smelter Production')
-        self.AaSupplied=pd.read_excel (r'AL Cost Model.xlsx',sheet_name='Aa SelfSupply Ratio')
+        self.Currency=pd.read_excel (r'_AL cost model.xlsx',sheet_name='Currency')
+        self.Smeltercapacity=pd.read_excel (r'_AL cost model.xlsx',sheet_name='Smelter Capacity')
+        self.Smelterproduction=pd.read_excel (r'_AL cost model.xlsx',sheet_name='Smelter Production')
+        self.AaSupplied=pd.read_excel (r'_AL cost model.xlsx',sheet_name='Aa SelfSupply Ratio')
 
-        self.Aasource=pd.read_excel (r'AL Cost Model.xlsx',sheet_name='Aa Source')
-        self.CaptivePowerCost=pd.read_excel (r'AL Cost Model.xlsx',sheet_name='Captive power cost')
+        self.Aasource=pd.read_excel (r'_AL cost model.xlsx',sheet_name='Aa Source')
+        self.CaptivePowerCost=pd.read_excel (r'_AL cost model.xlsx',sheet_name='Captive power cost')
         
-        self.ElectricityGrid=pd.read_excel (r'AL Cost Model.xlsx',sheet_name='Electricity Grid')
-        self.ElectricityConsumption=pd.read_excel (r'AL Cost Model.xlsx',sheet_name='Electricity Consumption')
+        self.ElectricityGrid=pd.read_excel (r'_AL cost model.xlsx',sheet_name='Electricity Grid')
+        self.ElectricityConsumption=pd.read_excel (r'_AL cost model.xlsx',sheet_name='Electricity Consumption')
 
         
         Reference = list(map(str,range(1,194)))
         
         
         self.Summary = pd.DataFrame(index=Reference)
-        self.Salary=pd.read_excel (r'AL Cost Model.xlsx',sheet_name='Salary')
+        self.Salary=pd.read_excel(r'_AL cost model.xlsx',sheet_name='Salary')
 
-        self.NaturalGasPrice=pd.read_excel (r'AL Cost Model.xlsx',sheet_name='NaturalGasPrice')
+        self.NaturalGasPrice=pd.read_excel(r'_AL cost model.xlsx',sheet_name='NaturalGasPrice')
         
-        self.CapitalCost=pd.read_excel (r'AL Cost Model.xlsx',sheet_name='Capital Cost')
-        self.CapitalCost1=pd.read_excel (r'AL Cost Model.xlsx',sheet_name='CapitalCost')
-        self.Carbon_Price=pd.read_excel (r'AL Cost Model.xlsx',sheet_name='carbon price')
+        self.CapitalCost=pd.read_excel(r'_AL cost model.xlsx',sheet_name='Capital Cost')
+        self.CapitalCost1=pd.read_excel(r'_AL cost model.xlsx',sheet_name='CapitalCost')
+        self.Carbon_Price=pd.read_excel(r'_AL cost model.xlsx',sheet_name='carbon price')
 
-        self.AlF3_Price=pd.read_excel (r'AL Cost Model.xlsx',sheet_name='AlF3_Price')
-        self.CarbonSource=pd.read_excel (r'AL Cost Model.xlsx',sheet_name='Carbon Source')
+        self.AlF3_Price=pd.read_excel(r'_AL cost model.xlsx',sheet_name='AlF3_Price')
+        self.CarbonSource=pd.read_excel(r'_AL cost model.xlsx',sheet_name='Carbon Source')
 
-        self.Aasource1=pd.read_excel (r'AL Cost Model.xlsx',sheet_name='AaSource')
-        self.web=pd.read_excel (r'AL Cost Model.xlsx',sheet_name='web3')
+        self.Aasource1=pd.read_excel(r'_AL cost model.xlsx',sheet_name='AaSource')
+        self.web=pd.read_excel(r'_AL cost model.xlsx',sheet_name='web3')
     
-        self.SelfsuppliedAacost1=pd.read_excel (r'AL Cost Model.xlsx',sheet_name='SelfsuppliedAacost')
+        self.SelfsuppliedAacost1=pd.read_excel(r'_AL cost model.xlsx',sheet_name='SelfsuppliedAacost')
         
-        self.SelfSuppliedRefinary=pd.read_excel (r'AL Cost Model.xlsx',sheet_name='SelfSuppliedRefinary')
+        self.SelfSuppliedRefinary=pd.read_excel(r'_AL cost model.xlsx',sheet_name='SelfSuppliedRefinary')
 
-        self.AaselfsupplyRatio=pd.read_excel (r'AL Cost Model.xlsx',sheet_name='AaselfsupplyRatio')
+        self.AaselfsupplyRatio=pd.read_excel(r'_AL cost model.xlsx',sheet_name='AaselfsupplyRatio')
 
         
     
@@ -716,6 +712,8 @@ class AlCostModel():
         Dp_CapitalCost = Dp_CapitalCost[1:] 
         Dp_CapitalCost.columns = new_header 
         print(Dp_CapitalCost)
+        #dexter added some changes here
+        Dp_CapitalCost['Ref'] = [int(i) for i in Dp_CapitalCost['Ref']]
         Dp_Summary=Dp_Summary.merge(Dp_CapitalCost, on='Ref', how='left')
         Dp_Summary=Dp_Summary.replace(np.NaN,0)
         self.Summary = Dp_Summary
@@ -848,7 +846,9 @@ class AlCostModel():
         Dp_dataengine=Dp_dataengine.merge(Dp_Aasource1, on='State/Province', how='left')
         Dp_dataengine=Dp_dataengine.replace(np.NaN,0)
         
-        Dp_dataengine['FreightSelf']=(Dp_dataengine['Guangxi']*Dp_Aasource['Guangxi self'])+(Dp_dataengine['Shandong']*Dp_Aasource['Shandong self'])+(Dp_dataengine['Henan']*Dp_Aasource['Henan self'])+(Dp_dataengine['Shanxi']*Dp_Aasource['Shanxi self'])+(Dp_dataengine['Inner Mongolia']*Dp_Aasource['Inner Mongolia self'])+(Dp_dataengine['Guizhou']*Dp_Aasource['Guizhou self '])+(Dp_dataengine['Chongqing']*Dp_Aasource['Chongqing self '])
+        #dexter
+        #Dp_dataengine['FreightSelf']=(Dp_dataengine['Guangxi']*Dp_Aasource['Guangxi self'])+(Dp_dataengine['Shandong']*Dp_Aasource['Shandong self'])+(Dp_dataengine['Henan']*Dp_Aasource['Henan self'])+(Dp_dataengine['Shanxi']*Dp_Aasource['Shanxi self'])+(Dp_dataengine['Inner Mongolia']*Dp_Aasource['Inner Mongolia self'])+(Dp_dataengine['Guizhou']*Dp_Aasource['Guizhou self '])+(Dp_dataengine['Chongqing']*Dp_Aasource['Chongqing self '])
+        Dp_dataengine['FreightSelf']=(Dp_dataengine['Guangxi']*Dp_Aasource['Guangxi self'])+(Dp_dataengine['Shandong']*Dp_Aasource['Shandong self'])+(Dp_dataengine['Henan']*Dp_Aasource['Henan self'])+(Dp_dataengine['Shanxi']*Dp_Aasource['Shanxi self'])+(Dp_dataengine['Inner Mongolia']*Dp_Aasource['Inner Mongolia self'])+(Dp_dataengine['Guizhou']*Dp_Aasource['Guizhou self'])+(Dp_dataengine['Chongqing']*Dp_Aasource['Chongqing self'])
         Dp_dataengine['Freight3rd']=(Dp_dataengine['Guangxi']*Dp_Aasource['Guangxi'])+(Dp_dataengine['Shandong']*Dp_Aasource['Shandong'])+(Dp_dataengine['Henan']*Dp_Aasource['Henan'])+(Dp_dataengine['Shanxi']*Dp_Aasource['Shanxi'])+(Dp_dataengine['Inner Mongolia']*Dp_Aasource['Inner Mongolia'])+(Dp_dataengine['Guizhou']*Dp_Aasource['Guizhou'])+(Dp_dataengine['Chongqing']*Dp_Aasource['Chongqing'])
         Dp_dataengine=Dp_dataengine[['Ref','FreightSelf','Freight3rd']]
         self.Dp_DataEngine = Dp_dataengine 
@@ -1054,10 +1054,12 @@ class AlCostModel():
     def LeagueTable(self):
         Dp_Summary1 = self.Summary.copy()
 
-        Dp_Summary1=Dp_Summary1[['Ref','Smelter','Country','State/Province',
+        Dp_Summary1=Dp_Summary1[['Ref','Smelter_x','Country','State/Province',
                                  'Annual Producton','Raw Materials Local','Others Local',
                                  'Energy Local']]
-        
+        Dp_Summary1=Dp_Summary1[['Ref','Smelter_x','Country','State/Province',
+                                 'Annual Producton','Raw Materials Local','Others Local',
+                                 'Energy Local']]
 
 
         self.Summary1 = Dp_Summary1
@@ -1080,3 +1082,10 @@ snapshot_output_data = pd.concat(db_list, ignore_index=True)
 snapshot_output_data = snapshot_output_data.loc[:, ai_flat.out_col]
 snapshot_output_data.to_csv("snapshot_output_data.csv")
 uploadtodb.upload(snapshot_output_data)
+
+
+
+
+
+        
+        
