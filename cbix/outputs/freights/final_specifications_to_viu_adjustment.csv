@@ -1,0 +1,10 @@
+Mine,Total Alumina,LT Avail. Alumina,Total Silica,LT R.Silica,Quartz / HT Silica,Mono-hydrate / HT Extble Alumina,Moisture,Processing,Cargo Tonnage,Double Leg Shipping? (South America special transload leg),Exporting Port,South America special transloading Port,South america special transloading cargo tonnage,Importing Port,Specific Index,General Index,Price Type,Price Basis,Price FOB,Freight (adjusted to Qingdao),Price CIF (Port adjustyed to Qingdao),"Processing Penalties to be applied (for organics, goehtite, impurities, crushing etc)",EXPLANITORY NOTES RECORD (on changes made to final spec etc),Old CBIX type Calc,INDEX VALUE  Guinea 45/3 LT,INDEX VALUE  Indonesian LT,INDEX VALUE  Australia HT,CBIX LT,CBIX HT,Old CBIX
+West Kalimantan Generic,0.48,0.44,0.08,0.035,0.045,0.005,0.15,LT,77000.0,No,West_Kal_Generic_Offshore,0,0,Qingdao,Indonesian LT,CBIX LT,CIF,dmt,38.220997462048025,6.779002537951977,45.0,0.33,,CBIX,0,,0,,0,
+West Kalimantan Generic,0.48,0.44,0.08,0.035,0.045,0.005,0.15,LT,153000.0,No,West_Kal_Generic_Offshore,0,0,Qingdao,Indonesian LT,CBIX LT,CIF,dmt,35.05818723960893,9.941812760391075,45.0,0.33,,CBIX,0,,0,,0,
+Weipa/Amrun Generic,0.53,0.3625,0.08999999999999998,0.0675,0.0225,0.1,0.13,HT-D,78000.00000000001,No,Weipa_Amrun_Wharf,0,0,Qingdao,Australia HT,CBIX HT,CIF,dmt,37.67271001089631,7.462289989103692,45.135,0.67,,CBIX,0,0,36.38798862966003,0,,
+Malaysia Kuantan washed,,,,,,,,,47000.0,No,,0,0,Qingdao,,,CIF,dmt,,,,,,CBIX,0,0,0,0,0,
+Malaysia Kuantan washed,,,,,,,,,75000.0,No,,0,0,Qingdao,,,CIF,dmt,,,,,,CBIX,0,0,0,0,0,
+India Gujarat,,,,,,,,,151000.0,No,,0,0,Qingdao,,,CIF,dmt,,,,,,CBIX,0,0,0,0,0,
+India Gujarat,,,,,,,,,76000.0,No,,0,0,Qingdao,,,CIF,dmt,,,,,,CBIX,0,0,0,0,0,
+India Gujarat,,,,,,,,,47000.0,No,,0,0,Qingdao,,,CIF,dmt,,,,,,CBIX,0,0,0,0,0,
+SMB Generic,0.448,0.4,0.023,0.013,0.01,0.035,0.1,LT,151000.0,No,SMB-WAP_Nunez_Offshore,0,0,Qingdao,Guinea 45/3 LT,CBIX LT,CIF,dmt,19.202170480597953,25.932829519402045,45.135,0.33,,CBIX,,0,0,,0,

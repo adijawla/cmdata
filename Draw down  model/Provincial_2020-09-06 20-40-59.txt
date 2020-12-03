@@ -1,0 +1,1131 @@
+
+
+Module name:	newprovincial.provincial object 
+Method Name:	__init__
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.014007699999999623 secs
+Line no:	181
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	pdi_helper_gen
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.010827800000000387 secs
+Line no:	195
+Arguments:	[('indexes', ['Power', 'Labour Dressing', 'Labour UG', 'Labour General', 'Diesel Price', 'Mining Transport', 'Other Mining', 'Dressing Material', 'Government Charges', 'Freight Rates', 'Price Domestic', 'Caustic Soda', 'Sodium Carbonate', 'Lime', 'Flocculant', 'Lignitous Coal', 'Anthracite Coal'])]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningautolevel
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.009007999999999683 secs
+Line no:	211
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningdepthopenpit
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.008112099999999955 secs
+Line no:	218
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningdepthunderground
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.008531400000000744 secs
+Line no:	229
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningdressautolevel
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.008812500000000334 secs
+Line no:	240
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningproduction
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.008529099999999623 secs
+Line no:	248
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningopen
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.008822799999999908 secs
+Line no:	256
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningunderground
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.003997799999999607 secs
+Line no:	264
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningstrippingratioopenpit
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.00794460000000008 secs
+Line no:	271
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningdepthunderground
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.010270500000000737 secs
+Line no:	229
+Arguments:	[]
+Function call count:	2
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningcharmdunderground
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.008565400000000167 secs
+Line no:	278
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundminingcostwasteratio
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.0033293000000007567 secs
+Line no:	286
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningelectricitycons
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.004241699999999682 secs
+Line no:	294
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningelecprice
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.014816399999999952 secs
+Line no:	302
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningeleccost
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.006389999999999674 secs
+Line no:	312
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningdeiselprice
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.01786729999999981 secs
+Line no:	321
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningdeiselusage
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.005525200000000119 secs
+Line no:	331
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningdeiselcost
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.008669400000000493 secs
+Line no:	340
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	mininglabprod1
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.00404379999999982 secs
+Line no:	349
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	mininglabrate1
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.018363100000000188 secs
+Line no:	357
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	mininglabcost1
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.005697199999999292 secs
+Line no:	367
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningfreightcost
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.013090499999999672 secs
+Line no:	376
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningothercost
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.01506649999999965 secs
+Line no:	386
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningoreminingcost
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.015358199999999655 secs
+Line no:	397
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningstrippingratio
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.003973199999999899 secs
+Line no:	409
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningwasteproduction
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.005487200000000136 secs
+Line no:	416
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningelctricityconsumption
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.006902399999999531 secs
+Line no:	425
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningelectricityprice
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.01253100000000007 secs
+Line no:	433
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningelectricitycost
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.00531159999999975 secs
+Line no:	443
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningcostdieselusage
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.006381400000000426 secs
+Line no:	452
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningcostdieselprice
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.012229699999999788 secs
+Line no:	461
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningcostdieselcost
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.007429599999999148 secs
+Line no:	471
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningcostlabourproductivity
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.003791299999999609 secs
+Line no:	480
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningcostlabourrate
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.006643500000000024 secs
+Line no:	488
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningcostlabourcost
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.005919899999999423 secs
+Line no:	496
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningcostother
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.0032940999999997445 secs
+Line no:	505
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningcoststrippingcost
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.01045650000000009 secs
+Line no:	513
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningcosttotalstrippingcost
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.005766700000000569 secs
+Line no:	525
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	miningcostopenpitminingcost
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.005477200000000515 secs
+Line no:	534
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	dressingcostautomationandelectricityusagelow
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.00388389999999994 secs
+Line no:	543
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	dressingcostautomationandelectricityusagemedium
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.005434600000000067 secs
+Line no:	552
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	dressingcostautomationandelectricityusagehigh
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.004859699999999911 secs
+Line no:	560
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	dressingcostelectricityconsumption
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.01074850000000005 secs
+Line no:	568
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	dressingcostelectricityprice
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.01185050000000043 secs
+Line no:	592
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	dressingcostelectricitycost
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.005581499999999906 secs
+Line no:	602
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	dressingcostautomationandlabourproductivitylow
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.0015748000000002094 secs
+Line no:	611
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	dressingcostautomationandlabourproductivitymedium
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.0013775999999996458 secs
+Line no:	620
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	dressingcostautomationandlabourproductivityhigh
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.0013348999999998057 secs
+Line no:	629
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	dressingcostlabourproductivity
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.012497100000000039 secs
+Line no:	638
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	dressingcostlabourrate
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.011226200000000297 secs
+Line no:	649
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	dressingcostlabourcost
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.005738000000000021 secs
+Line no:	659
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	dressingcostauxillarymaterialcost
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.01045250000000042 secs
+Line no:	668
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	dressingcosttotaldressingcost
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.007565200000000161 secs
+Line no:	678
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundminingcostautomationandelectricityusagelow
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.004335099999999592 secs
+Line no:	688
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundminingcostautomationandelectricityusagemedium
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.004364599999999719 secs
+Line no:	696
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundminingcostautomationandelectricityusagehigh
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.003997799999999607 secs
+Line no:	704
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundminingcostsizefactor
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.009231899999999627 secs
+Line no:	712
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundminingcostdepthfactor
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.004724699999999693 secs
+Line no:	723
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundminingcostelectricityconsumption
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.005441499999999877 secs
+Line no:	731
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundminingcostelectricityprice
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.012846600000000485 secs
+Line no:	740
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundminingcostelectricitycost
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.005143099999999734 secs
+Line no:	750
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundminingcostautomationandproductivitylow
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.006381199999999865 secs
+Line no:	759
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundminingcostautomationandproductivitymedium
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.005068399999999862 secs
+Line no:	767
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundminingcostautomationandproductivityhigh
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.0060013999999997125 secs
+Line no:	775
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundminingcostdepthfactor2
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.004676199999999575 secs
+Line no:	783
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundminingcostautomationfactor
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.009432599999999347 secs
+Line no:	798
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundminingcostlabourproductivity
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.009077600000000352 secs
+Line no:	809
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundminingcostlabourprice
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.011184400000000316 secs
+Line no:	818
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundminingcostlabourcost
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.007479900000000761 secs
+Line no:	828
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundminingcostdieselusage
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.006775400000000431 secs
+Line no:	837
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundminingcostdieselprice
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.010627100000000667 secs
+Line no:	845
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundminingcostdieselcost
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.008408300000000146 secs
+Line no:	855
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundminingcostfreightcost
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.011032799999999732 secs
+Line no:	864
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundminingcostothercost
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.01936099999999996 secs
+Line no:	874
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundminingcosttotalminingcost
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-00
+Time elapsed:	0.01623900000000056 secs
+Line no:	885
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundminingcostundergroundminingcost
+Start time:	2020-09-06 20-41-00
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.009700599999999504 secs
+Line no:	897
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergrounddressingcostautomationandelectricityusagelow
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.00709409999999977 secs
+Line no:	906
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergrounddressingcostautomationandelectricityusagemedium
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.007043400000000588 secs
+Line no:	914
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergrounddressingcostautomationandelectricityusagehigh
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.007296499999999817 secs
+Line no:	922
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergrounddressingcostelectricityconsumption
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.012310600000000171 secs
+Line no:	930
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergrounddressingcostelectricityprice
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.011077999999999477 secs
+Line no:	942
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergrounddressingcostelectricitycost
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.00677630000000029 secs
+Line no:	952
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundanthracitecoaldistancefromsource
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.008845800000001347 secs
+Line no:	1202
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergrounddressingcostautomationandlabourproductivitylow
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.0015833999999994575 secs
+Line no:	961
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergrounddressingcostautomationandlabourproductivitymedium
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.0015079000000000065 secs
+Line no:	970
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergrounddressingcostautomationandlabourproductivityhigh
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.001561099999999982 secs
+Line no:	979
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergrounddressingcostlabourproductivity
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.010184900000000496 secs
+Line no:	988
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergrounddressingcostlabourrate
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.011055300000000656 secs
+Line no:	999
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergrounddressingcostlabourcost
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.006963700000000017 secs
+Line no:	1010
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergrounddressingcostauxillarymaterialcost
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.011776199999999903 secs
+Line no:	1019
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergrounddressingcosttotaldressingcost
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.009824300000000008 secs
+Line no:	1029
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundstate
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.012004700000000312 secs
+Line no:	1039
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundlocal
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.01122439999999969 secs
+Line no:	1049
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundtotal
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.0094436999999985 secs
+Line no:	1060
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundroad
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.010947700000000893 secs
+Line no:	1069
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundrail
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.012515300000000451 secs
+Line no:	1079
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundpurchaceprice
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.01077629999999985 secs
+Line no:	1089
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundwage
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.01166939999999883 secs
+Line no:	1099
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundcausticsoda
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.010744000000000753 secs
+Line no:	1109
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundsodiumcarbonate
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.011965899999999863 secs
+Line no:	1119
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundlime
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.010936499999999683 secs
+Line no:	1129
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundflocculant
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.011054699999998974 secs
+Line no:	1139
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundlignitouscoalbaseprice
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.011340500000001086 secs
+Line no:	1149
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundlignitouscoaldistancefromsource
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.007784500000001415 secs
+Line no:	1159
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundlignitouscoalfreightrate
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.01087769999999999 secs
+Line no:	1168
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundlignitouscoaldeliveredprice
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.008425400000000138 secs
+Line no:	1176
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundanthracitecoalbaseprice
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.01343810000000012 secs
+Line no:	1185
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundanthracitecoaldifference
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.0012501000000000317 secs
+Line no:	1195
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundanthracitecoalfreightrate
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.010946799999999257 secs
+Line no:	1210
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundanthracitecoaldeliveredprice
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.009521899999999306 secs
+Line no:	1218
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundlignitouscoalsource
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.005774000000000612 secs
+Line no:	1227
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	newprovincial.provincial object 
+Method Name:	undergroundanthracitecoalsource
+Start time:	2020-09-06 20-41-01
+End Time:	2020-09-06 20-41-01
+Time elapsed:	0.006383699999998882 secs
+Line no:	1234
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS

@@ -1,0 +1,13 @@
+
+column names in the middle in cbix prices
+
+
+
+lookup - ufunc 'multiply' did not contain a loop with signature matching types
+
+
+
+base production - key error 89
+
+
+

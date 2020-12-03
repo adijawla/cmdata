@@ -1,0 +1,110 @@
+Date,CM Data Source,Mine,Price,Price Type,Price Basis,Total Alumina,LT Avail. Alumina,Total Silica,LT R.Silica,Quartz / HT Silica,Mono-hydrate / HT Extble Alumina,Moisture,Tonnage,Exporting Port,Importing Port,Final Specs Price Type,Final Specs Price Basis,Old CBIX type Calc,model_id
+2019-03-01 00:00:00.000,Mysteel,SMB Generic,55.0,CIF,dmt,,,,,,,,153450.0,,Qingdao,CIF,dmt,CBIX,model_8
+2019-03-06 00:00:00.000,Mysteel,West Kalimantan Generic,54.0,CIF,dmt,,,,,,,,174396.0,,Qingdao,CIF,dmt,CBIX,model_8
+2019-03-07 00:00:00.000,Mysteel,Weipa/Amrun Generic,49.0,CIF,dmt,,,,,,,,74154.0,,Qingdao,CIF,dmt,CBIX,model_8
+2020-04-02 00:00:00.000,somebody,Gove,50.0,CFR,dmt,,,,,,,,,,Qingdao,CFR,dmt,CBIX,model_8
+2020-04-02 00:00:00.000,somebody,Alufer Bel Air,50.0,CFR,dmt,,,,,,,,,,Qingdao,CFR,dmt,CBIX,model_8
+2020-04-02 00:00:00.000,somebody,Central Kalimantan Generic,50.0,CFR,dmt,,,,,,,,,,Qingdao,CFR,dmt,CBIX,model_8
+2020-04-02 00:00:00.000,somebody,CBG LT,50.0,CFR,dmt,,,,,,,,,,Qingdao,CFR,dmt,CBIX,model_8
+2020-04-02 00:00:00.000,somebody,Huntly,50.0,CFR,dmt,,,,,,,,,,Qingdao,CFR,dmt,CBIX,model_8
+2020-04-02 00:00:00.000,somebody,Turkey,100.0,CFR,dmt,,,,,,,,,,Qingdao,CFR,dmt,CBIX,model_8
+2020-04-02 00:00:00.000,somebody,Bauxite Hills,50.0,CFR,dmt,,,,,,,,,,Qingdao,CFR,dmt,CBIX,model_8
+2020-04-02 00:00:00.000,somebody,Chalco Boffa,50.0,CFR,dmt,,,,,,,,,,Qingdao,CFR,dmt,CBIX,model_8
+2020-04-02 00:00:00.000,somebody,Rennell Island,50.0,CFR,dmt,,,,,,,,,,Qingdao,CFR,dmt,CBIX,model_8
+2020-04-02 00:00:00.000,somebody,Discovery Bay,50.0,CFR,dmt,,,,,,,,,,Qingdao,CFR,dmt,CBIX,model_8
+2020-04-02 00:00:00.000,somebody,MRN,50.0,CFR,dmt,,,,,,,,140000.0,,Qingdao,CFR,dmt,CBIX,model_8
+2015-06-30 00:00:00.000,somebody,Weipa,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Gove,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Boddington,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Huntly,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Willowdale,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Metro BH1,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Metro LT,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Metro Blend,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Metallica,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,QBL South Johnston,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Aurukun,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Amrun,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,ABx Tasmania,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Jajce,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Milici (Vlasenica),,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,MRN,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Mirai,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Rondon do Para,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Paragominas,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Juruti,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Cataguases,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,"Pocos de Caldas, Alcoa",,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Brazil others,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Dom. Rep.,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Aurum Xinfa-Fiji,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Awaso,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Other Ghana,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Delphi-Distomon,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Parnasse,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,SMB-WAP,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Chalco Boffa,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,CBG,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,CBK Kindia,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,GAC,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Alufer (Bel Air),,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,AMC,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Fria Kimbo,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Dian Dian,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,AMR,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Henan-Chine,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Rundi,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Dabiss N,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Aroaima,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Kurubuka,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Guyana Others,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Bakony,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Chhattisgarh,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Goa,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Gujarat & Maharashtra,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Jharkhand,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Karnataka,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Madhya Pradesh,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Odisha,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Andhra Pradesh,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Tamil Nadu,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Bintan,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,West Kalimantan,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Indonesia Other,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Jajarm,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Discovery Bay,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,UCRusal,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Jamaica Other,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Turgai,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Krasnogorsky,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Kuantan,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Malaysia Other,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Niksic,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Kola Apatit,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,North Onega,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,North Ural,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,South Ural,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Tikhvin,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Timan,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Kiya-Shaltyr,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Al-Baitha,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Mokanji,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Solomon Islands,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Suriname - AWACS,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Seydisehir,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Los Pijiguaos,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Nhan Co.,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Tan Rai,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Vietnam Others,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Amrun HT,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,GDM,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,SMB Malapouya,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Ashapura Guinea,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,SMB Kaboye,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,SMB Dabiss S,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,AGB2A,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Dynamic,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,SMB Santou-Houda,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,SMB SH no rail capital,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,Aurum Xinfa-Fiji,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9
+2015-06-30 00:00:00.000,somebody,SPIC,,CIF,dmt,,,,,,,,,,Qingdao,CIF,dmt,CBIX,model_9

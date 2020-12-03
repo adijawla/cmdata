@@ -1,0 +1,13 @@
+,county,province,refractory_allocation,inventory,geologicalendowment,ai203,as,include_inventory_in_allocations_further_processed,include_in_endowment_in_further_processing_provinces_only,comment_by_row,deep_bauxite,de_rating_factor_al2o3,de_rating_factor_as,working_stock_prior_to_aa_and_as_de_rating000t,de_rated_sio2,de_rated_al2o3
+0,Queensland,Australia,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,99000000.0,9.0,0.54
+1,Fiji,Fiji,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,99000000.0,3.0,0.39
+2,Guyana,Guyana,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,99000000.0,3.0,0.5
+3,Malaysia,Malaysia,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,99000000.0,3.0,0.395
+4,Ghana,Ghana,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,99000000.0,2.0,0.51
+5,MRN,Brazil,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,99000000.0,4.5,0.545
+6,China,Fly Ash,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,99000000.0,1.2,0.42
+7,CBG,Guinea,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,99000000.0,1.5,0.483
+8,SMB,Guinea,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,99000000.0,2.0,0.39
+9,Gujarat,India,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,99000000.0,4.0,0.43
+10,Gove,Australia,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,99000000.0,4.7,0.46
+11,Vietnam,Vietnam,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,99000000.0,5.0,0.5

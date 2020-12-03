@@ -1,0 +1,97 @@
+mine,country,field,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030
+Huntly,Australia,LT Avail AA,0.33,0.33,0.33,0.33,0.33,0.33,0.33,0.33,0.33,0.33,0.33,0.33,0.33,0.33,0.33,0.33,0.33
+Huntly,Australia,Total Alumina,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35
+Huntly,Australia,LT React. Silica,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011
+Huntly,Australia,Total Silica,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2
+Huntly,Australia,Monhydrate,0.009,0.009,0.009,0.009,0.009,0.009,0.009,0.009,0.009,0.009,0.009,0.009,0.009,0.009,0.009,0.009,0.009
+Huntly,Australia,Moisture,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08
+Huntly,Australia,Bauxite style,LT,LT,LT,LT,LT,LT,LT,LT,LT,LT,LT,LT,LT,LT,LT,LT,LT
+Huntly,Australia,Total Organic Carbon,V_High,V_High,V_High,V_High,V_High,V_High,V_High,V_High,V_High,V_High,V_High,V_High,V_High,V_High,V_High,V_High,V_High
+Huntly,Australia,Vessel size,Panamax,Panamax,Panamax,Panamax,Panamax,Panamax,Panamax,Panamax,Panamax,Panamax,Panamax,Panamax,Panamax,Panamax,Panamax,Panamax,Panamax
+Huntly,Australia,quartz,0.189,0.189,0.189,0.189,0.189,0.189,0.189,0.189,0.189,0.189,0.189,0.189,0.189,0.189,0.189,0.189,0.189
+Huntly,Australia,LT processing,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668
+Huntly,Australia,HT-B processing,4.544421722335834,4.544421722335834,4.544421722335834,4.544421722335834,4.544421722335834,4.544421722335834,4.544421722335834,4.544421722335834,4.544421722335834,4.544421722335834,4.544421722335834,4.544421722335834,4.544421722335834,4.544421722335834,4.544421722335834,4.544421722335834,4.544421722335834
+Huntly,Australia,HT-D processing,10.683760683760685,10.683760683760685,10.683760683760685,10.683760683760685,10.683760683760685,10.683760683760685,10.683760683760685,10.683760683760685,10.683760683760685,10.683760683760685,10.683760683760685,10.683760683760685,10.683760683760685,10.683760683760685,10.683760683760685,10.683760683760685,10.683760683760685
+Huntly,Australia,LT processing,0.033333333333333326,0.033333333333333326,0.033333333333333326,0.033333333333333326,0.033333333333333326,0.033333333333333326,0.033333333333333326,0.033333333333333326,0.033333333333333326,0.033333333333333326,0.033333333333333326,0.033333333333333326,0.033333333333333326,0.033333333333333326,0.033333333333333326,0.033333333333333326,0.033333333333333326
+Huntly,Australia,HT-B processing,0.3975030674846627,0.3975030674846627,0.3975030674846627,0.3975030674846627,0.3975030674846627,0.3975030674846627,0.3975030674846627,0.3975030674846627,0.3975030674846627,0.3975030674846627,0.3975030674846627,0.3975030674846627,0.3975030674846627,0.3975030674846627,0.3975030674846627,0.3975030674846627,0.3975030674846627
+Huntly,Australia,HT-D processing,1.2820512820512822,1.2820512820512822,1.2820512820512822,1.2820512820512822,1.2820512820512822,1.2820512820512822,1.2820512820512822,1.2820512820512822,1.2820512820512822,1.2820512820512822,1.2820512820512822,1.2820512820512822,1.2820512820512822,1.2820512820512822,1.2820512820512822,1.2820512820512822,1.2820512820512822
+Huntly,Australia,LT - Alumina,0.341,0.341,0.341,0.341,0.341,0.341,0.341,0.341,0.341,0.341,0.341,0.341,0.341,0.341,0.341,0.341,0.341
+Huntly,Australia,HT-B - Alumina,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35
+Huntly,Australia,HT-D - Alumina,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35
+Huntly,Australia,LT - Silica,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011
+Huntly,Australia,HT-B - Silica,0.1055,0.1055,0.1055,0.1055,0.1055,0.1055,0.1055,0.1055,0.1055,0.1055,0.1055,0.1055,0.1055,0.1055,0.1055,0.1055,0.1055
+Huntly,Australia,HT-D - Silica,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2
+Huntly,Australia,Moisture,0.08,,,,,,,,,,,,,,,,
+Huntly,Australia,2015 C1 mining cost,4.629558558,4.629558558,4.0070670989999995,4.197182077,4.164276388,4.101434347,,,,,,,,,,,
+Huntly,Australia,Duties and royalties,8.148558272,8.148558272,7.052901339,7.3875256789999995,7.329607861,7.218998603999999,,,,,,,,,,,
+Huntly,Australia,2015 C1 transp. cost inc ship loading,3.2819794989999997,3.2819794989999997,2.9904336,3.0828797999999997,3.0024917999999996,2.8577934,,,,,,,,,,,
+Huntly,Australia,diesel  price now  / diesel price 2015,1.0,1.0,0.93539101,0.960880712,0.992797366,0.980068152,0.900005244,0.923222486,0.928880367,0.934354021,0.939962836,0.945689276,0.953014681,0.960041607,0.966795365,0.973298103,0.973298103
+Huntly,Australia,exchange rate local now / local beginning 2015,,,,,,,,,,,,,,,,,
+Huntly,Australia,% mining cost = diesel,,,,,,,,,,,,,,,,,
+Huntly,Australia,% mining cost = local currency denominated,,,,,,,,,,,,,,,,,
+Huntly,Australia,other mining cost %,,,,,,,,,,,,,,,,,
+Huntly,Australia,% royalties n duties cost = diesel,,,,,,,,,,,,,,,,,
+Huntly,Australia,% royalties n duties cost = local currency denominated,,,,,,,,,,,,,,,,,
+Huntly,Australia,other royalties n duties cost %,,,,,,,,,,,,,,,,,
+Huntly,Australia,% transport cost = diesel,,,,,,,,,,,,,,,,,
+Huntly,Australia,% transport cost = local currency denominated,,,,,,,,,,,,,,,,,
+Huntly,Australia,other transport cost %,,,,,,,,,,,,,,,,,
+Huntly,Australia,mining cost broken down - diesel,,,,,,,,,,,,,,,,,
+Huntly,Australia,mining cost broken down - local denomination,,,,,,,,,,,,,,,,,
+Huntly,Australia,mining cost broken down - other,,,,,,,,,,,,,,,,,
+Huntly,Australia,new mining cost - diesel,,,,,,,,,,,,,,,,,
+Huntly,Australia,new mining cost - local denomination,,,,,,,,,,,,,,,,,
+Huntly,Australia,new mining cost - other,,,,,,,,,,,,,,,,,
+Huntly,Australia,new mining cost - Total,,,,,,,,,,,,,,,,,
+Huntly,Australia,royalties n duties cost broken down - diesel,,,,,,,,,,,,,,,,,
+Huntly,Australia,royalties n duties cost broken down - local denomination,,,,,,,,,,,,,,,,,
+Huntly,Australia,royalties n duties cost broken down - other,,,,,,,,,,,,,,,,,
+Huntly,Australia,new royalties n duties cost - diesel,,,,,,,,,,,,,,,,,
+Huntly,Australia,new royalties n duties cost - local denomination,,,,,,,,,,,,,,,,,
+Huntly,Australia,new royalties n duties cost - other,,,,,,,,,,,,,,,,,
+Huntly,Australia,new royalties n duties cost - Total,,,,,,,,,,,,,,,,,
+Huntly,Australia,transport cost broken down - diesel,,,,,,,,,,,,,,,,,
+Huntly,Australia,transport cost broken down - local denomination,,,,,,,,,,,,,,,,,
+Huntly,Australia,transport cost broken down - other,,,,,,,,,,,,,,,,,
+Huntly,Australia,new transport cost - diesel,,,,,,,,,,,,,,,,,
+Huntly,Australia,new transport cost - local denomination,,,,,,,,,,,,,,,,,
+Huntly,Australia,new transport cost - other,,,,,,,,,,,,,,,,,
+Huntly,Australia,new transport cost - Total,,,,,,,,,,,,,,,,,
+Huntly,Australia,Freight on Panamax,,,,,,,,,,,,,,,,,
+Huntly,Australia,Freight on Capesize,,,,,,,,,,,,,,,,,
+Huntly,Australia,Freight for vessel choosen,,,,,,,,,,,,,,,,,
+Huntly,Australia,Capital cost of mine (inc. all infrasturure for export),60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60
+Huntly,Australia,Life of mine,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30
+Huntly,Australia,constructiuon period for mine & infrastructure,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3
+Huntly,Australia,IRR required for project,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08
+Huntly,Australia,Sustaining Capital Charge ($/t),1.085,1.085,1.085,1.085,1.085,1.085,1.085,1.085,1.085,1.085,1.085,1.085,1.085,1.085,1.085,1.085,1.085
+Huntly,Australia,Partner & Other payments,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Huntly,Australia,capital payback charge - before adjustment,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152
+Huntly,Australia,"adjustment (new project, expansion, old mine)",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Huntly,Australia,capital payback charge,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0
+Huntly,Australia,C1 Cost FOB,16.060096329,16.060096329,14.050402037999998,14.667587556,14.496376049,14.178226351,,,,,,,,,,,
+Huntly,Australia,C1 Cost CFR Shandong,,,,,,,,,,,,,,,,,
+Huntly,Australia,Cost FOB inc. Sustaining Capital,17.145096329,17.145096329,15.135402037999999,15.752587556000002,15.581376049,15.263226351,,,,,,,,,,,
+Huntly,Australia,Cost CFR inc. Sustaining Capital,,,,,,,,,,,,,,,,,
+Huntly,Australia,Full cost FOB,17.145096329,17.145096329,15.135402037999999,15.752587556000002,15.581376049,15.263226351,,,,,,,,,,,
+Huntly,Australia,Full cost CFR Shandong = Incentive price,,,,,,,,,,,,,,,,,
+Huntly,Australia,Price CFR Shandong - not in use,,,,,,,,,,,,,,,,,
+Huntly,Australia,Margin C1,,,,,,,,,,,,,,,,,
+Huntly,Australia,Margin inc. Sustaining Capital,,,,,,,,,,,,,,,,,
+Huntly,Australia,Margin at Full Cost,,,,,,,,,,,,,,,,,
+Huntly,Australia,Bauxite style,LT,LT,LT,LT,LT,LT,LT,LT,LT,LT,LT,LT,LT,LT,LT,LT,LT
+Huntly,Australia,Alumina (%),0.341,0.341,0.341,0.341,0.341,0.341,0.341,0.341,0.341,0.341,0.341,0.341,0.341,0.341,0.341,0.341,0.341
+Huntly,Australia,Silica (%),0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011,0.011
+Huntly,Australia,Moisture (%),0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.08
+Huntly,Australia,t/t (dry bauxite/alumina),3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668,3.3670033670033668
+Huntly,Australia,2015 C1 mining cost ($/t),4.629558558,4.629558558,4.0070670989999995,4.197182077,4.164276388,4.101434347,,,,,,,,,,,
+Huntly,Australia,2015 C1 transp. cost ($/t),3.2819794989999997,3.2819794989999997,2.9904336,3.0828797999999997,3.0024917999999996,2.8577934,,,,,,,,,,,
+Huntly,Australia,ST Freight to China ($/dmt),,,,,,,,,,,,,,,,,
+Huntly,Australia,C1 Cost CFR,,,,,,,,,,,,,,,,,
+Huntly,Australia,C1 Cost FOB,16.060096329,16.060096329,14.050402037999998,14.667587556,14.496376049,14.178226351,,,,,,,,,,,
+Huntly,Australia,Capital Payback ($/t)Charge,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152,-5.596128303398152
+Huntly,Australia,Sustaining Capital Charge ($/t),1.085,1.085,1.085,1.085,1.085,1.085,1.085,1.085,1.085,1.085,1.085,1.085,1.085,1.085,1.085,1.085,1.085
+Huntly,Australia,Cash + Sustaining Capital CFR,,,,,,,,,,,,,,,,,
+Huntly,Australia,Full Cost,,,,,,,,,,,,,,,,,
+Huntly,Australia,Mine Gate,4.629558558,4.629558558,4.0070670989999995,4.197182077,4.164276388,4.101434347,,,,,,,,,,,
+Huntly,Australia,Other processing penalties (US$/t_bx),0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

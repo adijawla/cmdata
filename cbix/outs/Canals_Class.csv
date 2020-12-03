@@ -1,0 +1,15 @@
+DWT< tonnes,Class,model_id
+,Handysize,model_8
+40000.0,Supramax,model_8
+60000.0,Panamax,model_8
+100000.0,NeoPanamax,model_8
+120000.0,Suezmax,model_8
+190000.0,Capesize,model_8
+220000.0,VLOC,model_8
+,Handysize,model_9
+40000.0,Supramax,model_9
+60000.0,Panamax,model_9
+100000.0,NeoPanamax,model_9
+120000.0,Suezmax,model_9
+190000.0,Capesize,model_9
+220000.0,VLOC,model_9

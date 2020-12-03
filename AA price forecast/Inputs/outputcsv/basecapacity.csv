@@ -1,0 +1,102 @@
+Ref. No.,Refinery,Province,Prov - Category,Technology,Ownership,Owner,Bauxite Previous,Bauxite Now,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031
+1.1,Bosai Xianfeng domestic,Chongqing,Other,H-B,Bosai,Other,Domestic,Domestic,0.15,0.2,0.2,0.2,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6
+1.2,Bosai Xianfeng import,Chongqing,Other,L-B,Bosai,Other,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.3,0.3,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
+2.0,Bosai Wanzhou,Chongqing,Other,L-B,Bosai,Other,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.2,1.2,1.2,1.2,2.4,2.4,2.4,2.4,2.4,2.4
+3.0,Shuijiang,Chongqing,Other,H-B,Bosai,Other,Domestic,Domestic,0.0,0.0,0.0,0.0,0.0,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.644,0.5,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8
+4.0,Tuoyuan,Chongqing,Other,H-B,SPIC,SPIC,Domestic,Domestic,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15
+5.0,Chalco Pingguo,Guangxi,Guangxi,H-B,Chalco,Chalco,Domestic,Domestic,0.95,1.0,1.0,1.8,2.0,2.0,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5
+6.0,Jinjiang Longzhou,Guangxi,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,Domestic,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+7.0,Huayin,Guangxi,Guangxi,H-B,"Chalco, Guangxi Investment Group, Minmetal",Chalco,Domestic,Domestic,0.0,0.0,0.4,1.6,1.6,2.0,2.0,2.0,2.0,2.0,2.0,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2,2.2
+8.0,Jinjiang Tiandong,Guangxi,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,Domestic,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+9.0,Xinfa Jingxi,Guangxi,Guangxi,H-B,Xinfa,Xinfa,Domestic,Domestic,0.0,0.0,0.0,1.6,1.6,2.4,2.4,2.4,2.4,2.4,2.4,2.4,2.4,2.4,2.232,2.2,2.4,2.4,2.4,2.4,2.4,2.4,2.4,2.4,2.4,2.4,2.4
+10.0,Huasheng,Guangxi,Guangxi,L-B,Chalco,Chalco,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.0,2.0,2.0,2.0,2.0,2.0,4.0,4.0,4.0,4.0,4.0,4.0
+11.0,Tiangui,Guangxi,Guangxi,H-B,Zengshi,Other,Domestic,Domestic,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.8,0.5,0.6,0.8,0.8,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6
+12.0,Chalco Guizhou,Guizhou,Guizhou,Series & Sinter (95:25),Chalco,Chalco,Domestic,Domestic,0.95,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+13.0,Chalco Zunyi,Guizhou,Guizhou,H-B,Chalco,Chalco,Domestic,Domestic,0.0,0.0,0.0,0.0,0.0,0.8,0.8,0.8,0.8,0.8,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+14.0,Xian,Guizhou,Guizhou,H-B,Zengshi Group,Other,Domestic,Domestic,0.0,0.0,0.0,0.0,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6
+15.0,Huafei,Guizhou,Guizhou,H-B,Shanghai Huafei Investment Co.Ltd,Other,Domestic,Domestic,0.0,0.0,0.0,0.1,0.1,0.1,0.1,0.1,0.1,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2
+16.0,Qingzhen Guanglv,Guizhou,Guizhou,H-B,Guangdong Guang Al Group Co.Ltd,Other,Domestic,Domestic,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
+17.1,Qizheng Chemical,Guizhou,Guizhou,H-B,Qiya,Qiya,Domestic,Domestic,0.0,0.0,0.0,0.0,0.0,0.0,0.5,0.5,0.5,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+17.2,Qizheng Chemical Added LT,Guizhou,Guizhou,L-B,Qiya,Qiya,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2
+18.0,SPIC - Wuchuan,Guizhou,Guizhou,H-B,SPIC,SPIC,Domestic,Domestic,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+19.0,Kaisheng,Guizhou,Guizhou,H-B,Private,Other,Domestic,Domestic,0.055,0.055,0.105,0.105,0.105,0.105,0.105,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+20.0,Huajin,Guizhou,Guizhou,H-B,"Chalco, Jinjiang",Chalco,Domestic,Domestic,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6
+21.1,Chalco Zhengzhou domestic,Henan,Henan,H-B,Chalco,Chalco,Domestic,Domestic,1.6,2.1,2.1,2.2,2.2,2.2,2.125,2.125,2.125,2.125,2.125,1.0,2.0,1.7,1.7,1.7,1.7,1.7,1.7,1.7,1.7,1.7,1.7,1.7,1.7,1.7,1.7
+21.2,Chalco Zhengzhou import,Henan,Henan,L-B,Chalco,Chalco,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.175,0.175,0.175,0.175,0.175,0.0,0.0,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3
+22.1,Chalco Zhongzhou Dom. Sinter,Henan,Henan,Sinter,Chalco,Chalco,Domestic,Domestic,0.87,1.0,1.0,1.0,1.0,1.0,0.8,0.8,0.8,0.6,0.5,0.5,0.5,0.5,0.5,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3
+22.2,Chalco Zhongzhou Dom. Bayer,Henan,Henan,H-B-ODT-Sweet,Chalco,Chalco,Domestic,Domestic,0.7,0.7,1.0,1.0,1.0,1.0,2.0,2.0,2.0,2.2,2.3,2.3,2.3,2.2,0.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+22.3,Chalco Zhongzhou LT Amt,Henan,Henan,L-B,Chalco,Chalco,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.3,2.0,2.7,2.7,2.7,2.7,2.7,2.7,2.7,2.7,2.7,2.7,2.7,2.7
+23.1,Kaiman,Henan,Henan,"H-B, ODT, Sweetening",Jinjiang,Jinjiang,Domestic,Domestic,0.0,1.35,1.4,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,1.99,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5
+23.2,Kaiman Import,Henan,Henan,L-B,Jinjiang,Jinjiang,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
+24.1,East Hope Mianchi,Henan,Henan,"H-B, ODT",East Hope,East Hope,Domestic,Domestic,0.0,0.8,1.2,1.6,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5
+24.2,East Hope Mianchi Added LT,Henan,Henan,L-B,East Hope,East Hope,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3
+25.0,Huiyuan Lushan,Henan,Henan,"H-B, ODT","Shenhuo, Huiyuan",Shenhuo,Domestic,Domestic,0.3,0.4,0.4,0.4,0.4,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8
+26.0,Jingxin,Henan,Henan,H-B,Private,Other,Domestic,Domestic,0.0,0.05,0.1,0.1,0.1,0.1,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2
+27.0,Shenhuo,Henan,Henan,Sintering,Shenhuo,Shenhuo,Domestic,Domestic,0.0,0.0,0.0,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1
+28.1,Wanji,Henan,Henan,H-B,Wanji Holdings,Other,Domestic,Domestic,0.0,0.0,0.4,0.8,0.8,0.8,0.8,0.8,1.4,1.4,1.4,1.4,1.4,1.4,0.28,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4
+28.2,Wanji import,Henan,Henan,L-B,Wanji Holdings,Other,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+29.0,Weilai,Henan,Henan,H-B,Private,Other,Domestic,Domestic,0.0,0.1,0.1,0.1,0.1,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2
+30.0,Yifeng Gongyi (Yulian Xinya),Henan,Henan,H-B,Private,Other,Domestic,Domestic,0.0,0.0,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15
+31.0,Yima Yixiang,Henan,Henan,"H-B, CGA","Jinjiang, Yima Coal Group",Jinjiang,Domestic,Domestic,0.05,0.15,0.2,0.3,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
+32.0,Zhongmei,Henan,Henan,"H-B, Sweetening","Yongmei Group, Wuzhou Aluminium, Dengfeng Electric Power Corporation",Other,Domestic,Domestic,0.0,0.0,0.4,0.4,0.4,0.4,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
+33.0,Shaoxing,Henan,Henan,H-B,Private,Other,Domestic,Domestic,0.0,0.1,0.1,0.1,0.1,0.1,0.1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+34.0,Zhongchao,Henan,Henan,H-B,Private,Other,Domestic,Domestic,0.0,0.03,0.03,0.03,0.03,0.03,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+35.0,Jialu Xianfeng,Hubei,Other,H-B,Private,Other,Domestic,Domestic,0.0,0.06,0.06,0.06,0.06,0.06,0.12,0.12,0.12,0.12,0.12,0.12,0.12,0.12,0.12,0.12,0.12,0.12,0.12,0.12,0.12,0.12,0.12,0.12,0.12,0.12,0.12
+36.0,Jinshi,Hubei,Other,H-B,Private,Other,Domestic,Domestic,0.0,0.0,0.0,0.0,0.0,0.0,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1
+37.0,Huixiang,Hunan,Other,H-B,Private,Other,Domestic,Domestic,0.0,0.0,0.0,0.05,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1
+38.1,Xinwang L-B,Inner Mongolia,Other,L-B,BXG,Other,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,1.0,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
+38.2,Xinwang H-B,Inner Mongolia,Other,H-B,BXG,Other,Domestic,Domestic,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
+39.0,Datang Tuoketuo Fly Ash,Inner Mongolia,Other,fly ash,Private,Other,Fly ash,Fly ash,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2
+40.1,Mengxi Fly Ash,Inner Mongolia,Other,fly ash,Private,Other,Fly ash,Fly ash,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.2,0.2,0.2,0.2,0.2,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+40.2,Mengxi import,Inner Mongolia,Other,L-B,Private,Other,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2
+41.1,Qihui H-B,Inner Mongolia,Other,H-B,Jinguotou,Other,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3
+41.2,Qihui L-B,Inner Mongolia,Other,L-B,Jinguotou,Other,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.3,1.3,1.3,1.3,1.3,1.3,1.3
+42.0,Jinjiang Lianyungang,Jiangsu,Other,L-B,Jinjiang,Jinjiang,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,1.0,2.0,2.0,2.0
+43.0,Chalco Lianyungang,Jiangsu,Other,L-B,Chalco,Chalco,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,2.0,2.0,2.0,2.0,2.0,2.0
+44.1,Chalco Shandong L-B,Shandong,Other,L-B,Chalco,Chalco,Imported,Imported,0.925,1.15,1.7,1.7,1.7,1.7,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0
+44.2,Chalco Shandong sinter,Shandong,Other,Sintering,Chalco,Chalco,Domestic,Domestic,0.3,0.3,0.3,0.3,0.3,0.3,0.5,0.5,0.5,0.5,0.7,0.7,0.7,0.7,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+44.3,Chalco Shandong sinter import,Shandong,Other,L-B,Chalco,Chalco,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7
+45.1,Chiping Xinfa L-B,Shandong,Other,L-B,Xinfa,Xinfa,Imported,Imported,0.0,1.0,2.0,2.0,2.0,2.0,3.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0
+45.2,Chiping Xinfa H-B,Shandong,Other,H-B,Xinfa,Xinfa,Imported,Imported,0.5,1.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0
+46.0,Lubei,Shandong,Other,L-B,Lubei Group,Jinjiang,Imported,Imported,0.0,0.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0
+47.1,Nanshan Donghai H-B,Shandong,Other,H-B,Nanshan Group,Nanshan,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.4,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+47.2,Nanshan Donghai L-B,Shandong,Other,L-B,Nanshan Group,Nanshan,Imported,Imported,0.0,0.5,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7
+48.0,Bochuang,Shandong,Other,L-B,Chuangxin Group,Other,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4
+49.0,Nanhan,Shandong,Other,L-B,Private,Other,Imported,Imported,0.0,0.0,0.0,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1
+50.1,Weiqiao - Binzhou L-B,Shandong,Other,L-B,Weiqiao,Weiqiao,Imported,Imported,0.0,2.0,4.0,4.0,4.0,5.0,6.0,6.0,6.0,3.0,3.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0
+50.2,Weiqiao - Binzhou H-B,Shandong,Other,H-B,Weiqiao,Weiqiao,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0
+51.1,Weiqiao-Wudi-Zhanhua L-B,Shandong,Other,L-B,Weiqiao,Weiqiao,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,4.0,4.5,5.0,7.0,7.0,8.0,9.0,9.0,9.0,9.0,9.0,9.0,9.0,9.0,9.0,9.0,9.0,9.0
+51.2,Weiqiao-Wudi-Zhanhua H-B,Shandong,Other,H-B,Weiqiao,Weiqiao,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,2.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0
+52.0,Aokaida,Shanxi,Shanxi,H-B,Aokaida,Other,Domestic,Domestic,0.0,0.0,0.0,0.0,0.0,0.1,0.1,0.2,0.2,0.2,0.2,0.2,0.2,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3
+53.0,Chalco Huaxing,Shanxi,Shanxi,H-B,Chalco,Chalco,Domestic,Domestic,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,2.0,2.0,2.0,1.75,1.85,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0
+54.1,Chalco Shanxi,Shanxi,Shanxi,"H-B (Lime), sinter",Chalco,Chalco,Domestic,Domestic,1.4,2.2,2.2,2.2,2.2,2.2,2.2,2.7,2.7,2.7,2.7,2.7,2.7,2.7,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5
+54.2,Chalco Shanxi import,Shanxi,Shanxi,L-B,Chalco,Chalco,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2
+55.1,SPIC Shanxi,Shanxi,Shanxi,H-B & Sinter,SPIC,SPIC,Domestic,Domestic,0.0,1.0,1.0,1.0,1.2,2.0,2.9,2.9,2.9,2.9,2.9,2.9,2.9,2.9,0.45,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9
+55.2,SPIC Shanxi import,Shanxi,Shanxi,L-B,SPIC,SPIC,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0
+56.1,Dongxu Tianyuan,Shanxi,Shanxi,H-B,Tianyuan Chemical,Other,Domestic,Domestic,0.0,0.1,0.1,0.1,0.1,0.25,0.25,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+56.2,Dongxu Tianyuan import,Shanxi,Shanxi,L-B,Tianyuan Chemical,Other,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4
+57.1,East Hope Lingshi,Shanxi,Shanxi,H-B,East Hope,East Hope,Domestic,Domestic,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,2.0,3.0,1.95,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+57.2,East Hope Lingshi Import,Shanxi,Shanxi,L-B,East Hope,East Hope,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.3,2.3,2.3,2.3,2.3,2.3,2.3,2.3,2.3,2.3,2.3,2.3,2.3
+58.0,Huaqing,Shanxi,Shanxi,H-B,Private,Other,Domestic,Domestic,0.0,0.0,0.0,0.0,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4
+59.0,Qiangjin Aluminium,Shanxi,Shanxi,H-B,Private,Other,Domestic,Domestic,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2
+60.0,Senze,Shanxi,Shanxi,H-B & Sinter (1.2:0.1),Senze,Other,Domestic,Domestic,0.0,0.0,0.0,0.0,0.1,0.1,0.4,0.7,0.7,0.7,0.7,0.7,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.9,1.9,1.9
+61.0,Taixing,Shanxi,Shanxi,H-B,Private,Other,Domestic,Domestic,0.0,0.0,0.0,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4
+62.0,Wusheng,Shanxi,Shanxi,H-B,Private,Other,Domestic,Domestic,0.0,0.0,0.2,0.2,0.2,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3
+63.0,Xinfa - Jiaokou,Shanxi,Shanxi,H-B,Xinfa,Xinfa,Domestic,Domestic,0.0,0.0,0.0,0.2,0.2,0.0,1.2,2.4,2.4,2.4,2.4,2.4,2.4,2.4,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8
+64.0,Xinfa - Xiaoyi,Shanxi,Shanxi,H-B,Xinfa,Xinfa,Domestic,Domestic,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,2.0,2.0,2.0,3.0,3.32,3.32,3.47,3.47,3.47,3.47,3.47,3.47,3.47,3.47,3.47,3.47,3.47
+65.1,Xingan Chemical,Shanxi,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,Domestic,0.0,0.0,0.0,1.0,1.0,1.0,1.7,2.4,2.4,2.4,2.4,2.4,2.4,2.4,2.65,2.1,2.1,2.1,2.1,2.1,2.1,2.1,2.1,2.1,2.1,2.1,2.1
+65.2,Xingan Chemical import,Shanxi,Shanxi,L-B,Jinjiang,Jinjiang,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7
+66.0,Yangquan Zhaofeng,Shanxi,Shanxi,H-B (Lime),"Xinfa, Yangquan Coal",Xinfa,Domestic,Domestic,0.0,0.0,0.4,0.4,0.4,0.4,0.4,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1
+67.0,Gangyuan Jiaohua,Shanxi,Shanxi,H-B,Private,Other,Domestic,Domestic,0.0,0.0,0.0,0.0,0.0,0.07,0.07,0.07,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+68.1,Chalco Xinghua,Shanxi,Shanxi,H-B,Chalco,Chalco,Domestic,Domestic,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.35,0.35,0.9,0.9,0.35,0.1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+68.2,Chalco Xinghua import,Shanxi,Shanxi,H-B,Chalco,Chalco,Imported,Imported,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.55,0.8,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9
+69.0,Tiantong,Shanxi,Shanxi,H-B,Private,Other,Domestic,Domestic,0.0,0.0,0.0,0.05,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1
+70.0,Fusheng,Shanxi,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,Domestic,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8
+71.0,YMG - Wenshan,Yunnan,Other,H-B,Yunnan Aluminium Companuy,Chalco,Domestic,Domestic,0.0,0.0,0.0,0.0,0.0,0.0,0.8,0.8,0.8,0.8,0.8,1.0,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6,1.6
+72,spare,spare,Other,spare,spare,spare,spare,spare,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+73,spare,spare,Other,spare,spare,,spare,spare,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+74,spare,spare,Other,spare,spare,,spare,spare,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+75,spare,spare,Other,spare,spare,,spare,spare,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+76,spare,spare,Other,spare,spare,,spare,spare,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+77,spare,spare,Other,spare,spare,,spare,spare,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+78,spare,spare,Other,spare,spare,,spare,spare,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

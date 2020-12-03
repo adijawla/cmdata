@@ -1,0 +1,601 @@
+
+
+Module name:	TDP object 
+Method Name:	__init__
+Start time:	2020-08-18 02-22-16
+End Time:	2020-08-18 02-22-24
+Time elapsed:	8.5142435 secs
+Line no:	127
+Arguments:	[('use_translator', False), ('force_use_trans', True)]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	convert
+Start time:	2020-08-18 02-22-24
+End Time:	2020-08-18 02-22-25
+Time elapsed:	0.3451626000000001 secs
+Line no:	244
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	is_number_mapper
+Start time:	2020-08-18 02-22-25
+End Time:	2020-08-18 02-22-25
+Time elapsed:	0.5534622000000002 secs
+Line no:	254
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	get_to_data_to_be_processed
+Start time:	2020-08-18 02-22-25
+End Time:	2020-08-18 02-22-25
+Time elapsed:	0.01928850000000004 secs
+Line no:	266
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	translate_unique_col_names
+Start time:	2020-08-18 02-22-25
+End Time:	2020-08-18 02-22-28
+Time elapsed:	2.5289091 secs
+Line no:	276
+Arguments:	[('col_names', ['贸易方式', '产销国', '国外港口', '币种', '申报数量单位', '法定数量单位', '重量单位', '境内收发货地', '运输方式', '包装形式', '企业性质', '企业名称', '收发货企业名称', '中国港口', '贸易国', '申报海关', '目的地', '进出口岸']), ('step', 70)]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-28
+End Time:	2020-08-18 02-22-28
+Time elapsed:	0.0013664999999996041 secs
+Line no:	288
+Arguments:	[('lookup_col', 0), ('result_col', 'Data Index Key')]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	lookup_translated_data
+Start time:	2020-08-18 02-22-28
+End Time:	2020-08-18 02-22-28
+Time elapsed:	0.08999570000000112 secs
+Line no:	295
+Arguments:	[('col_name', '贸易方式'), ('lookup_col', 'Type of Trade'), ('result_col', 'Trade Type')]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-28
+End Time:	2020-08-18 02-22-28
+Time elapsed:	0.0009323000000005521 secs
+Line no:	288
+Arguments:	[('lookup_col', 2), ('result_col', 'Month')]
+Function call count:	2
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-28
+End Time:	2020-08-18 02-22-28
+Time elapsed:	0.0008184999999993892 secs
+Line no:	288
+Arguments:	[('lookup_col', 3), ('result_col', 'Date of Declaration')]
+Function call count:	3
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	lookup_translated_data
+Start time:	2020-08-18 02-22-28
+End Time:	2020-08-18 02-22-28
+Time elapsed:	0.09144200000000069 secs
+Line no:	295
+Arguments:	[('col_name', '产销国'), ('lookup_col', 'Country Names'), ('result_col', 'Producing Country')]
+Function call count:	2
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	lookup_translated_data
+Start time:	2020-08-18 02-22-28
+End Time:	2020-08-18 02-22-28
+Time elapsed:	0.09650300000000023 secs
+Line no:	295
+Arguments:	[('col_name', '贸易国'), ('lookup_col', 'Country Names'), ('result_col', 'Trading Country')]
+Function call count:	3
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	lookup_translated_data
+Start time:	2020-08-18 02-22-28
+End Time:	2020-08-18 02-22-28
+Time elapsed:	0.0866144000000002 secs
+Line no:	295
+Arguments:	[('col_name', '目的地'), ('lookup_col', 'Country Names'), ('result_col', 'Destination')]
+Function call count:	4
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	lookup_translated_data
+Start time:	2020-08-18 02-22-28
+End Time:	2020-08-18 02-22-28
+Time elapsed:	0.1049225000000007 secs
+Line no:	295
+Arguments:	[('col_name', '国外港口'), ('lookup_col', 'Port of Loading'), ('result_col', 'Port of Loading')]
+Function call count:	5
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-28
+End Time:	2020-08-18 02-22-28
+Time elapsed:	0.0008082999999992069 secs
+Line no:	288
+Arguments:	[('lookup_col', 8), ('result_col', 'Price Type')]
+Function call count:	4
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-28
+End Time:	2020-08-18 02-22-28
+Time elapsed:	0.0007108000000002335 secs
+Line no:	288
+Arguments:	[('lookup_col', 9), ('result_col', 'USD Gross Amount')]
+Function call count:	5
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-28
+End Time:	2020-08-18 02-22-28
+Time elapsed:	0.0006862999999999175 secs
+Line no:	288
+Arguments:	[('lookup_col', 10), ('result_col', 'USD Price')]
+Function call count:	6
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-28
+End Time:	2020-08-18 02-22-28
+Time elapsed:	0.0006916999999990736 secs
+Line no:	288
+Arguments:	[('lookup_col', 11), ('result_col', 'RMB Gross Amount')]
+Function call count:	7
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-28
+End Time:	2020-08-18 02-22-28
+Time elapsed:	0.0007134000000004193 secs
+Line no:	288
+Arguments:	[('lookup_col', 12), ('result_col', 'RMB Price')]
+Function call count:	8
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	lookup_translated_data
+Start time:	2020-08-18 02-22-28
+End Time:	2020-08-18 02-22-28
+Time elapsed:	0.09025010000000044 secs
+Line no:	295
+Arguments:	[('col_name', '币种'), ('lookup_col', 'Currency'), ('result_col', 'Currency')]
+Function call count:	6
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-28
+End Time:	2020-08-18 02-22-28
+Time elapsed:	0.0007442999999991429 secs
+Line no:	288
+Arguments:	[('lookup_col', 14), ('result_col', 'Gross Amount of Trading Currency')]
+Function call count:	9
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-28
+End Time:	2020-08-18 02-22-28
+Time elapsed:	0.0007023999999997699 secs
+Line no:	288
+Arguments:	[('lookup_col', 15), ('result_col', 'Price of Trading Currency')]
+Function call count:	10
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	lookup_translated_data
+Start time:	2020-08-18 02-22-28
+End Time:	2020-08-18 02-22-28
+Time elapsed:	0.08436299999999974 secs
+Line no:	295
+Arguments:	[('col_name', '申报数量单位'), ('lookup_col', 'Unit of Declared Quantity'), ('result_col', 'Unit of Declared Quantity')]
+Function call count:	7
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-28
+End Time:	2020-08-18 02-22-28
+Time elapsed:	0.0009078999999996284 secs
+Line no:	288
+Arguments:	[('lookup_col', 17), ('result_col', 'Declared Quantity')]
+Function call count:	11
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-28
+End Time:	2020-08-18 02-22-28
+Time elapsed:	0.0008263999999993388 secs
+Line no:	288
+Arguments:	[('lookup_col', 18), ('result_col', 'Legal Quantity')]
+Function call count:	12
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	lookup_translated_data
+Start time:	2020-08-18 02-22-28
+End Time:	2020-08-18 02-22-29
+Time elapsed:	0.0927061000000009 secs
+Line no:	295
+Arguments:	[('col_name', '法定数量单位'), ('lookup_col', 'Unit of Declared Quantity'), ('result_col', 'Unit of Legal Quantity')]
+Function call count:	8
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-29
+End Time:	2020-08-18 02-22-29
+Time elapsed:	0.000749600000000683 secs
+Line no:	288
+Arguments:	[('lookup_col', 20), ('result_col', 'Gross Weight')]
+Function call count:	13
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-29
+End Time:	2020-08-18 02-22-29
+Time elapsed:	0.0007547999999992783 secs
+Line no:	288
+Arguments:	[('lookup_col', 21), ('result_col', 'Net Weight')]
+Function call count:	14
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	lookup_translated_data
+Start time:	2020-08-18 02-22-29
+End Time:	2020-08-18 02-22-29
+Time elapsed:	0.08599780000000123 secs
+Line no:	295
+Arguments:	[('col_name', '重量单位'), ('lookup_col', 'Unit of Declared Quantity'), ('result_col', 'Legal Unit of Measurement')]
+Function call count:	9
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-29
+End Time:	2020-08-18 02-22-29
+Time elapsed:	0.0012324000000010216 secs
+Line no:	288
+Arguments:	[('lookup_col', 23), ('result_col', 'Metric Tons')]
+Function call count:	15
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	lookup_translated_data
+Start time:	2020-08-18 02-22-29
+End Time:	2020-08-18 02-22-29
+Time elapsed:	0.09787419999999969 secs
+Line no:	295
+Arguments:	[('col_name', '企业名称'), ('lookup_col', 'Company Name'), ('result_col', 'Company Name')]
+Function call count:	10
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	lookup_translated_data
+Start time:	2020-08-18 02-22-29
+End Time:	2020-08-18 02-22-29
+Time elapsed:	0.09913039999999995 secs
+Line no:	295
+Arguments:	[('col_name', '收发货企业名称'), ('lookup_col', 'Company Name'), ('result_col', 'Recepient Company Name')]
+Function call count:	11
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	lookup_translated_data
+Start time:	2020-08-18 02-22-29
+End Time:	2020-08-18 02-22-29
+Time elapsed:	0.09885109999999919 secs
+Line no:	295
+Arguments:	[('col_name', '境内收发货地'), ('lookup_col', 'Recepient Location'), ('result_col', 'Recepient Location')]
+Function call count:	12
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	lookup_translated_data
+Start time:	2020-08-18 02-22-29
+End Time:	2020-08-18 02-22-29
+Time elapsed:	0.11498799999999854 secs
+Line no:	295
+Arguments:	[('col_name', '中国港口'), ('lookup_col', 'Port of Landing'), ('result_col', 'Chinese Port')]
+Function call count:	13
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	lookup_translated_data
+Start time:	2020-08-18 02-22-29
+End Time:	2020-08-18 02-22-29
+Time elapsed:	0.09032030000000013 secs
+Line no:	295
+Arguments:	[('col_name', '申报海关'), ('lookup_col', 'Port of Landing'), ('result_col', 'Port of Declaration')]
+Function call count:	14
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	lookup_translated_data
+Start time:	2020-08-18 02-22-29
+End Time:	2020-08-18 02-22-29
+Time elapsed:	0.09185710000000036 secs
+Line no:	295
+Arguments:	[('col_name', '进出口岸'), ('lookup_col', 'Port of Landing'), ('result_col', 'Customs')]
+Function call count:	15
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	lookup_translated_data
+Start time:	2020-08-18 02-22-29
+End Time:	2020-08-18 02-22-29
+Time elapsed:	0.09008539999999954 secs
+Line no:	295
+Arguments:	[('col_name', '运输方式'), ('lookup_col', 'Transportation Method'), ('result_col', 'Transportation Method')]
+Function call count:	16
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-29
+End Time:	2020-08-18 02-22-29
+Time elapsed:	0.0007812000000004815 secs
+Line no:	288
+Arguments:	[('lookup_col', 31), ('result_col', 'Name of Vessel')]
+Function call count:	16
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-29
+End Time:	2020-08-18 02-22-29
+Time elapsed:	0.0008150999999987363 secs
+Line no:	288
+Arguments:	[('lookup_col', 32), ('result_col', 'Number of Cargo')]
+Function call count:	17
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	lookup_translated_data
+Start time:	2020-08-18 02-22-29
+End Time:	2020-08-18 02-22-29
+Time elapsed:	0.0874568999999994 secs
+Line no:	295
+Arguments:	[('col_name', '包装形式'), ('lookup_col', 'Packaging Method'), ('result_col', 'Method of Packaging')]
+Function call count:	17
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-29
+End Time:	2020-08-18 02-22-29
+Time elapsed:	0.0007754000000002037 secs
+Line no:	288
+Arguments:	[('lookup_col', 34), ('result_col', 'FOB/CIF Gross USD')]
+Function call count:	18
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-29
+End Time:	2020-08-18 02-22-29
+Time elapsed:	0.0007058000000004228 secs
+Line no:	288
+Arguments:	[('lookup_col', 35), ('result_col', 'FOB/CIF USD Price')]
+Function call count:	19
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	lookup_translated_data
+Start time:	2020-08-18 02-22-29
+End Time:	2020-08-18 02-22-30
+Time elapsed:	0.0909973000000015 secs
+Line no:	295
+Arguments:	[('col_name', '企业性质'), ('lookup_col', 'Nature of Business'), ('result_col', 'Nature of Business')]
+Function call count:	18
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-30
+End Time:	2020-08-18 02-22-30
+Time elapsed:	0.0008742999999995504 secs
+Line no:	288
+Arguments:	[('lookup_col', 37), ('result_col', 'Freight Rate')]
+Function call count:	20
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-30
+End Time:	2020-08-18 02-22-30
+Time elapsed:	0.0008356000000002695 secs
+Line no:	288
+Arguments:	[('lookup_col', 38), ('result_col', 'Currency of Freight Rate')]
+Function call count:	21
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-30
+End Time:	2020-08-18 02-22-30
+Time elapsed:	0.0007188999999989676 secs
+Line no:	288
+Arguments:	[('lookup_col', 39), ('result_col', 'Insurance')]
+Function call count:	22
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-30
+End Time:	2020-08-18 02-22-30
+Time elapsed:	0.0006927999999994938 secs
+Line no:	288
+Arguments:	[('lookup_col', 40), ('result_col', 'Currency of Insurance')]
+Function call count:	23
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-30
+End Time:	2020-08-18 02-22-30
+Time elapsed:	0.0007308000000012527 secs
+Line no:	288
+Arguments:	[('lookup_col', 41), ('result_col', 'Other Charges')]
+Function call count:	24
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-30
+End Time:	2020-08-18 02-22-30
+Time elapsed:	0.0007707000000003461 secs
+Line no:	288
+Arguments:	[('lookup_col', 42), ('result_col', 'Currency of Other Charges')]
+Function call count:	25
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	write_col
+Start time:	2020-08-18 02-22-30
+End Time:	2020-08-18 02-22-30
+Time elapsed:	0.0007732000000011396 secs
+Line no:	288
+Arguments:	[('lookup_col', 43), ('result_col', 'Specifications')]
+Function call count:	26
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	percent_name_helper
+Start time:	2020-08-18 02-22-30
+End Time:	2020-08-18 02-22-30
+Time elapsed:	0.05574969999999979 secs
+Line no:	311
+Arguments:	[('search_val', ['AL2O3', 'AL203', 'AI2O3', 'AL:203', '铝', 'Al？O？', 'AL2LO3', '三氧化二铝', '氧化铝']), ('result_col', 'Available Alumina Check'), ('parse_date', False)]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	get_chemical_percent
+Start time:	2020-08-18 02-22-30
+End Time:	2020-08-18 02-22-30
+Time elapsed:	0.06923609999999947 secs
+Line no:	345
+Arguments:	[('values', ['AL2O3', 'AL203', 'AI2O3', 'AL:203', '铝', 'Al？O？', 'AL2LO3', '三氧化二铝', '氧化铝']), ('col_check', 'Available Alumina Check'), ('result_col', 'AL2O3%')]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	percent_name_helper
+Start time:	2020-08-18 02-22-30
+End Time:	2020-08-18 02-22-30
+Time elapsed:	0.05563710000000022 secs
+Line no:	311
+Arguments:	[('search_val', ['SIOO2', 'SIO2', 'Si02', 'si', '硅', '氧化硅']), ('result_col', 'Reactive Silica Check'), ('parse_date', False)]
+Function call count:	2
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	get_chemical_percent
+Start time:	2020-08-18 02-22-30
+End Time:	2020-08-18 02-22-30
+Time elapsed:	0.07011900000000004 secs
+Line no:	345
+Arguments:	[('values', ['SIOO2', 'SIO2', 'Si02', 'si', '硅', '氧化硅']), ('col_check', 'Reactive Silica Check'), ('result_col', 'SIO2%')]
+Function call count:	2
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	percent_name_helper
+Start time:	2020-08-18 02-22-30
+End Time:	2020-08-18 02-22-30
+Time elapsed:	0.25509489999999957 secs
+Line no:	311
+Arguments:	[('search_val', ['\\d+\\s?([-/年])+\\s?\\d+\\s?([-/月])+\\s?\\d*\\s?[日]?', '\\d+\\s?([.])+\\s?\\d+\\s?([.])+\\s?\\d+\\s?[日]?', '\\d{8}']), ('result_col', 'Contract Date'), ('parse_date', True)]
+Function call count:	3
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	get_chemical_percent
+Start time:	2020-08-18 02-22-30
+End Time:	2020-08-18 02-22-30
+Time elapsed:	0.0663058000000003 secs
+Line no:	345
+Arguments:	[('values', ['MOISTURE', '水份', '水', 'water', 'H20', 'H2O']), ('col_check', None), ('result_col', 'Working H2O_6')]
+Function call count:	3
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	h2o_from_gross_weight_and_net_weight
+Start time:	2020-08-18 02-22-30
+End Time:	2020-08-18 02-22-30
+Time elapsed:	0.0157544000000005 secs
+Line no:	391
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	regency_workings
+Start time:	2020-08-18 02-22-30
+End Time:	2020-08-18 02-22-30
+Time elapsed:	0.11596340000000005 secs
+Line no:	400
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	get_all_h2O
+Start time:	2020-08-18 02-22-30
+End Time:	2020-08-18 02-22-30
+Time elapsed:	0.017201799999998713 secs
+Line no:	420
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	translate_unique_col_names
+Start time:	2020-08-18 02-22-31
+End Time:	2020-08-18 02-23-01
+Time elapsed:	30.2031501 secs
+Line no:	276
+Arguments:	[('col_names', ['产品规格型号']), ('step', 35)]
+Function call count:	2
+METHOD OUTPUTS
+
+Module name:	TDP object 
+Method Name:	lookup_translated_data
+Start time:	2020-08-18 02-23-01
+End Time:	2020-08-18 02-23-02
+Time elapsed:	0.9415711000000044 secs
+Line no:	295
+Arguments:	[('col_name', '产品规格型号'), ('lookup_col', None), ('result_col', 'Specifications')]
+Function call count:	19
+METHOD OUTPUTS

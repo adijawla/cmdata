@@ -1,0 +1,15 @@
+,province_id,province,creation_date_x,updation_date_x,taxtrance_id,Royalty,Other,total,To refinery,In Mine,creation_date_y,updation_date_y
+0,province_1,Guangxi,,2020-08-13 10:46:45.210,1,25.0,25.0,0.0,0.61,0.1,,2020-08-14 18:22:27.667
+1,province_10,Hunan,,,10,25.0,30.0,0.0,0.7,0.0,,
+2,province_13,Guizhou,,,3,25.0,30.0,0.0,0.5,0.0,,
+3,province_14,Hubei,,,9,25.0,30.0,0.0,0.7,0.0,,
+4,province_16,Shandong,,,12,25.0,30.0,0.0,0.7,0.0,,
+5,province_18,Shaanxi,,,13,25.0,30.0,0.0,0.7,0.0,,
+6,province_2,Inner Mongolia,,,11,25.0,30.0,0.0,0.7,0.0,,
+7,province_216,Hainan,,,7,25.0,30.0,0.0,0.7,0.0,,
+8,province_220,Hebei,,,8,25.0,30.0,0.0,0.7,0.0,,
+9,province_3,Sichuan,,,14,25.0,30.0,0.0,0.7,0.0,,
+10,province_6,Henan,,,5,25.0,27.25,0.0,0.75,0.0,,
+11,province_7,Shanxi,,,4,25.0,21.0,0.0,0.7,0.0,,
+12,province_8,Yunnan,,,2,25.0,28.0,0.0,0.8,0.0,,
+13,province_9,Chongqing,,,6,25.0,30.0,0.0,0.7,0.0,,

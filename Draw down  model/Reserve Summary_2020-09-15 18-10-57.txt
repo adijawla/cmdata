@@ -1,0 +1,11 @@
+
+
+Module name:	reservesummary.summary object 
+Method Name:	__init__
+Start time:	2020-09-15 18-11-03
+End Time:	2020-09-15 18-11-03
+Time elapsed:	0.07229979999999969 secs
+Line no:	40
+Arguments:	[('cbixswitch', 'cbix'), ('db_conv', <flatdb.flatdbconverter.Flatdbconverter object at 0x000000AF6AFE4D08>), ('lsnap', 174)]
+Function call count:	1
+METHOD OUTPUTS

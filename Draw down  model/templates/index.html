@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}"> -->
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        margin: 100px;
+        /* background: white; */
+    }
+
+    button {
+        color: white;
+        padding: 10px;
+        outline-color: none;
+        background: lightblue;
+        margin: 10px;
+    }
+
+    h3 {
+        margin: 10px;
+    }
+</style>
+
+<body>
+
+
+    <button id="ddmbtn" onkeypress="call(event)">DDM START</button>
+    <button id="chctbtn" onkeypress="call(event)">CHINACOST START</button>
+    <button id="invbtn" onkeypress="call(event)">Inventory START</button>
+    <p></p>
+    <h3 id="ddmr"></h3>
+    <h3 id="chctr"></h3>
+    <h3 id="invr"></h3>
+    <script>
+        document.getElementById("ddmbtn").addEventListener('click', function () {
+            console.log("emme");
+            document.querySelector('h3').innerHTML = ''
+            document.querySelector('p').innerHTML = 'running.....'
+            start = Date.now()
+            document.querySelector('#ddmbtn').disabled = true
+            fetch('/testddm')
+                .then(response => {
+                    console.log(response)
+                    t = (Date.now() - start) / 1000 + ' secs'
+                    document.getElementById("ddmr").innerHTML = "Time taken by ddm:" + t
+                    document.querySelector('#ddmbtn').disabled = false
+                    document.querySelector('p').innerHTML = ''
+                })
+                .catch(err => console.log(err))
+
+        });
+        document.getElementById("chctbtn").addEventListener('click', function () {
+            console.log("emme");
+            document.querySelector('h3').innerHTML = ''
+            document.querySelector('p').innerHTML = 'running.....'
+            start = Date.now()
+            document.querySelector('#chctbtn').disabled = true
+            fetch('/testchct')
+                .then(response => {
+                    console.log(response)
+                    t = (Date.now() - start) / 1000 + ' secs'
+                    document.getElementById("chctr").innerHTML = "Time taken by chinacost:" + t
+                    document.querySelector('#chctbtn').disabled = false
+                    document.querySelector('p').innerHTML = ''
+                })
+                .catch(err => console.log(err))
+
+        })
+        document.getElementById("invbtn").addEventListener('click', function () {
+            console.log("emme");
+            document.querySelector('h3').innerHTML = ''
+            document.querySelector('p').innerHTML = 'running.....'
+            start = Date.now()
+            document.querySelector('#invbtn').disabled = true
+            fetch('/testinv')
+                .then(response => {
+                    console.log(response)
+                    t = (Date.now() - start) / 1000 + ' secs'
+                    document.getElementById("invr").innerHTML = "Time taken by chinacost:" + t
+                    document.querySelector('#invbtn').disabled = false
+                    document.querySelector('p').innerHTML = ''
+                })
+                .catch(err => console.log(err))
+        })
+    </script>
+
+
+</body>
+
+</html>

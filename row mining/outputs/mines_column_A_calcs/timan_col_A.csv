@@ -1,0 +1,11 @@
+Name,Value
+,0.55
+portion capital to port,0.0
+portion capital to roads n rail,0.0
+portion capital to mine,1.0
+Port Life (years),35
+Road Life (Years),10
+Mine Equip Life (Years),7.5
+Sust. Capital Factor,0.07333333333333333
+Build Quality,2. Intermediate
+Infrastructure Included,1. Mine only

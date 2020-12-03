@@ -1,0 +1,516 @@
+updated,Refiney No.,Refiney Name,Refiney Prov,Bx Prov category,Bx origin Prov,Bx Origin Cty,Owner,Bauxite,Self Supply,column 1,column 2,column 3,column 4,column 5,Allocation
+,1.1,Bosai Xianfeng domestic,Guangxi,Chongqing,H-B,Bosai,Other,Domestic,3,,,,,,0.0
+,1.1,Bosai Xianfeng domestic,Guizhou,Chongqing,H-B,Bosai,Other,Domestic,3,,,,,,1197.816501
+,1.1,Bosai Xianfeng domestic,Henan,Chongqing,H-B,Bosai,Other,Domestic,3,,,,,,0.0
+,1.1,Bosai Xianfeng domestic,Shanxi,Chongqing,H-B,Bosai,Other,Domestic,3,,,,,,0.0
+,1.1,Bosai Xianfeng domestic,Other,Chongqing,H-B,Bosai,Other,Domestic,3,,,,,,39904.701518999995
+,1.2,Bosai Xianfeng import,Guangxi,Chongqing,L-B,Bosai,Other,Imported,4,,,,,,0.0
+,1.2,Bosai Xianfeng import,Guizhou,Chongqing,L-B,Bosai,Other,Imported,4,,,,,,0.0
+,1.2,Bosai Xianfeng import,Henan,Chongqing,L-B,Bosai,Other,Imported,4,,,,,,0.0
+,1.2,Bosai Xianfeng import,Shanxi,Chongqing,L-B,Bosai,Other,Imported,4,,,,,,0.0
+,1.2,Bosai Xianfeng import,Other,Chongqing,L-B,Bosai,Other,Imported,4,,,,,,0.0
+,2,Bosai Wanzhou,Guangxi,Chongqing,L-B,Bosai,Other,Imported,5,,,,,,0.0
+,2,Bosai Wanzhou,Guizhou,Chongqing,L-B,Bosai,Other,Imported,5,,,,,,0.0
+,2,Bosai Wanzhou,Henan,Chongqing,L-B,Bosai,Other,Imported,5,,,,,,0.0
+,2,Bosai Wanzhou,Shanxi,Chongqing,L-B,Bosai,Other,Imported,5,,,,,,0.0
+,2,Bosai Wanzhou,Other,Chongqing,L-B,Bosai,Other,Imported,5,,,,,,0.0
+,3,Shuijiang,Guangxi,Chongqing,H-B,Bosai,Other,Domestic,6,,,,,,0.0
+,3,Shuijiang,Guizhou,Chongqing,H-B,Bosai,Other,Domestic,6,,,,,,0.0
+,3,Shuijiang,Henan,Chongqing,H-B,Bosai,Other,Domestic,6,,,,,,0.0
+,3,Shuijiang,Shanxi,Chongqing,H-B,Bosai,Other,Domestic,6,,,,,,0.0
+,3,Shuijiang,Other,Chongqing,H-B,Bosai,Other,Domestic,6,,,,,,6141.2949
+,4,Tuoyuan,Guangxi,Chongqing,H-B,SPIC,SPIC,Domestic,7,,,,,,0.0
+,4,Tuoyuan,Guizhou,Chongqing,H-B,SPIC,SPIC,Domestic,7,,,,,,0.0
+,4,Tuoyuan,Henan,Chongqing,H-B,SPIC,SPIC,Domestic,7,,,,,,0.0
+,4,Tuoyuan,Shanxi,Chongqing,H-B,SPIC,SPIC,Domestic,7,,,,,,0.0
+,4,Tuoyuan,Other,Chongqing,H-B,SPIC,SPIC,Domestic,7,,,,,,1981.594657
+,5,Chalco Pingguo ,Guangxi,Guangxi,H-B,Chalco,Chalco,Domestic,8,,,,,,250188.232761
+,5,Chalco Pingguo ,Guizhou,Guangxi,H-B,Chalco,Chalco,Domestic,8,,,,,,0.0
+,5,Chalco Pingguo ,Henan,Guangxi,H-B,Chalco,Chalco,Domestic,8,,,,,,0.0
+,5,Chalco Pingguo ,Shanxi,Guangxi,H-B,Chalco,Chalco,Domestic,8,,,,,,0.0
+,5,Chalco Pingguo ,Other,Guangxi,H-B,Chalco,Chalco,Domestic,8,,,,,,0.0
+,6.1,Jinjiang Chongzuo domestic,Guangxi,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,9,,,,,,40147.960588
+,6.1,Jinjiang Chongzuo domestic,Guizhou,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,9,,,,,,0.0
+,6.1,Jinjiang Chongzuo domestic,Henan,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,9,,,,,,0.0
+,6.1,Jinjiang Chongzuo domestic,Shanxi,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,9,,,,,,0.0
+,6.1,Jinjiang Chongzuo domestic,Other,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,9,,,,,,0.0
+,6.2,Jinjiang Chongzuo import,Guangxi,Guangxi,L-B,Jinjiang,Jinjiang,Imported,10,,,,,,0.0
+,6.2,Jinjiang Chongzuo import,Guizhou,Guangxi,L-B,Jinjiang,Jinjiang,Imported,10,,,,,,0.0
+,6.2,Jinjiang Chongzuo import,Henan,Guangxi,L-B,Jinjiang,Jinjiang,Imported,10,,,,,,0.0
+,6.2,Jinjiang Chongzuo import,Shanxi,Guangxi,L-B,Jinjiang,Jinjiang,Imported,10,,,,,,0.0
+,6.2,Jinjiang Chongzuo import,Other,Guangxi,L-B,Jinjiang,Jinjiang,Imported,10,,,,,,0.0
+,7,Huayin,Guangxi,Guangxi,H-B,"Chalco, Guangxi Investment Group, Minmetal",Chalco,Domestic,11,,,,,,275260.36580100004
+,7,Huayin,Guizhou,Guangxi,H-B,"Chalco, Guangxi Investment Group, Minmetal",Chalco,Domestic,11,,,,,,0.0
+,7,Huayin,Henan,Guangxi,H-B,"Chalco, Guangxi Investment Group, Minmetal",Chalco,Domestic,11,,,,,,0.0
+,7,Huayin,Shanxi,Guangxi,H-B,"Chalco, Guangxi Investment Group, Minmetal",Chalco,Domestic,11,,,,,,0.0
+,7,Huayin,Other,Guangxi,H-B,"Chalco, Guangxi Investment Group, Minmetal",Chalco,Domestic,11,,,,,,0.0
+,8,Jinjiang Tiandong,Guangxi,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,12,,,,,,95011.204822
+,8,Jinjiang Tiandong,Guizhou,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,12,,,,,,0.0
+,8,Jinjiang Tiandong,Henan,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,12,,,,,,0.0
+,8,Jinjiang Tiandong,Shanxi,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,12,,,,,,0.0
+,8,Jinjiang Tiandong,Other,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,12,,,,,,0.0
+,9,Xinfa Jingxi,Guangxi,Guangxi,H-B,Xinfa,Xinfa,Domestic,13,,,,,,131440.04332300002
+,9,Xinfa Jingxi,Guizhou,Guangxi,H-B,Xinfa,Xinfa,Domestic,13,,,,,,0.0
+,9,Xinfa Jingxi,Henan,Guangxi,H-B,Xinfa,Xinfa,Domestic,13,,,,,,0.0
+,9,Xinfa Jingxi,Shanxi,Guangxi,H-B,Xinfa,Xinfa,Domestic,13,,,,,,0.0
+,9,Xinfa Jingxi,Other,Guangxi,H-B,Xinfa,Xinfa,Domestic,13,,,,,,0.0
+,10,Fangcheng,Guangxi,Guangxi,L-B,Chalco,Chalco,Imported,14,,,,,,0.0
+,10,Fangcheng,Guizhou,Guangxi,L-B,Chalco,Chalco,Imported,14,,,,,,0.0
+,10,Fangcheng,Henan,Guangxi,L-B,Chalco,Chalco,Imported,14,,,,,,0.0
+,10,Fangcheng,Shanxi,Guangxi,L-B,Chalco,Chalco,Imported,14,,,,,,0.0
+,10,Fangcheng,Other,Guangxi,L-B,Chalco,Chalco,Imported,14,,,,,,0.0
+,11,Tiangui,Guangxi,Guangxi,H-B,Zengshi,Other,Domestic,15,,,,,,28420.0
+,11,Tiangui,Guizhou,Guangxi,H-B,Zengshi,Other,Domestic,15,,,,,,0.0
+,11,Tiangui,Henan,Guangxi,H-B,Zengshi,Other,Domestic,15,,,,,,0.0
+,11,Tiangui,Shanxi,Guangxi,H-B,Zengshi,Other,Domestic,15,,,,,,0.0
+,11,Tiangui,Other,Guangxi,H-B,Zengshi,Other,Domestic,15,,,,,,0.0
+,12,Beihai_GIG,Guangxi,Guangxi,L-B,GIG,Other,Imported,16,,,,,,0.0
+,12,Beihai_GIG,Guizhou,Guangxi,L-B,GIG,Other,Imported,16,,,,,,0.0
+,12,Beihai_GIG,Henan,Guangxi,L-B,GIG,Other,Imported,16,,,,,,0.0
+,12,Beihai_GIG,Shanxi,Guangxi,L-B,GIG,Other,Imported,16,,,,,,0.0
+,12,Beihai_GIG,Other,Guangxi,L-B,GIG,Other,Imported,16,,,,,,0.0
+,13,Baise Mining,Guangxi,Guangxi,H-B,Baise Mining,Other,Imported,17,,,,,,0.0
+,13,Baise Mining,Guizhou,Guangxi,H-B,Baise Mining,Other,Imported,17,,,,,,0.0
+,13,Baise Mining,Henan,Guangxi,H-B,Baise Mining,Other,Imported,17,,,,,,0.0
+,13,Baise Mining,Shanxi,Guangxi,H-B,Baise Mining,Other,Imported,17,,,,,,0.0
+,13,Baise Mining,Other,Guangxi,H-B,Baise Mining,Other,Imported,17,,,,,,0.0
+,14,Chalco Guizhou,Guangxi,Guizhou,Series & Sinter (95:25),Chalco,Chalco,Domestic,18,,,,,,0.0
+,14,Chalco Guizhou,Guizhou,Guizhou,Series & Sinter (95:25),Chalco,Chalco,Domestic,18,,,,,,10356.014740399998
+,14,Chalco Guizhou,Henan,Guizhou,Series & Sinter (95:25),Chalco,Chalco,Domestic,18,,,,,,0.0
+,14,Chalco Guizhou,Shanxi,Guizhou,Series & Sinter (95:25),Chalco,Chalco,Domestic,18,,,,,,0.0
+,14,Chalco Guizhou,Other,Guizhou,Series & Sinter (95:25),Chalco,Chalco,Domestic,18,,,,,,0.0
+,15,Chalco Zunyi,Guangxi,Guizhou,H-B,Chalco,Chalco,Domestic,19,,,,,,0.0
+,15,Chalco Zunyi,Guizhou,Guizhou,H-B,Chalco,Chalco,Domestic,19,,,,,,26832.12147471
+,15,Chalco Zunyi,Henan,Guizhou,H-B,Chalco,Chalco,Domestic,19,,,,,,0.0
+,15,Chalco Zunyi,Shanxi,Guizhou,H-B,Chalco,Chalco,Domestic,19,,,,,,0.0
+,15,Chalco Zunyi,Other,Guizhou,H-B,Chalco,Chalco,Domestic,19,,,,,,0.0
+,16,Xian,Guangxi,Guizhou,H-B,Zengshi Group,Other,Domestic,20,,,,,,0.0
+,16,Xian,Guizhou,Guizhou,H-B,Zengshi Group,Other,Domestic,20,,,,,,1895.7789291899999
+,16,Xian,Henan,Guizhou,H-B,Zengshi Group,Other,Domestic,20,,,,,,0.0
+,16,Xian,Shanxi,Guizhou,H-B,Zengshi Group,Other,Domestic,20,,,,,,0.0
+,16,Xian,Other,Guizhou,H-B,Zengshi Group,Other,Domestic,20,,,,,,0.0
+,17,Huafei,Guangxi,Guizhou,H-B,Shanghai Huafei Investment Co.Ltd,Other,Domestic,21,,,,,,0.0
+,17,Huafei,Guizhou,Guizhou,H-B,Shanghai Huafei Investment Co.Ltd,Other,Domestic,21,,,,,,7338.088607000001
+,17,Huafei,Henan,Guizhou,H-B,Shanghai Huafei Investment Co.Ltd,Other,Domestic,21,,,,,,0.0
+,17,Huafei,Shanxi,Guizhou,H-B,Shanghai Huafei Investment Co.Ltd,Other,Domestic,21,,,,,,0.0
+,17,Huafei,Other,Guizhou,H-B,Shanghai Huafei Investment Co.Ltd,Other,Domestic,21,,,,,,0.0
+,18,Qingzhen Guanglv,Guangxi,Guizhou,H-B,Guangdong Guang Al Group Co.Ltd,Other,Domestic,22,,,,,,0.0
+,18,Qingzhen Guanglv,Guizhou,Guizhou,H-B,Guangdong Guang Al Group Co.Ltd,Other,Domestic,22,,,,,,28255.434793710003
+,18,Qingzhen Guanglv,Henan,Guizhou,H-B,Guangdong Guang Al Group Co.Ltd,Other,Domestic,22,,,,,,0.0
+,18,Qingzhen Guanglv,Shanxi,Guizhou,H-B,Guangdong Guang Al Group Co.Ltd,Other,Domestic,22,,,,,,0.0
+,18,Qingzhen Guanglv,Other,Guizhou,H-B,Guangdong Guang Al Group Co.Ltd,Other,Domestic,22,,,,,,0.0
+,19.1,Qizheng Chemical,Guangxi,Guizhou,H-B,Qiya,Qiya,Domestic,23,,,,,,0.0
+,19.1,Qizheng Chemical,Guizhou,Guizhou,H-B,Qiya,Qiya,Domestic,23,,,,,,36101.169930000004
+,19.1,Qizheng Chemical,Henan,Guizhou,H-B,Qiya,Qiya,Domestic,23,,,,,,0.0
+,19.1,Qizheng Chemical,Shanxi,Guizhou,H-B,Qiya,Qiya,Domestic,23,,,,,,0.0
+,19.1,Qizheng Chemical,Other,Guizhou,H-B,Qiya,Qiya,Domestic,23,,,,,,0.0
+,19.2,Qizheng Chemical Added LT,Guangxi,Guizhou,L-B,Qiya,Qiya,Imported,24,,,,,,0.0
+,19.2,Qizheng Chemical Added LT,Guizhou,Guizhou,L-B,Qiya,Qiya,Imported,24,,,,,,0.0
+,19.2,Qizheng Chemical Added LT,Henan,Guizhou,L-B,Qiya,Qiya,Imported,24,,,,,,0.0
+,19.2,Qizheng Chemical Added LT,Shanxi,Guizhou,L-B,Qiya,Qiya,Imported,24,,,,,,0.0
+,19.2,Qizheng Chemical Added LT,Other,Guizhou,L-B,Qiya,Qiya,Imported,24,,,,,,0.0
+,20,SPIC - Wuchuan,Guangxi,Guizhou,H-B,SPIC,SPIC,Domestic,25,,,,,,0.0
+,20,SPIC - Wuchuan,Guizhou,Guizhou,H-B,SPIC,SPIC,Domestic,25,,,,,,125360.77071400001
+,20,SPIC - Wuchuan,Henan,Guizhou,H-B,SPIC,SPIC,Domestic,25,,,,,,0.0
+,20,SPIC - Wuchuan,Shanxi,Guizhou,H-B,SPIC,SPIC,Domestic,25,,,,,,0.0
+,20,SPIC - Wuchuan,Other,Guizhou,H-B,SPIC,SPIC,Domestic,25,,,,,,0.0
+,21,Kaisheng,Guangxi,Guizhou,H-B,Private,Other,Domestic,26,,,,,,0.0
+,21,Kaisheng,Guizhou,Guizhou,H-B,Private,Other,Domestic,26,,,,,,1242.2388088
+,21,Kaisheng,Henan,Guizhou,H-B,Private,Other,Domestic,26,,,,,,0.0
+,21,Kaisheng,Shanxi,Guizhou,H-B,Private,Other,Domestic,26,,,,,,0.0
+,21,Kaisheng,Other,Guizhou,H-B,Private,Other,Domestic,26,,,,,,0.0
+,22,Huajin,Guangxi,Guizhou,H-B,"Chalco, Jinjiang",Chalco,Domestic,27,,,,,,0.0
+,22,Huajin,Guizhou,Guizhou,H-B,"Chalco, Jinjiang",Chalco,Domestic,27,,,,,,70574.30704047
+,22,Huajin,Henan,Guizhou,H-B,"Chalco, Jinjiang",Chalco,Domestic,27,,,,,,0.0
+,22,Huajin,Shanxi,Guizhou,H-B,"Chalco, Jinjiang",Chalco,Domestic,27,,,,,,0.0
+,22,Huajin,Other,Guizhou,H-B,"Chalco, Jinjiang",Chalco,Domestic,27,,,,,,0.0
+,23.1,Chalco Zhengzhou domestic,Guangxi,Henan,H-B,Chalco,Chalco,Domestic,28,,,,,,0.0
+,23.1,Chalco Zhengzhou domestic,Guizhou,Henan,H-B,Chalco,Chalco,Domestic,28,,,,,,0.0
+,23.1,Chalco Zhengzhou domestic,Henan,Henan,H-B,Chalco,Chalco,Domestic,28,,,,,,79094.33839289998
+,23.1,Chalco Zhengzhou domestic,Shanxi,Henan,H-B,Chalco,Chalco,Domestic,28,,,,,,0.0
+,23.1,Chalco Zhengzhou domestic,Other,Henan,H-B,Chalco,Chalco,Domestic,28,,,,,,0.0
+,23.2,Chalco Zhengzhou import,Guangxi,Henan,L-B,Chalco,Chalco,Imported,29,,,,,,0.0
+,23.2,Chalco Zhengzhou import,Guizhou,Henan,L-B,Chalco,Chalco,Imported,29,,,,,,0.0
+,23.2,Chalco Zhengzhou import,Henan,Henan,L-B,Chalco,Chalco,Imported,29,,,,,,0.0
+,23.2,Chalco Zhengzhou import,Shanxi,Henan,L-B,Chalco,Chalco,Imported,29,,,,,,0.0
+,23.2,Chalco Zhengzhou import,Other,Henan,L-B,Chalco,Chalco,Imported,29,,,,,,0.0
+,24.1,Chalco Zhongzhou Dom. Sinter,Guangxi,Henan,Sinter,Chalco,Chalco,Domestic,30,,,,,,0.0
+,24.1,Chalco Zhongzhou Dom. Sinter,Guizhou,Henan,Sinter,Chalco,Chalco,Domestic,30,,,,,,0.0
+,24.1,Chalco Zhongzhou Dom. Sinter,Henan,Henan,Sinter,Chalco,Chalco,Domestic,30,,,,,,25378.396715300005
+,24.1,Chalco Zhongzhou Dom. Sinter,Shanxi,Henan,Sinter,Chalco,Chalco,Domestic,30,,,,,,0.0
+,24.1,Chalco Zhongzhou Dom. Sinter,Other,Henan,Sinter,Chalco,Chalco,Domestic,30,,,,,,0.0
+,24.2,Chalco Zhongzhou Dom. Bayer,Guangxi,Henan,H-B-ODT-Sweet,Chalco,Chalco,Domestic,31,,,,,,0.0
+,24.2,Chalco Zhongzhou Dom. Bayer,Guizhou,Henan,H-B-ODT-Sweet,Chalco,Chalco,Domestic,31,,,,,,0.0
+,24.2,Chalco Zhongzhou Dom. Bayer,Henan,Henan,H-B-ODT-Sweet,Chalco,Chalco,Domestic,31,,,,,,35899.67402333
+,24.2,Chalco Zhongzhou Dom. Bayer,Shanxi,Henan,H-B-ODT-Sweet,Chalco,Chalco,Domestic,31,,,,,,0.0
+,24.2,Chalco Zhongzhou Dom. Bayer,Other,Henan,H-B-ODT-Sweet,Chalco,Chalco,Domestic,31,,,,,,0.0
+,24.3,Chalco Zhongzhou LT Amt,Guangxi,Henan,L-B,Chalco,Chalco,Imported,32,,,,,,0.0
+,24.3,Chalco Zhongzhou LT Amt,Guizhou,Henan,L-B,Chalco,Chalco,Imported,32,,,,,,0.0
+,24.3,Chalco Zhongzhou LT Amt,Henan,Henan,L-B,Chalco,Chalco,Imported,32,,,,,,0.0
+,24.3,Chalco Zhongzhou LT Amt,Shanxi,Henan,L-B,Chalco,Chalco,Imported,32,,,,,,0.0
+,24.3,Chalco Zhongzhou LT Amt,Other,Henan,L-B,Chalco,Chalco,Imported,32,,,,,,0.0
+,25.1,Kaiman,Guangxi,Henan,"H-B, ODT, Sweetening",Jinjiang,Jinjiang,Domestic,33,,,,,,0.0
+,25.1,Kaiman,Guizhou,Henan,"H-B, ODT, Sweetening",Jinjiang,Jinjiang,Domestic,33,,,,,,0.0
+,25.1,Kaiman,Henan,Henan,"H-B, ODT, Sweetening",Jinjiang,Jinjiang,Domestic,33,,,,,,60566.8217042
+,25.1,Kaiman,Shanxi,Henan,"H-B, ODT, Sweetening",Jinjiang,Jinjiang,Domestic,33,,,,,,0.0
+,25.1,Kaiman,Other,Henan,"H-B, ODT, Sweetening",Jinjiang,Jinjiang,Domestic,33,,,,,,0.0
+,25.2,Kaiman Import,Guangxi,Henan,L-B,Jinjiang,Jinjiang,Imported,34,,,,,,0.0
+,25.2,Kaiman Import,Guizhou,Henan,L-B,Jinjiang,Jinjiang,Imported,34,,,,,,0.0
+,25.2,Kaiman Import,Henan,Henan,L-B,Jinjiang,Jinjiang,Imported,34,,,,,,0.0
+,25.2,Kaiman Import,Shanxi,Henan,L-B,Jinjiang,Jinjiang,Imported,34,,,,,,0.0
+,25.2,Kaiman Import,Other,Henan,L-B,Jinjiang,Jinjiang,Imported,34,,,,,,0.0
+,26.1,East Hope Mianchi,Guangxi,Henan,"H-B, ODT",East Hope,East Hope,Domestic,35,,,,,,0.0
+,26.1,East Hope Mianchi,Guizhou,Henan,"H-B, ODT",East Hope,East Hope,Domestic,35,,,,,,0.0
+,26.1,East Hope Mianchi,Henan,Henan,"H-B, ODT",East Hope,East Hope,Domestic,35,,,,,,75171.50721560001
+,26.1,East Hope Mianchi,Shanxi,Henan,"H-B, ODT",East Hope,East Hope,Domestic,35,,,,,,0.0
+,26.1,East Hope Mianchi,Other,Henan,"H-B, ODT",East Hope,East Hope,Domestic,35,,,,,,0.0
+,26.2,East Hope Mianchi Added LT,Guangxi,Henan,L-B,East Hope,East Hope,Imported,36,,,,,,0.0
+,26.2,East Hope Mianchi Added LT,Guizhou,Henan,L-B,East Hope,East Hope,Imported,36,,,,,,0.0
+,26.2,East Hope Mianchi Added LT,Henan,Henan,L-B,East Hope,East Hope,Imported,36,,,,,,0.0
+,26.2,East Hope Mianchi Added LT,Shanxi,Henan,L-B,East Hope,East Hope,Imported,36,,,,,,0.0
+,26.2,East Hope Mianchi Added LT,Other,Henan,L-B,East Hope,East Hope,Imported,36,,,,,,0.0
+,27,Huiyuan Lushan,Guangxi,Henan,"H-B, ODT","Shenhuo, Huiyuan",Shenhuo,Domestic,37,,,,,,0.0
+,27,Huiyuan Lushan,Guizhou,Henan,"H-B, ODT","Shenhuo, Huiyuan",Shenhuo,Domestic,37,,,,,,0.0
+,27,Huiyuan Lushan,Henan,Henan,"H-B, ODT","Shenhuo, Huiyuan",Shenhuo,Domestic,37,,,,,,9485.171169899999
+,27,Huiyuan Lushan,Shanxi,Henan,"H-B, ODT","Shenhuo, Huiyuan",Shenhuo,Domestic,37,,,,,,0.0
+,27,Huiyuan Lushan,Other,Henan,"H-B, ODT","Shenhuo, Huiyuan",Shenhuo,Domestic,37,,,,,,0.0
+,28,Jingxin,Guangxi,Henan,H-B,Private,Other,Domestic,38,,,,,,0.0
+,28,Jingxin,Guizhou,Henan,H-B,Private,Other,Domestic,38,,,,,,0.0
+,28,Jingxin,Henan,Henan,H-B,Private,Other,Domestic,38,,,,,,5534.958665
+,28,Jingxin,Shanxi,Henan,H-B,Private,Other,Domestic,38,,,,,,0.0
+,28,Jingxin,Other,Henan,H-B,Private,Other,Domestic,38,,,,,,0.0
+,29,Shenhuo,Guangxi,Henan,Sintering,Shenhuo,Shenhuo,Domestic,39,,,,,,0.0
+,29,Shenhuo,Guizhou,Henan,Sintering,Shenhuo,Shenhuo,Domestic,39,,,,,,0.0
+,29,Shenhuo,Henan,Henan,Sintering,Shenhuo,Shenhuo,Domestic,39,,,,,,1322.6524616
+,29,Shenhuo,Shanxi,Henan,Sintering,Shenhuo,Shenhuo,Domestic,39,,,,,,0.0
+,29,Shenhuo,Other,Henan,Sintering,Shenhuo,Shenhuo,Domestic,39,,,,,,0.0
+,30.1,Wanji,Guangxi,Henan,H-B,Wanji Holdings,Other,Domestic,40,,,,,,0.0
+,30.1,Wanji,Guizhou,Henan,H-B,Wanji Holdings,Other,Domestic,40,,,,,,0.0
+,30.1,Wanji,Henan,Henan,H-B,Wanji Holdings,Other,Domestic,40,,,,,,53155.638641800004
+,30.1,Wanji,Shanxi,Henan,H-B,Wanji Holdings,Other,Domestic,40,,,,,,0.0
+,30.1,Wanji,Other,Henan,H-B,Wanji Holdings,Other,Domestic,40,,,,,,0.0
+,30.2,Wanji import,Guangxi,Henan,L-B,Wanji Holdings,Other,Imported,41,,,,,,0.0
+,30.2,Wanji import,Guizhou,Henan,L-B,Wanji Holdings,Other,Imported,41,,,,,,0.0
+,30.2,Wanji import,Henan,Henan,L-B,Wanji Holdings,Other,Imported,41,,,,,,0.0
+,30.2,Wanji import,Shanxi,Henan,L-B,Wanji Holdings,Other,Imported,41,,,,,,0.0
+,30.2,Wanji import,Other,Henan,L-B,Wanji Holdings,Other,Imported,41,,,,,,0.0
+,31,Weilai,Guangxi,Henan,H-B,Private,Other,Domestic,42,,,,,,0.0
+,31,Weilai,Guizhou,Henan,H-B,Private,Other,Domestic,42,,,,,,0.0
+,31,Weilai,Henan,Henan,H-B,Private,Other,Domestic,42,,,,,,0.0
+,31,Weilai,Shanxi,Henan,H-B,Private,Other,Domestic,42,,,,,,3067.263019
+,31,Weilai,Other,Henan,H-B,Private,Other,Domestic,42,,,,,,0.0
+,32,Yifeng Gongyi (Yulian Xinya),Guangxi,Henan,H-B,Private,Other,Domestic,43,,,,,,0.0
+,32,Yifeng Gongyi (Yulian Xinya),Guizhou,Henan,H-B,Private,Other,Domestic,43,,,,,,0.0
+,32,Yifeng Gongyi (Yulian Xinya),Henan,Henan,H-B,Private,Other,Domestic,43,,,,,,7409.33584
+,32,Yifeng Gongyi (Yulian Xinya),Shanxi,Henan,H-B,Private,Other,Domestic,43,,,,,,0.0
+,32,Yifeng Gongyi (Yulian Xinya),Other,Henan,H-B,Private,Other,Domestic,43,,,,,,0.0
+,33,Yima Yixiang,Guangxi,Henan,"H-B, CGA","Jinjiang, Yima Coal Group",Jinjiang,Domestic,44,,,,,,0.0
+,33,Yima Yixiang,Guizhou,Henan,"H-B, CGA","Jinjiang, Yima Coal Group",Jinjiang,Domestic,44,,,,,,0.0
+,33,Yima Yixiang,Henan,Henan,"H-B, CGA","Jinjiang, Yima Coal Group",Jinjiang,Domestic,44,,,,,,12962.873554900001
+,33,Yima Yixiang,Shanxi,Henan,"H-B, CGA","Jinjiang, Yima Coal Group",Jinjiang,Domestic,44,,,,,,0.0
+,33,Yima Yixiang,Other,Henan,"H-B, CGA","Jinjiang, Yima Coal Group",Jinjiang,Domestic,44,,,,,,0.0
+,34,Zhongmei,Guangxi,Henan,"H-B, Sweetening","Yongmei Group, Wuzhou Aluminium, Dengfeng Electric Power Corporation",Other,Domestic,45,,,,,,0.0
+,34,Zhongmei,Guizhou,Henan,"H-B, Sweetening","Yongmei Group, Wuzhou Aluminium, Dengfeng Electric Power Corporation",Other,Domestic,45,,,,,,0.0
+,34,Zhongmei,Henan,Henan,"H-B, Sweetening","Yongmei Group, Wuzhou Aluminium, Dengfeng Electric Power Corporation",Other,Domestic,45,,,,,,30955.7807446
+,34,Zhongmei,Shanxi,Henan,"H-B, Sweetening","Yongmei Group, Wuzhou Aluminium, Dengfeng Electric Power Corporation",Other,Domestic,45,,,,,,0.0
+,34,Zhongmei,Other,Henan,"H-B, Sweetening","Yongmei Group, Wuzhou Aluminium, Dengfeng Electric Power Corporation",Other,Domestic,45,,,,,,0.0
+,35,Shaoxing,Guangxi,Henan,H-B,Private,Other,Domestic,46,,,,,,0.0
+,35,Shaoxing,Guizhou,Henan,H-B,Private,Other,Domestic,46,,,,,,0.0
+,35,Shaoxing,Henan,Henan,H-B,Private,Other,Domestic,46,,,,,,128.979386
+,35,Shaoxing,Shanxi,Henan,H-B,Private,Other,Domestic,46,,,,,,0.0
+,35,Shaoxing,Other,Henan,H-B,Private,Other,Domestic,46,,,,,,0.0
+,36,Zhongchao,Guangxi,Henan,H-B,Private,Other,Domestic,47,,,,,,0.0
+,36,Zhongchao,Guizhou,Henan,H-B,Private,Other,Domestic,47,,,,,,0.0
+,36,Zhongchao,Henan,Henan,H-B,Private,Other,Domestic,47,,,,,,553.2425848
+,36,Zhongchao,Shanxi,Henan,H-B,Private,Other,Domestic,47,,,,,,0.0
+,36,Zhongchao,Other,Henan,H-B,Private,Other,Domestic,47,,,,,,0.0
+,37,Jialu Xianfeng,Guangxi,Hubei,H-B,Private,Other,Domestic,48,,,,,,0.0
+,37,Jialu Xianfeng,Guizhou,Hubei,H-B,Private,Other,Domestic,48,,,,,,0.0
+,37,Jialu Xianfeng,Henan,Hubei,H-B,Private,Other,Domestic,48,,,,,,0.0
+,37,Jialu Xianfeng,Shanxi,Hubei,H-B,Private,Other,Domestic,48,,,,,,0.0
+,37,Jialu Xianfeng,Other,Hubei,H-B,Private,Other,Domestic,48,,,,,,5023.569792
+,38,Jinshi,Guangxi,Hubei,H-B,Private,Other,Domestic,49,,,,,,0.0
+,38,Jinshi,Guizhou,Hubei,H-B,Private,Other,Domestic,49,,,,,,0.0
+,38,Jinshi,Henan,Hubei,H-B,Private,Other,Domestic,49,,,,,,0.0
+,38,Jinshi,Shanxi,Hubei,H-B,Private,Other,Domestic,49,,,,,,0.0
+,38,Jinshi,Other,Hubei,H-B,Private,Other,Domestic,49,,,,,,5182.384878
+,39,Huixiang,Guangxi,Hunan,H-B,Private,Other,Domestic,50,,,,,,0.0
+,39,Huixiang,Guizhou,Hunan,H-B,Private,Other,Domestic,50,,,,,,0.0
+,39,Huixiang,Henan,Hunan,H-B,Private,Other,Domestic,50,,,,,,0.0
+,39,Huixiang,Shanxi,Hunan,H-B,Private,Other,Domestic,50,,,,,,0.0
+,39,Huixiang,Other,Hunan,H-B,Private,Other,Domestic,50,,,,,,1141.947091
+,40.1,Xinwang L-B,Guangxi,Inner Mongolia,L-B,BXG,Other,Imported,51,,,,,,0.0
+,40.1,Xinwang L-B,Guizhou,Inner Mongolia,L-B,BXG,Other,Imported,51,,,,,,0.0
+,40.1,Xinwang L-B,Henan,Inner Mongolia,L-B,BXG,Other,Imported,51,,,,,,0.0
+,40.1,Xinwang L-B,Shanxi,Inner Mongolia,L-B,BXG,Other,Imported,51,,,,,,0.0
+,40.1,Xinwang L-B,Other,Inner Mongolia,L-B,BXG,Other,Imported,51,,,,,,0.0
+,40.2,Xinwang H-B,Guangxi,Inner Mongolia,H-B,BXG,Other,Domestic,52,,,,,,0.0
+,40.2,Xinwang H-B,Guizhou,Inner Mongolia,H-B,BXG,Other,Domestic,52,,,,,,0.0
+,40.2,Xinwang H-B,Henan,Inner Mongolia,H-B,BXG,Other,Domestic,52,,,,,,0.0
+,40.2,Xinwang H-B,Shanxi,Inner Mongolia,H-B,BXG,Other,Domestic,52,,,,,,3967.5790563499995
+,40.2,Xinwang H-B,Other,Inner Mongolia,H-B,BXG,Other,Domestic,52,,,,,,0.0
+,41,Datang Tuoketuo Fly Ash,Guangxi,Inner Mongolia,fly ash,Private,Other,Fly ash,53,,,,,,0.0
+,41,Datang Tuoketuo Fly Ash,Guizhou,Inner Mongolia,fly ash,Private,Other,Fly ash,53,,,,,,0.0
+,41,Datang Tuoketuo Fly Ash,Henan,Inner Mongolia,fly ash,Private,Other,Fly ash,53,,,,,,0.0
+,41,Datang Tuoketuo Fly Ash,Shanxi,Inner Mongolia,fly ash,Private,Other,Fly ash,53,,,,,,0.0
+,41,Datang Tuoketuo Fly Ash,Other,Inner Mongolia,fly ash,Private,Other,Fly ash,53,,,,,,0.0
+,42.1,Mengxi Fly Ash,Guangxi,Inner Mongolia,fly ash,Private,Other,Fly ash,54,,,,,,0.0
+,42.1,Mengxi Fly Ash,Guizhou,Inner Mongolia,fly ash,Private,Other,Fly ash,54,,,,,,0.0
+,42.1,Mengxi Fly Ash,Henan,Inner Mongolia,fly ash,Private,Other,Fly ash,54,,,,,,0.0
+,42.1,Mengxi Fly Ash,Shanxi,Inner Mongolia,fly ash,Private,Other,Fly ash,54,,,,,,0.0
+,42.1,Mengxi Fly Ash,Other,Inner Mongolia,fly ash,Private,Other,Fly ash,54,,,,,,0.0
+,42.2,Mengxi import,Guangxi,Inner Mongolia,L-B,Private,Other,Imported,55,,,,,,0.0
+,42.2,Mengxi import,Guizhou,Inner Mongolia,L-B,Private,Other,Imported,55,,,,,,0.0
+,42.2,Mengxi import,Henan,Inner Mongolia,L-B,Private,Other,Imported,55,,,,,,0.0
+,42.2,Mengxi import,Shanxi,Inner Mongolia,L-B,Private,Other,Imported,55,,,,,,0.0
+,42.2,Mengxi import,Other,Inner Mongolia,L-B,Private,Other,Imported,55,,,,,,0.0
+,43.1,Qihui H-B,Guangxi,Inner Mongolia,H-B,Jinguotou,Other,Imported,56,,,,,,0.0
+,43.1,Qihui H-B,Guizhou,Inner Mongolia,H-B,Jinguotou,Other,Imported,56,,,,,,0.0
+,43.1,Qihui H-B,Henan,Inner Mongolia,H-B,Jinguotou,Other,Imported,56,,,,,,0.0
+,43.1,Qihui H-B,Shanxi,Inner Mongolia,H-B,Jinguotou,Other,Imported,56,,,,,,0.0
+,43.1,Qihui H-B,Other,Inner Mongolia,H-B,Jinguotou,Other,Imported,56,,,,,,0.0
+,43.2,Qihui L-B,Guangxi,Inner Mongolia,L-B,Jinguotou,Other,Imported,57,,,,,,0.0
+,43.2,Qihui L-B,Guizhou,Inner Mongolia,L-B,Jinguotou,Other,Imported,57,,,,,,0.0
+,43.2,Qihui L-B,Henan,Inner Mongolia,L-B,Jinguotou,Other,Imported,57,,,,,,0.0
+,43.2,Qihui L-B,Shanxi,Inner Mongolia,L-B,Jinguotou,Other,Imported,57,,,,,,0.0
+,43.2,Qihui L-B,Other,Inner Mongolia,L-B,Jinguotou,Other,Imported,57,,,,,,0.0
+,44,Jinjiang Lianyungang,Guangxi,Jiangsu,L-B,Jinjiang,Jinjiang,Imported,58,,,,,,0.0
+,44,Jinjiang Lianyungang,Guizhou,Jiangsu,L-B,Jinjiang,Jinjiang,Imported,58,,,,,,0.0
+,44,Jinjiang Lianyungang,Henan,Jiangsu,L-B,Jinjiang,Jinjiang,Imported,58,,,,,,0.0
+,44,Jinjiang Lianyungang,Shanxi,Jiangsu,L-B,Jinjiang,Jinjiang,Imported,58,,,,,,0.0
+,44,Jinjiang Lianyungang,Other,Jiangsu,L-B,Jinjiang,Jinjiang,Imported,58,,,,,,0.0
+,45,Chalco Lianyungang,Guangxi,Jiangsu,L-B,Chalco,Chalco,Imported,59,,,,,,0.0
+,45,Chalco Lianyungang,Guizhou,Jiangsu,L-B,Chalco,Chalco,Imported,59,,,,,,0.0
+,45,Chalco Lianyungang,Henan,Jiangsu,L-B,Chalco,Chalco,Imported,59,,,,,,0.0
+,45,Chalco Lianyungang,Shanxi,Jiangsu,L-B,Chalco,Chalco,Imported,59,,,,,,0.0
+,45,Chalco Lianyungang,Other,Jiangsu,L-B,Chalco,Chalco,Imported,59,,,,,,0.0
+,46.1,Chalco Shandong L-B,Guangxi,Shandong,L-B,Chalco,Chalco,Imported,60,,,,,,0.0
+,46.1,Chalco Shandong L-B,Guizhou,Shandong,L-B,Chalco,Chalco,Imported,60,,,,,,0.0
+,46.1,Chalco Shandong L-B,Henan,Shandong,L-B,Chalco,Chalco,Imported,60,,,,,,0.0
+,46.1,Chalco Shandong L-B,Shanxi,Shandong,L-B,Chalco,Chalco,Imported,60,,,,,,0.0
+,46.1,Chalco Shandong L-B,Other,Shandong,L-B,Chalco,Chalco,Imported,60,,,,,,0.0
+,46.2,Chalco Shandong sinter,Guangxi,Shandong,Sintering,Chalco,Chalco,Domestic,61,,,,,,0.0
+,46.2,Chalco Shandong sinter,Guizhou,Shandong,Sintering,Chalco,Chalco,Domestic,61,,,,,,0.0
+,46.2,Chalco Shandong sinter,Henan,Shandong,Sintering,Chalco,Chalco,Domestic,61,,,,,,0.0
+,46.2,Chalco Shandong sinter,Shanxi,Shandong,Sintering,Chalco,Chalco,Domestic,61,,,,,,6273.95282
+,46.2,Chalco Shandong sinter,Other,Shandong,Sintering,Chalco,Chalco,Domestic,61,,,,,,0.0
+,46.3,Chalco Shandong sinter import,Guangxi,Shandong,L-B,Chalco,Chalco,Imported,62,,,,,,0.0
+,46.3,Chalco Shandong sinter import,Guizhou,Shandong,L-B,Chalco,Chalco,Imported,62,,,,,,0.0
+,46.3,Chalco Shandong sinter import,Henan,Shandong,L-B,Chalco,Chalco,Imported,62,,,,,,0.0
+,46.3,Chalco Shandong sinter import,Shanxi,Shandong,L-B,Chalco,Chalco,Imported,62,,,,,,0.0
+,46.3,Chalco Shandong sinter import,Other,Shandong,L-B,Chalco,Chalco,Imported,62,,,,,,0.0
+,47.1,Chiping Xinfa L-B,Guangxi,Shandong,L-B,Xinfa,Xinfa,Imported,63,,,,,,0.0
+,47.1,Chiping Xinfa L-B,Guizhou,Shandong,L-B,Xinfa,Xinfa,Imported,63,,,,,,0.0
+,47.1,Chiping Xinfa L-B,Henan,Shandong,L-B,Xinfa,Xinfa,Imported,63,,,,,,0.0
+,47.1,Chiping Xinfa L-B,Shanxi,Shandong,L-B,Xinfa,Xinfa,Imported,63,,,,,,0.0
+,47.1,Chiping Xinfa L-B,Other,Shandong,L-B,Xinfa,Xinfa,Imported,63,,,,,,0.0
+,47.2,Chiping Xinfa H-B,Guangxi,Shandong,H-B,Xinfa,Xinfa,Imported,64,,,,,,0.0
+,47.2,Chiping Xinfa H-B,Guizhou,Shandong,H-B,Xinfa,Xinfa,Imported,64,,,,,,0.0
+,47.2,Chiping Xinfa H-B,Henan,Shandong,H-B,Xinfa,Xinfa,Imported,64,,,,,,0.0
+,47.2,Chiping Xinfa H-B,Shanxi,Shandong,H-B,Xinfa,Xinfa,Imported,64,,,,,,0.0
+,47.2,Chiping Xinfa H-B,Other,Shandong,H-B,Xinfa,Xinfa,Imported,64,,,,,,0.0
+,48,Lubei,Guangxi,Shandong,L-B,Lubei Group,Jinjiang,Imported,65,,,,,,0.0
+,48,Lubei,Guizhou,Shandong,L-B,Lubei Group,Jinjiang,Imported,65,,,,,,0.0
+,48,Lubei,Henan,Shandong,L-B,Lubei Group,Jinjiang,Imported,65,,,,,,0.0
+,48,Lubei,Shanxi,Shandong,L-B,Lubei Group,Jinjiang,Imported,65,,,,,,0.0
+,48,Lubei,Other,Shandong,L-B,Lubei Group,Jinjiang,Imported,65,,,,,,0.0
+,49.1,Nanshan Donghai H-B,Guangxi,Shandong,H-B,Nanshan Group,Nanshan,Imported,66,,,,,,0.0
+,49.1,Nanshan Donghai H-B,Guizhou,Shandong,H-B,Nanshan Group,Nanshan,Imported,66,,,,,,0.0
+,49.1,Nanshan Donghai H-B,Henan,Shandong,H-B,Nanshan Group,Nanshan,Imported,66,,,,,,0.0
+,49.1,Nanshan Donghai H-B,Shanxi,Shandong,H-B,Nanshan Group,Nanshan,Imported,66,,,,,,0.0
+,49.1,Nanshan Donghai H-B,Other,Shandong,H-B,Nanshan Group,Nanshan,Imported,66,,,,,,0.0
+,49.2,Nanshan Donghai L-B,Guangxi,Shandong,L-B,Nanshan Group,Nanshan,Imported,67,,,,,,0.0
+,49.2,Nanshan Donghai L-B,Guizhou,Shandong,L-B,Nanshan Group,Nanshan,Imported,67,,,,,,0.0
+,49.2,Nanshan Donghai L-B,Henan,Shandong,L-B,Nanshan Group,Nanshan,Imported,67,,,,,,0.0
+,49.2,Nanshan Donghai L-B,Shanxi,Shandong,L-B,Nanshan Group,Nanshan,Imported,67,,,,,,0.0
+,49.2,Nanshan Donghai L-B,Other,Shandong,L-B,Nanshan Group,Nanshan,Imported,67,,,,,,0.0
+,50,Bochuang,Guangxi,Shandong,L-B,Chuangxin Group,Other,Imported,68,,,,,,0.0
+,50,Bochuang,Guizhou,Shandong,L-B,Chuangxin Group,Other,Imported,68,,,,,,0.0
+,50,Bochuang,Henan,Shandong,L-B,Chuangxin Group,Other,Imported,68,,,,,,0.0
+,50,Bochuang,Shanxi,Shandong,L-B,Chuangxin Group,Other,Imported,68,,,,,,0.0
+,50,Bochuang,Other,Shandong,L-B,Chuangxin Group,Other,Imported,68,,,,,,0.0
+,51,Nanhan,Guangxi,Shandong,L-B,Private,Other,Imported,69,,,,,,0.0
+,51,Nanhan,Guizhou,Shandong,L-B,Private,Other,Imported,69,,,,,,0.0
+,51,Nanhan,Henan,Shandong,L-B,Private,Other,Imported,69,,,,,,0.0
+,51,Nanhan,Shanxi,Shandong,L-B,Private,Other,Imported,69,,,,,,0.0
+,51,Nanhan,Other,Shandong,L-B,Private,Other,Imported,69,,,,,,0.0
+,52.1,Weiqiao - Binzhou L-B,Guangxi,Shandong,L-B,Weiqiao,Weiqiao,Imported,70,,,,,,0.0
+,52.1,Weiqiao - Binzhou L-B,Guizhou,Shandong,L-B,Weiqiao,Weiqiao,Imported,70,,,,,,0.0
+,52.1,Weiqiao - Binzhou L-B,Henan,Shandong,L-B,Weiqiao,Weiqiao,Imported,70,,,,,,0.0
+,52.1,Weiqiao - Binzhou L-B,Shanxi,Shandong,L-B,Weiqiao,Weiqiao,Imported,70,,,,,,0.0
+,52.1,Weiqiao - Binzhou L-B,Other,Shandong,L-B,Weiqiao,Weiqiao,Imported,70,,,,,,0.0
+,52.2,Weiqiao - Binzhou H-B,Guangxi,Shandong,H-B,Weiqiao,Weiqiao,Imported,71,,,,,,0.0
+,52.2,Weiqiao - Binzhou H-B,Guizhou,Shandong,H-B,Weiqiao,Weiqiao,Imported,71,,,,,,0.0
+,52.2,Weiqiao - Binzhou H-B,Henan,Shandong,H-B,Weiqiao,Weiqiao,Imported,71,,,,,,0.0
+,52.2,Weiqiao - Binzhou H-B,Shanxi,Shandong,H-B,Weiqiao,Weiqiao,Imported,71,,,,,,0.0
+,52.2,Weiqiao - Binzhou H-B,Other,Shandong,H-B,Weiqiao,Weiqiao,Imported,71,,,,,,0.0
+,53.1,Weiqiao-Wudi-Zhanhua L-B,Guangxi,Shandong,L-B,Weiqiao,Weiqiao,Imported,72,,,,,,0.0
+,53.1,Weiqiao-Wudi-Zhanhua L-B,Guizhou,Shandong,L-B,Weiqiao,Weiqiao,Imported,72,,,,,,0.0
+,53.1,Weiqiao-Wudi-Zhanhua L-B,Henan,Shandong,L-B,Weiqiao,Weiqiao,Imported,72,,,,,,0.0
+,53.1,Weiqiao-Wudi-Zhanhua L-B,Shanxi,Shandong,L-B,Weiqiao,Weiqiao,Imported,72,,,,,,0.0
+,53.1,Weiqiao-Wudi-Zhanhua L-B,Other,Shandong,L-B,Weiqiao,Weiqiao,Imported,72,,,,,,0.0
+,53.2,Weiqiao-Wudi-Zhanhua H-B,Guangxi,Shandong,H-B,Weiqiao,Weiqiao,Imported,73,,,,,,0.0
+,53.2,Weiqiao-Wudi-Zhanhua H-B,Guizhou,Shandong,H-B,Weiqiao,Weiqiao,Imported,73,,,,,,0.0
+,53.2,Weiqiao-Wudi-Zhanhua H-B,Henan,Shandong,H-B,Weiqiao,Weiqiao,Imported,73,,,,,,0.0
+,53.2,Weiqiao-Wudi-Zhanhua H-B,Shanxi,Shandong,H-B,Weiqiao,Weiqiao,Imported,73,,,,,,0.0
+,53.2,Weiqiao-Wudi-Zhanhua H-B,Other,Shandong,H-B,Weiqiao,Weiqiao,Imported,73,,,,,,0.0
+,54,Aokaida,Guangxi,Shanxi,H-B,Aokaida,Other,Domestic,74,,,,,,0.0
+,54,Aokaida,Guizhou,Shanxi,H-B,Aokaida,Other,Domestic,74,,,,,,0.0
+,54,Aokaida,Henan,Shanxi,H-B,Aokaida,Other,Domestic,74,,,,,,0.0
+,54,Aokaida,Shanxi,Shanxi,H-B,Aokaida,Other,Domestic,74,,,,,,7465.820419
+,54,Aokaida,Other,Shanxi,H-B,Aokaida,Other,Domestic,74,,,,,,0.0
+,55,Chalco Lvliang (Xing),Guangxi,Shanxi,H-B,Chalco,Chalco,Domestic,75,,,,,,0.0
+,55,Chalco Lvliang (Xing),Guizhou,Shanxi,H-B,Chalco,Chalco,Domestic,75,,,,,,0.0
+,55,Chalco Lvliang (Xing),Henan,Shanxi,H-B,Chalco,Chalco,Domestic,75,,,,,,0.0
+,55,Chalco Lvliang (Xing),Shanxi,Shanxi,H-B,Chalco,Chalco,Domestic,75,,,,,,28062.120575
+,55,Chalco Lvliang (Xing),Other,Shanxi,H-B,Chalco,Chalco,Domestic,75,,,,,,0.0
+,56.1,Chalco Shanxi,Guangxi,Shanxi,"H-B (Lime), sinter",Chalco,Chalco,Domestic,76,,,,,,0.0
+,56.1,Chalco Shanxi,Guizhou,Shanxi,"H-B (Lime), sinter",Chalco,Chalco,Domestic,76,,,,,,0.0
+,56.1,Chalco Shanxi,Henan,Shanxi,"H-B (Lime), sinter",Chalco,Chalco,Domestic,76,,,,,,0.0
+,56.1,Chalco Shanxi,Shanxi,Shanxi,"H-B (Lime), sinter",Chalco,Chalco,Domestic,76,,,,,,53820.17093180001
+,56.1,Chalco Shanxi,Other,Shanxi,"H-B (Lime), sinter",Chalco,Chalco,Domestic,76,,,,,,0.0
+,56.2,Chalco Shanxi import,Guangxi,Shanxi,L-B,Chalco,Chalco,Imported,77,,,,,,0.0
+,56.2,Chalco Shanxi import,Guizhou,Shanxi,L-B,Chalco,Chalco,Imported,77,,,,,,0.0
+,56.2,Chalco Shanxi import,Henan,Shanxi,L-B,Chalco,Chalco,Imported,77,,,,,,0.0
+,56.2,Chalco Shanxi import,Shanxi,Shanxi,L-B,Chalco,Chalco,Imported,77,,,,,,0.0
+,56.2,Chalco Shanxi import,Other,Shanxi,L-B,Chalco,Chalco,Imported,77,,,,,,0.0
+,57.1,SPIC Shanxi,Guangxi,Shanxi,H-B & Sinter,SPIC,SPIC,Domestic,78,,,,,,0.0
+,57.1,SPIC Shanxi,Guizhou,Shanxi,H-B & Sinter,SPIC,SPIC,Domestic,78,,,,,,0.0
+,57.1,SPIC Shanxi,Henan,Shanxi,H-B & Sinter,SPIC,SPIC,Domestic,78,,,,,,0.0
+,57.1,SPIC Shanxi,Shanxi,Shanxi,H-B & Sinter,SPIC,SPIC,Domestic,78,,,,,,79749.0840545
+,57.1,SPIC Shanxi,Other,Shanxi,H-B & Sinter,SPIC,SPIC,Domestic,78,,,,,,0.0
+,57.2,SPIC Shanxi import,Guangxi,Shanxi,L-B,SPIC,SPIC,Imported,79,,,,,,0.0
+,57.2,SPIC Shanxi import,Guizhou,Shanxi,L-B,SPIC,SPIC,Imported,79,,,,,,0.0
+,57.2,SPIC Shanxi import,Henan,Shanxi,L-B,SPIC,SPIC,Imported,79,,,,,,0.0
+,57.2,SPIC Shanxi import,Shanxi,Shanxi,L-B,SPIC,SPIC,Imported,79,,,,,,0.0
+,57.2,SPIC Shanxi import,Other,Shanxi,L-B,SPIC,SPIC,Imported,79,,,,,,0.0
+,58.1,Dongxu Tianyuan,Guangxi,Shanxi,H-B,Tianyuan Chemical,Other,Domestic,80,,,,,,0.0
+,58.1,Dongxu Tianyuan,Guizhou,Shanxi,H-B,Tianyuan Chemical,Other,Domestic,80,,,,,,0.0
+,58.1,Dongxu Tianyuan,Henan,Shanxi,H-B,Tianyuan Chemical,Other,Domestic,80,,,,,,0.0
+,58.1,Dongxu Tianyuan,Shanxi,Shanxi,H-B,Tianyuan Chemical,Other,Domestic,80,,,,,,17752.019117
+,58.1,Dongxu Tianyuan,Other,Shanxi,H-B,Tianyuan Chemical,Other,Domestic,80,,,,,,0.0
+,58.2,Dongxu Tianyuan import,Guangxi,Shanxi,L-B,Tianyuan Chemical,Other,Imported,81,,,,,,0.0
+,58.2,Dongxu Tianyuan import,Guizhou,Shanxi,L-B,Tianyuan Chemical,Other,Imported,81,,,,,,0.0
+,58.2,Dongxu Tianyuan import,Henan,Shanxi,L-B,Tianyuan Chemical,Other,Imported,81,,,,,,0.0
+,58.2,Dongxu Tianyuan import,Shanxi,Shanxi,L-B,Tianyuan Chemical,Other,Imported,81,,,,,,0.0
+,58.2,Dongxu Tianyuan import,Other,Shanxi,L-B,Tianyuan Chemical,Other,Imported,81,,,,,,0.0
+,59.1,East Hope Lingshi,Guangxi,Shanxi,H-B,East Hope,East Hope,Domestic,82,,,,,,0.0
+,59.1,East Hope Lingshi,Guizhou,Shanxi,H-B,East Hope,East Hope,Domestic,82,,,,,,0.0
+,59.1,East Hope Lingshi,Henan,Shanxi,H-B,East Hope,East Hope,Domestic,82,,,,,,0.0
+,59.1,East Hope Lingshi,Shanxi,Shanxi,H-B,East Hope,East Hope,Domestic,82,,,,,,30061.795321999998
+,59.1,East Hope Lingshi,Other,Shanxi,H-B,East Hope,East Hope,Domestic,82,,,,,,0.0
+,59.2,East Hope Lingshi Import,Guangxi,Shanxi,L-B,East Hope,East Hope,Imported,83,,,,,,0.0
+,59.2,East Hope Lingshi Import,Guizhou,Shanxi,L-B,East Hope,East Hope,Imported,83,,,,,,0.0
+,59.2,East Hope Lingshi Import,Henan,Shanxi,L-B,East Hope,East Hope,Imported,83,,,,,,0.0
+,59.2,East Hope Lingshi Import,Shanxi,Shanxi,L-B,East Hope,East Hope,Imported,83,,,,,,0.0
+,59.2,East Hope Lingshi Import,Other,Shanxi,L-B,East Hope,East Hope,Imported,83,,,,,,0.0
+,60,Huaqing,Guangxi,Shanxi,H-B,Private,Other,Domestic,84,,,,,,0.0
+,60,Huaqing,Guizhou,Shanxi,H-B,Private,Other,Domestic,84,,,,,,0.0
+,60,Huaqing,Henan,Shanxi,H-B,Private,Other,Domestic,84,,,,,,0.0
+,60,Huaqing,Shanxi,Shanxi,H-B,Private,Other,Domestic,84,,,,,,7617.9297277
+,60,Huaqing,Other,Shanxi,H-B,Private,Other,Domestic,84,,,,,,0.0
+,61,Qiangjin Alumimium,Guangxi,Shanxi,H-B,Private,Other,Domestic,85,,,,,,0.0
+,61,Qiangjin Alumimium,Guizhou,Shanxi,H-B,Private,Other,Domestic,85,,,,,,0.0
+,61,Qiangjin Alumimium,Henan,Shanxi,H-B,Private,Other,Domestic,85,,,,,,0.0
+,61,Qiangjin Alumimium,Shanxi,Shanxi,H-B,Private,Other,Domestic,85,,,,,,9826.659443
+,61,Qiangjin Alumimium,Other,Shanxi,H-B,Private,Other,Domestic,85,,,,,,0.0
+,62,Senze,Guangxi,Shanxi,H-B & Sinter (1.2:0.1),Senze,Other,Domestic,86,,,,,,0.0
+,62,Senze,Guizhou,Shanxi,H-B & Sinter (1.2:0.1),Senze,Other,Domestic,86,,,,,,0.0
+,62,Senze,Henan,Shanxi,H-B & Sinter (1.2:0.1),Senze,Other,Domestic,86,,,,,,0.0
+,62,Senze,Shanxi,Shanxi,H-B & Sinter (1.2:0.1),Senze,Other,Domestic,86,,,,,,28621.037483
+,62,Senze,Other,Shanxi,H-B & Sinter (1.2:0.1),Senze,Other,Domestic,86,,,,,,0.0
+,63,Taixing,Guangxi,Shanxi,H-B,Private,Other,Domestic,87,,,,,,0.0
+,63,Taixing,Guizhou,Shanxi,H-B,Private,Other,Domestic,87,,,,,,0.0
+,63,Taixing,Henan,Shanxi,H-B,Private,Other,Domestic,87,,,,,,0.0
+,63,Taixing,Shanxi,Shanxi,H-B,Private,Other,Domestic,87,,,,,,5666.663067
+,63,Taixing,Other,Shanxi,H-B,Private,Other,Domestic,87,,,,,,0.0
+,64,Wusheng,Guangxi,Shanxi,H-B,Private,Other,Domestic,88,,,,,,0.0
+,64,Wusheng,Guizhou,Shanxi,H-B,Private,Other,Domestic,88,,,,,,0.0
+,64,Wusheng,Henan,Shanxi,H-B,Private,Other,Domestic,88,,,,,,0.0
+,64,Wusheng,Shanxi,Shanxi,H-B,Private,Other,Domestic,88,,,,,,8376.1115542
+,64,Wusheng,Other,Shanxi,H-B,Private,Other,Domestic,88,,,,,,0.0
+,65,Xinfa - Jiaokou,Guangxi,Shanxi,H-B,Xinfa,Xinfa,Domestic,89,,,,,,0.0
+,65,Xinfa - Jiaokou,Guizhou,Shanxi,H-B,Xinfa,Xinfa,Domestic,89,,,,,,0.0
+,65,Xinfa - Jiaokou,Henan,Shanxi,H-B,Xinfa,Xinfa,Domestic,89,,,,,,0.0
+,65,Xinfa - Jiaokou,Shanxi,Shanxi,H-B,Xinfa,Xinfa,Domestic,89,,,,,,55347.183211799995
+,65,Xinfa - Jiaokou,Other,Shanxi,H-B,Xinfa,Xinfa,Domestic,89,,,,,,0.0
+,66,Xinfa - Xiaoyi,Guangxi,Shanxi,H-B,Xinfa,Xinfa,Domestic,90,,,,,,0.0
+,66,Xinfa - Xiaoyi,Guizhou,Shanxi,H-B,Xinfa,Xinfa,Domestic,90,,,,,,0.0
+,66,Xinfa - Xiaoyi,Henan,Shanxi,H-B,Xinfa,Xinfa,Domestic,90,,,,,,0.0
+,66,Xinfa - Xiaoyi,Shanxi,Shanxi,H-B,Xinfa,Xinfa,Domestic,90,,,,,,35384.2801497
+,66,Xinfa - Xiaoyi,Other,Shanxi,H-B,Xinfa,Xinfa,Domestic,90,,,,,,0.0
+,67.1,Xingan Chemical,Guangxi,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,91,,,,,,0.0
+,67.1,Xingan Chemical,Guizhou,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,91,,,,,,0.0
+,67.1,Xingan Chemical,Henan,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,91,,,,,,0.0
+,67.1,Xingan Chemical,Shanxi,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,91,,,,,,54688.5233597
+,67.1,Xingan Chemical,Other,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,91,,,,,,0.0
+,67.2,Xingan Chemical import,Guangxi,Shanxi,L-B,Jinjiang,Jinjiang,Imported,92,,,,,,0.0
+,67.2,Xingan Chemical import,Guizhou,Shanxi,L-B,Jinjiang,Jinjiang,Imported,92,,,,,,0.0
+,67.2,Xingan Chemical import,Henan,Shanxi,L-B,Jinjiang,Jinjiang,Imported,92,,,,,,0.0
+,67.2,Xingan Chemical import,Shanxi,Shanxi,L-B,Jinjiang,Jinjiang,Imported,92,,,,,,0.0
+,67.2,Xingan Chemical import,Other,Shanxi,L-B,Jinjiang,Jinjiang,Imported,92,,,,,,0.0
+,68,Yangquan Zhaofeng,Guangxi,Shanxi,H-B (Lime),"Xinfa, Yangquan Coal",Xinfa,Domestic,93,,,,,,0.0
+,68,Yangquan Zhaofeng,Guizhou,Shanxi,H-B (Lime),"Xinfa, Yangquan Coal",Xinfa,Domestic,93,,,,,,0.0
+,68,Yangquan Zhaofeng,Henan,Shanxi,H-B (Lime),"Xinfa, Yangquan Coal",Xinfa,Domestic,93,,,,,,0.0
+,68,Yangquan Zhaofeng,Shanxi,Shanxi,H-B (Lime),"Xinfa, Yangquan Coal",Xinfa,Domestic,93,,,,,,25610.4606547
+,68,Yangquan Zhaofeng,Other,Shanxi,H-B (Lime),"Xinfa, Yangquan Coal",Xinfa,Domestic,93,,,,,,0.0
+,69,Gangyuan Jiaohua,Guangxi,Shanxi,H-B,Private,Other,Domestic,94,,,,,,0.0
+,69,Gangyuan Jiaohua,Guizhou,Shanxi,H-B,Private,Other,Domestic,94,,,,,,0.0
+,69,Gangyuan Jiaohua,Henan,Shanxi,H-B,Private,Other,Domestic,94,,,,,,441.650021
+,69,Gangyuan Jiaohua,Shanxi,Shanxi,H-B,Private,Other,Domestic,94,,,,,,0.0
+,69,Gangyuan Jiaohua,Other,Shanxi,H-B,Private,Other,Domestic,94,,,,,,0.0
+,70.1,Xinghua (Chalco Jiaokou),Guangxi,Shanxi,H-B,Chalco,Chalco,Domestic,95,,,,,,0.0
+,70.1,Xinghua (Chalco Jiaokou),Guizhou,Shanxi,H-B,Chalco,Chalco,Domestic,95,,,,,,0.0
+,70.1,Xinghua (Chalco Jiaokou),Henan,Shanxi,H-B,Chalco,Chalco,Domestic,95,,,,,,0.0
+,70.1,Xinghua (Chalco Jiaokou),Shanxi,Shanxi,H-B,Chalco,Chalco,Domestic,95,,,,,,24612.520692
+,70.1,Xinghua (Chalco Jiaokou),Other,Shanxi,H-B,Chalco,Chalco,Domestic,95,,,,,,0.0
+,70.2,Xinghua (Chalco Jiaokou) import,Guangxi,Shanxi,H-B,Chalco,Chalco,Imported,96,,,,,,0.0
+,70.2,Xinghua (Chalco Jiaokou) import,Guizhou,Shanxi,H-B,Chalco,Chalco,Imported,96,,,,,,0.0
+,70.2,Xinghua (Chalco Jiaokou) import,Henan,Shanxi,H-B,Chalco,Chalco,Imported,96,,,,,,0.0
+,70.2,Xinghua (Chalco Jiaokou) import,Shanxi,Shanxi,H-B,Chalco,Chalco,Imported,96,,,,,,0.0
+,70.2,Xinghua (Chalco Jiaokou) import,Other,Shanxi,H-B,Chalco,Chalco,Imported,96,,,,,,0.0
+,71,Tiantong,Guangxi,Shanxi,H-B,Private,Other,Domestic,97,,,,,,0.0
+,71,Tiantong,Guizhou,Shanxi,H-B,Private,Other,Domestic,97,,,,,,0.0
+,71,Tiantong,Henan,Shanxi,H-B,Private,Other,Domestic,97,,,,,,0.0
+,71,Tiantong,Shanxi,Shanxi,H-B,Private,Other,Domestic,97,,,,,,841.3277076
+,71,Tiantong,Other,Shanxi,H-B,Private,Other,Domestic,97,,,,,,0.0
+,72,Fusheng,Guangxi,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,98,,,,,,0.0
+,72,Fusheng,Guizhou,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,98,,,,,,0.0
+,72,Fusheng,Henan,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,98,,,,,,0.0
+,72,Fusheng,Shanxi,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,98,,,,,,15184.5610187
+,72,Fusheng,Other,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,98,,,,,,0.0
+,73,YMG - Wenshan,Guangxi,Yunnan,H-B,Yunnan Aluminium Companuy,Chalco,Domestic,99,,,,,,0.0
+,73,YMG - Wenshan,Guizhou,Yunnan,H-B,Yunnan Aluminium Companuy,Chalco,Domestic,99,,,,,,0.0
+,73,YMG - Wenshan,Henan,Yunnan,H-B,Yunnan Aluminium Companuy,Chalco,Domestic,99,,,,,,0.0
+,73,YMG - Wenshan,Shanxi,Yunnan,H-B,Yunnan Aluminium Companuy,Chalco,Domestic,99,,,,,,0.0
+,73,YMG - Wenshan,Other,Yunnan,H-B,Yunnan Aluminium Companuy,Chalco,Domestic,99,,,,,,49861.9720863
+,74,Guangxi - blending,Guangxi,Guangxi,H-B,spare,spare,Imported,100,,,,,,0.0
+,74,Guangxi - blending,Guizhou,Guangxi,H-B,spare,spare,Imported,100,,,,,,0.0
+,74,Guangxi - blending,Henan,Guangxi,H-B,spare,spare,Imported,100,,,,,,0.0
+,74,Guangxi - blending,Shanxi,Guangxi,H-B,spare,spare,Imported,100,,,,,,0.0
+,74,Guangxi - blending,Other,Guangxi,H-B,spare,spare,Imported,100,,,,,,0.0
+,75,Guizhou - blending,Guangxi,Guizhou,H-B,spare,spare,Imported,101,,,,,,0.0
+,75,Guizhou - blending,Guizhou,Guizhou,H-B,spare,spare,Imported,101,,,,,,0.0
+,75,Guizhou - blending,Henan,Guizhou,H-B,spare,spare,Imported,101,,,,,,0.0
+,75,Guizhou - blending,Shanxi,Guizhou,H-B,spare,spare,Imported,101,,,,,,0.0
+,75,Guizhou - blending,Other,Guizhou,H-B,spare,spare,Imported,101,,,,,,0.0
+,76,Henan - blending,Guangxi,Henan,H-B,spare,spare,Imported,102,,,,,,0.0
+,76,Henan - blending,Guizhou,Henan,H-B,spare,spare,Imported,102,,,,,,0.0
+,76,Henan - blending,Henan,Henan,H-B,spare,spare,Imported,102,,,,,,0.0
+,76,Henan - blending,Shanxi,Henan,H-B,spare,spare,Imported,102,,,,,,0.0
+,76,Henan - blending,Other,Henan,H-B,spare,spare,Imported,102,,,,,,0.0
+,77,Shanxi - blending,Guangxi,Shanxi,H-B,spare,spare,Imported,103,,,,,,0.0
+,77,Shanxi - blending,Guizhou,Shanxi,H-B,spare,spare,Imported,103,,,,,,0.0
+,77,Shanxi - blending,Henan,Shanxi,H-B,spare,spare,Imported,103,,,,,,0.0
+,77,Shanxi - blending,Shanxi,Shanxi,H-B,spare,spare,Imported,103,,,,,,0.0
+,77,Shanxi - blending,Other,Shanxi,H-B,spare,spare,Imported,103,,,,,,0.0
+,78,Other - blending,Guangxi,Other,H-B,spare,spare,Imported,104,,,,,,0.0
+,78,Other - blending,Guizhou,Other,H-B,spare,spare,Imported,104,,,,,,0.0
+,78,Other - blending,Henan,Other,H-B,spare,spare,Imported,104,,,,,,0.0
+,78,Other - blending,Shanxi,Other,H-B,spare,spare,Imported,104,,,,,,0.0
+,78,Other - blending,Other,Other,H-B,spare,spare,Imported,104,,,,,,0.0
+,,,,,,,,,,,,,,,0.0
+,,,,,,,,,,,,,,,0.0
+,,,,,,,,,,,,,,,0.0
+,,,,,,,,,,,,,,,0.0
+,,,,,,,,,,,,,,,0.0

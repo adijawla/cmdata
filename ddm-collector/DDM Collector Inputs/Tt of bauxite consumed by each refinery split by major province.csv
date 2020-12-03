@@ -1,0 +1,518 @@
+1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38
+,,,,,,,,,,ref cell column =>,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,AA,AB,AC,AD,AE
+tonnage,Ref. No.,Refinery,Province,Province category,Technology,Ownership,Owner,Bauxite,ref cell,ref cell row,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031
+t/t,1.1,Bosai Xianfeng domestic,Guangxi,Chongqing,H-B,Bosai,Other,Domestic,3,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,1.1,Bosai Xianfeng domestic,Guizhou,Chongqing,H-B,Bosai,Other,Domestic,3,161,2.068779163,2.164655377,2.201981777,2.232198078,2.262207649,2.288925854,2.307720267,2.34136772,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,1.1,Bosai Xianfeng domestic,Henan,Chongqing,H-B,Bosai,Other,Domestic,3,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,1.1,Bosai Xianfeng domestic,Shanxi,Chongqing,H-B,Bosai,Other,Domestic,3,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,1.1,Bosai Xianfeng domestic,Other,Chongqing,H-B,Bosai,Other,Domestic,3,326,1.882263256,1.913790497,1.923111956,1.929649522,1.93529291,1.93963798,1.942323266,1.946397459,1.951663319,1.959714679,1.965957277,1.971731225,1.979223089,1.9888781,1.998455203,2.007022666,2.015409114,2.023890957,2.031008644,2.036898179,2.04547656,2.054757592,2.061360716,2.066191918,2.069232163,2.070450051,2.070450051
+t/t,1.2,Bosai Xianfeng import,Guangxi,Chongqing,L-B,Bosai,Other,Imported,4,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,1.2,Bosai Xianfeng import,Guizhou,Chongqing,L-B,Bosai,Other,Imported,4,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,1.2,Bosai Xianfeng import,Henan,Chongqing,L-B,Bosai,Other,Imported,4,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,1.2,Bosai Xianfeng import,Shanxi,Chongqing,L-B,Bosai,Other,Imported,4,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,1.2,Bosai Xianfeng import,Other,Chongqing,L-B,Bosai,Other,Imported,4,326,2.223159673,2.223159673,2.223159673,2.223159673,2.223159673,2.223159673,2.251646453,2.258252958,2.262163421,2.264616115,2.267097341,2.26942945,2.270897976,2.271815138,2.272760454,2.273900636,2.274902083,2.275674382,2.276382273,2.277036328,2.277644658,2.27793378,2.27793378,2.27793378,2.27793378,2.27793378,2.27793378
+t/t,2,Bosai Wanzhou,Guangxi,Chongqing,L-B,Bosai,Other,Imported,5,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,2,Bosai Wanzhou,Guizhou,Chongqing,L-B,Bosai,Other,Imported,5,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,2,Bosai Wanzhou,Henan,Chongqing,L-B,Bosai,Other,Imported,5,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,2,Bosai Wanzhou,Shanxi,Chongqing,L-B,Bosai,Other,Imported,5,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,2,Bosai Wanzhou,Other,Chongqing,L-B,Bosai,Other,Imported,5,326,2.142185217,2.142185217,2.142185217,2.142185217,2.142185217,2.142185217,2.142185217,2.142185217,2.142185217,2.142185217,2.142185217,2.142185217,2.142185217,2.142185217,2.142185217,2.142185217,2.142185217,2.142185217,2.142185217,2.161813632,2.166889306,2.171753246,2.176341641,2.18023238,2.184093217,2.187663118,2.190746829
+t/t,3,Shuijiang,Guangxi,Chongqing,H-B,Bosai,Other,Domestic,6,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,3,Shuijiang,Guizhou,Chongqing,H-B,Bosai,Other,Domestic,6,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,3,Shuijiang,Henan,Chongqing,H-B,Bosai,Other,Domestic,6,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,3,Shuijiang,Shanxi,Chongqing,H-B,Bosai,Other,Domestic,6,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,3,Shuijiang,Other,Chongqing,H-B,Bosai,Other,Domestic,6,326,2.000492988,2.000492988,2.000492988,2.000492988,2.000492988,2.000492988,2.040573908,2.052714705,2.064062245,2.075459957,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,4,Tuoyuan,Guangxi,Chongqing,H-B,SPIC,SPIC,Domestic,7,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,4,Tuoyuan,Guizhou,Chongqing,H-B,SPIC,SPIC,Domestic,7,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,4,Tuoyuan,Henan,Chongqing,H-B,SPIC,SPIC,Domestic,7,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,4,Tuoyuan,Shanxi,Chongqing,H-B,SPIC,SPIC,Domestic,7,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,4,Tuoyuan,Other,Chongqing,H-B,SPIC,SPIC,Domestic,7,326,2.203355728,2.449291621,2.563627676,2.698231297,2.776119662,2.776119662,2.776119662,2.776119662,2.776119662,2.776119662,2.776119662,2.776119662,2.776119662,2.776119662,2.776119662,2.776119662,2.776119662,2.776119662,2.776119662,2.776119662,2.776119662,2.776119662,2.776119662,2.776119662,2.776119662,2.776119662,2.776119662
+t/t,5,Chalco Pingguo ,Guangxi,Guangxi,H-B,Chalco,Chalco,Domestic,8,106,2.079989866,2.203111923,2.218484128,2.230938102,2.245081813,2.257670884,2.268115497,2.279015024,2.289598797,2.299073515,2.307746408,2.315816398,2.323419708,2.330513341,2.337321916,2.344032535,2.350549824,2.356911474,2.363149386,2.369291058,2.375360756,2.381380383,2.387370172,2.393349245,2.39924164,2.405099338,2.41103459
+t/t,5,Chalco Pingguo ,Guizhou,Guangxi,H-B,Chalco,Chalco,Domestic,8,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,5,Chalco Pingguo ,Henan,Guangxi,H-B,Chalco,Chalco,Domestic,8,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,5,Chalco Pingguo ,Shanxi,Guangxi,H-B,Chalco,Chalco,Domestic,8,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,5,Chalco Pingguo ,Other,Guangxi,H-B,Chalco,Chalco,Domestic,8,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,6.1,Jinjiang Chongzuo domestic,Guangxi,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,9,106,2.747945591,2.747945591,2.747945591,2.747945591,2.747945591,2.747945591,2.747945591,2.747945591,2.747945591,2.747945591,2.747945591,2.747945591,2.747945591,2.747945591,2.747945591,2.747945591,2.747945591,2.747945591,3.029847281,3.080178103,3.111293736,3.134304184,3.152264261,3.166510246,3.181328619,3.19681388,3.211718643
+t/t,6.1,Jinjiang Chongzuo domestic,Guizhou,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,9,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,6.1,Jinjiang Chongzuo domestic,Henan,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,9,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,6.1,Jinjiang Chongzuo domestic,Shanxi,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,9,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,6.1,Jinjiang Chongzuo domestic,Other,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,9,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,6.2,Jinjiang Chongzuo import,Guangxi,Guangxi,L-B,Jinjiang,Jinjiang,Imported,10,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,6.2,Jinjiang Chongzuo import,Guizhou,Guangxi,L-B,Jinjiang,Jinjiang,Imported,10,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,6.2,Jinjiang Chongzuo import,Henan,Guangxi,L-B,Jinjiang,Jinjiang,Imported,10,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,6.2,Jinjiang Chongzuo import,Shanxi,Guangxi,L-B,Jinjiang,Jinjiang,Imported,10,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,6.2,Jinjiang Chongzuo import,Other,Guangxi,L-B,Jinjiang,Jinjiang,Imported,10,326,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.221176886,2.230755331,2.237940989,2.24390067,2.249080784,2.253712566,2.257933398,2.261832443
+t/t,7,Huayin,Guangxi,Guangxi,H-B,"Chalco, Guangxi Investment Group, Minmetal",Chalco,Domestic,11,106,2.34919694,2.34919694,2.34919694,2.451040667,2.500585889,2.537598923,2.561958678,2.580293133,2.59802485,2.615394441,2.631382249,2.647111877,2.662378681,2.676582427,2.690372716,2.703697189,2.716270405,2.728484483,2.740413453,2.751592341,2.762088964,2.772474182,2.782779659,2.793033451,2.8043338,2.816792006,2.829375265
+t/t,7,Huayin,Guizhou,Guangxi,H-B,"Chalco, Guangxi Investment Group, Minmetal",Chalco,Domestic,11,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,7,Huayin,Henan,Guangxi,H-B,"Chalco, Guangxi Investment Group, Minmetal",Chalco,Domestic,11,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,7,Huayin,Shanxi,Guangxi,H-B,"Chalco, Guangxi Investment Group, Minmetal",Chalco,Domestic,11,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,7,Huayin,Other,Guangxi,H-B,"Chalco, Guangxi Investment Group, Minmetal",Chalco,Domestic,11,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,8,Jinjiang Tiandong,Guangxi,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,12,106,2.330290409,2.330290409,2.330290409,2.330290409,2.330290409,2.330290409,2.330290409,2.330290409,2.330290409,2.422001811,2.453874294,2.482126074,2.509138154,2.536564841,2.560175831,2.582973751,2.606127199,2.628493283,2.650312568,2.671769672,2.6930104,2.714155831,2.733208081,2.750199896,2.769089684,2.790137559,2.811642869
+t/t,8,Jinjiang Tiandong,Guizhou,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,12,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,8,Jinjiang Tiandong,Henan,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,12,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,8,Jinjiang Tiandong,Shanxi,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,12,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,8,Jinjiang Tiandong,Other,Guangxi,H-B,Jinjiang,Jinjiang,Domestic,12,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,9,Xinfa Jingxi,Guangxi,Guangxi,H-B,Xinfa,Xinfa,Domestic,13,106,2.237525044,2.237525044,2.237525044,2.237525044,2.316027154,2.35491928,2.393982782,2.429612219,2.464051773,2.497450717,2.530740538,2.560744566,2.592136509,2.626679365,2.661344235,2.697605038,2.736261921,2.778366064,2.818420321,2.856121628,2.896318736,2.939731306,2.98734798,3.040680212,3.109248562,3.205145214,0
+t/t,9,Xinfa Jingxi,Guizhou,Guangxi,H-B,Xinfa,Xinfa,Domestic,13,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,9,Xinfa Jingxi,Henan,Guangxi,H-B,Xinfa,Xinfa,Domestic,13,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,9,Xinfa Jingxi,Shanxi,Guangxi,H-B,Xinfa,Xinfa,Domestic,13,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,9,Xinfa Jingxi,Other,Guangxi,H-B,Xinfa,Xinfa,Domestic,13,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,10,Fangcheng,Guangxi,Guangxi,L-B,Chalco,Chalco,Imported,14,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,10,Fangcheng,Guizhou,Guangxi,L-B,Chalco,Chalco,Imported,14,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,10,Fangcheng,Henan,Guangxi,L-B,Chalco,Chalco,Imported,14,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,10,Fangcheng,Shanxi,Guangxi,L-B,Chalco,Chalco,Imported,14,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,10,Fangcheng,Other,Guangxi,L-B,Chalco,Chalco,Imported,14,326,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.413177819,2.427588198,2.436341118,2.444296886,2.45161448,2.45753063,2.462551124,2.46762957,2.472705216,2.477213314,2.481292378
+t/t,11,Tiangui,Guangxi,Guangxi,H-B,Zengshi,Other,Domestic,15,106,2.246440159,2.246440159,2.246440159,2.246440159,2.246440159,2.246440159,2.246440159,2.246440159,2.246440159,2.246440159,2.246440159,2.246440159,2.246440159,2.246440159,2.246440159,2.246440159,2.414060404,2.46965941,2.525835749,2.579889949,2.655071247,2.758666625,2.879666496,0,0,0,0
+t/t,11,Tiangui,Guizhou,Guangxi,H-B,Zengshi,Other,Domestic,15,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,11,Tiangui,Henan,Guangxi,H-B,Zengshi,Other,Domestic,15,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,11,Tiangui,Shanxi,Guangxi,H-B,Zengshi,Other,Domestic,15,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,11,Tiangui,Other,Guangxi,H-B,Zengshi,Other,Domestic,15,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,12,Beihai_GIG,Guangxi,Guangxi,L-B,GIG,Other,Imported,16,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,12,Beihai_GIG,Guizhou,Guangxi,L-B,GIG,Other,Imported,16,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,12,Beihai_GIG,Henan,Guangxi,L-B,GIG,Other,Imported,16,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,12,Beihai_GIG,Shanxi,Guangxi,L-B,GIG,Other,Imported,16,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,12,Beihai_GIG,Other,Guangxi,L-B,GIG,Other,Imported,16,326,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.388997155
+t/t,13,Baise Mining,Guangxi,Guangxi,H-B,Baise Mining,Other,Imported,17,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,13,Baise Mining,Guizhou,Guangxi,H-B,Baise Mining,Other,Imported,17,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,13,Baise Mining,Henan,Guangxi,H-B,Baise Mining,Other,Imported,17,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,13,Baise Mining,Shanxi,Guangxi,H-B,Baise Mining,Other,Imported,17,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,13,Baise Mining,Other,Guangxi,H-B,Baise Mining,Other,Imported,17,326,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.392696902,2.397091795,2.400113447,2.402465747,2.404408675,2.406170151,2.407876152,2.409451834
+t/t,14,Chalco Guizhou,Guangxi,Guizhou,Series & Sinter (95:25),Chalco,Chalco,Domestic,18,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,14,Chalco Guizhou,Guizhou,Guizhou,Series & Sinter (95:25),Chalco,Chalco,Domestic,18,161,1.883129889,1.990390397,2.012374262,2.030950299,2.048806948,2.065691608,2.082687166,2.103699852,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,14,Chalco Guizhou,Henan,Guizhou,Series & Sinter (95:25),Chalco,Chalco,Domestic,18,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,14,Chalco Guizhou,Shanxi,Guizhou,Series & Sinter (95:25),Chalco,Chalco,Domestic,18,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,14,Chalco Guizhou,Other,Guizhou,Series & Sinter (95:25),Chalco,Chalco,Domestic,18,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,15,Chalco Zunyi,Guangxi,Guizhou,H-B,Chalco,Chalco,Domestic,19,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,15,Chalco Zunyi,Guizhou,Guizhou,H-B,Chalco,Chalco,Domestic,19,161,2.261929554,2.261929554,2.261929554,2.261929554,2.261929554,2.261929554,2.50344196,2.579790278,2.638084916,2.687699137,2.738999756,2.797475249,2.860956214,2.93079695,3.014394404,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,15,Chalco Zunyi,Henan,Guizhou,H-B,Chalco,Chalco,Domestic,19,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,15,Chalco Zunyi,Shanxi,Guizhou,H-B,Chalco,Chalco,Domestic,19,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,15,Chalco Zunyi,Other,Guizhou,H-B,Chalco,Chalco,Domestic,19,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,16,Xian,Guangxi,Guizhou,H-B,Zengshi Group,Other,Domestic,20,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,16,Xian,Guizhou,Guizhou,H-B,Zengshi Group,Other,Domestic,20,161,1.951068187,1.951068187,1.951068187,1.951068187,1.951068187,2.174861778,2.229530185,2.27090672,2.306283523,2.342243223,2.380570946,2.423708229,2.476293362,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,16,Xian,Henan,Guizhou,H-B,Zengshi Group,Other,Domestic,20,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,16,Xian,Shanxi,Guizhou,H-B,Zengshi Group,Other,Domestic,20,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,16,Xian,Other,Guizhou,H-B,Zengshi Group,Other,Domestic,20,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,17,Huafei,Guangxi,Guizhou,H-B,Shanghai Huafei Investment Co.Ltd,Other,Domestic,21,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,17,Huafei,Guizhou,Guizhou,H-B,Shanghai Huafei Investment Co.Ltd,Other,Domestic,21,161,2.155279383,2.155279383,2.155279383,2.155279383,2.362256869,2.362256869,2.390780951,2.405335509,2.41867615,2.443187441,2.480601,2.516411297,2.548204543,2.576844902,2.593853786,2.606128223,2.62571063,2.647447813,2.669781087,2.693499879,2.7185561,2.744249716,2.772927095,2.808552111,2.855971079,2.913280523,0
+t/t,17,Huafei,Henan,Guizhou,H-B,Shanghai Huafei Investment Co.Ltd,Other,Domestic,21,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,17,Huafei,Shanxi,Guizhou,H-B,Shanghai Huafei Investment Co.Ltd,Other,Domestic,21,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,17,Huafei,Other,Guizhou,H-B,Shanghai Huafei Investment Co.Ltd,Other,Domestic,21,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,18,Qingzhen Guanglv,Guangxi,Guizhou,H-B,Guangdong Guang Al Group Co.Ltd,Other,Domestic,22,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,18,Qingzhen Guanglv,Guizhou,Guizhou,H-B,Guangdong Guang Al Group Co.Ltd,Other,Domestic,22,161,2.12466551,2.12466551,2.12466551,2.12466551,2.12466551,2.12466551,2.12466551,2.12466551,2.321849362,2.366648446,2.396775303,2.421304307,2.443857336,2.466372704,2.487319063,2.506342483,2.527156742,2.549972894,2.580472998,2.621316497,2.668130421,2.732286175,0,0,0,0,0
+t/t,18,Qingzhen Guanglv,Henan,Guizhou,H-B,Guangdong Guang Al Group Co.Ltd,Other,Domestic,22,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,18,Qingzhen Guanglv,Shanxi,Guizhou,H-B,Guangdong Guang Al Group Co.Ltd,Other,Domestic,22,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,18,Qingzhen Guanglv,Other,Guizhou,H-B,Guangdong Guang Al Group Co.Ltd,Other,Domestic,22,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,19.1,Qizheng Chemical,Guangxi,Guizhou,H-B,Qiya,Qiya,Domestic,23,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,19.1,Qizheng Chemical,Guizhou,Guizhou,H-B,Qiya,Qiya,Domestic,23,161,2.059612097,2.059612097,2.059612097,2.059612097,2.059612097,2.059612097,2.059612097,2.200072667,2.249049556,2.294103354,2.325846076,2.348372805,2.376419504,2.40729637,2.434348672,2.460287218,2.490736981,2.525497672,2.563589331,2.608993453,2.664686409,0,0,0,0,0,0
+t/t,19.1,Qizheng Chemical,Henan,Guizhou,H-B,Qiya,Qiya,Domestic,23,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,19.1,Qizheng Chemical,Shanxi,Guizhou,H-B,Qiya,Qiya,Domestic,23,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,19.1,Qizheng Chemical,Other,Guizhou,H-B,Qiya,Qiya,Domestic,23,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,19.2,Qizheng Chemical Added LT,Guangxi,Guizhou,L-B,Qiya,Qiya,Imported,24,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,19.2,Qizheng Chemical Added LT,Guizhou,Guizhou,L-B,Qiya,Qiya,Imported,24,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,19.2,Qizheng Chemical Added LT,Henan,Guizhou,L-B,Qiya,Qiya,Imported,24,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,19.2,Qizheng Chemical Added LT,Shanxi,Guizhou,L-B,Qiya,Qiya,Imported,24,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,19.2,Qizheng Chemical Added LT,Other,Guizhou,L-B,Qiya,Qiya,Imported,24,326,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.270649032,2.275182526,2.278689578,2.281399381,2.283651914,2.285602357,2.287335918,2.288904961,2.290344218,2.291678034,2.292924201,2.294096164
+t/t,20,SPIC - Wuchuan,Guangxi,Guizhou,H-B,SPIC,SPIC,Domestic,25,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,20,SPIC - Wuchuan,Guizhou,Guizhou,H-B,SPIC,SPIC,Domestic,25,161,2.01292648,2.01292648,2.01292648,2.01292648,2.01292648,2.01292648,2.01292648,2.01292648,2.01292648,2.01292648,2.01292648,2.01292648,2.01292648,2.01292648,2.01292648,2.01292648,2.176134888,2.203238751,2.222077487,2.237740068,2.251307513,2.263001704,2.27405617,2.285476452,2.297517802,2.308249071,2.315775144
+t/t,20,SPIC - Wuchuan,Henan,Guizhou,H-B,SPIC,SPIC,Domestic,25,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,20,SPIC - Wuchuan,Shanxi,Guizhou,H-B,SPIC,SPIC,Domestic,25,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,20,SPIC - Wuchuan,Other,Guizhou,H-B,SPIC,SPIC,Domestic,25,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,21,Kaisheng,Guangxi,Guizhou,H-B,Private,Other,Domestic,26,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,21,Kaisheng,Guizhou,Guizhou,H-B,Private,Other,Domestic,26,161,1.981115803,1.981115803,2.190792866,2.324383268,2.456818991,2.562983509,2.623978349,2.653913578,2.653913578,2.653913578,2.653913578,2.653913578,2.653913578,2.653913578,2.653913578,2.653913578,2.653913578,2.653913578,2.653913578,2.653913578,2.653913578,2.653913578,2.653913578,2.653913578,2.653913578,2.653913578,2.653913578
+t/t,21,Kaisheng,Henan,Guizhou,H-B,Private,Other,Domestic,26,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,21,Kaisheng,Shanxi,Guizhou,H-B,Private,Other,Domestic,26,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,21,Kaisheng,Other,Guizhou,H-B,Private,Other,Domestic,26,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,22,Huajin,Guangxi,Guizhou,H-B,"Chalco, Jinjiang",Chalco,Domestic,27,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,22,Huajin,Guizhou,Guizhou,H-B,"Chalco, Jinjiang",Chalco,Domestic,27,161,2.127797273,2.127797273,2.127797273,2.127797273,2.127797273,2.127797273,2.127797273,2.127797273,2.127797273,2.127797273,2.127797273,2.392800839,2.436720035,2.471393171,2.501419791,2.528935431,2.558347742,2.590285885,2.623092185,2.658717242,2.698293345,2.742643256,2.800578533,0,0,0,0
+t/t,22,Huajin,Henan,Guizhou,H-B,"Chalco, Jinjiang",Chalco,Domestic,27,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,22,Huajin,Shanxi,Guizhou,H-B,"Chalco, Jinjiang",Chalco,Domestic,27,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,22,Huajin,Other,Guizhou,H-B,"Chalco, Jinjiang",Chalco,Domestic,27,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,23.1,Chalco Zhengzhou domestic,Guangxi,Henan,H-B,Chalco,Chalco,Domestic,28,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,23.1,Chalco Zhengzhou domestic,Guizhou,Henan,H-B,Chalco,Chalco,Domestic,28,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,23.1,Chalco Zhengzhou domestic,Henan,Henan,H-B,Chalco,Chalco,Domestic,28,216,1.826108067,1.931072277,1.961567508,1.983986973,2.000556002,2.014997309,2.030747514,2.0471827,2.064352617,2.081388287,2.098456195,2.111401991,2.12309345,2.138022237,2.15141548,2.164242959,2.178732483,2.193697998,2.208282437,2.224580246,2.248944837,2.275469784,2.296341268,2.313313556,2.327599762,2.343049819,2.359971889
+t/t,23.1,Chalco Zhengzhou domestic,Shanxi,Henan,H-B,Chalco,Chalco,Domestic,28,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,23.1,Chalco Zhengzhou domestic,Other,Henan,H-B,Chalco,Chalco,Domestic,28,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,23.2,Chalco Zhengzhou import,Guangxi,Henan,L-B,Chalco,Chalco,Imported,29,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,23.2,Chalco Zhengzhou import,Guizhou,Henan,L-B,Chalco,Chalco,Imported,29,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,23.2,Chalco Zhengzhou import,Henan,Henan,L-B,Chalco,Chalco,Imported,29,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,23.2,Chalco Zhengzhou import,Shanxi,Henan,L-B,Chalco,Chalco,Imported,29,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,23.2,Chalco Zhengzhou import,Other,Henan,L-B,Chalco,Chalco,Imported,29,326,2.344397079,2.344397079,2.344397079,2.344397079,2.344397079,2.344397079,2.344397079,2.397430449,2.402431733,2.405826168,2.407208193,2.407208193,2.407208193,2.407208193,2.413985102,2.417835583,2.420819152,2.423273607,2.425368927,2.427203465,2.428839474,2.430318957,2.431671654,2.432919421,2.434078815,2.435162689,2.436181233
+t/t,24.1,Chalco Zhongzhou Dom. Sinter,Guangxi,Henan,Sinter,Chalco,Chalco,Domestic,30,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,24.1,Chalco Zhongzhou Dom. Sinter,Guizhou,Henan,Sinter,Chalco,Chalco,Domestic,30,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,24.1,Chalco Zhongzhou Dom. Sinter,Henan,Henan,Sinter,Chalco,Chalco,Domestic,30,216,1.895603301,2.07378282,2.116881341,2.154938719,2.185213333,2.207865605,2.229613575,2.250663509,2.271119788,2.291069689,2.309578599,2.327595273,2.345136725,2.363262894,2.377627124,2.387089149,2.396915617,2.408935911,2.424020259,2.444208526,2.476873176,2.512569795,2.54067347,2.565785963,2.590140604,2.616986247,2.647104385
+t/t,24.1,Chalco Zhongzhou Dom. Sinter,Shanxi,Henan,Sinter,Chalco,Chalco,Domestic,30,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,24.1,Chalco Zhongzhou Dom. Sinter,Other,Henan,Sinter,Chalco,Chalco,Domestic,30,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,24.2,Chalco Zhongzhou Dom. Bayer,Guangxi,Henan,H-B-ODT-Sweet,Chalco,Chalco,Domestic,31,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,24.2,Chalco Zhongzhou Dom. Bayer,Guizhou,Henan,H-B-ODT-Sweet,Chalco,Chalco,Domestic,31,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,24.2,Chalco Zhongzhou Dom. Bayer,Henan,Henan,H-B-ODT-Sweet,Chalco,Chalco,Domestic,31,216,2.048932109,2.048932109,2.315336535,2.379779035,2.430187602,2.474000777,2.527955179,2.59324286,2.659896152,2.733297566,2.829074366,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,24.2,Chalco Zhongzhou Dom. Bayer,Shanxi,Henan,H-B-ODT-Sweet,Chalco,Chalco,Domestic,31,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,24.2,Chalco Zhongzhou Dom. Bayer,Other,Henan,H-B-ODT-Sweet,Chalco,Chalco,Domestic,31,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,24.3,Chalco Zhongzhou LT Amt,Guangxi,Henan,L-B,Chalco,Chalco,Imported,32,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,24.3,Chalco Zhongzhou LT Amt,Guizhou,Henan,L-B,Chalco,Chalco,Imported,32,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,24.3,Chalco Zhongzhou LT Amt,Henan,Henan,L-B,Chalco,Chalco,Imported,32,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,24.3,Chalco Zhongzhou LT Amt,Shanxi,Henan,L-B,Chalco,Chalco,Imported,32,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,24.3,Chalco Zhongzhou LT Amt,Other,Henan,L-B,Chalco,Chalco,Imported,32,326,2.344397079,2.344397079,2.344397079,2.344397079,2.344397079,2.344397079,2.344397079,2.403237469,2.407784195,2.411485546,2.414686002,2.416029372,2.416029372,2.416029372,2.424677494,2.433682843,2.440135199,2.444568527,2.447733463,2.450157686,2.452260595,2.454178855,2.455946748,2.457532907,2.458966715,2.460321142,2.46160611
+t/t,25.1,Kaiman,Guangxi,Henan,"H-B, ODT, Sweetening",Jinjiang,Jinjiang,Domestic,33,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,25.1,Kaiman,Guizhou,Henan,"H-B, ODT, Sweetening",Jinjiang,Jinjiang,Domestic,33,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,25.1,Kaiman,Henan,Henan,"H-B, ODT, Sweetening",Jinjiang,Jinjiang,Domestic,33,216,1.89900625,1.89900625,2.014156927,2.061816451,2.100768506,2.137910517,2.172395613,2.208857427,2.248727406,2.288126175,2.325754014,2.364758958,2.408341761,2.455590207,2.508083185,2.562454306,2.616206615,2.676373076,2.756402792,0,0,0,0,0,0,0,0
+t/t,25.1,Kaiman,Shanxi,Henan,"H-B, ODT, Sweetening",Jinjiang,Jinjiang,Domestic,33,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,25.1,Kaiman,Other,Henan,"H-B, ODT, Sweetening",Jinjiang,Jinjiang,Domestic,33,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,25.2,Kaiman Import,Guangxi,Henan,L-B,Jinjiang,Jinjiang,Imported,34,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,25.2,Kaiman Import,Guizhou,Henan,L-B,Jinjiang,Jinjiang,Imported,34,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,25.2,Kaiman Import,Henan,Henan,L-B,Jinjiang,Jinjiang,Imported,34,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,25.2,Kaiman Import,Shanxi,Henan,L-B,Jinjiang,Jinjiang,Imported,34,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,25.2,Kaiman Import,Other,Henan,L-B,Jinjiang,Jinjiang,Imported,34,326,2.056363109,2.056363109,2.056363109,2.056363109,2.056363109,2.056363109,2.056363109,2.056363109,2.056363109,2.056363109,2.056363109,2.056363109,2.056363109,2.056363109,2.056363109,2.056363109,2.094281838,2.101834044,2.107601069,2.112417841,2.116618723,2.120381856,2.123814845,2.126988286,2.129951309,2.132739648,2.135380212
+t/t,26.1,East Hope Mianchi,Guangxi,Henan,"H-B, ODT",East Hope,East Hope,Domestic,35,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,26.1,East Hope Mianchi,Guizhou,Henan,"H-B, ODT",East Hope,East Hope,Domestic,35,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,26.1,East Hope Mianchi,Henan,Henan,"H-B, ODT",East Hope,East Hope,Domestic,35,216,1.89101324,1.89101324,1.979263491,2.022495036,2.065819027,2.10945663,2.148237325,2.184377372,2.222078621,2.26147603,2.302980138,2.347635174,2.398405993,2.455830939,2.50869966,2.562689347,2.630854374,2.715428783,0,0,0,0,0,0,0,0,0
+t/t,26.1,East Hope Mianchi,Shanxi,Henan,"H-B, ODT",East Hope,East Hope,Domestic,35,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,26.1,East Hope Mianchi,Other,Henan,"H-B, ODT",East Hope,East Hope,Domestic,35,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,26.2,East Hope Mianchi Added LT,Guangxi,Henan,L-B,East Hope,East Hope,Imported,36,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,26.2,East Hope Mianchi Added LT,Guizhou,Henan,L-B,East Hope,East Hope,Imported,36,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,26.2,East Hope Mianchi Added LT,Henan,Henan,L-B,East Hope,East Hope,Imported,36,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,26.2,East Hope Mianchi Added LT,Shanxi,Henan,L-B,East Hope,East Hope,Imported,36,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,26.2,East Hope Mianchi Added LT,Other,Henan,L-B,East Hope,East Hope,Imported,36,326,2.253313362,2.253313362,2.253313362,2.253313362,2.253313362,2.253313362,2.253313362,2.253313362,2.253313362,2.253313362,2.253313362,2.253313362,2.253313362,2.253313362,2.253313362,2.271447626,2.274100218,2.274100218,2.274100218,2.274100218,2.274100218,2.274100218,2.274100218,2.274100218,2.274100218,2.274100218,2.274100218
+t/t,27,Huiyuan Lushan,Guangxi,Henan,"H-B, ODT","Shenhuo, Huiyuan",Shenhuo,Domestic,37,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,27,Huiyuan Lushan,Guizhou,Henan,"H-B, ODT","Shenhuo, Huiyuan",Shenhuo,Domestic,37,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,27,Huiyuan Lushan,Henan,Henan,"H-B, ODT","Shenhuo, Huiyuan",Shenhuo,Domestic,37,216,2.025580607,2.208159783,2.287848374,2.356589641,2.41655685,2.499851027,2.614714062,2.745100876,2.923902563,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,27,Huiyuan Lushan,Shanxi,Henan,"H-B, ODT","Shenhuo, Huiyuan",Shenhuo,Domestic,37,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,27,Huiyuan Lushan,Other,Henan,"H-B, ODT","Shenhuo, Huiyuan",Shenhuo,Domestic,37,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,28,Jingxin,Guangxi,Henan,H-B,Private,Other,Domestic,38,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,28,Jingxin,Guizhou,Henan,H-B,Private,Other,Domestic,38,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,28,Jingxin,Henan,Henan,H-B,Private,Other,Domestic,38,216,2.035669607,2.035669607,2.176880316,2.240795297,2.284333275,2.322999287,2.362192013,2.399567472,2.435890342,2.471699968,2.507403177,2.543336372,2.579801701,2.617091417,2.657649039,2.679895456,2.679895456,2.679895456,2.679895456,2.679895456,2.679895456,2.679895456,2.679895456,2.679895456,2.679895456,2.679895456,2.679895456
+t/t,28,Jingxin,Shanxi,Henan,H-B,Private,Other,Domestic,38,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,28,Jingxin,Other,Henan,H-B,Private,Other,Domestic,38,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,29,Shenhuo,Guangxi,Henan,Sintering,Shenhuo,Shenhuo,Domestic,39,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,29,Shenhuo,Guizhou,Henan,Sintering,Shenhuo,Shenhuo,Domestic,39,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,29,Shenhuo,Henan,Henan,Sintering,Shenhuo,Shenhuo,Domestic,39,216,1.784123227,1.784123227,1.784123227,1.784123227,1.847700811,1.8674337,1.883356594,1.895267244,1.907171204,1.922045559,1.937927048,1.946624284,1.946624284,1.946624284,1.946624284,1.946624284,1.946624284,1.946624284,1.946624284,1.946624284,1.946624284,1.946624284,1.946624284,1.946624284,1.946624284,1.946624284,1.946624284
+t/t,29,Shenhuo,Shanxi,Henan,Sintering,Shenhuo,Shenhuo,Domestic,39,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,29,Shenhuo,Other,Henan,Sintering,Shenhuo,Shenhuo,Domestic,39,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,30.1,Wanji,Guangxi,Henan,H-B,Wanji Holdings,Other,Domestic,40,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,30.1,Wanji,Guizhou,Henan,H-B,Wanji Holdings,Other,Domestic,40,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,30.1,Wanji,Henan,Henan,H-B,Wanji Holdings,Other,Domestic,40,216,2.112198166,2.112198166,2.112198166,2.323725155,2.371880833,2.406673133,2.43390768,2.458504043,2.481961923,2.507229364,2.536811106,2.565180101,2.593606422,2.620973368,2.641228376,2.65226088,2.657386926,2.662314444,2.664747102,2.664747102,2.664747102,2.664747102,2.664747102,2.664747102,2.664747102,2.664747102,2.664747102
+t/t,30.1,Wanji,Shanxi,Henan,H-B,Wanji Holdings,Other,Domestic,40,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,30.1,Wanji,Other,Henan,H-B,Wanji Holdings,Other,Domestic,40,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,30.2,Wanji import,Guangxi,Henan,L-B,Wanji Holdings,Other,Imported,41,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,30.2,Wanji import,Guizhou,Henan,L-B,Wanji Holdings,Other,Imported,41,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,30.2,Wanji import,Henan,Henan,L-B,Wanji Holdings,Other,Imported,41,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,30.2,Wanji import,Shanxi,Henan,L-B,Wanji Holdings,Other,Imported,41,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,30.2,Wanji import,Other,Henan,L-B,Wanji Holdings,Other,Imported,41,326,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.225516503,2.240544274,2.251078057,2.259603976,2.266932475,2.273448812,2.279370728,2.284834952,2.289933724,2.294732612,2.299280115,2.303613255
+t/t,31,Weilai,Guangxi,Henan,H-B,Private,Other,Domestic,42,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,31,Weilai,Guizhou,Henan,H-B,Private,Other,Domestic,42,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,31,Weilai,Henan,Henan,H-B,Private,Other,Domestic,42,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,31,Weilai,Shanxi,Henan,H-B,Private,Other,Domestic,42,271,2.049472071,2.049472071,2.215482982,2.281557221,2.333648596,2.382285881,2.440059168,2.501954059,2.557912051,2.61665867,2.689886711,2.773718841,2.875752859,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,31,Weilai,Other,Henan,H-B,Private,Other,Domestic,42,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,32,Yifeng Gongyi (Yulian Xinya),Guangxi,Henan,H-B,Private,Other,Domestic,43,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,32,Yifeng Gongyi (Yulian Xinya),Guizhou,Henan,H-B,Private,Other,Domestic,43,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,32,Yifeng Gongyi (Yulian Xinya),Henan,Henan,H-B,Private,Other,Domestic,43,216,2.052633714,2.052633714,2.052633714,2.183395257,2.23936239,2.293017601,2.339036067,2.360321475,2.360321475,2.360321475,2.360321475,2.360321475,2.384823457,2.384823457,2.384823457,2.384823457,2.384823457,2.384823457,2.384823457,2.384823457,2.384823457,2.384823457,2.384823457,2.384823457,2.384823457,2.384823457,2.384823457
+t/t,32,Yifeng Gongyi (Yulian Xinya),Shanxi,Henan,H-B,Private,Other,Domestic,43,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,32,Yifeng Gongyi (Yulian Xinya),Other,Henan,H-B,Private,Other,Domestic,43,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,33,Yima Yixiang,Guangxi,Henan,"H-B, CGA","Jinjiang, Yima Coal Group",Jinjiang,Domestic,44,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,33,Yima Yixiang,Guizhou,Henan,"H-B, CGA","Jinjiang, Yima Coal Group",Jinjiang,Domestic,44,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,33,Yima Yixiang,Henan,Henan,"H-B, CGA","Jinjiang, Yima Coal Group",Jinjiang,Domestic,44,216,1.868774259,1.924646146,1.966841469,2.01066929,2.058305612,2.106963692,2.151395554,2.193918668,2.22901455,2.26524818,2.312198389,2.362443753,2.414977694,2.461606171,2.518452298,2.591104831,2.665503471,0,0,0,0,0,0,0,0,0,0
+t/t,33,Yima Yixiang,Shanxi,Henan,"H-B, CGA","Jinjiang, Yima Coal Group",Jinjiang,Domestic,44,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,33,Yima Yixiang,Other,Henan,"H-B, CGA","Jinjiang, Yima Coal Group",Jinjiang,Domestic,44,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,34,Zhongmei,Guangxi,Henan,"H-B, Sweetening","Yongmei Group, Wuzhou Aluminium, Dengfeng Electric Power Corporation",Other,Domestic,45,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,34,Zhongmei,Guizhou,Henan,"H-B, Sweetening","Yongmei Group, Wuzhou Aluminium, Dengfeng Electric Power Corporation",Other,Domestic,45,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,34,Zhongmei,Henan,Henan,"H-B, Sweetening","Yongmei Group, Wuzhou Aluminium, Dengfeng Electric Power Corporation",Other,Domestic,45,216,1.990822494,1.990822494,1.990822494,2.106978013,2.145601006,2.176502774,2.206305981,2.236164595,2.2643815,2.291088971,2.316789017,2.341823475,2.367954892,2.389354511,2.406093045,2.421868481,2.434848982,2.441214659,2.441214659,2.441214659,2.441214659,2.441214659,2.441214659,2.441214659,2.441214659,2.441214659,2.441214659
+t/t,34,Zhongmei,Shanxi,Henan,"H-B, Sweetening","Yongmei Group, Wuzhou Aluminium, Dengfeng Electric Power Corporation",Other,Domestic,45,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,34,Zhongmei,Other,Henan,"H-B, Sweetening","Yongmei Group, Wuzhou Aluminium, Dengfeng Electric Power Corporation",Other,Domestic,45,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,35,Shaoxing,Guangxi,Henan,H-B,Private,Other,Domestic,46,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,35,Shaoxing,Guizhou,Henan,H-B,Private,Other,Domestic,46,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,35,Shaoxing,Henan,Henan,H-B,Private,Other,Domestic,46,216,1.871247854,1.871247854,2.098586399,2.315229194,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,35,Shaoxing,Shanxi,Henan,H-B,Private,Other,Domestic,46,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,35,Shaoxing,Other,Henan,H-B,Private,Other,Domestic,46,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,36,Zhongchao,Guangxi,Henan,H-B,Private,Other,Domestic,47,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,36,Zhongchao,Guizhou,Henan,H-B,Private,Other,Domestic,47,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,36,Zhongchao,Henan,Henan,H-B,Private,Other,Domestic,47,216,2.044907953,2.044907953,2.335848318,2.465028254,2.561476312,2.625786207,2.660458167,2.660458167,2.660458167,2.660458167,2.660458167,2.660458167,2.660458167,2.660458167,2.660458167,2.660458167,2.660458167,2.660458167,2.660458167,2.660458167,2.660458167,2.660458167,2.660458167,2.660458167,2.660458167,2.660458167,2.660458167
+t/t,36,Zhongchao,Shanxi,Henan,H-B,Private,Other,Domestic,47,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,36,Zhongchao,Other,Henan,H-B,Private,Other,Domestic,47,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,37,Jialu Xianfeng,Guangxi,Hubei,H-B,Private,Other,Domestic,48,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,37,Jialu Xianfeng,Guizhou,Hubei,H-B,Private,Other,Domestic,48,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,37,Jialu Xianfeng,Henan,Hubei,H-B,Private,Other,Domestic,48,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,37,Jialu Xianfeng,Shanxi,Hubei,H-B,Private,Other,Domestic,48,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,37,Jialu Xianfeng,Other,Hubei,H-B,Private,Other,Domestic,48,326,2.026434097,2.026434097,2.026434097,2.026434097,2.154029361,2.183228376,2.228974098,2.274541885,2.290842089,2.290842089,2.368954978,2.418783589,2.443523027,2.443523027,2.443523027,2.443523027,2.443523027,2.443523027,2.443523027,2.443523027,2.443523027,2.443523027,2.443523027,2.443523027,2.443523027,2.443523027,2.443523027
+t/t,38,Jinshi,Guangxi,Hubei,H-B,Private,Other,Domestic,49,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,38,Jinshi,Guizhou,Hubei,H-B,Private,Other,Domestic,49,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,38,Jinshi,Henan,Hubei,H-B,Private,Other,Domestic,49,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,38,Jinshi,Shanxi,Hubei,H-B,Private,Other,Domestic,49,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,38,Jinshi,Other,Hubei,H-B,Private,Other,Domestic,49,326,2.026434097,2.026434097,2.026434097,2.026434097,2.026434097,2.026434097,2.026434097,2.186112681,2.22545838,2.269639432,2.316656255,2.360202394,2.381472704,2.381472704,2.381472704,2.381472704,2.381472704,2.381472704,2.381472704,2.381472704,2.381472704,2.381472704,2.381472704,2.381472704,2.381472704,2.381472704,2.381472704
+t/t,39,Huixiang,Guangxi,Hunan,H-B,Private,Other,Domestic,50,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,39,Huixiang,Guizhou,Hunan,H-B,Private,Other,Domestic,50,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,39,Huixiang,Henan,Hunan,H-B,Private,Other,Domestic,50,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,39,Huixiang,Shanxi,Hunan,H-B,Private,Other,Domestic,50,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,39,Huixiang,Other,Hunan,H-B,Private,Other,Domestic,50,326,2.102963076,2.102963076,2.102963076,2.102963076,2.349873393,2.463640265,2.593253937,2.672393657,2.672393657,2.971147422,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,40.1,Xinwang L-B,Guangxi,Inner Mongolia,L-B,BXG,Other,Imported,51,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,40.1,Xinwang L-B,Guizhou,Inner Mongolia,L-B,BXG,Other,Imported,51,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,40.1,Xinwang L-B,Henan,Inner Mongolia,L-B,BXG,Other,Imported,51,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,40.1,Xinwang L-B,Shanxi,Inner Mongolia,L-B,BXG,Other,Imported,51,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,40.1,Xinwang L-B,Other,Inner Mongolia,L-B,BXG,Other,Imported,51,326,2.629303273,2.629303273,2.629303273,2.629303273,2.629303273,2.629303273,2.629303273,2.629303273,2.629303273,2.629303273,2.708829532,2.710867973,2.710867973,2.710867973,2.720514342,2.724664281,2.72802721,2.730829514,2.733241518,2.735365196,2.737085196,2.738490398,2.739797768,2.741021174,2.742171647,2.743258136,2.744288011
+t/t,40.2,Xinwang H-B,Guangxi,Inner Mongolia,H-B,BXG,Other,Domestic,52,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,40.2,Xinwang H-B,Guizhou,Inner Mongolia,H-B,BXG,Other,Domestic,52,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,40.2,Xinwang H-B,Henan,Inner Mongolia,H-B,BXG,Other,Domestic,52,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,40.2,Xinwang H-B,Shanxi,Inner Mongolia,H-B,BXG,Other,Domestic,52,271,2.105506696,2.105506696,2.105506696,2.105506696,2.105506696,2.105506696,2.105506696,2.105506696,2.105506696,2.105506696,2.105506696,2.105506696,2.46431383,2.550416156,2.550416156,2.550416156,2.550416156,2.550416156,2.550416156,2.550416156,2.550416156,2.550416156,2.550416156,2.550416156,2.550416156,2.550416156,2.550416156
+t/t,40.2,Xinwang H-B,Other,Inner Mongolia,H-B,BXG,Other,Domestic,52,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,41,Datang Tuoketuo Fly Ash,Guangxi,Inner Mongolia,fly ash,Private,Other,Fly ash,53,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,41,Datang Tuoketuo Fly Ash,Guizhou,Inner Mongolia,fly ash,Private,Other,Fly ash,53,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,41,Datang Tuoketuo Fly Ash,Henan,Inner Mongolia,fly ash,Private,Other,Fly ash,53,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,41,Datang Tuoketuo Fly Ash,Shanxi,Inner Mongolia,fly ash,Private,Other,Fly ash,53,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,41,Datang Tuoketuo Fly Ash,Other,Inner Mongolia,fly ash,Private,Other,Fly ash,53,326,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575
+t/t,42.1,Mengxi Fly Ash,Guangxi,Inner Mongolia,fly ash,Private,Other,Fly ash,54,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,42.1,Mengxi Fly Ash,Guizhou,Inner Mongolia,fly ash,Private,Other,Fly ash,54,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,42.1,Mengxi Fly Ash,Henan,Inner Mongolia,fly ash,Private,Other,Fly ash,54,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,42.1,Mengxi Fly Ash,Shanxi,Inner Mongolia,fly ash,Private,Other,Fly ash,54,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,42.1,Mengxi Fly Ash,Other,Inner Mongolia,fly ash,Private,Other,Fly ash,54,326,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575,2.832209575
+t/t,42.2,Mengxi import,Guangxi,Inner Mongolia,L-B,Private,Other,Imported,55,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,42.2,Mengxi import,Guizhou,Inner Mongolia,L-B,Private,Other,Imported,55,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,42.2,Mengxi import,Henan,Inner Mongolia,L-B,Private,Other,Imported,55,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,42.2,Mengxi import,Shanxi,Inner Mongolia,L-B,Private,Other,Imported,55,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,42.2,Mengxi import,Other,Inner Mongolia,L-B,Private,Other,Imported,55,326,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.204180272,2.212808488,2.218707226,2.223343597,2.225372578,2.225372578,2.225372578,2.225372578,2.225372578,2.225372578,2.225372578,2.225372578,2.225372578
+t/t,43.1,Qihui H-B,Guangxi,Inner Mongolia,H-B,Jinguotou,Other,Imported,56,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,43.1,Qihui H-B,Guizhou,Inner Mongolia,H-B,Jinguotou,Other,Imported,56,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,43.1,Qihui H-B,Henan,Inner Mongolia,H-B,Jinguotou,Other,Imported,56,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,43.1,Qihui H-B,Shanxi,Inner Mongolia,H-B,Jinguotou,Other,Imported,56,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,43.1,Qihui H-B,Other,Inner Mongolia,H-B,Jinguotou,Other,Imported,56,326,2.179927342,2.179927342,2.179927342,2.179927342,2.179927342,2.179927342,2.179927342,2.179927342,2.179927342,2.179927342,2.179927342,2.179927342,2.179927342,2.179927342,2.179927342,2.179927342,2.179927342,2.179927342,2.228045785,2.243848972,2.256254299,2.266147909,2.276093187,2.286580399,2.296282958,2.30502419,2.313051557
+t/t,43.2,Qihui L-B,Guangxi,Inner Mongolia,L-B,Jinguotou,Other,Imported,57,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,43.2,Qihui L-B,Guizhou,Inner Mongolia,L-B,Jinguotou,Other,Imported,57,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,43.2,Qihui L-B,Henan,Inner Mongolia,L-B,Jinguotou,Other,Imported,57,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,43.2,Qihui L-B,Shanxi,Inner Mongolia,L-B,Jinguotou,Other,Imported,57,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,43.2,Qihui L-B,Other,Inner Mongolia,L-B,Jinguotou,Other,Imported,57,326,2.252169639,2.252169639,2.252169639,2.252169639,2.252169639,2.252169639,2.252169639,2.252169639,2.252169639,2.252169639,2.252169639,2.252169639,2.252169639,2.252169639,2.252169639,2.252169639,2.252169639,2.252169639,2.284061218,2.292586715,2.300647998,2.307989339,2.314103053,2.32005927,2.325697508,2.330676943,2.335180067
+t/t,44,Jinjiang Lianyungang,Guangxi,Jiangsu,L-B,Jinjiang,Jinjiang,Imported,58,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,44,Jinjiang Lianyungang,Guizhou,Jiangsu,L-B,Jinjiang,Jinjiang,Imported,58,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,44,Jinjiang Lianyungang,Henan,Jiangsu,L-B,Jinjiang,Jinjiang,Imported,58,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,44,Jinjiang Lianyungang,Shanxi,Jiangsu,L-B,Jinjiang,Jinjiang,Imported,58,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,44,Jinjiang Lianyungang,Other,Jiangsu,L-B,Jinjiang,Jinjiang,Imported,58,326,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.28406397,2.292587692,2.300648672,2.30798985,2.31383809,2.318807089,2.323186867,2.32713959,2.330766209
+t/t,45,Chalco Lianyungang,Guangxi,Jiangsu,L-B,Chalco,Chalco,Imported,59,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,45,Chalco Lianyungang,Guizhou,Jiangsu,L-B,Chalco,Chalco,Imported,59,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,45,Chalco Lianyungang,Henan,Jiangsu,L-B,Chalco,Chalco,Imported,59,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,45,Chalco Lianyungang,Shanxi,Jiangsu,L-B,Chalco,Chalco,Imported,59,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,45,Chalco Lianyungang,Other,Jiangsu,L-B,Chalco,Chalco,Imported,59,326,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.252690334,2.28406397,2.293774394,2.30209053,2.310010702,2.317623706,2.324206831,2.329883425,2.334939882
+t/t,46.1,Chalco Shandong L-B,Guangxi,Shandong,L-B,Chalco,Chalco,Imported,60,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,46.1,Chalco Shandong L-B,Guizhou,Shandong,L-B,Chalco,Chalco,Imported,60,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,46.1,Chalco Shandong L-B,Henan,Shandong,L-B,Chalco,Chalco,Imported,60,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,46.1,Chalco Shandong L-B,Shanxi,Shandong,L-B,Chalco,Chalco,Imported,60,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,46.1,Chalco Shandong L-B,Other,Shandong,L-B,Chalco,Chalco,Imported,60,326,2.562226301,2.637246636,2.644103211,2.648586242,2.651995623,2.654879937,2.657404461,2.659665718,2.661617531,2.663464175,2.665308346,2.666978372,2.668507124,2.669918854,2.671504755,2.673162106,2.674637223,2.676011152,2.67729846,2.678510707,2.679657237,2.680745717,2.681782516,2.682772988,2.683721679,2.684632481,2.685508756
+t/t,46.2,Chalco Shandong sinter,Guangxi,Shandong,Sintering,Chalco,Chalco,Domestic,61,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,46.2,Chalco Shandong sinter,Guizhou,Shandong,Sintering,Chalco,Chalco,Domestic,61,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,46.2,Chalco Shandong sinter,Henan,Shandong,Sintering,Chalco,Chalco,Domestic,61,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,46.2,Chalco Shandong sinter,Shanxi,Shandong,Sintering,Chalco,Chalco,Domestic,61,271,1.834277787,1.900238159,1.914637931,1.927390284,1.936941839,1.944174478,1.954637449,1.970111145,1.987946272,2.007773759,2.037910137,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,46.2,Chalco Shandong sinter,Other,Shandong,Sintering,Chalco,Chalco,Domestic,61,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,46.3,Chalco Shandong sinter import,Guangxi,Shandong,L-B,Chalco,Chalco,Imported,62,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,46.3,Chalco Shandong sinter import,Guizhou,Shandong,L-B,Chalco,Chalco,Imported,62,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,46.3,Chalco Shandong sinter import,Henan,Shandong,L-B,Chalco,Chalco,Imported,62,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,46.3,Chalco Shandong sinter import,Shanxi,Shandong,L-B,Chalco,Chalco,Imported,62,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,46.3,Chalco Shandong sinter import,Other,Shandong,L-B,Chalco,Chalco,Imported,62,326,2.214171419,2.214171419,2.214171419,2.214171419,2.214171419,2.214171419,2.214171419,2.214171419,2.214171419,2.214171419,2.214171419,2.214171419,2.214171419,2.214171419,2.214171419,2.232889895,2.23608744,2.238454903,2.240381112,2.24202543,2.243471733,2.244770158,2.245953301,2.247043663,2.248057495,2.249006954,2.249901394
+t/t,47.1,Chiping Xinfa L-B,Guangxi,Shandong,L-B,Xinfa,Xinfa,Imported,63,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,47.1,Chiping Xinfa L-B,Guizhou,Shandong,L-B,Xinfa,Xinfa,Imported,63,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,47.1,Chiping Xinfa L-B,Henan,Shandong,L-B,Xinfa,Xinfa,Imported,63,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,47.1,Chiping Xinfa L-B,Shanxi,Shandong,L-B,Xinfa,Xinfa,Imported,63,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,47.1,Chiping Xinfa L-B,Other,Shandong,L-B,Xinfa,Xinfa,Imported,63,326,2.482694789,2.482694789,2.555884376,2.565383084,2.570969992,2.57506126,2.578819187,2.582856127,2.586587911,2.58868087,2.589918381,2.591501139,2.593429061,2.595577895,2.597663618,2.599620347,2.601416185,2.603090556,2.604661799,2.606144312,2.607549622,2.608887109,2.610164512,2.611388298,2.612563926,2.613687503,2.614763889
+t/t,47.2,Chiping Xinfa H-B,Guangxi,Shandong,H-B,Xinfa,Xinfa,Imported,64,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,47.2,Chiping Xinfa H-B,Guizhou,Shandong,H-B,Xinfa,Xinfa,Imported,64,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,47.2,Chiping Xinfa H-B,Henan,Shandong,H-B,Xinfa,Xinfa,Imported,64,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,47.2,Chiping Xinfa H-B,Shanxi,Shandong,H-B,Xinfa,Xinfa,Imported,64,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,47.2,Chiping Xinfa H-B,Other,Shandong,H-B,Xinfa,Xinfa,Imported,64,326,2.368566307,2.483343925,2.499233419,2.509592567,2.517754913,2.524666409,2.529826951,2.53342592,2.536669975,2.54169458,2.54783517,2.553115513,2.557774591,2.561563267,2.56435251,2.566663603,2.568854475,2.570947101,2.572951848,2.57487749,2.576731525,2.578520415,2.580249768,2.581924488,2.583548886,2.585126777,2.58666155
+t/t,48,Lubei,Guangxi,Shandong,L-B,Lubei Group,Jinjiang,Imported,65,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,48,Lubei,Guizhou,Shandong,L-B,Lubei Group,Jinjiang,Imported,65,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,48,Lubei,Henan,Shandong,L-B,Lubei Group,Jinjiang,Imported,65,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,48,Lubei,Shanxi,Shandong,L-B,Lubei Group,Jinjiang,Imported,65,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,48,Lubei,Other,Shandong,L-B,Lubei Group,Jinjiang,Imported,65,326,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141
+t/t,49.1,Nanshan Donghai H-B,Guangxi,Shandong,H-B,Nanshan Group,Nanshan,Imported,66,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,49.1,Nanshan Donghai H-B,Guizhou,Shandong,H-B,Nanshan Group,Nanshan,Imported,66,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,49.1,Nanshan Donghai H-B,Henan,Shandong,H-B,Nanshan Group,Nanshan,Imported,66,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,49.1,Nanshan Donghai H-B,Shanxi,Shandong,H-B,Nanshan Group,Nanshan,Imported,66,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,49.1,Nanshan Donghai H-B,Other,Shandong,H-B,Nanshan Group,Nanshan,Imported,66,326,2.368566307,2.368566307,2.368566307,2.368566307,2.368566307,2.368566307,2.485395226,2.501294312,2.511443882,2.518810936,2.524677843,2.529715205,2.534168778,2.538095072,2.54161897,2.544824958,2.547772942,2.550507027,2.55306067,2.55545989,2.557725338,2.559873695,2.561918639,2.563871533,2.565741926,2.567537921,2.569266459
+t/t,49.2,Nanshan Donghai L-B,Guangxi,Shandong,L-B,Nanshan Group,Nanshan,Imported,67,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,49.2,Nanshan Donghai L-B,Guizhou,Shandong,L-B,Nanshan Group,Nanshan,Imported,67,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,49.2,Nanshan Donghai L-B,Henan,Shandong,L-B,Nanshan Group,Nanshan,Imported,67,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,49.2,Nanshan Donghai L-B,Shanxi,Shandong,L-B,Nanshan Group,Nanshan,Imported,67,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,49.2,Nanshan Donghai L-B,Other,Shandong,L-B,Nanshan Group,Nanshan,Imported,67,326,2.623296,2.623296,2.702111319,2.711151839,2.716858424,2.722459003,2.7276123,2.73262025,2.737556401,2.74176128,2.745319747,2.748466544,2.751304125,2.753848575,2.756160948,2.7582847,2.760251901,2.762086923,2.763808747,2.765432455,2.766970242,2.768432113,2.769826386,2.771160053,2.77243905,2.773668465,2.774852689
+t/t,50,Bochuang,Guangxi,Shandong,L-B,Chuangxin Group,Other,Imported,68,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,50,Bochuang,Guizhou,Shandong,L-B,Chuangxin Group,Other,Imported,68,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,50,Bochuang,Henan,Shandong,L-B,Chuangxin Group,Other,Imported,68,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,50,Bochuang,Shanxi,Shandong,L-B,Chuangxin Group,Other,Imported,68,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,50,Bochuang,Other,Shandong,L-B,Chuangxin Group,Other,Imported,68,326,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141
+t/t,51,Nanhan,Guangxi,Shandong,L-B,Private,Other,Imported,69,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,51,Nanhan,Guizhou,Shandong,L-B,Private,Other,Imported,69,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,51,Nanhan,Henan,Shandong,L-B,Private,Other,Imported,69,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,51,Nanhan,Shanxi,Shandong,L-B,Private,Other,Imported,69,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,51,Nanhan,Other,Shandong,L-B,Private,Other,Imported,69,326,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141,3.165867141
+t/t,52.1,Weiqiao - Binzhou L-B,Guangxi,Shandong,L-B,Weiqiao,Weiqiao,Imported,70,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,52.1,Weiqiao - Binzhou L-B,Guizhou,Shandong,L-B,Weiqiao,Weiqiao,Imported,70,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,52.1,Weiqiao - Binzhou L-B,Henan,Shandong,L-B,Weiqiao,Weiqiao,Imported,70,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,52.1,Weiqiao - Binzhou L-B,Shanxi,Shandong,L-B,Weiqiao,Weiqiao,Imported,70,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,52.1,Weiqiao - Binzhou L-B,Other,Shandong,L-B,Weiqiao,Weiqiao,Imported,70,326,2.766054694,2.766054694,2.866138287,2.886092504,2.897487047,2.908429671,2.919627237,2.931103486,2.941873058,2.948879033,2.953293483,2.9577055,2.962319038,2.966734061,2.970678283,2.974322914,2.977795525,2.981035976,2.984073848,2.986933276,2.989634192,2.992193262,2.994624569,2.996940134,2.999150302,3.001264043,3.003289194
+t/t,52.2,Weiqiao - Binzhou H-B,Guangxi,Shandong,H-B,Weiqiao,Weiqiao,Imported,71,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,52.2,Weiqiao - Binzhou H-B,Guizhou,Shandong,H-B,Weiqiao,Weiqiao,Imported,71,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,52.2,Weiqiao - Binzhou H-B,Henan,Shandong,H-B,Weiqiao,Weiqiao,Imported,71,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,52.2,Weiqiao - Binzhou H-B,Shanxi,Shandong,H-B,Weiqiao,Weiqiao,Imported,71,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,52.2,Weiqiao - Binzhou H-B,Other,Shandong,H-B,Weiqiao,Weiqiao,Imported,71,326,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.409528685,2.421955532,2.432100913,2.439623442,2.445504111,2.45038901,2.454600454,2.458323631,2.46167531,2.464734122,2.46755568,2.470180851,2.472640593,2.474958952,2.477155003,2.479244141,2.481238988
+t/t,53.1,Weiqiao-Wudi-Zhanhua L-B,Guangxi,Shandong,L-B,Weiqiao,Weiqiao,Imported,72,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,53.1,Weiqiao-Wudi-Zhanhua L-B,Guizhou,Shandong,L-B,Weiqiao,Weiqiao,Imported,72,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,53.1,Weiqiao-Wudi-Zhanhua L-B,Henan,Shandong,L-B,Weiqiao,Weiqiao,Imported,72,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,53.1,Weiqiao-Wudi-Zhanhua L-B,Shanxi,Shandong,L-B,Weiqiao,Weiqiao,Imported,72,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,53.1,Weiqiao-Wudi-Zhanhua L-B,Other,Shandong,L-B,Weiqiao,Weiqiao,Imported,72,326,2.766054694,2.766054694,2.766054694,2.766054694,2.766054694,2.766054694,2.766054694,2.766054694,2.849562722,2.878556715,2.902742671,2.919547337,2.933055316,2.945450221,2.955965554,2.965084877,2.973333809,2.980770841,2.98739168,2.993219595,2.998423715,3.003122999,3.007404418,3.011333621,3.014961471,3.018328235,3.021466379
+t/t,53.2,Weiqiao-Wudi-Zhanhua H-B,Guangxi,Shandong,H-B,Weiqiao,Weiqiao,Imported,73,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,53.2,Weiqiao-Wudi-Zhanhua H-B,Guizhou,Shandong,H-B,Weiqiao,Weiqiao,Imported,73,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,53.2,Weiqiao-Wudi-Zhanhua H-B,Henan,Shandong,H-B,Weiqiao,Weiqiao,Imported,73,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,53.2,Weiqiao-Wudi-Zhanhua H-B,Shanxi,Shandong,H-B,Weiqiao,Weiqiao,Imported,73,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,53.2,Weiqiao-Wudi-Zhanhua H-B,Other,Shandong,H-B,Weiqiao,Weiqiao,Imported,73,326,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.410640202,2.428375092,2.438662858,2.445799051,2.451523144,2.455596142,2.459640238,2.463636014,2.467231358,2.4705124,2.473539925,2.476358356,2.479001199,2.481494394,2.483858452,2.486109895
+t/t,54,Aokaida,Guangxi,Shanxi,H-B,Aokaida,Other,Domestic,74,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,54,Aokaida,Guizhou,Shanxi,H-B,Aokaida,Other,Domestic,74,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,54,Aokaida,Henan,Shanxi,H-B,Aokaida,Other,Domestic,74,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,54,Aokaida,Shanxi,Shanxi,H-B,Aokaida,Other,Domestic,74,271,2.023409329,2.023409329,2.023409329,2.023409329,2.023409329,2.023409329,2.12570164,2.179820086,2.238203831,2.286517351,2.330267281,2.3742819,2.419798795,2.462831313,2.52202879,2.589020322,2.650009236,2.686187504,2.686187504,2.686187504,2.686187504,2.686187504,2.686187504,2.686187504,2.686187504,2.686187504,2.686187504
+t/t,54,Aokaida,Other,Shanxi,H-B,Aokaida,Other,Domestic,74,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,55,Chalco Lvliang (Xing),Guangxi,Shanxi,H-B,Chalco,Chalco,Domestic,75,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,55,Chalco Lvliang (Xing),Guizhou,Shanxi,H-B,Chalco,Chalco,Domestic,75,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,55,Chalco Lvliang (Xing),Henan,Shanxi,H-B,Chalco,Chalco,Domestic,75,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,55,Chalco Lvliang (Xing),Shanxi,Shanxi,H-B,Chalco,Chalco,Domestic,75,271,2.029061441,2.029061441,2.029061441,2.029061441,2.029061441,2.029061441,2.029061441,2.029061441,2.029061441,2.029061441,2.212268851,2.312415126,2.428188966,2.555041535,2.66860346,2.769071524,0,0,0,0,0,0,0,0,0,0,0
+t/t,55,Chalco Lvliang (Xing),Other,Shanxi,H-B,Chalco,Chalco,Domestic,75,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,56.1,Chalco Shanxi,Guangxi,Shanxi,"H-B (Lime), sinter",Chalco,Chalco,Domestic,76,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,56.1,Chalco Shanxi,Guizhou,Shanxi,"H-B (Lime), sinter",Chalco,Chalco,Domestic,76,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,56.1,Chalco Shanxi,Henan,Shanxi,"H-B (Lime), sinter",Chalco,Chalco,Domestic,76,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,56.1,Chalco Shanxi,Shanxi,Shanxi,"H-B (Lime), sinter",Chalco,Chalco,Domestic,76,271,1.938030268,2.081266259,2.130626835,2.169520775,2.198705901,2.220282967,2.241582403,2.268705193,2.303697187,2.342543163,2.383921014,2.425253487,2.469288984,2.522743764,2.575898368,2.619618083,2.668297138,0,0,0,0,0,0,0,0,0,0
+t/t,56.1,Chalco Shanxi,Other,Shanxi,"H-B (Lime), sinter",Chalco,Chalco,Domestic,76,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,56.2,Chalco Shanxi import,Guangxi,Shanxi,L-B,Chalco,Chalco,Imported,77,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,56.2,Chalco Shanxi import,Guizhou,Shanxi,L-B,Chalco,Chalco,Imported,77,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,56.2,Chalco Shanxi import,Henan,Shanxi,L-B,Chalco,Chalco,Imported,77,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,56.2,Chalco Shanxi import,Shanxi,Shanxi,L-B,Chalco,Chalco,Imported,77,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,56.2,Chalco Shanxi import,Other,Shanxi,L-B,Chalco,Chalco,Imported,77,326,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.340546275,2.391236341,2.397116392,2.4007686,2.403492585,2.405690442,2.407546385,2.409160992,2.410595494,2.411890073,2.413072585,2.414163173,2.415176899
+t/t,57.1,SPIC Shanxi,Guangxi,Shanxi,H-B & Sinter,SPIC,SPIC,Domestic,78,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,57.1,SPIC Shanxi,Guizhou,Shanxi,H-B & Sinter,SPIC,SPIC,Domestic,78,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,57.1,SPIC Shanxi,Henan,Shanxi,H-B & Sinter,SPIC,SPIC,Domestic,78,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,57.1,SPIC Shanxi,Shanxi,Shanxi,H-B & Sinter,SPIC,SPIC,Domestic,78,271,2.042209193,2.042209193,2.151200862,2.190409038,2.219492201,2.256928546,2.302394619,2.345928074,2.386856518,2.426484304,2.478116615,2.542363512,2.609364319,2.683508017,2.752628925,2.800756979,2.843139103,2.896237791,2.961602985,3.043037777,0,0,0,0,0,0,0
+t/t,57.1,SPIC Shanxi,Other,Shanxi,H-B & Sinter,SPIC,SPIC,Domestic,78,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,57.2,SPIC Shanxi import,Guangxi,Shanxi,L-B,SPIC,SPIC,Imported,79,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,57.2,SPIC Shanxi import,Guizhou,Shanxi,L-B,SPIC,SPIC,Imported,79,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,57.2,SPIC Shanxi import,Henan,Shanxi,L-B,SPIC,SPIC,Imported,79,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,57.2,SPIC Shanxi import,Shanxi,Shanxi,L-B,SPIC,SPIC,Imported,79,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,57.2,SPIC Shanxi import,Other,Shanxi,L-B,SPIC,SPIC,Imported,79,326,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.409528685,2.425171925,2.434270689,2.440961558,2.446338595,2.450878213,2.454440381,2.457284773,2.459904512,2.462338253,2.46461512,2.466757763
+t/t,58.1,Dongxu Tianyuan,Guangxi,Shanxi,H-B,Tianyuan Chemical,Other,Domestic,80,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,58.1,Dongxu Tianyuan,Guizhou,Shanxi,H-B,Tianyuan Chemical,Other,Domestic,80,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,58.1,Dongxu Tianyuan,Henan,Shanxi,H-B,Tianyuan Chemical,Other,Domestic,80,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,58.1,Dongxu Tianyuan,Shanxi,Shanxi,H-B,Tianyuan Chemical,Other,Domestic,80,271,2.137975642,2.137975642,2.229597214,2.265622281,2.283597086,2.303694196,2.335356633,2.38748907,2.436636702,2.4792654,2.531467467,2.580109628,2.627863575,2.677198658,2.727155758,2.752905146,2.752905146,2.752905146,2.752905146,2.752905146,2.752905146,2.752905146,2.752905146,2.752905146,2.752905146,2.752905146,2.752905146
+t/t,58.1,Dongxu Tianyuan,Other,Shanxi,H-B,Tianyuan Chemical,Other,Domestic,80,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,58.2,Dongxu Tianyuan import,Guangxi,Shanxi,L-B,Tianyuan Chemical,Other,Imported,81,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,58.2,Dongxu Tianyuan import,Guizhou,Shanxi,L-B,Tianyuan Chemical,Other,Imported,81,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,58.2,Dongxu Tianyuan import,Henan,Shanxi,L-B,Tianyuan Chemical,Other,Imported,81,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,58.2,Dongxu Tianyuan import,Shanxi,Shanxi,L-B,Tianyuan Chemical,Other,Imported,81,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,58.2,Dongxu Tianyuan import,Other,Shanxi,L-B,Tianyuan Chemical,Other,Imported,81,326,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.216122289,2.223489431,2.229133148,2.233850515,2.237964942,2.239855701,2.239855701,2.239855701,2.239855701,2.239855701,2.239855701
+t/t,59.1,East Hope Lingshi,Guangxi,Shanxi,H-B,East Hope,East Hope,Domestic,82,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,59.1,East Hope Lingshi,Guizhou,Shanxi,H-B,East Hope,East Hope,Domestic,82,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,59.1,East Hope Lingshi,Henan,Shanxi,H-B,East Hope,East Hope,Domestic,82,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,59.1,East Hope Lingshi,Shanxi,Shanxi,H-B,East Hope,East Hope,Domestic,82,271,2.161125988,2.161125988,2.161125988,2.161125988,2.161125988,2.161125988,2.161125988,2.161125988,2.161125988,2.161125988,2.161125988,2.161125988,2.455860794,2.659465497,2.858081088,3.08387965,0,0,0,0,0,0,0,0,0,0,0
+t/t,59.1,East Hope Lingshi,Other,Shanxi,H-B,East Hope,East Hope,Domestic,82,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,59.2,East Hope Lingshi Import,Guangxi,Shanxi,L-B,East Hope,East Hope,Imported,83,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,59.2,East Hope Lingshi Import,Guizhou,Shanxi,L-B,East Hope,East Hope,Imported,83,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,59.2,East Hope Lingshi Import,Henan,Shanxi,L-B,East Hope,East Hope,Imported,83,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,59.2,East Hope Lingshi Import,Shanxi,Shanxi,L-B,East Hope,East Hope,Imported,83,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,59.2,East Hope Lingshi Import,Other,Shanxi,L-B,East Hope,East Hope,Imported,83,326,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.224351366,2.237273267,2.246563242,2.254146624,2.260689061,2.266516609,2.271816702,2.276708352,2.281272476,2.285566926,2.289634691,2.293508702
+t/t,60,Huaqing,Guangxi,Shanxi,H-B,Private,Other,Domestic,84,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,60,Huaqing,Guizhou,Shanxi,H-B,Private,Other,Domestic,84,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,60,Huaqing,Henan,Shanxi,H-B,Private,Other,Domestic,84,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,60,Huaqing,Shanxi,Shanxi,H-B,Private,Other,Domestic,84,271,2.102898271,2.102898271,2.102898271,2.102898271,2.102898271,2.220210135,2.261820644,2.304868564,2.349303764,2.388484301,2.424565737,2.458693479,2.483522304,2.531210674,2.627983146,2.758284764,2.929659432,3.195014969,0,0,0,0,0,0,0,0,0
+t/t,60,Huaqing,Other,Shanxi,H-B,Private,Other,Domestic,84,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,61,Qiangjin Aluminium,Guangxi,Shanxi,H-B,Private,Other,Domestic,85,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,61,Qiangjin Aluminium,Guizhou,Shanxi,H-B,Private,Other,Domestic,85,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,61,Qiangjin Aluminium,Henan,Shanxi,H-B,Private,Other,Domestic,85,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,61,Qiangjin Aluminium,Shanxi,Shanxi,H-B,Private,Other,Domestic,85,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,61,Qiangjin Aluminium,Other,Shanxi,H-B,Private,Other,Domestic,85,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,62,Senze,Guangxi,Shanxi,H-B & Sinter (1.2:0.1),Senze,Other,Domestic,86,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,62,Senze,Guizhou,Shanxi,H-B & Sinter (1.2:0.1),Senze,Other,Domestic,86,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,62,Senze,Henan,Shanxi,H-B & Sinter (1.2:0.1),Senze,Other,Domestic,86,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,62,Senze,Shanxi,Shanxi,H-B & Sinter (1.2:0.1),Senze,Other,Domestic,86,271,1.825626572,1.825626572,1.825626572,1.825626572,1.825626572,1.828556273,1.833421275,1.841319594,1.854803169,1.874711086,1.897748748,1.923076906,1.953416842,2.000539095,2.065922573,2.147597992,2.260857283,2.423692396,0,0,0,0,0,0,0,0,0
+t/t,62,Senze,Other,Shanxi,H-B & Sinter (1.2:0.1),Senze,Other,Domestic,86,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,63,Taixing,Guangxi,Shanxi,H-B,Private,Other,Domestic,87,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,63,Taixing,Guizhou,Shanxi,H-B,Private,Other,Domestic,87,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,63,Taixing,Henan,Shanxi,H-B,Private,Other,Domestic,87,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,63,Taixing,Shanxi,Shanxi,H-B,Private,Other,Domestic,87,271,2.102240364,2.102240364,2.102240364,2.102240364,2.102240364,2.221435716,2.272722974,2.313687637,2.349339614,2.381570076,2.411615359,2.44841657,2.496886579,2.586646389,2.741941579,2.951575511,0,0,0,0,0,0,0,0,0,0,0
+t/t,63,Taixing,Other,Shanxi,H-B,Private,Other,Domestic,87,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,64,Wusheng,Guangxi,Shanxi,H-B,Private,Other,Domestic,88,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,64,Wusheng,Guizhou,Shanxi,H-B,Private,Other,Domestic,88,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,64,Wusheng,Henan,Shanxi,H-B,Private,Other,Domestic,88,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,64,Wusheng,Shanxi,Shanxi,H-B,Private,Other,Domestic,88,271,2.128261353,2.128261353,2.128261353,2.308786255,2.354927013,2.383114015,2.427755744,2.491350435,2.565875163,2.639071936,2.713456729,2.752601827,2.752601827,2.752601827,2.752601827,2.752601827,2.752601827,2.752601827,2.752601827,2.752601827,2.752601827,2.752601827,2.752601827,2.752601827,2.752601827,2.752601827,2.752601827
+t/t,64,Wusheng,Other,Shanxi,H-B,Private,Other,Domestic,88,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,65,Xinfa - Jiaokou,Guangxi,Shanxi,H-B,Xinfa,Xinfa,Domestic,89,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,65,Xinfa - Jiaokou,Guizhou,Shanxi,H-B,Xinfa,Xinfa,Domestic,89,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,65,Xinfa - Jiaokou,Henan,Shanxi,H-B,Xinfa,Xinfa,Domestic,89,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,65,Xinfa - Jiaokou,Shanxi,Shanxi,H-B,Xinfa,Xinfa,Domestic,89,271,2.006245115,2.006245115,2.006245115,2.006245115,2.08678108,2.088442553,2.088442553,2.174208947,2.245083606,2.325974549,2.399060405,2.481556003,2.587202952,2.707881424,2.802350544,2.872882286,3.027753908,0,0,0,0,0,0,0,0,0,0
+t/t,65,Xinfa - Jiaokou,Other,Shanxi,H-B,Xinfa,Xinfa,Domestic,89,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,66,Xinfa - Xiaoyi,Guangxi,Shanxi,H-B,Xinfa,Xinfa,Domestic,90,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,66,Xinfa - Xiaoyi,Guizhou,Shanxi,H-B,Xinfa,Xinfa,Domestic,90,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,66,Xinfa - Xiaoyi,Henan,Shanxi,H-B,Xinfa,Xinfa,Domestic,90,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,66,Xinfa - Xiaoyi,Shanxi,Shanxi,H-B,Xinfa,Xinfa,Domestic,90,271,2.076667796,2.076667796,2.076667796,2.076667796,2.076667796,2.076667796,2.076667796,2.076667796,2.076667796,2.248915386,2.37549889,2.513620855,2.665157648,2.845562744,3.136446982,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,66,Xinfa - Xiaoyi,Other,Shanxi,H-B,Xinfa,Xinfa,Domestic,90,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,67.1,Xingan Chemical,Guangxi,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,91,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,67.1,Xingan Chemical,Guizhou,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,91,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,67.1,Xingan Chemical,Henan,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,91,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,67.1,Xingan Chemical,Shanxi,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,91,271,2.063977175,2.063977175,2.063977175,2.063977175,2.063977175,2.177578363,2.236444208,2.326535817,2.430630117,2.528793946,2.627214898,2.738079394,2.874839675,3.05292005,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,67.1,Xingan Chemical,Other,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,91,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,67.2,Xingan Chemical import,Guangxi,Shanxi,L-B,Jinjiang,Jinjiang,Imported,92,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,67.2,Xingan Chemical import,Guizhou,Shanxi,L-B,Jinjiang,Jinjiang,Imported,92,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,67.2,Xingan Chemical import,Henan,Shanxi,L-B,Jinjiang,Jinjiang,Imported,92,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,67.2,Xingan Chemical import,Shanxi,Shanxi,L-B,Jinjiang,Jinjiang,Imported,92,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,67.2,Xingan Chemical import,Other,Shanxi,L-B,Jinjiang,Jinjiang,Imported,92,326,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.223338079,2.232301556,2.23919161,2.244972296,2.250030199,2.254572208,2.258723755,2.262195715,2.265107037,2.267877751,2.270526119
+t/t,68,Yangquan Zhaofeng,Guangxi,Shanxi,H-B (Lime),"Xinfa, Yangquan Coal",Xinfa,Domestic,93,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,68,Yangquan Zhaofeng,Guizhou,Shanxi,H-B (Lime),"Xinfa, Yangquan Coal",Xinfa,Domestic,93,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,68,Yangquan Zhaofeng,Henan,Shanxi,H-B (Lime),"Xinfa, Yangquan Coal",Xinfa,Domestic,93,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,68,Yangquan Zhaofeng,Shanxi,Shanxi,H-B (Lime),"Xinfa, Yangquan Coal",Xinfa,Domestic,93,271,2.209895154,2.209895154,2.209895154,2.33360462,2.399096995,2.434790157,2.468845846,2.515748547,2.590794086,2.680809947,2.770951404,2.862392255,2.965242902,3.085548832,3.188351241,3.283134841,3.451159788,0,0,0,0,0,0,0,0,0,0
+t/t,68,Yangquan Zhaofeng,Other,Shanxi,H-B (Lime),"Xinfa, Yangquan Coal",Xinfa,Domestic,93,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,69,Gangyuan Jiaohua,Guangxi,Shanxi,H-B,Private,Other,Domestic,94,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,69,Gangyuan Jiaohua,Guizhou,Shanxi,H-B,Private,Other,Domestic,94,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,69,Gangyuan Jiaohua,Henan,Shanxi,H-B,Private,Other,Domestic,94,216,2.050947219,2.050947219,2.050947219,2.050947219,2.050947219,2.050947219,2.410042982,2.649733987,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,69,Gangyuan Jiaohua,Shanxi,Shanxi,H-B,Private,Other,Domestic,94,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,69,Gangyuan Jiaohua,Other,Shanxi,H-B,Private,Other,Domestic,94,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,70.1,Xinghua (Chalco Jiaokou),Guangxi,Shanxi,H-B,Chalco,Chalco,Domestic,95,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,70.1,Xinghua (Chalco Jiaokou),Guizhou,Shanxi,H-B,Chalco,Chalco,Domestic,95,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,70.1,Xinghua (Chalco Jiaokou),Henan,Shanxi,H-B,Chalco,Chalco,Domestic,95,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,70.1,Xinghua (Chalco Jiaokou),Shanxi,Shanxi,H-B,Chalco,Chalco,Domestic,95,271,2.029803775,2.029803775,2.029803775,2.029803775,2.029803775,2.029803775,2.029803775,2.029803775,2.029803775,2.029803775,2.029803775,2.178218678,2.247781538,2.334214979,2.415141729,2.465546017,2.503512422,2.549138907,2.592525564,2.628633907,2.657835075,2.679831895,2.702321507,2.725404352,2.749157887,2.773669238,2.792659229
+t/t,70.1,Xinghua (Chalco Jiaokou),Other,Shanxi,H-B,Chalco,Chalco,Domestic,95,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,70.2,Xinghua (Chalco Jiaokou) import,Guangxi,Shanxi,H-B,Chalco,Chalco,Imported,96,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,70.2,Xinghua (Chalco Jiaokou) import,Guizhou,Shanxi,H-B,Chalco,Chalco,Imported,96,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,70.2,Xinghua (Chalco Jiaokou) import,Henan,Shanxi,H-B,Chalco,Chalco,Imported,96,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,70.2,Xinghua (Chalco Jiaokou) import,Shanxi,Shanxi,H-B,Chalco,Chalco,Imported,96,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,70.2,Xinghua (Chalco Jiaokou) import,Other,Shanxi,H-B,Chalco,Chalco,Imported,96,326,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.1805517,2.214795493,2.227039952,2.235022698,2.241436839,2.246402803,2.250367416,2.254009784,2.257394665,2.260567836,2.263563225,2.26640677,2.269118805
+t/t,71,Tiantong,Guangxi,Shanxi,H-B,Private,Other,Domestic,97,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,71,Tiantong,Guizhou,Shanxi,H-B,Private,Other,Domestic,97,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,71,Tiantong,Henan,Shanxi,H-B,Private,Other,Domestic,97,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,71,Tiantong,Shanxi,Shanxi,H-B,Private,Other,Domestic,97,271,2.013511815,2.013511815,2.013511815,2.013511815,2.013511815,2.013511815,2.013511815,2.013511815,2.013511815,2.013511815,2.207028788,2.273029081,2.329392707,2.42008402,2.486479642,2.486479642,2.486479642,2.486479642,2.486479642,2.486479642,2.486479642,2.486479642,2.486479642,2.486479642,2.486479642,2.486479642,2.486479642
+t/t,71,Tiantong,Other,Shanxi,H-B,Private,Other,Domestic,97,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,72,Fusheng,Guangxi,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,98,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,72,Fusheng,Guizhou,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,98,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,72,Fusheng,Henan,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,98,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,72,Fusheng,Shanxi,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,98,271,2.126435791,2.126435791,2.126435791,2.126435791,2.126435791,2.126435791,2.126435791,2.126435791,2.126435791,2.126435791,2.350770945,2.490862041,2.62819477,2.777682328,2.94884401,3.195449164,0,0,0,0,0,0,0,0,0,0,0
+t/t,72,Fusheng,Other,Shanxi,H-B,Jinjiang,Jinjiang,Domestic,98,326,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,73,YMG - Wenshan,Guangxi,Yunnan,H-B,Yunnan Aluminium Companuy,Chalco,Domestic,99,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,73,YMG - Wenshan,Guizhou,Yunnan,H-B,Yunnan Aluminium Companuy,Chalco,Domestic,99,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,73,YMG - Wenshan,Henan,Yunnan,H-B,Yunnan Aluminium Companuy,Chalco,Domestic,99,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,73,YMG - Wenshan,Shanxi,Yunnan,H-B,Yunnan Aluminium Companuy,Chalco,Domestic,99,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,73,YMG - Wenshan,Other,Yunnan,H-B,Yunnan Aluminium Companuy,Chalco,Domestic,99,326,2.285812468,2.285812468,2.285812468,2.285812468,2.285812468,2.285812468,2.285812468,2.387535453,2.42835666,2.471906573,2.507295562,2.548178594,2.590952527,2.640367582,2.703413539,2.773425164,2.856928971,2.956211162,3.072727095,0,0,0,0,0,0,0,0
+t/t,74,Guangxi - blending,Guangxi,Guangxi,H-B,spare,spare,Imported,100,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,74,Guangxi - blending,Guizhou,Guangxi,H-B,spare,spare,Imported,100,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,74,Guangxi - blending,Henan,Guangxi,H-B,spare,spare,Imported,100,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,74,Guangxi - blending,Shanxi,Guangxi,H-B,spare,spare,Imported,100,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,74,Guangxi - blending,Other,Guangxi,H-B,spare,spare,Imported,100,326,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.387512176,2.396806392,2.399018637,2.399018637,2.399018637,2.399018637,2.399018637,2.399018637,2.399018637,2.399018637,2.399018637,2.399018637
+t/t,75,Guizhou - blending,Guangxi,Guizhou,H-B,spare,spare,Imported,101,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,75,Guizhou - blending,Guizhou,Guizhou,H-B,spare,spare,Imported,101,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,75,Guizhou - blending,Henan,Guizhou,H-B,spare,spare,Imported,101,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,75,Guizhou - blending,Shanxi,Guizhou,H-B,spare,spare,Imported,101,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,75,Guizhou - blending,Other,Guizhou,H-B,spare,spare,Imported,101,326,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186
+t/t,76,Henan - blending,Guangxi,Henan,H-B,spare,spare,Imported,102,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,76,Henan - blending,Guizhou,Henan,H-B,spare,spare,Imported,102,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,76,Henan - blending,Henan,Henan,H-B,spare,spare,Imported,102,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,76,Henan - blending,Shanxi,Henan,H-B,spare,spare,Imported,102,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,76,Henan - blending,Other,Henan,H-B,spare,spare,Imported,102,326,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.373401207,2.373401207,2.373401207,2.373401207,2.373401207,2.373401207,2.373401207,2.373401207,2.373401207,2.373401207,2.373401207,2.373401207
+t/t,77,Shanxi - blending,Guangxi,Shanxi,H-B,spare,spare,Imported,103,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,77,Shanxi - blending,Guizhou,Shanxi,H-B,spare,spare,Imported,103,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,77,Shanxi - blending,Henan,Shanxi,H-B,spare,spare,Imported,103,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,77,Shanxi - blending,Shanxi,Shanxi,H-B,spare,spare,Imported,103,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,77,Shanxi - blending,Other,Shanxi,H-B,spare,spare,Imported,103,326,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.406104224,2.408542656,2.408542656,2.408542656,2.408542656,2.408542656,2.408542656,2.408542656,2.408542656,2.408542656,2.408542656,2.408542656
+t/t,78,Other - blending,Guangxi,Other,H-B,spare,spare,Imported,104,106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,78,Other - blending,Guizhou,Other,H-B,spare,spare,Imported,104,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,78,Other - blending,Henan,Other,H-B,spare,spare,Imported,104,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,78,Other - blending,Shanxi,Other,H-B,spare,spare,Imported,104,271,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+t/t,78,Other - blending,Other,Other,H-B,spare,spare,Imported,104,326,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.301910186,2.375760736,2.375760736,2.375760736,2.375760736,2.375760736,2.375760736,2.375760736,2.375760736,2.375760736,2.375760736,2.375760736,2.375760736
+t/t,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+t/t,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+t/t,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+t/t,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+t/t,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

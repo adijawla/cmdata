@@ -1,0 +1,496 @@
+,province,refinery,drawdowntechfactorinputs1_id,factorx,Bauxite Consumption,bayerconstant
+0,Other,Bosai Xianfeng domestic,5.0,1.0,0.1,1.23
+1,Other,Jinjiang Tiandong,45.0,1.0,0.2,1.23
+2,Other,Henan - blending,485.0,10.0,0.1,1.0
+3,Other,Shanxi - blending,490.0,10.0,0.1,1.0
+4,Other,Other - blending,495.0,10.0,0.1,1.0
+5,Other,Xinfa Jingxi,50.0,1.0,0.2,1.23
+6,Other,Chalco Huaxing,350.0,1.0,0.2,1.23
+7,Other,Tiangui,60.0,1.0,0.2,1.23
+8,Other,Jinjiang Longzhou,35.0,1.0,0.2,1.23
+9,Other,Huasheng,55.0,10.0,0.1,1.0
+10,Other,Chalco Xinghua,450.0,1.0,0.2,1.23
+11,Other,Chalco Xinghua import,455.0,1.0,0.2,1.0
+12,Other,Chalco Guizhou,65.0,1.0,0.2,1.23
+13,Other,Chalco Zunyi,70.0,1.0,0.2,1.23
+14,Other,Xian,75.0,1.0,0.2,1.23
+15,Other,Huafei,80.0,1.0,0.2,1.23
+16,Other,Bosai Xianfeng import,10.0,10.0,0.1,1.0
+17,Other,Qingzhen Guanglv,85.0,1.0,0.2,1.23
+18,Other,Qizheng Chemical,90.0,1.0,0.2,1.23
+19,Other,Qizheng Chemical Added LT,95.0,1.0,0.2,1.0
+20,Other,SPIC - Wuchuan,100.0,1.0,0.2,1.23
+21,Other,Kaisheng,105.0,1.0,0.2,1.23
+22,Other,Huajin,110.0,1.0,0.2,1.23
+23,Other,Chalco Zhengzhou domestic,115.0,1.0,0.2,1.23
+24,Other,Chalco Zhengzhou import,120.0,10.0,0.1,1.0
+25,Other,Chalco Zhongzhou Dom. Sinter,125.0,1.0,0.2,1.23
+26,Other,Chalco Zhongzhou Dom. Bayer,130.0,10.0,0.1,1.23
+27,Other,Bosai Wanzhou,15.0,1.0,0.2,1.0
+28,Other,Chalco Zhongzhou LT Amt,135.0,10.0,0.1,1.0
+29,Other,Kaiman,140.0,1.0,0.2,1.23
+30,Other,Kaiman Import,145.0,1.0,0.2,1.0
+31,Other,East Hope Mianchi,150.0,1.0,0.2,1.23
+32,Other,East Hope Mianchi Added LT,155.0,1.0,0.2,1.0
+33,Other,Huiyuan Lushan,160.0,1.0,0.2,1.23
+34,Other,Jingxin,165.0,1.0,0.2,1.23
+35,Other,Shenhuo,170.0,1.0,0.2,1.23
+36,Other,Wanji,175.0,1.0,0.2,1.23
+37,Other,Wanji import,180.0,1.0,0.2,1.0
+38,Other,Shuijiang,20.0,20.0,0.1,1.23
+39,Other,Weilai,185.0,1.0,0.2,1.23
+40,Other,Yifeng Gongyi (Yulian Xinya),190.0,1.0,0.2,1.23
+41,Other,Yima Yixiang,195.0,1.0,0.2,1.23
+42,Other,Zhongmei,200.0,1.0,0.2,1.23
+43,Other,Shaoxing,205.0,1.0,0.2,1.23
+44,Other,Zhongchao,210.0,1.0,0.2,1.23
+45,Other,Jialu Xianfeng,215.0,1.0,0.2,1.23
+46,Other,Jinshi,220.0,1.0,0.2,1.23
+47,Other,Huixiang,225.0,1.0,0.2,1.23
+48,Other,Xinwang L-B,230.0,10.0,0.1,1.0
+49,Other,Tuoyuan,25.0,1.0,0.2,1.23
+50,Other,Xinwang H-B,235.0,10.0,0.1,1.23
+51,Other,Datang Tuoketuo Fly Ash,240.0,10.0,0.1,1.0
+52,Other,Mengxi Fly Ash,245.0,10.0,0.1,1.0
+53,Other,Mengxi import,250.0,1.0,0.2,1.0
+54,Other,Qihui H-B,255.0,1.0,0.1,1.0
+55,Other,Qihui L-B,260.0,1.0,0.1,1.0
+56,Other,Jinjiang Lianyungang,265.0,1.0,0.2,1.0
+57,Other,Chalco Lianyungang,270.0,1.0,0.2,1.0
+58,Other,Chalco Shandong L-B,275.0,10.0,0.1,1.0
+59,Other,Chalco Shandong sinter,280.0,1.0,0.2,1.23
+60,Other,Chalco Pingguo,30.0,1.0,0.2,1.23
+61,Other,Chalco Shandong sinter import,285.0,1.0,0.2,1.0
+62,Other,Chiping Xinfa L-B,290.0,10.0,0.1,1.0
+63,Other,Chiping Xinfa H-B,295.0,10.0,0.1,1.0
+64,Other,Lubei,300.0,10.0,0.1,1.0
+65,Other,Nanshan Donghai H-B,305.0,10.0,0.1,1.0
+66,Other,Nanshan Donghai L-B,310.0,10.0,0.1,1.0
+67,Other,Bochuang,315.0,10.0,0.1,1.0
+68,Other,Nanhan,320.0,10.0,0.1,1.0
+69,Other,Weiqiao - Binzhou L-B,325.0,10.0,0.1,1.0
+70,Other,Weiqiao - Binzhou H-B,330.0,10.0,0.1,1.0
+71,Other,Weiqiao-Wudi-Zhanhua L-B,335.0,10.0,0.1,1.0
+72,Other,Weiqiao-Wudi-Zhanhua H-B,340.0,10.0,0.1,1.0
+73,Other,Aokaida,345.0,1.0,0.2,1.23
+74,Other,Chalco Shanxi,355.0,1.0,0.2,1.23
+75,Other,Chalco Shanxi import,360.0,10.0,0.1,1.0
+76,Other,SPIC Shanxi,365.0,1.0,0.2,1.23
+77,Other,SPIC Shanxi import,370.0,10.0,0.1,1.0
+78,Other,Dongxu Tianyuan,375.0,1.0,0.2,1.23
+79,Other,Dongxu Tianyuan import,380.0,1.0,0.2,1.0
+80,Other,East Hope Lingshi,385.0,1.0,0.2,1.23
+81,Other,East Hope Lingshi Import,390.0,1.0,0.2,1.0
+82,Other,Huaqing,395.0,1.0,0.2,1.23
+83,Other,Qiangjin Aluminium,400.0,1.0,0.2,1.23
+84,Other,Senze,405.0,1.0,0.2,1.23
+85,Other,Taixing,410.0,1.0,0.2,1.23
+86,Other,Wusheng,415.0,1.0,0.2,1.23
+87,Other,Xinfa - Jiaokou,420.0,1.0,0.2,1.23
+88,Other,Xinfa - Xiaoyi,425.0,1.0,0.2,1.23
+89,Other,Xingan Chemical,430.0,1.0,0.2,1.23
+90,Other,Huayin,40.0,1.0,0.2,1.23
+91,Other,Xingan Chemical import,435.0,1.0,0.2,1.0
+92,Other,Yangquan Zhaofeng,440.0,1.0,0.2,1.23
+93,Other,Gangyuan Jiaohua,445.0,1.0,0.2,1.23
+94,Other,Tiantong,460.0,1.0,0.2,1.23
+95,Other,Fusheng,465.0,1.0,0.2,1.23
+96,Other,YMG - Wenshan,470.0,1.0,0.2,1.23
+97,Other,Guangxi - blending,475.0,10.0,0.1,1.0
+98,Other,Guizhou - blending,480.0,10.0,0.1,1.0
+99,Guangxi,Bosai Xianfeng domestic,1.0,5.0,0.1,1.23
+100,Guangxi,Jinjiang Tiandong,41.0,0.9,0.1,1.23
+101,Guangxi,Henan - blending,481.0,10.0,0.1,1.0
+102,Guangxi,Shanxi - blending,486.0,10.0,0.1,1.0
+103,Guangxi,Other - blending,491.0,10.0,0.1,1.0
+104,Guangxi,Xinfa Jingxi,46.0,0.8,0.1,1.23
+105,Guangxi,Chalco Huaxing,346.0,5.0,0.1,1.23
+106,Guangxi,Tiangui,56.0,1.0,0.1,1.23
+107,Guangxi,Jinjiang Longzhou,31.0,5.0,0.1,1.23
+108,Guangxi,Huasheng,51.0,10.0,0.1,1.0
+109,Guangxi,Chalco Xinghua,446.0,5.0,0.1,1.23
+110,Guangxi,Chalco Xinghua import,451.0,5.0,0.1,1.0
+111,Guangxi,Chalco Guizhou,61.0,5.0,0.1,1.23
+112,Guangxi,Chalco Zunyi,66.0,5.0,0.1,1.23
+113,Guangxi,Xian,71.0,5.0,0.1,1.23
+114,Guangxi,Huafei,76.0,5.0,0.1,1.23
+115,Guangxi,Bosai Xianfeng import,6.0,10.0,0.1,1.0
+116,Guangxi,Qingzhen Guanglv,81.0,5.0,0.1,1.23
+117,Guangxi,Qizheng Chemical,86.0,5.0,0.1,1.23
+118,Guangxi,Qizheng Chemical Added LT,91.0,5.0,0.1,1.0
+119,Guangxi,SPIC - Wuchuan,96.0,5.0,0.1,1.23
+120,Guangxi,Kaisheng,101.0,5.0,0.1,1.23
+121,Guangxi,Huajin,106.0,5.0,0.1,1.23
+122,Guangxi,Chalco Zhengzhou domestic,111.0,5.0,0.1,1.23
+123,Guangxi,Chalco Zhengzhou import,116.0,10.0,0.1,1.0
+124,Guangxi,Chalco Zhongzhou Dom. Sinter,121.0,5.0,0.1,1.23
+125,Guangxi,Chalco Zhongzhou Dom. Bayer,126.0,10.0,0.1,1.23
+126,Guangxi,Bosai Wanzhou,11.0,5.0,0.1,1.0
+127,Guangxi,Chalco Zhongzhou LT Amt,131.0,10.0,0.1,1.0
+128,Guangxi,Kaiman,136.0,5.0,0.1,1.23
+129,Guangxi,Kaiman Import,141.0,5.0,0.1,1.0
+130,Guangxi,East Hope Mianchi,146.0,5.0,0.1,1.23
+131,Guangxi,East Hope Mianchi Added LT,151.0,5.0,0.1,1.0
+132,Guangxi,Huiyuan Lushan,156.0,5.0,0.1,1.23
+133,Guangxi,Jingxin,161.0,5.0,0.1,1.23
+134,Guangxi,Shenhuo,166.0,5.0,0.1,1.23
+135,Guangxi,Wanji,171.0,5.0,0.1,1.23
+136,Guangxi,Wanji import,176.0,5.0,0.1,1.0
+137,Guangxi,Shuijiang,16.0,5.0,0.1,1.23
+138,Guangxi,Weilai,181.0,5.0,0.1,1.23
+139,Guangxi,Yifeng Gongyi (Yulian Xinya),186.0,5.0,0.1,1.23
+140,Guangxi,Yima Yixiang,191.0,5.0,0.1,1.23
+141,Guangxi,Zhongmei,196.0,5.0,0.1,1.23
+142,Guangxi,Shaoxing,201.0,5.0,0.1,1.23
+143,Guangxi,Zhongchao,206.0,5.0,0.1,1.23
+144,Guangxi,Jialu Xianfeng,211.0,5.0,0.1,1.23
+145,Guangxi,Jinshi,216.0,5.0,0.1,1.23
+146,Guangxi,Huixiang,221.0,5.0,0.1,1.23
+147,Guangxi,Xinwang L-B,226.0,10.0,0.1,1.0
+148,Guangxi,Tuoyuan,21.0,5.0,0.1,1.23
+149,Guangxi,Xinwang H-B,231.0,10.0,0.1,1.23
+150,Guangxi,Datang Tuoketuo Fly Ash,236.0,10.0,0.1,1.0
+151,Guangxi,Mengxi Fly Ash,241.0,10.0,0.1,1.0
+152,Guangxi,Mengxi import,246.0,5.0,0.1,1.0
+153,Guangxi,Qihui H-B,251.0,5.0,0.1,1.0
+154,Guangxi,Qihui L-B,256.0,5.0,0.1,1.0
+155,Guangxi,Jinjiang Lianyungang,261.0,5.0,0.1,1.0
+156,Guangxi,Chalco Lianyungang,266.0,5.0,0.1,1.0
+157,Guangxi,Chalco Shandong L-B,271.0,10.0,0.1,1.0
+158,Guangxi,Chalco Shandong sinter,276.0,5.0,0.1,1.23
+159,Guangxi,Chalco Pingguo,26.0,3.0,0.1,1.23
+160,Guangxi,Chalco Shandong sinter import,281.0,5.0,0.1,1.0
+161,Guangxi,Chiping Xinfa L-B,286.0,10.0,0.1,1.0
+162,Guangxi,Chiping Xinfa H-B,291.0,10.0,0.1,1.0
+163,Guangxi,Lubei,296.0,10.0,0.1,1.0
+164,Guangxi,Nanshan Donghai H-B,301.0,10.0,0.1,1.0
+165,Guangxi,Nanshan Donghai L-B,306.0,10.0,0.1,1.0
+166,Guangxi,Bochuang,311.0,10.0,0.1,1.0
+167,Guangxi,Nanhan,316.0,10.0,0.1,1.0
+168,Guangxi,Weiqiao - Binzhou L-B,321.0,10.0,0.1,1.0
+169,Guangxi,Weiqiao - Binzhou H-B,326.0,10.0,0.1,1.0
+170,Guangxi,Weiqiao-Wudi-Zhanhua L-B,331.0,10.0,0.1,1.0
+171,Guangxi,Weiqiao-Wudi-Zhanhua H-B,336.0,10.0,0.1,1.0
+172,Guangxi,Aokaida,341.0,5.0,0.1,1.23
+173,Guangxi,Chalco Shanxi,351.0,5.0,0.1,1.23
+174,Guangxi,Chalco Shanxi import,356.0,10.0,0.1,1.0
+175,Guangxi,SPIC Shanxi,361.0,5.0,0.1,1.23
+176,Guangxi,SPIC Shanxi import,366.0,10.0,0.1,1.0
+177,Guangxi,Dongxu Tianyuan,371.0,5.0,0.1,1.23
+178,Guangxi,Dongxu Tianyuan import,376.0,5.0,0.1,1.0
+179,Guangxi,East Hope Lingshi,381.0,5.0,0.1,1.23
+180,Guangxi,East Hope Lingshi Import,386.0,5.0,0.1,1.0
+181,Guangxi,Huaqing,391.0,5.0,0.1,1.23
+182,Guangxi,Qiangjin Aluminium,396.0,5.0,0.1,1.23
+183,Guangxi,Senze,401.0,5.0,0.1,1.23
+184,Guangxi,Taixing,406.0,5.0,0.1,1.23
+185,Guangxi,Wusheng,411.0,5.0,0.1,1.23
+186,Guangxi,Xinfa - Jiaokou,416.0,5.0,0.1,1.23
+187,Guangxi,Xinfa - Xiaoyi,421.0,5.0,0.1,1.23
+188,Guangxi,Xingan Chemical,426.0,5.0,0.1,1.23
+189,Guangxi,Huayin,36.0,1.8,0.1,1.23
+190,Guangxi,Xingan Chemical import,431.0,5.0,0.1,1.0
+191,Guangxi,Yangquan Zhaofeng,436.0,5.0,0.1,1.23
+192,Guangxi,Gangyuan Jiaohua,441.0,5.0,0.1,1.23
+193,Guangxi,Tiantong,456.0,5.0,0.1,1.23
+194,Guangxi,Fusheng,461.0,5.0,0.1,1.23
+195,Guangxi,YMG - Wenshan,466.0,5.0,0.1,1.23
+196,Guangxi,Guangxi - blending,471.0,10.0,0.1,1.0
+197,Guangxi,Guizhou - blending,476.0,10.0,0.1,1.0
+198,Guizhou,Bosai Xianfeng domestic,2.0,1.0,0.1,1.23
+199,Guizhou,Jinjiang Tiandong,42.0,2.0,0.1,1.23
+200,Guizhou,Henan - blending,482.0,2.0,0.1,1.0
+201,Guizhou,Shanxi - blending,487.0,2.0,0.1,1.0
+202,Guizhou,Other - blending,492.0,2.0,0.1,1.0
+203,Guizhou,Xinfa Jingxi,47.0,2.0,0.1,1.23
+204,Guizhou,Chalco Huaxing,347.0,2.0,0.1,1.23
+205,Guizhou,Tiangui,57.0,2.0,0.1,1.23
+206,Guizhou,Jinjiang Longzhou,32.0,2.0,0.1,1.23
+207,Guizhou,Huasheng,52.0,2.0,0.1,1.0
+208,Guizhou,Chalco Xinghua,447.0,2.0,0.1,1.23
+209,Guizhou,Chalco Xinghua import,452.0,2.0,0.1,1.0
+210,Guizhou,Chalco Guizhou,62.0,2.0,0.1,1.23
+211,Guizhou,Chalco Zunyi,67.0,2.0,0.1,1.23
+212,Guizhou,Xian,72.0,2.0,0.1,1.23
+213,Guizhou,Huafei,77.0,3.0,0.1,1.23
+214,Guizhou,Bosai Xianfeng import,7.0,2.0,0.1,1.0
+215,Guizhou,Qingzhen Guanglv,82.0,3.0,0.1,1.23
+216,Guizhou,Qizheng Chemical,87.0,3.0,0.1,1.23
+217,Guizhou,Qizheng Chemical Added LT,92.0,3.0,0.1,1.0
+218,Guizhou,SPIC - Wuchuan,97.0,3.0,0.1,1.23
+219,Guizhou,Kaisheng,102.0,1.0,0.1,1.23
+220,Guizhou,Huajin,107.0,3.0,0.1,1.23
+221,Guizhou,Chalco Zhengzhou domestic,112.0,2.0,0.1,1.23
+222,Guizhou,Chalco Zhengzhou import,117.0,2.0,0.1,1.0
+223,Guizhou,Chalco Zhongzhou Dom. Sinter,122.0,2.0,0.1,1.23
+224,Guizhou,Chalco Zhongzhou Dom. Bayer,127.0,2.0,0.1,1.23
+225,Guizhou,Bosai Wanzhou,12.0,3.0,0.1,1.0
+226,Guizhou,Chalco Zhongzhou LT Amt,132.0,2.0,0.1,1.0
+227,Guizhou,Kaiman,137.0,2.0,0.1,1.23
+228,Guizhou,Kaiman Import,142.0,2.0,0.1,1.0
+229,Guizhou,East Hope Mianchi,147.0,2.0,0.1,1.23
+230,Guizhou,East Hope Mianchi Added LT,152.0,2.0,0.1,1.0
+231,Guizhou,Huiyuan Lushan,157.0,2.0,0.1,1.23
+232,Guizhou,Jingxin,162.0,2.0,0.1,1.23
+233,Guizhou,Shenhuo,167.0,2.0,0.1,1.23
+234,Guizhou,Wanji,172.0,2.0,0.1,1.23
+235,Guizhou,Wanji import,177.0,3.0,0.1,1.0
+236,Guizhou,Shuijiang,17.0,2.0,0.1,1.23
+237,Guizhou,Weilai,182.0,2.0,0.1,1.23
+238,Guizhou,Yifeng Gongyi (Yulian Xinya),187.0,2.0,0.1,1.23
+239,Guizhou,Yima Yixiang,192.0,2.0,0.1,1.23
+240,Guizhou,Zhongmei,197.0,2.0,0.1,1.23
+241,Guizhou,Shaoxing,202.0,2.0,0.1,1.23
+242,Guizhou,Zhongchao,207.0,2.0,0.1,1.23
+243,Guizhou,Jialu Xianfeng,212.0,2.0,0.1,1.23
+244,Guizhou,Jinshi,217.0,2.0,0.1,1.23
+245,Guizhou,Huixiang,222.0,2.0,0.1,1.23
+246,Guizhou,Xinwang L-B,227.0,2.0,0.1,1.0
+247,Guizhou,Tuoyuan,22.0,2.0,0.1,1.23
+248,Guizhou,Xinwang H-B,232.0,2.0,0.1,1.23
+249,Guizhou,Datang Tuoketuo Fly Ash,237.0,2.0,0.1,1.0
+250,Guizhou,Mengxi Fly Ash,242.0,2.0,0.1,1.0
+251,Guizhou,Mengxi import,247.0,3.0,0.1,1.0
+252,Guizhou,Qihui H-B,252.0,2.0,0.1,1.0
+253,Guizhou,Qihui L-B,257.0,2.0,0.1,1.0
+254,Guizhou,Jinjiang Lianyungang,262.0,3.0,0.1,1.0
+255,Guizhou,Chalco Lianyungang,267.0,3.0,0.1,1.0
+256,Guizhou,Chalco Shandong L-B,272.0,2.0,0.1,1.0
+257,Guizhou,Chalco Shandong sinter,277.0,2.0,0.1,1.23
+258,Guizhou,Chalco Pingguo,27.0,1.0,0.1,1.23
+259,Guizhou,Chalco Shandong sinter import,282.0,2.0,0.1,1.0
+260,Guizhou,Chiping Xinfa L-B,287.0,2.0,0.1,1.0
+261,Guizhou,Chiping Xinfa H-B,292.0,2.0,0.1,1.0
+262,Guizhou,Lubei,297.0,2.0,0.1,1.0
+263,Guizhou,Nanshan Donghai H-B,302.0,2.0,0.1,1.0
+264,Guizhou,Nanshan Donghai L-B,307.0,2.0,0.1,1.0
+265,Guizhou,Bochuang,312.0,2.0,0.1,1.0
+266,Guizhou,Nanhan,317.0,2.0,0.1,1.0
+267,Guizhou,Weiqiao - Binzhou L-B,322.0,2.0,0.1,1.0
+268,Guizhou,Weiqiao - Binzhou H-B,327.0,2.0,0.1,1.0
+269,Guizhou,Weiqiao-Wudi-Zhanhua L-B,332.0,2.0,0.1,1.0
+270,Guizhou,Weiqiao-Wudi-Zhanhua H-B,337.0,2.0,0.1,1.0
+271,Guizhou,Aokaida,342.0,2.0,0.1,1.23
+272,Guizhou,Chalco Shanxi,352.0,2.0,0.1,1.23
+273,Guizhou,Chalco Shanxi import,357.0,2.0,0.1,1.0
+274,Guizhou,SPIC Shanxi,362.0,2.0,0.1,1.23
+275,Guizhou,SPIC Shanxi import,367.0,2.0,0.1,1.0
+276,Guizhou,Dongxu Tianyuan,372.0,2.0,0.1,1.23
+277,Guizhou,Dongxu Tianyuan import,377.0,2.0,0.1,1.0
+278,Guizhou,East Hope Lingshi,382.0,2.0,0.1,1.23
+279,Guizhou,East Hope Lingshi Import,387.0,3.0,0.1,1.0
+280,Guizhou,Huaqing,392.0,2.0,0.1,1.23
+281,Guizhou,Qiangjin Aluminium,397.0,2.0,0.1,1.23
+282,Guizhou,Senze,402.0,2.0,0.1,1.23
+283,Guizhou,Taixing,407.0,2.0,0.1,1.23
+284,Guizhou,Wusheng,412.0,2.0,0.1,1.23
+285,Guizhou,Xinfa - Jiaokou,417.0,2.0,0.1,1.23
+286,Guizhou,Xinfa - Xiaoyi,422.0,2.0,0.1,1.23
+287,Guizhou,Xingan Chemical,427.0,2.0,0.1,1.23
+288,Guizhou,Huayin,37.0,2.0,0.1,1.23
+289,Guizhou,Xingan Chemical import,432.0,2.0,0.1,1.0
+290,Guizhou,Yangquan Zhaofeng,437.0,2.0,0.1,1.23
+291,Guizhou,Gangyuan Jiaohua,442.0,2.0,0.1,1.23
+292,Guizhou,Tiantong,457.0,2.0,0.1,1.23
+293,Guizhou,Fusheng,462.0,2.0,0.1,1.23
+294,Guizhou,YMG - Wenshan,467.0,2.0,0.1,1.23
+295,Guizhou,Guangxi - blending,472.0,2.0,0.1,1.0
+296,Guizhou,Guizhou - blending,477.0,2.0,0.1,1.0
+297,Henan,Bosai Xianfeng domestic,3.0,1.0,0.1,1.23
+298,Henan,Jinjiang Tiandong,43.0,1.0,0.1,1.23
+299,Henan,Henan - blending,483.0,2.0,0.1,1.0
+300,Henan,Shanxi - blending,488.0,2.0,0.1,1.0
+301,Henan,Other - blending,493.0,2.0,0.1,1.0
+302,Henan,Xinfa Jingxi,48.0,1.0,0.1,1.23
+303,Henan,Chalco Huaxing,348.0,1.0,0.1,1.23
+304,Henan,Tiangui,58.0,1.0,0.1,1.23
+305,Henan,Jinjiang Longzhou,33.0,1.0,0.1,1.23
+306,Henan,Huasheng,53.0,2.0,0.1,1.0
+307,Henan,Chalco Xinghua,448.0,1.0,0.1,1.23
+308,Henan,Chalco Xinghua import,453.0,1.0,0.1,1.0
+309,Henan,Chalco Guizhou,63.0,1.0,0.1,1.23
+310,Henan,Chalco Zunyi,68.0,1.0,0.1,1.23
+311,Henan,Xian,73.0,1.0,0.1,1.23
+312,Henan,Huafei,78.0,1.0,0.1,1.23
+313,Henan,Bosai Xianfeng import,8.0,2.0,0.1,1.0
+314,Henan,Qingzhen Guanglv,83.0,1.0,0.1,1.23
+315,Henan,Qizheng Chemical,88.0,1.0,0.1,1.23
+316,Henan,Qizheng Chemical Added LT,93.0,1.0,0.1,1.0
+317,Henan,SPIC - Wuchuan,98.0,1.0,0.1,1.23
+318,Henan,Kaisheng,103.0,1.0,0.1,1.23
+319,Henan,Huajin,108.0,1.0,0.1,1.23
+320,Henan,Chalco Zhengzhou domestic,113.0,1.0,0.1,1.23
+321,Henan,Chalco Zhengzhou import,118.0,2.0,0.1,1.0
+322,Henan,Chalco Zhongzhou Dom. Sinter,123.0,1.0,0.1,1.23
+323,Henan,Chalco Zhongzhou Dom. Bayer,128.0,2.0,0.1,1.23
+324,Henan,Bosai Wanzhou,13.0,1.0,0.1,1.0
+325,Henan,Chalco Zhongzhou LT Amt,133.0,2.0,0.1,1.0
+326,Henan,Kaiman,138.0,1.0,0.1,1.23
+327,Henan,Kaiman Import,143.0,1.0,0.1,1.0
+328,Henan,East Hope Mianchi,148.0,1.0,0.1,1.23
+329,Henan,East Hope Mianchi Added LT,153.0,1.0,0.1,1.0
+330,Henan,Huiyuan Lushan,158.0,1.0,0.1,1.23
+331,Henan,Jingxin,163.0,1.0,0.1,1.23
+332,Henan,Shenhuo,168.0,1.0,0.1,1.23
+333,Henan,Wanji,173.0,3.0,0.1,1.23
+334,Henan,Wanji import,178.0,1.0,0.1,1.0
+335,Henan,Shuijiang,18.0,1.0,0.1,1.23
+336,Henan,Weilai,183.0,1.0,0.1,1.23
+337,Henan,Yifeng Gongyi (Yulian Xinya),188.0,1.0,0.1,1.23
+338,Henan,Yima Yixiang,193.0,1.0,0.1,1.23
+339,Henan,Zhongmei,198.0,1.0,0.1,1.23
+340,Henan,Shaoxing,203.0,1.0,0.1,1.23
+341,Henan,Zhongchao,208.0,1.0,0.1,1.23
+342,Henan,Jialu Xianfeng,213.0,1.0,0.1,1.23
+343,Henan,Jinshi,218.0,1.0,0.1,1.23
+344,Henan,Huixiang,223.0,1.0,0.1,1.23
+345,Henan,Xinwang L-B,228.0,2.0,0.1,1.0
+346,Henan,Tuoyuan,23.0,1.0,0.1,1.23
+347,Henan,Xinwang H-B,233.0,2.0,0.1,1.23
+348,Henan,Datang Tuoketuo Fly Ash,238.0,2.0,0.1,1.0
+349,Henan,Mengxi Fly Ash,243.0,2.0,0.1,1.0
+350,Henan,Mengxi import,248.0,1.0,0.1,1.0
+351,Henan,Qihui H-B,253.0,1.0,0.1,1.0
+352,Henan,Qihui L-B,258.0,1.0,0.1,1.0
+353,Henan,Jinjiang Lianyungang,263.0,1.0,0.1,1.0
+354,Henan,Chalco Lianyungang,268.0,1.0,0.1,1.0
+355,Henan,Chalco Shandong L-B,273.0,2.0,0.1,1.0
+356,Henan,Chalco Shandong sinter,278.0,1.0,0.1,1.23
+357,Henan,Chalco Pingguo,28.0,1.0,0.1,1.23
+358,Henan,Chalco Shandong sinter import,283.0,1.0,0.1,1.0
+359,Henan,Chiping Xinfa L-B,288.0,2.0,0.1,1.0
+360,Henan,Chiping Xinfa H-B,293.0,2.0,0.1,1.0
+361,Henan,Lubei,298.0,2.0,0.1,1.0
+362,Henan,Nanshan Donghai H-B,303.0,2.0,0.1,1.0
+363,Henan,Nanshan Donghai L-B,308.0,2.0,0.1,1.0
+364,Henan,Bochuang,313.0,2.0,0.1,1.0
+365,Henan,Nanhan,318.0,2.0,0.1,1.0
+366,Henan,Weiqiao - Binzhou L-B,323.0,2.0,0.1,1.0
+367,Henan,Weiqiao - Binzhou H-B,328.0,2.0,0.1,1.0
+368,Henan,Weiqiao-Wudi-Zhanhua L-B,333.0,2.0,0.1,1.0
+369,Henan,Weiqiao-Wudi-Zhanhua H-B,338.0,2.0,0.1,1.0
+370,Henan,Aokaida,343.0,1.0,0.1,1.23
+371,Henan,Chalco Shanxi,353.0,1.0,0.1,1.23
+372,Henan,Chalco Shanxi import,358.0,2.0,0.1,1.0
+373,Henan,SPIC Shanxi,363.0,1.0,0.1,1.23
+374,Henan,SPIC Shanxi import,368.0,2.0,0.1,1.0
+375,Henan,Dongxu Tianyuan,373.0,1.0,0.1,1.23
+376,Henan,Dongxu Tianyuan import,378.0,1.0,0.1,1.0
+377,Henan,East Hope Lingshi,383.0,1.0,0.1,1.23
+378,Henan,East Hope Lingshi Import,388.0,1.0,0.1,1.0
+379,Henan,Huaqing,393.0,1.0,0.1,1.23
+380,Henan,Qiangjin Aluminium,398.0,1.0,0.1,1.23
+381,Henan,Senze,403.0,1.0,0.1,1.23
+382,Henan,Taixing,408.0,1.0,0.1,1.23
+383,Henan,Wusheng,413.0,1.0,0.1,1.23
+384,Henan,Xinfa - Jiaokou,418.0,1.0,0.1,1.23
+385,Henan,Xinfa - Xiaoyi,423.0,1.0,0.1,1.23
+386,Henan,Xingan Chemical,428.0,1.0,0.1,1.23
+387,Henan,Huayin,38.0,1.0,0.1,1.23
+388,Henan,Xingan Chemical import,433.0,1.0,0.1,1.0
+389,Henan,Yangquan Zhaofeng,438.0,1.0,0.1,1.23
+390,Henan,Gangyuan Jiaohua,443.0,1.0,0.1,1.23
+391,Henan,Tiantong,458.0,1.0,0.1,1.23
+392,Henan,Fusheng,463.0,1.0,0.1,1.23
+393,Henan,YMG - Wenshan,468.0,1.0,0.1,1.23
+394,Henan,Guangxi - blending,473.0,2.0,0.1,1.0
+395,Henan,Guizhou - blending,478.0,2.0,0.1,1.0
+396,Shanxi,Bosai Xianfeng domestic,4.0,1.0,0.1,1.23
+397,Shanxi,Jinjiang Tiandong,44.0,1.0,0.1,1.23
+398,Shanxi,Henan - blending,484.0,2.0,0.1,1.0
+399,Shanxi,Shanxi - blending,489.0,2.0,0.1,1.0
+400,Shanxi,Other - blending,494.0,2.0,0.1,1.0
+401,Shanxi,Xinfa Jingxi,49.0,1.0,0.1,1.23
+402,Shanxi,Chalco Huaxing,349.0,1.0,0.1,1.23
+403,Shanxi,Tiangui,59.0,1.0,0.1,1.23
+404,Shanxi,Jinjiang Longzhou,34.0,1.0,0.1,1.23
+405,Shanxi,Huasheng,54.0,2.0,0.1,1.0
+406,Shanxi,Chalco Xinghua,449.0,1.0,0.1,1.23
+407,Shanxi,Chalco Xinghua import,454.0,1.0,0.1,1.0
+408,Shanxi,Chalco Guizhou,64.0,1.0,0.1,1.23
+409,Shanxi,Chalco Zunyi,69.0,1.0,0.1,1.23
+410,Shanxi,Xian,74.0,1.0,0.1,1.23
+411,Shanxi,Huafei,79.0,1.0,0.1,1.23
+412,Shanxi,Bosai Xianfeng import,9.0,2.0,0.1,1.0
+413,Shanxi,Qingzhen Guanglv,84.0,1.0,0.1,1.23
+414,Shanxi,Qizheng Chemical,89.0,1.0,0.1,1.23
+415,Shanxi,Qizheng Chemical Added LT,94.0,1.0,0.1,1.0
+416,Shanxi,SPIC - Wuchuan,99.0,1.0,0.1,1.23
+417,Shanxi,Kaisheng,104.0,1.0,0.1,1.23
+418,Shanxi,Huajin,109.0,1.0,0.1,1.23
+419,Shanxi,Chalco Zhengzhou domestic,114.0,1.0,0.1,1.23
+420,Shanxi,Chalco Zhengzhou import,119.0,2.0,0.1,1.0
+421,Shanxi,Chalco Zhongzhou Dom. Sinter,124.0,1.0,0.1,1.23
+422,Shanxi,Chalco Zhongzhou Dom. Bayer,129.0,2.0,0.1,1.23
+423,Shanxi,Bosai Wanzhou,14.0,1.0,0.1,1.0
+424,Shanxi,Chalco Zhongzhou LT Amt,134.0,2.0,0.1,1.0
+425,Shanxi,Kaiman,139.0,1.0,0.1,1.23
+426,Shanxi,Kaiman Import,144.0,1.0,0.1,1.0
+427,Shanxi,East Hope Mianchi,149.0,1.0,0.1,1.23
+428,Shanxi,East Hope Mianchi Added LT,154.0,1.0,0.1,1.0
+429,Shanxi,Huiyuan Lushan,159.0,1.0,0.1,1.23
+430,Shanxi,Jingxin,164.0,1.0,0.1,1.23
+431,Shanxi,Shenhuo,169.0,1.0,0.1,1.23
+432,Shanxi,Wanji,174.0,1.0,0.1,1.23
+433,Shanxi,Wanji import,179.0,1.0,0.1,1.0
+434,Shanxi,Shuijiang,19.0,1.0,0.1,1.23
+435,Shanxi,Weilai,184.0,1.0,0.1,1.23
+436,Shanxi,Yifeng Gongyi (Yulian Xinya),189.0,1.0,0.1,1.23
+437,Shanxi,Yima Yixiang,194.0,1.0,0.1,1.23
+438,Shanxi,Zhongmei,199.0,1.0,0.1,1.23
+439,Shanxi,Shaoxing,204.0,1.0,0.1,1.23
+440,Shanxi,Zhongchao,209.0,1.0,0.1,1.23
+441,Shanxi,Jialu Xianfeng,214.0,1.0,0.1,1.23
+442,Shanxi,Jinshi,219.0,1.0,0.1,1.23
+443,Shanxi,Huixiang,224.0,1.0,0.1,1.23
+444,Shanxi,Xinwang L-B,229.0,2.0,0.1,1.0
+445,Shanxi,Tuoyuan,24.0,1.0,0.1,1.23
+446,Shanxi,Xinwang H-B,234.0,2.0,0.1,1.23
+447,Shanxi,Datang Tuoketuo Fly Ash,239.0,2.0,0.1,1.0
+448,Shanxi,Mengxi Fly Ash,244.0,2.0,0.1,1.0
+449,Shanxi,Mengxi import,249.0,1.0,0.1,1.0
+450,Shanxi,Qihui H-B,254.0,1.0,0.1,1.0
+451,Shanxi,Qihui L-B,259.0,1.0,0.1,1.0
+452,Shanxi,Jinjiang Lianyungang,264.0,1.0,0.1,1.0
+453,Shanxi,Chalco Lianyungang,269.0,1.0,0.1,1.0
+454,Shanxi,Chalco Shandong L-B,274.0,2.0,0.1,1.0
+455,Shanxi,Chalco Shandong sinter,279.0,1.0,0.1,1.23
+456,Shanxi,Chalco Pingguo,29.0,1.0,0.1,1.23
+457,Shanxi,Chalco Shandong sinter import,284.0,1.0,0.1,1.0
+458,Shanxi,Chiping Xinfa L-B,289.0,2.0,0.1,1.0
+459,Shanxi,Chiping Xinfa H-B,294.0,2.0,0.1,1.0
+460,Shanxi,Lubei,299.0,2.0,0.1,1.0
+461,Shanxi,Nanshan Donghai H-B,304.0,2.0,0.1,1.0
+462,Shanxi,Nanshan Donghai L-B,309.0,2.0,0.1,1.0
+463,Shanxi,Bochuang,314.0,2.0,0.1,1.0
+464,Shanxi,Nanhan,319.0,2.0,0.1,1.0
+465,Shanxi,Weiqiao - Binzhou L-B,324.0,2.0,0.1,1.0
+466,Shanxi,Weiqiao - Binzhou H-B,329.0,2.0,0.1,1.0
+467,Shanxi,Weiqiao-Wudi-Zhanhua L-B,334.0,2.0,0.1,1.0
+468,Shanxi,Weiqiao-Wudi-Zhanhua H-B,339.0,2.0,0.1,1.0
+469,Shanxi,Aokaida,344.0,1.0,0.1,1.23
+470,Shanxi,Chalco Shanxi,354.0,1.0,0.1,1.23
+471,Shanxi,Chalco Shanxi import,359.0,2.0,0.1,1.0
+472,Shanxi,SPIC Shanxi,364.0,1.0,0.1,1.23
+473,Shanxi,SPIC Shanxi import,369.0,2.0,0.1,1.0
+474,Shanxi,Dongxu Tianyuan,374.0,1.0,0.1,1.23
+475,Shanxi,Dongxu Tianyuan import,379.0,1.0,0.1,1.0
+476,Shanxi,East Hope Lingshi,384.0,1.0,0.1,1.23
+477,Shanxi,East Hope Lingshi Import,389.0,1.0,0.1,1.0
+478,Shanxi,Huaqing,394.0,1.0,0.1,1.23
+479,Shanxi,Qiangjin Aluminium,399.0,1.0,0.1,1.23
+480,Shanxi,Senze,404.0,0.4,0.1,1.23
+481,Shanxi,Taixing,409.0,1.0,0.1,1.23
+482,Shanxi,Wusheng,414.0,1.0,0.1,1.23
+483,Shanxi,Xinfa - Jiaokou,419.0,1.0,0.1,1.23
+484,Shanxi,Xinfa - Xiaoyi,424.0,1.0,0.1,1.23
+485,Shanxi,Xingan Chemical,429.0,1.0,0.1,1.23
+486,Shanxi,Huayin,39.0,1.0,0.1,1.23
+487,Shanxi,Xingan Chemical import,434.0,1.0,0.1,1.0
+488,Shanxi,Yangquan Zhaofeng,439.0,1.0,0.1,1.23
+489,Shanxi,Gangyuan Jiaohua,444.0,1.0,0.1,1.23
+490,Shanxi,Tiantong,459.0,1.0,0.1,1.23
+491,Shanxi,Fusheng,464.0,1.0,0.1,1.23
+492,Shanxi,YMG - Wenshan,469.0,1.0,0.1,1.23
+493,Shanxi,Guangxi - blending,474.0,2.0,0.1,1.0
+494,Shanxi,Guizhou - blending,479.0,2.0,0.1,1.0

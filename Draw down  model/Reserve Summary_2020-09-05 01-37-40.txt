@@ -1,0 +1,21 @@
+
+
+Module name:	reservesummary.summary object 
+Method Name:	__init__
+Start time:	2020-09-05 01-37-44
+End Time:	2020-09-05 01-37-44
+Time elapsed:	0.03929329999999975 secs
+Line no:	21
+Arguments:	[]
+Function call count:	1
+METHOD OUTPUTS
+
+Module name:	reservesummary.summary object 
+Method Name:	calc0
+Start time:	2020-09-05 01-37-44
+End Time:	2020-09-05 01-37-44
+Time elapsed:	0.01639210000000002 secs
+Line no:	59
+Arguments:	[('i', 0)]
+Function call count:	1
+METHOD OUTPUTS

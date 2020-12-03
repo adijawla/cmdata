@@ -1,0 +1,15 @@
+Mine,Round trip distance Main fuel,Round Trip Distance on Auxiliary fuel,Vessel Loading rate,Vessel Un-Loading rate,Vessel Speed,Main Engine Fuel burn rate,MDO / MGO burn rate,Days at Avg Speed Main Fuel,Days at Avg Speed Auxiliary Fuel,Days Loading,Days unloading,Extra Days due to Canal use,Lay days allowance (50% each port),Main Fuel HFO / VLSFO Fuel Price,Auxiliary Fuel (MDO / MGO / LNG) Price,Main Fuel Cost,Auxiliary Fuel Cost,FX rate per USD,Fixed fee,Berthing Charge,Anchorage Charge,Per T_Cargo (wet) Charge,RMB/T_Cargo (wet)/day berthed,RMB/T_Cargo (wet)/day anchored,RMB/NRT,RMB/NRT/day berthed,RMB/NRT/day anchored,RMB/GRT,RMB/GRT/day berthed,RMB/GRT/day anchored,RMB/LOA,RMB/LOA/day berthed,RMB/LOA/day anchored,Time Charter Rate,Time Charter Cost,Canal Costs,Total Cost for Leg - before Insurance & Commission,Total Cost for Leg - with Insurance & Commission,Per tonne cargo incl. Insurance & Commission
+SMB Generic,0,0,0,0,11.25,0.0,1.2,0.0,0.0,0,0,0,0,0,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0
+West Kalimantan Generic,0,0,0,0,11.25,0.0,1.2,0.0,0.0,0,0,0,0,0,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0
+Weipa/Amrun Generic,0,0,0,0,11.25,0.0,1.2,0.0,0.0,0,0,0,0,0,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0
+Gove,0,0,0,0,11.25,0.0,1.2,0.0,0.0,0,0,0,0,0,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0
+Alufer Bel Air,0,0,0,0,11.25,0.0,1.2,0.0,0.0,0,0,0,0,0,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0
+Central Kalimantan Generic,0,0,0,0,11.25,0.0,1.2,0.0,0.0,0,0,0,0,0,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0
+CBG LT,0,0,0,0,11.25,0.0,1.2,0.0,0.0,0,0,0,0,0,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0
+Huntly,0,0,0,0,11.25,0.0,1.2,0.0,0.0,0,0,0,0,0,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0
+Turkey,0,0,0,0,11.25,0.0,1.2,0.0,0.0,0,0,0,0,0,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0
+Bauxite Hills,0,0,0,0,11.25,0.0,1.2,0.0,0.0,0,0,0,0,0,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0
+Chalco Boffa,0,0,0,0,11.25,0.0,1.2,0.0,0.0,0,0,0,0,0,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0
+Rennell Island,0,0,0,0,11.25,0.0,1.2,0.0,0.0,0,0,0,0,0,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0
+Discovery Bay,0,0,0,0,11.25,0.0,1.2,0.0,0.0,0,0,0,0,0,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0
+MRN,26314.0,0.0,30000.0,42500,11.25,35.417811413764575,2.942657342657343,97.45925925925927,0.0,5.303030303030303,3.7433155080213902,0,12.780672608437316,194.4,301.2,671028.6884700969,19345.906129352432,7.076,1744.2057659694744,,,59355.56811758056,,,42139.27113022647,14486.39110924595,2972.230840362025,,,,8027.486974585618,,,3771.0,453599.55312655977,0.0,1272699.3016639792,1340343.2695474196,9.573880496767282
